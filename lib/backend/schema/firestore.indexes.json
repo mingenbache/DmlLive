@@ -1,0 +1,92 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "bookings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "user",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "is_submitted",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Invoices",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "user",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "is_paid",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "tests",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "is_available",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "Keywords",
+          "arrayConfig": "CONTAINS"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "tested_tests",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "resultPosted",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "is_verified",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "is_flagged",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "bookings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "booking_confirmed",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "scheduled_date",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "bookings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "user",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "scheduled_date",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ]
+}
