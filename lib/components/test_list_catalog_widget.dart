@@ -42,14 +42,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
             constraints: BoxConstraints(
               maxHeight: 740,
             ),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: Image.asset(
-                  'assets/images/national-cancer-institute-XknuBmnjbKg-unsplash.jpg',
-                ).image,
-              ),
-            ),
+            decoration: BoxDecoration(),
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.89,

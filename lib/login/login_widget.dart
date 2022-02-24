@@ -40,9 +40,9 @@ class _LoginWidgetState extends State<LoginWidget> {
           height: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.cover,
               image: Image.asset(
-                'assets/images/national-cancer-institute-XknuBmnjbKg-unsplash.jpg',
+                'assets/images/national-cancer-institute-XknuBmnjbKg-unsplash_reduced.jpg',
               ).image,
             ),
           ),
@@ -52,16 +52,9 @@ class _LoginWidgetState extends State<LoginWidget> {
               width: double.infinity,
               height: double.infinity,
               decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 1,
-                    color: Color(0x80586B06),
-                    spreadRadius: 1,
-                  )
-                ],
                 gradient: LinearGradient(
                   colors: [
-                    Color(0x9A58595B),
+                    Color(0x49BACA68),
                     FlutterFlowTheme.of(context).tertiaryColor,
                     FlutterFlowTheme.of(context).primaryColor
                   ],

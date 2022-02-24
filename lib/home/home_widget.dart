@@ -1,7 +1,6 @@
 import '../account/account_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../booking_updates/booking_updates_widget.dart';
 import '../components/client_notifications_widget_widget.dart';
 import '../components/new_booking_sheet_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
@@ -586,7 +585,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                 image: DecorationImage(
                                                   fit: BoxFit.cover,
                                                   image: Image.asset(
-                                                    'assets/images/IMG_4444.jpg',
+                                                    'assets/images/IMG_4444_reduced.jpg',
                                                   ).image,
                                                 ),
                                                 borderRadius:
@@ -687,7 +686,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                           0.9,
                                       height:
                                           MediaQuery.of(context).size.height *
-                                              0.19,
+                                              0.2,
                                       decoration: BoxDecoration(),
                                       child: GridView(
                                         padding: EdgeInsets.zero,
@@ -1015,113 +1014,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                             ),
                                           ),
                                         ],
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 10, 0, 0),
-                                    child: InkWell(
-                                      onTap: () async {
-                                        await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                BookingUpdatesWidget(),
-                                          ),
-                                        );
-                                      },
-                                      child: Material(
-                                        color: Colors.transparent,
-                                        elevation: 2,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                        ),
-                                        child: Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.9,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.1,
-                                          constraints: BoxConstraints(
-                                            maxWidth: 500,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12, 0, 0, 0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Container(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.3,
-                                                  height: 100,
-                                                  decoration: BoxDecoration(),
-                                                  child: Text(
-                                                    '1',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryColor,
-                                                          fontSize: 80,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                  ),
-                                                ),
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0, -1),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                8, 8, 8, 0),
-                                                    child: Container(
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: Text(
-                                                        'Test Updates',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .title2
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Roboto',
-                                                                  fontSize: 20,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
                                       ),
                                     ),
                                   ),
