@@ -560,6 +560,13 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                         userPatient: isPatientValue,
                                         scheduledDate:
                                             functions.getNextWeekday(),
+                                        bookingConfirmed: false,
+                                        confirmationBegan: false,
+                                        completed: false,
+                                        testVerified: false,
+                                        isInvoiced: false,
+                                        paidFull: false,
+                                        resultPublished: false,
                                       );
                                       final bookingsRecordReference =
                                           BookingsRecord.collection.doc();

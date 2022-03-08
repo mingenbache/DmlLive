@@ -1858,7 +1858,6 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                       paymentBalance: newBookingBookingsRecord
                                           .totalPrice
                                           .toDouble(),
-                                      bookingConfirmed: false,
                                     );
                                     await widget.bookingRef
                                         .update(bookingsUpdateData);
