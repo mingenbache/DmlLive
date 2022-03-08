@@ -13,10 +13,12 @@ import '../my_report_list/my_report_list_widget.dart';
 import '../new_booking/new_booking_widget.dart';
 import '../scheduled_tests/scheduled_tests_widget.dart';
 import 'dart:ui';
+import '../custom_code/actions/index.dart' as actions;
 import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,6 +50,13 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await actions.awesomeNotification(
+        10,
+      );
+    });
+
     startPageLoadAnimations(
       animationsMap.values
           .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
@@ -197,10 +206,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                             ),
                                             child: Image.asset(
                                               'assets/images/francisco-venancio-M4Xloxsg0Gw-unsplash.jpg',
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.48,
                                               fit: BoxFit.contain,
                                             ),
                                           ),

@@ -1,23 +1,18 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DateWidgetSmallWidget extends StatefulWidget {
-  const DateWidgetSmallWidget({
-    Key key,
-    this.date,
-  }) : super(key: key);
-
-  final DateTime date;
+class DateWidgetSmallCopyWidget extends StatefulWidget {
+  const DateWidgetSmallCopyWidget({Key key}) : super(key: key);
 
   @override
-  _DateWidgetSmallWidgetState createState() => _DateWidgetSmallWidgetState();
+  _DateWidgetSmallCopyWidgetState createState() =>
+      _DateWidgetSmallCopyWidgetState();
 }
 
-class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
+class _DateWidgetSmallCopyWidgetState extends State<DateWidgetSmallCopyWidget> {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -29,6 +24,7 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
       child: Container(
         height: 30,
         constraints: BoxConstraints(
+          maxWidth: 65,
           maxHeight: 30,
         ),
         decoration: BoxDecoration(
@@ -48,7 +44,7 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
                   ),
                   decoration: BoxDecoration(),
                   child: Text(
-                    functions.dateDay(widget.date),
+                    '29',
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Roboto',
                           color: FlutterFlowTheme.of(context).secondaryColor,
@@ -67,14 +63,20 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
                     Container(
                       height: 12,
                       decoration: BoxDecoration(),
-                      child: Text(
-                        functions.dateMonth(widget.date),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Roboto',
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                            ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(2, 0, 2, 0),
+                        child: Text(
+                          'MCT',
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: 'Roboto',
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              ),
+                        ),
                       ),
                     ),
                     Container(
@@ -82,15 +84,21 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
                         maxHeight: 12,
                       ),
                       decoration: BoxDecoration(),
-                      child: Text(
-                        functions.dateYear(widget.date),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Roboto',
-                              color:
-                                  FlutterFlowTheme.of(context).secondaryColor,
-                              fontSize: 11,
-                              fontWeight: FontWeight.w500,
-                            ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(2, 0, 2, 0),
+                        child: Text(
+                          '2028',
+                          textAlign: TextAlign.center,
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: 'Roboto',
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryColor,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w500,
+                              ),
+                        ),
                       ),
                     ),
                   ],

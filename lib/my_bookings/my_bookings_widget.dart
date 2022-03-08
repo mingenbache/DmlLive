@@ -1139,8 +1139,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                         StreamBuilder<List<BookingsRecord>>(
                           stream: queryBookingsRecord(
                             queryBuilder: (bookingsRecord) => bookingsRecord
-                                .where('booking_confirmed', isEqualTo: false)
-                                .where('user', isEqualTo: currentUserReference),
+                                .where('booking_confirmed', isEqualTo: false),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.

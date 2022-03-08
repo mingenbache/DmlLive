@@ -607,9 +607,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                         .bodyText1
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryColor,
+                                                          color: Colors.white,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -1515,64 +1513,72 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                       ),
                                       Align(
                                         alignment: AlignmentDirectional(0.5, 0),
-                                        child: Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.8,
-                                          height: 100,
-                                          decoration: BoxDecoration(
-                                            color: Color(0xCDFFFFFF),
+                                        child: Material(
+                                          color: Colors.transparent,
+                                          elevation: 2,
+                                          shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                           ),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.76,
-                                                height: 90,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0xFFEEEEEE),
-                                                ),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  4, 4, 4, 4),
-                                                      child: Text(
-                                                        bookingConfirmationBookingsRecord
-                                                            .diagnosis,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Roboto',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryColor,
-                                                                ),
+                                          child: Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.8,
+                                            height: 100,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xCDFFFFFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.76,
+                                                  height: 90,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0xFFEEEEEE),
+                                                  ),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    4, 4, 4, 4),
+                                                        child: Text(
+                                                          bookingConfirmationBookingsRecord
+                                                              .diagnosis,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Roboto',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryColor,
+                                                              ),
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -1620,8 +1626,6 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                   .height *
                                               0.15,
                                           decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
                                             borderRadius:
                                                 BorderRadius.circular(16),
                                           ),
@@ -1693,130 +1697,131 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                 ),
                                                               );
                                                             },
-                                                            child: Container(
-                                                              height: MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .height *
-                                                                  0.03,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: Colors
-                                                                    .white,
+                                                            child: Material(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              elevation: 2,
+                                                              shape:
+                                                                  RoundedRectangleBorder(
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
                                                                             8),
                                                               ),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            10,
-                                                                            0,
-                                                                            10,
-                                                                            0),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .spaceBetween,
-                                                                  children: [
-                                                                    Container(
-                                                                      width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width *
-                                                                          0.4,
-                                                                      decoration:
-                                                                          BoxDecoration(),
-                                                                      child:
-                                                                          Row(
+                                                              child: Container(
+                                                                height: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height *
+                                                                    0.03,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8),
+                                                                ),
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          10,
+                                                                          0,
+                                                                          10,
+                                                                          0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .spaceBetween,
+                                                                    children: [
+                                                                      Container(
+                                                                        width: MediaQuery.of(context).size.width *
+                                                                            0.4,
+                                                                        decoration:
+                                                                            BoxDecoration(),
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            Text(
+                                                                              bookingTestItemTestsRecord.name,
+                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    fontFamily: 'Roboto',
+                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    fontWeight: FontWeight.w500,
+                                                                                  ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                      Row(
                                                                         mainAxisSize:
                                                                             MainAxisSize.max,
                                                                         children: [
-                                                                          Text(
-                                                                            bookingTestItemTestsRecord.name,
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
-                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                  fontWeight: FontWeight.w500,
-                                                                                ),
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0,
+                                                                                0,
+                                                                                5,
+                                                                                0),
+                                                                            child:
+                                                                                Text(
+                                                                              'Ksh',
+                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    fontFamily: 'Roboto',
+                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                    fontWeight: FontWeight.w600,
+                                                                                  ),
+                                                                            ),
                                                                           ),
-                                                                        ],
-                                                                      ),
-                                                                    ),
-                                                                    Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              0,
-                                                                              0,
-                                                                              5,
-                                                                              0),
-                                                                          child:
-                                                                              Text(
-                                                                            'Ksh',
+                                                                          Text(
+                                                                            bookingTestItemTestsRecord.price.toString(),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Roboto',
                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                  fontWeight: FontWeight.w600,
+                                                                                  fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
-                                                                        ),
-                                                                        Text(
-                                                                          bookingTestItemTestsRecord
-                                                                              .price
-                                                                              .toString(),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Roboto',
-                                                                                color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                fontWeight: FontWeight.w500,
-                                                                              ),
-                                                                        ),
-                                                                        InkWell(
-                                                                          onTap:
-                                                                              () async {
-                                                                            final bookingsUpdateData =
-                                                                                {
-                                                                              ...createBookingsRecordData(
-                                                                                totalPrice: functions.removeFromCart(bookingConfirmationBookingsRecord.totalPrice, bookingTestItemTestsRecord.price),
-                                                                              ),
-                                                                              'tests_included': FieldValue.arrayRemove([
-                                                                                testsListItem
-                                                                              ]),
-                                                                              'total_tests': FieldValue.increment(-1),
-                                                                            };
-                                                                            await widget.bookingRef.update(bookingsUpdateData);
-                                                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                                              SnackBar(
-                                                                                content: Text(
-                                                                                  'Test Removed',
-                                                                                  style: TextStyle(),
+                                                                          InkWell(
+                                                                            onTap:
+                                                                                () async {
+                                                                              final bookingsUpdateData = {
+                                                                                ...createBookingsRecordData(
+                                                                                  totalPrice: functions.removeFromCart(bookingConfirmationBookingsRecord.totalPrice, bookingTestItemTestsRecord.price),
                                                                                 ),
-                                                                                duration: Duration(milliseconds: 4000),
-                                                                                backgroundColor: Color(0x00000000),
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                          child:
-                                                                              Icon(
-                                                                            Icons.highlight_off,
-                                                                            color:
-                                                                                Color(0xFFEB2424),
-                                                                            size:
-                                                                                18,
+                                                                                'tests_included': FieldValue.arrayRemove([
+                                                                                  testsListItem
+                                                                                ]),
+                                                                                'total_tests': FieldValue.increment(-1),
+                                                                              };
+                                                                              await widget.bookingRef.update(bookingsUpdateData);
+                                                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                                                SnackBar(
+                                                                                  content: Text(
+                                                                                    'Test Removed',
+                                                                                    style: TextStyle(),
+                                                                                  ),
+                                                                                  duration: Duration(milliseconds: 4000),
+                                                                                  backgroundColor: Color(0x00000000),
+                                                                                ),
+                                                                              );
+                                                                            },
+                                                                            child:
+                                                                                Icon(
+                                                                              Icons.highlight_off,
+                                                                              color: Color(0xFFEB2424),
+                                                                              size: 18,
+                                                                            ),
                                                                           ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ],
+                                                                        ],
+                                                                      ),
+                                                                    ],
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ),
@@ -1953,7 +1958,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                   .height *
                                               0.04,
                                           decoration: BoxDecoration(
-                                            color: Color(0xA5EEEEEE),
+                                            color: Colors.white,
                                             borderRadius:
                                                 BorderRadius.circular(12),
                                           ),

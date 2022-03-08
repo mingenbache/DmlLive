@@ -83,7 +83,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * 0.45,
                     constraints: BoxConstraints(
-                      maxWidth: 330,
+                      maxWidth: 360,
                     ),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -243,11 +243,13 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Container(
-                                            width: 330,
                                             height: 100,
+                                            constraints: BoxConstraints(
+                                              maxWidth: 330,
+                                            ),
                                             decoration: BoxDecoration(),
                                             child: Row(
-                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 Container(
                                                   width: MediaQuery.of(context)
@@ -255,6 +257,9 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                           .width *
                                                       0.75,
                                                   height: 100,
+                                                  constraints: BoxConstraints(
+                                                    maxWidth: 248,
+                                                  ),
                                                   decoration: BoxDecoration(),
                                                   child: Column(
                                                     mainAxisSize:
@@ -303,6 +308,9 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                           .width *
                                                       0.15,
                                                   height: 100,
+                                                  constraints: BoxConstraints(
+                                                    maxWidth: 82,
+                                                  ),
                                                   decoration: BoxDecoration(),
                                                   child: Column(
                                                     mainAxisSize:

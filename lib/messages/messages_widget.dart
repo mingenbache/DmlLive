@@ -448,6 +448,29 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(8, 0, 8, 0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    width: 60,
+                                                    height: 60,
+                                                    clipBehavior:
+                                                        Clip.antiAlias,
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                    ),
+                                                    child: Image.asset(
+                                                      'assets/images/patient.png',
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
                                             Expanded(
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
@@ -458,33 +481,25 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: [
-                                                      Container(
-                                                        decoration:
-                                                            BoxDecoration(),
-                                                        child: Text(
-                                                          'Alex Edwards',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .subtitle1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryColor,
-                                                                fontSize: 18,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                        ),
+                                                      Text(
+                                                        'Alex Edwards',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .subtitle1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryColor,
+                                                                  fontSize: 18,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
                                                       ),
-                                                      Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color:
-                                                              Color(0xFFEEEEEE),
-                                                        ),
+                                                      Expanded(
                                                         child: Align(
                                                           alignment:
                                                               AlignmentDirectional(

@@ -76,6 +76,11 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                               ),
                             ),
                             child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              constraints: BoxConstraints(
+                                maxHeight:
+                                    MediaQuery.of(context).size.height * 0.35,
+                              ),
                               decoration: BoxDecoration(
                                 color: Color(0xFFEEEEEE),
                                 borderRadius: BorderRadius.only(
