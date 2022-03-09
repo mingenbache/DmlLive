@@ -54,7 +54,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Color(0x49BACA68),
+                    Color(0x19BACA68),
                     FlutterFlowTheme.of(context).tertiaryColor,
                     FlutterFlowTheme.of(context).primaryColor
                   ],

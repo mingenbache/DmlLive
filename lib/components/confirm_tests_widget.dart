@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../backend/push_notifications/push_notifications_util.dart';
 import '../bookings_schedule/bookings_schedule_widget.dart';
 import '../components/choose_technologist_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
@@ -630,94 +631,149 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        StreamBuilder<List<StaffRecord>>(
-                          stream: queryStaffRecord(
-                            queryBuilder: (staffRecord) => staffRecord.where(
-                                'UserRef',
-                                isEqualTo: currentUserReference),
-                            singleRecord: true,
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50,
-                                  height: 50,
-                                  child: SpinKitDoubleBounce(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
-                                    size: 50,
-                                  ),
-                                ),
-                              );
-                            }
-                            List<StaffRecord> buttonStaffRecordList =
-                                snapshot.data;
-                            final buttonStaffRecord =
-                                buttonStaffRecordList.isNotEmpty
-                                    ? buttonStaffRecordList.first
-                                    : null;
-                            return FFButtonWidget(
-                              onPressed: () async {
-                                if (functions.checktestsListsEqual(
-                                    confirmTestsSheetBookingsRecord
-                                        .testsIncluded
-                                        .toList(),
-                                    confirmTestsSheetBookingsRecord.bookedTests
-                                        .toList())) {
-                                  final bookingsUpdateData =
-                                      createBookingsRecordData(
-                                    bookingConfirmed: true,
-                                    bookingstatus: 'confirmed',
-                                    pathologist: pathologistValue,
-                                    labRefNum: widget.labRefNum,
-                                    updatedDate: getCurrentTimestamp,
-                                    updateStaff: buttonStaffRecord.reference,
-                                  );
-                                  await confirmTestsSheetBookingsRecord
-                                      .reference
-                                      .update(bookingsUpdateData);
-                                } else {
-                                  return;
-                                }
-
-                                await Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        BookingsScheduleWidget(),
-                                  ),
-                                  (r) => false,
-                                );
-                              },
-                              text: 'Confirm',
-                              options: FFButtonOptions(
-                                width: 300,
-                                height: 70,
+                    FutureBuilder<List<StaffRecord>>(
+                      future: queryStaffRecordOnce(
+                        queryBuilder: (staffRecord) => staffRecord.where('role',
+                            isNotEqualTo: 'technologist'),
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: SpinKitDoubleBounce(
                                 color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .subtitle2
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
-                                    ),
-                                elevation: 2,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1,
-                                ),
-                                borderRadius: 25,
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                size: 50,
                               ),
-                            );
-                          },
-                        ),
-                      ],
+                            ),
+                          );
+                        }
+                        List<StaffRecord> containerStaffRecordList =
+                            snapshot.data;
+                        return Container(
+                          decoration: BoxDecoration(),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              StreamBuilder<List<StaffRecord>>(
+                                stream: queryStaffRecord(
+                                  queryBuilder: (staffRecord) =>
+                                      staffRecord.where('UserRef',
+                                          isEqualTo: currentUserReference),
+                                  singleRecord: true,
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50,
+                                        height: 50,
+                                        child: SpinKitDoubleBounce(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                          size: 50,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  List<StaffRecord> buttonStaffRecordList =
+                                      snapshot.data;
+                                  final buttonStaffRecord =
+                                      buttonStaffRecordList.isNotEmpty
+                                          ? buttonStaffRecordList.first
+                                          : null;
+                                  return FFButtonWidget(
+                                    onPressed: () async {
+                                      if (functions.checktestsListsEqual(
+                                          confirmTestsSheetBookingsRecord
+                                              .testsIncluded
+                                              .toList(),
+                                          confirmTestsSheetBookingsRecord
+                                              .bookedTests
+                                              .toList())) {
+                                        final bookingsUpdateData =
+                                            createBookingsRecordData(
+                                          bookingConfirmed: true,
+                                          bookingstatus: 'confirmed',
+                                          pathologist: pathologistValue,
+                                          labRefNum: widget.labRefNum,
+                                          updatedDate: getCurrentTimestamp,
+                                          updateStaff:
+                                              buttonStaffRecord.reference,
+                                        );
+                                        await confirmTestsSheetBookingsRecord
+                                            .reference
+                                            .update(bookingsUpdateData);
+                                        triggerPushNotification(
+                                          notificationTitle:
+                                              'New Booking Confirmed',
+                                          notificationText:
+                                              'A New Booking has been confirmed for ${dateTimeFormat('MMMMEEEEd', confirmTestsSheetBookingsRecord.scheduledDate)}',
+                                          userRefs: containerStaffRecordList
+                                              .map((e) => e.userRef)
+                                              .toList(),
+                                          initialPageName: 'BookingUpdates',
+                                          parameterData: {
+                                            'bookingRef': widget.booking,
+                                          },
+                                        );
+                                        triggerPushNotification(
+                                          notificationTitle:
+                                              'New Booking Confirmed',
+                                          notificationText:
+                                              'YourBooking has been confirmed for ${dateTimeFormat('MMMMEEEEd', confirmTestsSheetBookingsRecord.scheduledDate)}',
+                                          userRefs: [
+                                            confirmTestsSheetBookingsRecord.user
+                                          ],
+                                          initialPageName: 'BookingUpdates',
+                                          parameterData: {
+                                            'bookingRef': widget.booking,
+                                          },
+                                        );
+                                      } else {
+                                        return;
+                                      }
+
+                                      await Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              BookingsScheduleWidget(),
+                                        ),
+                                        (r) => false,
+                                      );
+                                    },
+                                    text: 'Confirm',
+                                    options: FFButtonOptions(
+                                      width: 300,
+                                      height: 70,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryColor,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .subtitle2
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiaryColor,
+                                          ),
+                                      elevation: 2,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1,
+                                      ),
+                                      borderRadius: 25,
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),

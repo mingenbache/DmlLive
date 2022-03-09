@@ -164,6 +164,9 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                         bookingsRecord
                                             .where('booking_confirmed',
                                                 isEqualTo: true)
+                                            .where('scheduled_date',
+                                                isLessThan:
+                                                    functions.getDayToday())
                                             .orderBy('scheduled_date',
                                                 descending: true),
                                   ),
@@ -1867,9 +1870,11 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                 StreamBuilder<List<BookingsRecord>>(
                                   stream: queryBookingsRecord(
                                     queryBuilder: (bookingsRecord) =>
-                                        bookingsRecord.where(
-                                            'booking_confirmed',
-                                            isNotEqualTo: true),
+                                        bookingsRecord
+                                            .where('booking_confirmed',
+                                                isEqualTo: false)
+                                            .where('is_submitted',
+                                                isEqualTo: true),
                                   ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.

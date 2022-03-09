@@ -70,6 +70,10 @@
         },
         {
           "fieldPath": "scheduled_date",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "scheduled_date",
           "order": "DESCENDING"
         }
       ]
@@ -85,6 +89,18 @@
         {
           "fieldPath": "scheduled_date",
           "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "fcm_tokens",
+      "fieldPath": "fcm_token",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
         }
       ]
     }

@@ -14,7 +14,6 @@ import 'dart:ui';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -38,7 +37,6 @@ class BookingConfirmationWidget extends StatefulWidget {
 class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
     with TickerProviderStateMixin {
   DateTime datePicked;
-  TextEditingController scheduledDateController;
   TextEditingController labRefNumController;
   String refDoctorValue;
   final formKey = GlobalKey<FormState>();
@@ -72,8 +70,6 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
     );
 
     labRefNumController = TextEditingController();
-    scheduledDateController =
-        TextEditingController(text: dateTimeFormat('d/M/y', datePicked));
   }
 
   @override
@@ -158,7 +154,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                 ),
                 child: Form(
                   key: formKey,
-                  autovalidateMode: AutovalidateMode.always,
+                  autovalidateMode: AutovalidateMode.disabled,
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
                     child: StreamBuilder<UsersRecord>(
@@ -272,8 +268,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                               .fromSTEB(
                                                                   3, 0, 0, 0),
                                                       child: Text(
-                                                        bookingConfirmationBookingsRecord
-                                                            .bookingstatus,
+                                                        'Pending',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyText1
@@ -549,71 +544,31 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                     0.45,
                                               ),
                                               decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryColor,
                                                 borderRadius:
                                                     BorderRadius.circular(10),
                                               ),
-                                              child: TextFormField(
-                                                onChanged: (_) =>
-                                                    EasyDebounce.debounce(
-                                                  'scheduledDateController',
-                                                  Duration(milliseconds: 400),
-                                                  () => setState(() {}),
-                                                ),
-                                                controller:
-                                                    scheduledDateController,
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  labelStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyText1,
-                                                  hintStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryColor,
-                                                      ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color: Colors.white,
-                                                      width: 1,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color: Colors.white,
-                                                      width: 1,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                  filled: true,
-                                                  contentPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0, 0, 6, 0),
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    dateTimeFormat(
+                                                        'd/M/y', datePicked),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .bodyText1
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          color: Colors.white,
-                                                          fontWeight:
-                                                              FontWeight.w500,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .tertiaryColor,
                                                         ),
-                                                textAlign: TextAlign.end,
-                                                keyboardType:
-                                                    TextInputType.datetime,
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ),
@@ -2008,6 +1963,10 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                       0, 24, 0, 10),
                                   child: FFButtonWidget(
                                     onPressed: () async {
+                                      if (!formKey.currentState.validate()) {
+                                        return;
+                                      }
+
                                       await showModalBottomSheet(
                                         isScrollControlled: true,
                                         backgroundColor: Color(0x00FFFFFF),
