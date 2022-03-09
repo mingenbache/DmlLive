@@ -963,3 +963,53 @@ bool userHasStaffRecord(
 int createUniqueId() {
   return DateTime.now().millisecondsSinceEpoch.remainder(100000);
 }
+
+bool bookingValidation(
+  String fName,
+  String lName,
+  String email,
+  String phone,
+  String sex,
+  List<DocumentReference> tests,
+) {
+  // validate form entries
+  // missing entries:
+  if (fName.isEmpty ||
+      lName.isEmpty ||
+      email.isEmpty ||
+      sex.isEmpty ||
+      tests.isEmpty) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+String bookingValidator(
+  String fName,
+  String lName,
+  String email,
+  String phone,
+  String sex,
+  List<DocumentReference> tests,
+) {
+  // validate form entries
+  // missing entries:
+  String err;
+  if (fName.isEmpty) {
+    err = err + "fName";
+  }
+  if (lName.isEmpty) {
+    err = err + "lName";
+  }
+  if (email.isEmpty) {
+    err = err + "email";
+  }
+  if (sex.isEmpty) {
+    err = err + "sex";
+  }
+  if (tests.isEmpty) {
+    err = err + "tests";
+  }
+  return err;
+}

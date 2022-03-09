@@ -474,44 +474,48 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                               true)
                                             InkWell(
                                               onTap: () async {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title:
-                                                          Text('Remove Flag?'),
-                                                      content: Text(
-                                                          'Are you sure you want to remove the flag on this test? The results can be published aftehr this.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () async {
-                                                            Navigator.pop(
-                                                                alertDialogContext);
-
-                                                            final testedTestsUpdateData =
-                                                                createTestedTestsRecordData(
-                                                              isFlagged: false,
+                                                var confirmDialogResponse =
+                                                    await showDialog<bool>(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Remove Flag?'),
+                                                              content: Text(
+                                                                  'Are you sure you want to remove the flag on this test? The results can be published aftehr this.'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                  child: Text(
+                                                                      'Cancel'),
+                                                                ),
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                  child: Text(
+                                                                      'Confirm'),
+                                                                ),
+                                                              ],
                                                             );
-                                                            await viewResultsTestedTestsRecord
-                                                                .reference
-                                                                .update(
-                                                                    testedTestsUpdateData);
-                                                            ;
                                                           },
-                                                          child:
-                                                              Text('Confirm'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
+                                                        ) ??
+                                                        false;
+                                                if (confirmDialogResponse) {
+                                                  final testedTestsUpdateData =
+                                                      createTestedTestsRecordData(
+                                                    isFlagged: false,
+                                                  );
+                                                  await viewResultsTestedTestsRecord
+                                                      .reference
+                                                      .update(
+                                                          testedTestsUpdateData);
+                                                }
                                               },
                                               child: Container(
                                                 width: 116,

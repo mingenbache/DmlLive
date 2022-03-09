@@ -595,6 +595,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
+                        var _shouldSetState = false;
                         if ((datePicked) <= (getCurrentTimestamp)) {
                           final paymentsCreateData = createPaymentsRecordData(
                             userRef: currentUserReference,
@@ -612,14 +613,17 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                             transactionDate: datePicked,
                             updatedDate: getCurrentTimestamp,
                           );
-                          final paymentsRecordReference =
+                          var paymentsRecordReference =
                               PaymentsRecord.collection.doc();
                           await paymentsRecordReference.set(paymentsCreateData);
                           paymentRef = PaymentsRecord.getDocumentFromData(
                               paymentsCreateData, paymentsRecordReference);
+                          _shouldSetState = true;
                         } else {
+                          if (_shouldSetState) setState(() {});
                           return;
                         }
+
                         await showDialog(
                           context: context,
                           builder: (alertDialogContext) {
@@ -637,6 +641,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                             );
                           },
                         );
+
                         final invoicesUpdateData = {
                           ...createInvoicesRecordData(
                             paymentSubmitted: true,
@@ -646,8 +651,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                         };
                         await widget.invoiceRef.update(invoicesUpdateData);
                         Navigator.pop(context);
-
-                        setState(() {});
+                        if (_shouldSetState) setState(() {});
                       },
                       text: 'Submit',
                       options: FFButtonOptions(

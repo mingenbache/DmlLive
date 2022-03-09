@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../components/confirm_booking_sheet_widget.dart';
 import '../components/test_list_booking_sheet_widget.dart';
 import '../components/top_actions_widget.dart';
 import '../details/details_widget.dart';
@@ -36,7 +35,6 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
     with TickerProviderStateMixin {
   DateTime datePicked1;
   DateTime datePicked2;
-  DateTime datePicked3;
   String choiceChipsValue;
   TextEditingController emailAddressController;
   TextEditingController firstNameController;
@@ -136,7 +134,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                 ),
                 Form(
                   key: formKey,
-                  autovalidateMode: AutovalidateMode.always,
+                  autovalidateMode: AutovalidateMode.disabled,
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     constraints: BoxConstraints(
@@ -236,8 +234,11 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 currentTime:
                                                     newBookingBookingsRecord
                                                         .scheduledDate,
-                                                minTime: DateTime(0, 0, 0),
+                                                minTime:
+                                                    newBookingBookingsRecord
+                                                        .scheduledDate,
                                               );
+
                                               setState(() => FFAppState()
                                                   .selectedDate = datePicked1);
                                             },
@@ -359,6 +360,13 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                             .fromSTEB(
                                                                 3, 3, 3, 3),
                                                     child: TextFormField(
+                                                      onChanged: (_) =>
+                                                          EasyDebounce.debounce(
+                                                        'firstNameController',
+                                                        Duration(
+                                                            milliseconds: 2000),
+                                                        () => setState(() {}),
+                                                      ),
                                                       controller:
                                                           firstNameController ??=
                                                               TextEditingController(
@@ -464,6 +472,13 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                             .fromSTEB(
                                                                 3, 3, 3, 3),
                                                     child: TextFormField(
+                                                      onChanged: (_) =>
+                                                          EasyDebounce.debounce(
+                                                        'lastNameController',
+                                                        Duration(
+                                                            milliseconds: 2000),
+                                                        () => setState(() {}),
+                                                      ),
                                                       controller:
                                                           lastNameController ??=
                                                               TextEditingController(
@@ -585,6 +600,13 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(3, 3, 3, 3),
                                                   child: TextFormField(
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      'emailAddressController',
+                                                      Duration(
+                                                          milliseconds: 2000),
+                                                      () => setState(() {}),
+                                                    ),
                                                     controller:
                                                         emailAddressController ??=
                                                             TextEditingController(
@@ -700,6 +722,13 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(3, 3, 3, 3),
                                                   child: TextFormField(
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      'phoneNumberController',
+                                                      Duration(
+                                                          milliseconds: 2000),
+                                                      () => setState(() {}),
+                                                    ),
                                                     controller:
                                                         phoneNumberController ??=
                                                             TextEditingController(
@@ -1062,89 +1091,55 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0, 5, 5, 5),
-                                                      child: InkWell(
-                                                        onTap: () async {
-                                                          if (!(newBookingBookingsRecord
-                                                              .userPatient)) {
-                                                            await DatePicker
-                                                                .showDatePicker(
-                                                              context,
-                                                              showTitleActions:
-                                                                  true,
-                                                              onConfirm:
-                                                                  (date) {
-                                                                setState(() =>
-                                                                    datePicked2 =
-                                                                        date);
-                                                              },
-                                                              currentTime:
-                                                                  FFAppState()
-                                                                      .dob,
-                                                              minTime: DateTime(
-                                                                  0, 0, 0),
-                                                            );
-                                                          } else {
-                                                            return;
-                                                          }
-                                                          setState(() =>
-                                                              FFAppState().dob =
-                                                                  datePicked2);
-                                                        },
-                                                        child: Container(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.3,
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height *
-                                                              0.05,
-                                                          decoration:
-                                                              BoxDecoration(
+                                                      child: Container(
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.3,
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            0.05,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0x2CFFFFFF),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(8),
+                                                          border: Border.all(
                                                             color: Color(
-                                                                0x2CFFFFFF),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8),
-                                                            border: Border.all(
-                                                              color: Color(
-                                                                  0xFF586B06),
-                                                              width: 2,
-                                                            ),
+                                                                0xFF586B06),
+                                                            width: 2,
                                                           ),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        6,
-                                                                        0,
-                                                                        0),
-                                                            child: Text(
-                                                              functions.returnDateString(functions.returnDOB(
-                                                                  newBookingBookingsRecord,
-                                                                  FFAppState()
-                                                                      .dob,
-                                                                  FFAppState()
-                                                                      .dobEntered,
-                                                                  newBookingBookingsRecord
-                                                                      .userPatient)),
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyText1
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Roboto',
-                                                                    color: Colors
-                                                                        .white,
-                                                                  ),
-                                                            ),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      6, 0, 0),
+                                                          child: Text(
+                                                            functions.returnDateString(functions.returnDOB(
+                                                                newBookingBookingsRecord,
+                                                                FFAppState()
+                                                                    .dob,
+                                                                FFAppState()
+                                                                    .dobEntered,
+                                                                newBookingBookingsRecord
+                                                                    .userPatient)),
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: Colors
+                                                                      .white,
+                                                                ),
                                                           ),
                                                         ),
                                                       ),
@@ -1165,7 +1160,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                 true,
                                                             onConfirm: (date) {
                                                               setState(() =>
-                                                                  datePicked3 =
+                                                                  datePicked2 =
                                                                       date);
                                                             },
                                                             currentTime:
@@ -1173,9 +1168,10 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                             minTime: DateTime(
                                                                 0, 0, 0),
                                                           );
+
                                                           setState(() =>
                                                               FFAppState().dob =
-                                                                  datePicked3);
+                                                                  datePicked2);
                                                           setState(() =>
                                                               FFAppState()
                                                                       .dobEntered =
@@ -1818,99 +1814,150 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0, 24, 0, 10),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    await showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      backgroundColor: Colors.transparent,
-                                      context: context,
-                                      builder: (context) {
-                                        return Padding(
-                                          padding:
-                                              MediaQuery.of(context).viewInsets,
-                                          child: ConfirmBookingSheetWidget(
-                                            bookingRef: widget.bookingRef,
+                                child: InkWell(
+                                  onLongPress: () async {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          functions.bookingValidator(
+                                              firstNameController?.text ?? '',
+                                              lastNameController?.text ?? '',
+                                              emailAddressController?.text ??
+                                                  '',
+                                              phoneNumberController?.text ?? '',
+                                              choiceChipsValue,
+                                              newBookingBookingsRecord
+                                                  .testsIncluded
+                                                  .toList()),
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryColor,
                                           ),
-                                        );
-                                      },
-                                    );
-                                    final bookingsUpdateData =
-                                        createBookingsRecordData(
-                                      scheduledDate: datePicked1,
-                                      diagnosis:
-                                          diagnosisController?.text ?? '',
-                                      firstname:
-                                          firstNameController?.text ?? '',
-                                      lastname: lastNameController?.text ?? '',
-                                      phonenumber:
-                                          phoneNumberController?.text ?? '',
-                                      sex: choiceChipsValue,
-                                      emailaddress:
-                                          emailAddressController?.text ?? '',
-                                      docNameAddress:
-                                          refDoctorController?.text ?? '',
-                                      isSubmitted: true,
-                                      dOB: functions.returnDOB(
-                                          newBookingBookingsRecord,
-                                          FFAppState().dob,
-                                          FFAppState().dobEntered,
-                                          FFAppState().isPatient),
-                                      paymentBalance: newBookingBookingsRecord
-                                          .totalPrice
-                                          .toDouble(),
-                                    );
-                                    await widget.bookingRef
-                                        .update(bookingsUpdateData);
-                                    setState(
-                                        () => FFAppState().isSubmitted = true);
-                                    if (FFAppState().isSubmitted) {
-                                      final notificationsCreateData =
-                                          createNotificationsRecordData(
-                                        userRole: 'front',
-                                        message: 'A new booking has been made.',
-                                      );
-                                      await NotificationsRecord.collection
-                                          .doc()
-                                          .set(notificationsCreateData);
-                                    }
-                                    final usersUpdateData = {
-                                      ...createUsersRecordData(
-                                        hasCurrentBooking: false,
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor: Colors.white,
                                       ),
-                                      'current_booking': FieldValue.delete(),
-                                    };
-                                    await currentUserReference
-                                        .update(usersUpdateData);
-                                    await Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            MyBookingsWidget(),
-                                      ),
-                                      (r) => false,
                                     );
                                   },
-                                  text: 'Submit',
-                                  options: FFButtonOptions(
-                                    width: 280,
-                                    height: 60,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .subtitle2
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.normal,
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      if (!formKey.currentState.validate()) {
+                                        return;
+                                      }
+
+                                      var confirmDialogResponse =
+                                          await showDialog<bool>(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(
+                                                        'Confirm Submission'),
+                                                    content: Text(
+                                                        'Are you sure you would like to submit this booking?'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                false),
+                                                        child: Text('Cancel'),
+                                                      ),
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                true),
+                                                        child: Text('Confirm'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              ) ??
+                                              false;
+
+                                      final bookingsUpdateData =
+                                          createBookingsRecordData(
+                                        scheduledDate: datePicked1,
+                                        diagnosis:
+                                            diagnosisController?.text ?? '',
+                                        firstname:
+                                            firstNameController?.text ?? '',
+                                        lastname:
+                                            lastNameController?.text ?? '',
+                                        phonenumber:
+                                            phoneNumberController?.text ?? '',
+                                        sex: choiceChipsValue,
+                                        emailaddress:
+                                            emailAddressController?.text ?? '',
+                                        docNameAddress:
+                                            refDoctorController?.text ?? '',
+                                        isSubmitted: true,
+                                        dOB: functions.returnDOB(
+                                            newBookingBookingsRecord,
+                                            FFAppState().dob,
+                                            FFAppState().dobEntered,
+                                            FFAppState().isPatient),
+                                        paymentBalance: newBookingBookingsRecord
+                                            .totalPrice
+                                            .toDouble(),
+                                      );
+                                      await widget.bookingRef
+                                          .update(bookingsUpdateData);
+                                      setState(() =>
+                                          FFAppState().isSubmitted = true);
+                                      if (FFAppState().isSubmitted) {
+                                        final notificationsCreateData =
+                                            createNotificationsRecordData(
+                                          userRole: 'front',
+                                          message:
+                                              'A new booking has been made.',
+                                        );
+                                        await NotificationsRecord.collection
+                                            .doc()
+                                            .set(notificationsCreateData);
+                                      } else {
+                                        return;
+                                      }
+
+                                      final usersUpdateData = {
+                                        ...createUsersRecordData(
+                                          hasCurrentBooking: false,
                                         ),
-                                    elevation: 2,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1,
+                                        'current_booking': FieldValue.delete(),
+                                      };
+                                      await currentUserReference
+                                          .update(usersUpdateData);
+                                      await Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              MyBookingsWidget(),
+                                        ),
+                                        (r) => false,
+                                      );
+                                    },
+                                    text: 'Submit',
+                                    options: FFButtonOptions(
+                                      width: 280,
+                                      height: 60,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryColor,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .subtitle2
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiaryColor,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                      elevation: 2,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1,
+                                      ),
+                                      borderRadius: 25,
                                     ),
-                                    borderRadius: 25,
                                   ),
                                 ).animated([
                                   animationsMap[

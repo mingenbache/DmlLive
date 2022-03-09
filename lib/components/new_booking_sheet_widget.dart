@@ -568,7 +568,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                         paidFull: false,
                                         resultPublished: false,
                                       );
-                                      final bookingsRecordReference =
+                                      var bookingsRecordReference =
                                           BookingsRecord.collection.doc();
                                       await bookingsRecordReference
                                           .set(bookingsCreateData);
@@ -593,6 +593,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                         await newbookingRef.reference
                                             .update(bookingsUpdateData);
                                       }
+
                                       final usersUpdateData =
                                           createUsersRecordData(
                                         currentBooking: newbookingRef.reference,

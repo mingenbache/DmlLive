@@ -94,7 +94,16 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                 child: FloatingActionButton.extended(
                   onPressed: () async {
                     setState(() => FFAppState().lastBookingPage = false);
-                    if (!(homeUsersRecord.hasCurrentBooking)) {
+                    if (homeUsersRecord.hasCurrentBooking) {
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NewBookingWidget(
+                            bookingRef: homeUsersRecord.currentBooking,
+                          ),
+                        ),
+                      );
+                    } else {
                       await showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Color(0x00F9F9F9),
@@ -105,16 +114,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                             child: NewBookingSheetWidget(),
                           );
                         },
-                      );
-                    }
-                    if (homeUsersRecord.hasCurrentBooking) {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NewBookingWidget(
-                            bookingRef: homeUsersRecord.currentBooking,
-                          ),
-                        ),
                       );
                     }
                   },

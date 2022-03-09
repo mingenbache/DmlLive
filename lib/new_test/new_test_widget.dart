@@ -720,7 +720,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                               category: dropDownValue,
                               isAvailable: true,
                             );
-                            final testsRecordReference =
+                            var testsRecordReference =
                                 TestsRecord.collection.doc();
                             await testsRecordReference.set(testsCreateData);
                             newTestId = TestsRecord.getDocumentFromData(

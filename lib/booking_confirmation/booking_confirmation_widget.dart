@@ -2026,6 +2026,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                           );
                                         },
                                       );
+
                                       final bookingsUpdateData =
                                           createBookingsRecordData(
                                         labRefNum: labRefNumController.text,

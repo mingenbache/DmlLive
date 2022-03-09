@@ -390,24 +390,28 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                   snapshot.data;
                                               return InkWell(
                                                 onTap: () async {
-                                                  if (!(confirmTestsSheetBookingsRecord
+                                                  var _shouldSetState = false;
+                                                  if (confirmTestsSheetBookingsRecord
                                                       .bookedTests
                                                       .toList()
                                                       .contains(
                                                           containerTestsRecord
-                                                              .reference))) {
-                                                    final bookingsUpdateData = {
-                                                      'bookedTests': FieldValue
-                                                          .arrayUnion([
-                                                        containerTestsRecord
-                                                            .reference
-                                                      ]),
-                                                    };
-                                                    await widget.booking.update(
-                                                        bookingsUpdateData);
-                                                  } else {
+                                                              .reference)) {
+                                                    if (_shouldSetState)
+                                                      setState(() {});
                                                     return;
                                                   }
+
+                                                  final bookingsUpdateData = {
+                                                    'bookedTests':
+                                                        FieldValue.arrayUnion([
+                                                      containerTestsRecord
+                                                          .reference
+                                                    ]),
+                                                  };
+                                                  await widget.booking.update(
+                                                      bookingsUpdateData);
+
                                                   final bookedTestsCreateData =
                                                       createBookedTestsRecordData(
                                                     testRef:
@@ -417,7 +421,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                         confirmTestsSheetBookingsRecord
                                                             .reference,
                                                   );
-                                                  final bookedTestsRecordReference =
+                                                  var bookedTestsRecordReference =
                                                       BookedTestsRecord
                                                           .collection
                                                           .doc();
@@ -428,6 +432,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                       .getDocumentFromData(
                                                           bookedTestsCreateData,
                                                           bookedTestsRecordReference);
+                                                  _shouldSetState = true;
                                                   await showModalBottomSheet(
                                                     isScrollControlled: true,
                                                     backgroundColor:
@@ -455,8 +460,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                       );
                                                     },
                                                   );
-
-                                                  setState(() {});
+                                                  if (_shouldSetState)
+                                                    setState(() {});
                                                 },
                                                 child: Container(
                                                   width: 100,
@@ -679,6 +684,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                 } else {
                                   return;
                                 }
+
                                 await Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(

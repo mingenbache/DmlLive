@@ -1428,22 +1428,6 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                                                                         padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 5),
                                                                                                         child: InkWell(
                                                                                                           onTap: () async {
-                                                                                                            if (!(bookedTestsListItem.sampleCollected)) {
-                                                                                                              await showModalBottomSheet(
-                                                                                                                isScrollControlled: true,
-                                                                                                                backgroundColor: Color(0x1AFFFFFF),
-                                                                                                                context: context,
-                                                                                                                builder: (context) {
-                                                                                                                  return Padding(
-                                                                                                                    padding: MediaQuery.of(context).viewInsets,
-                                                                                                                    child: BeginTestWidget(
-                                                                                                                      bookedTestRef: bookedTestsListItem.reference,
-                                                                                                                      booking: bookingsItem,
-                                                                                                                    ),
-                                                                                                                  );
-                                                                                                                },
-                                                                                                              );
-                                                                                                            }
                                                                                                             if (bookedTestsListItem.sampleCollected) {
                                                                                                               await showModalBottomSheet(
                                                                                                                 isScrollControlled: true,
@@ -1454,6 +1438,21 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                                                                                     padding: MediaQuery.of(context).viewInsets,
                                                                                                                     child: ViewTestResultWidget(
                                                                                                                       testedTestRef: functions.returnTestedTestRef(containerTestedTestsRecordList.toList(), bookedTestsListItem.reference),
+                                                                                                                    ),
+                                                                                                                  );
+                                                                                                                },
+                                                                                                              );
+                                                                                                            } else {
+                                                                                                              await showModalBottomSheet(
+                                                                                                                isScrollControlled: true,
+                                                                                                                backgroundColor: Color(0x1AFFFFFF),
+                                                                                                                context: context,
+                                                                                                                builder: (context) {
+                                                                                                                  return Padding(
+                                                                                                                    padding: MediaQuery.of(context).viewInsets,
+                                                                                                                    child: BeginTestWidget(
+                                                                                                                      bookedTestRef: bookedTestsListItem.reference,
+                                                                                                                      booking: bookingsItem,
                                                                                                                     ),
                                                                                                                   );
                                                                                                                 },
@@ -1906,6 +1905,11 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                 unconfirmedBookingsBookingsRecordList
                                                         ?.toList() ??
                                                     [];
+                                            if (unconfirmedBookings.isEmpty) {
+                                              return Image.network(
+                                                '',
+                                              );
+                                            }
                                             return SingleChildScrollView(
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
@@ -2076,7 +2080,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                                                   child: Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(6, 6, 0, 0),
                                                                                     child: Text(
-                                                                                      '${functions.camelCase(unconfirmedBookingsItem.firstname)}   ${functions.camelCase(unconfirmedBookingsItem.lastname)}',
+                                                                                      '${unconfirmedBookingsItem.firstname}   ${unconfirmedBookingsItem.lastname}',
                                                                                       style: TextStyle(
                                                                                         color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                         fontWeight: FontWeight.w500,

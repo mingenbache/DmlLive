@@ -1695,6 +1695,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                           minTime:
                                                               getCurrentTimestamp,
                                                         );
+
                                                         setState(() => FFAppState()
                                                                 .selectedDate =
                                                             datePicked);
@@ -1779,7 +1780,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                     updateDate: getCurrentTimestamp,
                                     updateRole: currentUserDocument?.role,
                                   );
-                                  final invoicesRecordReference =
+                                  var invoicesRecordReference =
                                       InvoicesRecord.collection.doc();
                                   await invoicesRecordReference
                                       .set(invoicesCreateData);
