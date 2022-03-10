@@ -28,7 +28,6 @@ class TestActionsWidgetWidget extends StatefulWidget {
 
 class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
     with TickerProviderStateMixin {
-  ChatsRecord newChatRef;
   final animationsMap = {
     'buttonOnActionTriggerAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
@@ -132,28 +131,14 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                                   : null;
                           return FFButtonWidget(
                             onPressed: () async {
-                              final chatsCreateData = createChatsRecordData(
-                                userA: currentUserReference,
-                                createdDate: getCurrentTimestamp,
-                                userB: buttonUsersRecord.reference,
-                                topic: 'Test Inquiry',
-                              );
-                              var chatsRecordReference =
-                                  ChatsRecord.collection.doc();
-                              await chatsRecordReference.set(chatsCreateData);
-                              newChatRef = ChatsRecord.getDocumentFromData(
-                                  chatsCreateData, chatsRecordReference);
                               await Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => ChatWidget(
                                     chatUser: buttonUsersRecord,
-                                    chatRef: newChatRef.reference,
                                   ),
                                 ),
                               );
-
-                              setState(() {});
                             },
                             text: 'Chat',
                             icon: FaIcon(

@@ -1,12 +1,12 @@
 import '../account/account_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/all_chats_popup_widget.dart';
 import '../components/notifications_widget_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../invoice_list/invoice_list_widget.dart';
-import '../messages/messages_widget.dart';
 import '../scheduled_tests/scheduled_tests_widget.dart';
 import '../test_queue/test_queue_widget.dart';
 import '../tested_tests/tested_tests_widget.dart';
@@ -223,12 +223,22 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                   ),
                                                   InkWell(
                                                     onTap: () async {
-                                                      await Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              MessagesWidget(),
-                                                        ),
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return Padding(
+                                                            padding:
+                                                                MediaQuery.of(
+                                                                        context)
+                                                                    .viewInsets,
+                                                            child:
+                                                                AllChatsPopupWidget(),
+                                                          );
+                                                        },
                                                       );
                                                     },
                                                     child: Icon(

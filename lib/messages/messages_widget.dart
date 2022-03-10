@@ -254,8 +254,6 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                   MaterialPageRoute(
                                                     builder: (context) =>
                                                         ChatWidget(
-                                                      chatRef: columnChatsRecord
-                                                          .reference,
                                                       chatUser:
                                                           columnUsersRecord,
                                                     ),
