@@ -636,6 +636,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     createdTime: getCurrentTimestamp,
                                     role: 'client',
                                     hasInitAccount: false,
+                                    displayName:
+                                        '${firstNameController.text} ${lastNameController.text}',
                                   );
                                   await UsersRecord.collection
                                       .doc(user.uid)

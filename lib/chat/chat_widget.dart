@@ -74,16 +74,15 @@ class _ChatWidgetState extends State<ChatWidget> {
         ),
         title: Stack(
           children: [
-            if (isGroupChat() ?? true)
-              Text(
-                'Inquiry',
-                style: FlutterFlowTheme.of(context).bodyText1.override(
-                      fontFamily: 'Lexend Deca',
-                      color: FlutterFlowTheme.of(context).tertiaryColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
+            Text(
+              'CHAT',
+              style: FlutterFlowTheme.of(context).bodyText1.override(
+                    fontFamily: 'Roboto',
+                    color: Colors.white,
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
           ],
         ),
         actions: [

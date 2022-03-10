@@ -4,6 +4,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../home/home_widget.dart';
 import '../signup/signup_widget.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,19 +35,27 @@ class _LoginWidgetState extends State<LoginWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
-      body: SafeArea(
-        child: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: Image.asset(
-                'assets/images/national-cancer-institute-XknuBmnjbKg-unsplash_reduced.jpg',
-              ).image,
+      body: Stack(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 0.65,
+            decoration: BoxDecoration(),
+            child: ClipRect(
+              child: ImageFiltered(
+                imageFilter: ImageFilter.blur(
+                  sigmaX: 1,
+                  sigmaY: 1,
+                ),
+                child: Image.asset(
+                  'assets/images/cdc-XLhDvfz0sUM-unsplash-reducedBW.jpg',
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
             ),
           ),
-          child: Align(
+          Align(
             alignment: AlignmentDirectional(0, 0),
             child: Container(
               width: double.infinity,
@@ -54,17 +63,18 @@ class _LoginWidgetState extends State<LoginWidget> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Color(0x19BACA68),
+                    Color(0x212F2F2F),
                     FlutterFlowTheme.of(context).tertiaryColor,
-                    FlutterFlowTheme.of(context).primaryColor
+                    FlutterFlowTheme.of(context).primaryColor,
+                    FlutterFlowTheme.of(context).alternate
                   ],
-                  stops: [0, 0.3, 1],
+                  stops: [0, 0.55, 0.9, 1],
                   begin: AlignmentDirectional(0, -1),
                   end: AlignmentDirectional(0, 1),
                 ),
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 120),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 120),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -102,14 +112,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                             hintText: 'Email Address',
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Color(0xFF586B06),
+                                color: Colors.white,
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Color(0xFF586B06),
+                                color: Colors.white,
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(8),
@@ -121,7 +131,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           ),
                           style: GoogleFonts.getFont(
                             'Roboto',
-                            color: Color(0xFF586B06),
+                            color: Colors.white,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
@@ -145,14 +155,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                             hintText: 'Password',
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Color(0xFF586B06),
+                                color: Colors.white,
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Color(0xFF586B06),
+                                color: Colors.white,
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(12),
@@ -169,15 +179,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 passwordVisibility
                                     ? Icons.visibility_outlined
                                     : Icons.visibility_off_outlined,
-                                color:
-                                    FlutterFlowTheme.of(context).primaryColor,
+                                color: Colors.white,
                                 size: 20,
                               ),
                             ),
                           ),
                           style: GoogleFonts.getFont(
                             'Roboto',
-                            color: Color(0xFF586B06),
+                            color: Colors.white,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
@@ -356,7 +365,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
