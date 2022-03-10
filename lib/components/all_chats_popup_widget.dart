@@ -177,69 +177,66 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                       ),
                                     ],
                                   ),
-                                  if (!(widget.test.isAvailable) ?? true)
-                                    Align(
-                                      alignment: AlignmentDirectional(0.8, 0),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 0, 5),
-                                        child: Container(
-                                          width: 130,
-                                          height: 32,
-                                          constraints: BoxConstraints(
-                                            maxHeight: 32,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: Color(0x66FFFFFF),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 4,
-                                                color: Color(0x32171717),
-                                                offset: Offset(0, 2),
-                                              )
-                                            ],
-                                            borderRadius:
-                                                BorderRadius.circular(30),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8, 0, 8, 0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(3, 0, 0, 0),
-                                                  child: AuthUserStreamWidget(
-                                                    child: Text(
-                                                      currentUserDocument?.role,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Lexend Deca',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryColor,
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                              ),
-                                                    ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.8, 0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 5),
+                                      child: Container(
+                                        width: 130,
+                                        height: 32,
+                                        constraints: BoxConstraints(
+                                          maxHeight: 32,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: Color(0x66FFFFFF),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 4,
+                                              color: Color(0x32171717),
+                                              offset: Offset(0, 2),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  8, 0, 8, 0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(3, 0, 0, 0),
+                                                child: AuthUserStreamWidget(
+                                                  child: Text(
+                                                    currentUserDocument?.role,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily:
+                                                              'Lexend Deca',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryColor,
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
                                                   ),
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),
                                     ),
+                                  ),
                                   Container(
                                     width: MediaQuery.of(context).size.width,
                                     height: MediaQuery.of(context).size.height *
@@ -276,14 +273,9 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                               StreamBuilder<List<ChatsRecord>>(
                                             stream: queryChatsRecord(
                                               queryBuilder: (chatsRecord) =>
-                                                  chatsRecord
-                                                      .where(
-                                                          'users',
-                                                          arrayContains:
-                                                              currentUserReference)
-                                                      .orderBy(
-                                                          'last_message_time',
-                                                          descending: true),
+                                                  chatsRecord.orderBy(
+                                                      'last_message_time',
+                                                      descending: true),
                                             ),
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
