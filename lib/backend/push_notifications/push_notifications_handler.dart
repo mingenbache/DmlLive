@@ -21,7 +21,6 @@ import '../../settings/settings_widget.dart';
 import '../../scheduled_tests/scheduled_tests_widget.dart';
 import '../../user_list/user_list_widget.dart';
 import '../../home_admin/home_admin_widget.dart';
-import '../../message_details/message_details_widget.dart';
 import '../../booking_confirmation/booking_confirmation_widget.dart';
 import '../../all_tests/all_tests_widget.dart';
 import '../../booking_invoicing/booking_invoicing_widget.dart';
@@ -42,6 +41,7 @@ import '../../my_invoice_list/my_invoice_list_widget.dart';
 import '../../my_report_list/my_report_list_widget.dart';
 import '../../test_queue/test_queue_widget.dart';
 import '../../tested_tests_copy/tested_tests_copy_widget.dart';
+import '../../chat/chat_widget.dart';
 
 class PushNotificationsHandler extends StatefulWidget {
   const PushNotificationsHandler(
@@ -127,10 +127,6 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
         userNameQUery: getParameter(data, 'userNameQUery'),
       ),
   'HomeAdmin': (data) async => HomeAdminWidget(),
-  'MessageDetails': (data) async => MessageDetailsWidget(
-        chatUser: getParameter(data, 'chatUser'),
-        chatRef: getParameter(data, 'chatRef'),
-      ),
   'BookingConfirmation': (data) async => BookingConfirmationWidget(
         bookingRef: getParameter(data, 'bookingRef'),
       ),
@@ -167,6 +163,11 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'myReportList': (data) async => MyReportListWidget(),
   'TestQueue': (data) async => TestQueueWidget(),
   'TestedTestsCopy': (data) async => TestedTestsCopyWidget(),
+  'Chat': (data) async => ChatWidget(
+        chatUser: await getDocumentParameter(
+            data, 'chatUser', UsersRecord.serializer),
+        chatRef: getParameter(data, 'chatRef'),
+      ),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>

@@ -632,10 +632,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     FutureBuilder<List<StaffRecord>>(
-                      future: queryStaffRecordOnce(
-                        queryBuilder: (staffRecord) => staffRecord.where('role',
-                            isNotEqualTo: 'technologist'),
-                      ),
+                      future: queryStaffRecordOnce(),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {

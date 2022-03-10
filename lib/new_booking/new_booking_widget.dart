@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../backend/push_notifications/push_notifications_util.dart';
 import '../components/test_list_booking_sheet_widget.dart';
 import '../components/top_actions_widget.dart';
 import '../details/details_widget.dart';
@@ -1814,155 +1815,207 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0, 24, 0, 10),
-                                child: InkWell(
-                                  onLongPress: () async {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          functions.bookingValidator(
-                                              firstNameController?.text ?? '',
-                                              lastNameController?.text ?? '',
-                                              emailAddressController?.text ??
-                                                  '',
-                                              phoneNumberController?.text ?? '',
-                                              choiceChipsValue,
-                                              newBookingBookingsRecord
-                                                  .testsIncluded
-                                                  .toList()),
-                                          style: TextStyle(
+                                child: StreamBuilder<List<StaffRecord>>(
+                                  stream: queryStaffRecord(),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: SpinKitDoubleBounce(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .primaryColor,
+                                            size: 50,
                                           ),
                                         ),
-                                        duration: Duration(milliseconds: 4000),
-                                        backgroundColor: Colors.white,
-                                      ),
-                                    );
-                                  },
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      if (!formKey.currentState.validate()) {
-                                        return;
-                                      }
-
-                                      var confirmDialogResponse =
-                                          await showDialog<bool>(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text(
-                                                        'Confirm Submission'),
-                                                    content: Text(
-                                                        'Are you sure you would like to submit this booking?'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                false),
-                                                        child: Text('Cancel'),
-                                                      ),
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                true),
-                                                        child: Text('Confirm'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              ) ??
-                                              false;
-
-                                      final bookingsUpdateData =
-                                          createBookingsRecordData(
-                                        scheduledDate: datePicked1,
-                                        diagnosis:
-                                            diagnosisController?.text ?? '',
-                                        firstname:
-                                            firstNameController?.text ?? '',
-                                        lastname:
-                                            lastNameController?.text ?? '',
-                                        phonenumber:
-                                            phoneNumberController?.text ?? '',
-                                        sex: choiceChipsValue,
-                                        emailaddress:
-                                            emailAddressController?.text ?? '',
-                                        docNameAddress:
-                                            refDoctorController?.text ?? '',
-                                        isSubmitted: true,
-                                        dOB: functions.returnDOB(
-                                            newBookingBookingsRecord,
-                                            FFAppState().dob,
-                                            FFAppState().dobEntered,
-                                            FFAppState().isPatient),
-                                        paymentBalance: newBookingBookingsRecord
-                                            .totalPrice
-                                            .toDouble(),
                                       );
-                                      await widget.bookingRef
-                                          .update(bookingsUpdateData);
-                                      setState(() =>
-                                          FFAppState().isSubmitted = true);
-                                      if (FFAppState().isSubmitted) {
-                                        final notificationsCreateData =
-                                            createNotificationsRecordData(
-                                          userRole: 'front',
-                                          message:
-                                              'A new booking has been made.',
+                                    }
+                                    List<StaffRecord> buttonStaffRecordList =
+                                        snapshot.data;
+                                    return InkWell(
+                                      onLongPress: () async {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              functions.bookingValidator(
+                                                  firstNameController?.text ??
+                                                      '',
+                                                  lastNameController?.text ??
+                                                      '',
+                                                  emailAddressController
+                                                          ?.text ??
+                                                      '',
+                                                  phoneNumberController?.text ??
+                                                      '',
+                                                  choiceChipsValue,
+                                                  newBookingBookingsRecord
+                                                      .testsIncluded
+                                                      .toList()),
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryColor,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                            backgroundColor: Colors.white,
+                                          ),
                                         );
-                                        await NotificationsRecord.collection
-                                            .doc()
-                                            .set(notificationsCreateData);
-                                      } else {
-                                        return;
-                                      }
+                                      },
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          if (!formKey.currentState
+                                              .validate()) {
+                                            return;
+                                          }
 
-                                      final usersUpdateData = {
-                                        ...createUsersRecordData(
-                                          hasCurrentBooking: false,
-                                        ),
-                                        'current_booking': FieldValue.delete(),
-                                      };
-                                      await currentUserReference
-                                          .update(usersUpdateData);
-                                      await Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              MyBookingsWidget(),
-                                        ),
-                                        (r) => false,
-                                      );
-                                    },
-                                    text: 'Submit',
-                                    options: FFButtonOptions(
-                                      width: 280,
-                                      height: 60,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .subtitle2
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.normal,
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Confirm Submission'),
+                                                        content: Text(
+                                                            'Are you sure you would like to submit this booking?'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child:
+                                                                Text('Confirm'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+
+                                          final bookingsUpdateData =
+                                              createBookingsRecordData(
+                                            scheduledDate: datePicked1,
+                                            diagnosis:
+                                                diagnosisController?.text ?? '',
+                                            firstname:
+                                                firstNameController?.text ?? '',
+                                            lastname:
+                                                lastNameController?.text ?? '',
+                                            phonenumber:
+                                                phoneNumberController?.text ??
+                                                    '',
+                                            sex: choiceChipsValue,
+                                            emailaddress:
+                                                emailAddressController?.text ??
+                                                    '',
+                                            docNameAddress:
+                                                refDoctorController?.text ?? '',
+                                            isSubmitted: true,
+                                            dOB: functions.returnDOB(
+                                                newBookingBookingsRecord,
+                                                FFAppState().dob,
+                                                FFAppState().dobEntered,
+                                                FFAppState().isPatient),
+                                            paymentBalance:
+                                                newBookingBookingsRecord
+                                                    .totalPrice
+                                                    .toDouble(),
+                                          );
+                                          await widget.bookingRef
+                                              .update(bookingsUpdateData);
+                                          setState(() =>
+                                              FFAppState().isSubmitted = true);
+                                          if (FFAppState().isSubmitted) {
+                                            final notificationsCreateData =
+                                                createNotificationsRecordData(
+                                              userRole: 'front',
+                                              message:
+                                                  'A new booking has been made.',
+                                            );
+                                            await NotificationsRecord.collection
+                                                .doc()
+                                                .set(notificationsCreateData);
+                                          } else {
+                                            return;
+                                          }
+
+                                          final usersUpdateData = {
+                                            ...createUsersRecordData(
+                                              hasCurrentBooking: false,
+                                            ),
+                                            'current_booking':
+                                                FieldValue.delete(),
+                                          };
+                                          await currentUserReference
+                                              .update(usersUpdateData);
+                                          triggerPushNotification(
+                                            notificationTitle:
+                                                'New Booking Created',
+                                            notificationText:
+                                                'User created a new booking.',
+                                            userRefs: buttonStaffRecordList
+                                                .map((e) => e.userRef)
+                                                .toList(),
+                                            initialPageName:
+                                                'BookingConfirmation',
+                                            parameterData: {
+                                              'bookingRef': widget.bookingRef,
+                                            },
+                                          );
+                                          await Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  MyBookingsWidget(),
+                                            ),
+                                            (r) => false,
+                                          );
+                                        },
+                                        text: 'Submit',
+                                        options: FFButtonOptions(
+                                          width: 280,
+                                          height: 60,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryColor,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiaryColor,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                          elevation: 2,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1,
                                           ),
-                                      elevation: 2,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1,
+                                          borderRadius: 25,
+                                        ),
                                       ),
-                                      borderRadius: 25,
-                                    ),
-                                  ),
-                                ).animated([
-                                  animationsMap[
-                                      'buttonOnActionTriggerAnimation']
-                                ]),
+                                    ).animated([
+                                      animationsMap[
+                                          'buttonOnActionTriggerAnimation']
+                                    ]);
+                                  },
+                                ),
                               ),
                             ),
                           ],
