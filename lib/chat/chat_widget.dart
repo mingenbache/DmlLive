@@ -56,7 +56,7 @@ class _ChatWidgetState extends State<ChatWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -65,7 +65,7 @@ class _ChatWidgetState extends State<ChatWidget> {
           buttonSize: 60,
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: Colors.black,
+            color: FlutterFlowTheme.of(context).tertiaryColor,
             size: 24,
           ),
           onPressed: () async {
@@ -74,22 +74,12 @@ class _ChatWidgetState extends State<ChatWidget> {
         ),
         title: Stack(
           children: [
-            if (!(isGroupChat()) ?? true)
-              Text(
-                widget.chatUser.displayName,
-                style: FlutterFlowTheme.of(context).bodyText1.override(
-                      fontFamily: 'Lexend Deca',
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
             if (isGroupChat() ?? true)
               Text(
-                'Group Chat',
+                'Inquiry',
                 style: FlutterFlowTheme.of(context).bodyText1.override(
                       fontFamily: 'Lexend Deca',
-                      color: Colors.black,
+                      color: FlutterFlowTheme.of(context).tertiaryColor,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -136,7 +126,7 @@ class _ChatWidgetState extends State<ChatWidget> {
               ? FFChatPage(
                   chatInfo: snapshot.data,
                   allowImages: true,
-                  backgroundColor: Color(0xFFF2F4F8),
+                  backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
                   timeDisplaySetting: TimeDisplaySetting.visibleOnTap,
                   currentUserBoxDecoration: BoxDecoration(
                     color: Colors.white,
@@ -146,7 +136,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   otherUsersBoxDecoration: BoxDecoration(
-                    color: Color(0xFF4B39EF),
+                    color: FlutterFlowTheme.of(context).primaryColor,
                     border: Border.all(
                       color: Colors.transparent,
                     ),
