@@ -68,7 +68,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     FlutterFlowTheme.of(context).primaryColor,
                     FlutterFlowTheme.of(context).alternate
                   ],
-                  stops: [0, 0.55, 0.9, 1],
+                  stops: [0, 0.55, 0.85, 1],
                   begin: AlignmentDirectional(0, -1),
                   end: AlignmentDirectional(0, 1),
                 ),
@@ -112,14 +112,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                             hintText: 'Email Address',
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context).alternate,
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context).alternate,
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(8),
@@ -155,14 +155,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                             hintText: 'Password',
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context).alternate,
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context).alternate,
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(12),

@@ -1,6 +1,8 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../chat/chat_widget.dart';
+import '../components/chat_actions_widget_widget.dart';
+import '../components/user_activity_widget.dart';
 import '../flutter_flow/chat/index.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -313,123 +315,148 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 0, 4, 0, 10),
-                                                    child: Material(
-                                                      color: Colors.transparent,
-                                                      elevation: 2,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8),
-                                                      ),
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: Colors.white,
+                                                    child: InkWell(
+                                                      onLongPress: () async {
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return Padding(
+                                                              padding: MediaQuery
+                                                                      .of(context)
+                                                                  .viewInsets,
+                                                              child:
+                                                                  UserActivityWidget(
+                                                                userRef:
+                                                                    listViewChatsRecord
+                                                                        .userA,
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+                                                      },
+                                                      child: Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        elevation: 2,
+                                                        shape:
+                                                            RoundedRectangleBorder(
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(8),
                                                         ),
-                                                        child: StreamBuilder<
-                                                            FFChatInfo>(
-                                                          stream: FFChatManager
-                                                              .instance
-                                                              .getChatInfo(
-                                                                  chatRecord:
-                                                                      listViewChatsRecord),
-                                                          builder: (context,
-                                                              snapshot) {
-                                                            final chatInfo =
-                                                                snapshot.data ??
-                                                                    FFChatInfo(
-                                                                        listViewChatsRecord);
-                                                            return FFChatPreview(
-                                                              onTap: chatInfo !=
-                                                                      null
-                                                                  ? () =>
-                                                                      Navigator
-                                                                          .push(
-                                                                        context,
-                                                                        MaterialPageRoute(
-                                                                          builder: (context) =>
-                                                                              ChatWidget(
-                                                                            chatUser: chatInfo.otherUsers.length == 1
-                                                                                ? chatInfo.otherUsersList.first
-                                                                                : null,
-                                                                            chatRef:
-                                                                                chatInfo.chatRecord.reference,
+                                                        child: Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Colors.white,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8),
+                                                          ),
+                                                          child: StreamBuilder<
+                                                              FFChatInfo>(
+                                                            stream: FFChatManager
+                                                                .instance
+                                                                .getChatInfo(
+                                                                    chatRecord:
+                                                                        listViewChatsRecord),
+                                                            builder: (context,
+                                                                snapshot) {
+                                                              final chatInfo =
+                                                                  snapshot.data ??
+                                                                      FFChatInfo(
+                                                                          listViewChatsRecord);
+                                                              return FFChatPreview(
+                                                                onTap: chatInfo !=
+                                                                        null
+                                                                    ? () =>
+                                                                        Navigator
+                                                                            .push(
+                                                                          context,
+                                                                          MaterialPageRoute(
+                                                                            builder: (context) =>
+                                                                                ChatWidget(
+                                                                              chatUser: chatInfo.otherUsers.length == 1 ? chatInfo.otherUsersList.first : null,
+                                                                              chatRef: chatInfo.chatRecord.reference,
+                                                                            ),
                                                                           ),
-                                                                        ),
-                                                                      )
-                                                                  : null,
-                                                              lastChatText: chatInfo
-                                                                  .chatPreviewMessage(),
-                                                              lastChatTime:
-                                                                  listViewChatsRecord
-                                                                      .lastMessageTime,
-                                                              seen: listViewChatsRecord
-                                                                  .lastMessageSeenBy
-                                                                  .contains(
-                                                                      currentUserReference),
-                                                              title: chatInfo
-                                                                  .chatPreviewTitle(),
-                                                              userProfilePic:
-                                                                  chatInfo
-                                                                      .chatPreviewPic(),
-                                                              color: Color(
-                                                                  0x00000000),
-                                                              unreadColor:
-                                                                  FlutterFlowTheme.of(
+                                                                        )
+                                                                    : null,
+                                                                lastChatText:
+                                                                    chatInfo
+                                                                        .chatPreviewMessage(),
+                                                                lastChatTime:
+                                                                    listViewChatsRecord
+                                                                        .lastMessageTime,
+                                                                seen: listViewChatsRecord
+                                                                    .lastMessageSeenBy
+                                                                    .contains(
+                                                                        currentUserReference),
+                                                                title: chatInfo
+                                                                    .chatPreviewTitle(),
+                                                                userProfilePic:
+                                                                    chatInfo
+                                                                        .chatPreviewPic(),
+                                                                color: Color(
+                                                                    0x00000000),
+                                                                unreadColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                                titleTextStyle:
+                                                                    GoogleFonts
+                                                                        .getFont(
+                                                                  'DM Sans',
+                                                                  color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .alternate,
-                                                              titleTextStyle:
-                                                                  GoogleFonts
-                                                                      .getFont(
-                                                                'DM Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .alternate,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                fontSize: 14,
-                                                              ),
-                                                              dateTextStyle:
-                                                                  GoogleFonts
-                                                                      .getFont(
-                                                                'DM Sans',
-                                                                color: Color(
-                                                                    0x73000000),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                                fontSize: 14,
-                                                              ),
-                                                              previewTextStyle:
-                                                                  GoogleFonts
-                                                                      .getFont(
-                                                                'DM Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryColor,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                                fontSize: 14,
-                                                              ),
-                                                              contentPadding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          3,
-                                                                          3,
-                                                                          3,
-                                                                          3),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8),
-                                                            );
-                                                          },
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize: 14,
+                                                                ),
+                                                                dateTextStyle:
+                                                                    GoogleFonts
+                                                                        .getFont(
+                                                                  'DM Sans',
+                                                                  color: Color(
+                                                                      0x73000000),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                  fontSize: 14,
+                                                                ),
+                                                                previewTextStyle:
+                                                                    GoogleFonts
+                                                                        .getFont(
+                                                                  'DM Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryColor,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                  fontSize: 14,
+                                                                ),
+                                                                contentPadding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            3,
+                                                                            3,
+                                                                            3,
+                                                                            3),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8),
+                                                              );
+                                                            },
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
@@ -454,6 +481,9 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
               ),
             ],
           ),
+        ),
+        Expanded(
+          child: ChatActionsWidgetWidget(),
         ),
       ],
     );
