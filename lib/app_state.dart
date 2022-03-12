@@ -18,6 +18,8 @@ class FFAppState {
     _numTests = prefs.getInt('ff_numTests') ?? _numTests;
     _numTestDone = prefs.getInt('ff_numTestDone') ?? _numTestDone;
     _notifHeight = prefs.getDouble('ff_notifHeight') ?? _notifHeight;
+    _proceedconfirmation =
+        prefs.getBool('ff_proceedconfirmation') ?? _proceedconfirmation;
   }
 
   SharedPreferences prefs;
@@ -77,6 +79,15 @@ class FFAppState {
     _notifHeight = _value;
     prefs.setDouble('ff_notifHeight', _value);
   }
+
+  bool _proceedconfirmation = false;
+  bool get proceedconfirmation => _proceedconfirmation;
+  set proceedconfirmation(bool _value) {
+    _proceedconfirmation = _value;
+    prefs.setBool('ff_proceedconfirmation', _value);
+  }
+
+  bool assignTechnologist = false;
 }
 
 LatLng _latLngFromString(String val) {

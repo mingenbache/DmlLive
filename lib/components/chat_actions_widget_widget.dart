@@ -1,8 +1,6 @@
 import '../components/user_list_chat_widget.dart';
-import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,31 +13,7 @@ class ChatActionsWidgetWidget extends StatefulWidget {
       _ChatActionsWidgetWidgetState();
 }
 
-class _ChatActionsWidgetWidgetState extends State<ChatActionsWidgetWidget>
-    with TickerProviderStateMixin {
-  final animationsMap = {
-    'buttonOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      initialState: AnimationState(
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        opacity: 1,
-      ),
-    ),
-  };
-
-  @override
-  void initState() {
-    super.initState();
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
-      this,
-    );
-  }
-
+class _ChatActionsWidgetWidgetState extends State<ChatActionsWidgetWidget> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -74,33 +48,25 @@ class _ChatActionsWidgetWidgetState extends State<ChatActionsWidgetWidget>
               padding: EdgeInsetsDirectional.fromSTEB(22, 22, 22, 22),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
-                    },
-                    text: 'New Message',
-                    icon: Icon(
-                      Icons.message_sharp,
-                      size: 20,
+                  Icon(
+                    Icons.message_sharp,
+                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                    size: 24,
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                    child: Text(
+                      'New Message',
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Roboto',
+                            color: FlutterFlowTheme.of(context).tertiaryColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
                     ),
-                    options: FFButtonOptions(
-                      width: 160,
-                      height: 40,
-                      color: Color(0x00B3B2B2),
-                      textStyle:
-                          FlutterFlowTheme.of(context).bodyText1.override(
-                                fontFamily: 'Roboto',
-                                color: Color(0xFFBACA68),
-                                fontWeight: FontWeight.normal,
-                              ),
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                      ),
-                      borderRadius: 30,
-                    ),
-                  ).animated([animationsMap['buttonOnActionTriggerAnimation']]),
+                  ),
                 ],
               ),
             ),

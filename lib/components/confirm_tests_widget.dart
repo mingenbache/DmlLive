@@ -454,9 +454,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                           scheduledDate:
                                                               confirmTestsSheetBookingsRecord
                                                                   .scheduledDate,
-                                                          bookedTestRef:
-                                                              newBookedTest
-                                                                  .reference,
+                                                          bookedTest:
+                                                              newBookedTest,
                                                         ),
                                                       );
                                                     },
@@ -685,6 +684,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                           : null;
                                   return FFButtonWidget(
                                     onPressed: () async {
+                                      setState(() => FFAppState()
+                                          .proceedconfirmation = true);
                                       if (functions.checktestsListsEqual(
                                           confirmTestsSheetBookingsRecord
                                               .testsIncluded
@@ -692,57 +693,96 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                           confirmTestsSheetBookingsRecord
                                               .bookedTests
                                               .toList())) {
-                                        final bookingsUpdateData =
-                                            createBookingsRecordData(
-                                          bookingConfirmed: true,
-                                          bookingstatus: 'confirmed',
-                                          pathologist: pathologistValue,
-                                          labRefNum: widget.labRefNum,
-                                          updatedDate: getCurrentTimestamp,
-                                          updateStaff:
-                                              buttonStaffRecord.reference,
-                                        );
-                                        await confirmTestsSheetBookingsRecord
-                                            .reference
-                                            .update(bookingsUpdateData);
-                                        triggerPushNotification(
-                                          notificationTitle:
-                                              'New Booking Confirmed',
-                                          notificationText:
-                                              'A New Booking has been confirmed for ${dateTimeFormat('MMMMEEEEd', confirmTestsSheetBookingsRecord.scheduledDate)}',
-                                          userRefs: containerStaffRecordList
-                                              .map((e) => e.userRef)
-                                              .toList(),
-                                          initialPageName: 'BookingUpdates',
-                                          parameterData: {
-                                            'bookingRef': widget.booking,
-                                          },
-                                        );
-                                        triggerPushNotification(
-                                          notificationTitle:
-                                              'New Booking Confirmed',
-                                          notificationText:
-                                              'YourBooking has been confirmed for ${dateTimeFormat('MMMMEEEEd', confirmTestsSheetBookingsRecord.scheduledDate)}',
-                                          userRefs: [
-                                            confirmTestsSheetBookingsRecord.user
-                                          ],
-                                          initialPageName: 'BookingUpdates',
-                                          parameterData: {
-                                            'bookingRef': widget.booking,
-                                          },
-                                        );
+                                        if (FFAppState().proceedconfirmation) {
+                                          final bookingsUpdateData =
+                                              createBookingsRecordData(
+                                            bookingConfirmed: true,
+                                            bookingstatus: 'confirmed',
+                                            pathologist: pathologistValue,
+                                            labRefNum: widget.labRefNum,
+                                            updatedDate: getCurrentTimestamp,
+                                            updateStaff:
+                                                buttonStaffRecord.reference,
+                                          );
+                                          await confirmTestsSheetBookingsRecord
+                                              .reference
+                                              .update(bookingsUpdateData);
+                                          triggerPushNotification(
+                                            notificationTitle:
+                                                'New Booking Confirmed',
+                                            notificationText:
+                                                'A New Booking has been confirmed for ${dateTimeFormat('MMMMEEEEd', confirmTestsSheetBookingsRecord.scheduledDate)}',
+                                            userRefs: containerStaffRecordList
+                                                .map((e) => e.userRef)
+                                                .toList(),
+                                            initialPageName: 'BookingUpdates',
+                                            parameterData: {
+                                              'bookingRef': widget.booking,
+                                            },
+                                          );
+                                          triggerPushNotification(
+                                            notificationTitle:
+                                                'Your Booking is Confirmed',
+                                            notificationText:
+                                                'YourBooking has been confirmed for ${dateTimeFormat('MMMMEEEEd', confirmTestsSheetBookingsRecord.scheduledDate)}',
+                                            userRefs: [
+                                              confirmTestsSheetBookingsRecord
+                                                  .user
+                                            ],
+                                            initialPageName: 'BookingUpdates',
+                                            parameterData: {
+                                              'bookingRef': widget.booking,
+                                            },
+                                          );
+
+                                          final notificationsCreateData = {
+                                            ...createNotificationsRecordData(
+                                              message:
+                                                  'Your Booking is Confirmed.',
+                                              createdDate: getCurrentTimestamp,
+                                              isSeen: false,
+                                            ),
+                                            'users_receiving': [
+                                              confirmTestsSheetBookingsRecord
+                                                  .user
+                                            ],
+                                          };
+                                          await NotificationsRecord.collection
+                                              .doc()
+                                              .set(notificationsCreateData);
+                                          await Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  BookingsScheduleWidget(),
+                                            ),
+                                            (r) => false,
+                                          );
+                                          return;
+                                        } else {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('Error'),
+                                                content: Text(
+                                                    'Please confirm all tests before proceeding'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                          return;
+                                        }
                                       } else {
                                         return;
                                       }
-
-                                      await Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              BookingsScheduleWidget(),
-                                        ),
-                                        (r) => false,
-                                      );
                                     },
                                     text: 'Confirm',
                                     options: FFButtonOptions(

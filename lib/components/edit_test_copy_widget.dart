@@ -1317,7 +1317,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                         MediaQuery.of(context)
                                                                 .size
                                                                 .width *
-                                                            0.9,
+                                                            0.8,
                                                     height: 420,
                                                     decoration: BoxDecoration(
                                                       borderRadius:
@@ -2682,7 +2682,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                     varianceUnitsFemaleController?.text ?? '',
                                 equipmentInfo: textController8?.text ?? '',
                               );
-                              await widget.testRef.update(testsUpdateData);
+                              await columnTestsRecord.reference
+                                  .update(testsUpdateData);
                               await Navigator.push(
                                 context,
                                 MaterialPageRoute(

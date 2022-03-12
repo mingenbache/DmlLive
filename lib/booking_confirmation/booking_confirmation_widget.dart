@@ -357,6 +357,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                   .size
                                                   .width *
                                               0.4,
+                                          height: 30,
                                           constraints: BoxConstraints(
                                             maxWidth: 140,
                                           ),
@@ -421,7 +422,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                 fillColor: Colors.white,
                                                 contentPadding:
                                                     EdgeInsetsDirectional
-                                                        .fromSTEB(5, 10, 10, 0),
+                                                        .fromSTEB(5, 0, 10, 0),
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -532,7 +533,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                               width: MediaQuery.of(context)
                                                       .size
                                                       .width *
-                                                  0.25,
+                                                  0.35,
                                               height: MediaQuery.of(context)
                                                       .size
                                                       .height *
@@ -556,8 +557,10 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                     MainAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    dateTimeFormat(
-                                                        'd/M/y', datePicked),
+                                                    functions.scheduleButtonString(
+                                                        datePicked,
+                                                        functions
+                                                            .getNextWeekday()),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyText1
@@ -1963,55 +1966,79 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                       0, 24, 0, 10),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      if (!formKey.currentState.validate()) {
+                                      if (functions.checkStringNull(
+                                          labRefNumController.text)) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  'Invalid Lab Reference Number'),
+                                              content: Text(
+                                                  'Please enter a valid lab reference number for this Booking.'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
                                         return;
-                                      }
+                                      } else {
+                                        if (!formKey.currentState.validate()) {
+                                          return;
+                                        }
 
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Color(0x00FFFFFF),
-                                        context: context,
-                                        builder: (context) {
-                                          return Padding(
-                                            padding: MediaQuery.of(context)
-                                                .viewInsets,
-                                            child: ConfirmTestsWidget(
-                                              booking:
-                                                  bookingConfirmationBookingsRecord
-                                                      .reference,
-                                              labRefNum:
-                                                  labRefNumController.text,
-                                            ),
-                                          );
-                                        },
-                                      );
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Color(0x00FFFFFF),
+                                          context: context,
+                                          builder: (context) {
+                                            return Padding(
+                                              padding: MediaQuery.of(context)
+                                                  .viewInsets,
+                                              child: ConfirmTestsWidget(
+                                                booking:
+                                                    bookingConfirmationBookingsRecord
+                                                        .reference,
+                                                labRefNum:
+                                                    labRefNumController.text,
+                                              ),
+                                            );
+                                          },
+                                        );
 
-                                      final bookingsUpdateData =
-                                          createBookingsRecordData(
-                                        labRefNum: labRefNumController.text,
-                                        docNameAddress: refDoctorValue,
-                                        paymentBalance:
+                                        final bookingsUpdateData =
+                                            createBookingsRecordData(
+                                          labRefNum: labRefNumController.text,
+                                          docNameAddress: refDoctorValue,
+                                          paymentBalance:
+                                              bookingConfirmationBookingsRecord
+                                                  .totalPrice
+                                                  .toDouble(),
+                                          confirmationBegan: true,
+                                        );
+                                        await bookingConfirmationBookingsRecord
+                                            .reference
+                                            .update(bookingsUpdateData);
+                                        setState(() => FFAppState().labRef =
+                                            labRefNumController.text);
+                                        setState(() => FFAppState()
+                                            .pathologistassigned = false);
+                                        setState(() => FFAppState()
+                                            .technologistassigned = false);
+                                        setState(() => FFAppState().numTests =
                                             bookingConfirmationBookingsRecord
-                                                .totalPrice
-                                                .toDouble(),
-                                        confirmationBegan: true,
-                                      );
-                                      await bookingConfirmationBookingsRecord
-                                          .reference
-                                          .update(bookingsUpdateData);
-                                      setState(() => FFAppState().labRef =
-                                          labRefNumController.text);
-                                      setState(() => FFAppState()
-                                          .pathologistassigned = false);
-                                      setState(() => FFAppState()
-                                          .technologistassigned = false);
-                                      setState(() => FFAppState().numTests =
-                                          bookingConfirmationBookingsRecord
-                                              .testsIncluded
-                                              .toList()
-                                              .length);
-                                      setState(
-                                          () => FFAppState().numTestDone = 0);
+                                                .testsIncluded
+                                                .toList()
+                                                .length);
+                                        setState(
+                                            () => FFAppState().numTestDone = 0);
+                                      }
                                     },
                                     text: 'Confirm and Proceed',
                                     options: FFButtonOptions(

@@ -127,7 +127,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                       ),
                       child: Image.asset(
                         'assets/images/Doctor_office_examination_-_1280x757.jpeg',
-                        height: MediaQuery.of(context).size.height * 0.4,
+                        height: MediaQuery.of(context).size.height * 0.6,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -144,11 +144,11 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Color(0x00FFFFFF),
+                          Color(0x1F353535),
                           FlutterFlowTheme.of(context).tertiaryColor,
                           FlutterFlowTheme.of(context).primaryColor
                         ],
-                        stops: [0, 0.4, 1],
+                        stops: [0, 0.6, 1],
                         begin: AlignmentDirectional(0.14, -1),
                         end: AlignmentDirectional(-0.14, 1),
                       ),
@@ -328,8 +328,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                       .subtitle2
                                                       .override(
                                                         fontFamily: 'Roboto',
-                                                        color:
-                                                            Color(0xFF586B06),
+                                                        color: Colors.white,
                                                       ),
                                                 ),
                                               ),
@@ -386,9 +385,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .alternate,
+                                                                  color: Colors
+                                                                      .white,
                                                                   fontSize: 14,
                                                                   fontWeight:
                                                                       FontWeight
@@ -498,9 +496,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .alternate,
+                                                                  color: Colors
+                                                                      .white,
                                                                   fontSize: 14,
                                                                   fontWeight:
                                                                       FontWeight
@@ -627,7 +624,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                 fontFamily:
                                                                     'Roboto',
                                                                 color: Color(
-                                                                    0xFF586B06),
+                                                                    0xFFFDFDFD),
                                                                 fontSize: 14,
                                                                 fontWeight:
                                                                     FontWeight
@@ -747,8 +744,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Roboto',
-                                                                color: Color(
-                                                                    0xFF586B06),
+                                                                color: Colors
+                                                                    .white,
                                                                 fontSize: 14,
                                                                 fontWeight:
                                                                     FontWeight

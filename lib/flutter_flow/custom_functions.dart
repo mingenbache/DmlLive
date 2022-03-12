@@ -622,12 +622,11 @@ String upperCase(String name) {
 bool checkStringNull(String string) {
   // remove white spaces and check if a string value is null
   String data = string;
-  if (string == null) {
-    data = ' ';
+  if (string.isEmpty) {
+    return true;
+  } else {
+    return false;
   }
-
-  print(data.trim());
-  return data.trim().isEmpty;
 }
 
 bool allTestsConfirmed(

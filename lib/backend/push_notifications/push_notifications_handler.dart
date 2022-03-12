@@ -42,6 +42,7 @@ import '../../my_report_list/my_report_list_widget.dart';
 import '../../test_queue/test_queue_widget.dart';
 import '../../tested_tests_copy/tested_tests_copy_widget.dart';
 import '../../chat/chat_widget.dart';
+import '../../technologist_test_deck/technologist_test_deck_widget.dart';
 
 class PushNotificationsHandler extends StatefulWidget {
   const PushNotificationsHandler(
@@ -167,6 +168,10 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
         chatUser: await getDocumentParameter(
             data, 'chatUser', UsersRecord.serializer),
         chatRef: getParameter(data, 'chatRef'),
+      ),
+  'TechnologistTestDeck': (data) async => TechnologistTestDeckWidget(
+        bookedTest: await getDocumentParameter(
+            data, 'bookedTest', BookedTestsRecord.serializer),
       ),
 };
 
