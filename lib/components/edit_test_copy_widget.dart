@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../details/details_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -2684,14 +2683,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                               );
                               await columnTestsRecord.reference
                                   .update(testsUpdateData);
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => DetailsWidget(
-                                    testId: columnTestsRecord.reference,
-                                  ),
-                                ),
-                              );
+                              Navigator.pop(context);
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
