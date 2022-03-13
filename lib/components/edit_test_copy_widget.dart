@@ -2579,7 +2579,9 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 'procedure':
                                                                     FieldValue
                                                                         .arrayUnion([
-                                                                  ' '
+                                                                  textController9
+                                                                          ?.text ??
+                                                                      ''
                                                                 ]),
                                                               };
                                                               await widget
