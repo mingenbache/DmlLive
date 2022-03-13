@@ -1,7 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/add_new_test_widget.dart';
-import '../components/catalog_test_item3_widget.dart';
+import '../components/catalog_test_item2_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -573,14 +573,17 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                         BorderRadius.circular(
                                                             12),
                                                   ),
-                                                  child: CatalogTestItem3Widget(
-                                                    index:
-                                                        testsListFullPageIndex,
-                                                    listSize:
-                                                        testListWidgetTestsRecordList
-                                                            .length,
-                                                    test: testsListFullPageItem
-                                                        .reference,
+                                                  child: Container(
+                                                    height: 130,
+                                                    decoration: BoxDecoration(),
+                                                    child:
+                                                        CatalogTestItem2Widget(
+                                                      testRef:
+                                                          testsListFullPageItem
+                                                              .reference,
+                                                      test:
+                                                          testsListFullPageItem,
+                                                    ),
                                                   ),
                                                 ),
                                               );
