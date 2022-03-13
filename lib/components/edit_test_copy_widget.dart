@@ -111,7 +111,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 0.9,
                   constraints: BoxConstraints(
-                    maxHeight: 830,
+                    maxHeight: 829,
                   ),
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).tertiaryColor,
@@ -2681,24 +2681,29 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                           alignment: AlignmentDirectional(0, 0.05),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              final testsUpdateData = createTestsRecordData(
-                                price:
-                                    int.parse(testPriceController?.text ?? ''),
-                                name: textController1?.text ?? '',
-                                homeTest: atHomeToggleValue,
-                                duration: testDurationSliderValue,
-                                durationResults: resultsDurationSliderValue,
-                                category: dropDownValue,
-                                updateDate: getCurrentTimestamp,
-                                updateRole: currentUserDocument?.role,
-                                description: textController3?.text ?? '',
-                                varianceMale: textController4?.text ?? '',
-                                varianceFemale: textController6?.text ?? '',
-                                varianceUnitsMale: textController5?.text ?? '',
-                                varianceUnitsFemale:
-                                    varianceUnitsFemaleController?.text ?? '',
-                                equipmentInfo: textController8?.text ?? '',
-                              );
+                              final testsUpdateData = {
+                                ...createTestsRecordData(
+                                  price: int.parse(
+                                      testPriceController?.text ?? ''),
+                                  name: textController1?.text ?? '',
+                                  homeTest: atHomeToggleValue,
+                                  duration: testDurationSliderValue,
+                                  durationResults: resultsDurationSliderValue,
+                                  category: dropDownValue,
+                                  updateDate: getCurrentTimestamp,
+                                  updateRole: currentUserDocument?.role,
+                                  description: textController3?.text ?? '',
+                                  varianceMale: textController4?.text ?? '',
+                                  varianceFemale: textController6?.text ?? '',
+                                  varianceUnitsMale:
+                                      textController5?.text ?? '',
+                                  varianceUnitsFemale:
+                                      varianceUnitsFemaleController?.text ?? '',
+                                  equipmentInfo: textController8?.text ?? '',
+                                ),
+                                'procedure': FieldValue.arrayUnion(
+                                    [textController9?.text ?? '']),
+                              };
                               await columnTestsRecord.reference
                                   .update(testsUpdateData);
                               Navigator.pop(context);
