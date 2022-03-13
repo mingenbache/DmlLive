@@ -160,15 +160,7 @@ class _CatalogTestItem3WidgetState extends State<CatalogTestItem3Widget> {
                                   maxHeight: 130,
                                 ),
                                 decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Color(0xB5FFFFFF),
-                                      Color(0xDFBACA68)
-                                    ],
-                                    stops: [0.4, 1],
-                                    begin: AlignmentDirectional(0, -1),
-                                    end: AlignmentDirectional(0, 1),
-                                  ),
+                                  color: Color(0xA3FFFFFF),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Row(
