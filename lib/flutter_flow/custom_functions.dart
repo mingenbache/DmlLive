@@ -1012,3 +1012,12 @@ String bookingValidator(
   }
   return err;
 }
+
+double expandableSize(bool isOpen) {
+  // Add your function code here!
+  if (isOpen) {
+    return 24;
+  } else {
+    return 14;
+  }
+}

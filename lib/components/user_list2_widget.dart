@@ -1,6 +1,6 @@
 import '../backend/backend.dart';
 import '../components/client_user_card2_widget.dart';
-import '../components/staff_user_card_widget.dart';
+import '../components/staff_user_card2_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -472,22 +472,26 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                             final staffItem =
                                                                 staff[
                                                                     staffIndex];
-                                                            return Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0,
-                                                                          0,
-                                                                          0,
-                                                                          15),
-                                                              child: Container(
-                                                                decoration:
-                                                                    BoxDecoration(),
-                                                                child:
-                                                                    StaffUserCardWidget(
-                                                                  userRecord:
-                                                                      staffItem,
-                                                                ),
+                                                            return Container(
+                                                              height: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .height *
+                                                                  0.14,
+                                                              constraints:
+                                                                  BoxConstraints(
+                                                                maxHeight: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height *
+                                                                    0.24,
+                                                              ),
+                                                              decoration:
+                                                                  BoxDecoration(),
+                                                              child:
+                                                                  StaffUserCard2Widget(
+                                                                userRecord:
+                                                                    staffItem,
                                                               ),
                                                             );
                                                           },
