@@ -657,7 +657,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 0, 0, 10),
+                                                                15, 0, 15, 10),
                                                     child: Container(
                                                       width:
                                                           MediaQuery.of(context)
@@ -670,17 +670,22 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                       ),
                                                       decoration:
                                                           BoxDecoration(),
-                                                      child: TestItem5Widget(
-                                                        index:
-                                                            testsListFullPageIndex,
-                                                        listSize:
-                                                            testListWidgetTestsRecordList
-                                                                .length,
-                                                        test:
-                                                            testsListFullPageItem
-                                                                .reference,
-                                                        booking:
-                                                            containerBookingsRecord,
+                                                      child: Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0, 0),
+                                                        child: TestItem5Widget(
+                                                          index:
+                                                              testsListFullPageIndex,
+                                                          listSize:
+                                                              testListWidgetTestsRecordList
+                                                                  .length,
+                                                          test:
+                                                              testsListFullPageItem
+                                                                  .reference,
+                                                          booking:
+                                                              containerBookingsRecord,
+                                                        ),
                                                       ),
                                                     ),
                                                   );
