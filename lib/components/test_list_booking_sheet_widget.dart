@@ -190,7 +190,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                           4, 0, 4, 0),
                                       child: Icon(
                                         Icons.search_rounded,
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryColor,
                                         size: 24,
                                       ),
                                     ),
@@ -210,16 +211,17 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelText: 'Search tests here...',
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyText1
-                                                    .override(
-                                                      fontFamily: 'Roboto',
-                                                      color: Color(0xFF586B06),
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
+                                            labelStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyText1
@@ -271,7 +273,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                               .bodyText1
                                               .override(
                                                 fontFamily: 'Roboto',
-                                                color: Color(0xFF586B06),
+                                                color: Colors.white,
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w500,
                                               ),
@@ -465,7 +467,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                           10,
                                                                           5,
                                                                           10,
-                                                                          5),
+                                                                          3),
                                                               child: Text(
                                                                 categoriesItem,
                                                                 style: FlutterFlowTheme.of(
@@ -527,7 +529,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                             10,
                                                                             5,
                                                                             10,
-                                                                            5),
+                                                                            3),
                                                                 child: Text(
                                                                   categoriesItem,
                                                                   style: FlutterFlowTheme.of(
@@ -715,7 +717,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                           },
                           text: 'NEXT',
                           options: FFButtonOptions(
-                            width: 300,
+                            width: 240,
                             height: 70,
                             color: FlutterFlowTheme.of(context).secondaryColor,
                             textStyle:
