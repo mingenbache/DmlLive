@@ -1,6 +1,7 @@
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -165,50 +166,55 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                       ],
                                     ),
                                   ),
-                                  Align(
-                                    alignment: AlignmentDirectional(0.8, 0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5, 5, 5, 0),
-                                      child: Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Align(
+                                        alignment: AlignmentDirectional(0.8, 0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 0),
+                                          child: Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
                                                 0.3,
-                                        height: 32,
-                                        constraints: BoxConstraints(
-                                          maxWidth: 130,
-                                          maxHeight: 32,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: Color(0x4CFFFFFF),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 4,
-                                              color: Color(0x32171717),
-                                              offset: Offset(0, 2),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                        ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Icon(
-                                              Icons.verified_user_sharp,
-                                              color: Colors.white,
-                                              size: 20,
+                                            height: 32,
+                                            constraints: BoxConstraints(
+                                              maxWidth: 130,
+                                              maxHeight: 32,
                                             ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(3, 0, 0, 0),
-                                              child: Text(
-                                                widget.userRecord.role,
-                                                textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                            decoration: BoxDecoration(
+                                              color: Color(0x4CFFFFFF),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  blurRadius: 4,
+                                                  color: Color(0x32171717),
+                                                  offset: Offset(0, 2),
+                                                )
+                                              ],
+                                              borderRadius:
+                                                  BorderRadius.circular(30),
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Icon(
+                                                  Icons.verified_user_sharp,
+                                                  color: Colors.white,
+                                                  size: 20,
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(3, 0, 0, 0),
+                                                  child: Text(
+                                                    widget.userRecord.role,
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .bodyText1
                                                         .override(
                                                           fontFamily: 'Roboto',
@@ -219,12 +225,42 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
-                                              ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                          ],
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                      FFButtonWidget(
+                                        onPressed: () {
+                                          print('Button pressed ...');
+                                        },
+                                        text: 'View',
+                                        icon: Icon(
+                                          Icons.dehaze,
+                                          size: 12,
+                                        ),
+                                        options: FFButtonOptions(
+                                          width: 80,
+                                          height: 30,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .subtitle2
+                                                  .override(
+                                                    fontFamily: 'Roboto',
+                                                    fontSize: 14,
+                                                  ),
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1,
+                                          ),
+                                          borderRadius: 12,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),

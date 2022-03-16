@@ -533,6 +533,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         ),
                                         chipSpacing: 8,
                                         multiselect: false,
+                                        initialized:
+                                            sexChoiceChipsValue != null,
                                       ),
                                     ),
                                   ],

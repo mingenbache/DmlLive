@@ -444,6 +444,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                   ),
                                   chipSpacing: 8,
                                   multiselect: false,
+                                  initialized: sexChoiceChipsValue != null,
                                 ),
                               ),
                             ],

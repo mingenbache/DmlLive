@@ -367,7 +367,7 @@ class _TestItemWidgetState extends State<TestItemWidget> {
                       child: Stack(
                         children: [
                           if (widget.bookingRef.testsIncluded
-                                  .contains(widget.testRef) ??
+                                  ?.contains(widget.testRef) ??
                               true)
                             Align(
                               alignment: AlignmentDirectional(1, 0),
@@ -377,7 +377,7 @@ class _TestItemWidgetState extends State<TestItemWidget> {
                                 decoration: BoxDecoration(),
                                 child: Visibility(
                                   visible: widget.bookingRef.testsIncluded
-                                          .contains(widget.test.reference) ??
+                                          ?.contains(widget.test.reference) ??
                                       true,
                                   child: InkWell(
                                     onTap: () async {
@@ -422,7 +422,7 @@ class _TestItemWidgetState extends State<TestItemWidget> {
                               ),
                             ),
                           if (widget.bookingRef.testsIncluded
-                                  .contains(widget.testRef) ??
+                                  ?.contains(widget.testRef) ??
                               true)
                             Align(
                               alignment: AlignmentDirectional(1, 0),
@@ -432,7 +432,7 @@ class _TestItemWidgetState extends State<TestItemWidget> {
                                 decoration: BoxDecoration(),
                                 child: Visibility(
                                   visible: !(widget.bookingRef.testsIncluded
-                                          .contains(widget.testRef)) ??
+                                          ?.contains(widget.testRef)) ??
                                       true,
                                   child: InkWell(
                                     onTap: () async {

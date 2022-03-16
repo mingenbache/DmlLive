@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  accordion: ^2.2.3
   algolia: 1.0.3
   auto_size_text: 3.0.0
   built_collection: 5.1.1

@@ -944,6 +944,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           ),
                                                           chipSpacing: 10,
                                                           multiselect: false,
+                                                          initialized:
+                                                              choiceChipsValue !=
+                                                                  null,
                                                         ),
                                                       if (newBookingBookingsRecord
                                                               .userPatient ??

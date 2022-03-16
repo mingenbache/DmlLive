@@ -1308,6 +1308,9 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                                                       10,
                                                                   multiselect:
                                                                       false,
+                                                                  initialized:
+                                                                      choiceChipsValue !=
+                                                                          null,
                                                                 ),
                                                               ),
                                                             ],
