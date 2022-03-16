@@ -174,7 +174,7 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  5, 5, 5, 0),
+                                                  5, 0, 5, 0),
                                           child: Container(
                                             width: MediaQuery.of(context)
                                                     .size
@@ -196,6 +196,10 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                               ],
                                               borderRadius:
                                                   BorderRadius.circular(30),
+                                              border: Border.all(
+                                                color: Color(0xFFC7C7C7),
+                                                width: 2,
+                                              ),
                                             ),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
