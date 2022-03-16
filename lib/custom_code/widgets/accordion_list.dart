@@ -38,6 +38,7 @@ class _AccordionListState extends State<AccordionList> {
     final _contentStyle = const TextStyle(
         color: Color(0xff58595b), fontSize: 14, fontWeight: FontWeight.normal);
     final _loremIpsum = '''Lorem Latin.''';
+
     final users = this.widget.users;
     return Accordion(
       maxOpenSections: 2,
@@ -165,19 +166,84 @@ class _AccordionListState extends State<AccordionList> {
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Icon(
-                            Icons.verified_user_sharp,
-                            color: Color(0xFF586b06),
-                            size: 20,
+                          Align(
+                            alignment: AlignmentDirectional(0.8, 0),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.3,
+                                height: 32,
+                                constraints: BoxConstraints(
+                                  maxWidth: 130,
+                                  maxHeight: 32,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Color(0x4CFFFFFF),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 4,
+                                      color: Color(0x32171717),
+                                      offset: Offset(0, 2),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(30),
+                                  border: Border.all(
+                                    color: Color(0xFFC7C7C7),
+                                    width: 2,
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.verified_user_sharp,
+                                      color: Colors.white,
+                                      size: 20,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          3, 0, 0, 0),
+                                      child: Text(
+                                        user.role,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontFamily: 'Roboto',
+                                          color: Color(0xFF58595b),
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0),
-                            child: Text(
-                              user.role,
-                              textAlign: TextAlign.center,
-                              style: _contentStyle,
+                          FFButtonWidget(
+                            onPressed: () {
+                              print('Button pressed ...');
+                            },
+                            text: 'View',
+                            icon: Icon(
+                              Icons.dehaze,
+                              size: 12,
+                            ),
+                            options: FFButtonOptions(
+                              width: 80,
+                              height: 30,
+                              color: Color(0xFF586b06),
+                              textStyle: TextStyle(
+                                fontFamily: 'Roboto',
+                                fontSize: 14,
+                              ),
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: 12,
                             ),
                           ),
                         ],

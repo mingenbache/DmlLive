@@ -80,6 +80,7 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                         ),
                         Column(
                           mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
                               height: 30,
@@ -127,6 +128,7 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                               ),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
