@@ -202,30 +202,25 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                             topRight: Radius.circular(16),
                                           ),
                                         ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 5, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              Expanded(
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(10, 20, 0, 20),
-                                                  child: Icon(
-                                                    Icons.highlight_off_sharp,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryColor,
-                                                    size: 24,
-                                                  ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 20, 0, 20),
+                                                child: Icon(
+                                                  Icons.highlight_off_sharp,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                  size: 24,
                                                 ),
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ),
@@ -297,24 +292,19 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                             topRight: Radius.circular(16),
                                           ),
                                         ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 5, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              Expanded(
-                                                child: Icon(
-                                                  Icons.add,
-                                                  color: Colors.white,
-                                                  size: 24,
-                                                ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            Expanded(
+                                              child: Icon(
+                                                Icons.add,
+                                                color: Colors.white,
+                                                size: 24,
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ),
@@ -333,7 +323,7 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                   Container(
                     width: MediaQuery.of(context).size.width * 0.75,
                     constraints: BoxConstraints(
-                      maxWidth: 380,
+                      maxWidth: 370,
                     ),
                     decoration: BoxDecoration(),
                     child: Row(
@@ -370,7 +360,7 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                           0.75,
                                       height: 100,
                                       constraints: BoxConstraints(
-                                        maxWidth: 380,
+                                        maxWidth: 370,
                                         maxHeight: 130,
                                       ),
                                       decoration: BoxDecoration(
@@ -459,7 +449,7 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                                 0.75,
                                         height: 70,
                                         constraints: BoxConstraints(
-                                          maxWidth: 380,
+                                          maxWidth: 320,
                                           maxHeight: 130,
                                         ),
                                         decoration: BoxDecoration(
@@ -501,7 +491,7 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                                             0.75,
                                                     height: 30,
                                                     constraints: BoxConstraints(
-                                                      maxWidth: 380,
+                                                      maxWidth: 320,
                                                     ),
                                                     decoration: BoxDecoration(
                                                       color: Color(0xC9FFFFFF),
