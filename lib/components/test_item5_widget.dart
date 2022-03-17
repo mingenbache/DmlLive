@@ -194,6 +194,7 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                                 0.15,
                                         height: 100,
                                         decoration: BoxDecoration(
+                                          color: Color(0xFFAAAAAA),
                                           borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(0),
                                             bottomRight: Radius.circular(16),
@@ -210,12 +211,18 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                             mainAxisAlignment:
                                                 MainAxisAlignment.end,
                                             children: [
-                                              Icon(
-                                                Icons.highlight_off_sharp,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(10, 20, 0, 20),
+                                                  child: Icon(
+                                                    Icons.highlight_off_sharp,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .secondaryColor,
-                                                size: 24,
+                                                    size: 24,
+                                                  ),
+                                                ),
                                               ),
                                             ],
                                           ),
@@ -299,10 +306,12 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                             mainAxisAlignment:
                                                 MainAxisAlignment.end,
                                             children: [
-                                              Icon(
-                                                Icons.add,
-                                                color: Colors.white,
-                                                size: 24,
+                                              Expanded(
+                                                child: Icon(
+                                                  Icons.add,
+                                                  color: Colors.white,
+                                                  size: 24,
+                                                ),
                                               ),
                                             ],
                                           ),
