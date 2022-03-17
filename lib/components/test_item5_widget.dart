@@ -123,153 +123,70 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
               height: 100,
               child: Stack(
                 children: [
-                  Container(
-                    height: 100,
-                    decoration: BoxDecoration(),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Stack(
-                              children: [
-                                if (widget.booking.testsIncluded
-                                        ?.contains(widget.test) ??
-                                    true)
-                                  InkWell(
-                                    onTap: () async {
-                                      if (widget.booking.testsIncluded.contains(
-                                          stackTestsRecord.reference)) {
-                                        final bookingsUpdateData = {
-                                          ...createBookingsRecordData(
-                                            totalPrice:
-                                                functions.removeFromCart(
-                                                    widget.booking.totalPrice,
-                                                    stackTestsRecord.price),
-                                          ),
-                                          'tests_included':
-                                              FieldValue.arrayRemove(
-                                                  [widget.test]),
-                                          'total_tests':
-                                              FieldValue.increment(-1),
-                                        };
-                                        await widget.booking.reference
-                                            .update(bookingsUpdateData);
-                                      } else {
-                                        return;
-                                      }
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Stack(
+                            children: [
+                              if (widget.booking.testsIncluded
+                                      ?.contains(widget.test) ??
+                                  true)
+                                InkWell(
+                                  onTap: () async {
+                                    if (widget.booking.testsIncluded
+                                        .contains(stackTestsRecord.reference)) {
+                                      final bookingsUpdateData = {
+                                        ...createBookingsRecordData(
+                                          totalPrice: functions.removeFromCart(
+                                              widget.booking.totalPrice,
+                                              stackTestsRecord.price),
+                                        ),
+                                        'tests_included':
+                                            FieldValue.arrayRemove(
+                                                [widget.test]),
+                                        'total_tests': FieldValue.increment(-1),
+                                      };
+                                      await widget.booking.reference
+                                          .update(bookingsUpdateData);
+                                    } else {
+                                      return;
+                                    }
 
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Test Removed.${widget.booking.testsIncluded.length.toString()} Tests in Total.',
-                                            style: TextStyle(),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor: Color(0x00000000),
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Test Removed.${widget.booking.testsIncluded.length.toString()} Tests in Total.',
+                                          style: TextStyle(),
                                         ),
-                                      );
-                                    },
-                                    child: Material(
-                                      color: Colors.transparent,
-                                      elevation: 1,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(0),
-                                          bottomRight: Radius.circular(16),
-                                          topLeft: Radius.circular(0),
-                                          topRight: Radius.circular(16),
-                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor: Color(0x00000000),
                                       ),
-                                      child: Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.15,
-                                        height: 100,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFFAAAAAA),
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(0),
-                                            bottomRight: Radius.circular(16),
-                                            topLeft: Radius.circular(0),
-                                            topRight: Radius.circular(16),
-                                          ),
-                                        ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 20, 0, 20),
-                                                child: Icon(
-                                                  Icons.highlight_off_sharp,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryColor,
-                                                  size: 24,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                    );
+                                  },
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 1,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(0),
+                                        bottomRight: Radius.circular(16),
+                                        topLeft: Radius.circular(0),
+                                        topRight: Radius.circular(16),
                                       ),
                                     ),
-                                  ).animated([
-                                    animationsMap[
-                                        'containerOnActionTriggerAnimation1']
-                                  ]),
-                                if (!(widget.booking.testsIncluded
-                                        ?.contains(widget.test)) ??
-                                    true)
-                                  InkWell(
-                                    onTap: () async {
-                                      if (widget.booking.testsIncluded
-                                          .contains(widget.test)) {
-                                        final bookingsUpdateData = {
-                                          ...createBookingsRecordData(
-                                            totalPrice: functions.addCartTotal(
-                                                widget.booking.totalPrice,
-                                                stackTestsRecord.price),
-                                          ),
-                                          'tests_included':
-                                              FieldValue.arrayUnion(
-                                                  [widget.test]),
-                                          'total_tests':
-                                              FieldValue.increment(1),
-                                        };
-                                        await widget.booking.reference
-                                            .update(bookingsUpdateData);
-                                      } else {
-                                        return;
-                                      }
-
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Test Added.${widget.booking.testsIncluded.length.toString()} Tests in Total.',
-                                            style: TextStyle(),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor: Color(0x00000000),
-                                        ),
-                                      );
-                                    },
-                                    child: Material(
-                                      color: Colors.transparent,
-                                      elevation: 1,
-                                      shape: RoundedRectangleBorder(
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.15,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFFAAAAAA),
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(0),
                                           bottomRight: Radius.circular(16),
@@ -277,48 +194,117 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                           topRight: Radius.circular(16),
                                         ),
                                       ),
-                                      child: Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.15,
-                                        height: 100,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(0),
-                                            bottomRight: Radius.circular(16),
-                                            topLeft: Radius.circular(0),
-                                            topRight: Radius.circular(16),
-                                          ),
-                                        ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            Expanded(
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 20, 0, 20),
                                               child: Icon(
-                                                Icons.add,
-                                                color: Colors.white,
+                                                Icons.highlight_off_sharp,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryColor,
                                                 size: 24,
                                               ),
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                  ).animated([
-                                    animationsMap[
-                                        'containerOnActionTriggerAnimation2']
-                                  ]),
-                              ],
-                            ).animated(
-                                [animationsMap['stackOnPageLoadAnimation']]),
-                          ],
-                        ),
-                      ],
-                    ),
+                                  ),
+                                ).animated([
+                                  animationsMap[
+                                      'containerOnActionTriggerAnimation1']
+                                ]),
+                              if (!(widget.booking.testsIncluded
+                                      ?.contains(widget.test)) ??
+                                  true)
+                                InkWell(
+                                  onTap: () async {
+                                    if (widget.booking.testsIncluded
+                                        .contains(widget.test)) {
+                                      final bookingsUpdateData = {
+                                        ...createBookingsRecordData(
+                                          totalPrice: functions.addCartTotal(
+                                              widget.booking.totalPrice,
+                                              stackTestsRecord.price),
+                                        ),
+                                        'tests_included': FieldValue.arrayUnion(
+                                            [widget.test]),
+                                        'total_tests': FieldValue.increment(1),
+                                      };
+                                      await widget.booking.reference
+                                          .update(bookingsUpdateData);
+                                    } else {
+                                      return;
+                                    }
+
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Test Added.${widget.booking.testsIncluded.length.toString()} Tests in Total.',
+                                          style: TextStyle(),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor: Color(0x00000000),
+                                      ),
+                                    );
+                                  },
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 1,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(0),
+                                        bottomRight: Radius.circular(16),
+                                        topLeft: Radius.circular(0),
+                                        topRight: Radius.circular(16),
+                                      ),
+                                    ),
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.15,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(0),
+                                          bottomRight: Radius.circular(16),
+                                          topLeft: Radius.circular(0),
+                                          topRight: Radius.circular(16),
+                                        ),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Expanded(
+                                            child: Icon(
+                                              Icons.add,
+                                              color: Colors.white,
+                                              size: 24,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ).animated([
+                                  animationsMap[
+                                      'containerOnActionTriggerAnimation2']
+                                ]),
+                            ],
+                          ).animated(
+                              [animationsMap['stackOnPageLoadAnimation']]),
+                        ],
+                      ),
+                    ],
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width * 0.75,
@@ -446,7 +432,7 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                       child: Container(
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                0.75,
+                                                0.74,
                                         height: 70,
                                         constraints: BoxConstraints(
                                           maxWidth: 320,
@@ -488,7 +474,7 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                                         MediaQuery.of(context)
                                                                 .size
                                                                 .width *
-                                                            0.75,
+                                                            0.74,
                                                     height: 30,
                                                     constraints: BoxConstraints(
                                                       maxWidth: 320,
