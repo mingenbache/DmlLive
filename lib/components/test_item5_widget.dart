@@ -35,10 +35,11 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
     'stackOnPageLoadAnimation': AnimationInfo(
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
+      duration: 1300,
+      delay: 280,
       fadeIn: true,
       initialState: AnimationState(
-        offset: Offset(-69, 0),
+        offset: Offset(-92, 0),
         scale: 1,
         opacity: 0,
       ),
@@ -66,11 +67,43 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
     'containerOnActionTriggerAnimation2': AnimationInfo(
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
+      duration: 950,
       initialState: AnimationState(
         offset: Offset(-58, 0),
         scale: 1,
         opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'containerOnPageLoadAnimation1': AnimationInfo(
+      curve: Curves.bounceOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, -73),
+        scale: 1,
+        opacity: 1,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'containerOnPageLoadAnimation2': AnimationInfo(
+      curve: Curves.bounceOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(-96, 0),
+        scale: 1,
+        opacity: 1,
       ),
       finalState: AnimationState(
         offset: Offset(0, 0),
@@ -186,7 +219,7 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                           0.15,
                                       height: 100,
                                       decoration: BoxDecoration(
-                                        color: Color(0xFFAAAAAA),
+                                        color: Color(0xFFC9FFFF),
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(0),
                                           bottomRight: Radius.circular(16),
@@ -202,7 +235,7 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                           Expanded(
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 20, 0, 20),
+                                                  .fromSTEB(10, 0, 0, 0),
                                               child: Icon(
                                                 Icons.highlight_off_sharp,
                                                 color:
@@ -285,10 +318,14 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                             MainAxisAlignment.end,
                                         children: [
                                           Expanded(
-                                            child: Icon(
-                                              Icons.add,
-                                              color: Colors.white,
-                                              size: 24,
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 0, 0, 0),
+                                              child: Icon(
+                                                Icons.add,
+                                                color: Colors.white,
+                                                size: 24,
+                                              ),
                                             ),
                                           ),
                                         ],
@@ -420,12 +457,15 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                         ),
                                       ),
                                     ),
-                                  ),
+                                  ).animated([
+                                    animationsMap[
+                                        'containerOnPageLoadAnimation1']
+                                  ]),
                                   Align(
                                     alignment: AlignmentDirectional(0, 1),
                                     child: Material(
                                       color: Colors.transparent,
-                                      elevation: 2,
+                                      elevation: 11,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(12),
                                       ),
@@ -457,7 +497,7 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                                 children: [
                                                   Material(
                                                     color: Colors.transparent,
-                                                    elevation: 2,
+                                                    elevation: 1,
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:
@@ -820,7 +860,10 @@ class _TestItem5WidgetState extends State<TestItem5Widget>
                                           ),
                                         ),
                                       ),
-                                    ),
+                                    ).animated([
+                                      animationsMap[
+                                          'containerOnPageLoadAnimation2']
+                                    ]),
                                   ),
                                 ],
                               ),
