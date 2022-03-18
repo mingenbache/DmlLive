@@ -1021,3 +1021,8 @@ double expandableSize(bool isOpen) {
     return 14;
   }
 }
+
+List<String> splitProcedureString(String procedureString) {
+  // split string using comma
+  return procedureString.split(", ").map((String e) => e.trim()).toList();
+}
