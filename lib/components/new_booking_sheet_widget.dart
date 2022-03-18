@@ -272,7 +272,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                           BoxDecoration(),
                                                       child: Column(
                                                         mainAxisSize:
-                                                            MainAxisSize.max,
+                                                            MainAxisSize.min,
                                                         children: [
                                                           Row(
                                                             mainAxisSize:
@@ -326,7 +326,6 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                                   .size
                                                                   .width *
                                                               0.15,
-                                                      height: 100,
                                                       constraints:
                                                           BoxConstraints(
                                                         maxWidth: 82,
@@ -335,7 +334,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                           BoxDecoration(),
                                                       child: Column(
                                                         mainAxisSize:
-                                                            MainAxisSize.max,
+                                                            MainAxisSize.min,
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
                                                                 .center,
