@@ -253,7 +253,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   Expanded(
-                                                    flex: 2,
+                                                    flex: 3,
                                                     child: Container(
                                                       width:
                                                           MediaQuery.of(context)
