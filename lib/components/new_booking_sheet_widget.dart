@@ -329,7 +329,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                         dense: false,
                                                         controlAffinity:
                                                             ListTileControlAffinity
-                                                                .trailing,
+                                                                .leading,
                                                       ),
                                                     ),
                                                   ),
