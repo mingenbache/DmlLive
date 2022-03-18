@@ -249,98 +249,92 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                         Row(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
-                                            Expanded(
-                                              flex: 3,
-                                              child: Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.75,
-                                                height: 100,
-                                                constraints: BoxConstraints(
-                                                  maxWidth: 248,
-                                                ),
-                                                decoration: BoxDecoration(),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          'Are you the Patient?',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .title3,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Container(
-                                                            decoration:
-                                                                BoxDecoration(),
-                                                            child: Text(
-                                                              'Check the box if you are booking for yourself',
-                                                              style: TextStyle(
-                                                                color: Color(
-                                                                    0xFF586B06),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                                fontSize: 14,
-                                                              ),
+                                            Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.65,
+                                              height: 100,
+                                              constraints: BoxConstraints(
+                                                maxWidth: 248,
+                                              ),
+                                              decoration: BoxDecoration(),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Text(
+                                                        'Are you the Patient?',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .title3,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Container(
+                                                          decoration:
+                                                              BoxDecoration(),
+                                                          child: Text(
+                                                            'Check the box if you are booking for yourself',
+                                                            style: TextStyle(
+                                                              color: Color(
+                                                                  0xFF586B06),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontSize: 14,
                                                             ),
                                                           ),
                                                         ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
                                               ),
                                             ),
-                                            Expanded(
-                                              flex: 1,
-                                              child: Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.15,
-                                                constraints: BoxConstraints(
-                                                  maxWidth: 82,
+                                            Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.15,
+                                              constraints: BoxConstraints(
+                                                maxWidth: 82,
+                                              ),
+                                              decoration: BoxDecoration(),
+                                              child: Theme(
+                                                data: ThemeData(
+                                                  unselectedWidgetColor:
+                                                      Color(0xFF707070),
                                                 ),
-                                                decoration: BoxDecoration(),
-                                                child: Theme(
-                                                  data: ThemeData(
-                                                    unselectedWidgetColor:
-                                                        Color(0xFF707070),
-                                                  ),
-                                                  child: CheckboxListTile(
-                                                    value: isPatientValue ??=
-                                                        FFAppState().isPatient,
-                                                    onChanged: (newValue) =>
-                                                        setState(() =>
-                                                            isPatientValue =
-                                                                newValue),
-                                                    tileColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondaryColor,
-                                                    activeColor: Colors.white,
-                                                    checkColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondaryColor,
-                                                    dense: false,
-                                                    controlAffinity:
-                                                        ListTileControlAffinity
-                                                            .trailing,
-                                                  ),
+                                                child: CheckboxListTile(
+                                                  value: isPatientValue ??=
+                                                      FFAppState().isPatient,
+                                                  onChanged: (newValue) =>
+                                                      setState(() =>
+                                                          isPatientValue =
+                                                              newValue),
+                                                  tileColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryColor,
+                                                  activeColor: Colors.white,
+                                                  checkColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryColor,
+                                                  dense: false,
+                                                  controlAffinity:
+                                                      ListTileControlAffinity
+                                                          .trailing,
                                                 ),
                                               ),
                                             ),
