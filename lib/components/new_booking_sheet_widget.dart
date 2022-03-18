@@ -237,194 +237,174 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                       ),
                                     ],
                                   ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Expanded(
-                                            child: Container(
-                                              height: 100,
-                                              constraints: BoxConstraints(
-                                                maxWidth: 330,
-                                              ),
-                                              decoration: BoxDecoration(),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Expanded(
-                                                    flex: 3,
-                                                    child: Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.75,
-                                                      height: 100,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                        maxWidth: 248,
-                                                      ),
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: [
-                                                          Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Text(
-                                                                'Are you the Patient?',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .title3,
-                                                              ),
-                                                            ],
-                                                          ),
-                                                          Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Expanded(
-                                                                child:
-                                                                    Container(
-                                                                  decoration:
-                                                                      BoxDecoration(),
-                                                                  child: Text(
-                                                                    'Check the box if you are booking for yourself',
-                                                                    style:
-                                                                        TextStyle(
-                                                                      color: Color(
-                                                                          0xFF586B06),
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500,
-                                                                      fontSize:
-                                                                          14,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
+                                  Container(
+                                    width: 100,
+                                    height: 100,
+                                    decoration: BoxDecoration(),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Expanded(
+                                              flex: 3,
+                                              child: Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.75,
+                                                height: 100,
+                                                constraints: BoxConstraints(
+                                                  maxWidth: 248,
+                                                ),
+                                                decoration: BoxDecoration(),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Text(
+                                                          'Are you the Patient?',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .title3,
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ),
-                                                  Expanded(
-                                                    flex: 1,
-                                                    child: Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.15,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                        maxWidth: 82,
-                                                      ),
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Theme(
-                                                            data: ThemeData(
-                                                              unselectedWidgetColor:
-                                                                  Color(
-                                                                      0xFF707070),
-                                                            ),
-                                                            child:
-                                                                CheckboxListTile(
-                                                              value: isPatientValue ??=
-                                                                  FFAppState()
-                                                                      .isPatient,
-                                                              onChanged: (newValue) =>
-                                                                  setState(() =>
-                                                                      isPatientValue =
-                                                                          newValue),
-                                                              tileColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryColor,
-                                                              activeColor:
-                                                                  Colors.white,
-                                                              checkColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryColor,
-                                                              dense: false,
-                                                              controlAffinity:
-                                                                  ListTileControlAffinity
-                                                                      .trailing,
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Expanded(
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(),
+                                                            child: Text(
+                                                              'Check the box if you are booking for yourself',
+                                                              style: TextStyle(
+                                                                color: Color(
+                                                                    0xFF586B06),
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontSize: 14,
+                                                              ),
                                                             ),
                                                           ),
-                                                        ],
-                                                      ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: [
-                                          FFButtonWidget(
-                                            onPressed: () async {
-                                              setState(() => FFAppState()
-                                                  .lastBookingPage = true);
-                                              setState(() => FFAppState()
-                                                  .isPatient = isPatientValue);
-                                              await pageViewController.nextPage(
-                                                duration:
-                                                    Duration(milliseconds: 300),
-                                                curve: Curves.ease,
-                                              );
-                                            },
-                                            text: 'Next',
-                                            options: FFButtonOptions(
-                                              width: 90,
-                                              height: 30,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryColor,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
+                                            Expanded(
+                                              flex: 1,
+                                              child: Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.15,
+                                                constraints: BoxConstraints(
+                                                  maxWidth: 82,
+                                                ),
+                                                decoration: BoxDecoration(),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Theme(
+                                                      data: ThemeData(
+                                                        unselectedWidgetColor:
+                                                            Color(0xFF707070),
+                                                      ),
+                                                      child: CheckboxListTile(
+                                                        value:
+                                                            isPatientValue ??=
+                                                                FFAppState()
+                                                                    .isPatient,
+                                                        onChanged: (newValue) =>
+                                                            setState(() =>
+                                                                isPatientValue =
+                                                                    newValue),
+                                                        tileColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .tertiaryColor,
-                                                        fontWeight:
-                                                            FontWeight.normal,
+                                                                .secondaryColor,
+                                                        activeColor:
+                                                            Colors.white,
+                                                        checkColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryColor,
+                                                        dense: false,
+                                                        controlAffinity:
+                                                            ListTileControlAffinity
+                                                                .trailing,
                                                       ),
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1,
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
-                                              borderRadius: 12,
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            FFButtonWidget(
+                                              onPressed: () async {
+                                                setState(() => FFAppState()
+                                                    .lastBookingPage = true);
+                                                setState(() =>
+                                                    FFAppState().isPatient =
+                                                        isPatientValue);
+                                                await pageViewController
+                                                    .nextPage(
+                                                  duration: Duration(
+                                                      milliseconds: 300),
+                                                  curve: Curves.ease,
+                                                );
+                                              },
+                                              text: 'Next',
+                                              options: FFButtonOptions(
+                                                width: 90,
+                                                height: 30,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryColor,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .tertiaryColor,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                borderSide: BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1,
+                                                ),
+                                                borderRadius: 12,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   Container(
                                     height: 100,
@@ -573,6 +553,8 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                 children: [
                                   FFButtonWidget(
                                     onPressed: () async {
+                                      var _shouldSetState = false;
+
                                       final bookingsCreateData =
                                           createBookingsRecordData(
                                         user: currentUserReference,
@@ -601,6 +583,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                           BookingsRecord.getDocumentFromData(
                                               bookingsCreateData,
                                               bookingsRecordReference);
+                                      _shouldSetState = true;
                                       setState(() => FFAppState().isPatient =
                                           isPatientValue);
                                       if (isPatientValue) {
@@ -626,10 +609,14 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                       );
                                       await currentUserReference
                                           .update(usersUpdateData);
-                                      if (!(isPatientValue)) {
+                                      if (isPatientValue) {
                                         setState(() =>
                                             FFAppState().dobEntered = false);
+                                      } else {
+                                        if (_shouldSetState) setState(() {});
+                                        return;
                                       }
+
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
@@ -656,8 +643,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                           ),
                                         ),
                                       );
-
-                                      setState(() {});
+                                      if (_shouldSetState) setState(() {});
                                     },
                                     text: 'Continue',
                                     options: FFButtonOptions(
