@@ -304,11 +304,6 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                         ),
                                                       ),
                                                       Container(
-                                                        width: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .width *
-                                                            0.2,
                                                         constraints:
                                                             BoxConstraints(
                                                           maxWidth: 50,
