@@ -150,7 +150,11 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                               ],
                             ),
                           ),
-                          Expanded(
+                          Container(
+                            constraints: BoxConstraints(
+                              maxHeight: 300,
+                            ),
+                            decoration: BoxDecoration(),
                             child: Container(
                               height: MediaQuery.of(context).size.height * 0.3,
                               child: PageView(
@@ -286,20 +290,26 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: [
-                                                      Expanded(
-                                                        child: Container(
-                                                          decoration:
-                                                              BoxDecoration(),
-                                                          child: Text(
-                                                            'Check the box if you are booking for yourself',
-                                                            style: TextStyle(
-                                                              color: Color(
-                                                                  0xFF586B06),
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              fontSize: 14,
-                                                            ),
+                                                      Container(
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.6,
+                                                        constraints:
+                                                            BoxConstraints(
+                                                          maxWidth: 240,
+                                                        ),
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: Text(
+                                                          'Check the box if you are booking for yourself',
+                                                          style: TextStyle(
+                                                            color: Color(
+                                                                0xFF586B06),
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontSize: 14,
                                                           ),
                                                         ),
                                                       ),
