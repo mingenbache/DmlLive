@@ -24,6 +24,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
   BookingsRecord newbookingRef;
   PageController pageViewController;
   bool isPatientValue;
+  bool switchListTileValue;
   TextEditingController docNameAddressController;
   final animationsMap = {
     'columnOnPageLoadAnimation': AnimationInfo(
@@ -161,7 +162,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                             scrollDirection: Axis.horizontal,
                             children: [
                               Column(
-                                mainAxisSize: MainAxisSize.max,
+                                mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
@@ -239,6 +240,9 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.75,
+                                constraints: BoxConstraints(
+                                  maxWidth: 300,
+                                ),
                                 decoration: BoxDecoration(),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
@@ -247,13 +251,13 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
-                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Container(
                                           width: MediaQuery.of(context)
                                                   .size
                                                   .width *
-                                              0.65,
+                                              0.8,
                                           height: 100,
                                           constraints: BoxConstraints(
                                             maxWidth: 248,
@@ -348,6 +352,41 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                 ],
                                               ),
                                             ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Expanded(
+                                          child: SwitchListTile(
+                                            value: switchListTileValue ??=
+                                                false,
+                                            onChanged: (newValue) => setState(
+                                                () => switchListTileValue =
+                                                    newValue),
+                                            title: Text(
+                                              'Are you the Patient?',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .title3
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        fontSize: 18,
+                                                      ),
+                                            ),
+                                            subtitle: Text(
+                                              'Subtitle',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle2,
+                                            ),
+                                            tileColor: Color(0xFFF5F5F5),
+                                            dense: false,
+                                            controlAffinity:
+                                                ListTileControlAffinity
+                                                    .trailing,
                                           ),
                                         ),
                                       ],
