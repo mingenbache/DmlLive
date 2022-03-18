@@ -315,43 +315,32 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                   maxWidth: 82,
                                                 ),
                                                 decoration: BoxDecoration(),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Theme(
-                                                      data: ThemeData(
-                                                        unselectedWidgetColor:
-                                                            Color(0xFF707070),
-                                                      ),
-                                                      child: CheckboxListTile(
-                                                        value:
-                                                            isPatientValue ??=
-                                                                FFAppState()
-                                                                    .isPatient,
-                                                        onChanged: (newValue) =>
-                                                            setState(() =>
-                                                                isPatientValue =
-                                                                    newValue),
-                                                        tileColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryColor,
-                                                        activeColor:
-                                                            Colors.white,
-                                                        checkColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryColor,
-                                                        dense: false,
-                                                        controlAffinity:
-                                                            ListTileControlAffinity
-                                                                .trailing,
-                                                      ),
-                                                    ),
-                                                  ],
+                                                child: Theme(
+                                                  data: ThemeData(
+                                                    unselectedWidgetColor:
+                                                        Color(0xFF707070),
+                                                  ),
+                                                  child: CheckboxListTile(
+                                                    value: isPatientValue ??=
+                                                        FFAppState().isPatient,
+                                                    onChanged: (newValue) =>
+                                                        setState(() =>
+                                                            isPatientValue =
+                                                                newValue),
+                                                    tileColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryColor,
+                                                    activeColor: Colors.white,
+                                                    checkColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryColor,
+                                                    dense: false,
+                                                    controlAffinity:
+                                                        ListTileControlAffinity
+                                                            .trailing,
+                                                  ),
                                                 ),
                                               ),
                                             ),
