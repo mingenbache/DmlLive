@@ -103,7 +103,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Row(
-                            mainAxisSize: MainAxisSize.max,
+                            mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
@@ -161,7 +161,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Row(
-                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Container(
                                             width: MediaQuery.of(context)
