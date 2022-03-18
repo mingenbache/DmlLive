@@ -239,11 +239,11 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.75,
-                                height: 100,
                                 decoration: BoxDecoration(),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
@@ -300,6 +300,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                   Container(
                                                     constraints: BoxConstraints(
                                                       maxWidth: 50,
+                                                      maxHeight: 50,
                                                     ),
                                                     decoration: BoxDecoration(),
                                                     child: Theme(
