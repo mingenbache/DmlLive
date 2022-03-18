@@ -5,6 +5,7 @@ import '../chat/chat_widget.dart';
 import '../components/client_notifications_widget_widget.dart';
 import '../components/new_booking_sheet_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../home_admin/home_admin_widget.dart';
@@ -232,117 +233,137 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(0, 0, 10, 0),
-                                                  child: Material(
-                                                    color: Colors.transparent,
-                                                    elevation: 2,
-                                                    shape:
-                                                        RoundedRectangleBorder(
+                                                  child: Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            0.45,
+                                                    constraints: BoxConstraints(
+                                                      maxWidth: 200,
+                                                    ),
+                                                    decoration: BoxDecoration(
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               12),
                                                     ),
-                                                    child: Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.45,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                        maxWidth: 200,
-                                                      ),
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0xFFFEFEFE),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0, 5, 5, 5),
-                                                        child: StreamBuilder<
-                                                            List<
-                                                                BookingsRecord>>(
-                                                          stream:
-                                                              queryBookingsRecord(
-                                                            queryBuilder: (bookingsRecord) => bookingsRecord
-                                                                .where('user',
-                                                                    isEqualTo:
-                                                                        homeUsersRecord
-                                                                            .reference)
-                                                                .where(
-                                                                    'is_submitted',
-                                                                    isNotEqualTo:
-                                                                        true),
-                                                            singleRecord: true,
-                                                          ),
-                                                          builder: (context,
-                                                              snapshot) {
-                                                            // Customize what your widget looks like when it's loading.
-                                                            if (!snapshot
-                                                                .hasData) {
-                                                              return Center(
-                                                                child: SizedBox(
-                                                                  width: 50,
-                                                                  height: 50,
-                                                                  child:
-                                                                      SpinKitDoubleBounce(
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0, 5, 5, 5),
+                                                      child: StreamBuilder<
+                                                          List<BookingsRecord>>(
+                                                        stream:
+                                                            queryBookingsRecord(
+                                                          queryBuilder: (bookingsRecord) => bookingsRecord
+                                                              .where('user',
+                                                                  isEqualTo:
+                                                                      homeUsersRecord
+                                                                          .reference)
+                                                              .where(
+                                                                  'is_submitted',
+                                                                  isNotEqualTo:
+                                                                      true),
+                                                          singleRecord: true,
+                                                        ),
+                                                        builder: (context,
+                                                            snapshot) {
+                                                          // Customize what your widget looks like when it's loading.
+                                                          if (!snapshot
+                                                              .hasData) {
+                                                            return Center(
+                                                              child: SizedBox(
+                                                                width: 50,
+                                                                height: 50,
+                                                                child:
+                                                                    SpinKitDoubleBounce(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryColor,
+                                                                  size: 50,
+                                                                ),
+                                                              ),
+                                                            );
+                                                          }
+                                                          List<BookingsRecord>
+                                                              rowBookingsRecordList =
+                                                              snapshot.data;
+                                                          final rowBookingsRecord =
+                                                              rowBookingsRecordList
+                                                                      .isNotEmpty
+                                                                  ? rowBookingsRecordList
+                                                                      .first
+                                                                  : null;
+                                                          return Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceEvenly,
+                                                            children: [
+                                                              if (homeUsersRecord
+                                                                      .hasCurrentBooking ??
+                                                                  true)
+                                                                FlutterFlowIconButton(
+                                                                  borderColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  borderRadius:
+                                                                      30,
+                                                                  borderWidth:
+                                                                      1,
+                                                                  buttonSize:
+                                                                      40,
+                                                                  icon: FaIcon(
+                                                                    FontAwesomeIcons
+                                                                        .shoppingBasket,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryColor,
-                                                                    size: 50,
+                                                                    size: 25,
                                                                   ),
-                                                                ),
-                                                              );
-                                                            }
-                                                            List<BookingsRecord>
-                                                                rowBookingsRecordList =
-                                                                snapshot.data;
-                                                            final rowBookingsRecord =
-                                                                rowBookingsRecordList
-                                                                        .isNotEmpty
-                                                                    ? rowBookingsRecordList
-                                                                        .first
-                                                                    : null;
-                                                            return Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceEvenly,
-                                                              children: [
-                                                                if (homeUsersRecord
-                                                                        .hasCurrentBooking ??
-                                                                    true)
-                                                                  InkWell(
-                                                                    onTap:
-                                                                        () async {
-                                                                      await Navigator
-                                                                          .push(
-                                                                        context,
-                                                                        MaterialPageRoute(
-                                                                          builder: (context) =>
-                                                                              NewBookingWidget(
-                                                                            bookingRef:
-                                                                                homeUsersRecord.currentBooking,
-                                                                          ),
+                                                                  onPressed:
+                                                                      () async {
+                                                                    await Navigator
+                                                                        .push(
+                                                                      context,
+                                                                      MaterialPageRoute(
+                                                                        builder:
+                                                                            (context) =>
+                                                                                NewBookingWidget(
+                                                                          bookingRef:
+                                                                              homeUsersRecord.currentBooking,
                                                                         ),
-                                                                      );
-                                                                    },
-                                                                    child:
-                                                                        FaIcon(
-                                                                      FontAwesomeIcons
-                                                                          .shoppingBasket,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryColor,
-                                                                      size: 18,
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              InkWell(
+                                                                onTap:
+                                                                    () async {
+                                                                  await Navigator
+                                                                      .push(
+                                                                    context,
+                                                                    MaterialPageRoute(
+                                                                      builder:
+                                                                          (context) =>
+                                                                              AccountWidget(),
                                                                     ),
-                                                                  ),
+                                                                  );
+                                                                },
+                                                                child: Icon(
+                                                                  Icons.person,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryColor,
+                                                                  size: 20,
+                                                                ),
+                                                              ),
+                                                              if ((homeUsersRecord
+                                                                      .role) !=
+                                                                  'client')
                                                                 InkWell(
                                                                   onTap:
                                                                       () async {
@@ -352,23 +373,70 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                       MaterialPageRoute(
                                                                         builder:
                                                                             (context) =>
-                                                                                AccountWidget(),
+                                                                                HomeAdminWidget(),
                                                                       ),
                                                                     );
                                                                   },
                                                                   child: Icon(
                                                                     Icons
-                                                                        .person,
+                                                                        .local_police_sharp,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryColor,
                                                                     size: 20,
                                                                   ),
                                                                 ),
-                                                                if ((homeUsersRecord
-                                                                        .role) !=
-                                                                    'client')
-                                                                  InkWell(
+                                                              FutureBuilder<
+                                                                  List<
+                                                                      UsersRecord>>(
+                                                                future:
+                                                                    queryUsersRecordOnce(
+                                                                  queryBuilder: (usersRecord) =>
+                                                                      usersRecord.where(
+                                                                          'role',
+                                                                          isEqualTo:
+                                                                              'front'),
+                                                                  singleRecord:
+                                                                      true,
+                                                                ),
+                                                                builder: (context,
+                                                                    snapshot) {
+                                                                  // Customize what your widget looks like when it's loading.
+                                                                  if (!snapshot
+                                                                      .hasData) {
+                                                                    return Center(
+                                                                      child:
+                                                                          SizedBox(
+                                                                        width:
+                                                                            50,
+                                                                        height:
+                                                                            50,
+                                                                        child:
+                                                                            SpinKitDoubleBounce(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryColor,
+                                                                          size:
+                                                                              50,
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  }
+                                                                  List<UsersRecord>
+                                                                      iconUsersRecordList =
+                                                                      snapshot
+                                                                          .data;
+                                                                  // Return an empty Container when the document does not exist.
+                                                                  if (snapshot
+                                                                      .data
+                                                                      .isEmpty) {
+                                                                    return Container();
+                                                                  }
+                                                                  final iconUsersRecord = iconUsersRecordList
+                                                                          .isNotEmpty
+                                                                      ? iconUsersRecordList
+                                                                          .first
+                                                                      : null;
+                                                                  return InkWell(
                                                                     onTap:
                                                                         () async {
                                                                       await Navigator
@@ -376,98 +444,27 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         context,
                                                                         MaterialPageRoute(
                                                                           builder: (context) =>
-                                                                              HomeAdminWidget(),
+                                                                              ChatWidget(
+                                                                            chatUser:
+                                                                                iconUsersRecord,
+                                                                          ),
                                                                         ),
                                                                       );
                                                                     },
                                                                     child: Icon(
                                                                       Icons
-                                                                          .local_police_sharp,
+                                                                          .message,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryColor,
                                                                       size: 20,
                                                                     ),
-                                                                  ),
-                                                                FutureBuilder<
-                                                                    List<
-                                                                        UsersRecord>>(
-                                                                  future:
-                                                                      queryUsersRecordOnce(
-                                                                    queryBuilder: (usersRecord) => usersRecord.where(
-                                                                        'role',
-                                                                        isEqualTo:
-                                                                            'front'),
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ),
-                                                                  builder: (context,
-                                                                      snapshot) {
-                                                                    // Customize what your widget looks like when it's loading.
-                                                                    if (!snapshot
-                                                                        .hasData) {
-                                                                      return Center(
-                                                                        child:
-                                                                            SizedBox(
-                                                                          width:
-                                                                              50,
-                                                                          height:
-                                                                              50,
-                                                                          child:
-                                                                              SpinKitDoubleBounce(
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryColor,
-                                                                            size:
-                                                                                50,
-                                                                          ),
-                                                                        ),
-                                                                      );
-                                                                    }
-                                                                    List<UsersRecord>
-                                                                        iconUsersRecordList =
-                                                                        snapshot
-                                                                            .data;
-                                                                    // Return an empty Container when the document does not exist.
-                                                                    if (snapshot
-                                                                        .data
-                                                                        .isEmpty) {
-                                                                      return Container();
-                                                                    }
-                                                                    final iconUsersRecord = iconUsersRecordList
-                                                                            .isNotEmpty
-                                                                        ? iconUsersRecordList
-                                                                            .first
-                                                                        : null;
-                                                                    return InkWell(
-                                                                      onTap:
-                                                                          () async {
-                                                                        await Navigator
-                                                                            .push(
-                                                                          context,
-                                                                          MaterialPageRoute(
-                                                                            builder: (context) =>
-                                                                                ChatWidget(
-                                                                              chatUser: iconUsersRecord,
-                                                                            ),
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                      child:
-                                                                          Icon(
-                                                                        Icons
-                                                                            .message,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryColor,
-                                                                        size:
-                                                                            20,
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        ),
+                                                                  );
+                                                                },
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
                                                       ),
                                                     ),
                                                   ),
