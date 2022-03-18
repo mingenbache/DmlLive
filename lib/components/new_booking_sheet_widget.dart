@@ -98,53 +98,57 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 44, 21, 20),
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 34, 21, 20),
                       child: Column(
-                        mainAxisSize: MainAxisSize.max,
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'NEW BOOKING',
-                                style: FlutterFlowTheme.of(context)
-                                    .title2
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      color: Color(0xFF586B06),
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold,
+                          Container(
+                            decoration: BoxDecoration(),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  'NEW BOOKING',
+                                  style: FlutterFlowTheme.of(context)
+                                      .title2
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        color: Color(0xFF586B06),
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                ),
+                                InkWell(
+                                  onTap: () async {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Card(
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryColor,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
                                     ),
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  Navigator.pop(context);
-                                },
-                                child: Card(
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryColor,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30,
-                                    buttonSize: 48,
-                                    icon: Icon(
-                                      Icons.close_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
-                                      size: 30,
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30,
+                                      buttonSize: 48,
+                                      icon: Icon(
+                                        Icons.close_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .tertiaryColor,
+                                        size: 30,
+                                      ),
+                                      onPressed: () async {
+                                        Navigator.pop(context);
+                                      },
                                     ),
-                                    onPressed: () async {
-                                      Navigator.pop(context);
-                                    },
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                           Expanded(
                             child: Container(
@@ -167,7 +171,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
-                                                0.8,
+                                                0.75,
                                             decoration: BoxDecoration(
                                               color: Color(0x34FFFFFF),
                                               borderRadius:
@@ -238,7 +242,8 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                     ],
                                   ),
                                   Container(
-                                    width: 100,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.75,
                                     height: 100,
                                     decoration: BoxDecoration(),
                                     child: Column(
@@ -406,7 +411,10 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Container(
-                                              width: 300,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.75,
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(12),
@@ -445,9 +453,9 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                 width: MediaQuery.of(context)
                                                         .size
                                                         .width *
-                                                    0.8,
+                                                    0.75,
                                                 constraints: BoxConstraints(
-                                                  maxWidth: 320,
+                                                  maxWidth: 310,
                                                 ),
                                                 decoration: BoxDecoration(
                                                   borderRadius:
