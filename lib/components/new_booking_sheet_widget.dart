@@ -155,18 +155,103 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                               maxHeight: 300,
                             ),
                             decoration: BoxDecoration(),
-                            child: Container(
-                              height: MediaQuery.of(context).size.height * 0.3,
-                              child: PageView(
-                                physics: const NeverScrollableScrollPhysics(),
-                                controller: pageViewController ??=
-                                    PageController(initialPage: 0),
-                                scrollDirection: Axis.horizontal,
-                                children: [
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
+                            child: PageView(
+                              physics: const NeverScrollableScrollPhysics(),
+                              controller: pageViewController ??=
+                                  PageController(initialPage: 0),
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.75,
+                                          decoration: BoxDecoration(
+                                            color: Color(0x34FFFFFF),
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 10, 10, 10),
+                                            child: Text(
+                                              'You have no Current Bookings. Would you like to start a new Booking?',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle2
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryColor,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        FFButtonWidget(
+                                          onPressed: () async {
+                                            await pageViewController.nextPage(
+                                              duration:
+                                                  Duration(milliseconds: 300),
+                                              curve: Curves.ease,
+                                            );
+                                          },
+                                          text: 'Yes, Continue',
+                                          options: FFButtonOptions(
+                                            width: 140,
+                                            height: 30,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryColor,
+                                            textStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .subtitle2
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .tertiaryColor,
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                            elevation: 1,
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1,
+                                            ),
+                                            borderRadius: 12,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.75,
+                                  height: 100,
+                                  decoration: BoxDecoration(),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         mainAxisSize: MainAxisSize.min,
@@ -175,9 +260,170 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
+                                                0.65,
+                                            height: 100,
+                                            constraints: BoxConstraints(
+                                              maxWidth: 248,
+                                            ),
+                                            decoration: BoxDecoration(),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Text(
+                                                      'Are you the Patient?',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .title3,
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Container(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.6,
+                                                      constraints:
+                                                          BoxConstraints(
+                                                        maxWidth: 240,
+                                                      ),
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Text(
+                                                        'Check the box if you are booking for yourself',
+                                                        style: TextStyle(
+                                                          color:
+                                                              Color(0xFF586B06),
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          fontSize: 14,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      constraints:
+                                                          BoxConstraints(
+                                                        maxWidth: 50,
+                                                      ),
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Theme(
+                                                        data: ThemeData(
+                                                          unselectedWidgetColor:
+                                                              Color(0xFF707070),
+                                                        ),
+                                                        child: CheckboxListTile(
+                                                          value:
+                                                              isPatientValue ??=
+                                                                  FFAppState()
+                                                                      .isPatient,
+                                                          onChanged: (newValue) =>
+                                                              setState(() =>
+                                                                  isPatientValue =
+                                                                      newValue),
+                                                          tileColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .secondaryColor,
+                                                          activeColor:
+                                                              Colors.white,
+                                                          checkColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .secondaryColor,
+                                                          dense: false,
+                                                          controlAffinity:
+                                                              ListTileControlAffinity
+                                                                  .trailing,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          FFButtonWidget(
+                                            onPressed: () async {
+                                              setState(() => FFAppState()
+                                                  .lastBookingPage = true);
+                                              setState(() => FFAppState()
+                                                  .isPatient = isPatientValue);
+                                              await pageViewController.nextPage(
+                                                duration:
+                                                    Duration(milliseconds: 300),
+                                                curve: Curves.ease,
+                                              );
+                                            },
+                                            text: 'Next',
+                                            options: FFButtonOptions(
+                                              width: 90,
+                                              height: 30,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryColor,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle2
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tertiaryColor,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1,
+                                              ),
+                                              borderRadius: 12,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  height: 100,
+                                  constraints: BoxConstraints(
+                                    maxHeight: 150,
+                                  ),
+                                  decoration: BoxDecoration(),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
                                                 0.75,
                                             decoration: BoxDecoration(
-                                              color: Color(0x34FFFFFF),
                                               borderRadius:
                                                   BorderRadius.circular(12),
                                             ),
@@ -185,7 +431,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(10, 10, 10, 10),
                                               child: Text(
-                                                'You have no Current Bookings. Would you like to start a new Booking?',
+                                                'Do you have a referring Physician?',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .subtitle2
@@ -203,334 +449,82 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.end,
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
-                                          FFButtonWidget(
-                                            onPressed: () async {
-                                              await pageViewController.nextPage(
-                                                duration:
-                                                    Duration(milliseconds: 300),
-                                                curve: Curves.ease,
-                                              );
-                                            },
-                                            text: 'Yes, Continue',
-                                            options: FFButtonOptions(
-                                              width: 140,
-                                              height: 30,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryColor,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    3, 0, 3, 0),
+                                            child: Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.75,
+                                              constraints: BoxConstraints(
+                                                maxWidth: 310,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(0),
+                                                shape: BoxShape.rectangle,
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 2, 0),
+                                                child: TextFormField(
+                                                  controller:
+                                                      docNameAddressController,
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    hintText:
+                                                        'If Yes, Please enter their name and contact details here',
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Color(0xFF586B06),
+                                                        width: 1,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Color(0xFF586B06),
+                                                        width: 1,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor:
+                                                        Color(0x4FFFFFFF),
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .tertiaryColor,
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal,
+                                                            Color(0xFF586B06),
                                                       ),
-                                              elevation: 1,
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1,
+                                                  maxLines: 3,
+                                                ),
                                               ),
-                                              borderRadius: 12,
                                             ),
                                           ),
                                         ],
                                       ),
                                     ],
                                   ),
-                                  Container(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.75,
-                                    height: 100,
-                                    decoration: BoxDecoration(),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Container(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.65,
-                                              height: 100,
-                                              constraints: BoxConstraints(
-                                                maxWidth: 248,
-                                              ),
-                                              decoration: BoxDecoration(),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        'Are you the Patient?',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .title3,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Container(
-                                                        width: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .width *
-                                                            0.6,
-                                                        constraints:
-                                                            BoxConstraints(
-                                                          maxWidth: 240,
-                                                        ),
-                                                        decoration:
-                                                            BoxDecoration(),
-                                                        child: Text(
-                                                          'Check the box if you are booking for yourself',
-                                                          style: TextStyle(
-                                                            color: Color(
-                                                                0xFF586B06),
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontSize: 14,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        constraints:
-                                                            BoxConstraints(
-                                                          maxWidth: 50,
-                                                        ),
-                                                        decoration:
-                                                            BoxDecoration(),
-                                                        child: Theme(
-                                                          data: ThemeData(
-                                                            unselectedWidgetColor:
-                                                                Color(
-                                                                    0xFF707070),
-                                                          ),
-                                                          child:
-                                                              CheckboxListTile(
-                                                            value: isPatientValue ??=
-                                                                FFAppState()
-                                                                    .isPatient,
-                                                            onChanged: (newValue) =>
-                                                                setState(() =>
-                                                                    isPatientValue =
-                                                                        newValue),
-                                                            tileColor: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryColor,
-                                                            activeColor:
-                                                                Colors.white,
-                                                            checkColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryColor,
-                                                            dense: false,
-                                                            controlAffinity:
-                                                                ListTileControlAffinity
-                                                                    .trailing,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            FFButtonWidget(
-                                              onPressed: () async {
-                                                setState(() => FFAppState()
-                                                    .lastBookingPage = true);
-                                                setState(() =>
-                                                    FFAppState().isPatient =
-                                                        isPatientValue);
-                                                await pageViewController
-                                                    .nextPage(
-                                                  duration: Duration(
-                                                      milliseconds: 300),
-                                                  curve: Curves.ease,
-                                                );
-                                              },
-                                              text: 'Next',
-                                              options: FFButtonOptions(
-                                                width: 90,
-                                                height: 30,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .tertiaryColor,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1,
-                                                ),
-                                                borderRadius: 12,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 100,
-                                    constraints: BoxConstraints(
-                                      maxHeight: 150,
-                                    ),
-                                    decoration: BoxDecoration(),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Container(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.75,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(10, 10, 10, 10),
-                                                child: Text(
-                                                  'Do you have a referring Physician?',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryColor,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(3, 0, 3, 0),
-                                              child: Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.75,
-                                                constraints: BoxConstraints(
-                                                  maxWidth: 310,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(0),
-                                                  shape: BoxShape.rectangle,
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 2, 0),
-                                                  child: TextFormField(
-                                                    controller:
-                                                        docNameAddressController,
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      hintText:
-                                                          'If Yes, Please enter their name and contact details here',
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                          width: 1,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12),
-                                                      ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                          width: 1,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12),
-                                                      ),
-                                                      filled: true,
-                                                      fillColor:
-                                                          Color(0x4FFFFFFF),
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                        ),
-                                                    maxLines: 3,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
