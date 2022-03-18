@@ -306,31 +306,42 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                     child: Theme(
                                                       data: ThemeData(
                                                         unselectedWidgetColor:
-                                                            Color(0xFF707070),
+                                                            Color(0xFFFDFDFD),
                                                       ),
                                                       child: CheckboxListTile(
                                                         value:
                                                             isPatientValue ??=
-                                                                FFAppState()
-                                                                    .isPatient,
+                                                                false,
                                                         onChanged: (newValue) =>
                                                             setState(() =>
                                                                 isPatientValue =
                                                                     newValue),
+                                                        title: Text(
+                                                          'Title',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .title3,
+                                                        ),
+                                                        subtitle: Text(
+                                                          'Subtitle',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .subtitle2,
+                                                        ),
                                                         tileColor:
+                                                            Color(0xFFF5F5F5),
+                                                        activeColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryColor,
-                                                        activeColor:
-                                                            Colors.white,
                                                         checkColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
+                                                                .tertiaryColor,
                                                         dense: false,
                                                         controlAffinity:
                                                             ListTileControlAffinity
-                                                                .leading,
+                                                                .trailing,
                                                       ),
                                                     ),
                                                   ),
@@ -586,7 +597,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                     );
                                     await currentUserReference
                                         .update(usersUpdateData);
-                                    if (isPatientValue) {
+                                    if (!(isPatientValue)) {
                                       setState(() =>
                                           FFAppState().dobEntered = false);
                                     } else {
