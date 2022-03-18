@@ -98,7 +98,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 44, 21, 20),
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 44, 21, 20),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -113,7 +113,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                     .override(
                                       fontFamily: 'Roboto',
                                       color: Color(0xFF586B06),
-                                      fontSize: 32,
+                                      fontSize: 30,
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),
@@ -164,7 +164,10 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Container(
-                                            width: 300,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.8,
                                             decoration: BoxDecoration(
                                               color: Color(0x34FFFFFF),
                                               borderRadius:
