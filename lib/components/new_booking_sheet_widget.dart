@@ -23,7 +23,6 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
     with TickerProviderStateMixin {
   BookingsRecord newbookingRef;
   PageController pageViewController;
-  bool isPatientValue;
   bool switchListTileValue;
   TextEditingController docNameAddressController;
   final animationsMap = {
@@ -307,47 +306,6 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                       maxHeight: 50,
                                                     ),
                                                     decoration: BoxDecoration(),
-                                                    child: Theme(
-                                                      data: ThemeData(
-                                                        unselectedWidgetColor:
-                                                            Color(0xFFFDFDFD),
-                                                      ),
-                                                      child: CheckboxListTile(
-                                                        value:
-                                                            isPatientValue ??=
-                                                                false,
-                                                        onChanged: (newValue) =>
-                                                            setState(() =>
-                                                                isPatientValue =
-                                                                    newValue),
-                                                        title: Text(
-                                                          'Title',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .title3,
-                                                        ),
-                                                        subtitle: Text(
-                                                          'Subtitle',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .subtitle2,
-                                                        ),
-                                                        tileColor:
-                                                            Color(0xFFF5F5F5),
-                                                        activeColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryColor,
-                                                        checkColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .tertiaryColor,
-                                                        dense: false,
-                                                        controlAffinity:
-                                                            ListTileControlAffinity
-                                                                .trailing,
-                                                      ),
-                                                    ),
                                                   ),
                                                 ],
                                               ),
@@ -399,8 +357,9 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                           onPressed: () async {
                                             setState(() => FFAppState()
                                                 .lastBookingPage = true);
-                                            setState(() => FFAppState()
-                                                .isPatient = isPatientValue);
+                                            setState(() =>
+                                                FFAppState().isPatient =
+                                                    switchListTileValue);
                                             await pageViewController.nextPage(
                                               duration:
                                                   Duration(milliseconds: 300),
@@ -593,7 +552,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                       totalTests: 0,
                                       docNameAddress:
                                           docNameAddressController.text,
-                                      userPatient: isPatientValue,
+                                      userPatient: switchListTileValue,
                                       scheduledDate: functions.getNextWeekday(),
                                       bookingConfirmed: false,
                                       confirmationBegan: false,
@@ -613,8 +572,8 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                             bookingsRecordReference);
                                     _shouldSetState = true;
                                     setState(() => FFAppState().isPatient =
-                                        isPatientValue);
-                                    if (isPatientValue) {
+                                        switchListTileValue);
+                                    if (switchListTileValue) {
                                       final bookingsUpdateData =
                                           createBookingsRecordData(
                                         firstname:
@@ -636,7 +595,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                     );
                                     await currentUserReference
                                         .update(usersUpdateData);
-                                    if (!(isPatientValue)) {
+                                    if (!(switchListTileValue)) {
                                       setState(() =>
                                           FFAppState().dobEntered = false);
                                     } else {
@@ -655,8 +614,8 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                       ),
                                     );
                                     setState(() => FFAppState().dob =
-                                        functions.returnDOBLoader(
-                                            newbookingRef, isPatientValue));
+                                        functions.returnDOBLoader(newbookingRef,
+                                            switchListTileValue));
                                     setState(() => FFAppState().selectedDate =
                                         functions.getNextWeekday());
                                     await Navigator.push(

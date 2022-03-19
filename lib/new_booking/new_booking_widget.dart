@@ -1605,7 +1605,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                               'tests_included': FieldValue.arrayRemove([
                                                                                 testsListItem
                                                                               ]),
-                                                                              'total_tests': FieldValue.increment(-1),
+                                                                              'total_tests': FieldValue.increment(0),
                                                                             };
                                                                             await newBookingBookingsRecord.reference.update(bookingsUpdateData);
                                                                             ScaffoldMessenger.of(context).showSnackBar(

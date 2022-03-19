@@ -448,7 +448,7 @@ class _TestItemWidgetState extends State<TestItemWidget> {
                                               FieldValue.arrayUnion(
                                                   [widget.testRef]),
                                           'total_tests':
-                                              FieldValue.increment(1),
+                                              FieldValue.increment(0),
                                         };
                                         await widget.bookingRef.reference
                                             .update(bookingsUpdateData);
