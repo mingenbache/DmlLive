@@ -276,63 +276,72 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                   ),
                                                 ],
                                               ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.5,
-                                                    constraints: BoxConstraints(
-                                                      maxWidth: 240,
-                                                    ),
-                                                    decoration: BoxDecoration(),
-                                                    child: Text(
-                                                      'Check the box if you are booking for yourself',
-                                                      style: TextStyle(
-                                                        color:
-                                                            Color(0xFF586B06),
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontSize: 14,
+                                              SingleChildScrollView(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Container(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.5,
+                                                      constraints:
+                                                          BoxConstraints(
+                                                        maxWidth: 240,
+                                                      ),
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Text(
+                                                        'Check the box if you are booking for yourself',
+                                                        style: TextStyle(
+                                                          color:
+                                                              Color(0xFF586B06),
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          fontSize: 14,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  Container(
-                                                    constraints: BoxConstraints(
-                                                      maxWidth: 50,
-                                                      maxHeight: 50,
-                                                    ),
-                                                    decoration: BoxDecoration(),
-                                                    child: Theme(
-                                                      data: ThemeData(
-                                                        unselectedWidgetColor:
-                                                            Color(0xFF95A1AC),
+                                                    Container(
+                                                      constraints:
+                                                          BoxConstraints(
+                                                        maxWidth: 50,
+                                                        maxHeight: 50,
                                                       ),
-                                                      child: CheckboxListTile(
-                                                        value:
-                                                            isPatientValue ??=
-                                                                true,
-                                                        onChanged: (newValue) =>
-                                                            setState(() =>
-                                                                isPatientValue =
-                                                                    newValue),
-                                                        tileColor:
-                                                            Color(0xFFF5F5F5),
-                                                        activeColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryColor,
-                                                        dense: false,
-                                                        controlAffinity:
-                                                            ListTileControlAffinity
-                                                                .trailing,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Theme(
+                                                        data: ThemeData(
+                                                          unselectedWidgetColor:
+                                                              Color(0xFF95A1AC),
+                                                        ),
+                                                        child: CheckboxListTile(
+                                                          value:
+                                                              isPatientValue ??=
+                                                                  true,
+                                                          onChanged: (newValue) =>
+                                                              setState(() =>
+                                                                  isPatientValue =
+                                                                      newValue),
+                                                          tileColor:
+                                                              Color(0xFFF5F5F5),
+                                                          activeColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primaryColor,
+                                                          dense: false,
+                                                          controlAffinity:
+                                                              ListTileControlAffinity
+                                                                  .trailing,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ],
                                           ),
