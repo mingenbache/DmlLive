@@ -96,7 +96,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(20, 34, 21, 20),
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 34, 21, 10),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -149,7 +149,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                           ),
                         ),
                         Container(
-                          height: MediaQuery.of(context).size.height * 0.3,
+                          height: MediaQuery.of(context).size.height * 0.35,
                           constraints: BoxConstraints(
                             maxHeight: 300,
                           ),
@@ -284,7 +284,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                         MediaQuery.of(context)
                                                                 .size
                                                                 .width *
-                                                            0.6,
+                                                            0.5,
                                                     constraints: BoxConstraints(
                                                       maxWidth: 240,
                                                     ),
