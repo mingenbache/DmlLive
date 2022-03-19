@@ -557,8 +557,6 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                 children: [
                                   FFButtonWidget(
                                     onPressed: () async {
-                                      var _shouldSetState = false;
-
                                       final bookingsCreateData =
                                           createBookingsRecordData(
                                         user: currentUserReference,
@@ -587,7 +585,6 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                           BookingsRecord.getDocumentFromData(
                                               bookingsCreateData,
                                               bookingsRecordReference);
-                                      _shouldSetState = true;
                                       setState(() => FFAppState().isPatient =
                                           isPatientValue);
                                       if (isPatientValue) {
@@ -616,11 +613,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                       if (!(isPatientValue)) {
                                         setState(() =>
                                             FFAppState().dobEntered = false);
-                                      } else {
-                                        if (_shouldSetState) setState(() {});
-                                        return;
                                       }
-
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
@@ -647,7 +640,8 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                           ),
                                         ),
                                       );
-                                      if (_shouldSetState) setState(() {});
+
+                                      setState(() {});
                                     },
                                     text: 'Continue',
                                     options: FFButtonOptions(
