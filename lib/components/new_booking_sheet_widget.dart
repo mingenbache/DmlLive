@@ -250,7 +250,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
-                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Container(
                                           width: MediaQuery.of(context)
