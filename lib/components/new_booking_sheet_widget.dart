@@ -23,6 +23,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
     with TickerProviderStateMixin {
   BookingsRecord newbookingRef;
   PageController pageViewController;
+  bool isPatientValue;
   bool switchListTileValue;
   TextEditingController docNameAddressController;
   final animationsMap = {
@@ -255,7 +256,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                           width: MediaQuery.of(context)
                                                   .size
                                                   .width *
-                                              0.8,
+                                              0.9,
                                           height: 100,
                                           constraints: BoxConstraints(
                                             maxWidth: 248,
@@ -305,6 +306,31 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                       maxHeight: 50,
                                                     ),
                                                     decoration: BoxDecoration(),
+                                                    child: Theme(
+                                                      data: ThemeData(
+                                                        unselectedWidgetColor:
+                                                            Color(0xFF95A1AC),
+                                                      ),
+                                                      child: CheckboxListTile(
+                                                        value:
+                                                            isPatientValue ??=
+                                                                true,
+                                                        onChanged: (newValue) =>
+                                                            setState(() =>
+                                                                isPatientValue =
+                                                                    newValue),
+                                                        tileColor:
+                                                            Color(0xFFF5F5F5),
+                                                        activeColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryColor,
+                                                        dense: false,
+                                                        controlAffinity:
+                                                            ListTileControlAffinity
+                                                                .trailing,
+                                                      ),
+                                                    ),
                                                   ),
                                                 ],
                                               ),
