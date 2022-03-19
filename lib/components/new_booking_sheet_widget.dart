@@ -307,6 +307,8 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                       ),
                                                     ),
                                                     Container(
+                                                      width: 30,
+                                                      height: 30,
                                                       constraints:
                                                           BoxConstraints(
                                                         maxWidth: 50,
