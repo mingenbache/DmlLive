@@ -362,8 +362,6 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                   color: Colors.transparent,
                                   elevation: 1,
                                   child: Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.9,
                                     height: 150,
                                     decoration: BoxDecoration(),
                                     child: custom_widgets.ChartTests(
