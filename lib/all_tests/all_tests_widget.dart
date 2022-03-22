@@ -864,7 +864,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                                 'tests_included': FieldValue.arrayUnion([
                                                                                   testsListFullPageItem.reference
                                                                                 ]),
-                                                                                'total_tests': FieldValue.increment(0),
+                                                                                'total_tests': FieldValue.increment(1),
                                                                               };
                                                                               await columnBookingsRecord.reference.update(bookingsUpdateData);
                                                                             }

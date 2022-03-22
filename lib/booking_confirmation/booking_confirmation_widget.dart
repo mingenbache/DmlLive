@@ -1755,7 +1755,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                 'tests_included': FieldValue.arrayRemove([
                                                                                   testsListItem
                                                                                 ]),
-                                                                                'total_tests': FieldValue.increment(0),
+                                                                                'total_tests': FieldValue.increment(-1),
                                                                               };
                                                                               await widget.bookingRef.update(bookingsUpdateData);
                                                                               ScaffoldMessenger.of(context).showSnackBar(

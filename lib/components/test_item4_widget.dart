@@ -146,7 +146,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                       ),
                                       'tests_included':
                                           FieldValue.arrayRemove([widget.test]),
-                                      'total_tests': FieldValue.increment(0),
+                                      'total_tests': FieldValue.increment(-1),
                                     };
                                     await widget.booking.reference
                                         .update(bookingsUpdateData);
@@ -224,7 +224,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                       ),
                                       'tests_included':
                                           FieldValue.arrayUnion([widget.test]),
-                                      'total_tests': FieldValue.increment(0),
+                                      'total_tests': FieldValue.increment(1),
                                     };
                                     await widget.booking.reference
                                         .update(bookingsUpdateData);

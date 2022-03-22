@@ -12,6 +12,7 @@ import '../test_queue/test_queue_widget.dart';
 import '../tested_tests/tested_tests_widget.dart';
 import '../user_list/user_list_widget.dart';
 import 'dart:ui';
+import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -336,6 +337,27 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                       Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.8,
+                                  height: 150,
+                                  decoration: BoxDecoration(),
+                                  child: custom_widgets.ChartTests(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                    height: 150,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.center,

@@ -180,7 +180,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                               ),
                               'tests_included': FieldValue.arrayUnion(
                                   [widget.test.reference]),
-                              'total_tests': FieldValue.increment(0),
+                              'total_tests': FieldValue.increment(1),
                             };
                             await containerBookingsRecord.reference
                                 .update(bookingsUpdateData);

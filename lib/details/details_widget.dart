@@ -909,7 +909,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                             columnTestsRecord.reference
                                           ]),
                                           'total_tests':
-                                              FieldValue.increment(0),
+                                              FieldValue.increment(1),
                                         };
                                         await containerBookingsRecord.reference
                                             .update(bookingsUpdateData);
