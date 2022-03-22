@@ -339,20 +339,38 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                         children: [
                           Row(
                             mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
+                                child: Text(
+                                  'Booking Statistics',
+                                  style: FlutterFlowTheme.of(context).title3,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                                child: Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.8,
-                                  height: 150,
-                                  decoration: BoxDecoration(),
-                                  child: custom_widgets.ChartTests(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.95,
+                                child: Material(
+                                  color: Colors.transparent,
+                                  elevation: 1,
+                                  child: Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.9,
                                     height: 150,
+                                    decoration: BoxDecoration(),
+                                    child: custom_widgets.ChartTests(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.95,
+                                      height: 150,
+                                    ),
                                   ),
                                 ),
                               ),
