@@ -134,33 +134,7 @@ class _ChartTestsState extends State<ChartTests> {
               case 13:
                 return '13';
               case 14:
-                return '14';
-              case 15:
-                return '15';
-              case 16:
-                return '16';
-              case 17:
-                return '17';
-              case 18:
-                return '18';
-              case 19:
-                return '19';
-              case 20:
-                return '20';
-              case 21:
-                return '21';
-              case 22:
-                return '22';
-              case 23:
-                return '23';
-              case 24:
-                return '24';
-              case 25:
-                return '25';
-              case 26:
-                return '26';
-              case 27:
-                return '27';
+                return 'today';
             }
             return '';
           },
