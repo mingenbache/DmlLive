@@ -358,17 +358,12 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                               Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                                child: Material(
-                                  color: Colors.transparent,
-                                  elevation: 1,
-                                  child: Container(
+                                child: Container(
+                                  height: 150,
+                                  decoration: BoxDecoration(),
+                                  child: custom_widgets.ChartTests(
+                                    width: MediaQuery.of(context).size.width,
                                     height: 150,
-                                    decoration: BoxDecoration(),
-                                    child: custom_widgets.ChartTests(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.95,
-                                      height: 150,
-                                    ),
                                   ),
                                 ),
                               ),
