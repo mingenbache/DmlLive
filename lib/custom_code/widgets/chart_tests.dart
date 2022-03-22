@@ -42,7 +42,7 @@ class _ChartTestsState extends State<ChartTests> {
                 borderRadius: BorderRadius.all(
                   Radius.circular(18),
                 ),
-                color: Color(0xff232d37)),
+                color: Color(0xff58595b)),
             child: Padding(
               padding: const EdgeInsets.only(
                   right: 18.0, left: 12.0, top: 24, bottom: 12),
@@ -103,7 +103,7 @@ class _ChartTestsState extends State<ChartTests> {
           reservedSize: 22,
           interval: 1,
           getTextStyles: (context, value) => const TextStyle(
-              color: Color(0xff68737d),
+              color: Color(0xff586b06),
               fontWeight: FontWeight.bold,
               fontSize: 16),
           getTitles: (value) {
@@ -123,18 +123,18 @@ class _ChartTestsState extends State<ChartTests> {
           showTitles: true,
           interval: 1,
           getTextStyles: (context, value) => const TextStyle(
-            color: Color(0xff67727d),
+            color: Color(0xff586b06),
             fontWeight: FontWeight.bold,
             fontSize: 15,
           ),
           getTitles: (value) {
             switch (value.toInt()) {
               case 1:
-                return '10k';
+                return '5';
               case 3:
-                return '30k';
+                return '15';
               case 5:
-                return '50k';
+                return '25';
             }
             return '';
           },

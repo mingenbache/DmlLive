@@ -350,8 +350,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                   height: 150,
                                   decoration: BoxDecoration(),
                                   child: custom_widgets.ChartTests(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.8,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.95,
                                     height: 150,
                                   ),
                                 ),
