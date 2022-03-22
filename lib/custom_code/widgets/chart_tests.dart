@@ -3,6 +3,7 @@ import '../../backend/backend.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
+import '../../flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom widget code
 import 'dart:async';
@@ -192,7 +193,7 @@ class _ChartTestsState extends State<ChartTests> {
           show: true,
           border: Border.all(color: const Color(0xff37434d), width: 1)),
       minX: 0,
-      maxX: 11,
+      maxX: 14,
       minY: 0,
       maxY: 6,
       lineBarsData: [
@@ -211,7 +212,7 @@ class _ChartTestsState extends State<ChartTests> {
           barWidth: 5,
           isStrokeCapRound: true,
           dotData: FlDotData(
-            show: false,
+            show: true,
           ),
           belowBarData: BarAreaData(
             show: true,
@@ -346,6 +347,8 @@ class _ChartTestsState extends State<ChartTests> {
       minX: 0,
       maxX: 30,
       minY: 0,
+      axisTitleData: FlAxisTitleData(
+          bottomTitle: AxisTitle(titleText: 'Date(last 14 days)')),
       maxY: 20,
       lineBarsData: [
         LineChartBarData(
