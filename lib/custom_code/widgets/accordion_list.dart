@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 
 //import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:accordion/accordion.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
