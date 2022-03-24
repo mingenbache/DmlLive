@@ -174,7 +174,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                 ),
                 Stack(
                   children: [
-                    if (widget.bookingRef.completed ?? true)
+                    if (widget.bookingRef.resultPublished ?? true)
                       InkWell(
                         onTap: () async {
                           await Navigator.push(
@@ -227,7 +227,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                           ),
                         ),
                       ),
-                    if (!(widget.bookingRef.completed) ?? true)
+                    if (widget.bookingRef.resultPublished ?? true)
                       Container(
                         width: 60,
                         height: 60,

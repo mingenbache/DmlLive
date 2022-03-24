@@ -15,6 +15,20 @@
       ]
     },
     {
+      "collectionGroup": "chats",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "user_a",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "last_message_time",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "Invoices",
       "queryScope": "COLLECTION",
       "fields": [
@@ -102,6 +116,20 @@
         },
         {
           "fieldPath": "scheduled_date",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "notifications",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "users_receiving",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "created_date",
           "order": "DESCENDING"
         }
       ]

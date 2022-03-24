@@ -1815,8 +1815,11 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0, 24, 0, 10),
-                                child: StreamBuilder<List<StaffRecord>>(
-                                  stream: queryStaffRecord(),
+                                child: FutureBuilder<List<UsersRecord>>(
+                                  future: queryUsersRecordOnce(
+                                    queryBuilder: (usersRecord) => usersRecord
+                                        .where('role', isEqualTo: 'front'),
+                                  ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
                                     if (!snapshot.hasData) {
@@ -1832,7 +1835,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                         ),
                                       );
                                     }
-                                    List<StaffRecord> buttonStaffRecordList =
+                                    List<UsersRecord> buttonUsersRecordList =
                                         snapshot.data;
                                     return InkWell(
                                       onLongPress: () async {
@@ -1940,12 +1943,21 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                           setState(() =>
                                               FFAppState().isSubmitted = true);
                                           if (FFAppState().isSubmitted) {
-                                            final notificationsCreateData =
-                                                createNotificationsRecordData(
-                                              userRole: 'front',
-                                              message:
-                                                  'A new booking has been made.',
-                                            );
+                                            final notificationsCreateData = {
+                                              ...createNotificationsRecordData(
+                                                userRole: 'front',
+                                                message:
+                                                    'A new booking has been made.',
+                                                createdDate:
+                                                    getCurrentTimestamp,
+                                                isBooking: true,
+                                                isTest: false,
+                                              ),
+                                              'users_receiving':
+                                                  buttonUsersRecordList
+                                                      .map((e) => e.reference)
+                                                      .toList(),
+                                            };
                                             await NotificationsRecord.collection
                                                 .doc()
                                                 .set(notificationsCreateData);
@@ -1967,8 +1979,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 'New Booking Created',
                                             notificationText:
                                                 'User created a new booking.',
-                                            userRefs: buttonStaffRecordList
-                                                .map((e) => e.userRef)
+                                            userRefs: buttonUsersRecordList
+                                                .map((e) => e.reference)
                                                 .toList(),
                                             initialPageName:
                                                 'BookingConfirmation',

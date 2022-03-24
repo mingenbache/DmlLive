@@ -61,6 +61,11 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                           }
                           List<NotificationsRecord>
                               listViewNotificationsRecordList = snapshot.data;
+                          if (listViewNotificationsRecordList.isEmpty) {
+                            return Image.network(
+                              '',
+                            );
+                          }
                           return ListView.builder(
                             padding: EdgeInsets.zero,
                             shrinkWrap: true,
@@ -70,7 +75,9 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                               final listViewNotificationsRecord =
                                   listViewNotificationsRecordList[
                                       listViewIndex];
-                              return NotificationListItemWidget();
+                              return NotificationListItemWidget(
+                                notificationRef: listViewNotificationsRecord,
+                              );
                             },
                           );
                         },

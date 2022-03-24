@@ -1026,3 +1026,15 @@ List<String> splitProcedureString(String procedureString) {
   // split string using comma
   return procedureString.split(", ").map((String e) => e.trim()).toList();
 }
+
+List<NotificationsRecord> filterNotifications(
+  List<NotificationsRecord> allNotifications,
+  DocumentReference userRef,
+) {
+  // filter notifications if usersSeen array contains document reference
+  List<NotificationsRecord> ret = [];
+  allNotifications.forEach((NotificationsRecord notification) {
+    if (notification.usersSeen.contains(userRef)) ret.add(notification);
+  });
+  return ret;
+}
