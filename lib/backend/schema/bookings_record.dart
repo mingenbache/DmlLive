@@ -139,6 +139,19 @@ abstract class BookingsRecord
   bool get reportSent;
 
   @nullable
+  @BuiltValueField(wireName: 'doc_names')
+  String get docNames;
+
+  @nullable
+  String get doctorPhoneNumber;
+
+  @nullable
+  String get doctorEmail;
+
+  @nullable
+  DocumentReference get docRef;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -172,7 +185,10 @@ abstract class BookingsRecord
     ..verifiedTests = ListBuilder()
     ..bookedTests = ListBuilder()
     ..payments = ListBuilder()
-    ..reportSent = false;
+    ..reportSent = false
+    ..docNames = ''
+    ..doctorPhoneNumber = ''
+    ..doctorEmail = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('bookings');
@@ -228,6 +244,10 @@ Map<String, dynamic> createBookingsRecordData({
   DocumentReference updateStaff,
   bool confirmationBegan,
   bool reportSent,
+  String docNames,
+  String doctorPhoneNumber,
+  String doctorEmail,
+  DocumentReference docRef,
 }) =>
     serializers.toFirestore(
         BookingsRecord.serializer,
@@ -268,4 +288,8 @@ Map<String, dynamic> createBookingsRecordData({
           ..verifiedTests = null
           ..bookedTests = null
           ..payments = null
-          ..reportSent = reportSent));
+          ..reportSent = reportSent
+          ..docNames = docNames
+          ..doctorPhoneNumber = doctorPhoneNumber
+          ..doctorEmail = doctorEmail
+          ..docRef = docRef));

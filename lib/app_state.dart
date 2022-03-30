@@ -88,6 +88,10 @@ class FFAppState {
   }
 
   bool assignTechnologist = false;
+
+  bool reportLastPage = false;
+
+  List<String> reportEmails = [];
 }
 
 LatLng _latLngFromString(String val) {

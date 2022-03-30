@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/add_doctor_form_widget.dart';
 import '../components/confirm_tests_widget.dart';
 import '../components/test_list_booking_sheet_widget.dart';
 import '../components/top_actions_widget.dart';
@@ -642,43 +643,106 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                             ],
                                           ),
                                         ),
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.43,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.04,
-                                          decoration: BoxDecoration(
-                                            color: Color(0x2CEEEEEE),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(6, 6, 3, 3),
-                                                child: AutoSizeText(
-                                                  bookingConfirmationBookingsRecord
-                                                      .docNameAddress,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryColor,
-                                                      ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.43,
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.04,
+                                              decoration: BoxDecoration(
+                                                color: Color(0x2CEEEEEE),
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                6, 6, 3, 3),
+                                                    child: AutoSizeText(
+                                                      bookingConfirmationBookingsRecord
+                                                          .docNameAddress,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Roboto',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryColor,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 5, 0, 0),
+                                              child: InkWell(
+                                                onTap: () async {
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return Padding(
+                                                        padding: MediaQuery.of(
+                                                                context)
+                                                            .viewInsets,
+                                                        child:
+                                                            AddDoctorFormWidget(),
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                                child: Container(
+                                                  width: 100,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0xA9FFFFFF),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 2, 0, 2),
+                                                    child: Text(
+                                                      'Add Doctor',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Roboto',
+                                                                color: Color(
+                                                                    0x9E58595B),
+                                                              ),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
@@ -730,9 +794,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           StreamBuilder<List<DoctorsRecord>>(
-                                            stream: queryDoctorsRecord(
-                                              singleRecord: true,
-                                            ),
+                                            stream: queryDoctorsRecord(),
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
                                               if (!snapshot.hasData) {
@@ -753,17 +815,12 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                               List<DoctorsRecord>
                                                   refDoctorDoctorsRecordList =
                                                   snapshot.data;
-                                              final refDoctorDoctorsRecord =
-                                                  refDoctorDoctorsRecordList
-                                                          .isNotEmpty
-                                                      ? refDoctorDoctorsRecordList
-                                                          .first
-                                                      : null;
                                               return FlutterFlowDropDown(
-                                                options: refDoctorDoctorsRecord
-                                                    .names
-                                                    .toList()
-                                                    .toList(),
+                                                options:
+                                                    refDoctorDoctorsRecordList
+                                                        .map((e) => e.name)
+                                                        .toList()
+                                                        .toList(),
                                                 onChanged: (val) => setState(
                                                     () => refDoctorValue = val),
                                                 width: MediaQuery.of(context)
@@ -1964,104 +2021,149 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 24, 0, 10),
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      if (functions.checkStringNull(
-                                          labRefNumController.text)) {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text(
-                                                  'Invalid Lab Reference Number'),
-                                              content: Text(
-                                                  'Please enter a valid lab reference number for this Booking.'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        return;
-                                      } else {
-                                        if (!formKey.currentState.validate()) {
-                                          return;
-                                        }
-
-                                        await showModalBottomSheet(
-                                          isScrollControlled: true,
-                                          backgroundColor: Color(0x00FFFFFF),
-                                          context: context,
-                                          builder: (context) {
-                                            return Padding(
-                                              padding: MediaQuery.of(context)
-                                                  .viewInsets,
-                                              child: ConfirmTestsWidget(
-                                                booking:
-                                                    bookingConfirmationBookingsRecord
-                                                        .reference,
-                                                labRefNum:
-                                                    labRefNumController.text,
-                                              ),
-                                            );
-                                          },
-                                        );
-
-                                        final bookingsUpdateData =
-                                            createBookingsRecordData(
-                                          labRefNum: labRefNumController.text,
-                                          docNameAddress: refDoctorValue,
-                                          paymentBalance:
-                                              bookingConfirmationBookingsRecord
-                                                  .totalPrice
-                                                  .toDouble(),
-                                          confirmationBegan: true,
-                                        );
-                                        await bookingConfirmationBookingsRecord
-                                            .reference
-                                            .update(bookingsUpdateData);
-                                        setState(() => FFAppState().labRef =
-                                            labRefNumController.text);
-                                        setState(() => FFAppState()
-                                            .pathologistassigned = false);
-                                        setState(() => FFAppState()
-                                            .technologistassigned = false);
-                                        setState(() => FFAppState().numTests =
-                                            bookingConfirmationBookingsRecord
-                                                .testsIncluded
-                                                .toList()
-                                                .length);
-                                        setState(
-                                            () => FFAppState().numTestDone = 0);
-                                      }
-                                    },
-                                    text: 'Confirm and Proceed',
-                                    options: FFButtonOptions(
-                                      width: 260,
-                                      height: 60,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .subtitle2
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                      elevation: 2,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1,
-                                      ),
-                                      borderRadius: 25,
+                                  child: StreamBuilder<List<DoctorsRecord>>(
+                                    stream: queryDoctorsRecord(
+                                      queryBuilder: (doctorsRecord) =>
+                                          doctorsRecord.where('names',
+                                              arrayContains:
+                                                  refDoctorValue != ''
+                                                      ? refDoctorValue
+                                                      : null),
+                                      singleRecord: true,
                                     ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50,
+                                            height: 50,
+                                            child: SpinKitDoubleBounce(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
+                                              size: 50,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<DoctorsRecord>
+                                          buttonDoctorsRecordList =
+                                          snapshot.data;
+                                      final buttonDoctorsRecord =
+                                          buttonDoctorsRecordList.isNotEmpty
+                                              ? buttonDoctorsRecordList.first
+                                              : null;
+                                      return FFButtonWidget(
+                                        onPressed: () async {
+                                          if (functions.checkStringNull(
+                                              labRefNumController.text)) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      'Invalid Lab Reference Number'),
+                                                  content: Text(
+                                                      'Please enter a valid lab reference number for this Booking.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                            return;
+                                          } else {
+                                            if (!formKey.currentState
+                                                .validate()) {
+                                              return;
+                                            }
+
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Color(0x00FFFFFF),
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding:
+                                                      MediaQuery.of(context)
+                                                          .viewInsets,
+                                                  child: ConfirmTestsWidget(
+                                                    booking:
+                                                        bookingConfirmationBookingsRecord
+                                                            .reference,
+                                                    labRefNum:
+                                                        labRefNumController
+                                                            .text,
+                                                  ),
+                                                );
+                                              },
+                                            );
+
+                                            final bookingsUpdateData =
+                                                createBookingsRecordData(
+                                              labRefNum:
+                                                  labRefNumController.text,
+                                              docNameAddress: refDoctorValue,
+                                              paymentBalance:
+                                                  bookingConfirmationBookingsRecord
+                                                      .totalPrice
+                                                      .toDouble(),
+                                              confirmationBegan: true,
+                                              docRef:
+                                                  buttonDoctorsRecord.reference,
+                                            );
+                                            await bookingConfirmationBookingsRecord
+                                                .reference
+                                                .update(bookingsUpdateData);
+                                            setState(() => FFAppState().labRef =
+                                                labRefNumController.text);
+                                            setState(() => FFAppState()
+                                                .pathologistassigned = false);
+                                            setState(() => FFAppState()
+                                                .technologistassigned = false);
+                                            setState(() => FFAppState()
+                                                    .numTests =
+                                                bookingConfirmationBookingsRecord
+                                                    .testsIncluded
+                                                    .toList()
+                                                    .length);
+                                            setState(() =>
+                                                FFAppState().numTestDone = 0);
+                                          }
+                                        },
+                                        text: 'Confirm and Proceed',
+                                        options: FFButtonOptions(
+                                          width: 260,
+                                          height: 60,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryColor,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .subtitle2
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiaryColor,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                          elevation: 2,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1,
+                                          ),
+                                          borderRadius: 25,
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                               ),

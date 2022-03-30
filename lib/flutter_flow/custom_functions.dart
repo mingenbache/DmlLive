@@ -1038,3 +1038,73 @@ List<NotificationsRecord> filterNotifications(
   });
   return ret;
 }
+
+String checkNullString(String string) {
+  // check if string is null
+  return string != null ? string : "";
+}
+
+String returnInvoiceStatus(InvoicesRecord invoice) {
+  // return string if boolean value true and another string if not
+  if (invoice != null) {
+    if (invoice.reference != null && invoice.isPaid != null) {
+      if (invoice.isPaid) {
+        if (invoice.fullAmount) {
+          return 'Paid in full';
+        } else {
+          return 'incomplete';
+        }
+      } else {
+        return 'Pending';
+      }
+    } else {
+      return 'Pending';
+    }
+  } else {
+    return 'None';
+  }
+}
+
+bool isTestnotVerifiedorFlagged(TestedTestsRecord testedTest) {
+  // return boolean value if isVerified true and isflagged not true
+  if (testedTest.isVerified == true && testedTest.isFlagged != true) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+String returnTestName(DocumentReference testRef) {
+  // retrieve firestore document and return property
+  var test = FirebaseFirestore.instance
+      .collection('Tests')
+      .doc('testRef')
+      .get()
+      .then((snap) {
+    return TestsRecord().name.toString;
+  });
+}
+
+DocumentReference returnstaffRef(DocumentReference userRef) {
+  var docs = FirebaseFirestore.instance
+      .collection('staff')
+      .where(
+        'UserRef',
+        isEqualTo: userRef,
+      )
+      .get()
+      .then((snap) {
+    return StaffRecord().reference;
+  });
+}
+
+String returnTestNotes(DocumentReference testRef) {
+  // retrieve firestore document and return property
+  var test = FirebaseFirestore.instance
+      .collection('Tests')
+      .doc('testRef')
+      .get()
+      .then((snap) {
+    return TestsRecord().name.toString;
+  });
+}

@@ -1,5 +1,6 @@
 import '../backend/backend.dart';
 import '../components/new_invoice_sheet_widget.dart';
+import '../components/report_wizard_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -228,42 +229,59 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                         ),
                       ),
                     if (widget.bookingRef.resultPublished ?? true)
-                      Container(
-                        width: 60,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Icon(
-                              Icons.library_books,
-                              color: Color(0x4CFFFFFF),
-                              size: 25,
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 45,
-                                  decoration: BoxDecoration(),
-                                  child: Text(
-                                    'Report',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          color: Color(0x4CFFFFFF),
-                                        ),
-                                  ),
+                      InkWell(
+                        onTap: () async {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: MediaQuery.of(context).viewInsets,
+                                child: ReportWizardWidget(
+                                  booking: widget.bookingRef,
                                 ),
-                              ],
-                            ),
-                          ],
+                              );
+                            },
+                          );
+                        },
+                        child: Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Icon(
+                                Icons.library_books,
+                                color: Color(0x4CFFFFFF),
+                                size: 25,
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 45,
+                                    decoration: BoxDecoration(),
+                                    child: Text(
+                                      'Report',
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            color: Color(0x4CFFFFFF),
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                   ],

@@ -45,8 +45,8 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
               ),
             );
           }
-          List<BookedTestsRecord> bookedTestsContainerBookedTestsRecordList =
-              snapshot.data;
+          List<BookedTestsRecord>
+              bookedTestsReportContainerBookedTestsRecordList = snapshot.data;
           return Container(
             constraints: BoxConstraints(
               maxHeight: 170,
@@ -60,7 +60,9 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
               child: Builder(
                 builder: (context) {
                   final bookingTests =
-                      bookedTestsContainerBookedTestsRecordList?.toList() ?? [];
+                      bookedTestsReportContainerBookedTestsRecordList
+                              ?.toList() ??
+                          [];
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     primary: false,
