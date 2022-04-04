@@ -947,6 +947,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           initialized:
                                                               choiceChipsValue !=
                                                                   null,
+                                                          alignment:
+                                                              WrapAlignment
+                                                                  .start,
                                                         ),
                                                       if (newBookingBookingsRecord
                                                               .userPatient ??

@@ -549,6 +549,7 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                                 multiselect: false,
                                                 initialized:
                                                     sexChoiceChipsValue != null,
+                                                alignment: WrapAlignment.start,
                                               ),
                                             ),
                                           ),

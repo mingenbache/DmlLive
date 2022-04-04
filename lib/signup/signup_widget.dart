@@ -535,6 +535,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         multiselect: false,
                                         initialized:
                                             sexChoiceChipsValue != null,
+                                        alignment: WrapAlignment.start,
                                       ),
                                     ),
                                   ],

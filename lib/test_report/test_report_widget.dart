@@ -1311,6 +1311,9 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                                                   initialized:
                                                                       choiceChipsValue !=
                                                                           null,
+                                                                  alignment:
+                                                                      WrapAlignment
+                                                                          .start,
                                                                 ),
                                                               ),
                                                             ],
