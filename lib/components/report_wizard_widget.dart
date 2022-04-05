@@ -2035,6 +2035,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                               curve:
                                                                   Curves.ease,
                                                             );
+                                                            setState(() =>
+                                                                FFAppState()
+                                                                        .reportLastPage =
+                                                                    true);
                                                           },
                                                           text: 'Continue',
                                                           options:
