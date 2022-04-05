@@ -232,7 +232,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                             ),
                           ),
                         ),
-                      if (widget.bookingRef.resultPublished ?? true)
+                      if (!(widget.bookingRef.resultPublished) ?? true)
                         InkWell(
                           onTap: () async {
                             await showModalBottomSheet(
