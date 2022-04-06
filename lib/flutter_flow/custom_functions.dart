@@ -1108,3 +1108,11 @@ String returnTestNotes(DocumentReference testRef) {
     return TestsRecord().name.toString;
   });
 }
+
+bool isListEmpty(List<DocumentReference> tests) {
+  // check if list is empty
+  if (tests.where((test) => test != null).length != 0) {
+    return false;
+  }
+  return true;
+}
