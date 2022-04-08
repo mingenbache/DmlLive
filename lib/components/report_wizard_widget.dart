@@ -1921,10 +1921,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                             0,
                                                                             0,
                                                                             8),
-                                                                child: StreamBuilder<
+                                                                child: FutureBuilder<
                                                                     TestedTestsRecord>(
-                                                                  stream: TestedTestsRecord
-                                                                      .getDocument(
+                                                                  future: TestedTestsRecord
+                                                                      .getDocumentOnce(
                                                                           reportVerifiedTestsItem),
                                                                   builder: (context,
                                                                       snapshot) {
