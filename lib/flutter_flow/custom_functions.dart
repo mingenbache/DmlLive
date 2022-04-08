@@ -1081,7 +1081,7 @@ String returnTestName(DocumentReference testRef) {
       .doc('testRef')
       .get()
       .then((snap) {
-    return TestsRecord().name.toString;
+    return TestsRecord().reference.toString;
   });
 }
 
