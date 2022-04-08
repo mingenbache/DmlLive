@@ -1041,7 +1041,7 @@ List<NotificationsRecord> filterNotifications(
 
 String checkNullString(String string) {
   // check if string is null
-  return string != null ? string : "";
+  return string != null ? string : "no data";
 }
 
 String returnInvoiceStatus(InvoicesRecord invoice) {
