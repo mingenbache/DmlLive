@@ -44,6 +44,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
   bool checkboxListTileValue2;
   bool checkboxListTileValue3;
   bool checkboxListTileValue4;
+  ReportsRecord newReportRef;
   ReportsRecord reportRef;
   final animationsMap = {
     'columnOnPageLoadAnimation': AnimationInfo(
@@ -2556,8 +2557,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                       alignment: AlignmentDirectional(0, 0.05),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 10),
-                        child: FFButtonWidget(
-                          onPressed: () async {
+                        child: InkWell(
+                          onDoubleTap: () async {
                             var _shouldSetState = false;
 
                             final reportsCreateData = {
@@ -2581,10 +2582,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                             var reportsRecordReference =
                                 ReportsRecord.collection.doc();
                             await reportsRecordReference.set(reportsCreateData);
-                            reportRef = ReportsRecord.getDocumentFromData(
+                            newReportRef = ReportsRecord.getDocumentFromData(
                                 reportsCreateData, reportsRecordReference);
                             _shouldSetState = true;
-                            if (reportRef != null) {
+                            if (newReportRef.reference != null) {
                               await pageViewController.nextPage(
                                 duration: Duration(milliseconds: 300),
                                 curve: Curves.ease,
@@ -2625,25 +2626,98 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
 
                             if (_shouldSetState) setState(() {});
                           },
-                          text: 'Confirm and Proceed',
-                          options: FFButtonOptions(
-                            width: 260,
-                            height: 60,
-                            color: FlutterFlowTheme.of(context).secondaryColor,
-                            textStyle:
-                                FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Roboto',
-                                      color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                            elevation: 2,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1,
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              var _shouldSetState = false;
+
+                              final reportsCreateData = {
+                                ...createReportsRecordData(
+                                  booking: widget.booking.reference,
+                                  pathologist: widget.booking.pathologist,
+                                  bookinguser: widget.booking.user,
+                                  doctor: widget.booking.docRef,
+                                  pathologistComments: widget.booking.testNotes,
+                                  createdDate: getCurrentTimestamp,
+                                  createdUser: functions
+                                      .returnstaffRef(currentUserReference),
+                                  isComplete: false,
+                                  patientName:
+                                      '${widget.booking.firstname} ${widget.booking.lastname}',
+                                  patientSex: widget.booking.sex,
+                                  labRefNum: widget.booking.labRefNum,
+                                ),
+                                'testedTests': widget.booking.verifiedTests,
+                              };
+                              var reportsRecordReference =
+                                  ReportsRecord.collection.doc();
+                              await reportsRecordReference
+                                  .set(reportsCreateData);
+                              reportRef = ReportsRecord.getDocumentFromData(
+                                  reportsCreateData, reportsRecordReference);
+                              _shouldSetState = true;
+                              if (reportRef != null) {
+                                await pageViewController.nextPage(
+                                  duration: Duration(milliseconds: 300),
+                                  curve: Curves.ease,
+                                );
+                                triggerPushNotification(
+                                  notificationTitle:
+                                      'Your Test Results are Ready',
+                                  notificationText: 'Click here to view report',
+                                  userRefs: [widget.booking.user],
+                                  initialPageName: 'TestReport',
+                                  parameterData: {
+                                    'bookingRef': widget.booking.reference,
+                                  },
+                                );
+                                if (_shouldSetState) setState(() {});
+                                return;
+                              } else {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('Report Creation Failed'),
+                                      content: Text(
+                                          'Please review Test Status before proceeding'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                                if (_shouldSetState) setState(() {});
+                                return;
+                              }
+
+                              if (_shouldSetState) setState(() {});
+                            },
+                            text: 'Confirm and Proceed',
+                            options: FFButtonOptions(
+                              width: 260,
+                              height: 60,
+                              color:
+                                  FlutterFlowTheme.of(context).secondaryColor,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .subtitle2
+                                  .override(
+                                    fontFamily: 'Roboto',
+                                    color: FlutterFlowTheme.of(context)
+                                        .tertiaryColor,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                              elevation: 2,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: 25,
                             ),
-                            borderRadius: 25,
                           ),
                         ),
                       ),
