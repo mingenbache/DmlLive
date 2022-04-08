@@ -2559,14 +2559,56 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                         child: FFButtonWidget(
                           onPressed: () async {
                             var _shouldSetState = false;
-                            if (functions.isListEmpty(
-                                widget.booking.verifiedTests.toList())) {
+
+                            final reportsCreateData = {
+                              ...createReportsRecordData(
+                                booking: widget.booking.reference,
+                                pathologist: widget.booking.pathologist,
+                                bookinguser: widget.booking.user,
+                                doctor: widget.booking.docRef,
+                                pathologistComments: widget.booking.testNotes,
+                                createdDate: getCurrentTimestamp,
+                                createdUser: functions
+                                    .returnstaffRef(currentUserReference),
+                                isComplete: false,
+                                patientName:
+                                    '${widget.booking.firstname} ${widget.booking.lastname}',
+                                patientSex: widget.booking.sex,
+                                labRefNum: widget.booking.labRefNum,
+                              ),
+                              'testedTests': widget.booking.verifiedTests,
+                            };
+                            var reportsRecordReference =
+                                ReportsRecord.collection.doc();
+                            await reportsRecordReference.set(reportsCreateData);
+                            reportRef = ReportsRecord.getDocumentFromData(
+                                reportsCreateData, reportsRecordReference);
+                            _shouldSetState = true;
+                            if (reportRef != null) {
+                              await pageViewController.nextPage(
+                                duration: Duration(milliseconds: 300),
+                                curve: Curves.ease,
+                              );
+                              triggerPushNotification(
+                                notificationTitle:
+                                    'Your Test Results are Ready',
+                                notificationText: 'Click here to view report',
+                                userRefs: [widget.booking.user],
+                                initialPageName: 'TestReport',
+                                parameterData: {
+                                  'bookingRef': widget.booking.reference,
+                                },
+                              );
+                              if (_shouldSetState) setState(() {});
+                              return;
+                            } else {
                               await showDialog(
                                 context: context,
                                 builder: (alertDialogContext) {
                                   return AlertDialog(
-                                    title: Text('Failed'),
-                                    content: Text('List is empty'),
+                                    title: Text('Report Creation Failed'),
+                                    content: Text(
+                                        'Please review Test Status before proceeding'),
                                     actions: [
                                       TextButton(
                                         onPressed: () =>
@@ -2579,70 +2621,6 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                               );
                               if (_shouldSetState) setState(() {});
                               return;
-                            } else {
-                              final reportsCreateData = {
-                                ...createReportsRecordData(
-                                  booking: widget.booking.reference,
-                                  pathologist: widget.booking.pathologist,
-                                  bookinguser: widget.booking.user,
-                                  doctor: widget.booking.docRef,
-                                  pathologistComments: widget.booking.testNotes,
-                                  createdDate: getCurrentTimestamp,
-                                  createdUser: functions
-                                      .returnstaffRef(currentUserReference),
-                                  isComplete: false,
-                                  patientName:
-                                      '${widget.booking.firstname} ${widget.booking.lastname}',
-                                  patientSex: widget.booking.sex,
-                                  labRefNum: widget.booking.labRefNum,
-                                ),
-                                'testedTests': widget.booking.verifiedTests,
-                              };
-                              var reportsRecordReference =
-                                  ReportsRecord.collection.doc();
-                              await reportsRecordReference
-                                  .set(reportsCreateData);
-                              reportRef = ReportsRecord.getDocumentFromData(
-                                  reportsCreateData, reportsRecordReference);
-                              _shouldSetState = true;
-                              if (reportRef != null) {
-                                await pageViewController.nextPage(
-                                  duration: Duration(milliseconds: 300),
-                                  curve: Curves.ease,
-                                );
-                                triggerPushNotification(
-                                  notificationTitle:
-                                      'Your Test Results are Ready',
-                                  notificationText: 'Click here to view report',
-                                  userRefs: [widget.booking.user],
-                                  initialPageName: 'TestReport',
-                                  parameterData: {
-                                    'bookingRef': widget.booking.reference,
-                                  },
-                                );
-                                if (_shouldSetState) setState(() {});
-                                return;
-                              } else {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Report Creation Failed'),
-                                      content: Text(
-                                          'Please review Test Status before proceeding'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                                if (_shouldSetState) setState(() {});
-                                return;
-                              }
                             }
 
                             if (_shouldSetState) setState(() {});
