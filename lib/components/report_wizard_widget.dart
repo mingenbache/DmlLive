@@ -10,7 +10,6 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import '../custom_code/actions/index.dart' as actions;
 import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -45,7 +44,6 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
   bool checkboxListTileValue2;
   bool checkboxListTileValue3;
   bool checkboxListTileValue4;
-  List<DocumentReference> verifiedtestedTests;
   ReportsRecord reportRef;
   final animationsMap = {
     'columnOnPageLoadAnimation': AnimationInfo(
@@ -2567,13 +2565,9 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                   child: FFButtonWidget(
                                     onPressed: () async {
                                       var _shouldSetState = false;
-                                      verifiedtestedTests =
-                                          await actions.getTestedTests(
-                                        widget.booking,
-                                      );
-                                      _shouldSetState = true;
-                                      if (functions.isListEmpty(
-                                          verifiedtestedTests.toList())) {
+                                      if (functions.isListEmpty(widget
+                                          .booking.verifiedTests
+                                          .toList())) {
                                         await showDialog(
                                           context: context,
                                           builder: (alertDialogContext) {
@@ -2613,7 +2607,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                             patientSex: widget.booking.sex,
                                             labRefNum: widget.booking.labRefNum,
                                           ),
-                                          'testedTests': verifiedtestedTests,
+                                          'testedTests':
+                                              widget.booking.verifiedTests,
                                         };
                                         var reportsRecordReference =
                                             ReportsRecord.collection.doc();
