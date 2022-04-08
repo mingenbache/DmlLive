@@ -127,9 +127,6 @@ abstract class BookingsRecord
   bool get confirmationBegan;
 
   @nullable
-  BuiltList<DocumentReference> get verifiedTests;
-
-  @nullable
   BuiltList<DocumentReference> get bookedTests;
 
   @nullable
@@ -150,6 +147,9 @@ abstract class BookingsRecord
 
   @nullable
   DocumentReference get docRef;
+
+  @nullable
+  BuiltList<DocumentReference> get verifiedTests;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -182,13 +182,13 @@ abstract class BookingsRecord
     ..resultPublished = false
     ..paymentBalance = 0.0
     ..confirmationBegan = false
-    ..verifiedTests = ListBuilder()
     ..bookedTests = ListBuilder()
     ..payments = ListBuilder()
     ..reportSent = false
     ..docNames = ''
     ..doctorPhoneNumber = ''
-    ..doctorEmail = '';
+    ..doctorEmail = ''
+    ..verifiedTests = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('bookings');
@@ -285,11 +285,11 @@ Map<String, dynamic> createBookingsRecordData({
           ..paymentBalance = paymentBalance
           ..updateStaff = updateStaff
           ..confirmationBegan = confirmationBegan
-          ..verifiedTests = null
           ..bookedTests = null
           ..payments = null
           ..reportSent = reportSent
           ..docNames = docNames
           ..doctorPhoneNumber = doctorPhoneNumber
           ..doctorEmail = doctorEmail
-          ..docRef = docRef));
+          ..docRef = docRef
+          ..verifiedTests = null));
