@@ -2576,24 +2576,21 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                             onDoubleTap: () async {
                               var _shouldSetState = false;
 
-                              final reportsCreateData = {
-                                ...createReportsRecordData(
-                                  booking: widget.booking.reference,
-                                  pathologist: widget.booking.pathologist,
-                                  bookinguser: widget.booking.user,
-                                  doctor: widget.booking.docRef,
-                                  pathologistComments: widget.booking.testNotes,
-                                  createdDate: getCurrentTimestamp,
-                                  createdUser: functions
-                                      .returnstaffRef(currentUserReference),
-                                  isComplete: false,
-                                  patientName:
-                                      '${widget.booking.firstname} ${widget.booking.lastname}',
-                                  patientSex: widget.booking.sex,
-                                  labRefNum: widget.booking.labRefNum,
-                                ),
-                                'testedTests': widget.booking.verifiedTests,
-                              };
+                              final reportsCreateData = createReportsRecordData(
+                                booking: widget.booking.reference,
+                                pathologist: widget.booking.pathologist,
+                                bookinguser: widget.booking.user,
+                                doctor: widget.booking.docRef,
+                                pathologistComments: widget.booking.testNotes,
+                                createdDate: getCurrentTimestamp,
+                                createdUser: functions
+                                    .returnstaffRef(currentUserReference),
+                                isComplete: false,
+                                patientName:
+                                    '${widget.booking.firstname} ${widget.booking.lastname}',
+                                patientSex: widget.booking.sex,
+                                labRefNum: widget.booking.labRefNum,
+                              );
                               var reportsRecordReference =
                                   ReportsRecord.collection.doc();
                               await reportsRecordReference
