@@ -44,7 +44,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
   bool checkboxListTileValue2;
   bool checkboxListTileValue3;
   bool checkboxListTileValue4;
-  ReportsRecord newReportRef;
+  ReportsRecord myNewReportRef;
   ReportsRecord reportRef;
   final formKey = GlobalKey<FormState>();
   final animationsMap = {
@@ -2595,10 +2595,12 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                   ReportsRecord.collection.doc();
                               await reportsRecordReference
                                   .set(reportsCreateData);
-                              newReportRef = ReportsRecord.getDocumentFromData(
-                                  reportsCreateData, reportsRecordReference);
+                              myNewReportRef =
+                                  ReportsRecord.getDocumentFromData(
+                                      reportsCreateData,
+                                      reportsRecordReference);
                               _shouldSetState = true;
-                              if (newReportRef.reference != null) {
+                              if (myNewReportRef.reference != null) {
                                 await pageViewController.nextPage(
                                   duration: Duration(milliseconds: 300),
                                   curve: Curves.ease,
@@ -2669,7 +2671,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                 reportRef = ReportsRecord.getDocumentFromData(
                                     reportsCreateData, reportsRecordReference);
                                 _shouldSetState = true;
-                                if (reportRef != null) {
+                                if (reportRef.reference != null) {
                                   await pageViewController.nextPage(
                                     duration: Duration(milliseconds: 300),
                                     curve: Curves.ease,
