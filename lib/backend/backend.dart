@@ -21,6 +21,8 @@ import 'schema/tested_tests_record.dart';
 import 'schema/machines_record.dart';
 import 'schema/notifications_record.dart';
 import 'schema/reports_record.dart';
+import 'schema/d_m_l_info_record.dart';
+import 'schema/test_packages_record.dart';
 import 'schema/serializers.dart';
 
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -44,6 +46,8 @@ export 'schema/tested_tests_record.dart';
 export 'schema/machines_record.dart';
 export 'schema/notifications_record.dart';
 export 'schema/reports_record.dart';
+export 'schema/d_m_l_info_record.dart';
+export 'schema/test_packages_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Stream<List<UsersRecord>> queryUsersRecord(
@@ -308,6 +312,38 @@ Future<List<ReportsRecord>> queryReportsRecordOnce(
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollectionOnce(ReportsRecord.collection, ReportsRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+/// Functions to query DMLInfoRecords (as a Stream and as a Future).
+Stream<List<DMLInfoRecord>> queryDMLInfoRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(DMLInfoRecord.collection, DMLInfoRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<List<DMLInfoRecord>> queryDMLInfoRecordOnce(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollectionOnce(DMLInfoRecord.collection, DMLInfoRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+/// Functions to query TestPackagesRecords (as a Stream and as a Future).
+Stream<List<TestPackagesRecord>> queryTestPackagesRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(
+        TestPackagesRecord.collection, TestPackagesRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<List<TestPackagesRecord>> queryTestPackagesRecordOnce(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollectionOnce(
+        TestPackagesRecord.collection, TestPackagesRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
 Stream<List<T>> queryCollection<T>(

@@ -120,6 +120,20 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    match /DML_Info/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /test_Packages/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
     match /ff_user_push_notifications/{id} {
       allow read, update, delete: if false;
       allow create: if userDoc() == request.resource.data.sender;

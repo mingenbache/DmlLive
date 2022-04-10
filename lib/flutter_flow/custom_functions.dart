@@ -1116,3 +1116,23 @@ bool isListEmpty(List<DocumentReference> tests) {
   }
   return true;
 }
+
+List<String> returnReportFooter() {
+  // Add your function code here!
+  List<String> footerItems = [
+    'Prof. Emily A. Rogena MB Ch.B UON M Med. (Path) UON Msc. (Forensic Med)',
+    'Mrs. Susan M. Sitati Dip.Med.Lab.Tech. (UK) Dip.Med.lab.Tech. (E.A) H/Dip. Histopathology (E.A) Dip.Gyn.Cytology (UK)'
+  ];
+
+  return footerItems;
+}
+
+List<String> returnHeaderContacts() {
+  List<String> headerContacts = ['0742540718', '0777540718'];
+  return headerContacts;
+}
+
+String returnHeaderEmail() {
+  String email = 'info@dmlaboratories.co.ke';
+  return email;
+}

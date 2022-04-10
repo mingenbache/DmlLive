@@ -13,6 +13,7 @@ import 'dart:ui';
 import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -41,6 +42,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
           .toList();
 
   PageController pageViewController;
+  TextEditingController textController1;
+  TextEditingController textController2;
   bool checkboxListTileValue2;
   bool checkboxListTileValue3;
   bool checkboxListTileValue4;
@@ -2086,6 +2089,535 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                               ],
                                             ),
                                           ),
+                                          FutureBuilder<List<DMLInfoRecord>>(
+                                            future: queryDMLInfoRecordOnce(
+                                              queryBuilder: (dMLInfoRecord) =>
+                                                  dMLInfoRecord.where('isMain',
+                                                      isEqualTo: true),
+                                              singleRecord: true,
+                                            ),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 50,
+                                                    height: 50,
+                                                    child: SpinKitDoubleBounce(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryColor,
+                                                      size: 50,
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+                                              List<DMLInfoRecord>
+                                                  containerDMLInfoRecordList =
+                                                  snapshot.data;
+                                              final containerDMLInfoRecord =
+                                                  containerDMLInfoRecordList
+                                                          .isNotEmpty
+                                                      ? containerDMLInfoRecordList
+                                                          .first
+                                                      : null;
+                                              return Container(
+                                                width: 100,
+                                                decoration: BoxDecoration(),
+                                                child: SingleChildScrollView(
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            'Confirm Document Details',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .subtitle2
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: Colors
+                                                                      .white,
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Container(
+                                                        width: double.infinity,
+                                                        color:
+                                                            Color(0x00000000),
+                                                        child:
+                                                            ExpandableNotifier(
+                                                          initialExpanded:
+                                                              false,
+                                                          child:
+                                                              ExpandablePanel(
+                                                            header: Text(
+                                                              'Header',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .title1
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                                    fontSize:
+                                                                        22,
+                                                                  ),
+                                                            ),
+                                                            collapsed: Text(
+                                                              'Click to expand and edit',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText1,
+                                                            ),
+                                                            expanded: Container(
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.9,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            12),
+                                                              ),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
+                                                                children: [
+                                                                  Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Text(
+                                                                        'Contact Details',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .subtitle2
+                                                                            .override(
+                                                                              fontFamily: 'Roboto',
+                                                                              color: Colors.white,
+                                                                            ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                  Container(
+                                                                    width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width *
+                                                                        0.8,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Color(
+                                                                          0x60EEEEEE),
+                                                                      border:
+                                                                          Border
+                                                                              .all(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .alternate,
+                                                                      ),
+                                                                    ),
+                                                                    child:
+                                                                        Builder(
+                                                                      builder:
+                                                                          (context) {
+                                                                        final headerContacts =
+                                                                            containerDMLInfoRecord.phoneNumbers.toList()?.toList() ??
+                                                                                [];
+                                                                        return ListView
+                                                                            .builder(
+                                                                          padding:
+                                                                              EdgeInsets.zero,
+                                                                          shrinkWrap:
+                                                                              true,
+                                                                          scrollDirection:
+                                                                              Axis.vertical,
+                                                                          itemCount:
+                                                                              headerContacts.length,
+                                                                          itemBuilder:
+                                                                              (context, headerContactsIndex) {
+                                                                            final headerContactsItem =
+                                                                                headerContacts[headerContactsIndex];
+                                                                            return Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
+                                                                              child: Container(
+                                                                                height: 35,
+                                                                                decoration: BoxDecoration(
+                                                                                  border: Border.all(
+                                                                                    color: FlutterFlowTheme.of(context).alternate,
+                                                                                  ),
+                                                                                ),
+                                                                                child: Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                  children: [
+                                                                                    Container(
+                                                                                      width: MediaQuery.of(context).size.width * 0.7,
+                                                                                      height: 100,
+                                                                                      decoration: BoxDecoration(
+                                                                                        color: Color(0xFFEEEEEE),
+                                                                                        border: Border.all(
+                                                                                          color: FlutterFlowTheme.of(context).alternate,
+                                                                                        ),
+                                                                                      ),
+                                                                                      child: TextFormField(
+                                                                                        onChanged: (_) => EasyDebounce.debounce(
+                                                                                          'textController1',
+                                                                                          Duration(milliseconds: 400),
+                                                                                          () => setState(() {}),
+                                                                                        ),
+                                                                                        controller: textController1 ??= TextEditingController(
+                                                                                          text: headerContactsItem,
+                                                                                        ),
+                                                                                        obscureText: false,
+                                                                                        decoration: InputDecoration(
+                                                                                          hintText: 'Enter step details',
+                                                                                          enabledBorder: UnderlineInputBorder(
+                                                                                            borderSide: BorderSide(
+                                                                                              color: Color(0x00000000),
+                                                                                              width: 1,
+                                                                                            ),
+                                                                                            borderRadius: const BorderRadius.only(
+                                                                                              topLeft: Radius.circular(4.0),
+                                                                                              topRight: Radius.circular(4.0),
+                                                                                            ),
+                                                                                          ),
+                                                                                          focusedBorder: UnderlineInputBorder(
+                                                                                            borderSide: BorderSide(
+                                                                                              color: Color(0x00000000),
+                                                                                              width: 1,
+                                                                                            ),
+                                                                                            borderRadius: const BorderRadius.only(
+                                                                                              topLeft: Radius.circular(4.0),
+                                                                                              topRight: Radius.circular(4.0),
+                                                                                            ),
+                                                                                          ),
+                                                                                          contentPadding: EdgeInsetsDirectional.fromSTEB(2, 3, 2, 0),
+                                                                                          suffixIcon: textController1.text.isNotEmpty
+                                                                                              ? InkWell(
+                                                                                                  onTap: () => setState(
+                                                                                                    () => textController1.clear(),
+                                                                                                  ),
+                                                                                                  child: Icon(
+                                                                                                    Icons.clear,
+                                                                                                    color: Color(0xFF757575),
+                                                                                                    size: 22,
+                                                                                                  ),
+                                                                                                )
+                                                                                              : null,
+                                                                                        ),
+                                                                                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                              fontFamily: 'Roboto',
+                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                              fontSize: 16,
+                                                                                            ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    Icon(
+                                                                                      Icons.delete_forever,
+                                                                                      color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                      size: 24,
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        );
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            theme:
+                                                                ExpandableThemeData(
+                                                              tapHeaderToExpand:
+                                                                  true,
+                                                              tapBodyToExpand:
+                                                                  true,
+                                                              tapBodyToCollapse:
+                                                                  true,
+                                                              headerAlignment:
+                                                                  ExpandablePanelHeaderAlignment
+                                                                      .center,
+                                                              hasIcon: true,
+                                                              iconColor:
+                                                                  Colors.white,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        width: double.infinity,
+                                                        color:
+                                                            Color(0x00000000),
+                                                        child:
+                                                            ExpandableNotifier(
+                                                          initialExpanded:
+                                                              false,
+                                                          child:
+                                                              ExpandablePanel(
+                                                            header: Text(
+                                                              'Footer',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .title1
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                                    fontSize:
+                                                                        22,
+                                                                  ),
+                                                            ),
+                                                            collapsed: Text(
+                                                              'Click to expand and edit',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText1,
+                                                            ),
+                                                            expanded: Container(
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.9,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            12),
+                                                              ),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Container(
+                                                                    width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width *
+                                                                        0.8,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Color(
+                                                                          0x60EEEEEE),
+                                                                      border:
+                                                                          Border
+                                                                              .all(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .alternate,
+                                                                      ),
+                                                                    ),
+                                                                    child:
+                                                                        Builder(
+                                                                      builder:
+                                                                          (context) {
+                                                                        final footerDetails =
+                                                                            containerDMLInfoRecord.footerReferences.toList()?.toList() ??
+                                                                                [];
+                                                                        return ListView
+                                                                            .builder(
+                                                                          padding:
+                                                                              EdgeInsets.zero,
+                                                                          shrinkWrap:
+                                                                              true,
+                                                                          scrollDirection:
+                                                                              Axis.vertical,
+                                                                          itemCount:
+                                                                              footerDetails.length,
+                                                                          itemBuilder:
+                                                                              (context, footerDetailsIndex) {
+                                                                            final footerDetailsItem =
+                                                                                footerDetails[footerDetailsIndex];
+                                                                            return Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
+                                                                              child: Container(
+                                                                                height: 35,
+                                                                                decoration: BoxDecoration(
+                                                                                  border: Border.all(
+                                                                                    color: FlutterFlowTheme.of(context).alternate,
+                                                                                  ),
+                                                                                ),
+                                                                                child: Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                  children: [
+                                                                                    Container(
+                                                                                      width: MediaQuery.of(context).size.width * 0.7,
+                                                                                      height: 100,
+                                                                                      decoration: BoxDecoration(
+                                                                                        color: Color(0xFFEEEEEE),
+                                                                                        border: Border.all(
+                                                                                          color: FlutterFlowTheme.of(context).alternate,
+                                                                                        ),
+                                                                                      ),
+                                                                                      child: TextFormField(
+                                                                                        onChanged: (_) => EasyDebounce.debounce(
+                                                                                          'textController2',
+                                                                                          Duration(milliseconds: 400),
+                                                                                          () => setState(() {}),
+                                                                                        ),
+                                                                                        controller: textController2 ??= TextEditingController(
+                                                                                          text: footerDetailsItem,
+                                                                                        ),
+                                                                                        obscureText: false,
+                                                                                        decoration: InputDecoration(
+                                                                                          hintText: 'Enter step details',
+                                                                                          enabledBorder: UnderlineInputBorder(
+                                                                                            borderSide: BorderSide(
+                                                                                              color: Color(0x00000000),
+                                                                                              width: 1,
+                                                                                            ),
+                                                                                            borderRadius: const BorderRadius.only(
+                                                                                              topLeft: Radius.circular(4.0),
+                                                                                              topRight: Radius.circular(4.0),
+                                                                                            ),
+                                                                                          ),
+                                                                                          focusedBorder: UnderlineInputBorder(
+                                                                                            borderSide: BorderSide(
+                                                                                              color: Color(0x00000000),
+                                                                                              width: 1,
+                                                                                            ),
+                                                                                            borderRadius: const BorderRadius.only(
+                                                                                              topLeft: Radius.circular(4.0),
+                                                                                              topRight: Radius.circular(4.0),
+                                                                                            ),
+                                                                                          ),
+                                                                                          contentPadding: EdgeInsetsDirectional.fromSTEB(2, 3, 2, 0),
+                                                                                          suffixIcon: textController2.text.isNotEmpty
+                                                                                              ? InkWell(
+                                                                                                  onTap: () => setState(
+                                                                                                    () => textController2.clear(),
+                                                                                                  ),
+                                                                                                  child: Icon(
+                                                                                                    Icons.clear,
+                                                                                                    color: Color(0xFF757575),
+                                                                                                    size: 22,
+                                                                                                  ),
+                                                                                                )
+                                                                                              : null,
+                                                                                        ),
+                                                                                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                              fontFamily: 'Roboto',
+                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                              fontSize: 16,
+                                                                                            ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    Icon(
+                                                                                      Icons.delete_forever,
+                                                                                      color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                      size: 24,
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        );
+                                                                      },
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            theme:
+                                                                ExpandableThemeData(
+                                                              tapHeaderToExpand:
+                                                                  true,
+                                                              tapBodyToExpand:
+                                                                  true,
+                                                              tapBodyToCollapse:
+                                                                  true,
+                                                              headerAlignment:
+                                                                  ExpandablePanelHeaderAlignment
+                                                                      .center,
+                                                              hasIcon: true,
+                                                              iconColor:
+                                                                  Colors.white,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          FFButtonWidget(
+                                                            onPressed:
+                                                                () async {
+                                                              await pageViewController
+                                                                  .nextPage(
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        300),
+                                                                curve:
+                                                                    Curves.ease,
+                                                              );
+                                                            },
+                                                            text: 'Continue',
+                                                            options:
+                                                                FFButtonOptions(
+                                                              width: 110,
+                                                              height: 30,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryColor,
+                                                              textStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .subtitle2
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Roboto',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .tertiaryColor,
+                                                                        fontSize:
+                                                                            14,
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                      ),
+                                                              elevation: 1,
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: Colors
+                                                                    .transparent,
+                                                                width: 1,
+                                                              ),
+                                                              borderRadius: 12,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ),
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -2519,7 +3051,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                         child: SmoothPageIndicator(
                                           controller: pageViewController ??=
                                               PageController(initialPage: 0),
-                                          count: 7,
+                                          count: 8,
                                           axisDirection: Axis.horizontal,
                                           onDotClicked: (i) {
                                             pageViewController.animateToPage(
@@ -2645,22 +3177,31 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                               onPressed: () async {
                                 var _shouldSetState = false;
 
-                                final reportsCreateData =
-                                    createReportsRecordData(
-                                  booking: widget.booking.reference,
-                                  pathologist: widget.booking.pathologist,
-                                  bookinguser: widget.booking.user,
-                                  doctor: widget.booking.docRef,
-                                  pathologistComments: widget.booking.testNotes,
-                                  createdDate: getCurrentTimestamp,
-                                  createdUser: functions
-                                      .returnstaffRef(currentUserReference),
-                                  isComplete: false,
-                                  patientName:
-                                      '${widget.booking.firstname} ${widget.booking.lastname}',
-                                  patientSex: widget.booking.sex,
-                                  labRefNum: widget.booking.labRefNum,
-                                );
+                                final reportsCreateData = {
+                                  ...createReportsRecordData(
+                                    booking: widget.booking.reference,
+                                    pathologist: widget.booking.pathologist,
+                                    bookinguser: widget.booking.user,
+                                    doctor: widget.booking.docRef,
+                                    pathologistComments:
+                                        widget.booking.testNotes,
+                                    createdDate: getCurrentTimestamp,
+                                    createdUser: functions
+                                        .returnstaffRef(currentUserReference),
+                                    isComplete: false,
+                                    patientName:
+                                        '${widget.booking.firstname} ${widget.booking.lastname}',
+                                    patientSex: widget.booking.sex,
+                                    labRefNum: widget.booking.labRefNum,
+                                    dMLLogo:
+                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/u121-olt2sj/assets/nj9jw4ssnls0/dml_logo.png',
+                                  ),
+                                  'testedTests': widget.booking.verifiedTests,
+                                  'Report_Footer':
+                                      functions.returnReportFooter(),
+                                  'DML_Contacts':
+                                      functions.returnHeaderContacts(),
+                                };
                                 var reportsRecordReference =
                                     ReportsRecord.collection.doc();
                                 await reportsRecordReference
