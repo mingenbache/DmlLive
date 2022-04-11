@@ -35,6 +35,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
   BookedTestsRecord newBookedTest;
   String pathologistValue;
   TextEditingController labReferenceController;
+  BookedTestsRecord newTestPackBookedTest;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -350,26 +351,468 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                     EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                 child: Builder(
                                   builder: (context) {
-                                    final bookedTests =
+                                    final bookedTestPacks =
                                         confirmTestsSheetBookingsRecord
-                                                .testsIncluded
+                                                .testPackages
                                                 .toList()
                                                 ?.toList() ??
                                             [];
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
                                       scrollDirection: Axis.vertical,
-                                      itemCount: bookedTests.length,
-                                      itemBuilder: (context, bookedTestsIndex) {
-                                        final bookedTestsItem =
-                                            bookedTests[bookedTestsIndex];
+                                      itemCount: bookedTestPacks.length,
+                                      itemBuilder:
+                                          (context, bookedTestPacksIndex) {
+                                        final bookedTestPacksItem =
+                                            bookedTestPacks[
+                                                bookedTestPacksIndex];
                                         return Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0, 0, 0, 8),
+                                          child:
+                                              StreamBuilder<TestPackagesRecord>(
+                                            stream:
+                                                TestPackagesRecord.getDocument(
+                                                    bookedTestPacksItem),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 50,
+                                                    height: 50,
+                                                    child: SpinKitDoubleBounce(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryColor,
+                                                      size: 50,
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+                                              final containerTestPackagesRecord =
+                                                  snapshot.data;
+                                              return Container(
+                                                width: 100,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10, 0, 10, 0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Container(
+                                                            width: 280,
+                                                            constraints:
+                                                                BoxConstraints(
+                                                              maxWidth: 280,
+                                                            ),
+                                                            decoration:
+                                                                BoxDecoration(),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .end,
+                                                              children: [
+                                                                Expanded(
+                                                                  flex: 2,
+                                                                  child: Text(
+                                                                    containerTestPackagesRecord
+                                                                        .packageName,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .subtitle2
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Roboto',
+                                                                          color:
+                                                                              Colors.white,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                                Expanded(
+                                                                  flex: 1,
+                                                                  child: Text(
+                                                                    '${containerTestPackagesRecord.testsIncluded.toList().length.toString()} Tests',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .end,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .subtitle2
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Roboto',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                          fontSize:
+                                                                              15,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Container(
+                                                                width: 30,
+                                                                height: 30,
+                                                                decoration:
+                                                                    BoxDecoration(),
+                                                                child: Stack(
+                                                                  children: [
+                                                                    Icon(
+                                                                      Icons
+                                                                          .check_box_outline_blank_sharp,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .tertiaryColor,
+                                                                      size: 30,
+                                                                    ),
+                                                                    Icon(
+                                                                      Icons
+                                                                          .check_box_outlined,
+                                                                      color: Colors
+                                                                          .white,
+                                                                      size: 30,
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .width,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Builder(
+                                                        builder: (context) {
+                                                          final testPackTests =
+                                                              containerTestPackagesRecord
+                                                                      .testsIncluded
+                                                                      .toList()
+                                                                      ?.toList() ??
+                                                                  [];
+                                                          return ListView
+                                                              .builder(
+                                                            padding:
+                                                                EdgeInsets.zero,
+                                                            primary: false,
+                                                            shrinkWrap: true,
+                                                            scrollDirection:
+                                                                Axis.vertical,
+                                                            itemCount:
+                                                                testPackTests
+                                                                    .length,
+                                                            itemBuilder: (context,
+                                                                testPackTestsIndex) {
+                                                              final testPackTestsItem =
+                                                                  testPackTests[
+                                                                      testPackTestsIndex];
+                                                              return Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0,
+                                                                            0,
+                                                                            0,
+                                                                            2),
+                                                                child: StreamBuilder<
+                                                                    TestsRecord>(
+                                                                  stream: TestsRecord
+                                                                      .getDocument(
+                                                                          testPackTestsItem),
+                                                                  builder: (context,
+                                                                      snapshot) {
+                                                                    // Customize what your widget looks like when it's loading.
+                                                                    if (!snapshot
+                                                                        .hasData) {
+                                                                      return Center(
+                                                                        child:
+                                                                            SizedBox(
+                                                                          width:
+                                                                              50,
+                                                                          height:
+                                                                              50,
+                                                                          child:
+                                                                              SpinKitDoubleBounce(
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryColor,
+                                                                            size:
+                                                                                50,
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    }
+                                                                    final containerTestsRecord =
+                                                                        snapshot
+                                                                            .data;
+                                                                    return InkWell(
+                                                                      onTap:
+                                                                          () async {
+                                                                        var _shouldSetState =
+                                                                            false;
+                                                                        if (confirmTestsSheetBookingsRecord
+                                                                            .bookedTests
+                                                                            .toList()
+                                                                            .contains(testPackTestsItem)) {
+                                                                          if (_shouldSetState)
+                                                                            setState(() {});
+                                                                          return;
+                                                                        }
+
+                                                                        final bookingsUpdateData =
+                                                                            {
+                                                                          'bookedTests':
+                                                                              FieldValue.arrayUnion([
+                                                                            testPackTestsItem
+                                                                          ]),
+                                                                        };
+                                                                        await widget
+                                                                            .booking
+                                                                            .update(bookingsUpdateData);
+
+                                                                        final bookedTestsCreateData =
+                                                                            createBookedTestsRecordData(
+                                                                          testRef:
+                                                                              testPackTestsItem,
+                                                                          bookingRef:
+                                                                              confirmTestsSheetBookingsRecord.reference,
+                                                                        );
+                                                                        var bookedTestsRecordReference = BookedTestsRecord
+                                                                            .collection
+                                                                            .doc();
+                                                                        await bookedTestsRecordReference
+                                                                            .set(bookedTestsCreateData);
+                                                                        newBookedTest = BookedTestsRecord.getDocumentFromData(
+                                                                            bookedTestsCreateData,
+                                                                            bookedTestsRecordReference);
+                                                                        _shouldSetState =
+                                                                            true;
+                                                                        await showModalBottomSheet(
+                                                                          isScrollControlled:
+                                                                              true,
+                                                                          backgroundColor:
+                                                                              Colors.transparent,
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (context) {
+                                                                            return Padding(
+                                                                              padding: MediaQuery.of(context).viewInsets,
+                                                                              child: ChooseTechnologistWidget(
+                                                                                testRef: testPackTestsItem,
+                                                                                bookingRef: widget.booking,
+                                                                                scheduledDate: confirmTestsSheetBookingsRecord.scheduledDate,
+                                                                                bookedTest: newTestPackBookedTest,
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        );
+                                                                        if (_shouldSetState)
+                                                                          setState(
+                                                                              () {});
+                                                                      },
+                                                                      child:
+                                                                          Material(
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        elevation:
+                                                                            1,
+                                                                        shape:
+                                                                            RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8),
+                                                                        ),
+                                                                        child:
+                                                                            Container(
+                                                                          width: MediaQuery.of(context)
+                                                                              .size
+                                                                              .width,
+                                                                          height:
+                                                                              35,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                Color(0xFFEEEEEE),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8),
+                                                                          ),
+                                                                          child:
+                                                                              Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                10,
+                                                                                0,
+                                                                                10,
+                                                                                0),
+                                                                            child:
+                                                                                Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                              children: [
+                                                                                Container(
+                                                                                  width: 280,
+                                                                                  constraints: BoxConstraints(
+                                                                                    maxWidth: 280,
+                                                                                  ),
+                                                                                  decoration: BoxDecoration(),
+                                                                                  child: Row(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    children: [
+                                                                                      Text(
+                                                                                        containerTestsRecord.name,
+                                                                                        style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                              fontFamily: 'Roboto',
+                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                            ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                                Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  children: [
+                                                                                    Container(
+                                                                                      width: 30,
+                                                                                      height: 30,
+                                                                                      decoration: BoxDecoration(
+                                                                                        color: Color(0xFFEEEEEE),
+                                                                                      ),
+                                                                                      child: Stack(
+                                                                                        children: [
+                                                                                          Icon(
+                                                                                            Icons.check_box_outline_blank_sharp,
+                                                                                            color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                            size: 30,
+                                                                                          ),
+                                                                                          if (confirmTestsSheetBookingsRecord.bookedTests.toList()?.contains(testPackTestsItem) ?? true)
+                                                                                            StreamBuilder<List<BookedTestsRecord>>(
+                                                                                              stream: queryBookedTestsRecord(
+                                                                                                queryBuilder: (bookedTestsRecord) => bookedTestsRecord.where('testRef', isEqualTo: testPackTestsItem).where('booking_ref', isEqualTo: confirmTestsSheetBookingsRecord.reference),
+                                                                                                singleRecord: true,
+                                                                                              ),
+                                                                                              builder: (context, snapshot) {
+                                                                                                // Customize what your widget looks like when it's loading.
+                                                                                                if (!snapshot.hasData) {
+                                                                                                  return Center(
+                                                                                                    child: SizedBox(
+                                                                                                      width: 50,
+                                                                                                      height: 50,
+                                                                                                      child: SpinKitDoubleBounce(
+                                                                                                        color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                        size: 50,
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  );
+                                                                                                }
+                                                                                                List<BookedTestsRecord> iconCheckedBookedTestsRecordList = snapshot.data;
+                                                                                                // Return an empty Container when the document does not exist.
+                                                                                                if (snapshot.data.isEmpty) {
+                                                                                                  return Container();
+                                                                                                }
+                                                                                                final iconCheckedBookedTestsRecord = iconCheckedBookedTestsRecordList.isNotEmpty ? iconCheckedBookedTestsRecordList.first : null;
+                                                                                                return Icon(
+                                                                                                  Icons.check_box_outlined,
+                                                                                                  color: Color(0xFF586B06),
+                                                                                                  size: 30,
+                                                                                                );
+                                                                                              },
+                                                                                            ),
+                                                                                        ],
+                                                                                      ),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              );
+                                                            },
+                                                          );
+                                                        },
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final nopackTests = functions
+                                            .filterTestPackTests(
+                                                confirmTestsSheetBookingsRecord
+                                                    .testPackages
+                                                    .toList(),
+                                                confirmTestsSheetBookingsRecord
+                                                    .testsIncluded
+                                                    .toList())
+                                            ?.toList() ??
+                                        [];
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: nopackTests.length,
+                                      itemBuilder: (context, nopackTestsIndex) {
+                                        final nopackTestsItem =
+                                            nopackTests[nopackTestsIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 0, 0, 4),
                                           child: StreamBuilder<TestsRecord>(
                                             stream: TestsRecord.getDocument(
-                                                bookedTestsItem),
+                                                nopackTestsItem),
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
                                               if (!snapshot.hasData) {
@@ -396,8 +839,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                       .bookedTests
                                                       .toList()
                                                       .contains(
-                                                          containerTestsRecord
-                                                              .reference)) {
+                                                          nopackTestsItem)) {
                                                     if (_shouldSetState)
                                                       setState(() {});
                                                     return;
@@ -405,10 +847,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
 
                                                   final bookingsUpdateData = {
                                                     'bookedTests':
-                                                        FieldValue.arrayUnion([
-                                                      containerTestsRecord
-                                                          .reference
-                                                    ]),
+                                                        FieldValue.arrayUnion(
+                                                            [nopackTestsItem]),
                                                   };
                                                   await widget.booking.update(
                                                       bookingsUpdateData);
@@ -429,10 +869,11 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                   await bookedTestsRecordReference
                                                       .set(
                                                           bookedTestsCreateData);
-                                                  newBookedTest = BookedTestsRecord
-                                                      .getDocumentFromData(
-                                                          bookedTestsCreateData,
-                                                          bookedTestsRecordReference);
+                                                  newTestPackBookedTest =
+                                                      BookedTestsRecord
+                                                          .getDocumentFromData(
+                                                              bookedTestsCreateData,
+                                                              bookedTestsRecordReference);
                                                   _shouldSetState = true;
                                                   await showModalBottomSheet(
                                                     isScrollControlled: true,
@@ -447,15 +888,14 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                         child:
                                                             ChooseTechnologistWidget(
                                                           testRef:
-                                                              containerTestsRecord
-                                                                  .reference,
+                                                              nopackTestsItem,
                                                           bookingRef:
                                                               widget.booking,
                                                           scheduledDate:
                                                               confirmTestsSheetBookingsRecord
                                                                   .scheduledDate,
                                                           bookedTest:
-                                                              newBookedTest,
+                                                              newTestPackBookedTest,
                                                         ),
                                                       );
                                                     },
@@ -545,7 +985,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                           .where(
                                                                               'testRef',
                                                                               isEqualTo:
-                                                                                  bookedTestsItem)
+                                                                                  nopackTestsItem)
                                                                           .where(
                                                                               'booking_ref',
                                                                               isEqualTo: confirmTestsSheetBookingsRecord.reference),

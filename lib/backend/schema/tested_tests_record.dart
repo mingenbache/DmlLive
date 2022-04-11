@@ -97,6 +97,13 @@ abstract class TestedTestsRecord
   String get batchNum;
 
   @nullable
+  @BuiltValueField(wireName: 'has_test_pack')
+  bool get hasTestPack;
+
+  @nullable
+  DocumentReference get testPackRef;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -112,7 +119,8 @@ abstract class TestedTestsRecord
     ..testResult = ''
     ..flagNotes = ''
     ..resultPosted = false
-    ..batchNum = '';
+    ..batchNum = ''
+    ..hasTestPack = false;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('tested_tests');
@@ -157,6 +165,8 @@ Map<String, dynamic> createTestedTestsRecordData({
   DocumentReference staffReference,
   DateTime verifiedDate,
   String batchNum,
+  bool hasTestPack,
+  DocumentReference testPackRef,
 }) =>
     serializers.toFirestore(
         TestedTestsRecord.serializer,
@@ -182,4 +192,6 @@ Map<String, dynamic> createTestedTestsRecordData({
           ..resultPosted = resultPosted
           ..staffReference = staffReference
           ..verifiedDate = verifiedDate
-          ..batchNum = batchNum));
+          ..batchNum = batchNum
+          ..hasTestPack = hasTestPack
+          ..testPackRef = testPackRef));

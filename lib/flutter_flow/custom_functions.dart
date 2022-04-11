@@ -1136,3 +1136,36 @@ String returnHeaderEmail() {
   String email = 'info@dmlaboratories.co.ke';
   return email;
 }
+
+List<DocumentReference> filterTestPackTests(
+  List<DocumentReference> testPacks,
+  List<DocumentReference> allBookingTests,
+) {
+  // query firebase document and return list of tests from record
+
+  List<DocumentReference> testPackFilter = [];
+  List<DocumentReference> testPackTests = [];
+  testPackFilter.addAll(allBookingTests);
+  //iterate through all the records in testPacks list and populate one list with all their tests records
+  for (int i = 0; i < testPacks.length; i++) {
+    var testPack = FirebaseFirestore.instance
+        .collection('test_Packages')
+        .doc('${testPacks[i]}')
+        .get()
+        .then((snap) {
+      testPackTests.addAll(TestPackagesRecord().testsIncluded);
+      //return TestPackagesRecord().testsIncluded.asList;
+      return testPackTests;
+    });
+    for (int j = 0; j < testPackTests.length; j++) {
+      testPackFilter.removeWhere((element) => testPackTests.contains(element));
+      /*if (testPackFilter.contains(testPackTests[j])) {
+        testPackFilter.remove(testPackTests[j]);
+      }*/
+
+    }
+
+    //filteredList.add(allTests[i]);
+  }
+  return testPackFilter;
+}

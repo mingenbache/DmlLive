@@ -165,7 +165,7 @@ class _FFChatPageState extends State<FFChatPage> {
               final selectedMedia = await selectMediaWithSourceBottomSheet(
                 context: context,
                 allowPhoto: true,
-              );
+              ).then((m) => m != null && m.isNotEmpty ? m.first : null);
               if (selectedMedia == null ||
                   !validateFileFormat(selectedMedia.storagePath, context)) {
                 return;

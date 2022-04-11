@@ -10,7 +10,6 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -3024,15 +3023,6 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                         height: 600,
                                                         decoration:
                                                             BoxDecoration(),
-                                                        child: custom_widgets
-                                                            .LePdf(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.9,
-                                                          height: 600,
-                                                        ),
                                                       ),
                                                     ],
                                                   ),
@@ -3132,7 +3122,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                       reportsCreateData,
                                       reportsRecordReference);
                               _shouldSetState = true;
-                              if (myNewReportRef.reference != null) {
+                              if ((myNewReportRef.reference != null)) {
                                 await pageViewController.nextPage(
                                   duration: Duration(milliseconds: 300),
                                   curve: Curves.ease,
@@ -3209,7 +3199,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                 reportRef = ReportsRecord.getDocumentFromData(
                                     reportsCreateData, reportsRecordReference);
                                 _shouldSetState = true;
-                                if (reportRef.reference != null) {
+                                if ((reportRef.reference != null)) {
                                   await pageViewController.nextPage(
                                     duration: Duration(milliseconds: 300),
                                     curve: Curves.ease,
@@ -3225,6 +3215,9 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                       'bookingRef': widget.booking.reference,
                                     },
                                   );
+                                  setState(() =>
+                                      FFAppState().reportLastPage = false);
+                                  Navigator.pop(context);
                                   if (_shouldSetState) setState(() {});
                                   return;
                                 } else {
