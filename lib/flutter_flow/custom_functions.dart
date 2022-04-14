@@ -1169,3 +1169,11 @@ List<DocumentReference> filterTestPackTests(
   }
   return testPackFilter;
 }
+
+int calculateAge(DateTime dOb) {
+  // calculate age from date of birth
+  DateTime currentDate = DateTime.now();
+  int age = 0;
+  age = currentDate.year - dOb.year;
+  return age;
+}

@@ -5,9 +5,9 @@ import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_calendar.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../lab_report/lab_report_widget.dart';
 import '../scheduled_tests/scheduled_tests_widget.dart';
 import '../test_deck/test_deck_widget.dart';
-import '../test_report/test_report_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -189,7 +189,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                       context,
                                                       MaterialPageRoute(
                                                         builder: (context) =>
-                                                            TestReportWidget(
+                                                            LabReportWidget(
                                                           bookingRef:
                                                               pastbookingsItem
                                                                   .reference,

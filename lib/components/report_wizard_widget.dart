@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/push_notifications/push_notifications_util.dart';
+import '../booking_report/booking_report_widget.dart';
 import '../components/date_widget_small_widget.dart';
 import '../components/invoice_payment_widget.dart';
 import '../components/report_booked_tests_widget.dart';
@@ -16,6 +17,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -3014,15 +3016,56 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                         MainAxisAlignment
                                                             .center,
                                                     children: [
-                                                      Container(
-                                                        width: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .width *
-                                                            0.8,
-                                                        height: 600,
-                                                        decoration:
-                                                            BoxDecoration(),
+                                                      FFButtonWidget(
+                                                        onPressed: () async {
+                                                          await Navigator.push(
+                                                            context,
+                                                            PageTransition(
+                                                              type: PageTransitionType
+                                                                  .rightToLeft,
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      200),
+                                                              reverseDuration:
+                                                                  Duration(
+                                                                      milliseconds:
+                                                                          200),
+                                                              child:
+                                                                  BookingReportWidget(),
+                                                            ),
+                                                          );
+                                                        },
+                                                        text: 'View Report',
+                                                        icon: FaIcon(
+                                                          FontAwesomeIcons
+                                                              .fileMedicalAlt,
+                                                        ),
+                                                        options:
+                                                            FFButtonOptions(
+                                                          width: 170,
+                                                          height: 50,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryColor,
+                                                          textStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .subtitle2
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .tertiaryColor,
+                                                                  ),
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: Colors
+                                                                .transparent,
+                                                            width: 1,
+                                                          ),
+                                                          borderRadius: 12,
+                                                        ),
                                                       ),
                                                     ],
                                                   ),
@@ -3132,10 +3175,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                       'Your Test Results are Ready',
                                   notificationText: 'Click here to view report',
                                   userRefs: [widget.booking.user],
-                                  initialPageName: 'TestReport',
-                                  parameterData: {
-                                    'bookingRef': widget.booking.reference,
-                                  },
+                                  initialPageName: 'BookingReport',
+                                  parameterData: {},
                                 );
                                 if (_shouldSetState) setState(() {});
                                 return;
@@ -3183,14 +3224,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                         '${widget.booking.firstname} ${widget.booking.lastname}',
                                     patientSex: widget.booking.sex,
                                     labRefNum: widget.booking.labRefNum,
-                                    dMLLogo:
-                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/u121-olt2sj/assets/nj9jw4ssnls0/dml_logo.png',
+                                    patientAge: functions
+                                        .calculateAge(widget.booking.dOB),
                                   ),
                                   'testedTests': widget.booking.verifiedTests,
-                                  'Report_Footer':
-                                      functions.returnReportFooter(),
-                                  'DML_Contacts':
-                                      functions.returnHeaderContacts(),
                                 };
                                 var reportsRecordReference =
                                     ReportsRecord.collection.doc();
@@ -3210,14 +3247,11 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                     notificationText:
                                         'Click here to view report',
                                     userRefs: [widget.booking.user],
-                                    initialPageName: 'TestReport',
-                                    parameterData: {
-                                      'bookingRef': widget.booking.reference,
-                                    },
+                                    initialPageName: 'LabReport',
+                                    parameterData: {},
                                   );
                                   setState(() =>
                                       FFAppState().reportLastPage = false);
-                                  Navigator.pop(context);
                                   if (_shouldSetState) setState(() {});
                                   return;
                                 } else {

@@ -789,16 +789,12 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                     EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                 child: Builder(
                                   builder: (context) {
-                                    final nopackTests = functions
-                                            .filterTestPackTests(
-                                                confirmTestsSheetBookingsRecord
-                                                    .testPackages
-                                                    .toList(),
-                                                confirmTestsSheetBookingsRecord
-                                                    .testsIncluded
-                                                    .toList())
-                                            ?.toList() ??
-                                        [];
+                                    final nopackTests =
+                                        confirmTestsSheetBookingsRecord
+                                                .testsIncluded
+                                                .toList()
+                                                ?.toList() ??
+                                            [];
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
                                       scrollDirection: Axis.vertical,

@@ -1,10 +1,10 @@
 import '../backend/backend.dart';
+import '../booking_report/booking_report_widget.dart';
 import '../components/new_invoice_sheet_widget.dart';
 import '../components/report_wizard_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../test_report/test_report_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -184,7 +184,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                             await Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => TestReportWidget(
+                                builder: (context) => BookingReportWidget(
                                   bookingRef: widget.bookingRef.reference,
                                 ),
                               ),

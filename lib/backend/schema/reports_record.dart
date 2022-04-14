@@ -54,24 +54,11 @@ abstract class ReportsRecord
   String get pathologist;
 
   @nullable
-  @BuiltValueField(wireName: 'DML_Logo')
-  String get dMLLogo;
-
-  @nullable
-  @BuiltValueField(wireName: 'DML_Contacts')
-  BuiltList<String> get dMLContacts;
-
-  @nullable
   @BuiltValueField(wireName: 'DML_Email')
   String get dMLEmail;
 
   @nullable
-  @BuiltValueField(wireName: 'DML_Website')
-  String get dMLWebsite;
-
-  @nullable
-  @BuiltValueField(wireName: 'Report_Footer')
-  BuiltList<String> get reportFooter;
+  int get patientAge;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -87,11 +74,8 @@ abstract class ReportsRecord
     ..patientSex = ''
     ..labRefNum = ''
     ..pathologist = ''
-    ..dMLLogo = ''
-    ..dMLContacts = ListBuilder()
     ..dMLEmail = ''
-    ..dMLWebsite = ''
-    ..reportFooter = ListBuilder();
+    ..patientAge = 0;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('reports');
@@ -126,9 +110,8 @@ Map<String, dynamic> createReportsRecordData({
   String patientSex,
   String labRefNum,
   String pathologist,
-  String dMLLogo,
   String dMLEmail,
-  String dMLWebsite,
+  int patientAge,
 }) =>
     serializers.toFirestore(
         ReportsRecord.serializer,
@@ -147,8 +130,5 @@ Map<String, dynamic> createReportsRecordData({
           ..patientSex = patientSex
           ..labRefNum = labRefNum
           ..pathologist = pathologist
-          ..dMLLogo = dMLLogo
-          ..dMLContacts = null
           ..dMLEmail = dMLEmail
-          ..dMLWebsite = dMLWebsite
-          ..reportFooter = null));
+          ..patientAge = patientAge));

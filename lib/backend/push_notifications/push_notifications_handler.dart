@@ -28,7 +28,7 @@ import '../../modify_test/modify_test_widget.dart';
 import '../../booking_updates/booking_updates_widget.dart';
 import '../../invoice/invoice_widget.dart';
 import '../../add_payment/add_payment_widget.dart';
-import '../../test_report/test_report_widget.dart';
+import '../../lab_report/lab_report_widget.dart';
 import '../../report_list/report_list_widget.dart';
 import '../../test_deck/test_deck_widget.dart';
 import '../../invoice_list/invoice_list_widget.dart';
@@ -43,6 +43,7 @@ import '../../test_queue/test_queue_widget.dart';
 import '../../tested_tests_copy/tested_tests_copy_widget.dart';
 import '../../chat/chat_widget.dart';
 import '../../technologist_test_deck/technologist_test_deck_widget.dart';
+import '../../booking_report/booking_report_widget.dart';
 
 class PushNotificationsHandler extends StatefulWidget {
   const PushNotificationsHandler(
@@ -147,7 +148,7 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'AddPayment': (data) async => AddPaymentWidget(
         invoiceRef: getParameter(data, 'invoiceRef'),
       ),
-  'TestReport': (data) async => TestReportWidget(
+  'LabReport': (data) async => LabReportWidget(
         bookingRef: getParameter(data, 'bookingRef'),
       ),
   'ReportList': (data) async => ReportListWidget(),
@@ -172,6 +173,9 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'TechnologistTestDeck': (data) async => TechnologistTestDeckWidget(
         bookedTest: await getDocumentParameter(
             data, 'bookedTest', BookedTestsRecord.serializer),
+      ),
+  'BookingReport': (data) async => BookingReportWidget(
+        bookingRef: getParameter(data, 'bookingRef'),
       ),
 };
 

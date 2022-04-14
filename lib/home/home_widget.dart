@@ -322,7 +322,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                             .white,
                                                                       ),
                                                                 ),
-                                                                showBadge: true,
+                                                                showBadge:
+                                                                    (rowBookingsRecord
+                                                                            .totalTests) >
+                                                                        1,
                                                                 shape:
                                                                     BadgeShape
                                                                         .circle,
@@ -702,7 +705,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                               Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  ClientNotificationsWidgetWidget(),
+                                                  Expanded(
+                                                    child:
+                                                        ClientNotificationsWidgetWidget(),
+                                                  ),
                                                 ],
                                               ),
                                             ],
