@@ -150,7 +150,8 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                               ),
                               Expanded(
                                 child: Container(
-                                  width: double.infinity,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.8,
                                   height: 500,
                                   child: Stack(
                                     children: [

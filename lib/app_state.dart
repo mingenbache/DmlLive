@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/lat_lng.dart';
 
 class FFAppState {
@@ -20,6 +22,12 @@ class FFAppState {
     _notifHeight = prefs.getDouble('ff_notifHeight') ?? _notifHeight;
     _proceedconfirmation =
         prefs.getBool('ff_proceedconfirmation') ?? _proceedconfirmation;
+    _testPackTests = prefs
+            .getStringList('ff_testPackTests')
+            ?.map((path) => path.ref)
+            ?.toList() ??
+        _testPackTests;
+    _testPackSubmit = prefs.getBool('ff_testPackSubmit') ?? _testPackSubmit;
   }
 
   SharedPreferences prefs;
@@ -92,6 +100,40 @@ class FFAppState {
   bool reportLastPage = false;
 
   List<String> reportEmails = [];
+
+  List<DocumentReference> _testPackTests = [];
+  List<DocumentReference> get testPackTests => _testPackTests;
+  set testPackTests(List<DocumentReference> _value) {
+    _testPackTests = _value;
+    prefs.setStringList('ff_testPackTests', _value.map((x) => x.path).toList());
+  }
+
+  void addToTestPackTests(DocumentReference _value) {
+    _testPackTests.add(_value);
+    prefs.setStringList(
+        'ff_testPackTests', _testPackTests.map((x) => x.path).toList());
+  }
+
+  void removeFromTestPackTests(DocumentReference _value) {
+    _testPackTests.remove(_value);
+    prefs.setStringList(
+        'ff_testPackTests', _testPackTests.map((x) => x.path).toList());
+  }
+
+  bool _testPackSubmit = false;
+  bool get testPackSubmit => _testPackSubmit;
+  set testPackSubmit(bool _value) {
+    _testPackSubmit = _value;
+    prefs.setBool('ff_testPackSubmit', _value);
+  }
+
+  String packagecategoryPicked = 'all';
+
+  bool allPackageCategories = false;
+
+  List<DocumentReference> duplicateTests = [];
+
+  DocumentReference duplicateTest;
 }
 
 LatLng _latLngFromString(String val) {

@@ -16,11 +16,12 @@ class ChartTests extends StatefulWidget {
     Key key,
     this.width,
     this.height,
+    this.testData,
   }) : super(key: key);
 
   final double width;
   final double height;
-
+  final List<int> testData;
   @override
   _ChartTestsState createState() => _ChartTestsState();
 }
@@ -32,7 +33,7 @@ class _ChartTestsState extends State<ChartTests> {
   ];
 
   bool showAvg = false;
-
+  List<int> testData = this.testData;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -49,7 +50,7 @@ class _ChartTestsState extends State<ChartTests> {
               padding: const EdgeInsets.only(
                   right: 18.0, left: 12.0, top: 24, bottom: 12),
               child: LineChart(
-                showAvg ? avgData() : mainData(),
+                showAvg ? avgData() : mainData(testData),
               ),
             ),
           ),
@@ -76,7 +77,7 @@ class _ChartTestsState extends State<ChartTests> {
     );
   }
 
-  LineChartData mainData() {
+  LineChartData mainData(testData) {
     return LineChartData(
       gridData: FlGridData(
         show: true,
@@ -173,7 +174,7 @@ class _ChartTestsState extends State<ChartTests> {
       maxY: 6,
       lineBarsData: [
         LineChartBarData(
-          spots: const [
+          /* spots: const [
             FlSpot(0, 3),
             FlSpot(1.0, 2),
             FlSpot(2.0, 5),
@@ -189,7 +190,8 @@ class _ChartTestsState extends State<ChartTests> {
             FlSpot(12.0, 7),
             FlSpot(13.0, 10),
             FlSpot(14.0, 4),
-          ],
+          ],*/
+          spots: testData,
           isCurved: true,
           colors: gradientColors,
           barWidth: 5,

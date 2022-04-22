@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../chat/chat_widget.dart';
+import '../components/duplicate_tests_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -12,22 +13,22 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TestActionsWidgetWidget extends StatefulWidget {
-  const TestActionsWidgetWidget({
+class PackageActionsWidgetWidget extends StatefulWidget {
+  const PackageActionsWidgetWidget({
     Key key,
-    this.test,
+    this.package,
     this.bookingRef,
   }) : super(key: key);
 
-  final TestsRecord test;
+  final TestPackagesRecord package;
   final DocumentReference bookingRef;
 
   @override
-  _TestActionsWidgetWidgetState createState() =>
-      _TestActionsWidgetWidgetState();
+  _PackageActionsWidgetWidgetState createState() =>
+      _PackageActionsWidgetWidgetState();
 }
 
-class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
+class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
     with TickerProviderStateMixin {
   final animationsMap = {
     'buttonOnActionTriggerAnimation1': AnimationInfo(
@@ -169,43 +170,67 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          if (!(containerBookingsRecord.testsIncluded
-                              .toList()
-                              .contains(widget.test.reference))) {
-                            final bookingsUpdateData = {
-                              ...createBookingsRecordData(
-                                totalPrice: functions.addCartTotal(
-                                    containerBookingsRecord.totalPrice,
-                                    widget.test.price),
-                              ),
-                              'tests_included': FieldValue.arrayUnion(
-                                  [widget.test.reference]),
-                              'total_tests': FieldValue.increment(1),
-                            };
-                            await containerBookingsRecord.reference
-                                .update(bookingsUpdateData);
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Test Added.',
-                                  style: TextStyle(),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0x00000000),
-                              ),
+                          if (functions.checkTestPackageBookingHasDuplicates(
+                              functions
+                                  .returnAllBookingTests(
+                                      containerBookingsRecord.testPackTests
+                                          .toList(),
+                                      containerBookingsRecord.testsIncluded
+                                          .toList())
+                                  .toList(),
+                              widget.package.testsIncluded.toList())) {
+                            setState(() => FFAppState().duplicateTests =
+                                functions
+                                    .returnDuplicateTestsinBooking(
+                                        functions
+                                            .returnAllBookingTests(
+                                                containerBookingsRecord
+                                                    .testPackTests
+                                                    .toList(),
+                                                containerBookingsRecord
+                                                    .testsIncluded
+                                                    .toList())
+                                            .toList(),
+                                        widget.package.testsIncluded.toList())
+                                    .toList());
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              context: context,
+                              builder: (context) {
+                                return Padding(
+                                  padding: MediaQuery.of(context).viewInsets,
+                                  child: DuplicateTestsWidget(
+                                    booking: containerBookingsRecord,
+                                  ),
+                                );
+                              },
                             );
                           } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Error. This test is already in your Booking.',
-                                  style: TextStyle(),
+                            if (!(containerBookingsRecord.testPackages
+                                .toList()
+                                .contains(widget.package.reference))) {
+                              final bookingsUpdateData = {
+                                ...createBookingsRecordData(
+                                  totalPrice: functions.addCartTotal(
+                                      containerBookingsRecord.totalPrice,
+                                      widget.package.price),
                                 ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0x00000000),
-                              ),
-                            );
-                            return;
+                                'total_tests': FieldValue.increment(1),
+                                'testPackages': FieldValue.arrayUnion(
+                                    [widget.package.reference]),
+                                'testPackTests':
+                                    functions.addBookingPackageTests(
+                                        containerBookingsRecord.testPackTests
+                                            .toList(),
+                                        widget.package.testsIncluded.toList()),
+                              };
+                              await containerBookingsRecord.reference
+                                  .update(bookingsUpdateData);
+                              Navigator.pop(context);
+                            } else {
+                              return;
+                            }
                           }
                         },
                         text: 'Add to Cart',

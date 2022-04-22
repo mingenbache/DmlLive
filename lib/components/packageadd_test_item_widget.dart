@@ -1,36 +1,32 @@
-import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../components/duplicate_tests_widget.dart';
 import '../components/test_details_popup_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TestListItemWidget extends StatefulWidget {
-  const TestListItemWidget({
+class PackageaddTestItemWidget extends StatefulWidget {
+  const PackageaddTestItemWidget({
     Key key,
-    this.test,
     this.index,
     this.listSize,
-    this.booking,
+    this.test,
   }) : super(key: key);
 
-  final TestsRecord test;
   final int index;
   final int listSize;
-  final BookingsRecord booking;
+  final TestsRecord test;
 
   @override
-  _TestListItemWidgetState createState() => _TestListItemWidgetState();
+  _PackageaddTestItemWidgetState createState() =>
+      _PackageaddTestItemWidgetState();
 }
 
-class _TestListItemWidgetState extends State<TestListItemWidget>
+class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
     with TickerProviderStateMixin {
   final animationsMap = {
     'stackOnPageLoadAnimation': AnimationInfo(
@@ -152,44 +148,45 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                     children: [
                       Stack(
                         children: [
-                          if (widget.booking.testsIncluded
-                                  ?.contains(widget.test.reference) ??
-                              true)
-                            InkWell(
-                              onTap: () async {
-                                if (widget.booking.testsIncluded
-                                    .contains(widget.test.reference)) {
-                                  final bookingsUpdateData = {
-                                    ...createBookingsRecordData(
-                                      totalPrice: functions.removeFromCart(
-                                          widget.booking.totalPrice,
-                                          widget.test.price),
-                                    ),
-                                    'tests_included': FieldValue.arrayRemove(
-                                        [widget.test.reference]),
-                                    'total_tests': FieldValue.increment(-1),
-                                  };
-                                  await widget.booking.reference
-                                      .update(bookingsUpdateData);
-                                } else {
-                                  return;
-                                }
+                          InkWell(
+                            onTap: () async {
+                              if (FFAppState()
+                                  .testPackTests
+                                  .contains(widget.test.reference)) {
+                                setState(() => FFAppState()
+                                    .removeFromTestPackTests(
+                                        widget.test.reference));
+                              } else {
+                                return;
+                              }
 
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Test Removed.',
-                                      style: TextStyle(),
-                                    ),
-                                    duration: Duration(milliseconds: 4000),
-                                    backgroundColor: Color(0x00000000),
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Test Removed.',
+                                    style: TextStyle(),
                                   ),
-                                );
-                              },
-                              child: Material(
-                                color: Colors.transparent,
-                                elevation: 1,
-                                shape: RoundedRectangleBorder(
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor: Color(0x00000000),
+                                ),
+                              );
+                            },
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 1,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(0),
+                                  bottomRight: Radius.circular(16),
+                                  topLeft: Radius.circular(0),
+                                  topRight: Radius.circular(16),
+                                ),
+                              ),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.15,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFC9FFFF),
                                   borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(0),
                                     bottomRight: Radius.circular(16),
@@ -197,95 +194,55 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                     topRight: Radius.circular(16),
                                   ),
                                 ),
-                                child: Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.15,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFC9FFFF),
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(0),
-                                      bottomRight: Radius.circular(16),
-                                      topLeft: Radius.circular(0),
-                                      topRight: Radius.circular(16),
-                                    ),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Expanded(
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10, 0, 0, 0),
-                                          child: Icon(
-                                            Icons.highlight_off_sharp,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
-                                            size: 24,
-                                          ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10, 0, 0, 0),
+                                        child: Icon(
+                                          Icons.highlight_off_sharp,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryColor,
+                                          size: 24,
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ).animated([
-                              animationsMap[
-                                  'containerOnActionTriggerAnimation1']
-                            ]),
-                          if (!(widget.booking.testsIncluded
-                                  ?.contains(widget.test.reference)) ??
+                            ),
+                          ).animated([
+                            animationsMap['containerOnActionTriggerAnimation1']
+                          ]),
+                          if (FFAppState()
+                                  .testPackTests
+                                  ?.contains(widget.test.reference) ??
                               true)
                             InkWell(
                               onTap: () async {
-                                if (!(widget.booking.testsIncluded
-                                    .contains(widget.test.reference))) {
-                                  if (!(widget.booking.testPackTests
-                                      .contains(widget.test.reference))) {
-                                    final bookingsUpdateData = {
-                                      ...createBookingsRecordData(
-                                        totalPrice: functions.addCartTotal(
-                                            widget.booking.totalPrice,
-                                            widget.test.price),
-                                      ),
-                                      'tests_included': FieldValue.arrayUnion(
-                                          [widget.test.reference]),
-                                      'total_tests': FieldValue.increment(1),
-                                    };
-                                    await widget.booking.reference
-                                        .update(bookingsUpdateData);
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Test Added.${widget.booking.testsIncluded.length.toString()} Tests in Total.',
-                                          style: TextStyle(),
-                                        ),
-                                        duration: Duration(milliseconds: 4000),
-                                        backgroundColor: Color(0x00000000),
-                                      ),
-                                    );
-                                  } else {
-                                    await showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      backgroundColor: Colors.transparent,
-                                      context: context,
-                                      builder: (context) {
-                                        return Padding(
-                                          padding:
-                                              MediaQuery.of(context).viewInsets,
-                                          child: DuplicateTestsWidget(
-                                            booking: widget.booking,
-                                          ),
-                                        );
-                                      },
-                                    );
-                                    return;
-                                  }
+                                if (FFAppState()
+                                    .testPackTests
+                                    .contains(widget.test.reference)) {
+                                  setState(() => FFAppState()
+                                      .addToTestPackTests(
+                                          widget.test.reference));
                                 } else {
                                   return;
                                 }
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Test Added.${widget.listSize.toString()} Tests in Total.',
+                                      style: TextStyle(),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor: Color(0x00000000),
+                                  ),
+                                );
                               },
                               child: Material(
                                 color: Colors.transparent,
@@ -372,7 +329,6 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                             MediaQuery.of(context).viewInsets,
                                         child: TestDetailsPopupWidget(
                                           test: widget.test,
-                                          booking: widget.booking.reference,
                                         ),
                                       );
                                     },

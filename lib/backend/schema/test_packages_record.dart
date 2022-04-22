@@ -24,13 +24,38 @@ abstract class TestPackagesRecord
   BuiltList<DocumentReference> get testsIncluded;
 
   @nullable
+  String get description;
+
+  @nullable
+  double get duration;
+
+  @nullable
+  @BuiltValueField(wireName: 'duration_results')
+  double get durationResults;
+
+  @nullable
+  String get category;
+
+  @nullable
+  bool get atHome;
+
+  @nullable
+  bool get isAvailable;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
   static void _initializeBuilder(TestPackagesRecordBuilder builder) => builder
     ..packageName = ''
     ..price = 0
-    ..testsIncluded = ListBuilder();
+    ..testsIncluded = ListBuilder()
+    ..description = ''
+    ..duration = 0.0
+    ..durationResults = 0.0
+    ..category = ''
+    ..atHome = false
+    ..isAvailable = false;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('test_Packages');
@@ -57,10 +82,22 @@ abstract class TestPackagesRecord
 Map<String, dynamic> createTestPackagesRecordData({
   String packageName,
   int price,
+  String description,
+  double duration,
+  double durationResults,
+  String category,
+  bool atHome,
+  bool isAvailable,
 }) =>
     serializers.toFirestore(
         TestPackagesRecord.serializer,
         TestPackagesRecord((t) => t
           ..packageName = packageName
           ..price = price
-          ..testsIncluded = null));
+          ..testsIncluded = null
+          ..description = description
+          ..duration = duration
+          ..durationResults = durationResults
+          ..category = category
+          ..atHome = atHome
+          ..isAvailable = isAvailable));

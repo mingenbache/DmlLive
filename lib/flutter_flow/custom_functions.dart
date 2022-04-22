@@ -907,6 +907,37 @@ List<TestsRecord> filterTests(
   }
 }
 
+List<TestPackagesRecord> filterPackages(
+  bool allcategories,
+  String catString,
+  String searchQuery,
+  List<TestPackagesRecord> allPackages,
+) {
+  // filter collection by category parameter if boolean value true
+  //
+  if (allcategories) {
+    if (searchQuery.isNotEmpty) {
+      return allPackages
+          .where((t) => t.packageName.contains(searchQuery))
+          .toList();
+    } else {
+      return allPackages
+          .where((t) => t.category.toLowerCase() == catString.toLowerCase())
+          .toList();
+    }
+  } else {
+    if (searchQuery.isNotEmpty && !allcategories) {
+      return allPackages
+          .where((t) =>
+              t.packageName.contains(searchQuery) &&
+              t.category.toLowerCase() == catString.toLowerCase())
+          .toList();
+    } else {
+      return allPackages;
+    }
+  }
+}
+
 List<TestsRecord> filterTestsByCategory(
   bool allcategories,
   String catString,
@@ -1176,4 +1207,153 @@ int calculateAge(DateTime dOb) {
   int age = 0;
   age = currentDate.year - dOb.year;
   return age;
+}
+
+List<DocumentReference> removeBookingPackageTests(
+  List<DocumentReference> testPackTests,
+  List<DocumentReference> allPackagesTestsList,
+) {
+  // remove all elements in allPackagesTestsList that are also in testPackTests
+  final packageTest = new List<DocumentReference>();
+
+  for (final test in allPackagesTestsList) {
+    if (!testPackTests.contains(test)) {
+      packageTest.add(test);
+    }
+  }
+  return packageTest;
+}
+
+List<DocumentReference> addBookingPackageTests(
+  List<DocumentReference> bookingPackageTests,
+  List<DocumentReference> packageTests,
+) {
+  // add all elements in packageTests into bookingPackageTests
+  for (var doctest in packageTests) {
+    bookingPackageTests.add(doctest);
+  }
+  return bookingPackageTests;
+}
+
+List<DocumentReference> returnAllBookingTests(
+  List<DocumentReference> allPackageTests,
+  List<DocumentReference> allBookingTests,
+) {
+  // combine lists into one list
+  List<DocumentReference> combinedTests = allPackageTests;
+  combinedTests.addAll(allBookingTests);
+  return combinedTests;
+}
+
+bool checkTestInBookingTests(
+  DocumentReference test,
+  List<DocumentReference> allBookingTests,
+) {
+  // check if list contains element
+  for (final bookingTest in allBookingTests) {
+    if (bookingTest == test) {
+      return true;
+    }
+  }
+  return false;
+}
+
+bool checkTestPackageBookingHasDuplicates(
+  List<DocumentReference> allBookingTests,
+  List<DocumentReference> testPackTests,
+) {
+  // Check if allBookingTests contains any elements in testPackTests
+  // loop will exit naturally if allBookingTests contains any elements in testPackTests:
+  return allBookingTests.any((element) => testPackTests.contains(element));
+}
+
+List<DocumentReference> returnDuplicateTestsinBooking(
+  List<DocumentReference> allBookingTests,
+  List<DocumentReference> testPackageTests,
+) {
+  // return elements contained in both lists
+  var duplicateTests = <DocumentReference>[];
+  allBookingTests.forEach((e) {
+    if (testPackageTests.contains(e)) {
+      duplicateTests.add(e);
+    }
+  });
+  return duplicateTests;
+}
+
+List<TestPackagesRecord> returnPackagesinBooking(
+  List<TestPackagesRecord> packagesCollection,
+  List<DocumentReference> bookingPackagesList,
+) {
+  // return list of documents where reference is contained in TestPackagesRecord list
+  List<TestPackagesRecord> newPackagesCollection = [];
+
+  for (int i = 0; i < bookingPackagesList.length; i++) {
+    for (var j = 0; j < packagesCollection.length; j++) {
+      if (bookingPackagesList[i] == packagesCollection[j].reference) {
+        newPackagesCollection.add(packagesCollection[j]);
+        break;
+      }
+    }
+  }
+
+  return newPackagesCollection;
+}
+
+List<TestPackagesRecord> returnPackagesContainingDuplicateTests(
+  List<TestPackagesRecord> bookingPackages,
+  List<DocumentReference> duplicateTests,
+) {
+  // return list of documents containing any elements in duplicateTests list
+  List<TestPackagesRecord> matchList = [];
+
+  for (var testpackage in bookingPackages.toList()) {
+    for (var test in testpackage.testsIncluded) {
+      if (duplicateTests.contains(test)) {
+        matchList.add(testpackage);
+      }
+    }
+  }
+  return matchList;
+}
+
+List<DocumentReference> returnDuplicateTestsinPackage(
+  TestPackagesRecord testPackage,
+  List<DocumentReference> duplicateTests,
+) {
+  // return list of elements contained in both TestPackage and duplicateTests
+  List<DocumentReference> duplicateTestsinPackage = [];
+
+  testPackage.testsIncluded.forEach((testRef) {
+    if (duplicateTests.contains(testRef)) {
+      if (!duplicateTestsinPackage.contains(testRef)) {
+        duplicateTestsinPackage.add(testRef);
+      }
+    }
+  });
+
+  return duplicateTestsinPackage;
+}
+
+List<int> returnStats(
+  List<TestedTestsRecord> testedTests,
+  DateTime endDate,
+) {
+  // count records with created date for previous 7 days and generate list
+  final resultList = List.generate(14, (index) {
+    final dayStart = DateTime(endDate.year, endDate.month, endDate.day);
+    final dayEnd = DateTime(
+        dayStart.year, dayStart.month, dayStart.day - index + 1, 23, 59, 59);
+    return testedTests
+        .where((booking) => booking.dateSampleCollected.day == dayEnd.day)
+        .toList()
+        .length;
+  });
+
+  /*var totall = 0;
+  for (int i = 0; i < resultList.length; i++) {
+    totall = totall + resultList[i];
+  }
+  resultList.add(totall); */
+  return resultList;
 }

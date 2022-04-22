@@ -358,13 +358,42 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                               Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                                child: Container(
-                                  height: 150,
-                                  decoration: BoxDecoration(),
-                                  child: custom_widgets.ChartTests(
-                                    width: MediaQuery.of(context).size.width,
-                                    height: 150,
-                                  ),
+                                child: StreamBuilder<List<TestedTestsRecord>>(
+                                  stream: queryTestedTestsRecord(),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: SpinKitDoubleBounce(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                            size: 50,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<TestedTestsRecord>
+                                        containerTestedTestsRecordList =
+                                        snapshot.data;
+                                    return Container(
+                                      height: 150,
+                                      decoration: BoxDecoration(),
+                                      child: custom_widgets.ChartTests(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height: 150,
+                                        testData: functions
+                                            .returnStats(
+                                                containerTestedTestsRecordList
+                                                    .toList(),
+                                                getCurrentTimestamp)
+                                            .toList(),
+                                      ),
+                                    );
+                                  },
                                 ),
                               ),
                             ],

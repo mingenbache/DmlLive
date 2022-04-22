@@ -1,7 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../components/duplicate_tests_widget.dart';
-import '../components/test_details_popup_widget.dart';
+import '../components/package_details_popup_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -12,25 +11,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TestListItemWidget extends StatefulWidget {
-  const TestListItemWidget({
+class BookingPackageItemWidget extends StatefulWidget {
+  const BookingPackageItemWidget({
     Key key,
-    this.test,
+    this.package,
     this.index,
     this.listSize,
     this.booking,
   }) : super(key: key);
 
-  final TestsRecord test;
+  final TestPackagesRecord package;
   final int index;
   final int listSize;
   final BookingsRecord booking;
 
   @override
-  _TestListItemWidgetState createState() => _TestListItemWidgetState();
+  _BookingPackageItemWidgetState createState() =>
+      _BookingPackageItemWidgetState();
 }
 
-class _TestListItemWidgetState extends State<TestListItemWidget>
+class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
     with TickerProviderStateMixin {
   final animationsMap = {
     'stackOnPageLoadAnimation': AnimationInfo(
@@ -152,22 +152,27 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                     children: [
                       Stack(
                         children: [
-                          if (widget.booking.testsIncluded
-                                  ?.contains(widget.test.reference) ??
+                          if (widget.booking.testPackages
+                                  ?.contains(widget.package.reference) ??
                               true)
                             InkWell(
                               onTap: () async {
-                                if (widget.booking.testsIncluded
-                                    .contains(widget.test.reference)) {
+                                if (widget.booking.testPackages
+                                    .contains(widget.package.reference)) {
                                   final bookingsUpdateData = {
                                     ...createBookingsRecordData(
                                       totalPrice: functions.removeFromCart(
                                           widget.booking.totalPrice,
-                                          widget.test.price),
+                                          widget.package.price),
                                     ),
-                                    'tests_included': FieldValue.arrayRemove(
-                                        [widget.test.reference]),
-                                    'total_tests': FieldValue.increment(-1),
+                                    'testPackages': FieldValue.arrayRemove(
+                                        [widget.package.reference]),
+                                    'testPackTests':
+                                        functions.removeBookingPackageTests(
+                                            widget.package.testsIncluded
+                                                .toList(),
+                                            widget.booking.testPackTests
+                                                .toList()),
                                   };
                                   await widget.booking.reference
                                       .update(bookingsUpdateData);
@@ -235,57 +240,44 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                               animationsMap[
                                   'containerOnActionTriggerAnimation1']
                             ]),
-                          if (!(widget.booking.testsIncluded
-                                  ?.contains(widget.test.reference)) ??
+                          if (!(widget.booking.testPackages
+                                  ?.contains(widget.package.reference)) ??
                               true)
                             InkWell(
                               onTap: () async {
-                                if (!(widget.booking.testsIncluded
-                                    .contains(widget.test.reference))) {
-                                  if (!(widget.booking.testPackTests
-                                      .contains(widget.test.reference))) {
-                                    final bookingsUpdateData = {
-                                      ...createBookingsRecordData(
-                                        totalPrice: functions.addCartTotal(
-                                            widget.booking.totalPrice,
-                                            widget.test.price),
-                                      ),
-                                      'tests_included': FieldValue.arrayUnion(
-                                          [widget.test.reference]),
-                                      'total_tests': FieldValue.increment(1),
-                                    };
-                                    await widget.booking.reference
-                                        .update(bookingsUpdateData);
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Test Added.${widget.booking.testsIncluded.length.toString()} Tests in Total.',
-                                          style: TextStyle(),
-                                        ),
-                                        duration: Duration(milliseconds: 4000),
-                                        backgroundColor: Color(0x00000000),
-                                      ),
-                                    );
-                                  } else {
-                                    await showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      backgroundColor: Colors.transparent,
-                                      context: context,
-                                      builder: (context) {
-                                        return Padding(
-                                          padding:
-                                              MediaQuery.of(context).viewInsets,
-                                          child: DuplicateTestsWidget(
-                                            booking: widget.booking,
-                                          ),
-                                        );
-                                      },
-                                    );
-                                    return;
-                                  }
+                                if (widget.booking.testPackages
+                                    .contains(widget.package.reference)) {
+                                  final bookingsUpdateData = {
+                                    ...createBookingsRecordData(
+                                      totalPrice: functions.addCartTotal(
+                                          widget.booking.totalPrice,
+                                          widget.package.price),
+                                    ),
+                                    'testPackages': FieldValue.arrayUnion(
+                                        [widget.package.reference]),
+                                    'testPackTests':
+                                        functions.addBookingPackageTests(
+                                            widget.booking.testPackTests
+                                                .toList(),
+                                            widget.package.testsIncluded
+                                                .toList()),
+                                  };
+                                  await widget.booking.reference
+                                      .update(bookingsUpdateData);
                                 } else {
                                   return;
                                 }
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Tests Added.',
+                                      style: TextStyle(),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor: Color(0x00000000),
+                                  ),
+                                );
                               },
                               child: Material(
                                 color: Colors.transparent,
@@ -370,9 +362,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                       return Padding(
                                         padding:
                                             MediaQuery.of(context).viewInsets,
-                                        child: TestDetailsPopupWidget(
-                                          test: widget.test,
-                                          booking: widget.booking.reference,
+                                        child: PackageDetailsPopupWidget(
+                                          package: widget.package,
                                         ),
                                       );
                                     },
@@ -433,8 +424,9 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                       .fromSTEB(5, 0, 0, 0),
                                                   child: Text(
                                                     functions
-                                                        .camelCase(
-                                                            widget.test.name)
+                                                        .camelCase(widget
+                                                            .package
+                                                            .packageName)
                                                         .maybeHandleOverflow(
                                                             maxChars: 25),
                                                     style: TextStyle(
@@ -583,7 +575,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                             4),
                                                                     child: Text(
                                                                       widget
-                                                                          .test
+                                                                          .package
                                                                           .category,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -637,7 +629,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                   size: 20,
                                                                 ),
                                                                 Text(
-                                                                  '${widget.test.durationResults.toString()} Hrs',
+                                                                  '${widget.package.durationResults.toString()} Hrs',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1
@@ -699,8 +691,87 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       mainAxisAlignment:
-                                                          MainAxisAlignment.end,
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
                                                       children: [
+                                                        Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        0),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        5,
+                                                                        0,
+                                                                        5,
+                                                                        0),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Icon(
+                                                                  Icons
+                                                                      .delivery_dining,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryColor,
+                                                                  size: 20,
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          3,
+                                                                          2,
+                                                                          3,
+                                                                          2),
+                                                                  child:
+                                                                      Container(
+                                                                    width: 20,
+                                                                    height: 20,
+                                                                    child:
+                                                                        Stack(
+                                                                      children: [
+                                                                        if (widget.package.atHome ??
+                                                                            true)
+                                                                          Align(
+                                                                            alignment:
+                                                                                AlignmentDirectional(1, 0),
+                                                                            child:
+                                                                                Icon(
+                                                                              Icons.check_circle_outline,
+                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                              size: 16,
+                                                                            ),
+                                                                          ),
+                                                                        if (widget.package.atHome ??
+                                                                            true)
+                                                                          Align(
+                                                                            alignment:
+                                                                                AlignmentDirectional(1, 0),
+                                                                            child:
+                                                                                Icon(
+                                                                              Icons.not_interested,
+                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                              size: 16,
+                                                                            ),
+                                                                          ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
                                                         Align(
                                                           alignment:
                                                               AlignmentDirectional(
@@ -745,7 +816,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                           Text(
                                                                         formatNumber(
                                                                           widget
-                                                                              .test
+                                                                              .package
                                                                               .price,
                                                                           formatType:
                                                                               FormatType.decimal,

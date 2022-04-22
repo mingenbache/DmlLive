@@ -110,6 +110,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                             controller: emailaddressController,
                             obscureText: false,
                             decoration: InputDecoration(
+                              labelText: 'Email Address',
+                              labelStyle: GoogleFonts.getFont(
+                                'Roboto',
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal,
+                              ),
                               hintText: 'Email Address',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
