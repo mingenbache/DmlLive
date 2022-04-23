@@ -33,7 +33,7 @@ class _ChartTestsState extends State<ChartTests> {
   ];
 
   bool showAvg = false;
-  List<int> testData = this.testData;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -50,7 +50,7 @@ class _ChartTestsState extends State<ChartTests> {
               padding: const EdgeInsets.only(
                   right: 18.0, left: 12.0, top: 24, bottom: 12),
               child: LineChart(
-                showAvg ? avgData() : mainData(testData),
+                showAvg ? avgData() : mainData(widget.testData),
               ),
             ),
           ),
