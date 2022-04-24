@@ -389,7 +389,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                             .returnStats(
                                                 containerTestedTestsRecordList
                                                     .toList(),
-                                                getCurrentTimestamp)
+                                                functions.getDayToday())
                                             .toList(),
                                       ),
                                     );

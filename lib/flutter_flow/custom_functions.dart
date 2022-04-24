@@ -1350,6 +1350,11 @@ List<int> returnStats(
         .length;
   });
 
+  for (var test in testedTests.toList()) {
+    if (test.dateSampleCollected == endDate) {
+      matchList.add(testpackage);
+    }
+  }
   /*var totall = 0;
   for (int i = 0; i < resultList.length; i++) {
     totall = totall + resultList[i];
