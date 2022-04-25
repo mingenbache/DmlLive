@@ -132,7 +132,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                         Stack(
                           children: [
                             if (widget.booking.testsIncluded
-                                    .contains(widget.test) ??
+                                    ?.contains(widget.test) ??
                                 true)
                               InkWell(
                                 onTap: () async {
@@ -210,7 +210,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                     'containerOnActionTriggerAnimation1']
                               ]),
                             if (!(widget.booking.testsIncluded
-                                    .contains(widget.test)) ??
+                                    ?.contains(widget.test)) ??
                                 true)
                               InkWell(
                                 onTap: () async {

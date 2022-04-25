@@ -68,6 +68,9 @@ abstract class InvoicesRecord
   double get invoiceAmount;
 
   @nullable
+  String get invoiceNum;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -80,7 +83,8 @@ abstract class InvoicesRecord
     ..paymentsList = ListBuilder()
     ..amountDue = 0.0
     ..updateRole = ''
-    ..invoiceAmount = 0.0;
+    ..invoiceAmount = 0.0
+    ..invoiceNum = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('Invoices');
@@ -117,6 +121,7 @@ Map<String, dynamic> createInvoicesRecordData({
   DateTime updateDate,
   String updateRole,
   double invoiceAmount,
+  String invoiceNum,
 }) =>
     serializers.toFirestore(
         InvoicesRecord.serializer,
@@ -135,4 +140,5 @@ Map<String, dynamic> createInvoicesRecordData({
           ..dueDate = dueDate
           ..updateDate = updateDate
           ..updateRole = updateRole
-          ..invoiceAmount = invoiceAmount));
+          ..invoiceAmount = invoiceAmount
+          ..invoiceNum = invoiceNum));

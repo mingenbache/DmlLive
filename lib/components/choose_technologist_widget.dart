@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../backend/push_notifications/push_notifications_util.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -18,14 +19,16 @@ class ChooseTechnologistWidget extends StatefulWidget {
     this.bookingRef,
     this.scheduledDate,
     this.booking,
-    this.bookedTestRef,
+    this.bookedTest,
+    this.testName,
   }) : super(key: key);
 
   final DocumentReference testRef;
   final DocumentReference bookingRef;
   final DateTime scheduledDate;
   final BookingsRecord booking;
-  final DocumentReference bookedTestRef;
+  final BookedTestsRecord bookedTest;
+  final String testName;
 
   @override
   _ChooseTechnologistWidgetState createState() =>
@@ -267,6 +270,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                               ),
+                                          hintText: 'Choose Technologist',
                                           icon: Icon(
                                             Icons.keyboard_arrow_down_rounded,
                                             color: FlutterFlowTheme.of(context)
@@ -339,44 +343,102 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                             return Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                FFButtonWidget(
-                                  onPressed: () async {
-                                    final bookingsUpdateData = {
-                                      'bookedTests': FieldValue.arrayUnion(
-                                          [widget.testRef]),
-                                    };
-                                    await widget.bookingRef
-                                        .update(bookingsUpdateData);
-
-                                    final bookedTestsUpdateData =
-                                        createBookedTestsRecordData(
-                                      scheduledDate: widget.scheduledDate,
-                                      createdDate: getCurrentTimestamp,
-                                    );
-                                    await widget.bookedTestRef
-                                        .update(bookedTestsUpdateData);
-                                    Navigator.pop(context);
-                                  },
-                                  text: 'Continue',
-                                  options: FFButtonOptions(
-                                    width: 300,
-                                    height: 70,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .subtitle2
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
-                                        ),
-                                    elevation: 2,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1,
-                                    ),
-                                    borderRadius: 25,
+                                StreamBuilder<List<StaffRecord>>(
+                                  stream: queryStaffRecord(
+                                    queryBuilder: (staffRecord) =>
+                                        staffRecord.where('display_name',
+                                            isEqualTo: technologistValue),
+                                    singleRecord: true,
                                   ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: SpinKitDoubleBounce(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                            size: 50,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<StaffRecord> buttonStaffRecordList =
+                                        snapshot.data;
+                                    // Return an empty Container when the document does not exist.
+                                    if (snapshot.data.isEmpty) {
+                                      return Container();
+                                    }
+                                    final buttonStaffRecord =
+                                        buttonStaffRecordList.isNotEmpty
+                                            ? buttonStaffRecordList.first
+                                            : null;
+                                    return FFButtonWidget(
+                                      onPressed: () async {
+                                        setState(() => FFAppState()
+                                            .assignTechnologist = true);
+                                        if (FFAppState().assignTechnologist) {
+                                          final bookingsUpdateData = {
+                                            'bookedTests':
+                                                FieldValue.arrayUnion(
+                                                    [widget.testRef]),
+                                          };
+                                          await widget.bookingRef
+                                              .update(bookingsUpdateData);
+
+                                          final bookedTestsUpdateData =
+                                              createBookedTestsRecordData(
+                                            scheduledDate: widget.scheduledDate,
+                                            createdDate: getCurrentTimestamp,
+                                            technologist:
+                                                buttonStaffRecord.reference,
+                                          );
+                                          await widget.bookedTest.reference
+                                              .update(bookedTestsUpdateData);
+                                          triggerPushNotification(
+                                            notificationTitle:
+                                                'New Test Assigned',
+                                            notificationText:
+                                                '${widget.testName} Test Scheduled for ${dateTimeFormat('MMMMEEEEd', widget.scheduledDate)}',
+                                            userRefs: [
+                                              buttonStaffRecord.userRef
+                                            ],
+                                            initialPageName:
+                                                'TechnologistTestDeck',
+                                            parameterData: {
+                                              'bookedTest': widget.bookedTest,
+                                            },
+                                          );
+                                          Navigator.pop(context);
+                                        } else {
+                                          return;
+                                        }
+                                      },
+                                      text: 'Continue',
+                                      options: FFButtonOptions(
+                                        width: 300,
+                                        height: 70,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryColor,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .subtitle2
+                                            .override(
+                                              fontFamily: 'Roboto',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiaryColor,
+                                            ),
+                                        elevation: 2,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1,
+                                        ),
+                                        borderRadius: 25,
+                                      ),
+                                    );
+                                  },
                                 ),
                               ],
                             );

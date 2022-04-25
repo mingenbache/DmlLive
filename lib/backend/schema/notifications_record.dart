@@ -27,13 +27,29 @@ abstract class NotificationsRecord
   DateTime get createdDate;
 
   @nullable
+  bool get isSeen;
+
+  @nullable
+  BuiltList<DocumentReference> get usersSeen;
+
+  @nullable
+  bool get isBooking;
+
+  @nullable
+  bool get isTest;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
   static void _initializeBuilder(NotificationsRecordBuilder builder) => builder
     ..userRole = ''
     ..message = ''
-    ..usersReceiving = ListBuilder();
+    ..usersReceiving = ListBuilder()
+    ..isSeen = false
+    ..usersSeen = ListBuilder()
+    ..isBooking = false
+    ..isTest = false;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('notifications');
@@ -61,6 +77,9 @@ Map<String, dynamic> createNotificationsRecordData({
   String userRole,
   String message,
   DateTime createdDate,
+  bool isSeen,
+  bool isBooking,
+  bool isTest,
 }) =>
     serializers.toFirestore(
         NotificationsRecord.serializer,
@@ -68,4 +87,8 @@ Map<String, dynamic> createNotificationsRecordData({
           ..userRole = userRole
           ..message = message
           ..usersReceiving = null
-          ..createdDate = createdDate));
+          ..createdDate = createdDate
+          ..isSeen = isSeen
+          ..usersSeen = null
+          ..isBooking = isBooking
+          ..isTest = isTest));

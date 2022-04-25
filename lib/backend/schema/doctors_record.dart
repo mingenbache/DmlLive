@@ -14,11 +14,27 @@ abstract class DoctorsRecord
   BuiltList<String> get names;
 
   @nullable
+  String get address;
+
+  @nullable
+  String get phonenumber;
+
+  @nullable
+  String get name;
+
+  @nullable
+  String get emailaddress;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
-  static void _initializeBuilder(DoctorsRecordBuilder builder) =>
-      builder..names = ListBuilder();
+  static void _initializeBuilder(DoctorsRecordBuilder builder) => builder
+    ..names = ListBuilder()
+    ..address = ''
+    ..phonenumber = ''
+    ..name = ''
+    ..emailaddress = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('doctors');
@@ -41,5 +57,17 @@ abstract class DoctorsRecord
           {...mapFromFirestore(data), kDocumentReferenceField: reference});
 }
 
-Map<String, dynamic> createDoctorsRecordData() => serializers.toFirestore(
-    DoctorsRecord.serializer, DoctorsRecord((d) => d..names = null));
+Map<String, dynamic> createDoctorsRecordData({
+  String address,
+  String phonenumber,
+  String name,
+  String emailaddress,
+}) =>
+    serializers.toFirestore(
+        DoctorsRecord.serializer,
+        DoctorsRecord((d) => d
+          ..names = null
+          ..address = address
+          ..phonenumber = phonenumber
+          ..name = name
+          ..emailaddress = emailaddress));

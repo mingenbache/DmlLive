@@ -762,7 +762,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                 if (columnBookingsRecord
                                                                         .testsIncluded
                                                                         .toList()
-                                                                        .contains(
+                                                                        ?.contains(
                                                                             testsListFullPageItem.reference) ??
                                                                     true)
                                                                   Align(
@@ -828,7 +828,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                 if (!(columnBookingsRecord
                                                                         .testsIncluded
                                                                         .toList()
-                                                                        .contains(
+                                                                        ?.contains(
                                                                             testsListFullPageItem.reference)) ??
                                                                     true)
                                                                   Align(

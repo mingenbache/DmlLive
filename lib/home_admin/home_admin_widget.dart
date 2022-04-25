@@ -1,17 +1,18 @@
 import '../account/account_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/all_chats_popup_widget.dart';
 import '../components/notifications_widget_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../invoice_list/invoice_list_widget.dart';
-import '../messages/messages_widget.dart';
 import '../scheduled_tests/scheduled_tests_widget.dart';
 import '../test_queue/test_queue_widget.dart';
 import '../tested_tests/tested_tests_widget.dart';
 import '../user_list/user_list_widget.dart';
 import 'dart:ui';
+import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -76,6 +77,11 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                               ),
                             ),
                             child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              constraints: BoxConstraints(
+                                maxHeight:
+                                    MediaQuery.of(context).size.height * 0.35,
+                              ),
                               decoration: BoxDecoration(
                                 color: Color(0xFFEEEEEE),
                                 borderRadius: BorderRadius.only(
@@ -218,12 +224,22 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                   ),
                                                   InkWell(
                                                     onTap: () async {
-                                                      await Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              MessagesWidget(),
-                                                        ),
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return Padding(
+                                                            padding:
+                                                                MediaQuery.of(
+                                                                        context)
+                                                                    .viewInsets,
+                                                            child:
+                                                                AllChatsPopupWidget(),
+                                                          );
+                                                        },
                                                       );
                                                     },
                                                     child: Icon(
@@ -321,6 +337,67 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                       Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
+                                child: Text(
+                                  'Booking Statistics',
+                                  style: FlutterFlowTheme.of(context).title3,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                child: StreamBuilder<List<TestedTestsRecord>>(
+                                  stream: queryTestedTestsRecord(),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: SpinKitDoubleBounce(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                            size: 50,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<TestedTestsRecord>
+                                        containerTestedTestsRecordList =
+                                        snapshot.data;
+                                    return Container(
+                                      height: 150,
+                                      decoration: BoxDecoration(),
+                                      child: custom_widgets.ChartTests(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height: 150,
+                                        testData: functions
+                                            .returnStats(
+                                                containerTestedTestsRecordList
+                                                    .toList(),
+                                                functions.getDayToday())
+                                            .toList(),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.center,

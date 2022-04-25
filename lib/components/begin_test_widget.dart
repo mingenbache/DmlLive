@@ -505,7 +505,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                 batchNumController
                                                                     .text,
                                                           );
-                                                          final testedTestsRecordReference =
+                                                          var testedTestsRecordReference =
                                                               TestedTestsRecord
                                                                   .collection
                                                                   .doc();
@@ -539,6 +539,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                             );
                                                           },
                                                         );
+
                                                         final bookedTestsUpdateData =
                                                             createBookedTestsRecordData(
                                                           sampleCollected: true,

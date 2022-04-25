@@ -127,13 +127,38 @@ abstract class BookingsRecord
   bool get confirmationBegan;
 
   @nullable
-  BuiltList<DocumentReference> get verifiedTests;
-
-  @nullable
   BuiltList<DocumentReference> get bookedTests;
 
   @nullable
   BuiltList<DocumentReference> get payments;
+
+  @nullable
+  bool get reportSent;
+
+  @nullable
+  @BuiltValueField(wireName: 'doc_names')
+  String get docNames;
+
+  @nullable
+  String get doctorPhoneNumber;
+
+  @nullable
+  String get doctorEmail;
+
+  @nullable
+  DocumentReference get docRef;
+
+  @nullable
+  BuiltList<DocumentReference> get verifiedTests;
+
+  @nullable
+  bool get hasTestPackages;
+
+  @nullable
+  BuiltList<DocumentReference> get testPackages;
+
+  @nullable
+  BuiltList<DocumentReference> get testPackTests;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -166,9 +191,16 @@ abstract class BookingsRecord
     ..resultPublished = false
     ..paymentBalance = 0.0
     ..confirmationBegan = false
-    ..verifiedTests = ListBuilder()
     ..bookedTests = ListBuilder()
-    ..payments = ListBuilder();
+    ..payments = ListBuilder()
+    ..reportSent = false
+    ..docNames = ''
+    ..doctorPhoneNumber = ''
+    ..doctorEmail = ''
+    ..verifiedTests = ListBuilder()
+    ..hasTestPackages = false
+    ..testPackages = ListBuilder()
+    ..testPackTests = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('bookings');
@@ -223,6 +255,12 @@ Map<String, dynamic> createBookingsRecordData({
   double paymentBalance,
   DocumentReference updateStaff,
   bool confirmationBegan,
+  bool reportSent,
+  String docNames,
+  String doctorPhoneNumber,
+  String doctorEmail,
+  DocumentReference docRef,
+  bool hasTestPackages,
 }) =>
     serializers.toFirestore(
         BookingsRecord.serializer,
@@ -260,6 +298,14 @@ Map<String, dynamic> createBookingsRecordData({
           ..paymentBalance = paymentBalance
           ..updateStaff = updateStaff
           ..confirmationBegan = confirmationBegan
-          ..verifiedTests = null
           ..bookedTests = null
-          ..payments = null));
+          ..payments = null
+          ..reportSent = reportSent
+          ..docNames = docNames
+          ..doctorPhoneNumber = doctorPhoneNumber
+          ..doctorEmail = doctorEmail
+          ..docRef = docRef
+          ..verifiedTests = null
+          ..hasTestPackages = hasTestPackages
+          ..testPackages = null
+          ..testPackTests = null));

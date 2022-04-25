@@ -163,6 +163,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                     currentTime: getCurrentTimestamp,
                                     minTime: DateTime(0, 0, 0),
                                   );
+
                                   setState(() =>
                                       FFAppState().datepicked = datePicked);
                                 },

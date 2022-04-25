@@ -1,5 +1,5 @@
 import '../backend/backend.dart';
-import '../components/user_activity_widget.dart';
+import '../chat/chat_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
@@ -26,21 +26,16 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
     return Align(
       alignment: AlignmentDirectional(0, 0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
         child: InkWell(
           onTap: () async {
-            await showModalBottomSheet(
-              isScrollControlled: true,
-              backgroundColor: Colors.transparent,
-              context: context,
-              builder: (context) {
-                return Padding(
-                  padding: MediaQuery.of(context).viewInsets,
-                  child: UserActivityWidget(
-                    userRef: widget.userRecord.reference,
-                  ),
-                );
-              },
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ChatWidget(
+                  chatUser: widget.userRecord,
+                ),
+              ),
             );
           },
           child: Material(
@@ -51,209 +46,76 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
             ),
             child: Container(
               width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.height * 0.3,
+              height: 100,
               constraints: BoxConstraints(
                 maxWidth: 315,
                 maxHeight: 220,
               ),
               decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 6,
-                    color: Color(0x4B1A1F24),
-                    offset: Offset(0, 2),
-                  )
-                ],
-                gradient: LinearGradient(
-                  colors: [
-                    FlutterFlowTheme.of(context).primaryColor,
-                    FlutterFlowTheme.of(context).tertiaryColor
-                  ],
-                  stops: [1, 1],
-                  begin: AlignmentDirectional(0.94, -1),
-                  end: AlignmentDirectional(-0.94, 1),
-                ),
+                color: Color(0xB9FFFFFF),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 15, 20, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          FaIcon(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.2,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Color(0x69586B06),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(12),
+                            bottomRight: Radius.circular(140),
+                            topLeft: Radius.circular(12),
+                            topRight: Radius.circular(140),
+                          ),
+                          shape: BoxShape.rectangle,
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional(-0.45, 0),
+                          child: FaIcon(
                             FontAwesomeIcons.userInjured,
-                            color: FlutterFlowTheme.of(context).tertiaryColor,
+                            color: Colors.white,
                             size: 40,
                           ),
-                          Text(
-                            '${functions.camelCase(widget.userRecord.firstName)} ${functions.camelCase(widget.userRecord.lastName)}',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Roboto',
-                                      fontSize: 19,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Container(
-                            width: 30,
-                            decoration: BoxDecoration(),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Icon(
-                                  Icons.email_outlined,
-                                  color: Color(0xFFFFFFFE),
-                                  size: 20,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Text(
-                            widget.userRecord.email,
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Container(
-                            width: 30,
-                            decoration: BoxDecoration(),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Icon(
-                                  Icons.phone,
-                                  color: Color(0xFFFFFFFE),
-                                  size: 18,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Text(
-                            widget.userRecord.phoneNumber,
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Row(
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 4, 4),
+                    child: Column(
                       mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(20, 10, 0, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 5, 20, 0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Container(
-                                width: 30,
-                                decoration: BoxDecoration(),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    FaIcon(
-                                      FontAwesomeIcons.userPlus,
-                                      color: Color(0xFFFFFFFE),
-                                      size: 18,
+                              Text(
+                                '${functions.camelCase(widget.userRecord.firstName)} ${functions.camelCase(widget.userRecord.lastName)}',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryColor,
+                                      fontSize: 19,
+                                      fontWeight: FontWeight.w500,
                                     ),
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                width: 80,
-                                decoration: BoxDecoration(),
-                                child: Text(
-                                  dateTimeFormat(
-                                      'd/M/y', widget.userRecord.createdTime),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Lexend Deca',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryColor,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                ),
                               ),
                             ],
                           ),
                         ),
                         Padding(
                           padding:
-                              EdgeInsetsDirectional.fromSTEB(10, 10, 20, 0),
+                              EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
                           child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Container(
-                                width: 30,
-                                decoration: BoxDecoration(),
-                                child: FaIcon(
-                                  FontAwesomeIcons.userClock,
-                                  color: Color(0xFFFFFFFE),
-                                  size: 20,
-                                ),
-                              ),
-                              Container(
-                                width: 75,
-                                decoration: BoxDecoration(),
-                                child: Text(
-                                  dateTimeFormat(
-                                      'd/M/y', widget.userRecord.lastLogin),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Lexend Deca',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryColor,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 12, 20, 16),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Container(
@@ -262,92 +124,70 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 4, 0),
-                                      child: Icon(
-                                        Icons.format_list_numbered_sharp,
-                                        color: Color(0xFFFCFCFC),
-                                        size: 24,
-                                      ),
+                                    Icon(
+                                      Icons.email_outlined,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                      size: 20,
                                     ),
                                   ],
                                 ),
                               ),
-                              StreamBuilder<List<BookedTestsRecord>>(
-                                stream: queryBookedTestsRecord(
-                                  queryBuilder: (bookedTestsRecord) =>
-                                      bookedTestsRecord.where('user',
-                                          isEqualTo:
-                                              widget.userRecord.reference),
-                                ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50,
-                                        height: 50,
-                                        child: SpinKitDoubleBounce(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
-                                          size: 50,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  List<BookedTestsRecord>
-                                      textBookedTestsRecordList = snapshot.data;
-                                  return Text(
-                                    textBookedTestsRecordList.length.toString(),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Roboto Mono',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryColor,
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.normal,
-                                        ),
-                                  );
-                                },
+                              Text(
+                                widget.userRecord.email,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryColor,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
                               ),
                             ],
                           ),
-                          Row(
+                        ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
+                          child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Stack(
-                                children: [
-                                  if (widget.userRecord.hasCurrentBooking ??
-                                      true)
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 4, 0),
-                                      child: Icon(
-                                        Icons.playlist_play,
-                                        color: Color(0xFFFCFCFC),
-                                        size: 24,
-                                      ),
+                              Container(
+                                width: 30,
+                                decoration: BoxDecoration(),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Icon(
+                                      Icons.phone,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                      size: 18,
                                     ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 4, 0),
-                                    child: Icon(
-                                      Icons.playlist_play,
-                                      color: Color(0x48FFFFFF),
-                                      size: 24,
+                                  ],
+                                ),
+                              ),
+                              Text(
+                                widget.userRecord.phoneNumber,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryColor,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
                                     ),
-                                  ),
-                                ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

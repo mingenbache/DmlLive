@@ -524,7 +524,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                             firstName: firstNameController.text,
                             lastName: lastNameController.text,
                           );
-                          final paymentsRecordReference =
+                          var paymentsRecordReference =
                               PaymentsRecord.collection.doc();
                           await paymentsRecordReference.set(paymentsCreateData);
                           paymentRef = PaymentsRecord.getDocumentFromData(

@@ -2,7 +2,6 @@ import '../backend/backend.dart';
 import '../components/user_activity_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import 'dart:ui';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -27,40 +26,60 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
     return Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Stack(
           children: [
             Align(
               alignment: AlignmentDirectional(0, 0),
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: MediaQuery.of(context).size.height * 0.24,
-                constraints: BoxConstraints(
-                  maxWidth: 315,
-                  maxHeight: 180,
-                ),
-                decoration: BoxDecoration(
-                  color: Color(0xFFEEEEEE),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(0),
-                    bottomRight: Radius.circular(0),
-                    topLeft: Radius.circular(12),
-                    topRight: Radius.circular(12),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: MediaQuery.of(context).size.height * 0.165,
+                  constraints: BoxConstraints(
+                    maxWidth: 315,
+                    maxHeight: 140,
                   ),
-                ),
-                child: ClipRect(
-                  child: ImageFiltered(
-                    imageFilter: ImageFilter.blur(
-                      sigmaX: 4,
-                      sigmaY: 4,
+                  decoration: BoxDecoration(
+                    color: Color(0x44262D34),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(12),
+                      bottomRight: Radius.circular(12),
+                      topLeft: Radius.circular(0),
+                      topRight: Radius.circular(0),
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.asset(
-                        'assets/images/kira-auf-der-heide-_Zd6COnH5E8-unsplash.jpg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                  ),
+                  child: Stack(
+                    children: [
+                      if ((widget.userRecord.role) == 'patho')
+                        Align(
+                          alignment: AlignmentDirectional(0, -1),
+                          child: Image.asset(
+                            'assets/images/doctor_icon@2x.png',
+                            height: MediaQuery.of(context).size.height * 0.2,
+                            fit: BoxFit.fitHeight,
+                          ),
+                        ),
+                      if ((widget.userRecord.role) == 'front')
+                        Image.asset(
+                          'assets/images/reception@2x.png',
+                          fit: BoxFit.fitHeight,
+                        ),
+                      if ((widget.userRecord.role) == 'tech')
+                        Image.asset(
+                          'assets/images/technologist@2x.png',
+                          fit: BoxFit.fitWidth,
+                        ),
+                      if ((widget.userRecord.role) == 'super')
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 60, 0, 0),
+                          child: Image.asset(
+                            'assets/images/super.png',
+                            fit: BoxFit.fitWidth,
+                          ),
+                        ),
+                    ],
                   ),
                 ),
               ),
@@ -113,8 +132,8 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(0),
                               bottomRight: Radius.circular(0),
-                              topLeft: Radius.circular(8),
-                              topRight: Radius.circular(8),
+                              topLeft: Radius.circular(12),
+                              topRight: Radius.circular(12),
                             ),
                           ),
                           child: Padding(
@@ -123,95 +142,6 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Stack(
-                                  children: [
-                                    if ((widget.userRecord.role) == 'patho')
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.14,
-                                        height:
-                                            MediaQuery.of(context).size.width *
-                                                0.14,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Image.asset(
-                                          'assets/images/doctor.png',
-                                          fit: BoxFit.contain,
-                                        ),
-                                      ),
-                                    if ((widget.userRecord.role) == 'client')
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.14,
-                                        height:
-                                            MediaQuery.of(context).size.width *
-                                                0.14,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Image.asset(
-                                          'assets/images/patient.png',
-                                          fit: BoxFit.contain,
-                                        ),
-                                      ),
-                                    if ((widget.userRecord.role) == 'tech')
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.14,
-                                        height:
-                                            MediaQuery.of(context).size.width *
-                                                0.14,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Image.asset(
-                                          'assets/images/technician.png',
-                                          fit: BoxFit.contain,
-                                        ),
-                                      ),
-                                    if ((widget.userRecord.role) == 'front')
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.14,
-                                        height:
-                                            MediaQuery.of(context).size.width *
-                                                0.14,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Image.asset(
-                                          'assets/images/reception.png',
-                                          fit: BoxFit.contain,
-                                        ),
-                                      ),
-                                    if ((widget.userRecord.role) == 'admin')
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.14,
-                                        height:
-                                            MediaQuery.of(context).size.width *
-                                                0.14,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Image.asset(
-                                          'assets/images/reception.png',
-                                          fit: BoxFit.contain,
-                                        ),
-                                      ),
-                                  ],
-                                ),
                                 Text(
                                   '${functions.camelCase(widget.userRecord.firstName)} ${functions.camelCase(widget.userRecord.lastName)}',
                                   style: FlutterFlowTheme.of(context)

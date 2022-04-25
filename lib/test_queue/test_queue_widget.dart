@@ -305,6 +305,8 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                             : null;
                                                     return InkWell(
                                                       onTap: () async {
+                                                        var _shouldSetState =
+                                                            false;
                                                         if (testQueueItemTestedTestsRecord !=
                                                             null) {
                                                           final testedTestsCreateData =
@@ -327,7 +329,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                             dateSampleCollected:
                                                                 getCurrentTimestamp,
                                                           );
-                                                          final testedTestsRecordReference =
+                                                          var testedTestsRecordReference =
                                                               TestedTestsRecord
                                                                   .collection
                                                                   .doc();
@@ -338,7 +340,14 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                               .getDocumentFromData(
                                                                   testedTestsCreateData,
                                                                   testedTestsRecordReference);
+                                                          _shouldSetState =
+                                                              true;
+                                                        } else {
+                                                          if (_shouldSetState)
+                                                            setState(() {});
+                                                          return;
                                                         }
+
                                                         await Navigator.push(
                                                           context,
                                                           MaterialPageRoute(
@@ -350,8 +359,8 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                             ),
                                                           ),
                                                         );
-
-                                                        setState(() {});
+                                                        if (_shouldSetState)
+                                                          setState(() {});
                                                       },
                                                       child: Material(
                                                         color:

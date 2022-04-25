@@ -1684,6 +1684,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                     minTime:
                                                         getCurrentTimestamp,
                                                   );
+
                                                   setState(() => FFAppState()
                                                           .selectedDate =
                                                       datePicked);
@@ -1777,7 +1778,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                   updateDate: getCurrentTimestamp,
                                   updateRole: currentUserDocument?.role,
                                 );
-                                final invoicesRecordReference =
+                                var invoicesRecordReference =
                                     InvoicesRecord.collection.doc();
                                 await invoicesRecordReference
                                     .set(invoicesCreateData);

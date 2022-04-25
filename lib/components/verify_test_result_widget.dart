@@ -311,19 +311,40 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                           );
                                           await widget.testedTestRef
                                               .update(testedTestsUpdateData);
-                                          if (!(rowBookingsRecord.verifiedTests
+                                          if (rowBookingsRecord.verifiedTests
                                               .toList()
-                                              .contains(columnTestedTestsRecord
-                                                  .testRef))) {
+                                              .contains(widget.testedTestRef)) {
                                             final bookingsUpdateData = {
                                               'verifiedTests':
                                                   FieldValue.arrayUnion([
-                                                columnTestedTestsRecord.testRef
+                                                columnTestedTestsRecord
+                                                    .reference
                                               ]),
                                             };
                                             await rowBookingsRecord.reference
                                                 .update(bookingsUpdateData);
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      'Test Already Verified!'),
+                                                  content: Text(
+                                                      'You cannot verify a test twice.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
                                           }
+
                                           Navigator.pop(context);
                                           await showDialog(
                                             context: context,

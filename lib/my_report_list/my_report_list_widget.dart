@@ -4,8 +4,8 @@ import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../lab_report/lab_report_widget.dart';
 import '../test_deck/test_deck_widget.dart';
-import '../test_report/test_report_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -170,8 +170,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                       await Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) =>
-                                              TestReportWidget(
+                                          builder: (context) => LabReportWidget(
                                             bookingRef: myCompletedbookingsItem
                                                 .reference,
                                           ),
