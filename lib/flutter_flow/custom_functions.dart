@@ -1349,14 +1349,14 @@ List<int> returnStats(
         .toList()
         .length;
   });
-  for (int i = 0; i < resultList.length; i++) {
+  /* for (int i = 0; i < resultList.length; i++) {
     for (var test in testedTests.toList()) {
       if (test.dateSampleCollected == endDate) {
         resultList[i]++;
         endDate = endDate.subtract(Duration(days: 1));
       }
     }
-  }
+  } */
 
   /*var totall = 0;
   for (int i = 0; i < resultList.length; i++) {
