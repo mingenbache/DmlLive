@@ -1335,7 +1335,7 @@ List<DocumentReference> returnDuplicateTestsinPackage(
   return duplicateTestsinPackage;
 }
 
-List<int> returnStats(
+List<double> returnStats(
   List<TestedTestsRecord> testedTests,
   DateTime endDate,
 ) {
@@ -1345,7 +1345,7 @@ List<int> returnStats(
     final dayEnd = DateTime(
         dayStart.year, dayStart.month, dayStart.day - index + 1, 23, 59, 59);
     return testedTests
-        .where((booking) => booking.dateSampleCollected.day == dayEnd.day)
+        .where((booking) => booking.dateSampleCollected == dayEnd)
         .toList()
         .length;
   });

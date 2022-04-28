@@ -21,7 +21,7 @@ class ChartTests extends StatefulWidget {
 
   final double width;
   final double height;
-  final List<int> testData;
+  final List<double> testData;
   @override
   _ChartTestsState createState() => _ChartTestsState();
 }
@@ -193,19 +193,19 @@ class _ChartTestsState extends State<ChartTests> {
           ],*/
           spots: [
             FlSpot(0, testData[1]),
-            FlSpot(1, testData[2]),
-            FlSpot(2, testData[3]),
-            FlSpot(3, testData[4]),
-            FlSpot(4, testData[5]),
-            FlSpot(5, testData[6]),
-            FlSpot(6, testData[7]),
-            FlSpot(7, testData[8]),
-            FlSpot(8, testData[9]),
-            FlSpot(9, testData[10]),
-            FlSpot(10, testData[11]),
-            FlSpot(11, testData[12]),
-            FlSpot(12, testData[13]),
-            FlSpot(13, testData[14]),
+            FlSpot(1.0, testData[2]),
+            FlSpot(2.0, testData[3]),
+            FlSpot(3.0, testData[4]),
+            FlSpot(4.0, testData[5]),
+            FlSpot(5.0, testData[6]),
+            FlSpot(6.0, testData[7]),
+            FlSpot(7.0, testData[8]),
+            FlSpot(8.0, testData[9]),
+            FlSpot(9.0, testData[10]),
+            FlSpot(10.0, testData[11]),
+            FlSpot(11.0, testData[12]),
+            FlSpot(12.0, testData[13]),
+            FlSpot(13.0, testData[14]),
           ],
           isCurved: true,
           colors: gradientColors,
