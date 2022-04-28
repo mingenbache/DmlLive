@@ -197,13 +197,13 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(3, 3, 3, 3),
                                               child: TextFormField(
+                                                controller: textController1,
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
                                                   'textController1',
                                                   Duration(milliseconds: 2000),
                                                   () => setState(() {}),
                                                 ),
-                                                controller: textController1,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelText: 'Test Name',
@@ -431,14 +431,14 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   20, 0, 0, 0),
                                           child: TextFormField(
+                                            controller:
+                                                testDescriptionController,
                                             onChanged: (_) =>
                                                 EasyDebounce.debounce(
                                               'testDescriptionController',
                                               Duration(milliseconds: 2000),
                                               () => setState(() {}),
                                             ),
-                                            controller:
-                                                testDescriptionController,
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               labelText: 'Test Description',
@@ -656,6 +656,8 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                             .fromSTEB(
                                                                 8, 0, 0, 0),
                                                     child: TextFormField(
+                                                      controller:
+                                                          testDurationTextController,
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         'testDurationTextController',
@@ -663,8 +665,6 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                             milliseconds: 40),
                                                         () => setState(() {}),
                                                       ),
-                                                      controller:
-                                                          testDurationTextController,
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -846,6 +846,8 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                             .fromSTEB(
                                                                 6, 0, 0, 0),
                                                     child: TextFormField(
+                                                      controller:
+                                                          resultsDurationTextController,
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         'resultsDurationTextController',
@@ -853,8 +855,6 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                             milliseconds: 100),
                                                         () => setState(() {}),
                                                       ),
-                                                      controller:
-                                                          resultsDurationTextController,
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(

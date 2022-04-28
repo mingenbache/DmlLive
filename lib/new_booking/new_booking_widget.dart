@@ -360,19 +360,19 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                             .fromSTEB(
                                                                 3, 3, 3, 3),
                                                     child: TextFormField(
-                                                      onChanged: (_) =>
-                                                          EasyDebounce.debounce(
-                                                        'firstNameController',
-                                                        Duration(
-                                                            milliseconds: 2000),
-                                                        () => setState(() {}),
-                                                      ),
                                                       controller:
                                                           firstNameController ??=
                                                               TextEditingController(
                                                         text:
                                                             newBookingBookingsRecord
                                                                 .firstname,
+                                                      ),
+                                                      onChanged: (_) =>
+                                                          EasyDebounce.debounce(
+                                                        'firstNameController',
+                                                        Duration(
+                                                            milliseconds: 2000),
+                                                        () => setState(() {}),
                                                       ),
                                                       obscureText: false,
                                                       decoration:
@@ -471,19 +471,19 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                             .fromSTEB(
                                                                 3, 3, 3, 3),
                                                     child: TextFormField(
-                                                      onChanged: (_) =>
-                                                          EasyDebounce.debounce(
-                                                        'lastNameController',
-                                                        Duration(
-                                                            milliseconds: 2000),
-                                                        () => setState(() {}),
-                                                      ),
                                                       controller:
                                                           lastNameController ??=
                                                               TextEditingController(
                                                         text:
                                                             newBookingBookingsRecord
                                                                 .lastname,
+                                                      ),
+                                                      onChanged: (_) =>
+                                                          EasyDebounce.debounce(
+                                                        'lastNameController',
+                                                        Duration(
+                                                            milliseconds: 2000),
+                                                        () => setState(() {}),
                                                       ),
                                                       obscureText: false,
                                                       decoration:
@@ -598,19 +598,19 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(3, 3, 3, 3),
                                                   child: TextFormField(
-                                                    onChanged: (_) =>
-                                                        EasyDebounce.debounce(
-                                                      'emailAddressController',
-                                                      Duration(
-                                                          milliseconds: 2000),
-                                                      () => setState(() {}),
-                                                    ),
                                                     controller:
                                                         emailAddressController ??=
                                                             TextEditingController(
                                                       text:
                                                           newBookingBookingsRecord
                                                               .emailaddress,
+                                                    ),
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      'emailAddressController',
+                                                      Duration(
+                                                          milliseconds: 2000),
+                                                      () => setState(() {}),
                                                     ),
                                                     obscureText: false,
                                                     decoration: InputDecoration(
@@ -720,19 +720,19 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(3, 3, 3, 3),
                                                   child: TextFormField(
-                                                    onChanged: (_) =>
-                                                        EasyDebounce.debounce(
-                                                      'phoneNumberController',
-                                                      Duration(
-                                                          milliseconds: 2000),
-                                                      () => setState(() {}),
-                                                    ),
                                                     controller:
                                                         phoneNumberController ??=
                                                             TextEditingController(
                                                       text:
                                                           newBookingBookingsRecord
                                                               .phonenumber,
+                                                    ),
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      'phoneNumberController',
+                                                      Duration(
+                                                          milliseconds: 2000),
+                                                      () => setState(() {}),
                                                     ),
                                                     obscureText: false,
                                                     decoration: InputDecoration(
@@ -1237,14 +1237,14 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: TextFormField(
+                                  controller: diagnosisController ??=
+                                      TextEditingController(
+                                    text: newBookingBookingsRecord.diagnosis,
+                                  ),
                                   onChanged: (_) => EasyDebounce.debounce(
                                     'diagnosisController',
                                     Duration(milliseconds: 2000),
                                     () => setState(() {}),
-                                  ),
-                                  controller: diagnosisController ??=
-                                      TextEditingController(
-                                    text: newBookingBookingsRecord.diagnosis,
                                   ),
                                   obscureText: false,
                                   decoration: InputDecoration(

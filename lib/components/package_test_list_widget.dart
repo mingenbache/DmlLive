@@ -175,12 +175,12 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         4, 0, 0, 0),
                                     child: TextFormField(
+                                      controller: textController,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         'textController',
                                         Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
-                                      controller: textController,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Search tests here...',

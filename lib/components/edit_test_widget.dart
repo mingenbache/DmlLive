@@ -194,18 +194,18 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                             .fromSTEB(
                                                                 3, 3, 3, 3),
                                                     child: TextFormField(
+                                                      controller:
+                                                          textController1 ??=
+                                                              TextEditingController(
+                                                        text: columnTestsRecord
+                                                            .name,
+                                                      ),
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         'textController1',
                                                         Duration(
                                                             milliseconds: 2000),
                                                         () => setState(() {}),
-                                                      ),
-                                                      controller:
-                                                          textController1 ??=
-                                                              TextEditingController(
-                                                        text: columnTestsRecord
-                                                            .name,
                                                       ),
                                                       obscureText: false,
                                                       decoration:
@@ -468,18 +468,18 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(20, 10, 10, 10),
                                                 child: TextFormField(
+                                                  controller:
+                                                      testDescriptionController ??=
+                                                          TextEditingController(
+                                                    text: columnTestsRecord
+                                                        .description,
+                                                  ),
                                                   onChanged: (_) =>
                                                       EasyDebounce.debounce(
                                                     'testDescriptionController',
                                                     Duration(
                                                         milliseconds: 2000),
                                                     () => setState(() {}),
-                                                  ),
-                                                  controller:
-                                                      testDescriptionController ??=
-                                                          TextEditingController(
-                                                    text: columnTestsRecord
-                                                        .description,
                                                   ),
                                                   obscureText: false,
                                                   decoration: InputDecoration(
@@ -896,6 +896,8 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                   .fromSTEB(6,
                                                                       0, 0, 0),
                                                           child: TextFormField(
+                                                            controller:
+                                                                resultsDurationTextController,
                                                             onChanged: (_) =>
                                                                 EasyDebounce
                                                                     .debounce(
@@ -906,8 +908,6 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               () => setState(
                                                                   () {}),
                                                             ),
-                                                            controller:
-                                                                resultsDurationTextController,
                                                             obscureText: false,
                                                             decoration:
                                                                 InputDecoration(

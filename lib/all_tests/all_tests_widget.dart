@@ -143,12 +143,12 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         4, 0, 0, 0),
                                     child: TextFormField(
+                                      controller: textController,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         'textController',
                                         Duration(milliseconds: 100),
                                         () => setState(() {}),
                                       ),
-                                      controller: textController,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Search tests here...',

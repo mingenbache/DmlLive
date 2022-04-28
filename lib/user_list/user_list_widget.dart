@@ -173,6 +173,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(4, 0, 0, 0),
                                                   child: TextFormField(
+                                                    controller: textController,
                                                     onChanged: (_) =>
                                                         EasyDebounce.debounce(
                                                       'textController',
@@ -180,7 +181,6 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                           milliseconds: 500),
                                                       () => setState(() {}),
                                                     ),
-                                                    controller: textController,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       labelText:

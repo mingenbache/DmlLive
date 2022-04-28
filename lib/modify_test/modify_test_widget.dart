@@ -228,14 +228,14 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextFormField(
+                          controller: testDescriptionController ??=
+                              TextEditingController(
+                            text: modifyTestTestsRecord.description,
+                          ),
                           onChanged: (_) => EasyDebounce.debounce(
                             'testDescriptionController',
                             Duration(milliseconds: 2000),
                             () => setState(() {}),
-                          ),
-                          controller: testDescriptionController ??=
-                              TextEditingController(
-                            text: modifyTestTestsRecord.description,
                           ),
                           obscureText: false,
                           decoration: InputDecoration(

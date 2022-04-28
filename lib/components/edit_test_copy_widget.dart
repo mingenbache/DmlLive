@@ -220,6 +220,13 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                   .fromSTEB(3,
                                                                       3, 3, 3),
                                                           child: TextFormField(
+                                                            controller:
+                                                                textController1 ??=
+                                                                    TextEditingController(
+                                                              text:
+                                                                  columnTestsRecord
+                                                                      .name,
+                                                            ),
                                                             onChanged: (_) =>
                                                                 EasyDebounce
                                                                     .debounce(
@@ -229,13 +236,6 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                       2000),
                                                               () => setState(
                                                                   () {}),
-                                                            ),
-                                                            controller:
-                                                                textController1 ??=
-                                                                    TextEditingController(
-                                                              text:
-                                                                  columnTestsRecord
-                                                                      .name,
                                                             ),
                                                             obscureText: false,
                                                             decoration:
@@ -1275,17 +1275,17 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(10, 0, 10, 5),
                                                 child: TextFormField(
-                                                  onChanged: (_) =>
-                                                      EasyDebounce.debounce(
-                                                    'textController3',
-                                                    Duration(milliseconds: 500),
-                                                    () => setState(() {}),
-                                                  ),
                                                   controller:
                                                       textController3 ??=
                                                           TextEditingController(
                                                     text: columnTestsRecord
                                                         .description,
+                                                  ),
+                                                  onChanged: (_) =>
+                                                      EasyDebounce.debounce(
+                                                    'textController3',
+                                                    Duration(milliseconds: 500),
+                                                    () => setState(() {}),
                                                   ),
                                                   obscureText: false,
                                                   decoration: InputDecoration(
@@ -1528,6 +1528,12 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                             0),
                                                                     child:
                                                                         TextFormField(
+                                                                      controller:
+                                                                          textController4 ??=
+                                                                              TextEditingController(
+                                                                        text: columnTestsRecord
+                                                                            .varianceMale,
+                                                                      ),
                                                                       onChanged:
                                                                           (_) =>
                                                                               EasyDebounce.debounce(
@@ -1537,12 +1543,6 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                                 2000),
                                                                         () => setState(
                                                                             () {}),
-                                                                      ),
-                                                                      controller:
-                                                                          textController4 ??=
-                                                                              TextEditingController(
-                                                                        text: columnTestsRecord
-                                                                            .varianceMale,
                                                                       ),
                                                                       obscureText:
                                                                           false,
@@ -1880,6 +1880,12 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           0),
                                                                   child:
                                                                       TextFormField(
+                                                                    controller:
+                                                                        textController6 ??=
+                                                                            TextEditingController(
+                                                                      text: columnTestsRecord
+                                                                          .varianceFemale,
+                                                                    ),
                                                                     onChanged: (_) =>
                                                                         EasyDebounce
                                                                             .debounce(
@@ -1889,12 +1895,6 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                               2000),
                                                                       () => setState(
                                                                           () {}),
-                                                                    ),
-                                                                    controller:
-                                                                        textController6 ??=
-                                                                            TextEditingController(
-                                                                      text: columnTestsRecord
-                                                                          .varianceFemale,
                                                                     ),
                                                                     obscureText:
                                                                         false,
@@ -2196,6 +2196,12 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                   .start,
                                                           children: [
                                                             TextFormField(
+                                                              controller:
+                                                                  textController8 ??=
+                                                                      TextEditingController(
+                                                                text: columnTestsRecord
+                                                                    .equipmentInfo,
+                                                              ),
                                                               onChanged: (_) =>
                                                                   EasyDebounce
                                                                       .debounce(
@@ -2205,12 +2211,6 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         2000),
                                                                 () => setState(
                                                                     () {}),
-                                                              ),
-                                                              controller:
-                                                                  textController8 ??=
-                                                                      TextEditingController(
-                                                                text: columnTestsRecord
-                                                                    .equipmentInfo,
                                                               ),
                                                               obscureText:
                                                                   false,
@@ -2448,6 +2448,12 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                       ),
                                                                       child:
                                                                           TextFormField(
+                                                                        controller:
+                                                                            textController9 ??=
+                                                                                TextEditingController(
+                                                                          text:
+                                                                              testProcedureItem,
+                                                                        ),
                                                                         onChanged:
                                                                             (_) =>
                                                                                 EasyDebounce.debounce(
@@ -2456,12 +2462,6 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                               milliseconds: 400),
                                                                           () =>
                                                                               setState(() {}),
-                                                                        ),
-                                                                        controller:
-                                                                            textController9 ??=
-                                                                                TextEditingController(
-                                                                          text:
-                                                                              testProcedureItem,
                                                                         ),
                                                                         obscureText:
                                                                             false,

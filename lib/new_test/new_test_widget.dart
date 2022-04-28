@@ -185,12 +185,12 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                           child: TextFormField(
+                            controller: testDescriptionController,
                             onChanged: (_) => EasyDebounce.debounce(
                               'testDescriptionController',
                               Duration(milliseconds: 2000),
                               () => setState(() {}),
                             ),
-                            controller: testDescriptionController,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Test Description',

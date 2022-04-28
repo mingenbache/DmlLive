@@ -297,6 +297,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                           0),
                                                               child:
                                                                   TextFormField(
+                                                                controller:
+                                                                    textController1,
                                                                 onChanged: (_) =>
                                                                     EasyDebounce
                                                                         .debounce(
@@ -307,8 +309,6 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                   () => setState(
                                                                       () {}),
                                                                 ),
-                                                                controller:
-                                                                    textController1,
                                                                 obscureText:
                                                                     false,
                                                                 decoration:
@@ -951,6 +951,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                             0),
                                                                 child:
                                                                     TextFormField(
+                                                                  controller:
+                                                                      textController2,
                                                                   onChanged: (_) =>
                                                                       EasyDebounce
                                                                           .debounce(
@@ -961,8 +963,6 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                     () => setState(
                                                                         () {}),
                                                                   ),
-                                                                  controller:
-                                                                      textController2,
                                                                   obscureText:
                                                                       false,
                                                                   decoration:

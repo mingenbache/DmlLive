@@ -171,12 +171,12 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         3, 3, 3, 3),
                                     child: TextFormField(
+                                      controller: textController1,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         'textController1',
                                         Duration(milliseconds: 2000),
                                         () => setState(() {}),
                                       ),
-                                      controller: textController1,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Test Package Name',
@@ -420,6 +420,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                             .fromSTEB(
                                                                 20, 0, 0, 0),
                                                     child: TextFormField(
+                                                      controller:
+                                                          packageDescriptionController,
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         'packageDescriptionController',
@@ -427,8 +429,6 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                             milliseconds: 2000),
                                                         () => setState(() {}),
                                                       ),
-                                                      controller:
-                                                          packageDescriptionController,
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -696,6 +696,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                           0),
                                                               child:
                                                                   TextFormField(
+                                                                controller:
+                                                                    testDurationTextController,
                                                                 onChanged: (_) =>
                                                                     EasyDebounce
                                                                         .debounce(
@@ -706,8 +708,6 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                   () => setState(
                                                                       () {}),
                                                                 ),
-                                                                controller:
-                                                                    testDurationTextController,
                                                                 obscureText:
                                                                     false,
                                                                 decoration:
@@ -920,6 +920,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                           0),
                                                               child:
                                                                   TextFormField(
+                                                                controller:
+                                                                    resultsDurationTextController,
                                                                 onChanged: (_) =>
                                                                     EasyDebounce
                                                                         .debounce(
@@ -930,8 +932,6 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                   () => setState(
                                                                       () {}),
                                                                 ),
-                                                                controller:
-                                                                    resultsDurationTextController,
                                                                 obscureText:
                                                                     false,
                                                                 decoration:
