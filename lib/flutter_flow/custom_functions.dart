@@ -1341,7 +1341,7 @@ List<double> returnStats(
 ) {
   // count records with created date for previous 7 days and generate list
   var results = <double>[];
-  for (int i = 13; i >= 0; i--) {
+  for (int i = 0; i < 14; i++) {
     final dayStart = endDate.subtract(Duration(days: 14));
     results[i] = testedTests
         .where((booking) => booking.dateSampleCollected == dayStart)
