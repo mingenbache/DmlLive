@@ -15,7 +15,7 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
-
+/*
 class LePdf extends StatefulWidget {
   const LePdf({
     Key key,
@@ -29,26 +29,23 @@ class LePdf extends StatefulWidget {
   final double height;
   final ReportsRecord report;
   final DMLInfoRecord dMLInfo;
-  //final image = (await rootBundle.load(dMLInfo.dMLLogo)).buffer.asUint8List();
+	//final image = (await rootBundle.load(dMLInfo.dMLLogo)).buffer.asUint8List();
   @override
   _LePdfState createState() => _LePdfState();
 }
 
 class _LePdfState extends State<LePdf> {
-  static Future<File> generate(report, dMLInfo) async {
-    final image = pw.MemoryImage(
-      File(dMLInfo.dMLLogo).readAsBytesSync(),
-    );
-    final pdf = pw.Document();
-    pdf.addPage(MultiPage(
-      build: (context) => [
-        buildHeader(report, dMLInfo),
-      ],
+  static Future<File> generate(report,dMLInfo) async {
+  final image = pw.MemoryImage(File(dMLInfo.dMLLogo).readAsBytesSync(),); 
+  final pdf = pw.Document();
+  pdf.addPage(MultiPage(
+  	build: (context) => [
+    	buildHeader(report,dMLInfo),
+    ],
       footer: (context) => buildFooter(report),
     ));
     return saveDocument(name: 'my_report.pdf', pdf: pdf);
   }
-
   static Widget buildHeader(image, dMLInfo) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -56,22 +53,20 @@ class _LePdfState extends State<LePdf> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              buildDmlHeader(dMLInfo, image),
+              buildDmlHeader(dMLInfo,image),
+              
             ],
           ),
           SizedBox(height: 1 * PdfPageFormat.cm),
         ],
       );
-  static Widget buildDmlHeader(DMLInfoRecord dMLInfo, MemoryImage image) =>
-      Column(
+  static Widget buildDmlHeader(DMLInfoRecord dMLInfo,MemoryImage image) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          pw.Image(pw.MemoryImage(image),
-              width: 150, height: 150, fit: pw.BoxFit.cover),
+          pw.Image(pw.MemoryImage(image), width: 150, height: 150, fit: pw.BoxFit.cover),
           Text('DMLaboratories', style: TextStyle(fontWeight: FontWeight.bold)),
           SizedBox(height: 1 * PdfPageFormat.mm),
-          Text(dMLInfo.url.toString(),
-              style: TextStyle(fontWeight: FontWeight.bold)),
+          Text(dMLInfo.url.toString(),style: TextStyle(fontWeight: FontWeight.bold)),
         ],
       );
   static Widget buildFooter(DMLInfoRecord dMLInfo) => Column(
@@ -79,11 +74,10 @@ class _LePdfState extends State<LePdf> {
         children: [
           Divider(),
           SizedBox(height: 2 * PdfPageFormat.mm),
-          Text(dMLInfo.footerReferences.join(' '),
-              style: TextStyle(fontWeight: FontWeight.bold)),
+          Text(dMLInfo.footerReferences.join(' '), style: TextStyle(fontWeight: FontWeight.bold)),
         ],
       );
-  static Future<File> saveDocument({
+	static Future<File> saveDocument({
     String name,
     Document pdf,
   }) async {
@@ -102,9 +96,9 @@ class _LePdfState extends State<LePdf> {
 
     await OpenFile.open(url);
   }
-
   @override
   Widget build(BuildContext context) {
     return Container();
   }
 }
+*/
