@@ -1344,10 +1344,11 @@ List<double> returnStats(
   for (int i = 13; i >= 0; i--) {
     final dayStart = endDate.subtract(Duration(days: 14));
     results[i] = testedTests
-        .where((booking) => booking.dateSampleCollected.day == dayStart.day)
+        .where((booking) => booking.dateSampleCollected == dayStart)
         .toList()
         .length
         .toDouble();
+    print(results[i]);
   }
   /*
   final resultList = List<double>.generate(14, (index) {
