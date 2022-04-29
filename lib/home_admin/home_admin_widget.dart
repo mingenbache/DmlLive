@@ -15,6 +15,7 @@ import 'dart:ui';
 import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,13 +31,22 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(milliseconds: 1000));
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Align(
       alignment: AlignmentDirectional(-0.05, 0),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
-        child: StreamBuilder<UsersRecord>(
-          stream: UsersRecord.getDocument(currentUserReference),
+        child: StreamBuilder<List<TestedTestsRecord>>(
+          stream: queryTestedTestsRecord(),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
@@ -51,7 +61,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                 ),
               );
             }
-            final homeAdminUsersRecord = snapshot.data;
+            List<TestedTestsRecord> homeAdminTestedTestsRecordList =
+                snapshot.data;
             return Scaffold(
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -381,16 +392,21 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                     return Container(
                                       height: 150,
                                       decoration: BoxDecoration(),
-                                      child: custom_widgets.ChartTests(
+                                      child: Container(
                                         width:
                                             MediaQuery.of(context).size.width,
                                         height: 150,
-                                        testData: functions
-                                            .returnStats(
-                                                containerTestedTestsRecordList
-                                                    .toList(),
-                                                functions.getDayToday())
-                                            .toList(),
+                                        child: custom_widgets.ChartTests(
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          height: 150,
+                                          testData: functions
+                                              .returnStats(
+                                                  homeAdminTestedTestsRecordList
+                                                      .toList(),
+                                                  functions.getDayToday())
+                                              .toList(),
+                                        ),
                                       ),
                                     );
                                   },
