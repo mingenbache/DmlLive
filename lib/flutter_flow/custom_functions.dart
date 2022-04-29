@@ -1340,14 +1340,16 @@ List<double> returnStats(
   DateTime endDate,
 ) {
   // count records with created date for previous 7 days and generate list
-  final resultList = List.generate(14, (index) {
+
+  final resultList = List<double>.generate(14, (index) {
     final dayStart = DateTime(endDate.year, endDate.month, endDate.day);
     final dayEnd = DateTime(
         dayStart.year, dayStart.month, dayStart.day - index + 1, 23, 59, 59);
     return testedTests
         .where((booking) => booking.dateSampleCollected == dayEnd)
         .toList()
-        .length;
+        .length
+        .toDouble();
   });
   /* for (int i = 0; i < resultList.length; i++) {
     for (var test in testedTests.toList()) {
