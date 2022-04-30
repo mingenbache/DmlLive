@@ -303,6 +303,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                             mainAxisAlignment:
                                                                 MainAxisAlignment
                                                                     .spaceEvenly,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .end,
                                                             children: [
                                                               Badge(
                                                                 badgeContent:
@@ -336,13 +339,13 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 padding:
                                                                     EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            8,
-                                                                            8,
-                                                                            8,
-                                                                            8),
+                                                                            4,
+                                                                            4,
+                                                                            4,
+                                                                            4),
                                                                 position:
                                                                     BadgePosition
-                                                                        .topEnd(),
+                                                                        .topStart(),
                                                                 animationType:
                                                                     BadgeAnimationType
                                                                         .scale,
@@ -371,7 +374,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryColor,
-                                                                      size: 25,
+                                                                      size: 23,
                                                                     ),
                                                                     onPressed:
                                                                         () async {
