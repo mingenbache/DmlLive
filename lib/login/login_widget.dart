@@ -157,8 +157,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                           ),
                           child: TextFormField(
                             controller: passwordController,
+                            autofocus: true,
                             obscureText: !passwordVisibility,
                             decoration: InputDecoration(
+                              labelText: 'Password',
                               hintText: 'Password',
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(

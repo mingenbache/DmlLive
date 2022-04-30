@@ -1065,7 +1065,7 @@ List<NotificationsRecord> filterNotifications(
   // filter notifications if usersSeen array contains document reference
   List<NotificationsRecord> ret = [];
   allNotifications.forEach((NotificationsRecord notification) {
-    if (notification.usersSeen.contains(userRef)) ret.add(notification);
+    if (!notification.usersSeen.contains(userRef)) ret.add(notification);
   });
   return ret;
 }
@@ -1340,7 +1340,7 @@ List<double> returnStats(
   DateTime endDate,
 ) {
   // count records with created date for previous 7 days and generate list
-  var results = <double>[];
+  List<double> results = List<double>.filled(14, 0.0);
   for (int i = 0; i < 14; i++) {
     final dayStart = endDate.subtract(Duration(days: 14));
     results[i] = testedTests
