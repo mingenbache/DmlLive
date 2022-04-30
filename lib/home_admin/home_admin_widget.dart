@@ -392,25 +392,32 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                     return Container(
                                       height: 150,
                                       decoration: BoxDecoration(),
-                                      child: Align(
-                                        alignment: AlignmentDirectional(0.1, 0),
-                                        child: Container(
-                                          width:
-                                              MediaQuery.of(context).size.width,
-                                          height: 150,
-                                          child: custom_widgets.ChartTests(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            height: 150,
-                                            testData: functions
-                                                .returnStats(
-                                                    homeAdminTestedTestsRecordList
-                                                        .toList(),
-                                                    functions.getDayToday())
-                                                .toList(),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.1, 0),
+                                            child: Container(
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              height: 150,
+                                              child: custom_widgets.ChartTests(
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                height: 150,
+                                                testData: functions
+                                                    .returnStats(
+                                                        homeAdminTestedTestsRecordList
+                                                            .toList(),
+                                                        functions.getDayToday())
+                                                    .toList(),
+                                              ),
+                                            ),
                                           ),
-                                        ),
+                                        ],
                                       ),
                                     );
                                   },
