@@ -390,34 +390,29 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                         containerTestedTestsRecordList =
                                         snapshot.data;
                                     return Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.8,
                                       height: 150,
                                       decoration: BoxDecoration(),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(0.1, 0),
-                                            child: Container(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              height: 150,
-                                              child: custom_widgets.ChartTests(
-                                                width: MediaQuery.of(context)
-                                                    .size
-                                                    .width,
-                                                height: 150,
-                                                testData: functions
-                                                    .returnStats(
-                                                        homeAdminTestedTestsRecordList
-                                                            .toList(),
-                                                        functions.getDayToday())
-                                                    .toList(),
-                                              ),
-                                            ),
+                                      child: Align(
+                                        alignment: AlignmentDirectional(0, 0),
+                                        child: Container(
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          height: 150,
+                                          child: custom_widgets.ChartTests(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: 150,
+                                            testData: functions
+                                                .returnStats(
+                                                    homeAdminTestedTestsRecordList
+                                                        .toList(),
+                                                    functions.getDayToday())
+                                                .toList(),
                                           ),
-                                        ],
+                                        ),
                                       ),
                                     );
                                   },
