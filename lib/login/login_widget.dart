@@ -117,6 +117,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 fontWeight: FontWeight.normal,
                               ),
                               hintText: 'Email Address',
+                              hintStyle: GoogleFonts.getFont(
+                                'Roboto',
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal,
+                              ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).alternate,
@@ -161,7 +166,17 @@ class _LoginWidgetState extends State<LoginWidget> {
                             obscureText: !passwordVisibility,
                             decoration: InputDecoration(
                               labelText: 'Password',
+                              labelStyle: GoogleFonts.getFont(
+                                'Roboto',
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal,
+                              ),
                               hintText: 'Password',
+                              hintStyle: GoogleFonts.getFont(
+                                'Roboto',
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal,
+                              ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).alternate,

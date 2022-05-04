@@ -534,6 +534,25 @@ List<TestsRecord> returnSearchTests(
   return list;
 }
 
+List<TestPackagesRecord> returnSearchPackages(
+  String nameQuery,
+  List<TestPackagesRecord> packageList,
+) {
+  // filter firebase collection of documents by string if string is not null
+  List<TestPackagesRecord> list = <TestPackagesRecord>[];
+  if (nameQuery != null) {
+    packageList.forEach((package) {
+      if (package.packageName != null &&
+          package.packageName.toLowerCase().contains(nameQuery.toLowerCase())) {
+        list.add(package);
+      }
+    });
+  } else {
+    list.addAll(packageList);
+  }
+  return list;
+}
+
 DocumentReference returnStaff(
   String displayName,
   List<StaffRecord> staffList,
@@ -960,6 +979,31 @@ List<TestsRecord> filterTestsByCategory(
     return allTests;
   } else {
     return allTests;
+  }
+}
+
+List<TestPackagesRecord> filterPackagesByCategory(
+  bool allcategories,
+  String catString,
+  List<TestPackagesRecord> allPackages,
+) {
+  // filter collection by category parameter if boolean value true
+  final List<TestPackagesRecord> filteredList = [];
+  if (catString.isNotEmpty) {
+    for (int i = 0; i < allPackages.length; i++) {
+      if (allcategories == true) {
+        filteredList.add(allPackages[i]);
+      } else if (allcategories == false) {
+        if (allPackages[i].category.toLowerCase() == catString.toLowerCase()) {
+          filteredList.add(allPackages[i]);
+        }
+      }
+    }
+    return filteredList;
+  } else if (catString = null) {
+    return allPackages;
+  } else {
+    return allPackages;
   }
 }
 
