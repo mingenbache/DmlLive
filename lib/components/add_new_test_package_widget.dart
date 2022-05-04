@@ -708,6 +708,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                   () => setState(
                                                                       () {}),
                                                                 ),
+                                                                readOnly: true,
                                                                 obscureText:
                                                                     false,
                                                                 decoration:
@@ -758,7 +759,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                               0,
                                                                               0,
                                                                               0,
-                                                                              15),
+                                                                              10),
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -771,6 +772,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                       fontSize:
                                                                           18,
                                                                     ),
+                                                                maxLines: 1,
                                                                 keyboardType:
                                                                     TextInputType
                                                                         .number,
