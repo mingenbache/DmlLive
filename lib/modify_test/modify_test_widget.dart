@@ -26,14 +26,14 @@ class ModifyTestWidget extends StatefulWidget {
 
 class _ModifyTestWidgetState extends State<ModifyTestWidget> {
   String dropDownValue;
-  TextEditingController testDescriptionController;
-  TextEditingController testNameController;
   bool switchListTileValue;
+  TextEditingController testNameController;
+  TextEditingController testDescriptionController;
   bool atHomeToggleValue;
-  TextEditingController testDurationTextController;
   double testDurationSliderValue;
-  TextEditingController resultsDurationTextController;
+  TextEditingController testDurationTextController;
   double durationResultsSliderValue;
+  TextEditingController resultsDurationTextController;
   TextEditingController testPriceController;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -739,7 +739,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   maxLines: 1,
                                   keyboardType: TextInputType.number,
                                   validator: (val) {
-                                    if (val.isEmpty) {
+                                    if (val == null || val.isEmpty) {
                                       return 'incorrect price entered';
                                     }
 

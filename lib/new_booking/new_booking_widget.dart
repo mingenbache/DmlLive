@@ -453,7 +453,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                     .normal,
                                                           ),
                                                       validator: (val) {
-                                                        if (val.isEmpty) {
+                                                        if (val == null ||
+                                                            val.isEmpty) {
                                                           return 'Field is required';
                                                         }
                                                         if (val.length < 3) {
@@ -564,7 +565,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                     .normal,
                                                           ),
                                                       validator: (val) {
-                                                        if (val.isEmpty) {
+                                                        if (val == null ||
+                                                            val.isEmpty) {
                                                           return 'Field is required';
                                                         }
                                                         if (val.length < 2) {
@@ -689,7 +691,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                     keyboardType: TextInputType
                                                         .emailAddress,
                                                     validator: (val) {
-                                                      if (val.isEmpty) {
+                                                      if (val == null ||
+                                                          val.isEmpty) {
                                                         return 'Field is required';
                                                       }
 
@@ -810,7 +813,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                     keyboardType:
                                                         TextInputType.phone,
                                                     validator: (val) {
-                                                      if (val.isEmpty) {
+                                                      if (val == null ||
+                                                          val.isEmpty) {
                                                         return 'Field is required';
                                                       }
                                                       if (val.length < 6) {
@@ -1308,7 +1312,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                   maxLines: 99,
                                   keyboardType: TextInputType.multiline,
                                   validator: (val) {
-                                    if (val.isEmpty) {
+                                    if (val == null || val.isEmpty) {
                                       return 'Field is required';
                                     }
                                     if (val.length < 10) {
@@ -1874,8 +1878,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                       },
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          if (!formKey.currentState
-                                              .validate()) {
+                                          if (formKey.currentState == null ||
+                                              !formKey.currentState
+                                                  .validate()) {
                                             return;
                                           }
 

@@ -190,7 +190,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               ),
                                           keyboardType: TextInputType.name,
                                           validator: (val) {
-                                            if (val.isEmpty) {
+                                            if (val == null || val.isEmpty) {
                                               return 'Field is required';
                                             }
                                             if (val.length < 2) {
@@ -256,7 +256,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 fontWeight: FontWeight.normal,
                                               ),
                                           validator: (val) {
-                                            if (val.isEmpty) {
+                                            if (val == null || val.isEmpty) {
                                               return 'Field is required';
                                             }
                                             if (val.length < 2) {
@@ -398,7 +398,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             ),
                                         keyboardType: TextInputType.number,
                                         validator: (val) {
-                                          if (val.isEmpty) {
+                                          if (val == null || val.isEmpty) {
                                             return 'Field is required';
                                           }
                                           if (val.length < 7) {

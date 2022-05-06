@@ -26,13 +26,13 @@ class AddPaymentWidget extends StatefulWidget {
 
 class _AddPaymentWidgetState extends State<AddPaymentWidget>
     with TickerProviderStateMixin {
-  PaymentsRecord paymentRef;
   String paymentMethodValue;
   TextEditingController firstNameController;
   TextEditingController lastNameController;
   TextEditingController textController1;
   TextEditingController transactionReferenceController;
   TextEditingController paymentNotesController;
+  PaymentsRecord paymentRef;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
@@ -242,7 +242,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                           maxLines: 1,
                           keyboardType: TextInputType.number,
                           validator: (val) {
-                            if (val.isEmpty) {
+                            if (val == null || val.isEmpty) {
                               return 'Please enter an amount';
                             }
 

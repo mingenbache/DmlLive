@@ -134,7 +134,8 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                   );
                                                 },
                                                 child: FaIcon(
-                                                  FontAwesomeIcons.shoppingBag,
+                                                  FontAwesomeIcons
+                                                      .shoppingBasket,
                                                   color: Colors.white,
                                                   size: 18,
                                                 ),

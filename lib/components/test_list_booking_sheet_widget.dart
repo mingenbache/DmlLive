@@ -29,8 +29,6 @@ class TestListBookingSheetWidget extends StatefulWidget {
 
 class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
     with TickerProviderStateMixin {
-  TextEditingController textController1;
-  TextEditingController textController2;
   final animationsMap = {
     'buttonOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
@@ -44,6 +42,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
       ),
     ),
   };
+  TextEditingController textController1;
+  TextEditingController textController2;
 
   @override
   void initState() {

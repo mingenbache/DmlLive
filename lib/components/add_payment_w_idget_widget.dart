@@ -251,7 +251,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                             maxLines: 1,
                             keyboardType: TextInputType.number,
                             validator: (val) {
-                              if (val.isEmpty) {
+                              if (val == null || val.isEmpty) {
                                 return 'Please enter an amount';
                               }
                               if (val.length < 2) {

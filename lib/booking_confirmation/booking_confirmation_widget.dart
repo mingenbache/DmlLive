@@ -439,7 +439,8 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                               textAlign: TextAlign.end,
                                               maxLines: 1,
                                               validator: (val) {
-                                                if (val.isEmpty) {
+                                                if (val == null ||
+                                                    val.isEmpty) {
                                                   return 'Field is required';
                                                 }
                                                 if (val.length < 4) {
@@ -2079,8 +2080,9 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                             );
                                             return;
                                           } else {
-                                            if (!formKey.currentState
-                                                .validate()) {
+                                            if (formKey.currentState == null ||
+                                                !formKey.currentState
+                                                    .validate()) {
                                               return;
                                             }
 

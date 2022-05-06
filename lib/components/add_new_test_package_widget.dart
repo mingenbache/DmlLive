@@ -33,10 +33,10 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
   String packageCategoryDropDownValue;
   TextEditingController packageDescriptionController;
   bool atHomeToggleValue;
-  TextEditingController testDurationTextController;
   double testDurationSliderValue;
-  TextEditingController resultsDurationTextController;
+  TextEditingController testDurationTextController;
   double durationResultsSliderValue;
+  TextEditingController resultsDurationTextController;
   TextEditingController testPriceController;
   TextEditingController textController1;
   TestPackagesRecord newTestPackId;

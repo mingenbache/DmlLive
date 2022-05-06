@@ -167,7 +167,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                       },
                                                       child: FaIcon(
                                                         FontAwesomeIcons
-                                                            .shoppingBag,
+                                                            .shoppingBasket,
                                                         color: Colors.white,
                                                         size: 18,
                                                       ),

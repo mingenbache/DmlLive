@@ -30,10 +30,10 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
   TextEditingController textController1;
   TextEditingController testDescriptionController;
   bool atHomeToggleValue;
-  TextEditingController testDurationTextController;
   double testDurationSliderValue;
-  TextEditingController resultsDurationTextController;
+  TextEditingController testDurationTextController;
   double durationResultsSliderValue;
+  TextEditingController resultsDurationTextController;
   TextEditingController testPriceController;
   TestsRecord newTestId;
   final formKey = GlobalKey<FormState>();
@@ -282,7 +282,8 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                         ),
                                                 maxLines: 1,
                                                 validator: (val) {
-                                                  if (val.isEmpty) {
+                                                  if (val == null ||
+                                                      val.isEmpty) {
                                                     return 'Field is required';
                                                   }
                                                   if (val.length < 3) {
@@ -1095,7 +1096,8 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                       keyboardType:
                                                           TextInputType.number,
                                                       validator: (val) {
-                                                        if (val.isEmpty) {
+                                                        if (val == null ||
+                                                            val.isEmpty) {
                                                           return 'incorrect price entered';
                                                         }
                                                         if (val.length < 2) {

@@ -32,8 +32,8 @@ class _EditTestWidgetState extends State<EditTestWidget> {
   TextEditingController testDescriptionController;
   bool atHomeToggleValue;
   double testDurationSliderValue;
-  TextEditingController resultsDurationTextController;
   double durationResultsSliderValue;
+  TextEditingController resultsDurationTextController;
   TextEditingController testPriceController;
   final formKey = GlobalKey<FormState>();
 
@@ -301,7 +301,8 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               ),
                                                       maxLines: 1,
                                                       validator: (val) {
-                                                        if (val.isEmpty) {
+                                                        if (val == null ||
+                                                            val.isEmpty) {
                                                           return 'Field is required';
                                                         }
                                                         if (val.length < 3) {
@@ -1151,7 +1152,8 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                 TextInputType
                                                                     .number,
                                                             validator: (val) {
-                                                              if (val.isEmpty) {
+                                                              if (val == null ||
+                                                                  val.isEmpty) {
                                                                 return 'incorrect price entered';
                                                               }
                                                               if (val.length <

@@ -21,12 +21,12 @@ class NewBookingSheetWidget extends StatefulWidget {
 
 class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
     with TickerProviderStateMixin {
-  BookingsRecord newbookingRef;
   PageController pageViewController;
   bool isPatientValue;
   TextEditingController docemailAddressController;
   TextEditingController doctorNamesController;
   TextEditingController docphoneNumberController;
+  BookingsRecord newbookingRef;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,

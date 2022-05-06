@@ -25,7 +25,6 @@ class FlagTestWidget extends StatefulWidget {
 
 class _FlagTestWidgetState extends State<FlagTestWidget>
     with TickerProviderStateMixin {
-  TextEditingController flagNotesController;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -42,6 +41,7 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
       ),
     ),
   };
+  TextEditingController flagNotesController;
 
   @override
   void initState() {

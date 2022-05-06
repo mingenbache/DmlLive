@@ -1623,7 +1623,8 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                       keyboardType:
                                                           TextInputType.number,
                                                       validator: (val) {
-                                                        if (val.isEmpty) {
+                                                        if (val == null ||
+                                                            val.isEmpty) {
                                                           return 'required';
                                                         }
                                                         if (val.length < 2) {

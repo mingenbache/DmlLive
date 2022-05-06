@@ -426,8 +426,9 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                       ),
                                                                   validator:
                                                                       (val) {
-                                                                    if (val
-                                                                        .isEmpty) {
+                                                                    if (val ==
+                                                                            null ||
+                                                                        val.isEmpty) {
                                                                       return 'Field is required';
                                                                     }
                                                                     if (val.length <

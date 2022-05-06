@@ -1619,7 +1619,8 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                 keyboardType:
                                                     TextInputType.number,
                                                 validator: (val) {
-                                                  if (val.isEmpty) {
+                                                  if (val == null ||
+                                                      val.isEmpty) {
                                                     return 'required';
                                                   }
                                                   if (val.length < 2) {

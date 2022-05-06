@@ -107,7 +107,7 @@ class _FlutterFlowCalendarState extends State<FlutterFlowCalendar> {
     setState(() {
       selectedDay = newRange;
       calendarController.setSelectedDay(newSelectedDay);
-      widget.onChange?.call(newRange);
+      widget.onChange.call(newRange);
     });
   }
 
@@ -265,7 +265,7 @@ class CalendarHeader extends StatelessWidget {
 class CustomIconButton extends StatelessWidget {
   const CustomIconButton({
     @required this.icon,
-    @required this.onTap,
+    this.onTap,
     this.margin = const EdgeInsets.symmetric(horizontal: 4),
     this.padding = const EdgeInsets.all(10),
     Key key,
@@ -286,8 +286,8 @@ class CustomIconButton extends StatelessWidget {
             padding: padding,
             child: Icon(
               icon.icon,
-              color: icon?.color,
-              size: icon?.size,
+              color: icon.color,
+              size: icon.size,
             ),
           ),
         ),

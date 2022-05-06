@@ -105,7 +105,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 );
                               },
                               child: FaIcon(
-                                FontAwesomeIcons.bell,
+                                FontAwesomeIcons.solidBell,
                                 color: Colors.white,
                                 size: 18,
                               ),

@@ -32,10 +32,10 @@ class SubmitTestResultsWidget extends StatefulWidget {
 
 class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
     with TickerProviderStateMixin {
+  String uploadedFileUrl = '';
   String testMachineValue;
   bool checkboxListTileValue;
   TextEditingController testResultController;
-  String uploadedFileUrl = '';
   TextEditingController testNoteController;
   final formKey = GlobalKey<FormState>();
   final animationsMap = {
@@ -451,7 +451,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                 textAlign: TextAlign.start,
                                 maxLines: 6,
                                 validator: (val) {
-                                  if (val.isEmpty) {
+                                  if (val == null || val.isEmpty) {
                                     return 'Field is required';
                                   }
 
@@ -499,13 +499,18 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                           'Uploading file...',
                                           showLoading: true,
                                         );
-                                        final downloadUrls = await Future.wait(
-                                            selectedMedia.map((m) async =>
-                                                await uploadData(
-                                                    m.storagePath, m.bytes)));
+                                        final downloadUrls = (await Future.wait(
+                                                selectedMedia.map((m) async =>
+                                                    await uploadData(
+                                                        m.storagePath,
+                                                        m.bytes))))
+                                            .where((u) => u != null)
+                                            .toList();
                                         ScaffoldMessenger.of(context)
                                             .hideCurrentSnackBar();
-                                        if (downloadUrls != null) {
+                                        if (downloadUrls != null &&
+                                            downloadUrls.length ==
+                                                selectedMedia.length) {
                                           setState(() => uploadedFileUrl =
                                               downloadUrls.first);
                                           showUploadMessage(

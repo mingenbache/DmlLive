@@ -25,10 +25,10 @@ class _NewTestWidgetState extends State<NewTestWidget> {
   TextEditingController testDescriptionController;
   TextEditingController testNameController;
   bool atHomeToggleValue;
-  TextEditingController testDurationTextController;
   double testDurationSliderValue;
-  TextEditingController resultsDurationTextController;
+  TextEditingController testDurationTextController;
   double durationResultsSliderValue;
+  TextEditingController resultsDurationTextController;
   TextEditingController testPriceController;
   TestsRecord newTestId;
   final formKey = GlobalKey<FormState>();
@@ -687,7 +687,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                   maxLines: 1,
                                   keyboardType: TextInputType.number,
                                   validator: (val) {
-                                    if (val.isEmpty) {
+                                    if (val == null || val.isEmpty) {
                                       return 'incorrect price entered';
                                     }
                                     if (val.length < 2) {
