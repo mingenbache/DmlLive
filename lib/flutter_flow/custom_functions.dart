@@ -82,11 +82,11 @@ bool getDayIsWeekday(DateTime date) {
 
 int doubletoInt(double durationDouble) {
   // convert double to int
-  if (durationDouble.isNaN) {
-    return 0;
-  } else {
+  if (durationDouble is double) {
     int duration = durationDouble.toInt();
     return duration;
+  } else {
+    return 0;
   }
 }
 
