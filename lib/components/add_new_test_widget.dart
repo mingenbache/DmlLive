@@ -61,8 +61,12 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
     return Form(
       key: formKey,
       autovalidateMode: AutovalidateMode.always,
-      child: StreamBuilder<UsersRecord>(
-        stream: UsersRecord.getDocument(widget.userRef),
+      child: StreamBuilder<List<StaffRecord>>(
+        stream: queryStaffRecord(
+          queryBuilder: (staffRecord) =>
+              staffRecord.where('UserRef', isEqualTo: currentUserReference),
+          singleRecord: true,
+        ),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -77,7 +81,10 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
               ),
             );
           }
-          final columnUsersRecord = snapshot.data;
+          List<StaffRecord> columnStaffRecordList = snapshot.data;
+          final columnStaffRecord = columnStaffRecordList.isNotEmpty
+              ? columnStaffRecordList.first
+              : null;
           return Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
