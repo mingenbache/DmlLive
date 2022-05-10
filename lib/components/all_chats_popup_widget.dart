@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../chat/chat_widget.dart';
 import '../components/chat_actions_widget_widget.dart';
 import '../components/user_activity_widget.dart';
 import '../flutter_flow/chat/index.dart';
@@ -122,7 +121,7 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                               children: [
                                 InkWell(
                                   onTap: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -142,7 +141,7 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                         size: 30,
                                       ),
                                       onPressed: () async {
-                                        Navigator.pop(context);
+                                        context.pop();
                                       },
                                     ),
                                   ),
@@ -286,7 +285,7 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                   child: SizedBox(
                                                     width: 50,
                                                     height: 50,
-                                                    child: SpinKitDoubleBounce(
+                                                    child: SpinKitRipple(
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -375,16 +374,22 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                                 onTap: chatInfo !=
                                                                         null
                                                                     ? () =>
-                                                                        Navigator
-                                                                            .push(
-                                                                          context,
-                                                                          MaterialPageRoute(
-                                                                            builder: (context) =>
-                                                                                ChatWidget(
-                                                                              chatUser: chatInfo.otherUsers.length == 1 ? chatInfo.otherUsersList.first : null,
-                                                                              chatRef: chatInfo.chatRecord.reference,
-                                                                            ),
-                                                                          ),
+                                                                        context
+                                                                            .pushNamed(
+                                                                          'Chat',
+                                                                          queryParams: {
+                                                                            'chatUser':
+                                                                                serializeParam(chatInfo.otherUsers.length == 1 ? chatInfo.otherUsersList.first : null, ParamType.Document),
+                                                                            'chatRef':
+                                                                                serializeParam(chatInfo.chatRecord.reference, ParamType.DocumentReference),
+                                                                          },
+                                                                          extra: <
+                                                                              String,
+                                                                              dynamic>{
+                                                                            'chatUser': chatInfo.otherUsers.length == 1
+                                                                                ? chatInfo.otherUsersList.first
+                                                                                : null,
+                                                                          },
                                                                         )
                                                                     : null,
                                                                 lastChatText:

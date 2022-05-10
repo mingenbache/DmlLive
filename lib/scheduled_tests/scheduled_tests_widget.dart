@@ -1,12 +1,10 @@
 import '../backend/backend.dart';
-import '../bookings_schedule/bookings_schedule_widget.dart';
 import '../components/begin_test_widget.dart';
 import '../components/top_actions_widget.dart';
 import '../components/view_test_result_widget.dart';
 import '../flutter_flow/flutter_flow_calendar.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../tested_tests_copy/tested_tests_copy_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -40,12 +38,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
       backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-          await Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => TestedTestsCopyWidget(),
-            ),
-          );
+          context.pushNamed('TestedTestsCopy');
         },
         backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
         icon: Icon(
@@ -136,7 +129,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                             child: SizedBox(
                               width: 50,
                               height: 50,
-                              child: SpinKitDoubleBounce(
+                              child: SpinKitRipple(
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
                                 size: 50,
@@ -241,13 +234,8 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                           ),
                                           InkWell(
                                             onTap: () async {
-                                              await Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      BookingsScheduleWidget(),
-                                                ),
-                                              );
+                                              context.pushNamed(
+                                                  'BookingsSchedule');
                                             },
                                             child: Material(
                                               color: Colors.transparent,
@@ -343,8 +331,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                       child: SizedBox(
                                                         width: 50,
                                                         height: 50,
-                                                        child:
-                                                            SpinKitDoubleBounce(
+                                                        child: SpinKitRipple(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryColor,
@@ -412,7 +399,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                                     width: 50,
                                                                     height: 50,
                                                                     child:
-                                                                        SpinKitDoubleBounce(
+                                                                        SpinKitRipple(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryColor,
@@ -688,7 +675,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                                                           child: SizedBox(
                                                                                             width: 50,
                                                                                             height: 50,
-                                                                                            child: SpinKitDoubleBounce(
+                                                                                            child: SpinKitRipple(
                                                                                               color: FlutterFlowTheme.of(context).primaryColor,
                                                                                               size: 50,
                                                                                             ),
@@ -760,7 +747,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                                                           child: SizedBox(
                                                                                             width: 50,
                                                                                             height: 50,
-                                                                                            child: SpinKitDoubleBounce(
+                                                                                            child: SpinKitRipple(
                                                                                               color: FlutterFlowTheme.of(context).primaryColor,
                                                                                               size: 50,
                                                                                             ),
@@ -827,7 +814,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                                     width: 50,
                                                                     height: 50,
                                                                     child:
-                                                                        SpinKitDoubleBounce(
+                                                                        SpinKitRipple(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryColor,

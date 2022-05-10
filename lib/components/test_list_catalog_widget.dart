@@ -99,7 +99,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                             ),
                             InkWell(
                               onTap: () async {
-                                Navigator.pop(context);
+                                context.pop();
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -119,7 +119,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                     size: 30,
                                   ),
                                   onPressed: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                     setState(() =>
                                         FFAppState().categorypicked = 'All');
                                   },
@@ -499,7 +499,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                               width: 50,
                                                               height: 50,
                                                               child:
-                                                                  SpinKitDoubleBounce(
+                                                                  SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryColor,
@@ -648,7 +648,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                 child: SizedBox(
                                                   width: 50,
                                                   height: 50,
-                                                  child: SpinKitDoubleBounce(
+                                                  child: SpinKitRipple(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryColor,
@@ -718,7 +718,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                 width: 50,
                                                                 height: 50,
                                                                 child:
-                                                                    SpinKitDoubleBounce(
+                                                                    SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryColor,
@@ -1153,7 +1153,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                               width: 50,
                                                               height: 50,
                                                               child:
-                                                                  SpinKitDoubleBounce(
+                                                                  SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryColor,
@@ -1302,7 +1302,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                 child: SizedBox(
                                                   width: 50,
                                                   height: 50,
-                                                  child: SpinKitDoubleBounce(
+                                                  child: SpinKitRipple(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryColor,
@@ -1372,7 +1372,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                 width: 50,
                                                                 height: 50,
                                                                 child:
-                                                                    SpinKitDoubleBounce(
+                                                                    SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryColor,

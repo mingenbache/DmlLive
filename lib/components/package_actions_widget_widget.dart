@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../chat/chat_widget.dart';
 import '../components/duplicate_tests_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -80,7 +79,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                   child: SizedBox(
                     width: 50,
                     height: 50,
-                    child: SpinKitDoubleBounce(
+                    child: SpinKitRipple(
                       color: FlutterFlowTheme.of(context).primaryColor,
                       size: 50,
                     ),
@@ -117,7 +116,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                               child: SizedBox(
                                 width: 50,
                                 height: 50,
-                                child: SpinKitDoubleBounce(
+                                child: SpinKitRipple(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   size: 50,
@@ -133,13 +132,15 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                                   : null;
                           return FFButtonWidget(
                             onPressed: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ChatWidget(
-                                    chatUser: buttonUsersRecord,
-                                  ),
-                                ),
+                              context.pushNamed(
+                                'Chat',
+                                queryParams: {
+                                  'chatUser': serializeParam(
+                                      buttonUsersRecord, ParamType.Document),
+                                },
+                                extra: <String, dynamic>{
+                                  'chatUser': buttonUsersRecord,
+                                },
                               );
                             },
                             text: 'Chat',
@@ -227,7 +228,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                               };
                               await containerBookingsRecord.reference
                                   .update(bookingsUpdateData);
-                              Navigator.pop(context);
+                              context.pop();
                             } else {
                               return;
                             }

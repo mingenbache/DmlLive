@@ -109,7 +109,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                         ),
                         InkWell(
                           onTap: () async {
-                            Navigator.pop(context);
+                            context.pop();
                           },
                           child: Card(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -128,7 +128,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                                 size: 30,
                               ),
                               onPressed: () async {
-                                Navigator.pop(context);
+                                context.pop();
                               },
                             ),
                           ),

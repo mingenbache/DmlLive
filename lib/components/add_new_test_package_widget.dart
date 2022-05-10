@@ -1,7 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/package_test_list_widget.dart';
-import '../details/details_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -74,7 +73,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -132,7 +131,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  Navigator.pop(context);
+                                  context.pop();
                                 },
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -152,7 +151,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                       size: 30,
                                     ),
                                     onPressed: () async {
-                                      Navigator.pop(context);
+                                      context.pop();
                                     },
                                   ),
                                 ),
@@ -333,7 +332,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                   width: 50,
                                                                   height: 50,
                                                                   child:
-                                                                      SpinKitDoubleBounce(
+                                                                      SpinKitRipple(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryColor,
@@ -1366,7 +1365,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                           height:
                                                                               50,
                                                                           child:
-                                                                              SpinKitDoubleBounce(
+                                                                              SpinKitRipple(
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryColor,
                                                                             size:
@@ -1381,15 +1380,13 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                     return InkWell(
                                                                       onTap:
                                                                           () async {
-                                                                        await Navigator
-                                                                            .push(
-                                                                          context,
-                                                                          MaterialPageRoute(
-                                                                            builder: (context) =>
-                                                                                DetailsWidget(
-                                                                              testId: testsListItem,
-                                                                            ),
-                                                                          ),
+                                                                        context
+                                                                            .pushNamed(
+                                                                          'Details',
+                                                                          queryParams: {
+                                                                            'testId':
+                                                                                serializeParam(testsListItem, ParamType.DocumentReference),
+                                                                          },
                                                                         );
                                                                       },
                                                                       child:

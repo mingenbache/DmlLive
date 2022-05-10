@@ -4,8 +4,6 @@ import '../flutter_flow/flutter_flow_choice_chips.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../home/home_widget.dart';
-import '../login/login_widget.dart';
 import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -708,6 +706,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                   children: [
                                     FFButtonWidget(
                                       onPressed: () async {
+                                        GoRouter.of(context)
+                                            .ignoringAuthChange();
                                         if (passwordController.text !=
                                             confirmPasswordController.text) {
                                           ScaffoldMessenger.of(context)
@@ -769,13 +769,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             );
                                           },
                                         );
-                                        await Navigator.pushAndRemoveUntil(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => HomeWidget(),
-                                          ),
-                                          (r) => false,
-                                        );
+                                        context.goNamed('Home');
                                       },
                                       text: 'Create Account',
                                       options: FFButtonOptions(
@@ -840,18 +834,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                                 child: InkWell(
                                   onTap: () async {
+                                    GoRouter.of(context).ignoringAuthChange();
                                     final user =
                                         await signInWithGoogle(context);
                                     if (user == null) {
                                       return;
                                     }
-                                    await Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => HomeWidget(),
-                                      ),
-                                      (r) => false,
-                                    );
+                                    context.goNamed('Home');
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -865,19 +854,14 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           2, 2, 2, 2),
                                       child: InkWell(
                                         onTap: () async {
+                                          GoRouter.of(context)
+                                              .ignoringAuthChange();
                                           final user =
                                               await signInWithGoogle(context);
                                           if (user == null) {
                                             return;
                                           }
-                                          await Navigator.pushAndRemoveUntil(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  HomeWidget(),
-                                            ),
-                                            (r) => false,
-                                          );
+                                          context.goNamed('Home');
                                         },
                                         child: Container(
                                           width: 50,
@@ -897,17 +881,12 @@ class _SignupWidgetState extends State<SignupWidget> {
                               ),
                               InkWell(
                                 onTap: () async {
+                                  GoRouter.of(context).ignoringAuthChange();
                                   final user = await signInWithApple(context);
                                   if (user == null) {
                                     return;
                                   }
-                                  await Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => HomeWidget(),
-                                    ),
-                                    (r) => false,
-                                  );
+                                  context.goNamed('Home');
                                 },
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -921,18 +900,14 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         2, 2, 2, 2),
                                     child: InkWell(
                                       onTap: () async {
+                                        GoRouter.of(context)
+                                            .ignoringAuthChange();
                                         final user =
                                             await signInWithApple(context);
                                         if (user == null) {
                                           return;
                                         }
-                                        await Navigator.pushAndRemoveUntil(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => HomeWidget(),
-                                          ),
-                                          (r) => false,
-                                        );
+                                        context.goNamed('Home');
                                       },
                                       child: Container(
                                         width: 50,
@@ -974,12 +949,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => LoginWidget(),
-                                      ),
-                                    );
+                                    context.pushNamed('Login');
                                   },
                                   text: 'Login',
                                   options: FFButtonOptions(

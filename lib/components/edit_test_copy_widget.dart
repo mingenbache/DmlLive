@@ -89,7 +89,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -143,7 +143,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                               ),
                               InkWell(
                                 onTap: () async {
-                                  Navigator.pop(context);
+                                  context.pop();
                                 },
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -163,7 +163,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                       size: 30,
                                     ),
                                     onPressed: () async {
-                                      Navigator.pop(context);
+                                      context.pop();
                                     },
                                   ),
                                 ),
@@ -414,7 +414,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                     width: 50,
                                                                     height: 50,
                                                                     child:
-                                                                        SpinKitDoubleBounce(
+                                                                        SpinKitRipple(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryColor,
@@ -2706,7 +2706,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                               };
                               await columnTestsRecord.reference
                                   .update(testsUpdateData);
-                              Navigator.pop(context);
+                              context.pop();
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(

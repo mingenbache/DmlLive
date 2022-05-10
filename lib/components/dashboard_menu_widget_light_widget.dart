@@ -1,8 +1,6 @@
-import '../bookings_schedule/bookings_schedule_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../payments_list/payments_list_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -112,14 +110,15 @@ class _DashboardMenuWidgetLightWidgetState
                   padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                   child: InkWell(
                     onTap: () async {
-                      await Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.bottomToTop,
-                          duration: Duration(milliseconds: 300),
-                          reverseDuration: Duration(milliseconds: 300),
-                          child: BookingsScheduleWidget(),
-                        ),
+                      context.pushNamed(
+                        'BookingsSchedule',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.bottomToTop,
+                            duration: Duration(milliseconds: 300),
+                          ),
+                        },
                       );
                     },
                     child: Material(
@@ -168,12 +167,7 @@ class _DashboardMenuWidgetLightWidgetState
                   padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                   child: InkWell(
                     onTap: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BookingsScheduleWidget(),
-                        ),
-                      );
+                      context.pushNamed('BookingsSchedule');
                     },
                     child: Material(
                       color: Colors.transparent,
@@ -224,12 +218,7 @@ class _DashboardMenuWidgetLightWidgetState
                   padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                   child: InkWell(
                     onTap: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PaymentsListWidget(),
-                        ),
-                      );
+                      context.pushNamed('PaymentsList');
                     },
                     child: Material(
                       color: Colors.transparent,

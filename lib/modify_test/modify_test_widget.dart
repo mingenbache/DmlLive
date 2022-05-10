@@ -1,7 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/top_actions_widget.dart';
-import '../details/details_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -49,7 +48,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -326,7 +325,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                     child: SizedBox(
                                       width: 50,
                                       height: 50,
-                                      child: SpinKitDoubleBounce(
+                                      child: SpinKitRipple(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
                                         size: 50,
@@ -781,13 +780,13 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 backgroundColor: Color(0x00000000),
                               ),
                             );
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DetailsWidget(
-                                  testId: modifyTestTestsRecord.reference,
-                                ),
-                              ),
+                            context.pushNamed(
+                              'Details',
+                              queryParams: {
+                                'testId': serializeParam(
+                                    modifyTestTestsRecord.reference,
+                                    ParamType.DocumentReference),
+                              },
                             );
                           },
                           text: 'Update Test',

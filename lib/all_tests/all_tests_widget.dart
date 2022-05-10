@@ -4,7 +4,6 @@ import '../components/details_tabbed_body_widget.dart';
 import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../new_test/new_test_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -42,7 +41,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -57,12 +56,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
             visible: (allTestsUsersRecord.role) == 'admin',
             child: FloatingActionButton.extended(
               onPressed: () async {
-                await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => NewTestWidget(),
-                  ),
-                );
+                context.pushNamed('NewTest');
               },
               backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
               icon: FaIcon(
@@ -93,7 +87,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                       child: SizedBox(
                         width: 50,
                         height: 50,
-                        child: SpinKitDoubleBounce(
+                        child: SpinKitRipple(
                           color: FlutterFlowTheme.of(context).primaryColor,
                           size: 50,
                         ),
@@ -274,7 +268,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: SpinKitDoubleBounce(
+                                            child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
@@ -364,7 +358,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                               child: SizedBox(
                                 width: 50,
                                 height: 50,
-                                child: SpinKitDoubleBounce(
+                                child: SpinKitRipple(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   size: 50,
@@ -396,7 +390,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                     child: SizedBox(
                                       width: 50,
                                       height: 50,
-                                      child: SpinKitDoubleBounce(
+                                      child: SpinKitRipple(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
                                         size: 50,

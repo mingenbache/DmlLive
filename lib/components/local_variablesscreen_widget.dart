@@ -105,7 +105,7 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
                         ),
                         InkWell(
                           onTap: () async {
-                            Navigator.pop(context);
+                            context.pop();
                           },
                           child: Card(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -124,7 +124,7 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
                                 size: 30,
                               ),
                               onPressed: () async {
-                                Navigator.pop(context);
+                                context.pop();
                               },
                             ),
                           ),

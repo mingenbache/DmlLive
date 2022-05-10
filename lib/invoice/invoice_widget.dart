@@ -36,7 +36,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -64,7 +64,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                             child: SizedBox(
                               width: 50,
                               height: 50,
-                              child: SpinKitDoubleBounce(
+                              child: SpinKitRipple(
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
                                 size: 50,
@@ -1312,7 +1312,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                               width: 50,
                                                               height: 50,
                                                               child:
-                                                                  SpinKitDoubleBounce(
+                                                                  SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryColor,
@@ -1597,7 +1597,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                 width: 50,
                                                                 height: 50,
                                                                 child:
-                                                                    SpinKitDoubleBounce(
+                                                                    SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryColor,

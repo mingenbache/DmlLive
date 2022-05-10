@@ -3,13 +3,11 @@ import '../backend/backend.dart';
 import '../backend/push_notifications/push_notifications_util.dart';
 import '../components/test_list_booking_sheet_widget.dart';
 import '../components/top_actions_widget.dart';
-import '../details/details_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_choice_chips.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../my_bookings/my_bookings_widget.dart';
 import 'dart:ui';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -101,7 +99,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -291,7 +289,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                       child: SizedBox(
                                         width: 50,
                                         height: 50,
-                                        child: SpinKitDoubleBounce(
+                                        child: SpinKitRipple(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryColor,
                                           size: 50,
@@ -1476,7 +1474,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                               width: 50,
                                                               height: 50,
                                                               child:
-                                                                  SpinKitDoubleBounce(
+                                                                  SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryColor,
@@ -1489,17 +1487,14 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                             snapshot.data;
                                                         return InkWell(
                                                           onTap: () async {
-                                                            await Navigator
-                                                                .push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                        DetailsWidget(
-                                                                  testId:
-                                                                      testsListItem,
-                                                                ),
-                                                              ),
+                                                            context.pushNamed(
+                                                              'Details',
+                                                              queryParams: {
+                                                                'testId': serializeParam(
+                                                                    testsListItem,
+                                                                    ParamType
+                                                                        .DocumentReference),
+                                                              },
                                                             );
                                                           },
                                                           child: Material(
@@ -1834,7 +1829,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                         child: SizedBox(
                                           width: 50,
                                           height: 50,
-                                          child: SpinKitDoubleBounce(
+                                          child: SpinKitRipple(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryColor,
                                             size: 50,
@@ -1996,14 +1991,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                               'bookingRef': widget.bookingRef,
                                             },
                                           );
-                                          await Navigator.pushAndRemoveUntil(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  MyBookingsWidget(),
-                                            ),
-                                            (r) => false,
-                                          );
+                                          context.goNamed('MyBookings');
                                         },
                                         text: 'Submit',
                                         options: FFButtonOptions(

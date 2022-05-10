@@ -126,7 +126,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: SpinKitDoubleBounce(
+                                            child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
@@ -521,7 +521,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                         height:
                                                                             50,
                                                                         child:
-                                                                            SpinKitDoubleBounce(
+                                                                            SpinKitRipple(
                                                                           color:
                                                                               FlutterFlowTheme.of(context).primaryColor,
                                                                           size:
@@ -736,7 +736,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: SpinKitDoubleBounce(
+                                            child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
@@ -1129,7 +1129,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                       height:
                                                                           50,
                                                                       child:
-                                                                          SpinKitDoubleBounce(
+                                                                          SpinKitRipple(
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryColor,
                                                                         size:

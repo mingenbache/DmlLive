@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../details/details_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -63,7 +62,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -136,7 +135,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                       ),
                                       InkWell(
                                         onTap: () async {
-                                          Navigator.pop(context);
+                                          context.pop();
                                         },
                                         child: Card(
                                           clipBehavior:
@@ -159,7 +158,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                               size: 30,
                                             ),
                                             onPressed: () async {
-                                              Navigator.pop(context);
+                                              context.pop();
                                             },
                                           ),
                                         ),
@@ -379,7 +378,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               width: 50,
                                                               height: 50,
                                                               child:
-                                                                  SpinKitDoubleBounce(
+                                                                  SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryColor,
@@ -1212,13 +1211,12 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                 updateRole: currentUserDocument?.role,
                               );
                               await widget.testRef.update(testsUpdateData);
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => DetailsWidget(
-                                    testId: widget.testRef,
-                                  ),
-                                ),
+                              context.pushNamed(
+                                'Details',
+                                queryParams: {
+                                  'testId': serializeParam(widget.testRef,
+                                      ParamType.DocumentReference),
+                                },
                               );
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(

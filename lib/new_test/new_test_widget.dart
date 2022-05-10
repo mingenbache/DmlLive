@@ -1,7 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/top_actions_widget.dart';
-import '../details/details_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -63,7 +62,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -268,7 +267,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                     child: SizedBox(
                                       width: 50,
                                       height: 50,
-                                      child: SpinKitDoubleBounce(
+                                      child: SpinKitRipple(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
                                         size: 50,
@@ -725,13 +724,12 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                             await testsRecordReference.set(testsCreateData);
                             newTestId = TestsRecord.getDocumentFromData(
                                 testsCreateData, testsRecordReference);
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DetailsWidget(
-                                  testId: newTestId.reference,
-                                ),
-                              ),
+                            context.pushNamed(
+                              'Details',
+                              queryParams: {
+                                'testId': serializeParam(newTestId.reference,
+                                    ParamType.DocumentReference),
+                              },
                             );
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(

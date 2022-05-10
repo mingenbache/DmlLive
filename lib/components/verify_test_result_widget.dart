@@ -67,7 +67,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -123,7 +123,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                             ),
                             InkWell(
                               onTap: () async {
-                                Navigator.pop(context);
+                                context.pop();
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -143,7 +143,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                     size: 30,
                                   ),
                                   onPressed: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                 ),
                               ),
@@ -235,7 +235,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                             child: SizedBox(
                               width: 50,
                               height: 50,
-                              child: SpinKitDoubleBounce(
+                              child: SpinKitRipple(
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
                                 size: 50,
@@ -257,7 +257,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                   child: SizedBox(
                                     width: 50,
                                     height: 50,
-                                    child: SpinKitDoubleBounce(
+                                    child: SpinKitRipple(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryColor,
                                       size: 50,
@@ -286,7 +286,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: SpinKitDoubleBounce(
+                                            child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
@@ -345,7 +345,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                             );
                                           }
 
-                                          Navigator.pop(context);
+                                          context.pop();
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {

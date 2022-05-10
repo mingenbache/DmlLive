@@ -1,5 +1,4 @@
 import '../backend/backend.dart';
-import '../chat/chat_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
@@ -29,13 +28,15 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
         padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
         child: InkWell(
           onTap: () async {
-            await Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ChatWidget(
-                  chatUser: widget.userRecord,
-                ),
-              ),
+            context.pushNamed(
+              'Chat',
+              queryParams: {
+                'chatUser':
+                    serializeParam(widget.userRecord, ParamType.Document),
+              },
+              extra: <String, dynamic>{
+                'chatUser': widget.userRecord,
+              },
             );
           },
           child: Material(

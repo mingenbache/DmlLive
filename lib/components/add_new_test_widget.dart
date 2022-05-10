@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../details/details_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -32,7 +31,6 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
   bool atHomeToggleValue;
   TextEditingController testDescriptionController;
   double testDurationSliderValue;
-  TextEditingController testDurationTextController;
   double durationResultsSliderValue;
   TextEditingController resultsDurationTextController;
   TextEditingController testPriceController;
@@ -49,8 +47,6 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
             .toString());
     testDescriptionController = TextEditingController();
     textController1 = TextEditingController();
-    testDurationTextController =
-        TextEditingController(text: testDurationSliderValue.toString());
     testPriceController = TextEditingController();
   }
 
@@ -72,7 +68,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -170,7 +166,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                       ),
                                       InkWell(
                                         onTap: () async {
-                                          Navigator.pop(context);
+                                          context.pop();
                                         },
                                         child: Card(
                                           clipBehavior:
@@ -193,7 +189,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                               size: 30,
                                             ),
                                             onPressed: () async {
-                                              Navigator.pop(context);
+                                              context.pop();
                                             },
                                           ),
                                         ),
@@ -221,6 +217,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                 Duration(milliseconds: 2000),
                                                 () => setState(() {}),
                                               ),
+                                              autofocus: true,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText: 'Test Name',
@@ -241,8 +238,24 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                           color:
                                                               Color(0xFF586B06),
                                                         ),
-                                                enabledBorder: InputBorder.none,
-                                                focusedBorder: InputBorder.none,
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0xFF586B06),
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0xFF586B06),
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
                                                 filled: true,
                                                 fillColor: Color(0x65FFFFFF),
                                                 contentPadding:
@@ -337,8 +350,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                     child: SizedBox(
                                                       width: 50,
                                                       height: 50,
-                                                      child:
-                                                          SpinKitDoubleBounce(
+                                                      child: SpinKitRipple(
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -551,26 +563,12 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        15, 0, 0, 0),
+                                        0, 0, 0, 10),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
+                                          MainAxisAlignment.spaceAround,
                                       children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 2, 0),
-                                          child: Container(
-                                            width: 20,
-                                            decoration: BoxDecoration(),
-                                            child: Icon(
-                                              Icons.timer,
-                                              color: Colors.white,
-                                              size: 20,
-                                            ),
-                                          ),
-                                        ),
                                         Column(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -578,16 +576,70 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
                                           children: [
-                                            Text(
-                                              'Test Duration:',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Roboto',
-                                                    color: Color(0xFF586B06),
-                                                    fontWeight: FontWeight.w500,
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 0, 2, 0),
+                                                  child: Container(
+                                                    width: 20,
+                                                    decoration: BoxDecoration(),
+                                                    child: Icon(
+                                                      Icons.timer,
+                                                      color: Colors.white,
+                                                      size: 20,
+                                                    ),
                                                   ),
+                                                ),
+                                                Text(
+                                                  'Test Duration:',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color:
+                                                            Color(0xFF586B06),
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                ),
+                                              ],
+                                            ),
+                                            Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.6,
+                                              decoration: BoxDecoration(),
+                                              child: Container(
+                                                width: 150,
+                                                child: Slider.adaptive(
+                                                  activeColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryColor,
+                                                  inactiveColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryColor,
+                                                  min: 15,
+                                                  max: 180,
+                                                  value:
+                                                      testDurationSliderValue ??=
+                                                          functions
+                                                              .intToDouble(60),
+                                                  label: testDurationSliderValue
+                                                      .toString(),
+                                                  divisions: 33,
+                                                  onChanged: (newValue) {
+                                                    setState(() =>
+                                                        testDurationSliderValue =
+                                                            newValue);
+                                                  },
+                                                ),
+                                              ),
                                             ),
                                             Text(
                                               'in minutes',
@@ -600,7 +652,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryColor,
-                                                        fontSize: 12,
+                                                        fontSize: 14,
                                                       ),
                                             ),
                                           ],
@@ -615,107 +667,40 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                 width: MediaQuery.of(context)
                                                         .size
                                                         .width *
-                                                    0.15,
+                                                    0.2,
                                                 height: MediaQuery.of(context)
                                                         .size
                                                         .height *
                                                     0.04,
+                                                constraints: BoxConstraints(
+                                                  maxWidth: 100,
+                                                ),
                                                 decoration: BoxDecoration(
-                                                  color: Color(0xC1EEEEEE),
+                                                  color: Color(0x99FFFFFF),
                                                   borderRadius:
                                                       BorderRadius.circular(12),
                                                   border: Border.all(
                                                     color: Color(0xFF586B06),
                                                   ),
                                                 ),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(8, 0, 0, 0),
-                                                  child: TextFormField(
-                                                    controller:
-                                                        testDurationTextController,
-                                                    obscureText: false,
-                                                    decoration: InputDecoration(
-                                                      hintText:
-                                                          '[Some hint text...]',
-                                                      enabledBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color:
-                                                              Color(0x00000000),
-                                                          width: 1,
-                                                        ),
-                                                        borderRadius:
-                                                            const BorderRadius
-                                                                .only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                        ),
+                                                child: Text(
+                                                  testDurationSliderValue
+                                                      .toString()
+                                                      .maybeHandleOverflow(
+                                                          maxChars: 3),
+                                                  textAlign: TextAlign.center,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        fontSize: 18,
                                                       ),
-                                                      focusedBorder:
-                                                          UnderlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                          color:
-                                                              Color(0x00000000),
-                                                          width: 1,
-                                                        ),
-                                                        borderRadius:
-                                                            const BorderRadius
-                                                                .only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  4.0),
-                                                        ),
-                                                      ),
-                                                      contentPadding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0, 0, 0, 15),
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                          fontSize: 18,
-                                                        ),
-                                                    keyboardType:
-                                                        TextInputType.number,
-                                                  ),
                                                 ),
-                                              ),
-                                            ),
-                                            Container(
-                                              width: 150,
-                                              child: Slider.adaptive(
-                                                activeColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                inactiveColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryColor,
-                                                min: 15,
-                                                max: 180,
-                                                value:
-                                                    testDurationSliderValue ??=
-                                                        60,
-                                                label: testDurationSliderValue
-                                                    .toString(),
-                                                divisions: 11,
-                                                onChanged: (newValue) {
-                                                  setState(() =>
-                                                      testDurationSliderValue =
-                                                          newValue);
-                                                },
                                               ),
                                             ),
                                           ],
@@ -1081,13 +1066,12 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                             await testsRecordReference.set(testsCreateData);
                             newTestId = TestsRecord.getDocumentFromData(
                                 testsCreateData, testsRecordReference);
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DetailsWidget(
-                                  testId: newTestId.reference,
-                                ),
-                              ),
+                            context.pushNamed(
+                              'Details',
+                              queryParams: {
+                                'testId': serializeParam(newTestId.reference,
+                                    ParamType.DocumentReference),
+                              },
                             );
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(

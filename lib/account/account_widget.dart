@@ -5,9 +5,6 @@ import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../login/login_widget.dart';
-import '../my_bookings/my_bookings_widget.dart';
-import '../settings/settings_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -35,7 +32,7 @@ class _AccountWidgetState extends State<AccountWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -603,13 +600,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                 children: [
                                   InkWell(
                                     onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              MyBookingsWidget(),
-                                        ),
-                                      );
+                                      context.pushNamed('MyBookings');
                                     },
                                     child: Material(
                                       color: Colors.transparent,
@@ -710,13 +701,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                       ),
                                       child: InkWell(
                                         onTap: () async {
-                                          await Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  SettingsWidget(),
-                                            ),
-                                          );
+                                          context.pushNamed('Settings');
                                         },
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -934,14 +919,9 @@ class _AccountWidgetState extends State<AccountWidget> {
                             children: [
                               FFButtonWidget(
                                 onPressed: () async {
+                                  GoRouter.of(context).ignoringAuthChange();
                                   await signOut();
-                                  await Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => LoginWidget(),
-                                    ),
-                                    (r) => false,
-                                  );
+                                  context.goNamed('Login');
                                 },
                                 text: 'Log Out',
                                 options: FFButtonOptions(

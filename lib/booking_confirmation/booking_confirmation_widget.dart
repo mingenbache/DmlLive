@@ -4,7 +4,6 @@ import '../components/add_doctor_form_widget.dart';
 import '../components/confirm_tests_widget.dart';
 import '../components/test_list_booking_sheet_widget.dart';
 import '../components/top_actions_widget.dart';
-import '../details/details_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_expanded_image_view.dart';
@@ -84,7 +83,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -167,7 +166,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                             child: SizedBox(
                               width: 50,
                               height: 50,
-                              child: SpinKitDoubleBounce(
+                              child: SpinKitRipple(
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
                                 size: 50,
@@ -803,7 +802,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                   child: SizedBox(
                                                     width: 50,
                                                     height: 50,
-                                                    child: SpinKitDoubleBounce(
+                                                    child: SpinKitRipple(
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -865,7 +864,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                         child: SizedBox(
                                           width: 50,
                                           height: 50,
-                                          child: SpinKitDoubleBounce(
+                                          child: SpinKitRipple(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryColor,
                                             size: 50,
@@ -1687,7 +1686,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                 width: 50,
                                                                 height: 50,
                                                                 child:
-                                                                    SpinKitDoubleBounce(
+                                                                    SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryColor,
@@ -1700,17 +1699,14 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                               snapshot.data;
                                                           return InkWell(
                                                             onTap: () async {
-                                                              await Navigator
-                                                                  .push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                          DetailsWidget(
-                                                                    testId:
-                                                                        testsListItem,
-                                                                  ),
-                                                                ),
+                                                              context.pushNamed(
+                                                                'Details',
+                                                                queryParams: {
+                                                                  'testId': serializeParam(
+                                                                      testsListItem,
+                                                                      ParamType
+                                                                          .DocumentReference),
+                                                                },
                                                               );
                                                             },
                                                             child: Material(
@@ -2039,7 +2035,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: SpinKitDoubleBounce(
+                                            child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,

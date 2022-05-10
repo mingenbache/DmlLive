@@ -123,7 +123,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -171,7 +171,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                             ),
                             InkWell(
                               onTap: () async {
-                                Navigator.pop(context);
+                                context.pop();
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -191,7 +191,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                     size: 30,
                                   ),
                                   onPressed: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                 ),
                               ),
@@ -650,7 +650,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                               FieldValue.arrayUnion([paymentRef.reference]),
                         };
                         await widget.invoiceRef.update(invoicesUpdateData);
-                        Navigator.pop(context);
+                        context.pop();
                         if (_shouldSetState) setState(() {});
                       },
                       text: 'Submit',

@@ -4,7 +4,6 @@ import '../components/booking_actions_widget.dart';
 import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../test_deck/test_deck_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +37,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -72,7 +71,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                               child: SizedBox(
                                 width: 50,
                                 height: 50,
-                                child: SpinKitDoubleBounce(
+                                child: SpinKitRipple(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   size: 50,
@@ -1262,7 +1261,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                   child: SizedBox(
                                                     width: 50,
                                                     height: 50,
-                                                    child: SpinKitDoubleBounce(
+                                                    child: SpinKitRipple(
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1342,7 +1341,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                       height:
                                                                           50,
                                                                       child:
-                                                                          SpinKitDoubleBounce(
+                                                                          SpinKitRipple(
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryColor,
                                                                         size:
@@ -1366,16 +1365,14 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                       () async {
                                                                     if (bookingTestsItem
                                                                         .sampleCollected) {
-                                                                      await Navigator
-                                                                          .push(
-                                                                        context,
-                                                                        MaterialPageRoute(
-                                                                          builder: (context) =>
-                                                                              TestDeckWidget(
-                                                                            testedTestRef:
-                                                                                containerTestedTestsRecord.reference,
-                                                                          ),
-                                                                        ),
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'TestDeck',
+                                                                        queryParams: {
+                                                                          'testedTestRef': serializeParam(
+                                                                              containerTestedTestsRecord.reference,
+                                                                              ParamType.DocumentReference),
+                                                                        },
                                                                       );
                                                                     }
                                                                   },
@@ -1433,7 +1430,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                               child: SizedBox(
                                                                                 width: 50,
                                                                                 height: 50,
-                                                                                child: SpinKitDoubleBounce(
+                                                                                child: SpinKitRipple(
                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                   size: 50,
                                                                                 ),
@@ -1457,7 +1454,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                                       child: SizedBox(
                                                                                         width: 50,
                                                                                         height: 50,
-                                                                                        child: SpinKitDoubleBounce(
+                                                                                        child: SpinKitRipple(
                                                                                           color: FlutterFlowTheme.of(context).primaryColor,
                                                                                           size: 50,
                                                                                         ),
@@ -1490,7 +1487,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                                           child: SizedBox(
                                                                                             width: 50,
                                                                                             height: 50,
-                                                                                            child: SpinKitDoubleBounce(
+                                                                                            child: SpinKitRipple(
                                                                                               color: FlutterFlowTheme.of(context).primaryColor,
                                                                                               size: 50,
                                                                                             ),
@@ -1713,7 +1710,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                           child: SizedBox(
                             width: 50,
                             height: 50,
-                            child: SpinKitDoubleBounce(
+                            child: SpinKitRipple(
                               color: FlutterFlowTheme.of(context).primaryColor,
                               size: 50,
                             ),

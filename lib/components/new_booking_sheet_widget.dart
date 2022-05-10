@@ -5,7 +5,6 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../new_booking/new_booking_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -141,7 +140,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                 ),
                                 InkWell(
                                   onTap: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -161,7 +160,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                         size: 30,
                                       ),
                                       onPressed: () async {
-                                        Navigator.pop(context);
+                                        context.pop();
                                       },
                                     ),
                                   ),
@@ -868,14 +867,13 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                               newbookingRef, isPatientValue));
                                       setState(() => FFAppState().selectedDate =
                                           functions.getNextWeekday());
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              NewBookingWidget(
-                                            bookingRef: newbookingRef.reference,
-                                          ),
-                                        ),
+                                      context.pushNamed(
+                                        'NewBooking',
+                                        queryParams: {
+                                          'bookingRef': serializeParam(
+                                              newbookingRef.reference,
+                                              ParamType.DocumentReference),
+                                        },
                                       );
 
                                       setState(() {});

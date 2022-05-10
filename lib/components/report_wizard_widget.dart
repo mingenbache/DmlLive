@@ -1,7 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/push_notifications/push_notifications_util.dart';
-import '../booking_report/booking_report_widget.dart';
 import '../components/date_widget_small_widget.dart';
 import '../components/invoice_payment_widget.dart';
 import '../components/report_booked_tests_widget.dart';
@@ -229,7 +228,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                 ),
                                 InkWell(
                                   onTap: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -249,7 +248,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                         size: 30,
                                       ),
                                       onPressed: () async {
-                                        Navigator.pop(context);
+                                        context.pop();
                                       },
                                     ),
                                   ),
@@ -800,7 +799,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                     child: SizedBox(
                                                                                       width: 50,
                                                                                       height: 50,
-                                                                                      child: SpinKitDoubleBounce(
+                                                                                      child: SpinKitRipple(
                                                                                         color: FlutterFlowTheme.of(context).primaryColor,
                                                                                         size: 50,
                                                                                       ),
@@ -1933,7 +1932,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                         height:
                                                                             50,
                                                                         child:
-                                                                            SpinKitDoubleBounce(
+                                                                            SpinKitRipple(
                                                                           color:
                                                                               FlutterFlowTheme.of(context).primaryColor,
                                                                           size:
@@ -1983,7 +1982,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                               child: SizedBox(
                                                                                 width: 50,
                                                                                 height: 50,
-                                                                                child: SpinKitDoubleBounce(
+                                                                                child: SpinKitRipple(
                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                   size: 50,
                                                                                 ),
@@ -2293,7 +2292,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                         height:
                                                                             50,
                                                                         child:
-                                                                            SpinKitDoubleBounce(
+                                                                            SpinKitRipple(
                                                                           color:
                                                                               FlutterFlowTheme.of(context).primaryColor,
                                                                           size:
@@ -2485,21 +2484,22 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                     children: [
                                                       FFButtonWidget(
                                                         onPressed: () async {
-                                                          await Navigator.push(
-                                                            context,
-                                                            PageTransition(
-                                                              type: PageTransitionType
-                                                                  .rightToLeft,
-                                                              duration: Duration(
-                                                                  milliseconds:
-                                                                      200),
-                                                              reverseDuration:
-                                                                  Duration(
-                                                                      milliseconds:
-                                                                          200),
-                                                              child:
-                                                                  BookingReportWidget(),
-                                                            ),
+                                                          context.pushNamed(
+                                                            'BookingReport',
+                                                            extra: <String,
+                                                                dynamic>{
+                                                              kTransitionInfoKey:
+                                                                  TransitionInfo(
+                                                                hasTransition:
+                                                                    true,
+                                                                transitionType:
+                                                                    PageTransitionType
+                                                                        .rightToLeft,
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        200),
+                                                              ),
+                                                            },
                                                           );
                                                         },
                                                         text: 'View Report',

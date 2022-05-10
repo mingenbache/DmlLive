@@ -6,7 +6,6 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../payments_list/payments_list_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -161,7 +160,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                           ),
                           InkWell(
                             onTap: () async {
-                              Navigator.pop(context);
+                              context.pop();
                             },
                             child: Card(
                               clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -181,7 +180,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                                   size: 30,
                                 ),
                                 onPressed: () async {
-                                  Navigator.pop(context);
+                                  context.pop();
                                 },
                               ),
                             ),
@@ -529,12 +528,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                           await paymentsRecordReference.set(paymentsCreateData);
                           paymentRef = PaymentsRecord.getDocumentFromData(
                               paymentsCreateData, paymentsRecordReference);
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PaymentsListWidget(),
-                            ),
-                          );
+                          context.pushNamed('PaymentsList');
 
                           setState(() {});
                         },

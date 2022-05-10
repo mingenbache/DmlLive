@@ -68,7 +68,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                       child: SizedBox(
                         width: 50,
                         height: 50,
-                        child: SpinKitDoubleBounce(
+                        child: SpinKitRipple(
                           color: FlutterFlowTheme.of(context).primaryColor,
                           size: 50,
                         ),
@@ -93,7 +93,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                 child: SizedBox(
                                   width: 50,
                                   height: 50,
-                                  child: SpinKitDoubleBounce(
+                                  child: SpinKitRipple(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
                                     size: 50,
@@ -149,7 +149,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                           ),
                                           InkWell(
                                             onTap: () async {
-                                              Navigator.pop(context);
+                                              context.pop();
                                             },
                                             child: Card(
                                               clipBehavior:
@@ -173,7 +173,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                   size: 30,
                                                 ),
                                                 onPressed: () async {
-                                                  Navigator.pop(context);
+                                                  context.pop();
                                                 },
                                               ),
                                             ),
@@ -591,7 +591,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                 child: SizedBox(
                                                   width: 50,
                                                   height: 50,
-                                                  child: SpinKitDoubleBounce(
+                                                  child: SpinKitRipple(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryColor,
@@ -2371,7 +2371,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                       child: SizedBox(
                         width: 50,
                         height: 50,
-                        child: SpinKitDoubleBounce(
+                        child: SpinKitRipple(
                           color: FlutterFlowTheme.of(context).primaryColor,
                           size: 50,
                         ),

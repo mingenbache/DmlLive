@@ -1,12 +1,8 @@
-import '../account/account_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../messages/messages_widget.dart';
-import '../new_booking/new_booking_widget.dart';
-import '../user_list/user_list_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -39,7 +35,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -68,7 +64,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                           child: SizedBox(
                             width: 50,
                             height: 50,
-                            child: SpinKitDoubleBounce(
+                            child: SpinKitRipple(
                               color: FlutterFlowTheme.of(context).primaryColor,
                               size: 50,
                             ),
@@ -97,7 +93,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                   child: SizedBox(
                                     width: 50,
                                     height: 50,
-                                    child: SpinKitDoubleBounce(
+                                    child: SpinKitRipple(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryColor,
                                       size: 50,
@@ -135,13 +131,8 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                 children: [
                                                   InkWell(
                                                     onTap: () async {
-                                                      await Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              UserListWidget(),
-                                                        ),
-                                                      );
+                                                      context.pushNamed(
+                                                          'UserList');
                                                     },
                                                     child: FaIcon(
                                                       FontAwesomeIcons
@@ -157,13 +148,8 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                 5, 0, 0, 0),
                                                     child: InkWell(
                                                       onTap: () async {
-                                                        await Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                NewBookingWidget(),
-                                                          ),
-                                                        );
+                                                        context.pushNamed(
+                                                            'NewBooking');
                                                       },
                                                       child: FaIcon(
                                                         FontAwesomeIcons
@@ -180,13 +166,8 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                 5, 0, 0, 0),
                                                     child: InkWell(
                                                       onTap: () async {
-                                                        await Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                AccountWidget(),
-                                                          ),
-                                                        );
+                                                        context.pushNamed(
+                                                            'Account');
                                                       },
                                                       child: Icon(
                                                         Icons.person_sharp,
@@ -197,13 +178,8 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                   ),
                                                   InkWell(
                                                     onTap: () async {
-                                                      await Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              MessagesWidget(),
-                                                        ),
-                                                      );
+                                                      context.pushNamed(
+                                                          'Messages');
                                                     },
                                                     child: Icon(
                                                       Icons.message,

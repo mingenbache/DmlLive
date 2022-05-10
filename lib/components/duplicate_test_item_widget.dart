@@ -37,7 +37,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -60,7 +60,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                       child: SizedBox(
                         width: 50,
                         height: 50,
-                        child: SpinKitDoubleBounce(
+                        child: SpinKitRipple(
                           color: FlutterFlowTheme.of(context).primaryColor,
                           size: 50,
                         ),
@@ -114,7 +114,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                 ),
                                 InkWell(
                                   onTap: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -134,7 +134,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                         size: 30,
                                       ),
                                       onPressed: () async {
-                                        Navigator.pop(context);
+                                        context.pop();
                                       },
                                     ),
                                   ),
@@ -388,7 +388,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                                                 width: 50,
                                                                 height: 50,
                                                                 child:
-                                                                    SpinKitDoubleBounce(
+                                                                    SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryColor,

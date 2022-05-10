@@ -1,18 +1,11 @@
-import '../account/account_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../chat/chat_widget.dart';
 import '../components/client_notifications_widget_widget.dart';
 import '../components/new_booking_sheet_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../home_admin/home_admin_widget.dart';
-import '../my_invoice_list/my_invoice_list_widget.dart';
-import '../my_report_list/my_report_list_widget.dart';
-import '../new_booking/new_booking_widget.dart';
-import '../scheduled_tests/scheduled_tests_widget.dart';
 import 'dart:ui';
 import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
@@ -72,7 +65,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                 child: SizedBox(
                   width: 50,
                   height: 50,
-                  child: SpinKitDoubleBounce(
+                  child: SpinKitRipple(
                     color: FlutterFlowTheme.of(context).primaryColor,
                     size: 50,
                   ),
@@ -88,13 +81,13 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                   onPressed: () async {
                     setState(() => FFAppState().lastBookingPage = false);
                     if (homeUsersRecord.hasCurrentBooking) {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => NewBookingWidget(
-                            bookingRef: homeUsersRecord.currentBooking,
-                          ),
-                        ),
+                      context.pushNamed(
+                        'NewBooking',
+                        queryParams: {
+                          'bookingRef': serializeParam(
+                              homeUsersRecord.currentBooking,
+                              ParamType.DocumentReference),
+                        },
                       );
                     } else {
                       await showModalBottomSheet(
@@ -278,7 +271,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 width: 50,
                                                                 height: 50,
                                                                 child:
-                                                                    SpinKitDoubleBounce(
+                                                                    SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryColor,
@@ -378,16 +371,14 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                     ),
                                                                     onPressed:
                                                                         () async {
-                                                                      await Navigator
-                                                                          .push(
-                                                                        context,
-                                                                        MaterialPageRoute(
-                                                                          builder: (context) =>
-                                                                              NewBookingWidget(
-                                                                            bookingRef:
-                                                                                homeUsersRecord.currentBooking,
-                                                                          ),
-                                                                        ),
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'NewBooking',
+                                                                        queryParams: {
+                                                                          'bookingRef': serializeParam(
+                                                                              homeUsersRecord.currentBooking,
+                                                                              ParamType.DocumentReference),
+                                                                        },
                                                                       );
                                                                     },
                                                                   ),
@@ -410,15 +401,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 ),
                                                                 onPressed:
                                                                     () async {
-                                                                  await Navigator
-                                                                      .push(
-                                                                    context,
-                                                                    MaterialPageRoute(
-                                                                      builder:
-                                                                          (context) =>
-                                                                              AccountWidget(),
-                                                                    ),
-                                                                  );
+                                                                  context.pushNamed(
+                                                                      'Account');
                                                                 },
                                                               ),
                                                               if (currentUserDocument
@@ -446,14 +430,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                     ),
                                                                     onPressed:
                                                                         () async {
-                                                                      await Navigator
-                                                                          .push(
-                                                                        context,
-                                                                        MaterialPageRoute(
-                                                                          builder: (context) =>
-                                                                              HomeAdminWidget(),
-                                                                        ),
-                                                                      );
+                                                                      context.pushNamed(
+                                                                          'HomeAdmin');
                                                                     },
                                                                   ),
                                                                 ),
@@ -488,7 +466,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                           height:
                                                                               50,
                                                                           child:
-                                                                              SpinKitDoubleBounce(
+                                                                              SpinKitRipple(
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryColor,
                                                                             size:
@@ -562,7 +540,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                               child: SizedBox(
                                                                                 width: 50,
                                                                                 height: 50,
-                                                                                child: SpinKitDoubleBounce(
+                                                                                child: SpinKitRipple(
                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                   size: 50,
                                                                                 ),
@@ -600,13 +578,14 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                             ),
                                                                             onPressed:
                                                                                 () async {
-                                                                              await Navigator.push(
-                                                                                context,
-                                                                                MaterialPageRoute(
-                                                                                  builder: (context) => ChatWidget(
-                                                                                    chatUser: iconButtonUsersRecord,
-                                                                                  ),
-                                                                                ),
+                                                                              context.pushNamed(
+                                                                                'Chat',
+                                                                                queryParams: {
+                                                                                  'chatUser': serializeParam(iconButtonUsersRecord, ParamType.Document),
+                                                                                },
+                                                                                extra: <String, dynamic>{
+                                                                                  'chatUser': iconButtonUsersRecord,
+                                                                                },
                                                                               );
                                                                             },
                                                                           );
@@ -758,13 +737,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                         children: [
                                           InkWell(
                                             onTap: () async {
-                                              await Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      MyReportListWidget(),
-                                                ),
-                                              );
+                                              context.pushNamed('myReportList');
                                             },
                                             child: Container(
                                               width: MediaQuery.of(context)
@@ -894,13 +867,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                         children: [
                                           InkWell(
                                             onTap: () async {
-                                              await Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ScheduledTestsWidget(),
-                                                ),
-                                              );
+                                              context
+                                                  .pushNamed('ScheduledTests');
                                             },
                                             child: Material(
                                               color: Colors.transparent,
@@ -1016,7 +984,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                           height:
                                                                               50,
                                                                           child:
-                                                                              SpinKitDoubleBounce(
+                                                                              SpinKitRipple(
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryColor,
                                                                             size:
@@ -1061,13 +1029,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                           ),
                                           InkWell(
                                             onTap: () async {
-                                              await Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      MyInvoiceListWidget(),
-                                                ),
-                                              );
+                                              context
+                                                  .pushNamed('myInvoiceList');
                                             },
                                             child: Material(
                                               color: Colors.transparent,
@@ -1164,7 +1127,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         height:
                                                                             50,
                                                                         child:
-                                                                            SpinKitDoubleBounce(
+                                                                            SpinKitRipple(
                                                                           color:
                                                                               FlutterFlowTheme.of(context).primaryColor,
                                                                           size:

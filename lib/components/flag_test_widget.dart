@@ -5,7 +5,6 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../test_deck/test_deck_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -106,7 +105,7 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                         ),
                         InkWell(
                           onTap: () async {
-                            Navigator.pop(context);
+                            context.pop();
                           },
                           child: Card(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -125,7 +124,7 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                                 size: 30,
                               ),
                               onPressed: () async {
-                                Navigator.pop(context);
+                                context.pop();
                               },
                             ),
                           ),
@@ -214,14 +213,13 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                         );
                         await widget.testedTestRef
                             .update(testedTestsUpdateData);
-                        await Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => TestDeckWidget(
-                              testedTestRef: widget.testedTestRef,
-                            ),
-                          ),
-                          (r) => false,
+                        context.goNamed(
+                          'TestDeck',
+                          queryParams: {
+                            'testedTestRef': serializeParam(
+                                widget.testedTestRef,
+                                ParamType.DocumentReference),
+                          },
                         );
                       },
                       text: 'Confirm Flag',

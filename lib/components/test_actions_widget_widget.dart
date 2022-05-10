@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../chat/chat_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -79,7 +78,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                   child: SizedBox(
                     width: 50,
                     height: 50,
-                    child: SpinKitDoubleBounce(
+                    child: SpinKitRipple(
                       color: FlutterFlowTheme.of(context).primaryColor,
                       size: 50,
                     ),
@@ -116,7 +115,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                               child: SizedBox(
                                 width: 50,
                                 height: 50,
-                                child: SpinKitDoubleBounce(
+                                child: SpinKitRipple(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   size: 50,
@@ -132,13 +131,15 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                                   : null;
                           return FFButtonWidget(
                             onPressed: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ChatWidget(
-                                    chatUser: buttonUsersRecord,
-                                  ),
-                                ),
+                              context.pushNamed(
+                                'Chat',
+                                queryParams: {
+                                  'chatUser': serializeParam(
+                                      buttonUsersRecord, ParamType.Document),
+                                },
+                                extra: <String, dynamic>{
+                                  'chatUser': buttonUsersRecord,
+                                },
                               );
                             },
                             text: 'Chat',

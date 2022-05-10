@@ -1,4 +1,3 @@
-import '../account/account_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/all_chats_popup_widget.dart';
@@ -6,11 +5,6 @@ import '../components/notifications_widget_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../invoice_list/invoice_list_widget.dart';
-import '../scheduled_tests/scheduled_tests_widget.dart';
-import '../test_queue/test_queue_widget.dart';
-import '../tested_tests/tested_tests_widget.dart';
-import '../user_list/user_list_widget.dart';
 import 'dart:ui';
 import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
@@ -54,7 +48,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                 child: SizedBox(
                   width: 50,
                   height: 50,
-                  child: SpinKitDoubleBounce(
+                  child: SpinKitRipple(
                     color: FlutterFlowTheme.of(context).primaryColor,
                     size: 50,
                   ),
@@ -196,13 +190,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                 children: [
                                                   InkWell(
                                                     onTap: () async {
-                                                      await Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              UserListWidget(),
-                                                        ),
-                                                      );
+                                                      context.pushNamed(
+                                                          'UserList');
                                                     },
                                                     child: FaIcon(
                                                       FontAwesomeIcons
@@ -218,13 +207,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                                 5, 0, 0, 0),
                                                     child: InkWell(
                                                       onTap: () async {
-                                                        await Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                AccountWidget(),
-                                                          ),
-                                                        );
+                                                        context.pushNamed(
+                                                            'Account');
                                                       },
                                                       child: Icon(
                                                         Icons.person_rounded,
@@ -378,7 +362,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                         child: SizedBox(
                                           width: 50,
                                           height: 50,
-                                          child: SpinKitDoubleBounce(
+                                          child: SpinKitRipple(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryColor,
                                             size: 50,
@@ -443,13 +427,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                               children: [
                                 InkWell(
                                   onTap: () async {
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            ScheduledTestsWidget(),
-                                      ),
-                                    );
+                                    context.pushNamed('ScheduledTests');
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -515,8 +493,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                     child: SizedBox(
                                                       width: 50,
                                                       height: 50,
-                                                      child:
-                                                          SpinKitDoubleBounce(
+                                                      child: SpinKitRipple(
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -659,13 +636,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                               children: [
                                 InkWell(
                                   onTap: () async {
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            TestedTestsWidget(),
-                                      ),
-                                    );
+                                    context.pushNamed('TestedTests');
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -711,7 +682,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                             width: 50,
                                                             height: 50,
                                                             child:
-                                                                SpinKitDoubleBounce(
+                                                                SpinKitRipple(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .primaryColor,
@@ -778,13 +749,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                 ),
                                 InkWell(
                                   onTap: () async {
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            InvoiceListWidget(),
-                                      ),
-                                    );
+                                    context.pushNamed('InvoiceList');
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -881,13 +846,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                       5, 5, 5, 5),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              TestQueueWidget(),
-                                        ),
-                                      );
+                                      context.pushNamed('TestQueue');
                                     },
                                     text: 'View Calendar',
                                     icon: Icon(

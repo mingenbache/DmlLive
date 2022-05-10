@@ -1,5 +1,4 @@
 import '../backend/backend.dart';
-import '../details/details_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +39,7 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                         child: SizedBox(
                           width: 50,
                           height: 50,
-                          child: SpinKitDoubleBounce(
+                          child: SpinKitRipple(
                             color: FlutterFlowTheme.of(context).primaryColor,
                             size: 50,
                           ),
@@ -50,13 +49,12 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                     final duplicateTestItemTestsRecord = snapshot.data;
                     return InkWell(
                       onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DetailsWidget(
-                              testId: duplicatetestsListItem,
-                            ),
-                          ),
+                        context.pushNamed(
+                          'Details',
+                          queryParams: {
+                            'testId': serializeParam(duplicatetestsListItem,
+                                ParamType.DocumentReference),
+                          },
                         );
                       },
                       child: Material(

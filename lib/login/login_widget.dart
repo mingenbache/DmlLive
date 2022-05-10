@@ -2,8 +2,6 @@ import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../home/home_widget.dart';
-import '../signup/signup_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -236,12 +234,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             children: [
                               FFButtonWidget(
                                 onPressed: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => SignupWidget(),
-                                    ),
-                                  );
+                                  context.pushNamed('Signup');
                                 },
                                 text: 'Sign Up',
                                 options: FFButtonOptions(
@@ -260,6 +253,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
+                                  GoRouter.of(context).ignoringAuthChange();
+
                                   final user = await signInWithEmail(
                                     context,
                                     emailaddressController.text,
@@ -269,12 +264,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     return;
                                   }
 
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => HomeWidget(),
-                                    ),
-                                  );
+                                  context.pushNamed('Home');
                                 },
                                 text: 'Sign In',
                                 options: FFButtonOptions(
@@ -324,19 +314,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         alignment: AlignmentDirectional(0, 0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
+                                            GoRouter.of(context)
+                                                .ignoringAuthChange();
                                             final user =
                                                 await signInWithGoogle(context);
                                             if (user == null) {
                                               return;
                                             }
-                                            await Navigator.pushAndRemoveUntil(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    HomeWidget(),
-                                              ),
-                                              (r) => false,
-                                            );
+                                            context.goNamed('Home');
                                           },
                                           text: 'Sign in with Google',
                                           icon: Icon(

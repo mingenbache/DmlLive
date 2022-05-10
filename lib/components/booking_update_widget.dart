@@ -45,7 +45,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                   child: SizedBox(
                     width: 50,
                     height: 50,
-                    child: SpinKitDoubleBounce(
+                    child: SpinKitRipple(
                       color: FlutterFlowTheme.of(context).primaryColor,
                       size: 50,
                     ),
@@ -121,7 +121,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                   ),
                                   InkWell(
                                     onTap: () async {
-                                      Navigator.pop(context);
+                                      context.pop();
                                     },
                                     child: Card(
                                       clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -141,7 +141,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                           size: 30,
                                         ),
                                         onPressed: () async {
-                                          Navigator.pop(context);
+                                          context.pop();
                                         },
                                       ),
                                     ),
@@ -312,7 +312,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                 width: 50,
                                                                 height: 50,
                                                                 child:
-                                                                    SpinKitDoubleBounce(
+                                                                    SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryColor,
@@ -663,7 +663,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                   child: SizedBox(
                                                                                                     width: 50,
                                                                                                     height: 50,
-                                                                                                    child: SpinKitDoubleBounce(
+                                                                                                    child: SpinKitRipple(
                                                                                                       color: FlutterFlowTheme.of(context).primaryColor,
                                                                                                       size: 50,
                                                                                                     ),
@@ -887,7 +887,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                             width: 50,
                                                             height: 50,
                                                             child:
-                                                                SpinKitDoubleBounce(
+                                                                SpinKitRipple(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .primaryColor,
@@ -1598,7 +1598,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                 SizedBox(
                                                                               width: 50,
                                                                               height: 50,
-                                                                              child: SpinKitDoubleBounce(
+                                                                              child: SpinKitRipple(
                                                                                 color: FlutterFlowTheme.of(context).primaryColor,
                                                                                 size: 50,
                                                                               ),

@@ -1,5 +1,4 @@
 import '../backend/backend.dart';
-import '../booking_confirmation/booking_confirmation_widget.dart';
 import '../components/begin_test_widget.dart';
 import '../components/booking_update_widget.dart';
 import '../components/date_widget_small_widget.dart';
@@ -9,7 +8,6 @@ import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_calendar.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../scheduled_tests/scheduled_tests_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -203,7 +201,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                         child: SizedBox(
                                           width: 50,
                                           height: 50,
-                                          child: SpinKitDoubleBounce(
+                                          child: SpinKitRipple(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryColor,
                                             size: 50,
@@ -269,7 +267,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                               width: 50,
                                                               height: 50,
                                                               child:
-                                                                  SpinKitDoubleBounce(
+                                                                  SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryColor,
@@ -517,7 +515,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                                                   child: SizedBox(
                                                                                     width: 50,
                                                                                     height: 50,
-                                                                                    child: SpinKitDoubleBounce(
+                                                                                    child: SpinKitRipple(
                                                                                       color: FlutterFlowTheme.of(context).primaryColor,
                                                                                       size: 50,
                                                                                     ),
@@ -575,7 +573,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                                                                               child: SizedBox(
                                                                                                                 width: 50,
                                                                                                                 height: 50,
-                                                                                                                child: SpinKitDoubleBounce(
+                                                                                                                child: SpinKitRipple(
                                                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                                                   size: 50,
                                                                                                                 ),
@@ -748,7 +746,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                                                                                                   child: SizedBox(
                                                                                                                                     width: 50,
                                                                                                                                     height: 50,
-                                                                                                                                    child: SpinKitDoubleBounce(
+                                                                                                                                    child: SpinKitRipple(
                                                                                                                                       color: FlutterFlowTheme.of(context).primaryColor,
                                                                                                                                       size: 50,
                                                                                                                                     ),
@@ -1055,13 +1053,8 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                 ),
                                                 InkWell(
                                                   onTap: () async {
-                                                    await Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            ScheduledTestsWidget(),
-                                                      ),
-                                                    );
+                                                    context.pushNamed(
+                                                        'ScheduledTests');
                                                   },
                                                   child: Material(
                                                     color: Colors.transparent,
@@ -1131,7 +1124,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                               child: SizedBox(
                                                 width: 50,
                                                 height: 50,
-                                                child: SpinKitDoubleBounce(
+                                                child: SpinKitRipple(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryColor,
@@ -1210,7 +1203,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                                     width: 50,
                                                                     height: 50,
                                                                     child:
-                                                                        SpinKitDoubleBounce(
+                                                                        SpinKitRipple(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryColor,
@@ -1438,7 +1431,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                                                         child: SizedBox(
                                                                                           width: 50,
                                                                                           height: 50,
-                                                                                          child: SpinKitDoubleBounce(
+                                                                                          child: SpinKitRipple(
                                                                                             color: FlutterFlowTheme.of(context).primaryColor,
                                                                                             size: 50,
                                                                                           ),
@@ -1529,7 +1522,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                                                                                       child: SizedBox(
                                                                                                                         width: 50,
                                                                                                                         height: 50,
-                                                                                                                        child: SpinKitDoubleBounce(
+                                                                                                                        child: SpinKitRipple(
                                                                                                                           color: FlutterFlowTheme.of(context).primaryColor,
                                                                                                                           size: 50,
                                                                                                                         ),
@@ -1702,7 +1695,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                                                                                                           child: SizedBox(
                                                                                                                                             width: 50,
                                                                                                                                             height: 50,
-                                                                                                                                            child: SpinKitDoubleBounce(
+                                                                                                                                            child: SpinKitRipple(
                                                                                                                                               color: FlutterFlowTheme.of(context).primaryColor,
                                                                                                                                               size: 50,
                                                                                                                                             ),
@@ -1972,7 +1965,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                         child: SizedBox(
                                           width: 50,
                                           height: 50,
-                                          child: SpinKitDoubleBounce(
+                                          child: SpinKitRipple(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryColor,
                                             size: 50,
@@ -2036,17 +2029,16 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                               InkWell(
                                                                 onTap:
                                                                     () async {
-                                                                  await Navigator
-                                                                      .push(
-                                                                    context,
-                                                                    MaterialPageRoute(
-                                                                      builder:
-                                                                          (context) =>
-                                                                              BookingConfirmationWidget(
-                                                                        bookingRef:
-                                                                            unconfirmedBookingsItem.reference,
-                                                                      ),
-                                                                    ),
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'BookingConfirmation',
+                                                                    queryParams: {
+                                                                      'bookingRef': serializeParam(
+                                                                          unconfirmedBookingsItem
+                                                                              .reference,
+                                                                          ParamType
+                                                                              .DocumentReference),
+                                                                    },
                                                                   );
                                                                 },
                                                                 child: Material(
@@ -2218,7 +2210,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                                                               child: SizedBox(
                                                                                                 width: 50,
                                                                                                 height: 50,
-                                                                                                child: SpinKitDoubleBounce(
+                                                                                                child: SpinKitRipple(
                                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                                   size: 50,
                                                                                                 ),

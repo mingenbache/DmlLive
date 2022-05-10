@@ -1,13 +1,9 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../booking_updates/booking_updates_widget.dart';
 import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_calendar.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../lab_report/lab_report_widget.dart';
-import '../scheduled_tests/scheduled_tests_widget.dart';
-import '../test_deck/test_deck_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -139,7 +135,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                 child: SizedBox(
                                   width: 50,
                                   height: 50,
-                                  child: SpinKitDoubleBounce(
+                                  child: SpinKitRipple(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
                                     size: 50,
@@ -185,16 +181,16 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                               children: [
                                                 InkWell(
                                                   onTap: () async {
-                                                    await Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            LabReportWidget(
-                                                          bookingRef:
-                                                              pastbookingsItem
-                                                                  .reference,
-                                                        ),
-                                                      ),
+                                                    context.pushNamed(
+                                                      'LabReport',
+                                                      queryParams: {
+                                                        'bookingRef':
+                                                            serializeParam(
+                                                                pastbookingsItem
+                                                                    .reference,
+                                                                ParamType
+                                                                    .DocumentReference),
+                                                      },
                                                     );
                                                   },
                                                   child: Material(
@@ -443,7 +439,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                       child: SizedBox(
                                                                                         width: 50,
                                                                                         height: 50,
-                                                                                        child: SpinKitDoubleBounce(
+                                                                                        child: SpinKitRipple(
                                                                                           color: FlutterFlowTheme.of(context).primaryColor,
                                                                                           size: 50,
                                                                                         ),
@@ -474,7 +470,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                       child: SizedBox(
                                                                                                         width: 50,
                                                                                                         height: 50,
-                                                                                                        child: SpinKitDoubleBounce(
+                                                                                                        child: SpinKitRipple(
                                                                                                           color: FlutterFlowTheme.of(context).primaryColor,
                                                                                                           size: 50,
                                                                                                         ),
@@ -484,13 +480,11 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                   final containerTestsRecord = snapshot.data;
                                                                                                   return InkWell(
                                                                                                     onTap: () async {
-                                                                                                      await Navigator.push(
-                                                                                                        context,
-                                                                                                        MaterialPageRoute(
-                                                                                                          builder: (context) => TestDeckWidget(
-                                                                                                            testedTestRef: testsOfBookingItem.reference,
-                                                                                                          ),
-                                                                                                        ),
+                                                                                                      context.pushNamed(
+                                                                                                        'TestDeck',
+                                                                                                        queryParams: {
+                                                                                                          'testedTestRef': serializeParam(testsOfBookingItem.reference, ParamType.DocumentReference),
+                                                                                                        },
                                                                                                       );
                                                                                                     },
                                                                                                     child: Container(
@@ -692,13 +686,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                         ),
                                         InkWell(
                                           onTap: () async {
-                                            await Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ScheduledTestsWidget(),
-                                              ),
-                                            );
+                                            context.pushNamed('ScheduledTests');
                                           },
                                           child: Material(
                                             color: Colors.transparent,
@@ -762,7 +750,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                       child: SizedBox(
                                         width: 50,
                                         height: 50,
-                                        child: SpinKitDoubleBounce(
+                                        child: SpinKitRipple(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryColor,
                                           size: 50,
@@ -812,16 +800,15 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                     children: [
                                                       InkWell(
                                                         onTap: () async {
-                                                          await Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  BookingUpdatesWidget(
-                                                                bookingRef:
-                                                                    bookingsItem
-                                                                        .reference,
-                                                              ),
-                                                            ),
+                                                          context.pushNamed(
+                                                            'BookingUpdates',
+                                                            queryParams: {
+                                                              'bookingRef': serializeParam(
+                                                                  bookingsItem
+                                                                      .reference,
+                                                                  ParamType
+                                                                      .DocumentReference),
+                                                            },
                                                           );
                                                         },
                                                         child: Material(
@@ -1017,7 +1004,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                               child: SizedBox(
                                                                                                 width: 50,
                                                                                                 height: 50,
-                                                                                                child: SpinKitDoubleBounce(
+                                                                                                child: SpinKitRipple(
                                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                                   size: 50,
                                                                                                 ),
@@ -1042,7 +1029,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                         child: SizedBox(
                                                                                                           width: 50,
                                                                                                           height: 50,
-                                                                                                          child: SpinKitDoubleBounce(
+                                                                                                          child: SpinKitRipple(
                                                                                                             color: FlutterFlowTheme.of(context).primaryColor,
                                                                                                             size: 50,
                                                                                                           ),
@@ -1148,7 +1135,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                 child: SizedBox(
                                   width: 50,
                                   height: 50,
-                                  child: SpinKitDoubleBounce(
+                                  child: SpinKitRipple(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
                                     size: 50,
@@ -1196,16 +1183,15 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                               children: [
                                                 InkWell(
                                                   onTap: () async {
-                                                    await Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            BookingUpdatesWidget(
-                                                          bookingRef:
-                                                              inactivebookingsItem
-                                                                  .reference,
-                                                        ),
-                                                      ),
+                                                    context.pushNamed(
+                                                      'BookingUpdates',
+                                                      queryParams: {
+                                                        'bookingRef': serializeParam(
+                                                            inactivebookingsItem
+                                                                .reference,
+                                                            ParamType
+                                                                .DocumentReference),
+                                                      },
                                                     );
                                                   },
                                                   child: Material(
@@ -1681,7 +1667,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                       child: SizedBox(
                                                                                         width: 50,
                                                                                         height: 50,
-                                                                                        child: SpinKitDoubleBounce(
+                                                                                        child: SpinKitRipple(
                                                                                           color: FlutterFlowTheme.of(context).primaryColor,
                                                                                           size: 50,
                                                                                         ),
@@ -1713,7 +1699,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                       child: SizedBox(
                                                                                                         width: 50,
                                                                                                         height: 50,
-                                                                                                        child: SpinKitDoubleBounce(
+                                                                                                        child: SpinKitRipple(
                                                                                                           color: FlutterFlowTheme.of(context).primaryColor,
                                                                                                           size: 50,
                                                                                                         ),

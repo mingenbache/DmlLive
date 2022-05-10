@@ -1,7 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/push_notifications/push_notifications_util.dart';
-import '../bookings_schedule/bookings_schedule_widget.dart';
 import '../components/choose_technologist_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
@@ -90,7 +89,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -115,7 +114,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                       child: SizedBox(
                         width: 50,
                         height: 50,
-                        child: SpinKitDoubleBounce(
+                        child: SpinKitRipple(
                           color: FlutterFlowTheme.of(context).primaryColor,
                           size: 50,
                         ),
@@ -167,7 +166,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                 ),
                                 InkWell(
                                   onTap: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -187,7 +186,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                         size: 30,
                                       ),
                                       onPressed: () async {
-                                        Navigator.pop(context);
+                                        context.pop();
                                       },
                                     ),
                                   ),
@@ -382,7 +381,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                   child: SizedBox(
                                                     width: 50,
                                                     height: 50,
-                                                    child: SpinKitDoubleBounce(
+                                                    child: SpinKitRipple(
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -569,7 +568,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                           height:
                                                                               50,
                                                                           child:
-                                                                              SpinKitDoubleBounce(
+                                                                              SpinKitRipple(
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryColor,
                                                                             size:
@@ -732,7 +731,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                                     child: SizedBox(
                                                                                                       width: 50,
                                                                                                       height: 50,
-                                                                                                      child: SpinKitDoubleBounce(
+                                                                                                      child: SpinKitRipple(
                                                                                                         color: FlutterFlowTheme.of(context).primaryColor,
                                                                                                         size: 50,
                                                                                                       ),
@@ -816,7 +815,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                   child: SizedBox(
                                                     width: 50,
                                                     height: 50,
-                                                    child: SpinKitDoubleBounce(
+                                                    child: SpinKitRipple(
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1002,7 +1001,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                             height:
                                                                                 50,
                                                                             child:
-                                                                                SpinKitDoubleBounce(
+                                                                                SpinKitRipple(
                                                                               color: FlutterFlowTheme.of(context).primaryColor,
                                                                               size: 50,
                                                                             ),
@@ -1075,7 +1074,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                             child: SizedBox(
                               width: 50,
                               height: 50,
-                              child: SpinKitDoubleBounce(
+                              child: SpinKitRipple(
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
                                 size: 50,
@@ -1104,7 +1103,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                       child: SizedBox(
                                         width: 50,
                                         height: 50,
-                                        child: SpinKitDoubleBounce(
+                                        child: SpinKitRipple(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryColor,
                                           size: 50,
@@ -1186,14 +1185,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                           await NotificationsRecord.collection
                                               .doc()
                                               .set(notificationsCreateData);
-                                          await Navigator.pushAndRemoveUntil(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  BookingsScheduleWidget(),
-                                            ),
-                                            (r) => false,
-                                          );
+                                          context.goNamed('BookingsSchedule');
                                           return;
                                         } else {
                                           await showDialog(

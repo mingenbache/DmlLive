@@ -112,7 +112,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                             ),
                             InkWell(
                               onTap: () async {
-                                Navigator.pop(context);
+                                context.pop();
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -132,7 +132,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                     size: 30,
                                   ),
                                   onPressed: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                     setState(() =>
                                         FFAppState().categorypicked = 'All');
                                   },
@@ -367,7 +367,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: SpinKitDoubleBounce(
+                                            child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
@@ -509,7 +509,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                               child: SizedBox(
                                 width: 50,
                                 height: 50,
-                                child: SpinKitDoubleBounce(
+                                child: SpinKitRipple(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   size: 50,
@@ -546,7 +546,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: SpinKitDoubleBounce(
+                                            child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
@@ -642,7 +642,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
-                        Navigator.pop(context);
+                        context.pop();
                       },
                       text: 'NEXT',
                       options: FFButtonOptions(

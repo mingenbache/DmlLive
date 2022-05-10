@@ -101,7 +101,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  Navigator.pop(context);
+                                  context.pop();
                                 },
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -121,7 +121,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                       size: 30,
                                     ),
                                     onPressed: () async {
-                                      Navigator.pop(context);
+                                      context.pop();
                                       setState(() =>
                                           FFAppState().categorypicked = 'All');
                                     },
@@ -309,8 +309,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                         child: SizedBox(
                                                           width: 50,
                                                           height: 50,
-                                                          child:
-                                                              SpinKitDoubleBounce(
+                                                          child: SpinKitRipple(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .primaryColor,
@@ -422,8 +421,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                       child: SizedBox(
                                                         width: 50,
                                                         height: 50,
-                                                        child:
-                                                            SpinKitDoubleBounce(
+                                                        child: SpinKitRipple(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryColor,

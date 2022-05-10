@@ -1,5 +1,4 @@
 import '../backend/backend.dart';
-import '../booking_report/booking_report_widget.dart';
 import '../components/new_invoice_sheet_widget.dart';
 import '../components/report_wizard_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
@@ -181,13 +180,13 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                       if (widget.bookingRef.resultPublished ?? true)
                         InkWell(
                           onTap: () async {
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => BookingReportWidget(
-                                  bookingRef: widget.bookingRef.reference,
-                                ),
-                              ),
+                            context.pushNamed(
+                              'BookingReport',
+                              queryParams: {
+                                'bookingRef': serializeParam(
+                                    widget.bookingRef.reference,
+                                    ParamType.DocumentReference),
+                              },
                             );
                           },
                           child: Container(

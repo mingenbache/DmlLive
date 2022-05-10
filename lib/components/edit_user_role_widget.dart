@@ -6,7 +6,6 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../user_list/user_list_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -70,7 +69,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                 child: SizedBox(
                   width: 50,
                   height: 50,
-                  child: SpinKitDoubleBounce(
+                  child: SpinKitRipple(
                     color: FlutterFlowTheme.of(context).primaryColor,
                     size: 50,
                   ),
@@ -134,7 +133,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                   ),
                                   InkWell(
                                     onTap: () async {
-                                      Navigator.pop(context);
+                                      context.pop();
                                     },
                                     child: Card(
                                       clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -154,7 +153,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                           size: 30,
                                         ),
                                         onPressed: () async {
-                                          Navigator.pop(context);
+                                          context.pop();
                                         },
                                       ),
                                     ),
@@ -445,12 +444,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                   );
                                   await submitRoleUsersRecord.reference
                                       .update(usersUpdateData);
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => UserListWidget(),
-                                    ),
-                                  );
+                                  context.pushNamed('UserList');
                                   if (switchListTileValue) {
                                     final staffCreateData =
                                         createStaffRecordData(

@@ -110,7 +110,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -166,7 +166,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                               ),
                               InkWell(
                                 onTap: () async {
-                                  Navigator.pop(context);
+                                  context.pop();
                                 },
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -186,7 +186,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                       size: 30,
                                     ),
                                     onPressed: () async {
-                                      Navigator.pop(context);
+                                      context.pop();
                                     },
                                   ),
                                 ),
@@ -230,7 +230,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                                   child: SizedBox(
                                                     width: 50,
                                                     height: 50,
-                                                    child: SpinKitDoubleBounce(
+                                                    child: SpinKitRipple(
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -290,7 +290,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                                 child: SizedBox(
                                                   width: 50,
                                                   height: 50,
-                                                  child: SpinKitDoubleBounce(
+                                                  child: SpinKitRipple(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryColor,
@@ -648,7 +648,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                   child: SizedBox(
                                     width: 50,
                                     height: 50,
-                                    child: SpinKitDoubleBounce(
+                                    child: SpinKitRipple(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryColor,
                                       size: 50,
@@ -680,7 +680,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                   );
                                   await buttonBookedTestsRecord.reference
                                       .update(bookedTestsUpdateData);
-                                  Navigator.pop(context);
+                                  context.pop();
                                 },
                                 text: 'Submit Results',
                                 options: FFButtonOptions(

@@ -69,7 +69,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -165,7 +165,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                     ),
                                     InkWell(
                                       onTap: () async {
-                                        Navigator.pop(context);
+                                        context.pop();
                                       },
                                       child: Card(
                                         clipBehavior:
@@ -187,7 +187,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                             size: 30,
                                           ),
                                           onPressed: () async {
-                                            Navigator.pop(context);
+                                            context.pop();
                                             setState(() => FFAppState()
                                                 .categorypicked = 'All');
                                           },
@@ -604,7 +604,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                       height:
                                                                           50,
                                                                       child:
-                                                                          SpinKitDoubleBounce(
+                                                                          SpinKitRipple(
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryColor,
                                                                         size:
@@ -735,7 +735,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                             width: 50,
                                                             height: 50,
                                                             child:
-                                                                SpinKitDoubleBounce(
+                                                                SpinKitRipple(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .primaryColor,
@@ -797,7 +797,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                   width: 50,
                                                                   height: 50,
                                                                   child:
-                                                                      SpinKitDoubleBounce(
+                                                                      SpinKitRipple(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryColor,
@@ -1246,7 +1246,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                         height:
                                                                             50,
                                                                         child:
-                                                                            SpinKitDoubleBounce(
+                                                                            SpinKitRipple(
                                                                           color:
                                                                               FlutterFlowTheme.of(context).primaryColor,
                                                                           size:
@@ -1364,7 +1364,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                               width: 50,
                                                               height: 50,
                                                               child:
-                                                                  SpinKitDoubleBounce(
+                                                                  SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryColor,
@@ -1426,7 +1426,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                           height:
                                                                               50,
                                                                           child:
-                                                                              SpinKitDoubleBounce(
+                                                                              SpinKitRipple(
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryColor,
                                                                             size:
@@ -1515,7 +1515,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                       children: [
                         FFButtonWidget(
                           onPressed: () async {
-                            Navigator.pop(context);
+                            context.pop();
                           },
                           text: 'NEXT',
                           options: FFButtonOptions(
