@@ -48,12 +48,12 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
     packageDescriptionController = TextEditingController();
     testDurationTextController = TextEditingController(
         text: functions
-            .doubletoInt(testDurationSliderValue)
+            .doubletoInt(testDurationSliderValue, 60.0)
             .toString()
             .toString());
     resultsDurationTextController = TextEditingController(
         text: functions
-            .doubletoInt(durationResultsSliderValue)
+            .doubletoInt(durationResultsSliderValue, 2.0)
             .toString()
             .toString());
     testPriceController = TextEditingController();

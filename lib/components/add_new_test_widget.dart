@@ -43,14 +43,14 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
     super.initState();
     resultsDurationTextController = TextEditingController(
         text: functions
-            .doubletoInt(durationResultsSliderValue)
+            .doubletoInt(durationResultsSliderValue, 2.0)
             .toString()
             .toString());
     testDescriptionController = TextEditingController();
     textController1 = TextEditingController();
     testDurationTextController = TextEditingController(
         text: functions
-            .doubletoInt(testDurationSliderValue)
+            .doubletoInt(testDurationSliderValue, 60.0)
             .toString()
             .toString());
     testPriceController = TextEditingController();

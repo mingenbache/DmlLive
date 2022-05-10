@@ -80,7 +80,20 @@ bool getDayIsWeekday(DateTime date) {
   return result;
 }
 
-int doubletoInt(double durationDouble) {
+int doubletoInt(
+  double durationDouble,
+  double defaultValue,
+) {
+  // convert double to int
+  if (durationDouble is double) {
+    int duration = durationDouble.toInt();
+    return duration;
+  } else {
+    return defaultValue.toInt();
+  }
+}
+
+int doubletoIntCopy(double durationDouble) {
   // convert double to int
   if (durationDouble is double) {
     int duration = durationDouble.toInt();
