@@ -48,11 +48,8 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
             .toString());
     testDescriptionController = TextEditingController();
     textController1 = TextEditingController();
-    testDurationTextController = TextEditingController(
-        text: functions
-            .doubletoInt(testDurationSliderValue, 60.0)
-            .toString()
-            .toString());
+    testDurationTextController =
+        TextEditingController(text: testDurationSliderValue.toString());
     testPriceController = TextEditingController();
   }
 
@@ -754,7 +751,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                   value:
                                                       testDurationSliderValue ??=
                                                           60,
-                                                  divisions: 17,
+                                                  divisions: 11,
                                                   onChanged: (newValue) {
                                                     setState(() =>
                                                         testDurationSliderValue =
