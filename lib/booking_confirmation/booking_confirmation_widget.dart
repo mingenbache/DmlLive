@@ -445,6 +445,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                 if (val.length < 4) {
                                                   return 'Requires at least 4 characters.';
                                                 }
+
                                                 return null;
                                               },
                                             ).animated([
@@ -1706,7 +1707,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                       testsListItem,
                                                                       ParamType
                                                                           .DocumentReference),
-                                                                },
+                                                                }.withoutNulls,
                                                               );
                                                             },
                                                             child: Material(

@@ -15,10 +15,10 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController emailaddressController;
   TextEditingController passwordController;
   bool passwordVisibility;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -198,6 +198,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   () =>
                                       passwordVisibility = !passwordVisibility,
                                 ),
+                                focusNode: FocusNode(skipTraversal: true),
                                 child: Icon(
                                   passwordVisibility
                                       ? Icons.visibility_outlined
@@ -253,7 +254,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
-                                  GoRouter.of(context).ignoringAuthChange();
+                                  GoRouter.of(context).prepareAuthEvent();
 
                                   final user = await signInWithEmail(
                                     context,
@@ -264,7 +265,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     return;
                                   }
 
-                                  context.pushNamed('Home');
+                                  context.pushNamedAuth('Home', mounted);
                                 },
                                 text: 'Sign In',
                                 options: FFButtonOptions(
@@ -315,13 +316,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         child: FFButtonWidget(
                                           onPressed: () async {
                                             GoRouter.of(context)
-                                                .ignoringAuthChange();
+                                                .prepareAuthEvent();
                                             final user =
                                                 await signInWithGoogle(context);
                                             if (user == null) {
                                               return;
                                             }
-                                            context.goNamed('Home');
+                                            context.goNamedAuth(
+                                                'Home', mounted);
                                           },
                                           text: 'Sign in with Google',
                                           icon: Icon(

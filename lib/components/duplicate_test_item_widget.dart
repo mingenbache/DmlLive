@@ -281,6 +281,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                                                 if (widget
                                                                     .booking
                                                                     .testPackages
+                                                                    .toList()
                                                                     .contains(
                                                                         duplicatetestPackageItem
                                                                             .reference)) {

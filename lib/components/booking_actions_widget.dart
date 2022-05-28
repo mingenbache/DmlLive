@@ -186,7 +186,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                                 'bookingRef': serializeParam(
                                     widget.bookingRef.reference,
                                     ParamType.DocumentReference),
-                              },
+                              }.withoutNulls,
                             );
                           },
                           child: Container(

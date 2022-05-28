@@ -28,7 +28,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
   void initState() {
     super.initState();
     // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
+    SchedulerBinding.instance?.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(milliseconds: 1000));
     });
   }

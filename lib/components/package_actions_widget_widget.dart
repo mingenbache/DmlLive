@@ -137,7 +137,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                                 queryParams: {
                                   'chatUser': serializeParam(
                                       buttonUsersRecord, ParamType.Document),
-                                },
+                                }.withoutNulls,
                                 extra: <String, dynamic>{
                                   'chatUser': buttonUsersRecord,
                                 },

@@ -215,7 +215,10 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                     .fromSTEB(3, 0, 0, 0),
                                                 child: AuthUserStreamWidget(
                                                   child: Text(
-                                                    currentUserDocument?.role,
+                                                    valueOrDefault(
+                                                        currentUserDocument
+                                                            ?.role,
+                                                        ''),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyText1
@@ -371,27 +374,37 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                                       FFChatInfo(
                                                                           listViewChatsRecord);
                                                               return FFChatPreview(
-                                                                onTap: chatInfo !=
-                                                                        null
-                                                                    ? () =>
-                                                                        context
-                                                                            .pushNamed(
-                                                                          'Chat',
-                                                                          queryParams: {
-                                                                            'chatUser':
-                                                                                serializeParam(chatInfo.otherUsers.length == 1 ? chatInfo.otherUsersList.first : null, ParamType.Document),
-                                                                            'chatRef':
-                                                                                serializeParam(chatInfo.chatRecord.reference, ParamType.DocumentReference),
-                                                                          },
-                                                                          extra: <
-                                                                              String,
-                                                                              dynamic>{
-                                                                            'chatUser': chatInfo.otherUsers.length == 1
-                                                                                ? chatInfo.otherUsersList.first
-                                                                                : null,
-                                                                          },
-                                                                        )
-                                                                    : null,
+                                                                onTap: () =>
+                                                                    context
+                                                                        .pushNamed(
+                                                                  'Chat',
+                                                                  queryParams: {
+                                                                    'chatUser': serializeParam(
+                                                                        chatInfo.otherUsers.length ==
+                                                                                1
+                                                                            ? chatInfo
+                                                                                .otherUsersList.first
+                                                                            : null,
+                                                                        ParamType
+                                                                            .Document),
+                                                                    'chatRef': serializeParam(
+                                                                        chatInfo
+                                                                            .chatRecord
+                                                                            .reference,
+                                                                        ParamType
+                                                                            .DocumentReference),
+                                                                  }.withoutNulls,
+                                                                  extra: <
+                                                                      String,
+                                                                      dynamic>{
+                                                                    'chatUser': chatInfo.otherUsers.length ==
+                                                                            1
+                                                                        ? chatInfo
+                                                                            .otherUsersList
+                                                                            .first
+                                                                        : null,
+                                                                  },
+                                                                ),
                                                                 lastChatText:
                                                                     chatInfo
                                                                         .chatPreviewMessage(),

@@ -153,11 +153,13 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                       Stack(
                         children: [
                           if (widget.booking.testsIncluded
+                                  .toList()
                                   ?.contains(widget.test.reference) ??
                               true)
                             InkWell(
                               onTap: () async {
                                 if (widget.booking.testsIncluded
+                                    .toList()
                                     .contains(widget.test.reference)) {
                                   final bookingsUpdateData = {
                                     ...createBookingsRecordData(
@@ -236,13 +238,16 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                   'containerOnActionTriggerAnimation1']
                             ]),
                           if (!(widget.booking.testsIncluded
-                                  ?.contains(widget.test.reference)) ??
+                                  .toList()
+                                  .contains(widget.test.reference)) ??
                               true)
                             InkWell(
                               onTap: () async {
                                 if (!(widget.booking.testsIncluded
+                                    .toList()
                                     .contains(widget.test.reference))) {
                                   if (!(widget.booking.testPackTests
+                                      .toList()
                                       .contains(widget.test.reference))) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
@@ -259,7 +264,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          'Test Added.${widget.booking.testsIncluded.length.toString()} Tests in Total.',
+                                          'Test Added.${widget.booking.testsIncluded.toList().length.toString()} Tests in Total.',
                                           style: TextStyle(),
                                         ),
                                         duration: Duration(milliseconds: 4000),

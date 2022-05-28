@@ -32,7 +32,6 @@ String serializeParam(dynamic param, ParamType paramType) {
     switch (paramType) {
       case ParamType.int:
         return param.toString();
-        break;
       case ParamType.double:
         return param.toString();
       case ParamType.String:
@@ -139,7 +138,6 @@ dynamic deserializeParam(
     switch (paramType) {
       case ParamType.int:
         return int.tryParse(param);
-        break;
       case ParamType.double:
         return double.tryParse(param);
       case ParamType.String:

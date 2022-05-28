@@ -32,10 +32,10 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
   String packageCategoryDropDownValue;
   TextEditingController packageDescriptionController;
   bool atHomeToggleValue;
-  double testDurationSliderValue;
   TextEditingController testDurationTextController;
-  double durationResultsSliderValue;
+  double testDurationSliderValue;
   TextEditingController resultsDurationTextController;
+  double durationResultsSliderValue;
   TextEditingController testPriceController;
   TextEditingController textController1;
   TestPackagesRecord newTestPackId;
@@ -217,7 +217,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                 .text.isNotEmpty
                                             ? InkWell(
                                                 onTap: () => setState(
-                                                  () => textController1.clear(),
+                                                  () =>
+                                                      textController1?.clear(),
                                                 ),
                                                 child: Icon(
                                                   Icons.clear,
@@ -460,7 +461,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                     onTap: () =>
                                                                         setState(
                                                                       () => packageDescriptionController
-                                                                          .clear(),
+                                                                          ?.clear(),
                                                                     ),
                                                                     child: Icon(
                                                                       Icons
@@ -1383,10 +1384,11 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                         context
                                                                             .pushNamed(
                                                                           'Details',
-                                                                          queryParams: {
+                                                                          queryParams:
+                                                                              {
                                                                             'testId':
                                                                                 serializeParam(testsListItem, ParamType.DocumentReference),
-                                                                          },
+                                                                          }.withoutNulls,
                                                                         );
                                                                       },
                                                                       child:

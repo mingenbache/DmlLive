@@ -16,8 +16,8 @@ class MessagesWidget extends StatefulWidget {
 }
 
 class _MessagesWidgetState extends State<MessagesWidget> {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController textController;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -254,7 +254,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                     'chatUser': serializeParam(
                                                         columnUsersRecord,
                                                         ParamType.Document),
-                                                  },
+                                                  }.withoutNulls,
                                                   extra: <String, dynamic>{
                                                     'chatUser':
                                                         columnUsersRecord,

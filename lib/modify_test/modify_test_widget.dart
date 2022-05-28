@@ -25,14 +25,14 @@ class ModifyTestWidget extends StatefulWidget {
 
 class _ModifyTestWidgetState extends State<ModifyTestWidget> {
   String dropDownValue;
-  bool switchListTileValue;
-  TextEditingController testNameController;
   TextEditingController testDescriptionController;
+  TextEditingController testNameController;
+  bool switchListTileValue;
   bool atHomeToggleValue;
-  double testDurationSliderValue;
   TextEditingController testDurationTextController;
-  double durationResultsSliderValue;
+  double testDurationSliderValue;
   TextEditingController resultsDurationTextController;
+  double durationResultsSliderValue;
   TextEditingController testPriceController;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -269,7 +269,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                     .text.isNotEmpty
                                 ? InkWell(
                                     onTap: () => setState(
-                                      () => testDescriptionController.clear(),
+                                      () => testDescriptionController?.clear(),
                                     ),
                                     child: Icon(
                                       Icons.clear,
@@ -786,7 +786,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 'testId': serializeParam(
                                     modifyTestTestsRecord.reference,
                                     ParamType.DocumentReference),
-                              },
+                              }.withoutNulls,
                             );
                           },
                           text: 'Update Test',

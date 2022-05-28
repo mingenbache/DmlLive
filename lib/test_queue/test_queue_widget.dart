@@ -348,7 +348,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                         .reference,
                                                                     ParamType
                                                                         .DocumentReference),
-                                                          },
+                                                          }.withoutNulls,
                                                         );
                                                         if (_shouldSetState)
                                                           setState(() {});

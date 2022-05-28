@@ -308,7 +308,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           onTap: () =>
                                                                               setState(
                                                                             () =>
-                                                                                textController1.clear(),
+                                                                                textController1?.clear(),
                                                                           ),
                                                                           child:
                                                                               Icon(
@@ -1326,7 +1326,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 onTap: () =>
                                                                     setState(
                                                                   () => textController3
-                                                                      .clear(),
+                                                                      ?.clear(),
                                                                 ),
                                                                 child: Icon(
                                                                   Icons.clear,
@@ -1598,7 +1598,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         suffixIcon: textController4.text.isNotEmpty
                                                                             ? InkWell(
                                                                                 onTap: () => setState(
-                                                                                  () => textController4.clear(),
+                                                                                  () => textController4?.clear(),
                                                                                 ),
                                                                                 child: Icon(
                                                                                   Icons.clear,
@@ -1958,7 +1958,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                               .isNotEmpty
                                                                           ? InkWell(
                                                                               onTap: () => setState(
-                                                                                () => textController6.clear(),
+                                                                                () => textController6?.clear(),
                                                                               ),
                                                                               child: Icon(
                                                                                 Icons.clear,
@@ -2275,7 +2275,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         ? InkWell(
                                                                             onTap: () =>
                                                                                 setState(
-                                                                              () => textController8.clear(),
+                                                                              () => textController8?.clear(),
                                                                             ),
                                                                             child:
                                                                                 Icon(
@@ -2503,7 +2503,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           suffixIcon: textController9.text.isNotEmpty
                                                                               ? InkWell(
                                                                                   onTap: () => setState(
-                                                                                    () => textController9.clear(),
+                                                                                    () => textController9?.clear(),
                                                                                   ),
                                                                                   child: Icon(
                                                                                     Icons.clear,
@@ -2691,7 +2691,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                   durationResults: resultsDurationSliderValue,
                                   category: dropDownValue,
                                   updateDate: getCurrentTimestamp,
-                                  updateRole: currentUserDocument?.role,
+                                  updateRole: valueOrDefault(
+                                      currentUserDocument?.role, ''),
                                   description: textController3?.text ?? '',
                                   varianceMale: textController4?.text ?? '',
                                   varianceFemale: textController6?.text ?? '',

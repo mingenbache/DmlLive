@@ -153,11 +153,13 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                       Stack(
                         children: [
                           if (widget.booking.testPackages
+                                  .toList()
                                   ?.contains(widget.package.reference) ??
                               true)
                             InkWell(
                               onTap: () async {
                                 if (widget.booking.testPackages
+                                    .toList()
                                     .contains(widget.package.reference)) {
                                   final bookingsUpdateData = {
                                     ...createBookingsRecordData(
@@ -241,11 +243,13 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                   'containerOnActionTriggerAnimation1']
                             ]),
                           if (!(widget.booking.testPackages
-                                  ?.contains(widget.package.reference)) ??
+                                  .toList()
+                                  .contains(widget.package.reference)) ??
                               true)
                             InkWell(
                               onTap: () async {
                                 if (widget.booking.testPackages
+                                    .toList()
                                     .contains(widget.package.reference)) {
                                   final bookingsUpdateData = {
                                     ...createBookingsRecordData(

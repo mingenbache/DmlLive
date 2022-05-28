@@ -479,7 +479,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                               'testedTestRef': serializeParam(
                                                   widget.testedTestRef,
                                                   ParamType.DocumentReference),
-                                            },
+                                            }.withoutNulls,
                                           );
                                         },
                                         child: Container(

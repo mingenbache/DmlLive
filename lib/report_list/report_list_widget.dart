@@ -170,7 +170,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                             'bookingRef': serializeParam(
                                                 bookingsItem.reference,
                                                 ParamType.DocumentReference),
-                                          },
+                                          }.withoutNulls,
                                         );
                                       }
                                     },
@@ -457,7 +457,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                                               'TestDeck',
                                                                                               queryParams: {
                                                                                                 'testedTestRef': serializeParam(testsItem.reference, ParamType.DocumentReference),
-                                                                                              },
+                                                                                              }.withoutNulls,
                                                                                             );
                                                                                           },
                                                                                           child: Row(

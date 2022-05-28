@@ -1626,6 +1626,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                   if (val.length < 2) {
                                                     return 'Requires at least 2 characters.';
                                                   }
+
                                                   return null;
                                                 },
                                               ),
@@ -1777,7 +1778,8 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                   dueDate:
                                       functions.setInvoiceDueDate(datePicked),
                                   updateDate: getCurrentTimestamp,
-                                  updateRole: currentUserDocument?.role,
+                                  updateRole: valueOrDefault(
+                                      currentUserDocument?.role, ''),
                                 );
                                 var invoicesRecordReference =
                                     InvoicesRecord.collection.doc();
@@ -1791,7 +1793,8 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                   ...createBookingsRecordData(
                                     isInvoiced: true,
                                     updatedDate: getCurrentTimestamp,
-                                    updateRole: currentUserDocument?.role,
+                                    updateRole: valueOrDefault(
+                                        currentUserDocument?.role, ''),
                                   ),
                                   'Invoice_Refs': FieldValue.arrayUnion(
                                       [newInvoice.reference]),

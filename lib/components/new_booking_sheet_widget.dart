@@ -20,12 +20,12 @@ class NewBookingSheetWidget extends StatefulWidget {
 
 class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
     with TickerProviderStateMixin {
+  BookingsRecord newbookingRef;
   PageController pageViewController;
   bool isPatientValue;
   TextEditingController docemailAddressController;
   TextEditingController doctorNamesController;
   TextEditingController docphoneNumberController;
-  BookingsRecord newbookingRef;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -826,12 +826,15 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                       if (isPatientValue) {
                                         final bookingsUpdateData =
                                             createBookingsRecordData(
-                                          firstname:
+                                          firstname: valueOrDefault(
                                               currentUserDocument?.firstName,
-                                          lastname:
+                                              ''),
+                                          lastname: valueOrDefault(
                                               currentUserDocument?.lastName,
+                                              ''),
                                           emailaddress: currentUserEmail,
-                                          sex: currentUserDocument?.sex,
+                                          sex: valueOrDefault(
+                                              currentUserDocument?.sex, ''),
                                           phonenumber: currentPhoneNumber,
                                           dOB: currentUserDocument?.dOB,
                                         );
@@ -873,7 +876,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                           'bookingRef': serializeParam(
                                               newbookingRef.reference,
                                               ParamType.DocumentReference),
-                                        },
+                                        }.withoutNulls,
                                       );
 
                                       setState(() {});

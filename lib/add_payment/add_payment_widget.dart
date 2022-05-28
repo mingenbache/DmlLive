@@ -25,13 +25,13 @@ class AddPaymentWidget extends StatefulWidget {
 
 class _AddPaymentWidgetState extends State<AddPaymentWidget>
     with TickerProviderStateMixin {
+  PaymentsRecord paymentRef;
   String paymentMethodValue;
   TextEditingController firstNameController;
   TextEditingController lastNameController;
   TextEditingController textController1;
   TextEditingController transactionReferenceController;
   TextEditingController paymentNotesController;
-  PaymentsRecord paymentRef;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {

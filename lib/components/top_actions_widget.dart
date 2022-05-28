@@ -149,7 +149,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                         'bookingRef': serializeParam(
                                             currentUserDocument?.currentBooking,
                                             ParamType.DocumentReference),
-                                      },
+                                      }.withoutNulls,
                                     );
                                   }
                                 },

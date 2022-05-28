@@ -218,7 +218,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                               ? InkWell(
                                                   onTap: () => setState(
                                                     () =>
-                                                        textController.clear(),
+                                                        textController?.clear(),
                                                   ),
                                                   child: Icon(
                                                     Icons.clear,

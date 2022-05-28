@@ -919,9 +919,9 @@ class _AccountWidgetState extends State<AccountWidget> {
                             children: [
                               FFButtonWidget(
                                 onPressed: () async {
-                                  GoRouter.of(context).ignoringAuthChange();
+                                  GoRouter.of(context).prepareAuthEvent();
                                   await signOut();
-                                  context.goNamed('Login');
+                                  context.goNamedAuth('Login', mounted);
                                 },
                                 text: 'Log Out',
                                 options: FFButtonOptions(

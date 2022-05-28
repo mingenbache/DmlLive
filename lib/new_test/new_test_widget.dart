@@ -24,10 +24,10 @@ class _NewTestWidgetState extends State<NewTestWidget> {
   TextEditingController testDescriptionController;
   TextEditingController testNameController;
   bool atHomeToggleValue;
-  double testDurationSliderValue;
   TextEditingController testDurationTextController;
-  double durationResultsSliderValue;
+  double testDurationSliderValue;
   TextEditingController resultsDurationTextController;
+  double durationResultsSliderValue;
   TextEditingController testPriceController;
   TestsRecord newTestId;
   final formKey = GlobalKey<FormState>();
@@ -209,7 +209,8 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                       .text.isNotEmpty
                                   ? InkWell(
                                       onTap: () => setState(
-                                        () => testDescriptionController.clear(),
+                                        () =>
+                                            testDescriptionController?.clear(),
                                       ),
                                       child: Icon(
                                         Icons.clear,
@@ -692,6 +693,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                     if (val.length < 2) {
                                       return 'incorrect price entered';
                                     }
+
                                     return null;
                                   },
                                 ),
@@ -729,7 +731,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                               queryParams: {
                                 'testId': serializeParam(newTestId.reference,
                                     ParamType.DocumentReference),
-                              },
+                              }.withoutNulls,
                             );
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
@@ -8,6 +9,7 @@ import '../../backend/backend.dart';
 import '../../auth/firebase_user_provider.dart';
 import '../../backend/push_notifications/push_notifications_handler.dart'
     show PushNotificationsHandler;
+
 import '../../index.dart';
 import '../../main.dart';
 import 'serialization_util.dart';
@@ -21,6 +23,7 @@ class AppStateNotifier extends ChangeNotifier {
   DmlLiveFirebaseUser initialUser;
   DmlLiveFirebaseUser user;
   bool showSplashImage = true;
+  String _redirectLocation;
 
   /// Determines whether the app will refresh and build again when a sign
   /// in or sign out happens. This is useful when the app is launched or
@@ -32,6 +35,12 @@ class AppStateNotifier extends ChangeNotifier {
   bool get loading => user == null || showSplashImage;
   bool get loggedIn => user?.loggedIn ?? false;
   bool get initiallyLoggedIn => initialUser?.loggedIn ?? false;
+  bool get shouldRedirect => loggedIn && _redirectLocation != null;
+
+  String getRedirectLocation() => _redirectLocation;
+  bool hasRedirect() => _redirectLocation != null;
+  void setRedirectLocationIfUnset(String loc) => _redirectLocation ??= loc;
+  void clearRedirectLocation() => _redirectLocation = null;
 
   /// Mark as not needing to notify on a sign in / out when we intend
   /// to perform subsequent actions (such as navigation) afterwards.
@@ -58,7 +67,6 @@ class AppStateNotifier extends ChangeNotifier {
 GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
-      urlPathStrategy: UrlPathStrategy.path,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
           appStateNotifier.loggedIn ? HomeWidget() : LoginWidget(),
@@ -68,235 +76,288 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/',
           builder: (context, _) =>
               appStateNotifier.loggedIn ? HomeWidget() : LoginWidget(),
-        ),
-        FFRoute(
-          name: 'Login',
-          path: '/login',
-          builder: (context, params) => LoginWidget(),
-        ),
-        FFRoute(
-          name: 'Home',
-          path: '/home',
-          builder: (context, params) => HomeWidget(),
-        ),
-        FFRoute(
-          name: 'Details',
-          path: '/details',
-          builder: (context, params) => DetailsWidget(
-            testId:
-                params.getParam('testId', ParamType.DocumentReference, 'tests'),
-          ),
-        ),
-        FFRoute(
-          name: 'NewTest',
-          path: '/newTest',
-          builder: (context, params) => NewTestWidget(),
-        ),
-        FFRoute(
-          name: 'Signup',
-          path: '/signup',
-          builder: (context, params) => SignupWidget(),
-        ),
-        FFRoute(
-          name: 'NewBooking',
-          path: '/newBooking',
-          builder: (context, params) => NewBookingWidget(
-            bookingRef: params.getParam(
-                'bookingRef', ParamType.DocumentReference, 'bookings'),
-          ),
-        ),
-        FFRoute(
-          name: 'Account',
-          path: '/account',
-          builder: (context, params) => AccountWidget(),
-        ),
-        FFRoute(
-          name: 'Messages',
-          path: '/messages',
-          builder: (context, params) => MessagesWidget(),
-        ),
-        FFRoute(
-          name: 'Settings',
-          path: '/settings',
-          builder: (context, params) => SettingsWidget(),
-        ),
-        FFRoute(
-          name: 'ScheduledTests',
-          path: '/scheduledTests',
-          builder: (context, params) => ScheduledTestsWidget(),
-        ),
-        FFRoute(
-          name: 'UserList',
-          path: '/userList',
-          builder: (context, params) => UserListWidget(
-            staffFilter: params.getParam('staffFilter', ParamType.bool),
-            userNameQUery: params.getParam('userNameQUery', ParamType.String),
-          ),
-        ),
-        FFRoute(
-          name: 'HomeAdmin',
-          path: '/homeAdmin',
-          builder: (context, params) => HomeAdminWidget(),
-        ),
-        FFRoute(
-          name: 'BookingConfirmation',
-          path: '/bookingConfirmation',
-          builder: (context, params) => BookingConfirmationWidget(
-            bookingRef: params.getParam(
-                'bookingRef', ParamType.DocumentReference, 'bookings'),
-          ),
-        ),
-        FFRoute(
-          name: 'AllTests',
-          path: '/allTests',
-          builder: (context, params) => AllTestsWidget(),
-        ),
-        FFRoute(
-          name: 'BookingInvoicing',
-          path: '/bookingInvoicing',
-          builder: (context, params) => BookingInvoicingWidget(
-            bookingRef: params.getParam(
-                'bookingRef', ParamType.DocumentReference, 'bookings'),
-          ),
-        ),
-        FFRoute(
-          name: 'ModifyTest',
-          path: '/modifyTest',
-          builder: (context, params) => ModifyTestWidget(
-            testId:
-                params.getParam('testId', ParamType.DocumentReference, 'tests'),
-          ),
-        ),
-        FFRoute(
-          name: 'BookingUpdates',
-          path: '/bookingUpdates',
-          builder: (context, params) => BookingUpdatesWidget(
-            bookingRef: params.getParam(
-                'bookingRef', ParamType.DocumentReference, 'bookings'),
-          ),
-        ),
-        FFRoute(
-          name: 'Invoice',
-          path: '/invoice',
-          builder: (context, params) => InvoiceWidget(
-            invoiceRef: params.getParam(
-                'invoiceRef', ParamType.DocumentReference, 'Invoices'),
-          ),
-        ),
-        FFRoute(
-          name: 'AddPayment',
-          path: '/addPayment',
-          builder: (context, params) => AddPaymentWidget(
-            invoiceRef: params.getParam(
-                'invoiceRef', ParamType.DocumentReference, 'Invoices'),
-          ),
-        ),
-        FFRoute(
-          name: 'LabReport',
-          path: '/labReport',
-          builder: (context, params) => LabReportWidget(
-            bookingRef: params.getParam(
-                'bookingRef', ParamType.DocumentReference, 'bookings'),
-          ),
-        ),
-        FFRoute(
-          name: 'ReportList',
-          path: '/reportList',
-          builder: (context, params) => ReportListWidget(),
-        ),
-        FFRoute(
-          name: 'TestDeck',
-          path: '/testDeck',
-          builder: (context, params) => TestDeckWidget(
-            testedTestRef: params.getParam(
-                'testedTestRef', ParamType.DocumentReference, 'tested_tests'),
-          ),
-        ),
-        FFRoute(
-          name: 'InvoiceList',
-          path: '/invoiceList',
-          builder: (context, params) => InvoiceListWidget(),
-        ),
-        FFRoute(
-          name: 'editUser',
-          path: '/editUser',
-          builder: (context, params) => EditUserWidget(),
-        ),
-        FFRoute(
-          name: 'TestedTests',
-          path: '/testedTests',
-          builder: (context, params) => TestedTestsWidget(),
-        ),
-        FFRoute(
-          name: 'PaymentsList',
-          path: '/paymentsList',
-          builder: (context, params) => PaymentsListWidget(),
-        ),
-        FFRoute(
-          name: 'BookingsSchedule',
-          path: '/bookingsSchedule',
-          builder: (context, params) => BookingsScheduleWidget(),
-        ),
-        FFRoute(
-          name: 'MyBookings',
-          path: '/myBookings',
-          builder: (context, params) => MyBookingsWidget(),
-        ),
-        FFRoute(
-          name: 'myInvoiceList',
-          path: '/myInvoiceList',
-          builder: (context, params) => MyInvoiceListWidget(),
-        ),
-        FFRoute(
-          name: 'myReportList',
-          path: '/myReportList',
-          builder: (context, params) => MyReportListWidget(),
-        ),
-        FFRoute(
-          name: 'TestQueue',
-          path: '/testQueue',
-          builder: (context, params) => TestQueueWidget(),
-        ),
-        FFRoute(
-          name: 'TestedTestsCopy',
-          path: '/testedTestsCopy',
-          builder: (context, params) => TestedTestsCopyWidget(),
-        ),
-        FFRoute(
-          name: 'Chat',
-          path: '/chat',
-          asyncParams: {
-            'chatUser': getDoc('users', UsersRecord.serializer),
-          },
-          builder: (context, params) => ChatWidget(
-            chatUser: params.getParam('chatUser', ParamType.Document),
-            chatRef: params.getParam(
-                'chatRef', ParamType.DocumentReference, 'chats'),
-          ),
-        ),
-        FFRoute(
-          name: 'TechnologistTestDeck',
-          path: '/technologistTestDeck',
-          asyncParams: {
-            'bookedTest': getDoc('booked_tests', BookedTestsRecord.serializer),
-          },
-          builder: (context, params) => TechnologistTestDeckWidget(
-            bookedTest: params.getParam('bookedTest', ParamType.Document),
-          ),
-        ),
-        FFRoute(
-          name: 'BookingReport',
-          path: '/bookingReport',
-          builder: (context, params) => BookingReportWidget(
-            bookingRef: params.getParam(
-                'bookingRef', ParamType.DocumentReference, 'bookings'),
-          ),
-        )
-      ].map((r) => r.toRoute(appStateNotifier)).toList(),
+          routes: [
+            FFRoute(
+              name: 'Login',
+              path: 'login',
+              builder: (context, params) => LoginWidget(),
+            ),
+            FFRoute(
+              name: 'Home',
+              path: 'home',
+              builder: (context, params) => HomeWidget(),
+            ),
+            FFRoute(
+              name: 'Details',
+              path: 'details',
+              builder: (context, params) => DetailsWidget(
+                testId: params.getParam(
+                    'testId', ParamType.DocumentReference, 'tests'),
+              ),
+            ),
+            FFRoute(
+              name: 'NewTest',
+              path: 'newTest',
+              builder: (context, params) => NewTestWidget(),
+            ),
+            FFRoute(
+              name: 'Signup',
+              path: 'signup',
+              builder: (context, params) => SignupWidget(),
+            ),
+            FFRoute(
+              name: 'NewBooking',
+              path: 'newBooking',
+              builder: (context, params) => NewBookingWidget(
+                bookingRef: params.getParam(
+                    'bookingRef', ParamType.DocumentReference, 'bookings'),
+              ),
+            ),
+            FFRoute(
+              name: 'Account',
+              path: 'account',
+              builder: (context, params) => AccountWidget(),
+            ),
+            FFRoute(
+              name: 'Messages',
+              path: 'messages',
+              builder: (context, params) => MessagesWidget(),
+            ),
+            FFRoute(
+              name: 'Settings',
+              path: 'settings',
+              builder: (context, params) => SettingsWidget(),
+            ),
+            FFRoute(
+              name: 'ScheduledTests',
+              path: 'scheduledTests',
+              builder: (context, params) => ScheduledTestsWidget(),
+            ),
+            FFRoute(
+              name: 'UserList',
+              path: 'userList',
+              builder: (context, params) => UserListWidget(
+                staffFilter: params.getParam('staffFilter', ParamType.bool),
+                userNameQUery:
+                    params.getParam('userNameQUery', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'HomeAdmin',
+              path: 'homeAdmin',
+              builder: (context, params) => HomeAdminWidget(),
+            ),
+            FFRoute(
+              name: 'BookingConfirmation',
+              path: 'bookingConfirmation',
+              builder: (context, params) => BookingConfirmationWidget(
+                bookingRef: params.getParam(
+                    'bookingRef', ParamType.DocumentReference, 'bookings'),
+              ),
+            ),
+            FFRoute(
+              name: 'AllTests',
+              path: 'allTests',
+              builder: (context, params) => AllTestsWidget(),
+            ),
+            FFRoute(
+              name: 'BookingInvoicing',
+              path: 'bookingInvoicing',
+              builder: (context, params) => BookingInvoicingWidget(
+                bookingRef: params.getParam(
+                    'bookingRef', ParamType.DocumentReference, 'bookings'),
+              ),
+            ),
+            FFRoute(
+              name: 'ModifyTest',
+              path: 'modifyTest',
+              builder: (context, params) => ModifyTestWidget(
+                testId: params.getParam(
+                    'testId', ParamType.DocumentReference, 'tests'),
+              ),
+            ),
+            FFRoute(
+              name: 'BookingUpdates',
+              path: 'bookingUpdates',
+              builder: (context, params) => BookingUpdatesWidget(
+                bookingRef: params.getParam(
+                    'bookingRef', ParamType.DocumentReference, 'bookings'),
+              ),
+            ),
+            FFRoute(
+              name: 'Invoice',
+              path: 'invoice',
+              builder: (context, params) => InvoiceWidget(
+                invoiceRef: params.getParam(
+                    'invoiceRef', ParamType.DocumentReference, 'Invoices'),
+              ),
+            ),
+            FFRoute(
+              name: 'AddPayment',
+              path: 'addPayment',
+              builder: (context, params) => AddPaymentWidget(
+                invoiceRef: params.getParam(
+                    'invoiceRef', ParamType.DocumentReference, 'Invoices'),
+              ),
+            ),
+            FFRoute(
+              name: 'LabReport',
+              path: 'labReport',
+              builder: (context, params) => LabReportWidget(
+                bookingRef: params.getParam(
+                    'bookingRef', ParamType.DocumentReference, 'bookings'),
+              ),
+            ),
+            FFRoute(
+              name: 'ReportList',
+              path: 'reportList',
+              builder: (context, params) => ReportListWidget(),
+            ),
+            FFRoute(
+              name: 'TestDeck',
+              path: 'testDeck',
+              builder: (context, params) => TestDeckWidget(
+                testedTestRef: params.getParam('testedTestRef',
+                    ParamType.DocumentReference, 'tested_tests'),
+              ),
+            ),
+            FFRoute(
+              name: 'InvoiceList',
+              path: 'invoiceList',
+              builder: (context, params) => InvoiceListWidget(),
+            ),
+            FFRoute(
+              name: 'editUser',
+              path: 'editUser',
+              builder: (context, params) => EditUserWidget(),
+            ),
+            FFRoute(
+              name: 'TestedTests',
+              path: 'testedTests',
+              builder: (context, params) => TestedTestsWidget(),
+            ),
+            FFRoute(
+              name: 'PaymentsList',
+              path: 'paymentsList',
+              builder: (context, params) => PaymentsListWidget(),
+            ),
+            FFRoute(
+              name: 'BookingsSchedule',
+              path: 'bookingsSchedule',
+              builder: (context, params) => BookingsScheduleWidget(),
+            ),
+            FFRoute(
+              name: 'MyBookings',
+              path: 'myBookings',
+              builder: (context, params) => MyBookingsWidget(),
+            ),
+            FFRoute(
+              name: 'myInvoiceList',
+              path: 'myInvoiceList',
+              builder: (context, params) => MyInvoiceListWidget(),
+            ),
+            FFRoute(
+              name: 'myReportList',
+              path: 'myReportList',
+              builder: (context, params) => MyReportListWidget(),
+            ),
+            FFRoute(
+              name: 'TestQueue',
+              path: 'testQueue',
+              builder: (context, params) => TestQueueWidget(),
+            ),
+            FFRoute(
+              name: 'TestedTestsCopy',
+              path: 'testedTestsCopy',
+              builder: (context, params) => TestedTestsCopyWidget(),
+            ),
+            FFRoute(
+              name: 'Chat',
+              path: 'chat',
+              asyncParams: {
+                'chatUser': getDoc('users', UsersRecord.serializer),
+              },
+              builder: (context, params) => ChatWidget(
+                chatUser: params.getParam('chatUser', ParamType.Document),
+                chatRef: params.getParam(
+                    'chatRef', ParamType.DocumentReference, 'chats'),
+              ),
+            ),
+            FFRoute(
+              name: 'TechnologistTestDeck',
+              path: 'technologistTestDeck',
+              asyncParams: {
+                'bookedTest':
+                    getDoc('booked_tests', BookedTestsRecord.serializer),
+              },
+              builder: (context, params) => TechnologistTestDeckWidget(
+                bookedTest: params.getParam('bookedTest', ParamType.Document),
+              ),
+            ),
+            FFRoute(
+              name: 'BookingReport',
+              path: 'bookingReport',
+              builder: (context, params) => BookingReportWidget(
+                bookingRef: params.getParam(
+                    'bookingRef', ParamType.DocumentReference, 'bookings'),
+              ),
+            )
+          ].map((r) => r.toRoute(appStateNotifier)).toList(),
+        ).toRoute(appStateNotifier),
+      ],
     );
 
+extension NavParamExtensions on Map<String, String> {
+  Map<String, String> get withoutNulls =>
+      Map.fromEntries(entries.where((e) => e.value != null));
+}
+
+extension NavigationExtensions on BuildContext {
+  void goNamedAuth(
+    String name,
+    bool mounted, {
+    Map<String, String> params = const <String, String>{},
+    Map<String, String> queryParams = const <String, String>{},
+    Object extra,
+    bool ignoreRedirect = false,
+  }) =>
+      !mounted || GoRouter.of(this).shouldRedirect(ignoreRedirect)
+          ? null
+          : goNamed(
+              name,
+              params: params,
+              queryParams: queryParams,
+              extra: extra,
+            );
+
+  void pushNamedAuth(
+    String name,
+    bool mounted, {
+    Map<String, String> params = const <String, String>{},
+    Map<String, String> queryParams = const <String, String>{},
+    Object extra,
+    bool ignoreRedirect = false,
+  }) =>
+      !mounted || GoRouter.of(this).shouldRedirect(ignoreRedirect)
+          ? null
+          : pushNamed(
+              name,
+              params: params,
+              queryParams: queryParams,
+              extra: extra,
+            );
+}
+
 extension GoRouterExtensions on GoRouter {
-  void ignoringAuthChange() =>
+  AppStateNotifier get appState =>
+      (routerDelegate.refreshListenable as AppStateNotifier);
+  void prepareAuthEvent([bool ignoreRedirect = false]) =>
+      appState.hasRedirect() && !ignoreRedirect
+          ? null
+          : appState.updateNotifyOnAuthChange(false);
+  bool shouldRedirect(bool ignoreRedirect) =>
+      !ignoreRedirect && appState.hasRedirect();
+  void setRedirectLocationIfUnset(String location) =>
       (routerDelegate.refreshListenable as AppStateNotifier)
           .updateNotifyOnAuthChange(false);
 }
@@ -367,6 +428,7 @@ class FFRoute {
     @required this.builder,
     this.requireAuth = false,
     this.asyncParams = const {},
+    this.routes = const [],
   });
 
   final String name;
@@ -374,10 +436,24 @@ class FFRoute {
   final bool requireAuth;
   final Map<String, Future<dynamic> Function(String)> asyncParams;
   final Widget Function(BuildContext, FFParameters) builder;
+  final List<GoRoute> routes;
 
   GoRoute toRoute(AppStateNotifier appStateNotifier) => GoRoute(
         name: name,
         path: path,
+        redirect: (state) {
+          if (appStateNotifier.shouldRedirect) {
+            final redirectLocation = appStateNotifier.getRedirectLocation();
+            appStateNotifier.clearRedirectLocation();
+            return redirectLocation;
+          }
+
+          if (requireAuth && !appStateNotifier.loggedIn) {
+            appStateNotifier.setRedirectLocationIfUnset(state.location);
+            return '/login';
+          }
+          return null;
+        },
         pageBuilder: (context, state) {
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
@@ -397,9 +473,7 @@ class FFRoute {
                     ),
                   ),
                 )
-              : requireAuth && !appStateNotifier.loggedIn
-                  ? LoginWidget()
-                  : PushNotificationsHandler(child: page);
+              : PushNotificationsHandler(child: page);
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition
@@ -417,21 +491,22 @@ class FFRoute {
                 )
               : MaterialPage(key: state.pageKey, child: child);
         },
+        routes: routes,
       );
 }
 
 class TransitionInfo {
   const TransitionInfo({
     this.hasTransition,
-    this.transitionType,
+    this.transitionType = PageTransitionType.fade,
     this.duration = const Duration(milliseconds: 300),
     this.alignment,
   });
 
   final bool hasTransition;
   final PageTransitionType transitionType;
-  final Alignment alignment;
   final Duration duration;
+  final Alignment alignment;
 
   static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }

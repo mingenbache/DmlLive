@@ -190,7 +190,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                     .reference,
                                                                 ParamType
                                                                     .DocumentReference),
-                                                      },
+                                                      }.withoutNulls,
                                                     );
                                                   },
                                                   child: Material(
@@ -484,7 +484,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                         'TestDeck',
                                                                                                         queryParams: {
                                                                                                           'testedTestRef': serializeParam(testsOfBookingItem.reference, ParamType.DocumentReference),
-                                                                                                        },
+                                                                                                        }.withoutNulls,
                                                                                                       );
                                                                                                     },
                                                                                                     child: Container(
@@ -808,7 +808,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                       .reference,
                                                                   ParamType
                                                                       .DocumentReference),
-                                                            },
+                                                            }.withoutNulls,
                                                           );
                                                         },
                                                         child: Material(
@@ -1191,7 +1191,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                 .reference,
                                                             ParamType
                                                                 .DocumentReference),
-                                                      },
+                                                      }.withoutNulls,
                                                     );
                                                   },
                                                   child: Material(
@@ -1681,7 +1681,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                     decoration: BoxDecoration(),
                                                                                     child: Builder(
                                                                                       builder: (context) {
-                                                                                        final bookingtests = inactivebookingsItem.testsIncluded?.toList() ?? [];
+                                                                                        final bookingtests = inactivebookingsItem.testsIncluded.toList()?.toList() ?? [];
                                                                                         return ListView.builder(
                                                                                           padding: EdgeInsets.zero,
                                                                                           scrollDirection: Axis.horizontal,

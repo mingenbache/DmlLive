@@ -1976,7 +1976,9 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              if (currentUserDocument?.isStaff ?? true)
+                              if (valueOrDefault(
+                                      currentUserDocument?.isStaff, false) ??
+                                  true)
                                 AuthUserStreamWidget(
                                   child: BookingActionsWidget(
                                     bookingRef: widget.bookingRef,

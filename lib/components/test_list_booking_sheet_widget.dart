@@ -29,6 +29,8 @@ class TestListBookingSheetWidget extends StatefulWidget {
 
 class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
     with TickerProviderStateMixin {
+  TextEditingController textController1;
+  TextEditingController textController2;
   final animationsMap = {
     'buttonOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
@@ -42,8 +44,6 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
       ),
     ),
   };
-  TextEditingController textController1;
-  TextEditingController textController2;
 
   @override
   void initState() {
@@ -386,7 +386,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                           onTap: () =>
                                                                               setState(
                                                                             () =>
-                                                                                textController1.clear(),
+                                                                                textController1?.clear(),
                                                                           ),
                                                                           child:
                                                                               Icon(
@@ -1037,7 +1037,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                         ? InkWell(
                                                                             onTap: () =>
                                                                                 setState(
-                                                                              () => textController2.clear(),
+                                                                              () => textController2?.clear(),
                                                                             ),
                                                                             child:
                                                                                 Icon(

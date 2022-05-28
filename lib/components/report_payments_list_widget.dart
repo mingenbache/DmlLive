@@ -30,7 +30,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
       decoration: BoxDecoration(),
       child: Builder(
         builder: (context) {
-          final payments = widget.bookingRef.payments?.toList() ?? [];
+          final payments = widget.bookingRef.payments.toList()?.toList() ?? [];
           return ListView.builder(
             padding: EdgeInsets.zero,
             scrollDirection: Axis.vertical,

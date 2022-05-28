@@ -194,6 +194,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             if (val.length < 2) {
                                               return 'Requires at least 2 characters.';
                                             }
+
                                             return null;
                                           },
                                         ),
@@ -260,6 +261,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             if (val.length < 2) {
                                               return 'incomplete name entry';
                                             }
+
                                             return null;
                                           },
                                         ),
@@ -402,6 +404,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           if (val.length < 7) {
                                             return 'incomplete telephone number';
                                           }
+
                                           return null;
                                         },
                                       ),
@@ -600,6 +603,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               () => passwordVisibility =
                                                   !passwordVisibility,
                                             ),
+                                            focusNode:
+                                                FocusNode(skipTraversal: true),
                                             child: Icon(
                                               passwordVisibility
                                                   ? Icons.visibility_outlined
@@ -674,6 +679,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               () => confirmPasswordVisibility =
                                                   !confirmPasswordVisibility,
                                             ),
+                                            focusNode:
+                                                FocusNode(skipTraversal: true),
                                             child: Icon(
                                               confirmPasswordVisibility
                                                   ? Icons.visibility_outlined
@@ -706,10 +713,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                                   children: [
                                     FFButtonWidget(
                                       onPressed: () async {
-                                        GoRouter.of(context)
-                                            .ignoringAuthChange();
-                                        if (passwordController.text !=
-                                            confirmPasswordController.text) {
+                                        GoRouter.of(context).prepareAuthEvent();
+                                        if (passwordController?.text !=
+                                            confirmPasswordController?.text) {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             SnackBar(
@@ -769,7 +775,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             );
                                           },
                                         );
-                                        context.goNamed('Home');
+                                        context.goNamedAuth('Home', mounted);
                                       },
                                       text: 'Create Account',
                                       options: FFButtonOptions(
@@ -834,13 +840,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                                 child: InkWell(
                                   onTap: () async {
-                                    GoRouter.of(context).ignoringAuthChange();
+                                    GoRouter.of(context).prepareAuthEvent();
                                     final user =
                                         await signInWithGoogle(context);
                                     if (user == null) {
                                       return;
                                     }
-                                    context.goNamed('Home');
+                                    context.goNamedAuth('Home', mounted);
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -855,13 +861,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                                       child: InkWell(
                                         onTap: () async {
                                           GoRouter.of(context)
-                                              .ignoringAuthChange();
+                                              .prepareAuthEvent();
                                           final user =
                                               await signInWithGoogle(context);
                                           if (user == null) {
                                             return;
                                           }
-                                          context.goNamed('Home');
+                                          context.goNamedAuth('Home', mounted);
                                         },
                                         child: Container(
                                           width: 50,
@@ -881,12 +887,12 @@ class _SignupWidgetState extends State<SignupWidget> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  GoRouter.of(context).ignoringAuthChange();
+                                  GoRouter.of(context).prepareAuthEvent();
                                   final user = await signInWithApple(context);
                                   if (user == null) {
                                     return;
                                   }
-                                  context.goNamed('Home');
+                                  context.goNamedAuth('Home', mounted);
                                 },
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -900,14 +906,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         2, 2, 2, 2),
                                     child: InkWell(
                                       onTap: () async {
-                                        GoRouter.of(context)
-                                            .ignoringAuthChange();
+                                        GoRouter.of(context).prepareAuthEvent();
                                         final user =
                                             await signInWithApple(context);
                                         if (user == null) {
                                           return;
                                         }
-                                        context.goNamed('Home');
+                                        context.goNamedAuth('Home', mounted);
                                       },
                                       child: Container(
                                         width: 50,

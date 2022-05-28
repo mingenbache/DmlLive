@@ -291,7 +291,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                       onTap: () =>
                                                                           setState(
                                                                         () => textController1
-                                                                            .clear(),
+                                                                            ?.clear(),
                                                                       ),
                                                                       child:
                                                                           Icon(
@@ -938,7 +938,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                       onTap: () =>
                                                                           setState(
                                                                         () => textController2
-                                                                            .clear(),
+                                                                            ?.clear(),
                                                                       ),
                                                                       child:
                                                                           Icon(

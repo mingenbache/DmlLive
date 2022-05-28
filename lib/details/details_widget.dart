@@ -162,7 +162,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                               'testId': serializeParam(
                                                   widget.testId,
                                                   ParamType.DocumentReference),
-                                            },
+                                            }.withoutNulls,
                                           );
                                         },
                                         text: 'Edit',

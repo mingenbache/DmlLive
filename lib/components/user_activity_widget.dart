@@ -2183,7 +2183,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                                                     Padding(
                                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(3, 0, 2, 3),
                                                                                                                       child: Text(
-                                                                                                                        bookingsItem.testsIncluded.length.toString().maybeHandleOverflow(maxChars: 2),
+                                                                                                                        bookingsItem.testsIncluded.toList().length.toString().maybeHandleOverflow(maxChars: 2),
                                                                                                                         textAlign: TextAlign.center,
                                                                                                                         style: TextStyle(
                                                                                                                           color: Colors.white,

@@ -503,6 +503,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                     final packageTests = widget
                                                                             .package
                                                                             .testsIncluded
+                                                                            .toList()
                                                                             ?.toList() ??
                                                                         [];
                                                                     return ListView

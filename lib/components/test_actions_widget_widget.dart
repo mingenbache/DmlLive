@@ -136,7 +136,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                                 queryParams: {
                                   'chatUser': serializeParam(
                                       buttonUsersRecord, ParamType.Document),
-                                },
+                                }.withoutNulls,
                                 extra: <String, dynamic>{
                                   'chatUser': buttonUsersRecord,
                                 },

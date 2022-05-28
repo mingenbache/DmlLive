@@ -21,6 +21,7 @@ class PackageTestListWidget extends StatefulWidget {
 
 class _PackageTestListWidgetState extends State<PackageTestListWidget>
     with TickerProviderStateMixin {
+  TextEditingController textController;
   final animationsMap = {
     'buttonOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
@@ -34,7 +35,6 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
       ),
     ),
   };
-  TextEditingController textController;
 
   @override
   void initState() {
@@ -226,7 +226,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                 .text.isNotEmpty
                                             ? InkWell(
                                                 onTap: () => setState(
-                                                  () => textController.clear(),
+                                                  () => textController?.clear(),
                                                 ),
                                                 child: Icon(
                                                   Icons.clear,

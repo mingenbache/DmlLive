@@ -257,6 +257,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                               if (val.length < 2) {
                                 return 'Requires at least 2 characters.';
                               }
+
                               return null;
                             },
                           ).animated(

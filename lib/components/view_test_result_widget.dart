@@ -773,8 +773,10 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                   ],
                                                                 ),
                                                               ),
-                                                              if (currentUserDocument
-                                                                      ?.isStaff ??
+                                                              if (valueOrDefault(
+                                                                      currentUserDocument
+                                                                          ?.isStaff,
+                                                                      false) ??
                                                                   true)
                                                                 AuthUserStreamWidget(
                                                                   child:
@@ -1222,8 +1224,10 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                   ],
                                                                 ),
                                                               ),
-                                                              if (currentUserDocument
-                                                                      ?.isStaff ??
+                                                              if (valueOrDefault(
+                                                                      currentUserDocument
+                                                                          ?.isStaff,
+                                                                      false) ??
                                                                   true)
                                                                 AuthUserStreamWidget(
                                                                   child:

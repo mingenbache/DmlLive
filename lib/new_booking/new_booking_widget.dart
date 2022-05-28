@@ -458,6 +458,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         if (val.length < 3) {
                                                           return 'Requires at least 3 characters.';
                                                         }
+
                                                         return null;
                                                       },
                                                     ),
@@ -570,6 +571,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         if (val.length < 2) {
                                                           return 'Requires at least 2 characters.';
                                                         }
+
                                                         return null;
                                                       },
                                                     ),
@@ -818,6 +820,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                       if (val.length < 6) {
                                                         return 'Requires at least 6 characters.';
                                                       }
+
                                                       return null;
                                                     },
                                                   ),
@@ -1290,7 +1293,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                             .text.isNotEmpty
                                         ? InkWell(
                                             onTap: () => setState(
-                                              () => diagnosisController.clear(),
+                                              () =>
+                                                  diagnosisController?.clear(),
                                             ),
                                             child: Icon(
                                               Icons.clear,
@@ -1316,6 +1320,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                     if (val.length < 10) {
                                       return 'Requires at least 10 characters.';
                                     }
+
                                     return null;
                                   },
                                 ),
@@ -1494,7 +1499,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                     testsListItem,
                                                                     ParamType
                                                                         .DocumentReference),
-                                                              },
+                                                              }.withoutNulls,
                                                             );
                                                           },
                                                           child: Material(

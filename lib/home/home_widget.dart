@@ -87,7 +87,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                           'bookingRef': serializeParam(
                               homeUsersRecord.currentBooking,
                               ParamType.DocumentReference),
-                        },
+                        }.withoutNulls,
                       );
                     } else {
                       await showModalBottomSheet(
@@ -374,11 +374,12 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                       context
                                                                           .pushNamed(
                                                                         'NewBooking',
-                                                                        queryParams: {
+                                                                        queryParams:
+                                                                            {
                                                                           'bookingRef': serializeParam(
                                                                               homeUsersRecord.currentBooking,
                                                                               ParamType.DocumentReference),
-                                                                        },
+                                                                        }.withoutNulls,
                                                                       );
                                                                     },
                                                                   ),
@@ -405,8 +406,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                       'Account');
                                                                 },
                                                               ),
-                                                              if (currentUserDocument
-                                                                      ?.isStaff ??
+                                                              if (valueOrDefault(
+                                                                      currentUserDocument
+                                                                          ?.isStaff,
+                                                                      false) ??
                                                                   true)
                                                                 AuthUserStreamWidget(
                                                                   child:
@@ -582,7 +585,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                                 'Chat',
                                                                                 queryParams: {
                                                                                   'chatUser': serializeParam(iconButtonUsersRecord, ParamType.Document),
-                                                                                },
+                                                                                }.withoutNulls,
                                                                                 extra: <String, dynamic>{
                                                                                   'chatUser': iconButtonUsersRecord,
                                                                                 },

@@ -24,6 +24,7 @@ class VerifyTestResultWidget extends StatefulWidget {
 
 class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
     with TickerProviderStateMixin {
+  TextEditingController pathologistNotesController;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -40,7 +41,6 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
       ),
     ),
   };
-  TextEditingController pathologistNotesController;
 
   @override
   void initState() {

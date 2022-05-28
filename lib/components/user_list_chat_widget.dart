@@ -218,7 +218,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                               ? InkWell(
                                                   onTap: () => setState(
                                                     () =>
-                                                        textController.clear(),
+                                                        textController?.clear(),
                                                   ),
                                                   child: Icon(
                                                     Icons.clear,
@@ -396,11 +396,12 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                                       context
                                                                           .pushNamed(
                                                                         'Chat',
-                                                                        queryParams: {
+                                                                        queryParams:
+                                                                            {
                                                                           'chatUser': serializeParam(
                                                                               clientsItem,
                                                                               ParamType.Document),
-                                                                        },
+                                                                        }.withoutNulls,
                                                                         extra: <
                                                                             String,
                                                                             dynamic>{
@@ -511,11 +512,12 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                                       context
                                                                           .pushNamed(
                                                                         'Chat',
-                                                                        queryParams: {
+                                                                        queryParams:
+                                                                            {
                                                                           'chatUser': serializeParam(
                                                                               staffItem,
                                                                               ParamType.Document),
-                                                                        },
+                                                                        }.withoutNulls,
                                                                         extra: <
                                                                             String,
                                                                             dynamic>{

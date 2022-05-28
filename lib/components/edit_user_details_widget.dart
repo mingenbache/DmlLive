@@ -496,6 +496,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         () => passwordVisibility =
                                             !passwordVisibility,
                                       ),
+                                      focusNode: FocusNode(skipTraversal: true),
                                       child: Icon(
                                         passwordVisibility
                                             ? Icons.visibility_outlined
@@ -563,6 +564,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         () => confirmPasswordVisibility =
                                             !confirmPasswordVisibility,
                                       ),
+                                      focusNode: FocusNode(skipTraversal: true),
                                       child: Icon(
                                         confirmPasswordVisibility
                                             ? Icons.visibility_outlined

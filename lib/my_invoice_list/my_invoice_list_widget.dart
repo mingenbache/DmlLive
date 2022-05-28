@@ -187,7 +187,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                               invoiceListItemInvoicesRecord
                                                   .reference,
                                               ParamType.DocumentReference),
-                                        },
+                                        }.withoutNulls,
                                       );
                                     },
                                     child: Row(
@@ -233,7 +233,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                             .reference,
                                                         ParamType
                                                             .DocumentReference),
-                                                  },
+                                                  }.withoutNulls,
                                                 );
                                               },
                                               child: Material(

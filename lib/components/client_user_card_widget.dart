@@ -33,7 +33,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
               queryParams: {
                 'chatUser':
                     serializeParam(widget.userRecord, ParamType.Document),
-              },
+              }.withoutNulls,
               extra: <String, dynamic>{
                 'chatUser': widget.userRecord,
               },

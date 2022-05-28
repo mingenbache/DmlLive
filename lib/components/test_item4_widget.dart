@@ -132,11 +132,13 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                         Stack(
                           children: [
                             if (widget.booking.testsIncluded
+                                    .toList()
                                     ?.contains(widget.test) ??
                                 true)
                               InkWell(
                                 onTap: () async {
                                   if (widget.booking.testsIncluded
+                                      .toList()
                                       .contains(widget.test)) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
@@ -154,7 +156,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'Test Removed.${widget.booking.testsIncluded.length.toString()} Tests in Total.',
+                                        'Test Removed.${widget.booking.testsIncluded.toList().length.toString()} Tests in Total.',
                                         style: TextStyle(),
                                       ),
                                       duration: Duration(milliseconds: 4000),
@@ -210,11 +212,13 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                     'containerOnActionTriggerAnimation1']
                               ]),
                             if (!(widget.booking.testsIncluded
-                                    ?.contains(widget.test)) ??
+                                    .toList()
+                                    .contains(widget.test)) ??
                                 true)
                               InkWell(
                                 onTap: () async {
                                   if (!(widget.booking.testsIncluded
+                                      .toList()
                                       .contains(widget.test))) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
@@ -232,7 +236,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'Test Added.${widget.booking.testsIncluded.length.toString()} Tests in Total.',
+                                        'Test Added.${widget.booking.testsIncluded.toList().length.toString()} Tests in Total.',
                                         style: TextStyle(),
                                       ),
                                       duration: Duration(milliseconds: 4000),

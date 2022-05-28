@@ -28,7 +28,8 @@ class _ReportBookedTestsWidgetState extends State<ReportBookedTestsWidget> {
       padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
       child: Builder(
         builder: (context) {
-          final bookedTests = widget.booking.bookedTests?.toList() ?? [];
+          final bookedTests =
+              widget.booking.bookedTests.toList()?.toList() ?? [];
           return ListView.builder(
             padding: EdgeInsets.zero,
             primary: false,

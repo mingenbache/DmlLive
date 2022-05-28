@@ -31,8 +31,8 @@ class _EditTestWidgetState extends State<EditTestWidget> {
   TextEditingController testDescriptionController;
   bool atHomeToggleValue;
   double testDurationSliderValue;
-  double durationResultsSliderValue;
   TextEditingController resultsDurationTextController;
+  double durationResultsSliderValue;
   TextEditingController testPriceController;
   final formKey = GlobalKey<FormState>();
 
@@ -270,7 +270,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                     onTap: () =>
                                                                         setState(
                                                                       () => textController1
-                                                                          .clear(),
+                                                                          ?.clear(),
                                                                     ),
                                                                     child: Icon(
                                                                       Icons
@@ -307,6 +307,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                         if (val.length < 3) {
                                                           return 'Requires at least 3 characters.';
                                                         }
+
                                                         return null;
                                                       },
                                                     ),
@@ -512,7 +513,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                 onTap: () =>
                                                                     setState(
                                                                   () => testDescriptionController
-                                                                      .clear(),
+                                                                      ?.clear(),
                                                                 ),
                                                                 child: Icon(
                                                                   Icons.clear,
@@ -1159,6 +1160,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                   2) {
                                                                 return 'incorrect price entered';
                                                               }
+
                                                               return null;
                                                             },
                                                           ),
@@ -1208,7 +1210,8 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                 durationResults: durationResultsSliderValue,
                                 category: dropDownValue,
                                 updateDate: getCurrentTimestamp,
-                                updateRole: currentUserDocument?.role,
+                                updateRole: valueOrDefault(
+                                    currentUserDocument?.role, ''),
                               );
                               await widget.testRef.update(testsUpdateData);
                               context.pushNamed(
@@ -1216,7 +1219,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                 queryParams: {
                                   'testId': serializeParam(widget.testRef,
                                       ParamType.DocumentReference),
-                                },
+                                }.withoutNulls,
                               );
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(

@@ -254,6 +254,7 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                                           onTap: () async {
                                                             if (widget.booking
                                                                 .testPackages
+                                                                .toList()
                                                                 .contains(widget
                                                                     .packageRef)) {
                                                               final bookingsUpdateData =

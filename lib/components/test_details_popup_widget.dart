@@ -1539,14 +1539,18 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                   children: [
                     Stack(
                       children: [
-                        if (!(currentUserDocument?.isStaff) ?? true)
+                        if (!(valueOrDefault(
+                                currentUserDocument?.isStaff, false)) ??
+                            true)
                           AuthUserStreamWidget(
                             child: TestActionsWidgetWidget(
                               test: widget.test,
                               bookingRef: widget.booking,
                             ),
                           ),
-                        if (currentUserDocument?.isStaff ?? true)
+                        if (valueOrDefault(
+                                currentUserDocument?.isStaff, false) ??
+                            true)
                           AuthUserStreamWidget(
                             child: AdminTestActionsWidget(
                               testRef: widget.test.reference,

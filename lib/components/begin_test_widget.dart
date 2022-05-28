@@ -435,6 +435,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                         4) {
                                                                       return 'Requires at least 4 characters.';
                                                                     }
+
                                                                     return null;
                                                                   },
                                                                 ),
@@ -478,8 +479,10 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                         snapshot.data;
                                                     return FFButtonWidget(
                                                       onPressed: () async {
-                                                        if (currentUserDocument
-                                                            ?.isStaff) {
+                                                        if (valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.isStaff,
+                                                            false)) {
                                                           final testedTestsCreateData =
                                                               createTestedTestsRecordData(
                                                             bookingRef:

@@ -661,7 +661,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                             Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0),
                                                                               child: Text(
-                                                                                widget.booking.bookedTests.length.toString(),
+                                                                                widget.booking.bookedTests.toList().length.toString(),
                                                                                 style: FlutterFlowTheme.of(context).subtitle2.override(
                                                                                       fontFamily: 'Roboto',
                                                                                       color: FlutterFlowTheme.of(context).secondaryColor,
@@ -808,7 +808,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                 }
                                                                                 List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data;
                                                                                 return Text(
-                                                                                  widget.booking.verifiedTests.length.toString(),
+                                                                                  widget.booking.verifiedTests.toList().length.toString(),
                                                                                   style: FlutterFlowTheme.of(context).subtitle2.override(
                                                                                         fontFamily: 'Roboto',
                                                                                         color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1724,6 +1724,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                         final invoices = widget
                                                                 .booking
                                                                 .invoiceRefs
+                                                                .toList()
                                                                 ?.toList() ??
                                                             [];
                                                         return ListView.builder(
@@ -1891,6 +1892,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                         final reportVerifiedTests =
                                                             widget.booking
                                                                     .verifiedTests
+                                                                    .toList()
                                                                     ?.toList() ??
                                                                 [];
                                                         return ListView.builder(
@@ -2626,7 +2628,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                   patientAge: functions
                                       .calculateAge(widget.booking.dOB),
                                 ),
-                                'testedTests': widget.booking.verifiedTests,
+                                'testedTests':
+                                    widget.booking.verifiedTests.toList(),
                               };
                               var reportsRecordReference =
                                   ReportsRecord.collection.doc();

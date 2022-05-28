@@ -864,7 +864,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                                                               Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 2),
                                                                                                 child: Text(
-                                                                                                  pastbookingsItem.bookedTests.length.toString().maybeHandleOverflow(maxChars: 2),
+                                                                                                  pastbookingsItem.bookedTests.toList().length.toString().maybeHandleOverflow(maxChars: 2),
                                                                                                   textAlign: TextAlign.center,
                                                                                                   style: TextStyle(
                                                                                                     color: Colors.white,
@@ -1806,7 +1806,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                                                                     Padding(
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 2),
                                                                                                       child: Text(
-                                                                                                        bookingsItem.bookedTests.length.toString().maybeHandleOverflow(maxChars: 2),
+                                                                                                        bookingsItem.bookedTests.toList().length.toString().maybeHandleOverflow(maxChars: 2),
                                                                                                         textAlign: TextAlign.center,
                                                                                                         style: TextStyle(
                                                                                                           color: Colors.white,
@@ -1861,7 +1861,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                                                                     Padding(
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 2),
                                                                                                       child: Text(
-                                                                                                        bookingsItem.verifiedTests.length.toString().maybeHandleOverflow(maxChars: 2),
+                                                                                                        bookingsItem.verifiedTests.toList().length.toString().maybeHandleOverflow(maxChars: 2),
                                                                                                         textAlign: TextAlign.center,
                                                                                                         style: TextStyle(
                                                                                                           color: Colors.white,
@@ -2032,13 +2032,14 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                                   context
                                                                       .pushNamed(
                                                                     'BookingConfirmation',
-                                                                    queryParams: {
+                                                                    queryParams:
+                                                                        {
                                                                       'bookingRef': serializeParam(
                                                                           unconfirmedBookingsItem
                                                                               .reference,
                                                                           ParamType
                                                                               .DocumentReference),
-                                                                    },
+                                                                    }.withoutNulls,
                                                                   );
                                                                 },
                                                                 child: Material(
@@ -2192,7 +2193,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                                             child:
                                                                                 Builder(
                                                                               builder: (context) {
-                                                                                final testsOfUnconfirmedBooking = unconfirmedBookingsItem.testsIncluded?.toList() ?? [];
+                                                                                final testsOfUnconfirmedBooking = unconfirmedBookingsItem.testsIncluded.toList()?.toList() ?? [];
                                                                                 return ListView.builder(
                                                                                   padding: EdgeInsets.zero,
                                                                                   scrollDirection: Axis.vertical,

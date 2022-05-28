@@ -171,7 +171,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                           'bookingRef': serializeParam(
                                               myCompletedbookingsItem.reference,
                                               ParamType.DocumentReference),
-                                        },
+                                        }.withoutNulls,
                                       );
                                     },
                                     child: Material(
@@ -444,7 +444,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                                           'TestDeck',
                                                                                           queryParams: {
                                                                                             'testedTestRef': serializeParam(testsItem.reference, ParamType.DocumentReference),
-                                                                                          },
+                                                                                          }.withoutNulls,
                                                                                         );
                                                                                       },
                                                                                       child: Material(

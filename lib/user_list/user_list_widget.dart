@@ -26,8 +26,8 @@ class UserListWidget extends StatefulWidget {
 }
 
 class _UserListWidgetState extends State<UserListWidget> {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController textController;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -242,9 +242,8 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                           ? InkWell(
                                                               onTap: () =>
                                                                   setState(
-                                                                () =>
-                                                                    textController
-                                                                        .clear(),
+                                                                () => textController
+                                                                    ?.clear(),
                                                               ),
                                                               child: Icon(
                                                                 Icons.clear,

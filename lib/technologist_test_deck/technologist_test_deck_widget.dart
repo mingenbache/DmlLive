@@ -693,8 +693,10 @@ class _TechnologistTestDeckWidgetState
                                                               ],
                                                             ),
                                                           ),
-                                                          if (currentUserDocument
-                                                                  ?.isStaff ??
+                                                          if (valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.isStaff,
+                                                                  false) ??
                                                               true)
                                                             AuthUserStreamWidget(
                                                               child: Container(
@@ -1117,8 +1119,10 @@ class _TechnologistTestDeckWidgetState
                                                               ],
                                                             ),
                                                           ),
-                                                          if (currentUserDocument
-                                                                  ?.isStaff ??
+                                                          if (valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.isStaff,
+                                                                  false) ??
                                                               true)
                                                             AuthUserStreamWidget(
                                                               child: Container(

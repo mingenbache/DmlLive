@@ -695,8 +695,10 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                               ],
                                                             ),
                                                           ),
-                                                          if (currentUserDocument
-                                                                  ?.isStaff ??
+                                                          if (valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.isStaff,
+                                                                  false) ??
                                                               true)
                                                             AuthUserStreamWidget(
                                                               child: Container(
@@ -1119,8 +1121,10 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                               ],
                                                             ),
                                                           ),
-                                                          if (currentUserDocument
-                                                                  ?.isStaff ??
+                                                          if (valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.isStaff,
+                                                                  false) ??
                                                               true)
                                                             AuthUserStreamWidget(
                                                               child: Container(

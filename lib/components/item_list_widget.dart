@@ -54,7 +54,7 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                           queryParams: {
                             'testId': serializeParam(duplicatetestsListItem,
                                 ParamType.DocumentReference),
-                          },
+                          }.withoutNulls,
                         );
                       },
                       child: Material(

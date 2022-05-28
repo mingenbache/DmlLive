@@ -30,7 +30,7 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
       decoration: BoxDecoration(),
       child: Builder(
         builder: (context) {
-          final payments = widget.invoice.paymentsList?.toList() ?? [];
+          final payments = widget.invoice.paymentsList.toList()?.toList() ?? [];
           return ListView.builder(
             padding: EdgeInsets.zero,
             scrollDirection: Axis.vertical,

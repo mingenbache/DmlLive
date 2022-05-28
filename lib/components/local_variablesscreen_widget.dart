@@ -22,6 +22,7 @@ class LocalVariablesscreenWidget extends StatefulWidget {
 
 class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
     with TickerProviderStateMixin {
+  TextEditingController localStateDataController;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -38,7 +39,6 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
       ),
     ),
   };
-  TextEditingController localStateDataController;
 
   @override
   void initState() {

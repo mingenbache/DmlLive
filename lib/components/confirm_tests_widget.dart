@@ -31,9 +31,9 @@ class ConfirmTestsWidget extends StatefulWidget {
 
 class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
     with TickerProviderStateMixin {
+  BookedTestsRecord newBookedTest;
   String pathologistValue;
   TextEditingController labReferenceController;
-  BookedTestsRecord newBookedTest;
   BookedTestsRecord newTestPackBookedTest;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
