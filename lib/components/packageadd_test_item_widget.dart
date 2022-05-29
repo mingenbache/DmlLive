@@ -1,5 +1,4 @@
 import '../backend/backend.dart';
-import '../components/test_details_popup_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -230,9 +229,9 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                               true)
                             InkWell(
                               onTap: () async {
-                                if (FFAppState()
+                                if (!(FFAppState()
                                     .testPackTests
-                                    .contains(widget.test.reference)) {
+                                    .contains(widget.test.reference))) {
                                   setState(() => FFAppState()
                                       .addToTestPackTests(
                                           widget.test.reference));
@@ -324,96 +323,74 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                           height: 100,
                           child: Stack(
                             children: [
-                              InkWell(
-                                onTap: () async {
-                                  await showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    backgroundColor: Colors.transparent,
-                                    context: context,
-                                    builder: (context) {
-                                      return Padding(
-                                        padding:
-                                            MediaQuery.of(context).viewInsets,
-                                        child: TestDetailsPopupWidget(
-                                          test: widget.test,
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
-                                child: Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.75,
-                                  height: 100,
-                                  constraints: BoxConstraints(
-                                    maxWidth: 370,
-                                    maxHeight: 130,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 5, 0, 0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  5, 0, 0, 0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Container(
-                                                decoration: BoxDecoration(),
-                                                child: AutoSizeText(
-                                                  functions
-                                                      .add1(widget.index)
-                                                      .toString()
-                                                      .maybeHandleOverflow(
-                                                          maxChars: 2),
-                                                  textAlign: TextAlign.center,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .tertiaryColor,
-                                                        fontSize: 16,
-                                                      ),
-                                                ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.75,
+                                height: 100,
+                                constraints: BoxConstraints(
+                                  maxWidth: 370,
+                                  maxHeight: 130,
+                                ),
+                                decoration: BoxDecoration(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryColor,
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 5, 0, 0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            5, 0, 0, 0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              decoration: BoxDecoration(),
+                                              child: AutoSizeText(
+                                                functions
+                                                    .add1(widget.index)
+                                                    .toString()
+                                                    .maybeHandleOverflow(
+                                                        maxChars: 2),
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .tertiaryColor,
+                                                          fontSize: 16,
+                                                        ),
                                               ),
-                                              Container(
-                                                decoration: BoxDecoration(),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(5, 0, 0, 0),
-                                                  child: Text(
-                                                    functions
-                                                        .camelCase(
-                                                            widget.test.name)
-                                                        .maybeHandleOverflow(
-                                                            maxChars: 25),
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontSize: 18,
-                                                    ),
+                                            ),
+                                            Container(
+                                              decoration: BoxDecoration(),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(5, 0, 0, 0),
+                                                child: Text(
+                                                  functions
+                                                      .camelCase(
+                                                          widget.test.name)
+                                                      .maybeHandleOverflow(
+                                                          maxChars: 25),
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 18,
                                                   ),
                                                 ),
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ).animated([
