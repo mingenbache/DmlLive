@@ -43,6 +43,14 @@ abstract class TestPackagesRecord
   bool get isAvailable;
 
   @nullable
+  @BuiltValueField(wireName: 'create_Staff')
+  DocumentReference get createStaff;
+
+  @nullable
+  @BuiltValueField(wireName: 'create_date')
+  DateTime get createDate;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -88,6 +96,8 @@ Map<String, dynamic> createTestPackagesRecordData({
   String category,
   bool atHome,
   bool isAvailable,
+  DocumentReference createStaff,
+  DateTime createDate,
 }) =>
     serializers.toFirestore(
         TestPackagesRecord.serializer,
@@ -100,4 +110,6 @@ Map<String, dynamic> createTestPackagesRecordData({
           ..durationResults = durationResults
           ..category = category
           ..atHome = atHome
-          ..isAvailable = isAvailable));
+          ..isAvailable = isAvailable
+          ..createStaff = createStaff
+          ..createDate = createDate));

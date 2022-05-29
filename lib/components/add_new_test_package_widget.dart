@@ -64,8 +64,12 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
     return Form(
       key: formKey,
       autovalidateMode: AutovalidateMode.always,
-      child: StreamBuilder<UsersRecord>(
-        stream: UsersRecord.getDocument(widget.userRef),
+      child: FutureBuilder<List<StaffRecord>>(
+        future: queryStaffRecordOnce(
+          queryBuilder: (staffRecord) =>
+              staffRecord.where('UserRef', isEqualTo: currentUserReference),
+          singleRecord: true,
+        ),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -80,7 +84,14 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
               ),
             );
           }
-          final columnUsersRecord = snapshot.data;
+          List<StaffRecord> columnStaffRecordList = snapshot.data;
+          // Return an empty Container when the document does not exist.
+          if (snapshot.data.isEmpty) {
+            return Container();
+          }
+          final columnStaffRecord = columnStaffRecordList.isNotEmpty
+              ? columnStaffRecordList.first
+              : null;
           return Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -1661,6 +1672,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                             resultsDurationTextController.text),
                                         category: '',
                                         atHome: atHomeToggleValue,
+                                        createDate: getCurrentTimestamp,
                                       ),
                                       'TestsIncluded':
                                           FFAppState().testPackTests,
