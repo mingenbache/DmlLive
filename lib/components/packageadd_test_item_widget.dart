@@ -148,45 +148,37 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                     children: [
                       Stack(
                         children: [
-                          InkWell(
-                            onTap: () async {
-                              if (FFAppState()
+                          if (FFAppState()
                                   .testPackTests
-                                  .contains(widget.test.reference)) {
-                                setState(() => FFAppState()
-                                    .removeFromTestPackTests(
-                                        widget.test.reference));
-                              } else {
-                                return;
-                              }
+                                  ?.contains(widget.test.reference) ??
+                              true)
+                            InkWell(
+                              onTap: () async {
+                                if (FFAppState()
+                                    .testPackTests
+                                    .contains(widget.test.reference)) {
+                                  setState(() => FFAppState()
+                                      .removeFromTestPackTests(
+                                          widget.test.reference));
+                                } else {
+                                  return;
+                                }
 
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Test Removed.',
-                                    style: TextStyle(),
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Test Removed.',
+                                      style: TextStyle(),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor: Color(0x00000000),
                                   ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor: Color(0x00000000),
-                                ),
-                              );
-                            },
-                            child: Material(
-                              color: Colors.transparent,
-                              elevation: 1,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(0),
-                                  bottomRight: Radius.circular(16),
-                                  topLeft: Radius.circular(0),
-                                  topRight: Radius.circular(16),
-                                ),
-                              ),
-                              child: Container(
-                                width: MediaQuery.of(context).size.width * 0.15,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFC9FFFF),
+                                );
+                              },
+                              child: Material(
+                                color: Colors.transparent,
+                                elevation: 1,
+                                shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(0),
                                     bottomRight: Radius.circular(16),
@@ -194,32 +186,47 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                     topRight: Radius.circular(16),
                                   ),
                                 ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10, 0, 0, 0),
-                                        child: Icon(
-                                          Icons.highlight_off_sharp,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryColor,
-                                          size: 24,
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.15,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFC9FFFF),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(0),
+                                      bottomRight: Radius.circular(16),
+                                      topLeft: Radius.circular(0),
+                                      topRight: Radius.circular(16),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10, 0, 0, 0),
+                                          child: Icon(
+                                            Icons.highlight_off_sharp,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryColor,
+                                            size: 24,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ).animated([
-                            animationsMap['containerOnActionTriggerAnimation1']
-                          ]),
-                          if (FFAppState()
+                            ).animated([
+                              animationsMap[
+                                  'containerOnActionTriggerAnimation1']
+                            ]),
+                          if (!(FFAppState()
                                   .testPackTests
-                                  ?.contains(widget.test.reference) ??
+                                  .contains(widget.test.reference)) ??
                               true)
                             InkWell(
                               onTap: () async {
