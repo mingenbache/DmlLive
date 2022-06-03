@@ -103,7 +103,7 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
               Expanded(
                 child: InkWell(
                   onTap: () async {
-                    await showModalBottomSheet(
+                    showModalBottomSheet(
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
                       context: context,
