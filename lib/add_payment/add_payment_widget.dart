@@ -404,8 +404,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                         child: FlutterFlowDropDown(
-                          options: ['MPESA', 'Bank Transfer', 'Online Payment']
-                              .toList(),
+                          options: ['MPESA', 'Bank Transfer', 'Online Payment'],
                           onChanged: (val) =>
                               setState(() => paymentMethodValue = val),
                           width: MediaQuery.of(context).size.width * 0.9,

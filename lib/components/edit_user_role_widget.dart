@@ -387,7 +387,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                         'admin',
                                         'tech',
                                         'patho'
-                                      ].toList(),
+                                      ],
                                       onChanged: (val) =>
                                           setState(() => userRolesValue = val),
                                       width: MediaQuery.of(context).size.width *

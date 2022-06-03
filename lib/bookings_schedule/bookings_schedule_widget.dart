@@ -1041,7 +1041,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                   functions.datetoString(
                                                       functions.returntheDay(
                                                           uICalendarSelectedDay
-                                                              .start)),
+                                                              ?.start)),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .subtitle2
@@ -1114,7 +1114,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                       isGreaterThanOrEqualTo:
                                                           functions.returntheDay(
                                                               uICalendarSelectedDay
-                                                                  .start))
+                                                                  ?.start))
                                                   .orderBy('scheduled_date'),
                                         ),
                                         builder: (context, snapshot) {
@@ -1156,7 +1156,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                               calendarBookingsBookingsRecordList
                                                                   .toList(),
                                                               uICalendarSelectedDay
-                                                                  .start)
+                                                                  ?.start)
                                                           ?.toList() ??
                                                       [];
                                                   return SingleChildScrollView(

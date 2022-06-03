@@ -330,7 +330,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                               'MPESA',
                               'Bank Transfer',
                               'Online Payment'
-                            ].toList(),
+                            ],
                             onChanged: (val) =>
                                 setState(() => paymentMethodValue = val),
                             width: MediaQuery.of(context).size.width * 0.9,

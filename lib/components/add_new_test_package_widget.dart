@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/package_test_list_widget.dart';
+import '../components/test_list_catalog_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -37,7 +38,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
   TextEditingController resultsDurationTextController;
   double durationResultsSliderValue;
   TextEditingController testPriceController;
-  TextEditingController textController1;
+  TextEditingController testPackageNameController;
   TestPackagesRecord newTestPackId;
   final formKey = GlobalKey<FormState>();
 
@@ -56,7 +57,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
             .toString()
             .toString());
     testPriceController = TextEditingController();
-    textController1 = TextEditingController();
+    testPackageNameController = TextEditingController();
   }
 
   @override
@@ -181,9 +182,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         3, 3, 3, 3),
                                     child: TextFormField(
-                                      controller: textController1,
+                                      controller: testPackageNameController,
                                       onChanged: (_) => EasyDebounce.debounce(
-                                        'textController1',
+                                        'testPackageNameController',
                                         Duration(milliseconds: 2000),
                                         () => setState(() {}),
                                       ),
@@ -224,12 +225,13 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 15, 15, 15, 15),
-                                        suffixIcon: textController1
+                                        suffixIcon: testPackageNameController
                                                 .text.isNotEmpty
                                             ? InkWell(
                                                 onTap: () => setState(
                                                   () =>
-                                                      textController1?.clear(),
+                                                      testPackageNameController
+                                                          ?.clear(),
                                                 ),
                                                 child: Icon(
                                                   Icons.clear,
@@ -250,6 +252,16 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                             lineHeight: 1.4,
                                           ),
                                       maxLines: 1,
+                                      validator: (val) {
+                                        if (val == null || val.isEmpty) {
+                                          return 'Field is required';
+                                        }
+                                        if (val.length < 3) {
+                                          return 'Requires at least 3 characters.';
+                                        }
+
+                                        return null;
+                                      },
                                     ),
                                   ),
                                 ),
@@ -1221,6 +1233,16 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                 keyboardType:
                                                                     TextInputType
                                                                         .number,
+                                                                validator:
+                                                                    (val) {
+                                                                  if (val ==
+                                                                          null ||
+                                                                      val.isEmpty) {
+                                                                    return 'Field is required';
+                                                                  }
+
+                                                                  return null;
+                                                                },
                                                               ),
                                                             ),
                                                           ),
@@ -1663,14 +1685,15 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                       ...createTestPackagesRecordData(
                                         price:
                                             int.parse(testPriceController.text),
-                                        packageName: textController1.text,
+                                        packageName:
+                                            testPackageNameController.text,
                                         description:
                                             packageDescriptionController.text,
                                         duration: double.parse(
                                             testDurationTextController.text),
                                         durationResults: double.parse(
                                             resultsDurationTextController.text),
-                                        category: '',
+                                        category: packageCategoryDropDownValue,
                                         atHome: atHomeToggleValue,
                                         createDate: getCurrentTimestamp,
                                       ),
@@ -1685,15 +1708,17 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                         TestPackagesRecord.getDocumentFromData(
                                             testPackagesCreateData,
                                             testPackagesRecordReference);
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Test Package added!',
-                                          style: TextStyle(),
-                                        ),
-                                        duration: Duration(milliseconds: 4000),
-                                        backgroundColor: Color(0x00000000),
-                                      ),
+                                    await showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      backgroundColor: Colors.transparent,
+                                      context: context,
+                                      builder: (context) {
+                                        return Padding(
+                                          padding:
+                                              MediaQuery.of(context).viewInsets,
+                                          child: TestListCatalogWidget(),
+                                        );
+                                      },
                                     );
 
                                     setState(() {});

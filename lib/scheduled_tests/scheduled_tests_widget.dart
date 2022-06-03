@@ -119,7 +119,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                         queryBuilder: (bookedTestsRecord) => bookedTestsRecord
                             .where('scheduled_date',
                                 isGreaterThanOrEqualTo: functions
-                                    .returntheDay(uICalendarSelectedDay.start))
+                                    .returntheDay(uICalendarSelectedDay?.start))
                             .orderBy('scheduled_date'),
                       ),
                       builder: (context, snapshot) {
@@ -215,7 +215,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                         children: [
                                           Text(
                                             functions.returnDateString(
-                                                uICalendarSelectedDay.start),
+                                                uICalendarSelectedDay?.start),
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
@@ -224,7 +224,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                 ),
                                           ),
                                           Text(
-                                            '${functions.getDayTestsnumber(calendarScheduleContainerBookedTestsRecordList.toList(), uICalendarSelectedDay.start).toString()} Tests',
+                                            '${functions.getDayTestsnumber(calendarScheduleContainerBookedTestsRecordList.toList(), uICalendarSelectedDay?.start).toString()} Tests',
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
@@ -297,7 +297,8 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                 .filterDayTests(
                                                     calendarScheduleContainerBookedTestsRecordList
                                                         .toList(),
-                                                    uICalendarSelectedDay.start)
+                                                    uICalendarSelectedDay
+                                                        ?.start)
                                                 ?.toList() ??
                                             [];
                                         return ListView.builder(

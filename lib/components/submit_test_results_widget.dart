@@ -320,8 +320,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                             child: FlutterFlowDropDown(
-                              options: ['Machine 1', 'Machine 2', 'Machine 3']
-                                  .toList(),
+                              options: ['Machine 1', 'Machine 2', 'Machine 3'],
                               onChanged: (val) =>
                                   setState(() => testMachineValue = val),
                               width: MediaQuery.of(context).size.width * 0.9,
