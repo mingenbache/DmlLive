@@ -36,40 +36,103 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
             color: FlutterFlowTheme.of(context).secondaryColor,
             borderRadius: BorderRadius.circular(25),
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () async {
-                    await showModalBottomSheet(
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (context) {
-                        return Padding(
-                          padding: MediaQuery.of(context).viewInsets,
-                          child: AddNewTestWidget(),
-                        );
-                      },
-                    );
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () async {
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        context: context,
+                        builder: (context) {
+                          return Padding(
+                            padding: MediaQuery.of(context).viewInsets,
+                            child: AddNewTestWidget(),
+                          );
+                        },
+                      );
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(7, 0, 0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.flask,
+                              color: FlutterFlowTheme.of(context).tertiaryColor,
+                              size: 20,
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(),
+                                  child: Text(
+                                    'Add Test',
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiaryColor,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(7, 0, 0, 0),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () async {
+                      setState(() => FFAppState().testPackSubmit = false);
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        context: context,
+                        builder: (context) {
+                          return Padding(
+                            padding: MediaQuery.of(context).viewInsets,
+                            child: AddNewTestPackageWidget(),
+                          );
+                        },
+                      );
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: 50,
+                      constraints: BoxConstraints(
+                        maxHeight: 50,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          FaIcon(
-                            FontAwesomeIcons.flask,
+                          Icon(
+                            Icons.format_list_numbered_sharp,
                             color: FlutterFlowTheme.of(context).tertiaryColor,
                             size: 20,
                           ),
@@ -80,8 +143,8 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                               Container(
                                 decoration: BoxDecoration(),
                                 child: Text(
-                                  'Add Test',
-                                  textAlign: TextAlign.center,
+                                  'Add Test\nPackage',
+                                  textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
@@ -99,67 +162,8 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: InkWell(
-                  onTap: () async {
-                    showModalBottomSheet(
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (context) {
-                        return Padding(
-                          padding: MediaQuery.of(context).viewInsets,
-                          child: AddNewTestPackageWidget(),
-                        );
-                      },
-                    );
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    height: 50,
-                    constraints: BoxConstraints(
-                      maxHeight: 50,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Icon(
-                          Icons.format_list_numbered_sharp,
-                          color: FlutterFlowTheme.of(context).tertiaryColor,
-                          size: 20,
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(),
-                              child: Text(
-                                'Add Test\nPackage',
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

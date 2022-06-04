@@ -319,7 +319,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                       children: [
                                         SingleChildScrollView(
                                           child: Column(
-                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisSize: MainAxisSize.min,
                                             children: [
                                               Padding(
                                                 padding: EdgeInsetsDirectional
@@ -1205,19 +1205,10 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                   0.04,
                                                               decoration:
                                                                   BoxDecoration(
-                                                                color: Color(
-                                                                    0xC1EEEEEE),
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
                                                                             12),
-                                                                border:
-                                                                    Border.all(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryColor,
-                                                                  width: 2,
-                                                                ),
                                                               ),
                                                               child: Padding(
                                                                 padding:
@@ -1235,44 +1226,55 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                       false,
                                                                   decoration:
                                                                       InputDecoration(
+                                                                    labelStyle:
+                                                                        GoogleFonts
+                                                                            .getFont(
+                                                                      'Roboto',
+                                                                      color: Color(
+                                                                          0xFF586B06),
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                    ),
                                                                     hintText:
                                                                         'Kshs...',
                                                                     enabledBorder:
-                                                                        UnderlineInputBorder(
+                                                                        OutlineInputBorder(
                                                                       borderSide:
                                                                           BorderSide(
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .alternate,
                                                                         width:
                                                                             1,
                                                                       ),
                                                                       borderRadius:
-                                                                          const BorderRadius
-                                                                              .only(
-                                                                        topLeft:
-                                                                            Radius.circular(4.0),
-                                                                        topRight:
-                                                                            Radius.circular(4.0),
-                                                                      ),
+                                                                          BorderRadius.circular(
+                                                                              12),
                                                                     ),
                                                                     focusedBorder:
-                                                                        UnderlineInputBorder(
+                                                                        OutlineInputBorder(
                                                                       borderSide:
                                                                           BorderSide(
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .alternate,
                                                                         width:
                                                                             1,
                                                                       ),
                                                                       borderRadius:
-                                                                          const BorderRadius
-                                                                              .only(
-                                                                        topLeft:
-                                                                            Radius.circular(4.0),
-                                                                        topRight:
-                                                                            Radius.circular(4.0),
-                                                                      ),
+                                                                          BorderRadius.circular(
+                                                                              12),
                                                                     ),
+                                                                    filled:
+                                                                        true,
+                                                                    fillColor:
+                                                                        Color(
+                                                                            0xC1EEEEEE),
+                                                                    contentPadding:
+                                                                        EdgeInsetsDirectional.fromSTEB(
+                                                                            4,
+                                                                            0,
+                                                                            0,
+                                                                            0),
                                                                   ),
                                                                   style: GoogleFonts
                                                                       .getFont(
@@ -1601,7 +1603,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                 FFAppState()
                                                                         .allCategories =
                                                                     true);
-                                                            showModalBottomSheet(
+                                                            await showModalBottomSheet(
                                                               isScrollControlled:
                                                                   true,
                                                               backgroundColor:
