@@ -1375,7 +1375,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                           decoration: BoxDecoration(),
                                           child: SingleChildScrollView(
                                             child: Column(
-                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisSize: MainAxisSize.min,
                                               mainAxisAlignment:
                                                   MainAxisAlignment.spaceAround,
                                               crossAxisAlignment:
@@ -1396,11 +1396,6 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(0, 5, 0, 5),
                                                   child: Container(
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .height *
-                                                            0.5,
                                                     decoration: BoxDecoration(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -1422,6 +1417,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .builder(
                                                             padding:
                                                                 EdgeInsets.zero,
+                                                            shrinkWrap: true,
                                                             scrollDirection:
                                                                 Axis.vertical,
                                                             itemCount: testsList
