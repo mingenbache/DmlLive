@@ -2,6 +2,7 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/package_test_list_widget.dart';
 import '../components/test_list_catalog_widget.dart';
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -28,7 +29,8 @@ class AddNewTestPackageWidget extends StatefulWidget {
       _AddNewTestPackageWidgetState();
 }
 
-class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
+class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
+    with TickerProviderStateMixin {
   PageController pageViewController;
   String packageCategoryDropDownValue;
   TextEditingController packageDescriptionController;
@@ -41,10 +43,33 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
   TextEditingController testPackageNameController;
   TestPackagesRecord newTestPackId;
   final formKey = GlobalKey<FormState>();
+  final animationsMap = {
+    'buttonOnPageLoadAnimation': AnimationInfo(
+      curve: Curves.bounceOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      initialState: AnimationState(
+        offset: Offset(0, 82),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+  };
 
   @override
   void initState() {
     super.initState();
+    startPageLoadAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
+
     packageDescriptionController = TextEditingController();
     testDurationTextController = TextEditingController(
         text: functions
@@ -163,7 +188,18 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                       size: 30,
                                     ),
                                     onPressed: () async {
-                                      context.pop();
+                                      await showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        backgroundColor: Colors.transparent,
+                                        context: context,
+                                        builder: (context) {
+                                          return Padding(
+                                            padding: MediaQuery.of(context)
+                                                .viewInsets,
+                                            child: TestListCatalogWidget(),
+                                          );
+                                        },
+                                      );
                                     },
                                   ),
                                 ),
@@ -398,10 +434,10 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                         fontFamily:
                                                                             'Roboto',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .primaryColor,
                                                                       ),
-                                                              fillColor: Color(
-                                                                  0x5CFFFFFF),
+                                                              fillColor:
+                                                                  Colors.white,
                                                               elevation: 2,
                                                               borderColor: Color(
                                                                   0xFF586B06),
@@ -422,81 +458,34 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                   ],
                                                 ),
                                               ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(20, 0, 20, 20),
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  height: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.2,
-                                                  decoration: BoxDecoration(
-                                                    color: Color(0xFFEEEEEE),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                20, 0, 0, 0),
-                                                    child: TextFormField(
-                                                      controller:
-                                                          packageDescriptionController,
-                                                      onChanged: (_) =>
-                                                          EasyDebounce.debounce(
-                                                        'packageDescriptionController',
-                                                        Duration(
-                                                            milliseconds: 2000),
-                                                        () => setState(() {}),
-                                                      ),
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        labelText:
-                                                            'Package Description',
-                                                        hintText:
-                                                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius lorem non eros sodales porta. Maecenas quis nulla lacinia, sollicitudin augue eget, iaculis tortor. \n\n',
-                                                        hintStyle:
-                                                            GoogleFonts.getFont(
-                                                          'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryColor,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                                        enabledBorder:
-                                                            InputBorder.none,
-                                                        focusedBorder:
-                                                            InputBorder.none,
-                                                        contentPadding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    5, 5, 0, 5),
-                                                        suffixIcon:
-                                                            packageDescriptionController
-                                                                    .text
-                                                                    .isNotEmpty
-                                                                ? InkWell(
-                                                                    onTap: () =>
-                                                                        setState(
-                                                                      () => packageDescriptionController
-                                                                          ?.clear(),
-                                                                    ),
-                                                                    child: Icon(
-                                                                      Icons
-                                                                          .clear,
-                                                                      color: Color(
-                                                                          0xFF889238),
-                                                                      size: 15,
-                                                                    ),
-                                                                  )
-                                                                : null,
-                                                      ),
-                                                      style:
+                                              Container(
+                                                width: double.infinity,
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.2,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(20, 20, 20, 20),
+                                                  child: TextFormField(
+                                                    controller:
+                                                        packageDescriptionController,
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      'packageDescriptionController',
+                                                      Duration(
+                                                          milliseconds: 2000),
+                                                      () => setState(() {}),
+                                                    ),
+                                                    obscureText: false,
+                                                    decoration: InputDecoration(
+                                                      labelText:
+                                                          'Package Description',
+                                                      labelStyle:
                                                           GoogleFonts.getFont(
                                                         'Roboto',
                                                         color:
@@ -506,13 +495,78 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      maxLines: 99,
-                                                      keyboardType:
-                                                          TextInputType
-                                                              .multiline,
+                                                      hintText: '\n',
+                                                      hintStyle:
+                                                          GoogleFonts.getFont(
+                                                        'Roboto',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryColor,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color:
+                                                              Color(0x00000000),
+                                                          width: 1,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12),
+                                                      ),
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color:
+                                                              Color(0x00000000),
+                                                          width: 1,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12),
+                                                      ),
+                                                      filled: true,
+                                                      fillColor:
+                                                          Color(0xFFEEEEEE),
+                                                      contentPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5, 5, 0, 5),
+                                                      suffixIcon:
+                                                          packageDescriptionController
+                                                                  .text
+                                                                  .isNotEmpty
+                                                              ? InkWell(
+                                                                  onTap: () =>
+                                                                      setState(
+                                                                    () => packageDescriptionController
+                                                                        ?.clear(),
+                                                                  ),
+                                                                  child: Icon(
+                                                                    Icons.clear,
+                                                                    color: Color(
+                                                                        0xFF889238),
+                                                                    size: 15,
+                                                                  ),
+                                                                )
+                                                              : null,
                                                     ),
+                                                    style: GoogleFonts.getFont(
+                                                      'Roboto',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryColor,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                                    textAlign: TextAlign.start,
+                                                    maxLines: 99,
+                                                    keyboardType:
+                                                        TextInputType.multiline,
                                                   ),
                                                 ),
                                               ),
@@ -1007,7 +1061,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                               0,
                                                                               0,
                                                                               0,
-                                                                              15),
+                                                                              10),
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -1133,120 +1187,121 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                           ],
                                                         ),
                                                       ),
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Container(
-                                                            width: 100,
-                                                            height: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .height *
-                                                                0.04,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color(
-                                                                  0x5DEEEEEE),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          12),
-                                                              border:
-                                                                  Border.all(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                                width: 2,
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(0, 0,
+                                                                    0, 10),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Container(
+                                                              width: 100,
+                                                              height: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .height *
+                                                                  0.04,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Color(
+                                                                    0xC1EEEEEE),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            12),
+                                                                border:
+                                                                    Border.all(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryColor,
+                                                                  width: 2,
+                                                                ),
                                                               ),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20,
-                                                                          0,
-                                                                          20,
-                                                                          0),
-                                                              child:
-                                                                  TextFormField(
-                                                                controller:
-                                                                    testPriceController,
-                                                                obscureText:
-                                                                    false,
-                                                                decoration:
-                                                                    InputDecoration(
-                                                                  hintText:
-                                                                      'Kshs...',
-                                                                  enabledBorder:
-                                                                      UnderlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryColor,
-                                                                      width: 1,
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            20,
+                                                                            0,
+                                                                            20,
+                                                                            0),
+                                                                child:
+                                                                    TextFormField(
+                                                                  controller:
+                                                                      testPriceController,
+                                                                  obscureText:
+                                                                      false,
+                                                                  decoration:
+                                                                      InputDecoration(
+                                                                    hintText:
+                                                                        'Kshs...',
+                                                                    enabledBorder:
+                                                                        UnderlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryColor,
+                                                                        width:
+                                                                            1,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          const BorderRadius
+                                                                              .only(
+                                                                        topLeft:
+                                                                            Radius.circular(4.0),
+                                                                        topRight:
+                                                                            Radius.circular(4.0),
+                                                                      ),
                                                                     ),
-                                                                    borderRadius:
-                                                                        const BorderRadius
-                                                                            .only(
-                                                                      topLeft: Radius
-                                                                          .circular(
-                                                                              4.0),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              4.0),
-                                                                    ),
-                                                                  ),
-                                                                  focusedBorder:
-                                                                      UnderlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryColor,
-                                                                      width: 1,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        const BorderRadius
-                                                                            .only(
-                                                                      topLeft: Radius
-                                                                          .circular(
-                                                                              4.0),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              4.0),
+                                                                    focusedBorder:
+                                                                        UnderlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryColor,
+                                                                        width:
+                                                                            1,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          const BorderRadius
+                                                                              .only(
+                                                                        topLeft:
+                                                                            Radius.circular(4.0),
+                                                                        topRight:
+                                                                            Radius.circular(4.0),
+                                                                      ),
                                                                     ),
                                                                   ),
-                                                                ),
-                                                                style:
-                                                                    GoogleFonts
-                                                                        .getFont(
-                                                                  'Roboto',
-                                                                  color: Color(
-                                                                      0xFF586B06),
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                ),
-                                                                maxLines: 1,
-                                                                keyboardType:
-                                                                    TextInputType
-                                                                        .number,
-                                                                validator:
-                                                                    (val) {
-                                                                  if (val ==
-                                                                          null ||
-                                                                      val.isEmpty) {
-                                                                    return 'Field is required';
-                                                                  }
+                                                                  style: GoogleFonts
+                                                                      .getFont(
+                                                                    'Roboto',
+                                                                    color: Color(
+                                                                        0xFF586B06),
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                  ),
+                                                                  maxLines: 1,
+                                                                  keyboardType:
+                                                                      TextInputType
+                                                                          .number,
+                                                                  validator:
+                                                                      (val) {
+                                                                    if (val ==
+                                                                            null ||
+                                                                        val.isEmpty) {
+                                                                      return 'Field is required';
+                                                                    }
 
-                                                                  return null;
-                                                                },
+                                                                    return null;
+                                                                  },
+                                                                ),
                                                               ),
                                                             ),
-                                                          ),
-                                                        ],
+                                                          ],
+                                                        ),
                                                       ),
                                                     ],
                                                   ),
@@ -1270,6 +1325,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                   300),
                                                           curve: Curves.ease,
                                                         );
+                                                        setState(() => FFAppState()
+                                                                .testPackSubmit =
+                                                            true);
                                                       },
                                                       text: 'Continue',
                                                       options: FFButtonOptions(
@@ -1411,121 +1469,108 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                                                     final testPackTestItemTestsRecord =
                                                                         snapshot
                                                                             .data;
-                                                                    return InkWell(
-                                                                      onTap:
-                                                                          () async {
-                                                                        context
-                                                                            .pushNamed(
-                                                                          'Details',
-                                                                          queryParams:
-                                                                              {
-                                                                            'testId':
-                                                                                serializeParam(testsListItem, ParamType.DocumentReference),
-                                                                          }.withoutNulls,
-                                                                        );
-                                                                      },
+                                                                    return Material(
+                                                                      color: Colors
+                                                                          .transparent,
+                                                                      elevation:
+                                                                          2,
+                                                                      shape:
+                                                                          RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8),
+                                                                      ),
                                                                       child:
-                                                                          Material(
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        elevation:
-                                                                            2,
-                                                                        shape:
-                                                                            RoundedRectangleBorder(
+                                                                          Container(
+                                                                        height: MediaQuery.of(context).size.height *
+                                                                            0.03,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              Colors.white,
                                                                           borderRadius:
                                                                               BorderRadius.circular(8),
                                                                         ),
                                                                         child:
-                                                                            Container(
-                                                                          height:
-                                                                              MediaQuery.of(context).size.height * 0.03,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color:
-                                                                                Colors.white,
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(8),
-                                                                          ),
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              10,
+                                                                              0,
+                                                                              10,
+                                                                              0),
                                                                           child:
-                                                                              Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                10,
-                                                                                0,
-                                                                                10,
-                                                                                0),
-                                                                            child:
-                                                                                Row(
-                                                                              mainAxisSize: MainAxisSize.max,
-                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                              children: [
-                                                                                Container(
-                                                                                  width: MediaQuery.of(context).size.width * 0.4,
-                                                                                  decoration: BoxDecoration(),
-                                                                                  child: Row(
-                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                    children: [
-                                                                                      Text(
-                                                                                        testPackTestItemTestsRecord.name,
-                                                                                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Roboto',
-                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                              fontWeight: FontWeight.w500,
-                                                                                            ),
-                                                                                      ),
-                                                                                    ],
-                                                                                  ),
-                                                                                ),
-                                                                                Row(
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceBetween,
+                                                                            children: [
+                                                                              Container(
+                                                                                width: MediaQuery.of(context).size.width * 0.4,
+                                                                                decoration: BoxDecoration(),
+                                                                                child: Row(
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
-                                                                                    Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
-                                                                                      child: Text(
-                                                                                        'Ksh',
-                                                                                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Roboto',
-                                                                                              color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                              fontWeight: FontWeight.w600,
-                                                                                            ),
-                                                                                      ),
-                                                                                    ),
                                                                                     Text(
-                                                                                      testPackTestItemTestsRecord.price.toString(),
+                                                                                      testPackTestItemTestsRecord.name,
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                             fontFamily: 'Roboto',
-                                                                                            color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                            color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontWeight: FontWeight.w500,
                                                                                           ),
                                                                                     ),
-                                                                                    InkWell(
-                                                                                      onTap: () async {
-                                                                                        if (FFAppState().testPackTests.contains(testsListItem)) {
-                                                                                          setState(() => FFAppState().removeFromTestPackTests(testsListItem));
-                                                                                          ScaffoldMessenger.of(context).showSnackBar(
-                                                                                            SnackBar(
-                                                                                              content: Text(
-                                                                                                'Test Removed',
-                                                                                                style: TextStyle(),
-                                                                                              ),
-                                                                                              duration: Duration(milliseconds: 4000),
-                                                                                              backgroundColor: Color(0x00000000),
-                                                                                            ),
-                                                                                          );
-                                                                                          return;
-                                                                                        } else {
-                                                                                          return;
-                                                                                        }
-                                                                                      },
-                                                                                      child: Icon(
-                                                                                        Icons.highlight_off,
-                                                                                        color: Color(0xFFEB2424),
-                                                                                        size: 18,
-                                                                                      ),
-                                                                                    ),
                                                                                   ],
                                                                                 ),
-                                                                              ],
-                                                                            ),
+                                                                              ),
+                                                                              Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                children: [
+                                                                                  Padding(
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                                                                    child: Text(
+                                                                                      'Ksh',
+                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                            fontFamily: 'Roboto',
+                                                                                            color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                            fontWeight: FontWeight.w600,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Text(
+                                                                                    testPackTestItemTestsRecord.price.toString(),
+                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          fontFamily: 'Roboto',
+                                                                                          color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                          fontWeight: FontWeight.w500,
+                                                                                        ),
+                                                                                  ),
+                                                                                  InkWell(
+                                                                                    onTap: () async {
+                                                                                      if (FFAppState().testPackTests.contains(testsListItem)) {
+                                                                                        setState(() => FFAppState().removeFromTestPackTests(testsListItem));
+                                                                                        ScaffoldMessenger.of(context).showSnackBar(
+                                                                                          SnackBar(
+                                                                                            content: Text(
+                                                                                              'Test Removed',
+                                                                                              style: TextStyle(),
+                                                                                            ),
+                                                                                            duration: Duration(milliseconds: 4000),
+                                                                                            backgroundColor: Color(0x00000000),
+                                                                                          ),
+                                                                                        );
+                                                                                        return;
+                                                                                      } else {
+                                                                                        return;
+                                                                                      }
+                                                                                    },
+                                                                                    child: Icon(
+                                                                                      Icons.highlight_off,
+                                                                                      color: Color(0xFFEB2424),
+                                                                                      size: 18,
+                                                                                    ),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                            ],
                                                                           ),
                                                                         ),
                                                                       ),
@@ -1745,7 +1790,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget> {
                                     ),
                                     borderRadius: 25,
                                   ),
-                                ),
+                                ).animated([
+                                  animationsMap['buttonOnPageLoadAnimation']
+                                ]),
                               ),
                             ),
                           ],
