@@ -1291,157 +1291,164 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                             ),
                                           ),
                                         ),
-                                        StreamBuilder<List<TestPackagesRecord>>(
-                                          stream: queryTestPackagesRecord(),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child: SpinKitRipple(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryColor,
-                                                    size: 50,
+                                        Expanded(
+                                          child: StreamBuilder<
+                                              List<TestPackagesRecord>>(
+                                            stream: queryTestPackagesRecord(),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 50,
+                                                    height: 50,
+                                                    child: SpinKitRipple(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryColor,
+                                                      size: 50,
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+                                              List<TestPackagesRecord>
+                                                  packageListWidgetTestPackagesRecordList =
+                                                  snapshot.data;
+                                              return Container(
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.6,
+                                                constraints: BoxConstraints(
+                                                  maxHeight: 725,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .tertiaryColor,
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .alternate
+                                                    ],
+                                                    stops: [0, 1],
+                                                    begin: AlignmentDirectional(
+                                                        0, -1),
+                                                    end: AlignmentDirectional(
+                                                        0, 1),
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(16),
+                                                    bottomRight:
+                                                        Radius.circular(16),
+                                                    topLeft:
+                                                        Radius.circular(40),
+                                                    topRight:
+                                                        Radius.circular(40),
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 10, 0, 0),
+                                                  child: SingleChildScrollView(
+                                                    primary: false,
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        StreamBuilder<
+                                                            UsersRecord>(
+                                                          stream: UsersRecord
+                                                              .getDocument(
+                                                                  currentUserReference),
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            // Customize what your widget looks like when it's loading.
+                                                            if (!snapshot
+                                                                .hasData) {
+                                                              return Center(
+                                                                child: SizedBox(
+                                                                  width: 50,
+                                                                  height: 50,
+                                                                  child:
+                                                                      SpinKitRipple(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryColor,
+                                                                    size: 50,
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            }
+                                                            final listViewUsersRecord =
+                                                                snapshot.data;
+                                                            return Builder(
+                                                              builder:
+                                                                  (context) {
+                                                                final packages = functions
+                                                                        .filterPackagesByCategory(
+                                                                            FFAppState().allPackageCategories,
+                                                                            FFAppState().packagecategoryPicked,
+                                                                            packageListWidgetTestPackagesRecordList.toList())
+                                                                        ?.toList() ??
+                                                                    [];
+                                                                return ListView
+                                                                    .builder(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  primary:
+                                                                      false,
+                                                                  shrinkWrap:
+                                                                      true,
+                                                                  scrollDirection:
+                                                                      Axis.vertical,
+                                                                  itemCount:
+                                                                      packages
+                                                                          .length,
+                                                                  itemBuilder:
+                                                                      (context,
+                                                                          packagesIndex) {
+                                                                    final packagesItem =
+                                                                        packages[
+                                                                            packagesIndex];
+                                                                    return Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              0,
+                                                                              0,
+                                                                              0,
+                                                                              10),
+                                                                      child:
+                                                                          CatalogPackageItemWidget(
+                                                                        index:
+                                                                            packagesIndex,
+                                                                        listSize:
+                                                                            packageListWidgetTestPackagesRecordList.length,
+                                                                        package:
+                                                                            packagesItem,
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                );
+                                                              },
+                                                            );
+                                                          },
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               );
-                                            }
-                                            List<TestPackagesRecord>
-                                                packageListWidgetTestPackagesRecordList =
-                                                snapshot.data;
-                                            return Container(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.6,
-                                              constraints: BoxConstraints(
-                                                maxHeight: 725,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                gradient: LinearGradient(
-                                                  colors: [
-                                                    FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate
-                                                  ],
-                                                  stops: [0, 1],
-                                                  begin: AlignmentDirectional(
-                                                      0, -1),
-                                                  end: AlignmentDirectional(
-                                                      0, 1),
-                                                ),
-                                                borderRadius: BorderRadius.only(
-                                                  bottomLeft:
-                                                      Radius.circular(16),
-                                                  bottomRight:
-                                                      Radius.circular(16),
-                                                  topLeft: Radius.circular(40),
-                                                  topRight: Radius.circular(40),
-                                                ),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 10, 0, 0),
-                                                child: SingleChildScrollView(
-                                                  primary: false,
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      StreamBuilder<
-                                                          UsersRecord>(
-                                                        stream: UsersRecord
-                                                            .getDocument(
-                                                                currentUserReference),
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          // Customize what your widget looks like when it's loading.
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Center(
-                                                              child: SizedBox(
-                                                                width: 50,
-                                                                height: 50,
-                                                                child:
-                                                                    SpinKitRipple(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryColor,
-                                                                  size: 50,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          }
-                                                          final listViewUsersRecord =
-                                                              snapshot.data;
-                                                          return Builder(
-                                                            builder: (context) {
-                                                              final packages = functions
-                                                                      .filterPackagesByCategory(
-                                                                          FFAppState()
-                                                                              .allPackageCategories,
-                                                                          FFAppState()
-                                                                              .packagecategoryPicked,
-                                                                          packageListWidgetTestPackagesRecordList
-                                                                              .toList())
-                                                                      ?.toList() ??
-                                                                  [];
-                                                              return ListView
-                                                                  .builder(
-                                                                padding:
-                                                                    EdgeInsets
-                                                                        .zero,
-                                                                primary: false,
-                                                                shrinkWrap:
-                                                                    true,
-                                                                scrollDirection:
-                                                                    Axis.vertical,
-                                                                itemCount:
-                                                                    packages
-                                                                        .length,
-                                                                itemBuilder:
-                                                                    (context,
-                                                                        packagesIndex) {
-                                                                  final packagesItem =
-                                                                      packages[
-                                                                          packagesIndex];
-                                                                  return Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            0,
-                                                                            0,
-                                                                            10),
-                                                                    child:
-                                                                        CatalogPackageItemWidget(
-                                                                      index:
-                                                                          packagesIndex,
-                                                                      listSize:
-                                                                          packageListWidgetTestPackagesRecordList
-                                                                              .length,
-                                                                      package:
-                                                                          packagesItem,
-                                                                    ),
-                                                                  );
-                                                                },
-                                                              );
-                                                            },
-                                                          );
-                                                        },
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          },
+                                            },
+                                          ),
                                         ),
                                       ],
                                     ),
