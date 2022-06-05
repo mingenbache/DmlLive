@@ -1602,7 +1602,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                 FFAppState()
                                                                         .allCategories =
                                                                     true);
-                                                            await showModalBottomSheet(
+                                                            showModalBottomSheet(
                                                               isScrollControlled:
                                                                   true,
                                                               backgroundColor:
