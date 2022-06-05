@@ -122,6 +122,12 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                     context.pop();
                                     setState(() =>
                                         FFAppState().categorypicked = 'All');
+                                    setState(() =>
+                                        FFAppState().allCategories = true);
+                                    setState(() => FFAppState()
+                                        .allPackageCategories = true);
+                                    setState(() => FFAppState()
+                                        .packagecategoryPicked = 'All');
                                   },
                                 ),
                               ),
@@ -488,6 +494,12 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                         List<CategoriesRecord>>(
                                                       stream:
                                                           queryCategoriesRecord(
+                                                        queryBuilder:
+                                                            (categoriesRecord) =>
+                                                                categoriesRecord.where(
+                                                                    'ispackage_Category',
+                                                                    isNotEqualTo:
+                                                                        true),
                                                         singleRecord: true,
                                                       ),
                                                       builder:
@@ -519,7 +531,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                 : null;
                                                         return Builder(
                                                           builder: (context) {
-                                                            final testpackagecategories =
+                                                            final testCategories =
                                                                 listViewCategoriesRecord
                                                                         .categories
                                                                         .toList()
@@ -533,18 +545,18 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                               scrollDirection:
                                                                   Axis.horizontal,
                                                               itemCount:
-                                                                  testpackagecategories
+                                                                  testCategories
                                                                       .length,
                                                               itemBuilder: (context,
-                                                                  testpackagecategoriesIndex) {
-                                                                final testpackagecategoriesItem =
-                                                                    testpackagecategories[
-                                                                        testpackagecategoriesIndex];
+                                                                  testCategoriesIndex) {
+                                                                final testCategoriesItem =
+                                                                    testCategories[
+                                                                        testCategoriesIndex];
                                                                 return Stack(
                                                                   children: [
                                                                     if (functions.isThisCategorySelected(
                                                                             FFAppState().categorypicked,
-                                                                            testpackagecategoriesItem) ??
+                                                                            testCategoriesItem) ??
                                                                         true)
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -570,7 +582,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                                 5),
                                                                             child:
                                                                                 Text(
-                                                                              testpackagecategoriesItem,
+                                                                              testCategoriesItem,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Roboto',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
@@ -592,7 +604,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                         onTap:
                                                                             () async {
                                                                           setState(() =>
-                                                                              FFAppState().packagecategoryPicked = testpackagecategoriesItem);
+                                                                              FFAppState().packagecategoryPicked = testCategoriesItem);
                                                                           setState(() =>
                                                                               FFAppState().allPackageCategories = false);
                                                                         },
@@ -614,7 +626,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                                 5),
                                                                             child:
                                                                                 Text(
-                                                                              testpackagecategoriesItem,
+                                                                              testCategoriesItem,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Roboto',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1135,11 +1147,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                           queryCategoriesRecord(
                                                         queryBuilder:
                                                             (categoriesRecord) =>
-                                                                categoriesRecord
-                                                                    .where(
-                                                                        'name',
-                                                                        isEqualTo:
-                                                                            'package'),
+                                                                categoriesRecord.where(
+                                                                    'ispackage_Category',
+                                                                    isEqualTo:
+                                                                        true),
                                                         singleRecord: true,
                                                       ),
                                                       builder:
@@ -1163,6 +1174,11 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                         List<CategoriesRecord>
                                                             listViewCategoriesRecordList =
                                                             snapshot.data;
+                                                        // Return an empty Container when the document does not exist.
+                                                        if (snapshot
+                                                            .data.isEmpty) {
+                                                          return Container();
+                                                        }
                                                         final listViewCategoriesRecord =
                                                             listViewCategoriesRecordList
                                                                     .isNotEmpty
