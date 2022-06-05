@@ -173,28 +173,11 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Material(
-                                          color: Colors.transparent,
-                                          elevation: 2,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.only(
-                                              bottomLeft: Radius.circular(0),
-                                              bottomRight: Radius.circular(0),
-                                              topLeft: Radius.circular(12),
-                                              topRight: Radius.circular(12),
-                                            ),
-                                          ),
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.8,
-                                            height: 30,
-                                            constraints: BoxConstraints(
-                                              maxWidth: 380,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: Color(0xC9FFFFFF),
+                                        Expanded(
+                                          child: Material(
+                                            color: Colors.transparent,
+                                            elevation: 2,
+                                            shape: RoundedRectangleBorder(
                                               borderRadius: BorderRadius.only(
                                                 bottomLeft: Radius.circular(0),
                                                 bottomRight: Radius.circular(0),
@@ -202,120 +185,140 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                 topRight: Radius.circular(12),
                                               ),
                                             ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5, 0, 0, 0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0),
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0, 0, 5, 0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .tertiaryColor,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          12),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          9,
-                                                                          4,
-                                                                          6,
-                                                                          4),
-                                                              child: Text(
-                                                                containerTestsRecord
-                                                                    .category,
-                                                                style: FlutterFlowTheme.of(
+                                            child: Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.8,
+                                              height: 30,
+                                              constraints: BoxConstraints(
+                                                maxWidth: 380,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                color: Color(0xC9FFFFFF),
+                                                borderRadius: BorderRadius.only(
+                                                  bottomLeft:
+                                                      Radius.circular(0),
+                                                  bottomRight:
+                                                      Radius.circular(0),
+                                                  topLeft: Radius.circular(12),
+                                                  topRight: Radius.circular(12),
+                                                ),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(5, 0, 0, 0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Container(
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0, 0, 5, 0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Lexend Deca',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryColor,
-                                                                      fontSize:
-                                                                          12,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .normal,
-                                                                    ),
+                                                                    .tertiaryColor,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            12),
+                                                              ),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            9,
+                                                                            4,
+                                                                            6,
+                                                                            4),
+                                                                child: Text(
+                                                                  containerTestsRecord
+                                                                      .category,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyText1
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Lexend Deca',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryColor,
+                                                                        fontSize:
+                                                                            12,
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                      ),
+                                                                ),
                                                               ),
                                                             ),
-                                                          ),
-                                                        ],
+                                                          ],
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8),
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  8, 4, 12, 4),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Icon(
-                                                            Icons.timer,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryColor,
-                                                            size: 20,
-                                                          ),
-                                                          Text(
-                                                            '${containerTestsRecord.durationResults.toString()} Hrs',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Roboto Mono',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryColor,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                ),
-                                                          ),
-                                                        ],
+                                                    Container(
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(8, 4,
+                                                                    12, 4),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Icon(
+                                                              Icons.timer,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryColor,
+                                                              size: 20,
+                                                            ),
+                                                            Text(
+                                                              '${containerTestsRecord.durationResults.toString()} Hrs',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText1
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto Mono',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryColor,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -333,183 +336,187 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                             ),
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 8, 0),
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.8,
-                                            height: 30,
-                                            constraints: BoxConstraints(
-                                              maxWidth: 380,
-                                              maxHeight: 30,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                            ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5, 0, 0, 0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0),
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 0, 8, 0),
+                                            child: Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.8,
+                                              height: 30,
+                                              constraints: BoxConstraints(
+                                                maxWidth: 380,
+                                                maxHeight: 30,
+                                              ),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(5, 0, 0, 0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Container(
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    5, 0, 5, 0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Icon(
+                                                              Icons
+                                                                  .delivery_dining,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryColor,
+                                                              size: 20,
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          3,
+                                                                          2,
+                                                                          3,
+                                                                          2),
+                                                              child: Container(
+                                                                width: 20,
+                                                                height: 20,
+                                                                child: Stack(
+                                                                  children: [
+                                                                    if (containerTestsRecord
+                                                                            .homeTest ??
+                                                                        true)
+                                                                      Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            1,
+                                                                            0),
+                                                                        child:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .check_circle_outline,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                          size:
+                                                                              16,
+                                                                        ),
+                                                                      ),
+                                                                    if (!(containerTestsRecord
+                                                                            .homeTest) ??
+                                                                        true)
+                                                                      Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            1,
+                                                                            0),
+                                                                        child:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .not_interested,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                          size:
+                                                                              16,
+                                                                        ),
+                                                                      ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
                                                     ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  5, 0, 5, 0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Icon(
-                                                            Icons
-                                                                .delivery_dining,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryColor,
-                                                            size: 20,
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0, 0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    2, 0, 2, 0),
+                                                        child: Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8),
                                                           ),
-                                                          Padding(
+                                                          child: Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        3,
-                                                                        2,
-                                                                        3,
-                                                                        2),
-                                                            child: Container(
-                                                              width: 20,
-                                                              height: 20,
-                                                              child: Stack(
-                                                                children: [
-                                                                  if (containerTestsRecord
-                                                                          .homeTest ??
-                                                                      true)
-                                                                    Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              1,
-                                                                              0),
-                                                                      child:
-                                                                          Icon(
-                                                                        Icons
-                                                                            .check_circle_outline,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
-                                                                        size:
-                                                                            16,
-                                                                      ),
+                                                                        0,
+                                                                        0,
+                                                                        8,
+                                                                        0),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5,
+                                                                          0,
+                                                                          0,
+                                                                          0),
+                                                                  child: Text(
+                                                                    formatNumber(
+                                                                      containerTestsRecord
+                                                                          .price,
+                                                                      formatType:
+                                                                          FormatType
+                                                                              .decimal,
+                                                                      decimalType:
+                                                                          DecimalType
+                                                                              .periodDecimal,
+                                                                      currency:
+                                                                          'Ksh ',
                                                                     ),
-                                                                  if (!(containerTestsRecord
-                                                                          .homeTest) ??
-                                                                      true)
-                                                                    Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              1,
-                                                                              0),
-                                                                      child:
-                                                                          Icon(
-                                                                        Icons
-                                                                            .not_interested,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
-                                                                        size:
-                                                                            16,
-                                                                      ),
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      fontSize:
+                                                                          17,
                                                                     ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0, 0),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  2, 0, 2, 0),
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(8),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      0, 8, 0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            5,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                child: Text(
-                                                                  formatNumber(
-                                                                    containerTestsRecord
-                                                                        .price,
-                                                                    formatType:
-                                                                        FormatType
-                                                                            .decimal,
-                                                                    decimalType:
-                                                                        DecimalType
-                                                                            .periodDecimal,
-                                                                    currency:
-                                                                        'Ksh ',
-                                                                  ),
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .alternate,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                    fontSize:
-                                                                        17,
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ],
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
