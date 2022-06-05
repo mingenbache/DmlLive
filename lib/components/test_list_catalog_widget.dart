@@ -1197,7 +1197,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                 return Stack(
                                                                   children: [
                                                                     if (functions.isThisCategorySelected(
-                                                                            FFAppState().categorypicked,
+                                                                            FFAppState().packagecategoryPicked,
                                                                             packagecategoriesItem) ??
                                                                         true)
                                                                       Padding(

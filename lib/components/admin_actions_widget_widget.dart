@@ -213,6 +213,7 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                   child: InkWell(
                     onTap: () async {
                       setState(() => FFAppState().allCategories = true);
+                      setState(() => FFAppState().allPackageCategories = true);
                       await showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,
