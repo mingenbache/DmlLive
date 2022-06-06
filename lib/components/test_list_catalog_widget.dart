@@ -714,6 +714,13 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.min,
                                                       children: [
+                                                        Text(
+                                                          FFAppState()
+                                                              .categorypicked,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyText1,
+                                                        ),
                                                         StreamBuilder<
                                                             UsersRecord>(
                                                           stream: UsersRecord
@@ -1379,6 +1386,13 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
+                                                        Text(
+                                                          FFAppState()
+                                                              .packagecategoryPicked,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyText1,
+                                                        ),
                                                         StreamBuilder<
                                                             UsersRecord>(
                                                           stream: UsersRecord
