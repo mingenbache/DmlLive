@@ -1130,48 +1130,54 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                       MainAxisSize.max,
                                                   mainAxisAlignment:
                                                       MainAxisAlignment
-                                                          .spaceEvenly,
+                                                          .spaceBetween,
                                                   children: [
-                                                    Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.5,
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        0,
-                                                                        2,
-                                                                        0),
-                                                            child: Container(
-                                                              width: 20,
-                                                              decoration:
-                                                                  BoxDecoration(),
-                                                              child: Icon(
-                                                                Icons
-                                                                    .payments_outlined,
-                                                                color: Colors
-                                                                    .white,
-                                                                size: 20,
-                                                              ),
-                                                            ),
+                                                    Expanded(
+                                                      child: Container(
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.8,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0, 0, 2, 0),
+                                                        child: Container(
+                                                          width: 20,
+                                                          decoration:
+                                                              BoxDecoration(),
+                                                          child: Icon(
+                                                            Icons
+                                                                .payments_outlined,
+                                                            color: Colors.white,
+                                                            size: 20,
                                                           ),
-                                                          Text(
-                                                            'Price',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        'Price',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
@@ -1183,130 +1189,103 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                       FontWeight
                                                                           .w500,
                                                                 ),
-                                                          ),
-                                                        ],
                                                       ),
+                                                    ],
+                                                  ),
+                                                  Container(
+                                                    width: 120,
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.04,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12),
                                                     ),
-                                                    Padding(
+                                                    child: Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  0, 0, 0, 10),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Container(
-                                                            width: 120,
-                                                            height: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .height *
-                                                                0.04,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          12),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10,
-                                                                          0,
-                                                                          10,
-                                                                          0),
-                                                              child:
-                                                                  TextFormField(
-                                                                controller:
-                                                                    testPriceController,
-                                                                obscureText:
-                                                                    false,
-                                                                decoration:
-                                                                    InputDecoration(
-                                                                  labelStyle:
-                                                                      GoogleFonts
-                                                                          .getFont(
-                                                                    'Roboto',
-                                                                    color: Color(
-                                                                        0xFF586B06),
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                  ),
-                                                                  hintText:
-                                                                      'Kshs...',
-                                                                  enabledBorder:
-                                                                      OutlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .alternate,
-                                                                      width: 1,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            12),
-                                                                  ),
-                                                                  focusedBorder:
-                                                                      OutlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .alternate,
-                                                                      width: 1,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            12),
-                                                                  ),
-                                                                  filled: true,
-                                                                  fillColor: Color(
-                                                                      0xC1EEEEEE),
-                                                                  contentPadding:
-                                                                      EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              4,
-                                                                              0,
-                                                                              0,
-                                                                              0),
-                                                                ),
-                                                                style:
-                                                                    GoogleFonts
-                                                                        .getFont(
-                                                                  'Roboto',
-                                                                  color: Color(
-                                                                      0xFF586B06),
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                ),
-                                                                maxLines: 1,
-                                                                keyboardType:
-                                                                    TextInputType
-                                                                        .number,
-                                                                validator:
-                                                                    (val) {
-                                                                  if (val ==
-                                                                          null ||
-                                                                      val.isEmpty) {
-                                                                    return 'Field is required';
-                                                                  }
-
-                                                                  return null;
-                                                                },
-                                                              ),
-                                                            ),
+                                                                  10, 0, 10, 0),
+                                                      child: TextFormField(
+                                                        controller:
+                                                            testPriceController,
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelStyle:
+                                                              GoogleFonts
+                                                                  .getFont(
+                                                            'Roboto',
+                                                            color: Color(
+                                                                0xFF586B06),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
                                                           ),
-                                                        ],
+                                                          hintText: 'Kshs...',
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12),
+                                                          ),
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12),
+                                                          ),
+                                                          filled: true,
+                                                          fillColor:
+                                                              Color(0xC1EEEEEE),
+                                                          contentPadding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(4,
+                                                                      0, 0, 0),
+                                                        ),
+                                                        style:
+                                                            GoogleFonts.getFont(
+                                                          'Roboto',
+                                                          color:
+                                                              Color(0xFF586B06),
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                        maxLines: 1,
+                                                        keyboardType:
+                                                            TextInputType
+                                                                .number,
+                                                        validator: (val) {
+                                                          if (val == null ||
+                                                              val.isEmpty) {
+                                                            return 'Field is required';
+                                                          }
+
+                                                          return null;
+                                                        },
                                                       ),
                                                     ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
@@ -1602,7 +1581,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                 FFAppState()
                                                                         .allCategories =
                                                                     true);
-                                                            showModalBottomSheet(
+                                                            await showModalBottomSheet(
                                                               isScrollControlled:
                                                                   true,
                                                               backgroundColor:
@@ -1707,95 +1686,90 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
               if (FFAppState().testPackSubmit ?? true)
                 Expanded(
                   flex: 1,
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0, 0.05),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    final testPackagesCreateData = {
-                                      ...createTestPackagesRecordData(
-                                        price:
-                                            int.parse(testPriceController.text),
-                                        packageName:
-                                            testPackageNameController.text,
-                                        description:
-                                            packageDescriptionController.text,
-                                        duration: double.parse(
-                                            testDurationTextController.text),
-                                        durationResults: double.parse(
-                                            resultsDurationTextController.text),
-                                        category: packageCategoryDropDownValue,
-                                        atHome: atHomeToggleValue,
-                                        createDate: getCurrentTimestamp,
-                                      ),
-                                      'TestsIncluded':
-                                          FFAppState().testPackTests,
-                                    };
-                                    var testPackagesRecordReference =
-                                        TestPackagesRecord.collection.doc();
-                                    await testPackagesRecordReference
-                                        .set(testPackagesCreateData);
-                                    newTestPackId =
-                                        TestPackagesRecord.getDocumentFromData(
-                                            testPackagesCreateData,
-                                            testPackagesRecordReference);
-                                    await showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      backgroundColor: Colors.transparent,
-                                      context: context,
-                                      builder: (context) {
-                                        return Padding(
-                                          padding:
-                                              MediaQuery.of(context).viewInsets,
-                                          child: TestListCatalogWidget(),
-                                        );
-                                      },
-                                    );
-
-                                    setState(() {});
-                                  },
-                                  text: 'Submit',
-                                  options: FFButtonOptions(
-                                    width: 340,
-                                    height: 60,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .subtitle2
-                                        .override(
-                                          fontFamily: 'Lexend Deca',
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.normal,
-                                        ),
-                                    elevation: 2,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(0, 0.05),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  final testPackagesCreateData = {
+                                    ...createTestPackagesRecordData(
+                                      price:
+                                          int.parse(testPriceController.text),
+                                      packageName:
+                                          testPackageNameController.text,
+                                      description:
+                                          packageDescriptionController.text,
+                                      duration: double.parse(
+                                          testDurationTextController.text),
+                                      durationResults: double.parse(
+                                          resultsDurationTextController.text),
+                                      category: packageCategoryDropDownValue,
+                                      atHome: atHomeToggleValue,
+                                      createDate: getCurrentTimestamp,
                                     ),
-                                    borderRadius: 25,
+                                    'TestsIncluded': FFAppState().testPackTests,
+                                  };
+                                  var testPackagesRecordReference =
+                                      TestPackagesRecord.collection.doc();
+                                  await testPackagesRecordReference
+                                      .set(testPackagesCreateData);
+                                  newTestPackId =
+                                      TestPackagesRecord.getDocumentFromData(
+                                          testPackagesCreateData,
+                                          testPackagesRecordReference);
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    context: context,
+                                    builder: (context) {
+                                      return Padding(
+                                        padding:
+                                            MediaQuery.of(context).viewInsets,
+                                        child: TestListCatalogWidget(),
+                                      );
+                                    },
+                                  );
+
+                                  setState(() {});
+                                },
+                                text: 'Submit',
+                                options: FFButtonOptions(
+                                  width: 340,
+                                  height: 60,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryColor,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .subtitle2
+                                      .override(
+                                        fontFamily: 'Lexend Deca',
+                                        color: FlutterFlowTheme.of(context)
+                                            .tertiaryColor,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                  elevation: 2,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1,
                                   ),
-                                ).animated([
-                                  animationsMap['buttonOnPageLoadAnimation']
-                                ]),
-                              ),
+                                  borderRadius: 25,
+                                ),
+                              ).animated(
+                                  [animationsMap['buttonOnPageLoadAnimation']]),
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
             ],
