@@ -498,8 +498,8 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                             (categoriesRecord) =>
                                                                 categoriesRecord.where(
                                                                     'ispackage_Category',
-                                                                    isEqualTo:
-                                                                        false),
+                                                                    isNotEqualTo:
+                                                                        true),
                                                         singleRecord: true,
                                                       ),
                                                       builder:
