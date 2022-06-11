@@ -365,11 +365,11 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                             onTap: () async {
                                                               setState(() =>
                                                                   FFAppState()
-                                                                          .categorypicked =
+                                                                          .packagecategoryPicked =
                                                                       'All');
                                                               setState(() =>
                                                                   FFAppState()
-                                                                          .allCategories =
+                                                                          .allPackageCategories =
                                                                       true);
                                                             },
                                                             child: Container(
