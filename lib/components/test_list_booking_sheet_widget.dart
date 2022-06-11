@@ -635,8 +635,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                             listViewIndex];
                                                                     return Stack(
                                                                       children: [
-                                                                        if (functions.isThisCategorySelected(FFAppState().categorypicked,
-                                                                                FFAppState().categorypicked) ??
+                                                                        if (functions.isThisCategorySelected(
+                                                                                FFAppState().categorypicked,
+                                                                                FFAppState().categorypicked,
+                                                                                FFAppState().allCategories) ??
                                                                             true)
                                                                           Padding(
                                                                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -1277,7 +1279,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                               listViewIndex];
                                                                       return Stack(
                                                                         children: [
-                                                                          if (functions.isThisCategorySelected(FFAppState().packagecategoryPicked, listViewCategoriesRecord.name) ??
+                                                                          if (functions.isThisCategorySelected(FFAppState().packagecategoryPicked, listViewCategoriesRecord.name, FFAppState().allPackageCategories) ??
                                                                               true)
                                                                             Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),

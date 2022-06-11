@@ -37,18 +37,14 @@ class _NewTestWidgetState extends State<NewTestWidget> {
   void initState() {
     super.initState();
     resultsDurationTextController = TextEditingController(
-        text: functions
-            .doubletoInt(durationResultsSliderValue, 2.0)
-            .toString()
-            .toString());
+        text:
+            functions.doubletoInt(durationResultsSliderValue, 2.0).toString());
     testDescriptionController = TextEditingController();
     testNameController = TextEditingController();
     testDurationTextController = TextEditingController(
-        text: functions
-            .doubletoInt(testDurationSliderValue, 60.0)
-            .toString()
-            .toString());
+        text: functions.doubletoInt(testDurationSliderValue, 60.0).toString());
     testPriceController = TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

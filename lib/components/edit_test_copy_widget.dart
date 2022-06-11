@@ -73,6 +73,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
           .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

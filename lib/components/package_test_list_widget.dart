@@ -395,7 +395,9 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                           FFAppState()
                                                               .categorypicked,
                                                           listViewCategoriesRecord
-                                                              .name) ??
+                                                              .name,
+                                                          FFAppState()
+                                                              .allCategories) ??
                                                   true)
                                                 Padding(
                                                   padding: EdgeInsetsDirectional

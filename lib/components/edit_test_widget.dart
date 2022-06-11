@@ -46,6 +46,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
       format: '###',
       locale: '',
     ));
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

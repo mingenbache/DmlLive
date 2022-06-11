@@ -907,12 +907,16 @@ bool isCategorySelected(String categoryLocalState) {
 bool isThisCategorySelected(
   String categoryLocalState,
   String categoryString,
+  bool allPackageCategories,
 ) {
   // return true if string variable is "all"
-  if (categoryLocalState.toLowerCase == categoryString.toLowerCase) {
-    return true;
-  } else
+  if (allPackageCategories) {
     return false;
+  } else if (categoryLocalState.toLowerCase == categoryString.toLowerCase) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 List<TestsRecord> filterTests(

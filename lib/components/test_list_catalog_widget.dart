@@ -498,8 +498,8 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                             (categoriesRecord) =>
                                                                 categoriesRecord.where(
                                                                     'ispackage_Category',
-                                                                    isNotEqualTo:
-                                                                        true),
+                                                                    isEqualTo:
+                                                                        false),
                                                         singleRecord: true,
                                                       ),
                                                       builder:
@@ -523,6 +523,11 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                         List<CategoriesRecord>
                                                             listViewCategoriesRecordList =
                                                             snapshot.data;
+                                                        // Return an empty Container when the document does not exist.
+                                                        if (snapshot
+                                                            .data.isEmpty) {
+                                                          return Container();
+                                                        }
                                                         final listViewCategoriesRecord =
                                                             listViewCategoriesRecordList
                                                                     .isNotEmpty
@@ -556,7 +561,8 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                   children: [
                                                                     if (functions.isThisCategorySelected(
                                                                             FFAppState().categorypicked,
-                                                                            testCategoriesItem) ??
+                                                                            testCategoriesItem,
+                                                                            FFAppState().allPackageCategories) ??
                                                                         true)
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -1074,7 +1080,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                           ),
                                                         ),
                                                       if (FFAppState()
-                                                              .allCategories ??
+                                                              .allPackageCategories ??
                                                           true)
                                                         Padding(
                                                           padding:
@@ -1219,7 +1225,8 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                   children: [
                                                                     if (functions.isThisCategorySelected(
                                                                             FFAppState().packagecategoryPicked,
-                                                                            packagecategoriesItem) ??
+                                                                            packagecategoriesItem,
+                                                                            FFAppState().allPackageCategories) ??
                                                                         true)
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(

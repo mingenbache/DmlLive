@@ -42,6 +42,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
     testDescriptionController = TextEditingController();
     textController1 = TextEditingController();
     testPriceController = TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
