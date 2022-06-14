@@ -610,9 +610,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                         onTap:
                                                                             () async {
                                                                           setState(() =>
-                                                                              FFAppState().packagecategoryPicked = testCategoriesItem);
+                                                                              FFAppState().categorypicked = testCategoriesItem);
                                                                           setState(() =>
-                                                                              FFAppState().allPackageCategories = false);
+                                                                              FFAppState().allCategories = false);
                                                                         },
                                                                         child:
                                                                             Container(
@@ -1029,12 +1029,12 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                             onTap: () async {
                                                               setState(() =>
                                                                   FFAppState()
-                                                                          .categorypicked =
-                                                                      'All');
+                                                                          .allPackageCategories =
+                                                                      true);
                                                               setState(() =>
                                                                   FFAppState()
-                                                                          .allCategories =
-                                                                      true);
+                                                                          .packagecategoryPicked =
+                                                                      'all');
                                                             },
                                                             child: Container(
                                                               width: 40,
