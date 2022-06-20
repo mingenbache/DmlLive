@@ -626,7 +626,7 @@ bool displayVerifiedTag(TestedTestsRecord testedTest) {
 
 String camelCase(String name) {
   // return string formatted in sentence case
-  bool startsWithUppercase = name[0] == name[0].toUpperCase();
+  /* bool startsWithUppercase = name[0] == name[0].toUpperCase();
   String string = (startsWithUppercase)
       ? name[0].toUpperCase() + name.substring(1).toLowerCase()
       : name.toLowerCase();
@@ -637,7 +637,49 @@ String camelCase(String name) {
       nameList.add(f[0].toUpperCase() + f.substring(1));
     }
   });
-  return nameList.join(" ");
+  return nameList.join(" "); */
+  if (name.isEmpty) {
+    return "";
+  } else {
+    bool startsWithUppercase = name[0] == name[0].toUpperCase();
+    String string = (startsWithUppercase)
+        ? name[0].toUpperCase() + name.substring(1).toLowerCase()
+        : name.toLowerCase();
+    List<String> splitName = string.split(" ");
+    List<String> nameList = List();
+    var nameIterator = splitName.iterator;
+
+    while (nameIterator.moveNext()) {
+      if (nameIterator.current.isNotEmpty) {
+        nameList.add(nameIterator.current[0].toUpperCase() +
+            nameIterator.current.substring(1));
+      }
+    }
+    return nameList.join(" ");
+  }
+}
+
+String camelCaseCopy(String name) {
+  // return string formatted in sentence case
+  if (name.isEmpty) {
+    return "";
+  } else {
+    bool startsWithUppercase = name[0] == name[0].toUpperCase();
+    String string = (startsWithUppercase)
+        ? name[0].toUpperCase() + name.substring(1).toLowerCase()
+        : name.toLowerCase();
+    List<String> splitName = string.split(" ");
+    List<String> nameList = List();
+    var nameIterator = splitName.iterator;
+
+    while (nameIterator.moveNext()) {
+      if (nameIterator.current.isNotEmpty) {
+        nameList.add(nameIterator.current[0].toUpperCase() +
+            nameIterator.current.substring(1));
+      }
+    }
+    return nameList.join(" ");
+  }
 }
 
 String upperCase(String name) {

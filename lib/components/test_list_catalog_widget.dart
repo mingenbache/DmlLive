@@ -1268,11 +1268,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                    if (functions.isThisCategorySelected(
-                                                                            FFAppState().packagecategoryPicked,
-                                                                            packagecategoriesItem,
-                                                                            FFAppState().allPackageCategories) ??
-                                                                        true)
+                                                                    if ((listViewCategoriesRecord
+                                                                            .name) ==
+                                                                        (packagecategoriesItem))
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
                                                                             10,
