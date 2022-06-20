@@ -1268,9 +1268,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                    if ((listViewCategoriesRecord
-                                                                            .name) ==
-                                                                        (packagecategoriesItem))
+                                                                    if ((functions.upperCase(
+                                                                            packagecategoriesItem)) ==
+                                                                        (functions
+                                                                            .upperCase(FFAppState().packagecategoryPicked)))
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
                                                                             10,
