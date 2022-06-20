@@ -26,7 +26,22 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
   TextEditingController textController1;
   TextEditingController textController2;
   final animationsMap = {
-    'containerOnActionTriggerAnimation': AnimationInfo(
+    'stackOnActionTriggerAnimation1': AnimationInfo(
+      curve: Curves.bounceOut,
+      trigger: AnimationTrigger.onActionTrigger,
+      duration: 600,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1.5,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'stackOnActionTriggerAnimation2': AnimationInfo(
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
@@ -620,10 +635,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                                   ),
                                                                             ),
                                                                           ),
-                                                                        ).animated([
-                                                                          animationsMap[
-                                                                              'containerOnActionTriggerAnimation']
-                                                                        ]),
+                                                                        ),
                                                                       ),
                                                                     Padding(
                                                                       padding: EdgeInsetsDirectional
@@ -671,7 +683,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       ),
                                                                     ),
                                                                   ],
-                                                                );
+                                                                ).animated([
+                                                                  animationsMap[
+                                                                      'stackOnActionTriggerAnimation1']
+                                                                ]);
                                                               },
                                                             );
                                                           },
@@ -747,13 +762,6 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                       mainAxisSize:
                                                           MainAxisSize.min,
                                                       children: [
-                                                        Text(
-                                                          FFAppState()
-                                                              .categorypicked,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1,
-                                                        ),
                                                         StreamBuilder<
                                                             UsersRecord>(
                                                           stream: UsersRecord
@@ -1334,7 +1342,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                         ),
                                                                       ),
                                                                   ],
-                                                                );
+                                                                ).animated([
+                                                                  animationsMap[
+                                                                      'stackOnActionTriggerAnimation2']
+                                                                ]);
                                                               },
                                                             );
                                                           },
@@ -1419,13 +1430,6 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        Text(
-                                                          FFAppState()
-                                                              .packagecategoryPicked,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1,
-                                                        ),
                                                         StreamBuilder<
                                                             UsersRecord>(
                                                           stream: UsersRecord
