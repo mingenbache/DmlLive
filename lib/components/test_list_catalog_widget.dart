@@ -3,6 +3,7 @@ import '../backend/backend.dart';
 import '../components/admin_catalog_test_act_widget.dart';
 import '../components/catalog_package_item_widget.dart';
 import '../components/catalog_test_item_widget.dart';
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -20,13 +21,37 @@ class TestListCatalogWidget extends StatefulWidget {
   _TestListCatalogWidgetState createState() => _TestListCatalogWidgetState();
 }
 
-class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
+class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
+    with TickerProviderStateMixin {
   TextEditingController textController1;
   TextEditingController textController2;
+  final animationsMap = {
+    'containerOnActionTriggerAnimation': AnimationInfo(
+      curve: Curves.bounceOut,
+      trigger: AnimationTrigger.onActionTrigger,
+      duration: 600,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1.5,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+  };
 
   @override
   void initState() {
     super.initState();
+    setupTriggerAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
+      this,
+    );
+
     textController1 = TextEditingController();
     textController2 = TextEditingController();
   }
@@ -559,11 +584,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                         testCategoriesIndex];
                                                                 return Stack(
                                                                   children: [
-                                                                    if (functions.isThisCategorySelected(
-                                                                            FFAppState().categorypicked,
-                                                                            testCategoriesItem,
-                                                                            FFAppState().allCategories) ??
-                                                                        true)
+                                                                    if ((functions.upperCase(
+                                                                            testCategoriesItem)) ==
+                                                                        (functions
+                                                                            .upperCase(FFAppState().categorypicked)))
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
                                                                             10,
@@ -596,7 +620,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                                   ),
                                                                             ),
                                                                           ),
-                                                                        ),
+                                                                        ).animated([
+                                                                          animationsMap[
+                                                                              'containerOnActionTriggerAnimation']
+                                                                        ]),
                                                                       ),
                                                                     Padding(
                                                                       padding: EdgeInsetsDirectional
