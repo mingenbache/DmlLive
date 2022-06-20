@@ -1223,45 +1223,6 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                         packagecategoriesIndex];
                                                                 return Stack(
                                                                   children: [
-                                                                    if (functions.isThisCategorySelected(
-                                                                            FFAppState().packagecategoryPicked,
-                                                                            packagecategoriesItem,
-                                                                            FFAppState().allPackageCategories) ??
-                                                                        true)
-                                                                      Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            10,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Container(
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color:
-                                                                                Colors.white,
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(10),
-                                                                          ),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                10,
-                                                                                5,
-                                                                                10,
-                                                                                5),
-                                                                            child:
-                                                                                Text(
-                                                                              packagecategoriesItem,
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
-                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                    fontSize: 16,
-                                                                                  ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
                                                                     Padding(
                                                                       padding: EdgeInsetsDirectional
                                                                           .fromSTEB(
@@ -1307,6 +1268,45 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                         ),
                                                                       ),
                                                                     ),
+                                                                    if (functions.isThisCategorySelected(
+                                                                            FFAppState().packagecategoryPicked,
+                                                                            packagecategoriesItem,
+                                                                            FFAppState().allPackageCategories) ??
+                                                                        true)
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            10,
+                                                                            0,
+                                                                            0,
+                                                                            0),
+                                                                        child:
+                                                                            Container(
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                Colors.white,
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(10),
+                                                                          ),
+                                                                          child:
+                                                                              Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                10,
+                                                                                5,
+                                                                                10,
+                                                                                5),
+                                                                            child:
+                                                                                Text(
+                                                                              packagecategoriesItem,
+                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    fontFamily: 'Roboto',
+                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    fontSize: 16,
+                                                                                  ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
                                                                   ],
                                                                 );
                                                               },
