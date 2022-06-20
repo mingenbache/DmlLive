@@ -562,7 +562,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget> {
                                                                     if (functions.isThisCategorySelected(
                                                                             FFAppState().categorypicked,
                                                                             testCategoriesItem,
-                                                                            FFAppState().allPackageCategories) ??
+                                                                            FFAppState().allCategories) ??
                                                                         true)
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
