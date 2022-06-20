@@ -56,96 +56,98 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 100,
-                    child: Stack(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          height: 100,
-                          constraints: BoxConstraints(
-                            maxWidth: 380,
-                            maxHeight: 130,
-                          ),
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).primaryColor,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      5, 0, 0, 0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Container(
-                                        decoration: BoxDecoration(),
-                                        child: AutoSizeText(
-                                          functions
-                                              .add1(widget.index)
-                                              .toString()
-                                              .maybeHandleOverflow(maxChars: 2),
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
-                                                fontSize: 16,
-                                              ),
-                                        ),
-                                      ),
-                                      Container(
-                                        decoration: BoxDecoration(),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  5, 0, 0, 0),
-                                          child: Text(
+                  InkWell(
+                    onTap: () async {
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        context: context,
+                        builder: (context) {
+                          return Padding(
+                            padding: MediaQuery.of(context).viewInsets,
+                            child: TestDetailsPopupWidget(
+                              test: containerTestsRecord,
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Container(
+                      height: 100,
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            height: 100,
+                            constraints: BoxConstraints(
+                              maxWidth: 380,
+                              maxHeight: 130,
+                            ),
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).primaryColor,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5, 0, 0, 0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(),
+                                          child: AutoSizeText(
                                             functions
-                                                .camelCase(
-                                                    containerTestsRecord.name)
+                                                .add1(widget.index)
+                                                .toString()
                                                 .maybeHandleOverflow(
-                                                    maxChars: 25),
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 18,
+                                                    maxChars: 2),
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .tertiaryColor,
+                                                  fontSize: 16,
+                                                ),
+                                          ),
+                                        ),
+                                        Container(
+                                          decoration: BoxDecoration(),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5, 0, 0, 0),
+                                            child: Text(
+                                              functions
+                                                  .camelCase(
+                                                      containerTestsRecord.name)
+                                                  .maybeHandleOverflow(
+                                                      maxChars: 25),
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 18,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0, 1),
-                          child: InkWell(
-                            onTap: () async {
-                              await showModalBottomSheet(
-                                isScrollControlled: true,
-                                backgroundColor: Colors.transparent,
-                                context: context,
-                                builder: (context) {
-                                  return Padding(
-                                    padding: MediaQuery.of(context).viewInsets,
-                                    child: TestDetailsPopupWidget(
-                                      test: containerTestsRecord,
-                                    ),
-                                  );
-                                },
-                              );
-                            },
+                          Align(
+                            alignment: AlignmentDirectional(0, 1),
                             child: Material(
                               color: Colors.transparent,
                               elevation: 2,
@@ -534,8 +536,8 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],
