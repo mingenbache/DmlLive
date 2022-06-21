@@ -411,7 +411,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                               'bookedTest': widget.bookedTest,
                                             },
                                           );
-                                          context.pop();
+                                          Navigator.pop(context);
                                         } else {
                                           return;
                                         }
