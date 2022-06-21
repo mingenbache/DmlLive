@@ -141,7 +141,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                         size: 30,
                                       ),
                                       onPressed: () async {
-                                        context.pop();
+                                        Navigator.pop(context);
                                       },
                                     ),
                                   ),

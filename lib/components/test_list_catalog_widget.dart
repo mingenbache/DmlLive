@@ -159,7 +159,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                     size: 30,
                                   ),
                                   onPressed: () async {
-                                    context.pop();
+                                    Navigator.pop(context);
                                     setState(() =>
                                         FFAppState().categorypicked = 'All');
                                     setState(() =>
