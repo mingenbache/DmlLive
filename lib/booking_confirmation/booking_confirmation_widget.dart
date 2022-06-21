@@ -560,7 +560,8 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                 children: [
                                                   Text(
                                                     functions.scheduleButtonString(
-                                                        datePicked,
+                                                        bookingConfirmationBookingsRecord
+                                                            .scheduledDate,
                                                         functions
                                                             .getNextWeekday()),
                                                     style: FlutterFlowTheme.of(
