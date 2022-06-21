@@ -412,8 +412,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                   if (functions.isThisCategorySelected(
                                                           FFAppState()
                                                               .categorypicked,
-                                                          packageCategoriesItem
-                                                              .name,
+                                                          packageCategoriesItem,
                                                           FFAppState()
                                                               .allCategories) ??
                                                       true)
