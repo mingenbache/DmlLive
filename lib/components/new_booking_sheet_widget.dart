@@ -93,6 +93,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
               width: MediaQuery.of(context).size.width * 0.9,
               constraints: BoxConstraints(
                 maxWidth: 340,
+                maxHeight: MediaQuery.of(context).size.height * 0.85,
               ),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -151,7 +152,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                     size: 30,
                                   ),
                                   onPressed: () async {
-                                    context.pop();
+                                    Navigator.pop(context);
                                   },
                                 ),
                               ),
@@ -160,7 +161,10 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                         ),
                       ),
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.35,
+                        height: MediaQuery.of(context).size.height * 0.5,
+                        constraints: BoxConstraints(
+                          maxHeight: 350,
+                        ),
                         decoration: BoxDecoration(),
                         child: PageView(
                           physics: const NeverScrollableScrollPhysics(),
@@ -645,6 +649,17 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelText: 'Phone Number',
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color:
+                                                            Color(0xFF586B06),
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
                                                   hintText:
                                                       'Enter your phone number here...',
                                                   hintStyle: FlutterFlowTheme
@@ -750,7 +765,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                             isInvoiced: false,
                             paidFull: false,
                             resultPublished: false,
-                            docNames: '',
+                            docNames: doctorNamesController.text,
                             doctorPhoneNumber: docphoneNumberController.text,
                             doctorEmail: docemailAddressController.text,
                           );
