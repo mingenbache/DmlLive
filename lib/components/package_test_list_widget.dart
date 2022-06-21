@@ -357,8 +357,9 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                     stream: queryCategoriesRecord(
                                       queryBuilder: (categoriesRecord) =>
                                           categoriesRecord.where(
-                                              'ispackage_Category',
-                                              isNotEqualTo: true),
+                                              'istest_Category',
+                                              isEqualTo: true),
+                                      singleRecord: true,
                                     ),
                                     builder: (context, snapshot) {
                                       // Customize what your widget looks like when it's loading.
@@ -379,47 +380,65 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                       List<CategoriesRecord>
                                           listViewCategoriesRecordList =
                                           snapshot.data;
-                                      return ListView.builder(
-                                        padding: EdgeInsets.zero,
-                                        scrollDirection: Axis.horizontal,
-                                        itemCount:
-                                            listViewCategoriesRecordList.length,
-                                        itemBuilder: (context, listViewIndex) {
-                                          final listViewCategoriesRecord =
-                                              listViewCategoriesRecordList[
-                                                  listViewIndex];
-                                          return Stack(
-                                            children: [
-                                              if (functions
-                                                      .isThisCategorySelected(
+                                      // Return an empty Container when the document does not exist.
+                                      if (snapshot.data.isEmpty) {
+                                        return Container();
+                                      }
+                                      final listViewCategoriesRecord =
+                                          listViewCategoriesRecordList
+                                                  .isNotEmpty
+                                              ? listViewCategoriesRecordList
+                                                  .first
+                                              : null;
+                                      return Builder(
+                                        builder: (context) {
+                                          final packageCategories =
+                                              listViewCategoriesRecord
+                                                      .categories
+                                                      .toList()
+                                                      ?.toList() ??
+                                                  [];
+                                          return ListView.builder(
+                                            padding: EdgeInsets.zero,
+                                            scrollDirection: Axis.horizontal,
+                                            itemCount: packageCategories.length,
+                                            itemBuilder: (context,
+                                                packageCategoriesIndex) {
+                                              final packageCategoriesItem =
+                                                  packageCategories[
+                                                      packageCategoriesIndex];
+                                              return Stack(
+                                                children: [
+                                                  if (functions.isThisCategorySelected(
                                                           FFAppState()
                                                               .categorypicked,
-                                                          listViewCategoriesRecord
+                                                          packageCategoriesItem
                                                               .name,
                                                           FFAppState()
                                                               .allCategories) ??
-                                                  true)
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(10, 0, 0, 0),
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                      color: Colors.white,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                    ),
-                                                    child: Padding(
+                                                      true)
+                                                    Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  10, 5, 10, 3),
-                                                      child: Text(
-                                                        listViewCategoriesRecord
-                                                            .name,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                                  10, 0, 0, 0),
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(10,
+                                                                      5, 10, 3),
+                                                          child: Text(
+                                                            packageCategoriesItem,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
@@ -429,65 +448,76 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                                       .secondaryColor,
                                                                   fontSize: 16,
                                                                 ),
+                                                          ),
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(10, 0, 0, 0),
-                                                child: InkWell(
-                                                  onTap: () async {
-                                                    setState(() => FFAppState()
-                                                            .categorypicked =
-                                                        listViewCategoriesRecord
-                                                            .name);
-                                                    setState(() => FFAppState()
-                                                        .allCategories = false);
-                                                  },
-                                                  child: Material(
-                                                    color: Colors.transparent,
-                                                    elevation: 2,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                    ),
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                10, 0, 0, 0),
+                                                    child: InkWell(
+                                                      onTap: () async {
+                                                        setState(() => FFAppState()
+                                                                .categorypicked =
+                                                            packageCategoriesItem
+                                                                .name);
+                                                        setState(() => FFAppState()
+                                                                .allCategories =
+                                                            false);
+                                                      },
+                                                      child: Material(
                                                         color:
-                                                            Color(0x4EEEEEEE),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(10, 5,
-                                                                    10, 3),
-                                                        child: Text(
-                                                          listViewCategoriesRecord
-                                                              .name,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryColor,
-                                                                fontSize: 16,
-                                                              ),
+                                                            Colors.transparent,
+                                                        elevation: 2,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                        ),
+                                                        child: Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Color(
+                                                                0x4EEEEEEE),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10,
+                                                                        5,
+                                                                        10,
+                                                                        3),
+                                                            child: Text(
+                                                              packageCategoriesItem,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText1
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryColor,
+                                                                    fontSize:
+                                                                        16,
+                                                                  ),
+                                                            ),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                              ),
-                                            ],
+                                                ],
+                                              );
+                                            },
                                           );
                                         },
                                       );
