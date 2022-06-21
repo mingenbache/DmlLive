@@ -536,6 +536,9 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                       .fromSTEB(20, 10, 24, 0),
                                               prefixIcon: Icon(
                                                 Icons.contact_page_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryColor,
                                               ),
                                             ),
                                             style: FlutterFlowTheme.of(context)
@@ -616,6 +619,9 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                               16, 24, 0, 24),
                                                   prefixIcon: Icon(
                                                     Icons.email_outlined,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryColor,
                                                   ),
                                                 ),
                                                 style:
@@ -701,6 +707,9 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                               16, 24, 0, 24),
                                                   prefixIcon: Icon(
                                                     Icons.phone_iphone,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryColor,
                                                   ),
                                                 ),
                                                 style:
