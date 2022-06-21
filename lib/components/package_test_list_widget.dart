@@ -460,8 +460,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                       onTap: () async {
                                                         setState(() => FFAppState()
                                                                 .categorypicked =
-                                                            packageCategoriesItem
-                                                                .name);
+                                                            packageCategoriesItem);
                                                         setState(() => FFAppState()
                                                                 .allCategories =
                                                             false);
