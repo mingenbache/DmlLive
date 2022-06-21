@@ -245,7 +245,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                       'Test Added.${widget.listSize.toString()} Tests in Total.',
                                       style: TextStyle(),
                                     ),
-                                    duration: Duration(milliseconds: 4000),
+                                    duration: Duration(milliseconds: 400),
                                     backgroundColor: Color(0x00000000),
                                   ),
                                 );

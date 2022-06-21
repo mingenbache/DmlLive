@@ -184,18 +184,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                       size: 30,
                                     ),
                                     onPressed: () async {
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.transparent,
-                                        context: context,
-                                        builder: (context) {
-                                          return Padding(
-                                            padding: MediaQuery.of(context)
-                                                .viewInsets,
-                                            child: TestListCatalogWidget(),
-                                          );
-                                        },
-                                      );
+                                      Navigator.pop(context);
                                     },
                                   ),
                                 ),

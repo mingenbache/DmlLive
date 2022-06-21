@@ -132,7 +132,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                     size: 30,
                                   ),
                                   onPressed: () async {
-                                    context.pop();
+                                    Navigator.pop(context);
                                     setState(() =>
                                         FFAppState().categorypicked = 'All');
                                   },
@@ -644,7 +644,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
-                        context.pop();
+                        Navigator.pop(context);
                       },
                       text: 'NEXT',
                       options: FFButtonOptions(
