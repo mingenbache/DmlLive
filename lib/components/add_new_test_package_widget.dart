@@ -1,7 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/package_test_list_widget.dart';
-import '../components/test_list_catalog_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -1711,18 +1710,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                       TestPackagesRecord.getDocumentFromData(
                                           testPackagesCreateData,
                                           testPackagesRecordReference);
-                                  await showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    backgroundColor: Colors.transparent,
-                                    context: context,
-                                    builder: (context) {
-                                      return Padding(
-                                        padding:
-                                            MediaQuery.of(context).viewInsets,
-                                        child: TestListCatalogWidget(),
-                                      );
-                                    },
-                                  );
+                                  Navigator.pop(context);
 
                                   setState(() {});
                                 },
