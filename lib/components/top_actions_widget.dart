@@ -76,7 +76,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                       alignment: AlignmentDirectional(0, 0),
                       child: InkWell(
                         onTap: () async {
-                          context.pop();
+                          Navigator.pop(context);
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.4,

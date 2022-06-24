@@ -708,7 +708,14 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                 context)
                                                             .viewInsets,
                                                         child:
-                                                            AddDoctorFormWidget(),
+                                                            AddDoctorFormWidget(
+                                                          docNames:
+                                                              bookingConfirmationBookingsRecord
+                                                                  .docNames,
+                                                          docEmail:
+                                                              bookingConfirmationBookingsRecord
+                                                                  .doctorEmail,
+                                                        ),
                                                       );
                                                     },
                                                   );

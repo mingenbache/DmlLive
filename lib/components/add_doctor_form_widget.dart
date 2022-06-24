@@ -13,10 +13,14 @@ import 'package:google_fonts/google_fonts.dart';
 class AddDoctorFormWidget extends StatefulWidget {
   const AddDoctorFormWidget({
     Key key,
-    this.testedTestRef,
+    this.docNames,
+    this.docEmail,
+    this.docPhone,
   }) : super(key: key);
 
-  final DocumentReference testedTestRef;
+  final String docNames;
+  final String docEmail;
+  final int docPhone;
 
   @override
   _AddDoctorFormWidgetState createState() => _AddDoctorFormWidgetState();
@@ -129,7 +133,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                                 size: 30,
                               ),
                               onPressed: () async {
-                                context.pop();
+                                Navigator.pop(context);
                               },
                             ),
                           ),
