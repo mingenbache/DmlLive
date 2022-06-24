@@ -67,7 +67,6 @@ class _NotificationListItemWidgetState
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
                     height: 30,
                     constraints: BoxConstraints(
                       maxWidth: 330,
