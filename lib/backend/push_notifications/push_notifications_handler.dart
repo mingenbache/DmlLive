@@ -143,7 +143,7 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
             data, 'bookedTest', BookedTestsRecord.serializer),
       ),
   'BookingReport': (data) async => BookingReportWidget(
-        bookingRef: getParameter(data, 'bookingRef'),
+        reportRef: getParameter(data, 'reportRef'),
       ),
 };
 

@@ -1170,7 +1170,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                           final notificationsCreateData = {
                                             ...createNotificationsRecordData(
                                               message:
-                                                  'Your Booking is Confirmed.',
+                                                  'Your Booking for ${dateTimeFormat('MMMEd', confirmTestsSheetBookingsRecord.scheduledDate)} is confirmed.',
                                               createdDate: getCurrentTimestamp,
                                               isSeen: false,
                                             ),

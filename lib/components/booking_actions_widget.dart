@@ -184,8 +184,8 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                             context.pushNamed(
                               'BookingReport',
                               queryParams: {
-                                'bookingRef': serializeParam(
-                                    widget.bookingRef.reference,
+                                'reportRef': serializeParam(
+                                    widget.bookingRef.reportRef,
                                     ParamType.DocumentReference),
                               }.withoutNulls,
                             );

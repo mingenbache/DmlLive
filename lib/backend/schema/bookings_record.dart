@@ -161,6 +161,9 @@ abstract class BookingsRecord
   BuiltList<DocumentReference> get testPackTests;
 
   @nullable
+  DocumentReference get reportRef;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -261,6 +264,7 @@ Map<String, dynamic> createBookingsRecordData({
   String doctorEmail,
   DocumentReference docRef,
   bool hasTestPackages,
+  DocumentReference reportRef,
 }) =>
     serializers.toFirestore(
         BookingsRecord.serializer,
@@ -308,4 +312,5 @@ Map<String, dynamic> createBookingsRecordData({
           ..verifiedTests = null
           ..hasTestPackages = hasTestPackages
           ..testPackages = null
-          ..testPackTests = null));
+          ..testPackTests = null
+          ..reportRef = reportRef));

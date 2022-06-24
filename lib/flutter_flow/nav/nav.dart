@@ -298,8 +298,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'BookingReport',
               path: 'bookingReport',
               builder: (context, params) => BookingReportWidget(
-                bookingRef: params.getParam(
-                    'bookingRef', ParamType.DocumentReference, 'bookings'),
+                reportRef: params.getParam(
+                    'reportRef', ParamType.DocumentReference, 'reports'),
               ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),

@@ -61,6 +61,9 @@ abstract class ReportsRecord
   int get patientAge;
 
   @nullable
+  BuiltList<DocumentReference> get testpackageList;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -75,7 +78,8 @@ abstract class ReportsRecord
     ..labRefNum = ''
     ..pathologist = ''
     ..dMLEmail = ''
-    ..patientAge = 0;
+    ..patientAge = 0
+    ..testpackageList = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('reports');
@@ -131,4 +135,5 @@ Map<String, dynamic> createReportsRecordData({
           ..labRefNum = labRefNum
           ..pathologist = pathologist
           ..dMLEmail = dMLEmail
-          ..patientAge = patientAge));
+          ..patientAge = patientAge
+          ..testpackageList = null));

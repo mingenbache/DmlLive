@@ -1954,7 +1954,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                               ...createNotificationsRecordData(
                                                 userRole: 'front',
                                                 message:
-                                                    'A new booking has been made.',
+                                                    '${newBookingBookingsRecord.firstname} has made a new Booking for ${dateTimeFormat('MMMEd', newBookingBookingsRecord.scheduledDate)}',
                                                 createdDate:
                                                     getCurrentTimestamp,
                                                 isBooking: true,
