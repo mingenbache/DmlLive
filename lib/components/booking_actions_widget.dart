@@ -28,6 +28,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
       duration: 1020,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         offset: Offset(0, 0),
         scale: 0.9,

@@ -33,6 +33,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 1300,
       delay: 280,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(-92, 0),
@@ -49,6 +50,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         offset: Offset(63, 0),
         scale: 1,
@@ -64,6 +66,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
       duration: 950,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         offset: Offset(-58, 0),
         scale: 1,
@@ -79,6 +82,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, -73),
@@ -95,6 +99,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(-96, 0),

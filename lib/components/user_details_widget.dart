@@ -29,6 +29,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
       curve: Curves.elasticOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 1080,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         offset: Offset(0, -87),
         scale: 1,

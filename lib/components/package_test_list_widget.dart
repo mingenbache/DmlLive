@@ -26,6 +26,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
     'buttonOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         opacity: 0,

@@ -24,6 +24,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 1990,
       delay: 10,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         opacity: 0,

@@ -47,6 +47,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         offset: Offset(0, 82),
         scale: 1,

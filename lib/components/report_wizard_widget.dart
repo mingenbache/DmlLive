@@ -52,6 +52,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 1300,
       delay: 300,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(100, 0),
@@ -68,6 +69,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
       curve: Curves.linear,
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         offset: Offset(0, 0),
         scale: 1,
@@ -83,6 +85,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 900,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 92),

@@ -71,24 +71,6 @@
       ]
     },
     {
-      "collectionGroup": "tested_tests",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "resultPosted",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "is_verified",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "is_flagged",
-          "order": "ASCENDING"
-        }
-      ]
-    },
-    {
       "collectionGroup": "bookings",
       "queryScope": "COLLECTION",
       "fields": [

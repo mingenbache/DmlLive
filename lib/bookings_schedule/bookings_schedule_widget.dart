@@ -30,6 +30,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(-95, 0),

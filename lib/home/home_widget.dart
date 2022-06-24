@@ -29,6 +29,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 1730,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         opacity: 0,
@@ -300,55 +301,52 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 CrossAxisAlignment
                                                                     .end,
                                                             children: [
-                                                              Badge(
-                                                                badgeContent:
-                                                                    Text(
-                                                                  rowBookingsRecord
-                                                                      .testsIncluded
-                                                                      .toList()
-                                                                      .length
-                                                                      .toString(),
-                                                                  style: FlutterFlowTheme.of(
+                                                              if (homeUsersRecord
+                                                                      .hasCurrentBooking ??
+                                                                  true)
+                                                                Badge(
+                                                                  badgeContent:
+                                                                      Text(
+                                                                    rowBookingsRecord
+                                                                        .testsIncluded
+                                                                        .toList()
+                                                                        .length
+                                                                        .toString(),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyText1
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Roboto',
+                                                                          color:
+                                                                              Colors.white,
+                                                                        ),
+                                                                  ),
+                                                                  showBadge:
+                                                                      (rowBookingsRecord
+                                                                              .totalTests) >
+                                                                          0,
+                                                                  shape:
+                                                                      BadgeShape
+                                                                          .circle,
+                                                                  badgeColor: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Roboto',
-                                                                        color: Colors
-                                                                            .white,
-                                                                      ),
-                                                                ),
-                                                                showBadge:
-                                                                    (rowBookingsRecord
-                                                                            .totalTests) >
-                                                                        1,
-                                                                shape:
-                                                                    BadgeShape
-                                                                        .circle,
-                                                                badgeColor: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                                elevation: 4,
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            4,
-                                                                            4,
-                                                                            4,
-                                                                            4),
-                                                                position:
-                                                                    BadgePosition
-                                                                        .topStart(),
-                                                                animationType:
-                                                                    BadgeAnimationType
-                                                                        .scale,
-                                                                toAnimate: true,
-                                                                child:
-                                                                    Visibility(
-                                                                  visible:
-                                                                      homeUsersRecord
-                                                                              .hasCurrentBooking ??
-                                                                          true,
+                                                                      .primaryColor,
+                                                                  elevation: 4,
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          4,
+                                                                          4,
+                                                                          4,
+                                                                          4),
+                                                                  position:
+                                                                      BadgePosition
+                                                                          .topStart(),
+                                                                  animationType:
+                                                                      BadgeAnimationType
+                                                                          .scale,
+                                                                  toAnimate:
+                                                                      true,
                                                                   child:
                                                                       FlutterFlowIconButton(
                                                                     borderColor:
@@ -384,7 +382,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                     },
                                                                   ),
                                                                 ),
-                                                              ),
                                                               FlutterFlowIconButton(
                                                                 borderColor: Colors
                                                                     .transparent,

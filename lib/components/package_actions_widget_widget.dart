@@ -33,6 +33,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
     'buttonOnActionTriggerAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         opacity: 0,
       ),
@@ -43,6 +44,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
     'buttonOnActionTriggerAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         opacity: 0,
       ),

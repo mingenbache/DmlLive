@@ -40,6 +40,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 170,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 80),
@@ -54,6 +55,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 200,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 100),

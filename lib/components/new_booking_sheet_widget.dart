@@ -31,6 +31,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 230,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 120),
@@ -45,6 +46,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
       curve: Curves.linear,
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 71),

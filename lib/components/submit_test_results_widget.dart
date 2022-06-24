@@ -43,6 +43,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 200,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 100),
@@ -57,6 +58,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 230,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 120),
@@ -71,6 +73,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 230,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 120),

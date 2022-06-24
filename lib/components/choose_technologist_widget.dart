@@ -43,6 +43,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 200,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 100),

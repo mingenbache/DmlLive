@@ -4,6 +4,7 @@ import '../flutter_flow/flutter_flow_choice_chips.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -1231,9 +1232,13 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                           : [
                                                                               labReportBookingsRecord.sex
                                                                             ],
-                                                                  options: [
-                                                                    ChipData('')
-                                                                  ],
+                                                                  options: (functions
+                                                                              .returnSexOptions() ??
+                                                                          [])
+                                                                      .map((label) =>
+                                                                          ChipData(
+                                                                              label))
+                                                                      .toList(),
                                                                   onChanged: (val) =>
                                                                       setState(() =>
                                                                           choiceChipsValue =

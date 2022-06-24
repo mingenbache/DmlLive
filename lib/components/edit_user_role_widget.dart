@@ -32,6 +32,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 200,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 100),

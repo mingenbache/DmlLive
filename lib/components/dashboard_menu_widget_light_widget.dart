@@ -21,6 +21,7 @@ class _DashboardMenuWidgetLightWidgetState
     'containerOnActionTriggerAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 500,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 0),
@@ -36,6 +37,7 @@ class _DashboardMenuWidgetLightWidgetState
     'containerOnActionTriggerAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 500,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 0),
@@ -51,6 +53,7 @@ class _DashboardMenuWidgetLightWidgetState
     'containerOnActionTriggerAnimation3': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 500,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 0),

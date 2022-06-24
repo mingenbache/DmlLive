@@ -40,6 +40,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
     'buttonOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         opacity: 0,
@@ -1319,10 +1320,6 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                           if (index !=
                                                                               null) {
                                                                             items.replaceRange(index,
-                                                                                index + 1, [
-                                                                              item
-                                                                            ]);
-                                                                            _pagingController.itemList.replaceRange(index,
                                                                                 index + 1, [
                                                                               item
                                                                             ]);

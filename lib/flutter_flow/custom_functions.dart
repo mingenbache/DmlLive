@@ -1485,3 +1485,17 @@ List<double> returnStats(
   resultList.add(totall); */
   return results;
 }
+
+List<String> returnSexOptions() {
+  // Add your function code here!
+  var string = ['Male', 'Female'];
+  return string;
+}
+
+bool checkBookingTests(BookingsRecord booking) {
+  if (booking.testsIncluded.length > 1) {
+    return true;
+  } else {
+    return false;
+  }
+}

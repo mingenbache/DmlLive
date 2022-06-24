@@ -36,6 +36,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(-69, 0),
@@ -52,6 +53,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         offset: Offset(63, 0),
         scale: 1,
@@ -67,6 +69,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         offset: Offset(-58, 0),
         scale: 1,

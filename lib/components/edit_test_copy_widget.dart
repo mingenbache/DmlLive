@@ -51,6 +51,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(-38, 0),

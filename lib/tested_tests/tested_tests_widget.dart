@@ -104,11 +104,11 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                           queryBuilder: (testedTestsRecord) =>
                                               testedTestsRecord
                                                   .where('resultPosted',
-                                                      isNotEqualTo: false)
+                                                      isEqualTo: true)
                                                   .where('is_verified',
-                                                      isNotEqualTo: true)
+                                                      isEqualTo: false)
                                                   .where('is_flagged',
-                                                      isNotEqualTo: true),
+                                                      isEqualTo: false),
                                         ),
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.

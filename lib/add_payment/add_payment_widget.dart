@@ -38,6 +38,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
     'textFieldOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 40),
@@ -52,6 +53,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 170,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 80),
@@ -66,6 +68,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 200,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 100),
@@ -80,6 +83,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 230,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 120),

@@ -28,6 +28,7 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 230,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 120),

@@ -46,6 +46,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 1190,
       delay: 520,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 0),

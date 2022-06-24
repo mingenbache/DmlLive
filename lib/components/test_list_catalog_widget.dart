@@ -30,6 +30,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         offset: Offset(0, 0),
         scale: 1.5,
@@ -45,6 +46,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         offset: Offset(0, 0),
         scale: 1.5,

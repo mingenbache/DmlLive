@@ -48,6 +48,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
       curve: Curves.elasticOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 1220,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, -97),
@@ -63,6 +64,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
     'buttonOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 1100,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         opacity: 0,
@@ -890,16 +892,13 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                       containerUsersRecord
                                                                           .sex
                                                                     ],
-                                                          options: [
-                                                            ChipData(
-                                                                'Female',
-                                                                FontAwesomeIcons
-                                                                    .female),
-                                                            ChipData(
-                                                                'Male',
-                                                                FontAwesomeIcons
-                                                                    .male)
-                                                          ],
+                                                          options: (functions
+                                                                      .returnSexOptions() ??
+                                                                  [])
+                                                              .map((label) =>
+                                                                  ChipData(
+                                                                      label))
+                                                              .toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
                                                                   choiceChipsValue =
@@ -1344,8 +1343,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                       child: TextFormField(
                                         controller: refDoctorController ??=
                                             TextEditingController(
-                                          text: newBookingBookingsRecord
-                                              .docNameAddress,
+                                          text:
+                                              '${newBookingBookingsRecord.docNames}',
                                         ),
                                         obscureText: false,
                                         decoration: InputDecoration(

@@ -32,6 +32,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
     'buttonOnActionTriggerAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         opacity: 0,
       ),
@@ -42,6 +43,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
     'buttonOnActionTriggerAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         opacity: 0,
       ),
