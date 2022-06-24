@@ -13,7 +13,6 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class TestListBookingSheetWidget extends StatefulWidget {
   const TestListBookingSheetWidget({
@@ -30,12 +29,8 @@ class TestListBookingSheetWidget extends StatefulWidget {
 
 class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
     with TickerProviderStateMixin {
-  PagingController<DocumentSnapshot, CategoriesRecord> _pagingController;
-  Query _pagingQuery;
-  List<StreamSubscription> _streamSubscriptions = [];
-
-  TextEditingController textController2;
   TextEditingController textController1;
+  TextEditingController textController2;
   final animationsMap = {
     'buttonOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
@@ -62,12 +57,6 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
 
     textController1 = TextEditingController();
     textController2 = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _streamSubscriptions.forEach((s) => s?.cancel());
-    super.dispose();
   }
 
   @override
@@ -565,165 +554,168 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                               ),
                                                           ],
                                                         ),
-                                                        Container(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.83,
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height *
-                                                              0.05,
-                                                          constraints:
-                                                              BoxConstraints(
-                                                            maxHeight: 60,
+                                                        StreamBuilder<
+                                                            List<
+                                                                CategoriesRecord>>(
+                                                          stream:
+                                                              queryCategoriesRecord(
+                                                            queryBuilder: (categoriesRecord) =>
+                                                                categoriesRecord.where(
+                                                                    'istest_Category',
+                                                                    isEqualTo:
+                                                                        true),
+                                                            singleRecord: true,
                                                           ),
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: Color(
-                                                                0x00FFFFFF),
-                                                          ),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10,
-                                                                        0,
-                                                                        0,
-                                                                        0),
-                                                            child: FutureBuilder<
-                                                                List<
-                                                                    CategoriesRecord>>(
-                                                              future:
-                                                                  queryCategoriesRecordOnce(
-                                                                queryBuilder: (categoriesRecord) =>
-                                                                    categoriesRecord.where(
-                                                                        'ispackage_Category',
-                                                                        isNotEqualTo:
-                                                                            true),
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            // Customize what your widget looks like when it's loading.
+                                                            if (!snapshot
+                                                                .hasData) {
+                                                              return Center(
+                                                                child: SizedBox(
+                                                                  width: 50,
+                                                                  height: 50,
+                                                                  child:
+                                                                      SpinKitRipple(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryColor,
+                                                                    size: 50,
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            }
+                                                            List<CategoriesRecord>
+                                                                containerCategoriesRecordList =
+                                                                snapshot.data;
+                                                            // Return an empty Container when the document does not exist.
+                                                            if (snapshot
+                                                                .data.isEmpty) {
+                                                              return Container();
+                                                            }
+                                                            final containerCategoriesRecord =
+                                                                containerCategoriesRecordList
+                                                                        .isNotEmpty
+                                                                    ? containerCategoriesRecordList
+                                                                        .first
+                                                                    : null;
+                                                            return Container(
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.83,
+                                                              height: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .height *
+                                                                  0.05,
+                                                              constraints:
+                                                                  BoxConstraints(
+                                                                maxHeight: 60,
                                                               ),
-                                                              builder: (context,
-                                                                  snapshot) {
-                                                                // Customize what your widget looks like when it's loading.
-                                                                if (!snapshot
-                                                                    .hasData) {
-                                                                  return Center(
-                                                                    child:
-                                                                        SizedBox(
-                                                                      width: 50,
-                                                                      height:
-                                                                          50,
-                                                                      child:
-                                                                          SpinKitRipple(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryColor,
-                                                                        size:
-                                                                            50,
-                                                                      ),
-                                                                    ),
-                                                                  );
-                                                                }
-                                                                List<CategoriesRecord>
-                                                                    listViewCategoriesRecordList =
-                                                                    snapshot
-                                                                        .data;
-                                                                return ListView
-                                                                    .builder(
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                  scrollDirection:
-                                                                      Axis.horizontal,
-                                                                  itemCount:
-                                                                      listViewCategoriesRecordList
-                                                                          .length,
-                                                                  itemBuilder:
-                                                                      (context,
-                                                                          listViewIndex) {
-                                                                    final listViewCategoriesRecord =
-                                                                        listViewCategoriesRecordList[
-                                                                            listViewIndex];
-                                                                    return Stack(
-                                                                      children: [
-                                                                        if (functions.isThisCategorySelected(
-                                                                                FFAppState().categorypicked,
-                                                                                FFAppState().categorypicked,
-                                                                                FFAppState().allCategories) ??
-                                                                            true)
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                10,
-                                                                                0,
-                                                                                0,
-                                                                                0),
-                                                                            child:
-                                                                                Container(
-                                                                              decoration: BoxDecoration(
-                                                                                color: Colors.white,
-                                                                                borderRadius: BorderRadius.circular(10),
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Color(
+                                                                    0x00FFFFFF),
+                                                              ),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10,
+                                                                            0,
+                                                                            0,
+                                                                            0),
+                                                                child: Builder(
+                                                                  builder:
+                                                                      (context) {
+                                                                    final testCategories = containerCategoriesRecord
+                                                                            .categories
+                                                                            .toList()
+                                                                            ?.toList() ??
+                                                                        [];
+                                                                    return ListView
+                                                                        .builder(
+                                                                      padding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      scrollDirection:
+                                                                          Axis.horizontal,
+                                                                      itemCount:
+                                                                          testCategories
+                                                                              .length,
+                                                                      itemBuilder:
+                                                                          (context,
+                                                                              testCategoriesIndex) {
+                                                                        final testCategoriesItem =
+                                                                            testCategories[testCategoriesIndex];
+                                                                        return Stack(
+                                                                          children: [
+                                                                            if ((FFAppState().categorypicked) ==
+                                                                                (testCategoriesItem))
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                                                                child: Container(
+                                                                                  decoration: BoxDecoration(
+                                                                                    color: Colors.white,
+                                                                                    borderRadius: BorderRadius.circular(10),
+                                                                                  ),
+                                                                                  child: Padding(
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 3),
+                                                                                    child: Text(
+                                                                                      testCategoriesItem,
+                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                            fontFamily: 'Roboto',
+                                                                                            color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                            fontSize: 16,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
                                                                               ),
-                                                                              child: Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 3),
-                                                                                child: Text(
-                                                                                  listViewCategoriesRecord.name,
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Roboto',
-                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                        fontSize: 16,
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                                                              child: InkWell(
+                                                                                onTap: () async {
+                                                                                  setState(() => FFAppState().categorypicked = testCategoriesItem);
+                                                                                  setState(() => FFAppState().allCategories = false);
+                                                                                },
+                                                                                child: Material(
+                                                                                  color: Colors.transparent,
+                                                                                  elevation: 2,
+                                                                                  shape: RoundedRectangleBorder(
+                                                                                    borderRadius: BorderRadius.circular(10),
+                                                                                  ),
+                                                                                  child: Container(
+                                                                                    decoration: BoxDecoration(
+                                                                                      color: Color(0x4EEEEEEE),
+                                                                                      borderRadius: BorderRadius.circular(10),
+                                                                                    ),
+                                                                                    child: Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 3),
+                                                                                      child: Text(
+                                                                                        testCategoriesItem,
+                                                                                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                              fontFamily: 'Roboto',
+                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                              fontSize: 16,
+                                                                                            ),
                                                                                       ),
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              10,
-                                                                              0,
-                                                                              0,
-                                                                              0),
-                                                                          child:
-                                                                              InkWell(
-                                                                            onTap:
-                                                                                () async {
-                                                                              setState(() => FFAppState().categorypicked = listViewCategoriesRecord.name);
-                                                                              setState(() => FFAppState().allCategories = false);
-                                                                            },
-                                                                            child:
-                                                                                Material(
-                                                                              color: Colors.transparent,
-                                                                              elevation: 2,
-                                                                              shape: RoundedRectangleBorder(
-                                                                                borderRadius: BorderRadius.circular(10),
-                                                                              ),
-                                                                              child: Container(
-                                                                                decoration: BoxDecoration(
-                                                                                  color: Color(0x4EEEEEEE),
-                                                                                  borderRadius: BorderRadius.circular(10),
-                                                                                ),
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 3),
-                                                                                  child: Text(
-                                                                                    listViewCategoriesRecord.name,
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Roboto',
-                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                          fontSize: 16,
-                                                                                        ),
+                                                                                    ),
                                                                                   ),
                                                                                 ),
                                                                               ),
                                                                             ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
+                                                                          ],
+                                                                        );
+                                                                      },
                                                                     );
                                                                   },
-                                                                );
-                                                              },
-                                                            ),
-                                                          ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
                                                         ),
                                                       ],
                                                     ),
@@ -1209,249 +1201,165 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                 ),
                                                             ],
                                                           ),
-                                                          Container(
-                                                            width: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width *
-                                                                0.83,
-                                                            height: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .height *
-                                                                0.05,
-                                                            constraints:
-                                                                BoxConstraints(
-                                                              maxHeight: 60,
+                                                          StreamBuilder<
+                                                              List<
+                                                                  CategoriesRecord>>(
+                                                            stream:
+                                                                queryCategoriesRecord(
+                                                              queryBuilder: (categoriesRecord) =>
+                                                                  categoriesRecord.where(
+                                                                      'ispackage_Category',
+                                                                      isEqualTo:
+                                                                          true),
+                                                              singleRecord:
+                                                                  true,
                                                             ),
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color(
-                                                                  0x00FFFFFF),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
+                                                            builder: (context,
+                                                                snapshot) {
+                                                              // Customize what your widget looks like when it's loading.
+                                                              if (!snapshot
+                                                                  .hasData) {
+                                                                return Center(
+                                                                  child:
+                                                                      SizedBox(
+                                                                    width: 50,
+                                                                    height: 50,
+                                                                    child:
+                                                                        SpinKitRipple(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryColor,
+                                                                      size: 50,
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              }
+                                                              List<CategoriesRecord>
+                                                                  containerCategoriesRecordList =
+                                                                  snapshot.data;
+                                                              // Return an empty Container when the document does not exist.
+                                                              if (snapshot.data
+                                                                  .isEmpty) {
+                                                                return Container();
+                                                              }
+                                                              final containerCategoriesRecord =
+                                                                  containerCategoriesRecordList
+                                                                          .isNotEmpty
+                                                                      ? containerCategoriesRecordList
+                                                                          .first
+                                                                      : null;
+                                                              return Container(
+                                                                width: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .width *
+                                                                    0.83,
+                                                                height: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height *
+                                                                    0.05,
+                                                                constraints:
+                                                                    BoxConstraints(
+                                                                  maxHeight: 60,
+                                                                ),
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: Color(
+                                                                      0x00FFFFFF),
+                                                                ),
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10,
                                                                           0,
                                                                           0,
                                                                           0),
-                                                              child: PagedListView<
-                                                                  DocumentSnapshot<
-                                                                      Object>,
-                                                                  CategoriesRecord>(
-                                                                pagingController:
-                                                                    () {
-                                                                  final Query<Object> Function(
-                                                                          Query<
-                                                                              Object>)
-                                                                      queryBuilder =
-                                                                      (categoriesRecord) => categoriesRecord.where(
-                                                                          'ispackage_Category',
-                                                                          isEqualTo:
-                                                                              true);
-                                                                  if (_pagingController !=
-                                                                      null) {
-                                                                    final query =
-                                                                        queryBuilder(
-                                                                            CategoriesRecord.collection);
-                                                                    if (query !=
-                                                                        _pagingQuery) {
-                                                                      // The query has changed
-                                                                      _pagingQuery =
-                                                                          query;
-                                                                      _streamSubscriptions.forEach(
-                                                                          (s) =>
-                                                                              s?.cancel());
-                                                                      _streamSubscriptions
-                                                                          .clear();
-                                                                      _pagingController
-                                                                          .refresh();
-                                                                    }
-                                                                    return _pagingController;
-                                                                  }
-
-                                                                  _pagingController =
-                                                                      PagingController(
-                                                                          firstPageKey:
-                                                                              null);
-                                                                  _pagingQuery =
-                                                                      queryBuilder(
-                                                                          CategoriesRecord
-                                                                              .collection);
-                                                                  _pagingController
-                                                                      .addPageRequestListener(
-                                                                          (nextPageMarker) {
-                                                                    queryCategoriesRecordPage(
-                                                                      queryBuilder: (categoriesRecord) => categoriesRecord.where(
-                                                                          'ispackage_Category',
-                                                                          isEqualTo:
-                                                                              true),
-                                                                      nextPageMarker:
-                                                                          nextPageMarker,
-                                                                      pageSize:
-                                                                          15,
-                                                                      isStream:
-                                                                          true,
-                                                                    ).then(
-                                                                        (page) {
-                                                                      _pagingController
-                                                                          .appendPage(
-                                                                        page.data,
-                                                                        page.nextPageMarker,
-                                                                      );
-                                                                      final streamSubscription = page
-                                                                          .dataStream
-                                                                          ?.listen(
-                                                                              (data) {
-                                                                        final itemIndexes = _pagingController
-                                                                            .itemList
-                                                                            .asMap()
-                                                                            .map((k, v) =>
-                                                                                MapEntry(v.reference.id, k));
-                                                                        data.forEach(
-                                                                            (item) {
-                                                                          final index = itemIndexes[item
-                                                                              .reference
-                                                                              .id];
-                                                                          final items =
-                                                                              _pagingController.itemList;
-                                                                          if (index !=
-                                                                              null) {
-                                                                            items.replaceRange(index,
-                                                                                index + 1, [
-                                                                              item
-                                                                            ]);
-                                                                            _pagingController.itemList =
-                                                                                {
-                                                                              for (var item in items)
-                                                                                item.reference: item
-                                                                            }.values.toList();
-                                                                          }
-                                                                        });
-                                                                        setState(
-                                                                            () {});
-                                                                      });
-                                                                      _streamSubscriptions
-                                                                          .add(
-                                                                              streamSubscription);
-                                                                    });
-                                                                  });
-                                                                  return _pagingController;
-                                                                }(),
-                                                                padding:
-                                                                    EdgeInsets
-                                                                        .zero,
-                                                                scrollDirection:
-                                                                    Axis.horizontal,
-                                                                builderDelegate:
-                                                                    PagedChildBuilderDelegate<
-                                                                        CategoriesRecord>(
-                                                                  // Customize what your widget looks like when it's loading the first page.
-                                                                  firstPageProgressIndicatorBuilder:
-                                                                      (_) =>
-                                                                          Center(
-                                                                    child:
-                                                                        SizedBox(
-                                                                      width: 50,
-                                                                      height:
-                                                                          50,
-                                                                      child:
-                                                                          SpinKitRipple(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryColor,
-                                                                        size:
-                                                                            50,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-
-                                                                  itemBuilder:
-                                                                      (context,
-                                                                          _,
-                                                                          listViewIndex) {
-                                                                    final listViewCategoriesRecord =
-                                                                        _pagingController
-                                                                            .itemList[listViewIndex];
-                                                                    return Stack(
-                                                                      children: [
-                                                                        if (functions.isThisCategorySelected(
-                                                                                FFAppState().packagecategoryPicked,
-                                                                                listViewCategoriesRecord.name,
-                                                                                FFAppState().allPackageCategories) ??
-                                                                            true)
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                10,
-                                                                                0,
-                                                                                0,
-                                                                                0),
-                                                                            child:
-                                                                                Container(
-                                                                              decoration: BoxDecoration(
-                                                                                color: Colors.white,
-                                                                                borderRadius: BorderRadius.circular(10),
-                                                                              ),
-                                                                              child: Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 3),
-                                                                                child: Text(
-                                                                                  listViewCategoriesRecord.name,
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Roboto',
-                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                        fontSize: 16,
+                                                                  child:
+                                                                      Builder(
+                                                                    builder:
+                                                                        (context) {
+                                                                      final packageCategories =
+                                                                          containerCategoriesRecord.categories.toList()?.toList() ??
+                                                                              [];
+                                                                      return ListView
+                                                                          .builder(
+                                                                        padding:
+                                                                            EdgeInsets.zero,
+                                                                        scrollDirection:
+                                                                            Axis.horizontal,
+                                                                        itemCount:
+                                                                            packageCategories.length,
+                                                                        itemBuilder:
+                                                                            (context,
+                                                                                packageCategoriesIndex) {
+                                                                          final packageCategoriesItem =
+                                                                              packageCategories[packageCategoriesIndex];
+                                                                          return Stack(
+                                                                            children: [
+                                                                              if ((FFAppState().categorypicked) == (packageCategoriesItem))
+                                                                                Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                                                                  child: Container(
+                                                                                    decoration: BoxDecoration(
+                                                                                      color: Colors.white,
+                                                                                      borderRadius: BorderRadius.circular(10),
+                                                                                    ),
+                                                                                    child: Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 3),
+                                                                                      child: Text(
+                                                                                        packageCategoriesItem,
+                                                                                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                              fontFamily: 'Roboto',
+                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                              fontSize: 16,
+                                                                                            ),
                                                                                       ),
+                                                                                    ),
+                                                                                  ),
                                                                                 ),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              10,
-                                                                              0,
-                                                                              0,
-                                                                              0),
-                                                                          child:
-                                                                              InkWell(
-                                                                            onTap:
-                                                                                () async {
-                                                                              setState(() => FFAppState().packagecategoryPicked = listViewCategoriesRecord.name);
-                                                                              setState(() => FFAppState().allPackageCategories = false);
-                                                                            },
-                                                                            child:
-                                                                                Material(
-                                                                              color: Colors.transparent,
-                                                                              elevation: 2,
-                                                                              shape: RoundedRectangleBorder(
-                                                                                borderRadius: BorderRadius.circular(10),
-                                                                              ),
-                                                                              child: Container(
-                                                                                decoration: BoxDecoration(
-                                                                                  color: Color(0x4EEEEEEE),
-                                                                                  borderRadius: BorderRadius.circular(10),
-                                                                                ),
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 3),
-                                                                                  child: Text(
-                                                                                    listViewCategoriesRecord.name,
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Roboto',
-                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                          fontSize: 16,
+                                                                              Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                                                                child: InkWell(
+                                                                                  onTap: () async {
+                                                                                    setState(() => FFAppState().packagecategoryPicked = packageCategoriesItem);
+                                                                                    setState(() => FFAppState().allPackageCategories = false);
+                                                                                  },
+                                                                                  child: Material(
+                                                                                    color: Colors.transparent,
+                                                                                    elevation: 2,
+                                                                                    shape: RoundedRectangleBorder(
+                                                                                      borderRadius: BorderRadius.circular(10),
+                                                                                    ),
+                                                                                    child: Container(
+                                                                                      decoration: BoxDecoration(
+                                                                                        color: Color(0x4EEEEEEE),
+                                                                                        borderRadius: BorderRadius.circular(10),
+                                                                                      ),
+                                                                                      child: Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 3),
+                                                                                        child: Text(
+                                                                                          packageCategoriesItem,
+                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                fontFamily: 'Roboto',
+                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                fontSize: 16,
+                                                                                              ),
                                                                                         ),
+                                                                                      ),
+                                                                                    ),
                                                                                   ),
                                                                                 ),
                                                                               ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    );
-                                                                  },
+                                                                            ],
+                                                                          );
+                                                                        },
+                                                                      );
+                                                                    },
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                            ),
+                                                              );
+                                                            },
                                                           ),
                                                         ],
                                                       ),

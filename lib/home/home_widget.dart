@@ -247,67 +247,53 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0, 5, 5, 5),
-                                                      child: StreamBuilder<
-                                                          List<BookingsRecord>>(
-                                                        stream:
-                                                            queryBookingsRecord(
-                                                          queryBuilder: (bookingsRecord) => bookingsRecord
-                                                              .where('user',
-                                                                  isEqualTo:
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          if (homeUsersRecord
+                                                                  .hasCurrentBooking ??
+                                                              true)
+                                                            StreamBuilder<
+                                                                BookingsRecord>(
+                                                              stream: BookingsRecord
+                                                                  .getDocument(
                                                                       homeUsersRecord
-                                                                          .reference)
-                                                              .where(
-                                                                  'is_submitted',
-                                                                  isNotEqualTo:
-                                                                      true),
-                                                          singleRecord: true,
-                                                        ),
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          // Customize what your widget looks like when it's loading.
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Center(
-                                                              child: SizedBox(
-                                                                width: 50,
-                                                                height: 50,
-                                                                child:
-                                                                    SpinKitRipple(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryColor,
-                                                                  size: 50,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          }
-                                                          List<BookingsRecord>
-                                                              rowBookingsRecordList =
-                                                              snapshot.data;
-                                                          final rowBookingsRecord =
-                                                              rowBookingsRecordList
-                                                                      .isNotEmpty
-                                                                  ? rowBookingsRecordList
-                                                                      .first
-                                                                  : null;
-                                                          return Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceEvenly,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .end,
-                                                            children: [
-                                                              if (homeUsersRecord
-                                                                      .hasCurrentBooking ??
-                                                                  true)
-                                                                Badge(
+                                                                          .currentBooking),
+                                                              builder: (context,
+                                                                  snapshot) {
+                                                                // Customize what your widget looks like when it's loading.
+                                                                if (!snapshot
+                                                                    .hasData) {
+                                                                  return Center(
+                                                                    child:
+                                                                        SizedBox(
+                                                                      width: 50,
+                                                                      height:
+                                                                          50,
+                                                                      child:
+                                                                          SpinKitRipple(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryColor,
+                                                                        size:
+                                                                            50,
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                }
+                                                                final badgeBookingsRecord =
+                                                                    snapshot
+                                                                        .data;
+                                                                return Badge(
                                                                   badgeContent:
                                                                       Text(
-                                                                    rowBookingsRecord
+                                                                    badgeBookingsRecord
                                                                         .testsIncluded
                                                                         .toList()
                                                                         .length
@@ -323,7 +309,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         ),
                                                                   ),
                                                                   showBadge:
-                                                                      (rowBookingsRecord
+                                                                      (badgeBookingsRecord
                                                                               .totalTests) >
                                                                           0,
                                                                   shape:
@@ -381,8 +367,37 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                       );
                                                                     },
                                                                   ),
-                                                                ),
-                                                              FlutterFlowIconButton(
+                                                                );
+                                                              },
+                                                            ),
+                                                          FlutterFlowIconButton(
+                                                            borderColor: Colors
+                                                                .transparent,
+                                                            borderRadius: 30,
+                                                            borderWidth: 1,
+                                                            buttonSize: 40,
+                                                            icon: Icon(
+                                                              Icons
+                                                                  .person_sharp,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryColor,
+                                                              size: 25,
+                                                            ),
+                                                            onPressed:
+                                                                () async {
+                                                              context.pushNamed(
+                                                                  'Account');
+                                                            },
+                                                          ),
+                                                          if (valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.isStaff,
+                                                                  false) ??
+                                                              true)
+                                                            AuthUserStreamWidget(
+                                                              child:
+                                                                  FlutterFlowIconButton(
                                                                 borderColor: Colors
                                                                     .transparent,
                                                                 borderRadius:
@@ -391,7 +406,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 buttonSize: 40,
                                                                 icon: Icon(
                                                                   Icons
-                                                                      .person_sharp,
+                                                                      .local_police,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryColor,
@@ -400,204 +415,188 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 onPressed:
                                                                     () async {
                                                                   context.pushNamed(
-                                                                      'Account');
+                                                                      'HomeAdmin');
                                                                 },
                                                               ),
-                                                              if (valueOrDefault(
-                                                                      currentUserDocument
-                                                                          ?.isStaff,
-                                                                      false) ??
-                                                                  true)
-                                                                AuthUserStreamWidget(
-                                                                  child:
-                                                                      FlutterFlowIconButton(
-                                                                    borderColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    borderRadius:
-                                                                        30,
-                                                                    borderWidth:
-                                                                        1,
-                                                                    buttonSize:
-                                                                        40,
-                                                                    icon: Icon(
-                                                                      Icons
-                                                                          .local_police,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryColor,
-                                                                      size: 25,
+                                                            ),
+                                                          AuthUserStreamWidget(
+                                                            child: StreamBuilder<
+                                                                List<
+                                                                    ChatsRecord>>(
+                                                              stream:
+                                                                  queryChatsRecord(
+                                                                queryBuilder: (chatsRecord) => chatsRecord
+                                                                    .where(
+                                                                        'user_a',
+                                                                        isEqualTo:
+                                                                            currentUserReference)
+                                                                    .where(
+                                                                        'last_message_time',
+                                                                        isGreaterThan:
+                                                                            currentUserDocument?.lastLogin),
+                                                                singleRecord:
+                                                                    true,
+                                                              ),
+                                                              builder: (context,
+                                                                  snapshot) {
+                                                                // Customize what your widget looks like when it's loading.
+                                                                if (!snapshot
+                                                                    .hasData) {
+                                                                  return Center(
+                                                                    child:
+                                                                        SizedBox(
+                                                                      width: 50,
+                                                                      height:
+                                                                          50,
+                                                                      child:
+                                                                          SpinKitRipple(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryColor,
+                                                                        size:
+                                                                            50,
+                                                                      ),
                                                                     ),
-                                                                    onPressed:
-                                                                        () async {
-                                                                      context.pushNamed(
-                                                                          'HomeAdmin');
-                                                                    },
-                                                                  ),
-                                                                ),
-                                                              AuthUserStreamWidget(
-                                                                child: StreamBuilder<
-                                                                    List<
-                                                                        ChatsRecord>>(
-                                                                  stream:
-                                                                      queryChatsRecord(
-                                                                    queryBuilder: (chatsRecord) => chatsRecord
-                                                                        .where(
-                                                                            'user_a',
-                                                                            isEqualTo:
-                                                                                currentUserReference)
-                                                                        .where(
-                                                                            'last_message_time',
-                                                                            isGreaterThan:
-                                                                                currentUserDocument?.lastLogin),
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ),
-                                                                  builder: (context,
-                                                                      snapshot) {
-                                                                    // Customize what your widget looks like when it's loading.
-                                                                    if (!snapshot
-                                                                        .hasData) {
-                                                                      return Center(
-                                                                        child:
-                                                                            SizedBox(
-                                                                          width:
-                                                                              50,
-                                                                          height:
-                                                                              50,
-                                                                          child:
-                                                                              SpinKitRipple(
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryColor,
-                                                                            size:
-                                                                                50,
-                                                                          ),
-                                                                        ),
-                                                                      );
-                                                                    }
-                                                                    List<ChatsRecord>
-                                                                        badgeChatsRecordList =
-                                                                        snapshot
-                                                                            .data;
-                                                                    final badgeChatsRecord = badgeChatsRecordList
+                                                                  );
+                                                                }
+                                                                List<ChatsRecord>
+                                                                    badgeChatsRecordList =
+                                                                    snapshot
+                                                                        .data;
+                                                                final badgeChatsRecord =
+                                                                    badgeChatsRecordList
                                                                             .isNotEmpty
                                                                         ? badgeChatsRecordList
                                                                             .first
                                                                         : null;
-                                                                    return Badge(
-                                                                      badgeContent:
-                                                                          Text(
-                                                                        '1',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
-                                                                            .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Colors.white,
-                                                                            ),
-                                                                      ),
-                                                                      showBadge:
-                                                                          badgeChatsRecord !=
-                                                                              null,
-                                                                      shape: BadgeShape
-                                                                          .circle,
-                                                                      badgeColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .primaryColor,
-                                                                      elevation:
-                                                                          4,
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              8,
-                                                                              8,
-                                                                              8,
-                                                                              8),
-                                                                      position:
-                                                                          BadgePosition
-                                                                              .topEnd(),
-                                                                      animationType:
-                                                                          BadgeAnimationType
-                                                                              .scale,
-                                                                      toAnimate:
-                                                                          true,
-                                                                      child: FutureBuilder<
-                                                                          List<
-                                                                              UsersRecord>>(
-                                                                        future:
-                                                                            queryUsersRecordOnce(
-                                                                          queryBuilder: (usersRecord) => usersRecord.where(
-                                                                              'role',
-                                                                              isEqualTo: 'front'),
-                                                                          singleRecord:
-                                                                              true,
+                                                                return Badge(
+                                                                  badgeContent:
+                                                                      Text(
+                                                                    '1',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyText1
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Roboto',
+                                                                          color:
+                                                                              Colors.white,
                                                                         ),
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshot) {
-                                                                          // Customize what your widget looks like when it's loading.
-                                                                          if (!snapshot
-                                                                              .hasData) {
-                                                                            return Center(
-                                                                              child: SizedBox(
-                                                                                width: 50,
-                                                                                height: 50,
-                                                                                child: SpinKitRipple(
-                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                  size: 50,
-                                                                                ),
-                                                                              ),
-                                                                            );
-                                                                          }
-                                                                          List<UsersRecord>
-                                                                              iconButtonUsersRecordList =
-                                                                              snapshot.data;
-                                                                          // Return an empty Container when the document does not exist.
-                                                                          if (snapshot
-                                                                              .data
-                                                                              .isEmpty) {
-                                                                            return Container();
-                                                                          }
-                                                                          final iconButtonUsersRecord = iconButtonUsersRecordList.isNotEmpty
-                                                                              ? iconButtonUsersRecordList.first
-                                                                              : null;
-                                                                          return FlutterFlowIconButton(
-                                                                            borderColor:
-                                                                                Colors.transparent,
-                                                                            borderRadius:
-                                                                                30,
-                                                                            borderWidth:
-                                                                                1,
-                                                                            buttonSize:
-                                                                                40,
-                                                                            fillColor:
-                                                                                Color(0x00FFFFFF),
-                                                                            icon:
-                                                                                Icon(
-                                                                              Icons.message_rounded,
+                                                                  ),
+                                                                  showBadge:
+                                                                      badgeChatsRecord !=
+                                                                          null,
+                                                                  shape:
+                                                                      BadgeShape
+                                                                          .circle,
+                                                                  badgeColor: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryColor,
+                                                                  elevation: 4,
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          8,
+                                                                          8,
+                                                                          8,
+                                                                          8),
+                                                                  position:
+                                                                      BadgePosition
+                                                                          .topEnd(),
+                                                                  animationType:
+                                                                      BadgeAnimationType
+                                                                          .scale,
+                                                                  toAnimate:
+                                                                      true,
+                                                                  child: FutureBuilder<
+                                                                      List<
+                                                                          UsersRecord>>(
+                                                                    future:
+                                                                        queryUsersRecordOnce(
+                                                                      queryBuilder: (usersRecord) => usersRecord.where(
+                                                                          'role',
+                                                                          isEqualTo:
+                                                                              'front'),
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ),
+                                                                    builder:
+                                                                        (context,
+                                                                            snapshot) {
+                                                                      // Customize what your widget looks like when it's loading.
+                                                                      if (!snapshot
+                                                                          .hasData) {
+                                                                        return Center(
+                                                                          child:
+                                                                              SizedBox(
+                                                                            width:
+                                                                                50,
+                                                                            height:
+                                                                                50,
+                                                                            child:
+                                                                                SpinKitRipple(
                                                                               color: FlutterFlowTheme.of(context).primaryColor,
-                                                                              size: 25,
+                                                                              size: 50,
                                                                             ),
-                                                                            onPressed:
-                                                                                () async {
-                                                                              context.pushNamed(
-                                                                                'Chat',
-                                                                                queryParams: {
-                                                                                  'chatUser': serializeParam(iconButtonUsersRecord, ParamType.Document),
-                                                                                }.withoutNulls,
-                                                                                extra: <String, dynamic>{
-                                                                                  'chatUser': iconButtonUsersRecord,
-                                                                                },
-                                                                              );
+                                                                          ),
+                                                                        );
+                                                                      }
+                                                                      List<UsersRecord>
+                                                                          iconButtonUsersRecordList =
+                                                                          snapshot
+                                                                              .data;
+                                                                      // Return an empty Container when the document does not exist.
+                                                                      if (snapshot
+                                                                          .data
+                                                                          .isEmpty) {
+                                                                        return Container();
+                                                                      }
+                                                                      final iconButtonUsersRecord = iconButtonUsersRecordList
+                                                                              .isNotEmpty
+                                                                          ? iconButtonUsersRecordList
+                                                                              .first
+                                                                          : null;
+                                                                      return FlutterFlowIconButton(
+                                                                        borderColor:
+                                                                            Colors.transparent,
+                                                                        borderRadius:
+                                                                            30,
+                                                                        borderWidth:
+                                                                            1,
+                                                                        buttonSize:
+                                                                            40,
+                                                                        fillColor:
+                                                                            Color(0x00FFFFFF),
+                                                                        icon:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .message_rounded,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryColor,
+                                                                          size:
+                                                                              25,
+                                                                        ),
+                                                                        onPressed:
+                                                                            () async {
+                                                                          context
+                                                                              .pushNamed(
+                                                                            'Chat',
+                                                                            queryParams:
+                                                                                {
+                                                                              'chatUser': serializeParam(iconButtonUsersRecord, ParamType.Document),
+                                                                            }.withoutNulls,
+                                                                            extra: <String,
+                                                                                dynamic>{
+                                                                              'chatUser': iconButtonUsersRecord,
                                                                             },
                                                                           );
                                                                         },
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
+                                                                      );
+                                                                    },
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ),
