@@ -176,7 +176,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                         size: 30,
                                       ),
                                       onPressed: () async {
-                                        context.pop();
+                                        Navigator.pop(context);
                                       },
                                     ),
                                   ),
@@ -413,6 +413,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                             },
                                           );
                                           Navigator.pop(context);
+                                          return;
                                         } else {
                                           return;
                                         }
