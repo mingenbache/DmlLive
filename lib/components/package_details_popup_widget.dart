@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/package_actions_widget_widget.dart';
 import '../components/test_details_popup_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -35,6 +36,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Container(
+          height: MediaQuery.of(context).size.height * 0.9,
           decoration: BoxDecoration(),
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -1723,13 +1725,22 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 18, 0, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Stack(
-                      children: [],
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          decoration: BoxDecoration(),
+                          child: PackageActionsWidgetWidget(
+                            package: widget.package,
+                            bookingRef: widget.booking,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
