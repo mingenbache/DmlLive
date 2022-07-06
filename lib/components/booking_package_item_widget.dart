@@ -253,9 +253,43 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                               true)
                             InkWell(
                               onTap: () async {
-                                if (!(widget.booking.testPackages
-                                    .toList()
-                                    .contains(widget.package.reference))) {
+                                if (widget.booking.hasTestPackages) {
+                                  if (!(widget.booking.testPackages
+                                      .toList()
+                                      .contains(widget.package.reference))) {
+                                    final bookingsUpdateData = {
+                                      ...createBookingsRecordData(
+                                        totalPrice: functions.addCartTotal(
+                                            widget.booking.totalPrice,
+                                            widget.package.price),
+                                        hasTestPackages: true,
+                                      ),
+                                      'testPackages': FieldValue.arrayUnion(
+                                          [widget.package.reference]),
+                                      'testPackTests':
+                                          functions.addBookingPackageTests(
+                                              widget.booking.testPackTests
+                                                  .toList(),
+                                              widget.package.testsIncluded
+                                                  .toList()),
+                                    };
+                                    await widget.booking.reference
+                                        .update(bookingsUpdateData);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Tests Added.',
+                                          style: TextStyle(),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor: Color(0x00000000),
+                                      ),
+                                    );
+                                    return;
+                                  } else {
+                                    return;
+                                  }
+                                } else {
                                   final bookingsUpdateData = {
                                     ...createBookingsRecordData(
                                       totalPrice: functions.addCartTotal(
@@ -274,20 +308,8 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                   };
                                   await widget.booking.reference
                                       .update(bookingsUpdateData);
-                                } else {
                                   return;
                                 }
-
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Tests Added.',
-                                      style: TextStyle(),
-                                    ),
-                                    duration: Duration(milliseconds: 4000),
-                                    backgroundColor: Color(0x00000000),
-                                  ),
-                                );
                               },
                               child: Material(
                                 color: Colors.transparent,
