@@ -253,14 +253,15 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                               true)
                             InkWell(
                               onTap: () async {
-                                if (widget.booking.testPackages
+                                if (!(widget.booking.testPackages
                                     .toList()
-                                    .contains(widget.package.reference)) {
+                                    .contains(widget.package.reference))) {
                                   final bookingsUpdateData = {
                                     ...createBookingsRecordData(
                                       totalPrice: functions.addCartTotal(
                                           widget.booking.totalPrice,
                                           widget.package.price),
+                                      hasTestPackages: true,
                                     ),
                                     'testPackages': FieldValue.arrayUnion(
                                         [widget.package.reference]),
