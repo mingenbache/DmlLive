@@ -1730,7 +1730,9 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                               .transparent,
                                                           width: 1,
                                                         ),
-                                                        borderRadius: 16,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(16),
                                                       ),
                                                     ),
                                                   ),
@@ -1850,7 +1852,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                     color: Colors.transparent,
                                     width: 1,
                                   ),
-                                  borderRadius: 25,
+                                  borderRadius: BorderRadius.circular(25),
                                 ),
                               ),
                             ),

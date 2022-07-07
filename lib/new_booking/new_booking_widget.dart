@@ -268,7 +268,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 color: Colors.transparent,
                                                 width: 1,
                                               ),
-                                              borderRadius: 16,
+                                              borderRadius:
+                                                  BorderRadius.circular(16),
                                             ),
                                           ),
                                         ),
@@ -1216,7 +1217,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                 .transparent,
                                                             width: 1,
                                                           ),
-                                                          borderRadius: 16,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(16),
                                                         ),
                                                       ),
                                                     ),
@@ -1962,7 +1965,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                 ),
-                                                borderRadius: 25,
+                                                borderRadius:
+                                                    BorderRadius.circular(25),
                                               ),
                                             ),
                                           ),
@@ -2258,7 +2262,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                             color: Colors.transparent,
                                             width: 1,
                                           ),
-                                          borderRadius: 25,
+                                          borderRadius:
+                                              BorderRadius.circular(25),
                                         ),
                                       ),
                                     ).animated([

@@ -434,7 +434,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                     .transparent,
                                                                 width: 1,
                                                               ),
-                                                              borderRadius: 40,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          40),
                                                             ),
                                                           ).animated([
                                                             animationsMap[
@@ -1345,7 +1348,9 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                               .transparent,
                                                           width: 1,
                                                         ),
-                                                        borderRadius: 12,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12),
                                                       ),
                                                     ),
                                                   ],
@@ -1468,7 +1473,9 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                 .transparent,
                                                             width: 1,
                                                           ),
-                                                          borderRadius: 12,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(12),
                                                         ),
                                                       ),
                                                     ],
@@ -1812,7 +1819,9 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                 .transparent,
                                                             width: 1,
                                                           ),
-                                                          borderRadius: 12,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(12),
                                                         ),
                                                       ),
                                                     ],
@@ -2082,7 +2091,9 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                               .transparent,
                                                           width: 1,
                                                         ),
-                                                        borderRadius: 12,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12),
                                                       ),
                                                     ),
                                                   ],
@@ -2536,7 +2547,9 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                 .transparent,
                                                             width: 1,
                                                           ),
-                                                          borderRadius: 12,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(12),
                                                         ),
                                                       ),
                                                     ],
@@ -2702,7 +2715,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                 color: Colors.transparent,
                                 width: 1,
                               ),
-                              borderRadius: 25,
+                              borderRadius: BorderRadius.circular(25),
                             ),
                           ).animated(
                               [animationsMap['buttonOnPageLoadAnimation']]),

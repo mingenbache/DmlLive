@@ -1499,3 +1499,20 @@ bool checkBookingTests(BookingsRecord booking) {
     return false;
   }
 }
+
+int returnBookingsTab(String testVar) {
+  // return integer based on string match
+  if (testVar.toLowerCase() == null || testVar.toLowerCase() == '') {
+    return 1;
+  }
+  if (testVar.toLowerCase() == 'upcoming') {
+    return 1;
+  }
+  if (testVar.toLowerCase() == 'past') {
+    return 0;
+  }
+  if (testVar.toLowerCase() == 'notif') {
+    return 2;
+  }
+  return 0;
+}

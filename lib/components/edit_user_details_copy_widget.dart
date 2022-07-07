@@ -638,7 +638,8 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                                 color: Colors.transparent,
                                                 width: 1,
                                               ),
-                                              borderRadius: 16,
+                                              borderRadius:
+                                                  BorderRadius.circular(16),
                                             ),
                                           ),
                                         ),
@@ -712,7 +713,7 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                     color: Colors.transparent,
                                     width: 1,
                                   ),
-                                  borderRadius: 20,
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
                             ],

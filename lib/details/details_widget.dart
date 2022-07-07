@@ -191,7 +191,8 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                             color: Colors.transparent,
                                             width: 1,
                                           ),
-                                          borderRadius: 12,
+                                          borderRadius:
+                                              BorderRadius.circular(12),
                                         ),
                                       ),
                                     ),
@@ -883,7 +884,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                         color: Colors.transparent,
                                         width: 0,
                                       ),
-                                      borderRadius: 30,
+                                      borderRadius: BorderRadius.circular(30),
                                     ),
                                   ).animated([
                                     animationsMap[
@@ -953,7 +954,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                         color: Colors.transparent,
                                         width: 1,
                                       ),
-                                      borderRadius: 30,
+                                      borderRadius: BorderRadius.circular(30),
                                     ),
                                   ).animated([
                                     animationsMap[

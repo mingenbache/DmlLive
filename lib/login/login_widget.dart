@@ -249,7 +249,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   borderSide: BorderSide(
                                     color: Color(0x00FFFFFF),
                                   ),
-                                  borderRadius: 12,
+                                  borderRadius: BorderRadius.circular(12),
                                 ),
                               ),
                               FFButtonWidget(
@@ -283,7 +283,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     color: Colors.transparent,
                                     width: 0,
                                   ),
-                                  borderRadius: 12,
+                                  borderRadius: BorderRadius.circular(12),
                                 ),
                               ),
                             ],
@@ -345,7 +345,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                               color: Colors.transparent,
                                               width: 0,
                                             ),
-                                            borderRadius: 12,
+                                            borderRadius:
+                                                BorderRadius.circular(12),
                                           ),
                                         ),
                                       ),

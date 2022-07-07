@@ -164,7 +164,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                                 color: Colors.transparent,
                                 width: 0,
                               ),
-                              borderRadius: 30,
+                              borderRadius: BorderRadius.circular(30),
                             ),
                           ).animated([
                             animationsMap['buttonOnActionTriggerAnimation1']
@@ -254,7 +254,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                           borderSide: BorderSide(
                             color: Colors.transparent,
                           ),
-                          borderRadius: 30,
+                          borderRadius: BorderRadius.circular(30),
                         ),
                       ).animated(
                           [animationsMap['buttonOnActionTriggerAnimation2']]),

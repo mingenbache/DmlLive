@@ -1718,7 +1718,8 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                     color: Colors.transparent,
                                                     width: 1,
                                                   ),
-                                                  borderRadius: 16,
+                                                  borderRadius:
+                                                      BorderRadius.circular(16),
                                                 ),
                                               ),
                                             ),
@@ -1843,7 +1844,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                   color: Colors.transparent,
                                   width: 1,
                                 ),
-                                borderRadius: 25,
+                                borderRadius: BorderRadius.circular(25),
                               ),
                             ),
                           ),

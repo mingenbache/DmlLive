@@ -69,7 +69,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               borderSide: BorderSide(
                                 color: Colors.transparent,
                               ),
-                              borderRadius: 0,
                             ),
                           ),
                         ),
@@ -327,7 +326,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     color: Colors.transparent,
                     width: 1,
                   ),
-                  borderRadius: 30,
+                  borderRadius: BorderRadius.circular(30),
                 ),
               ),
             ),

@@ -1323,7 +1323,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .transparent,
                                                           width: 1,
                                                         ),
-                                                        borderRadius: 12,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12),
                                                       ),
                                                     ),
                                                   ],
@@ -1612,7 +1614,10 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               color: Colors
                                                                   .transparent,
                                                             ),
-                                                            borderRadius: 25,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        25),
                                                           ),
                                                         ),
                                                       ),
@@ -1735,7 +1740,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                     color: Colors.transparent,
                                     width: 1,
                                   ),
-                                  borderRadius: 25,
+                                  borderRadius: BorderRadius.circular(25),
                                 ),
                               ).animated(
                                   [animationsMap['buttonOnPageLoadAnimation']]),

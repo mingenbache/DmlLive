@@ -134,6 +134,8 @@ class FFAppState {
   List<DocumentReference> duplicateTests = [];
 
   DocumentReference duplicateTest;
+
+  String testsVar = '';
 }
 
 LatLng _latLngFromString(String val) {

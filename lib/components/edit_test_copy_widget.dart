@@ -1210,7 +1210,9 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 .transparent,
                                                             width: 1,
                                                           ),
-                                                          borderRadius: 40,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(40),
                                                         ),
                                                       ),
                                                     ],
@@ -2618,7 +2620,10 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 color: Colors
                                                                     .transparent,
                                                               ),
-                                                              borderRadius: 25,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          25),
                                                             ),
                                                           ),
                                                         ),
@@ -2742,7 +2747,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                 color: Colors.transparent,
                                 width: 1,
                               ),
-                              borderRadius: 25,
+                              borderRadius: BorderRadius.circular(25),
                             ),
                           ),
                         ),

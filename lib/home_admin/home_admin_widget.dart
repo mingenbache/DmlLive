@@ -869,7 +869,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                       borderSide: BorderSide(
                                         color: Colors.transparent,
                                       ),
-                                      borderRadius: 25,
+                                      borderRadius: BorderRadius.circular(25),
                                     ),
                                   ),
                                 ),

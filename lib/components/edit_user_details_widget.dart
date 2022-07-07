@@ -643,7 +643,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                     color: Colors.transparent,
                                     width: 1,
                                   ),
-                                  borderRadius: 20,
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
                             ],

@@ -1660,7 +1660,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                               color: Colors.transparent,
                               width: 1,
                             ),
-                            borderRadius: 25,
+                            borderRadius: BorderRadius.circular(25),
                           ),
                         ),
                       ),

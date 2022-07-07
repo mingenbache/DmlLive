@@ -1915,7 +1915,8 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                   borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                   ),
-                                                  borderRadius: 25,
+                                                  borderRadius:
+                                                      BorderRadius.circular(25),
                                                 ),
                                               ),
                                             ),
@@ -2168,7 +2169,8 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                             color: Colors.transparent,
                                             width: 1,
                                           ),
-                                          borderRadius: 25,
+                                          borderRadius:
+                                              BorderRadius.circular(25),
                                         ),
                                       );
                                     },

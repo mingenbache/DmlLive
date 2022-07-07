@@ -113,6 +113,7 @@ class _DashboardMenuWidgetLightWidgetState
                   padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                   child: InkWell(
                     onTap: () async {
+                      setState(() => FFAppState().testsVar = 'previous');
                       context.pushNamed(
                         'BookingsSchedule',
                         extra: <String, dynamic>{
@@ -170,6 +171,7 @@ class _DashboardMenuWidgetLightWidgetState
                   padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                   child: InkWell(
                     onTap: () async {
+                      setState(() => FFAppState().testsVar = 'upcoming');
                       context.pushNamed('BookingsSchedule');
                     },
                     child: Material(

@@ -239,7 +239,7 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                           color: Colors.transparent,
                           width: 1,
                         ),
-                        borderRadius: 25,
+                        borderRadius: BorderRadius.circular(25),
                       ),
                     ),
                   ],
