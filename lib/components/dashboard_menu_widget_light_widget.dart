@@ -115,11 +115,11 @@ class _DashboardMenuWidgetLightWidgetState
                     onTap: () async {
                       setState(() => FFAppState().testsVar = 'previous');
                       context.pushNamed(
-                        'BookingsSchedule',
+                        'MyBookings',
                         extra: <String, dynamic>{
                           kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
-                            transitionType: PageTransitionType.bottomToTop,
+                            transitionType: PageTransitionType.rightToLeft,
                             duration: Duration(milliseconds: 300),
                           ),
                         },
@@ -172,7 +172,15 @@ class _DashboardMenuWidgetLightWidgetState
                   child: InkWell(
                     onTap: () async {
                       setState(() => FFAppState().testsVar = 'upcoming');
-                      context.pushNamed('BookingsSchedule');
+                      context.pushNamed(
+                        'MyBookings',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.rightToLeft,
+                          ),
+                        },
+                      );
                     },
                     child: Material(
                       color: Colors.transparent,
