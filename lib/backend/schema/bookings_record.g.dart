@@ -353,6 +353,24 @@ class _$BookingsRecordSerializer
             specifiedType: const FullType(
                 DocumentReference, const [const FullType(Object)])));
     }
+    value = object.flaggedTests;
+    if (value != null) {
+      result
+        ..add('flagged_tests')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(BuiltList, const [
+              const FullType(DocumentReference, const [const FullType(Object)])
+            ])));
+    }
+    value = object.frozenTests;
+    if (value != null) {
+      result
+        ..add('frozenTests')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(BuiltList, const [
+              const FullType(DocumentReference, const [const FullType(Object)])
+            ])));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -587,6 +605,20 @@ class _$BookingsRecordSerializer
                       DocumentReference, const [const FullType(Object)]))
               as DocumentReference<Object>;
           break;
+        case 'flagged_tests':
+          result.flaggedTests.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    DocumentReference, const [const FullType(Object)])
+              ])) as BuiltList<Object>);
+          break;
+        case 'frozenTests':
+          result.frozenTests.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    DocumentReference, const [const FullType(Object)])
+              ])) as BuiltList<Object>);
+          break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -692,6 +724,10 @@ class _$BookingsRecord extends BookingsRecord {
   @override
   final DocumentReference<Object> reportRef;
   @override
+  final BuiltList<DocumentReference<Object>> flaggedTests;
+  @override
+  final BuiltList<DocumentReference<Object>> frozenTests;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$BookingsRecord([void Function(BookingsRecordBuilder) updates]) =>
@@ -743,6 +779,8 @@ class _$BookingsRecord extends BookingsRecord {
       this.testPackages,
       this.testPackTests,
       this.reportRef,
+      this.flaggedTests,
+      this.frozenTests,
       this.reference})
       : super._();
 
@@ -803,6 +841,8 @@ class _$BookingsRecord extends BookingsRecord {
         testPackages == other.testPackages &&
         testPackTests == other.testPackTests &&
         reportRef == other.reportRef &&
+        flaggedTests == other.flaggedTests &&
+        frozenTests == other.frozenTests &&
         reference == other.reference;
   }
 
@@ -826,25 +866,25 @@ class _$BookingsRecord extends BookingsRecord {
                                                                 $jc(
                                                                     $jc(
                                                                         $jc(
-                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, labRefNum.hashCode), createdDate.hashCode), scheduledDate.hashCode), completed.hashCode), testVerified.hashCode), testNotes.hashCode), technologist.hashCode), user.hashCode), diagnosis.hashCode), totalPrice.hashCode), bookingConfirmed.hashCode), firstname.hashCode), lastname.hashCode), phonenumber.hashCode), sex.hashCode), emailaddress.hashCode), bookingstatus.hashCode), docNameAddress.hashCode), testsIncluded.hashCode), isInvoiced.hashCode), isSubmitted.hashCode), totalTests.hashCode), pathologist.hashCode), userPatient.hashCode), dOB.hashCode), invoiceRefs.hashCode), updatedDate.hashCode),
-                                                                                paidFull.hashCode),
-                                                                            updateRole.hashCode),
-                                                                        resultPublished.hashCode),
-                                                                    paymentBalance.hashCode),
-                                                                updateStaff.hashCode),
-                                                            confirmationBegan.hashCode),
-                                                        bookedTests.hashCode),
-                                                    payments.hashCode),
-                                                reportSent.hashCode),
-                                            docNames.hashCode),
-                                        doctorPhoneNumber.hashCode),
-                                    doctorEmail.hashCode),
-                                docRef.hashCode),
-                            verifiedTests.hashCode),
-                        hasTestPackages.hashCode),
-                    testPackages.hashCode),
-                testPackTests.hashCode),
-            reportRef.hashCode),
+                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, labRefNum.hashCode), createdDate.hashCode), scheduledDate.hashCode), completed.hashCode), testVerified.hashCode), testNotes.hashCode), technologist.hashCode), user.hashCode), diagnosis.hashCode), totalPrice.hashCode), bookingConfirmed.hashCode), firstname.hashCode), lastname.hashCode), phonenumber.hashCode), sex.hashCode), emailaddress.hashCode), bookingstatus.hashCode), docNameAddress.hashCode), testsIncluded.hashCode), isInvoiced.hashCode), isSubmitted.hashCode), totalTests.hashCode), pathologist.hashCode), userPatient.hashCode), dOB.hashCode), invoiceRefs.hashCode), updatedDate.hashCode), paidFull.hashCode), updateRole.hashCode),
+                                                                                resultPublished.hashCode),
+                                                                            paymentBalance.hashCode),
+                                                                        updateStaff.hashCode),
+                                                                    confirmationBegan.hashCode),
+                                                                bookedTests.hashCode),
+                                                            payments.hashCode),
+                                                        reportSent.hashCode),
+                                                    docNames.hashCode),
+                                                doctorPhoneNumber.hashCode),
+                                            doctorEmail.hashCode),
+                                        docRef.hashCode),
+                                    verifiedTests.hashCode),
+                                hasTestPackages.hashCode),
+                            testPackages.hashCode),
+                        testPackTests.hashCode),
+                    reportRef.hashCode),
+                flaggedTests.hashCode),
+            frozenTests.hashCode),
         reference.hashCode));
   }
 
@@ -896,6 +936,8 @@ class _$BookingsRecord extends BookingsRecord {
           ..add('testPackages', testPackages)
           ..add('testPackTests', testPackTests)
           ..add('reportRef', reportRef)
+          ..add('flaggedTests', flaggedTests)
+          ..add('frozenTests', frozenTests)
           ..add('reference', reference))
         .toString();
   }
@@ -1111,6 +1153,18 @@ class BookingsRecordBuilder
   set reportRef(DocumentReference<Object> reportRef) =>
       _$this._reportRef = reportRef;
 
+  ListBuilder<DocumentReference<Object>> _flaggedTests;
+  ListBuilder<DocumentReference<Object>> get flaggedTests =>
+      _$this._flaggedTests ??= new ListBuilder<DocumentReference<Object>>();
+  set flaggedTests(ListBuilder<DocumentReference<Object>> flaggedTests) =>
+      _$this._flaggedTests = flaggedTests;
+
+  ListBuilder<DocumentReference<Object>> _frozenTests;
+  ListBuilder<DocumentReference<Object>> get frozenTests =>
+      _$this._frozenTests ??= new ListBuilder<DocumentReference<Object>>();
+  set frozenTests(ListBuilder<DocumentReference<Object>> frozenTests) =>
+      _$this._frozenTests = frozenTests;
+
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
@@ -1168,6 +1222,8 @@ class BookingsRecordBuilder
       _testPackages = $v.testPackages?.toBuilder();
       _testPackTests = $v.testPackTests?.toBuilder();
       _reportRef = $v.reportRef;
+      _flaggedTests = $v.flaggedTests?.toBuilder();
+      _frozenTests = $v.frozenTests?.toBuilder();
       _reference = $v.reference;
       _$v = null;
     }
@@ -1236,6 +1292,8 @@ class BookingsRecordBuilder
               testPackages: _testPackages?.build(),
               testPackTests: _testPackTests?.build(),
               reportRef: reportRef,
+              flaggedTests: _flaggedTests?.build(),
+              frozenTests: _frozenTests?.build(),
               reference: reference);
     } catch (_) {
       String _$failedField;
@@ -1258,6 +1316,11 @@ class BookingsRecordBuilder
         _testPackages?.build();
         _$failedField = 'testPackTests';
         _testPackTests?.build();
+
+        _$failedField = 'flaggedTests';
+        _flaggedTests?.build();
+        _$failedField = 'frozenTests';
+        _frozenTests?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'BookingsRecord', _$failedField, e.toString());
