@@ -1,4 +1,6 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/invoice_payment_widget.dart';
 import '../components/payment_widget.dart';
 import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -7,22 +9,48 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-class PaymentsListWidget extends StatefulWidget {
-  const PaymentsListWidget({Key key}) : super(key: key);
+class MyPaymentsWidget extends StatefulWidget {
+  const MyPaymentsWidget({Key key}) : super(key: key);
 
   @override
-  _PaymentsListWidgetState createState() => _PaymentsListWidgetState();
+  _MyPaymentsWidgetState createState() => _MyPaymentsWidgetState();
 }
 
-class _PaymentsListWidgetState extends State<PaymentsListWidget> {
+class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
+  PagingController<DocumentSnapshot, InvoicesRecord> _pagingController;
+  Query _pagingQuery;
+  List<StreamSubscription> _streamSubscriptions = [];
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void dispose() {
+    _streamSubscriptions.forEach((s) => s?.cancel());
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          print('FloatingActionButton pressed ...');
+        },
+        backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
+        icon: Icon(
+          Icons.payments_sharp,
+          color: FlutterFlowTheme.of(context).tertiaryColor,
+        ),
+        elevation: 8,
+        label: Text(
+          'Add Payment',
+          style: FlutterFlowTheme.of(context).bodyText1,
+        ),
+      ),
       body: Container(
         decoration: BoxDecoration(),
         child: Stack(
@@ -84,13 +112,16 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Text(
-                                                  'PAYMENTS',
+                                                  'MY PAYMENTS',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .title1
                                                       .override(
                                                         fontFamily: 'Roboto',
-                                                        color: Colors.white,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
                                                       ),
                                                 ),
                                               ],
@@ -119,7 +150,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                             height: MediaQuery.of(context).size.height * 1,
                             decoration: BoxDecoration(),
                             child: DefaultTabController(
-                              length: 2,
+                              length: 3,
                               initialIndex: 0,
                               child: Column(
                                 children: [
@@ -137,6 +168,9 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                       Tab(
                                         text: 'Confirmed ',
                                       ),
+                                      Tab(
+                                        text: 'Invoices',
+                                      ),
                                     ],
                                   ),
                                   Expanded(
@@ -150,9 +184,12 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                               List<PaymentsRecord>>(
                                             stream: queryPaymentsRecord(
                                               queryBuilder: (paymentsRecord) =>
-                                                  paymentsRecord.where(
-                                                      'is_approved',
-                                                      isNotEqualTo: true),
+                                                  paymentsRecord
+                                                      .where('is_approved',
+                                                          isNotEqualTo: true)
+                                                      .where('user_ref',
+                                                          isEqualTo:
+                                                              currentUserReference),
                                             ),
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
@@ -681,9 +718,12 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                               List<PaymentsRecord>>(
                                             stream: queryPaymentsRecord(
                                               queryBuilder: (paymentsRecord) =>
-                                                  paymentsRecord.where(
-                                                      'is_approved',
-                                                      isEqualTo: true),
+                                                  paymentsRecord
+                                                      .where('is_approved',
+                                                          isEqualTo: true)
+                                                      .where('user_ref',
+                                                          isEqualTo:
+                                                              currentUserReference),
                                             ),
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
@@ -1000,7 +1040,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                     borderRadius: BorderRadius.circular(10),
                                                                                                   ),
                                                                                                   child: Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 0),
                                                                                                     child: Text(
                                                                                                       'REF',
                                                                                                       style: FlutterFlowTheme.of(context).bodyText2.override(
@@ -1017,7 +1057,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                                   ),
                                                                                                   child: Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 0),
                                                                                                     child: Text(
                                                                                                       columnPaymentsRecord.transactionCode,
                                                                                                       style: FlutterFlowTheme.of(context).bodyText2.override(
@@ -1051,7 +1091,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                   height: 100,
                                                                                                   decoration: BoxDecoration(),
                                                                                                   child: Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(7, 9, 5, 5),
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(7, 9, 5, 0),
                                                                                                     child: Text(
                                                                                                       'Paid By Name',
                                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
@@ -1067,7 +1107,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                   height: 100,
                                                                                                   decoration: BoxDecoration(),
                                                                                                   child: Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 0),
                                                                                                     child: Text(
                                                                                                       '${columnPaymentsRecord.firstName}   ${columnPaymentsRecord.lastName}',
                                                                                                       textAlign: TextAlign.start,
@@ -1101,7 +1141,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                   height: 100,
                                                                                                   decoration: BoxDecoration(),
                                                                                                   child: Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(7, 9, 5, 5),
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(7, 9, 5, 0),
                                                                                                     child: Text(
                                                                                                       'Booking Name',
                                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
@@ -1117,7 +1157,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                   height: 100,
                                                                                                   decoration: BoxDecoration(),
                                                                                                   child: Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 0),
                                                                                                     child: Text(
                                                                                                       '${columnBookingsRecord.firstname}    ${columnBookingsRecord.lastname}',
                                                                                                       textAlign: TextAlign.start,
@@ -1188,6 +1228,229 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                 }),
                                               );
                                             },
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 100,
+                                          decoration: BoxDecoration(),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 0, 10),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.8,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Text(
+                                                        'All Invoices',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .title3
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Roboto',
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              PagedListView<
+                                                  DocumentSnapshot<Object>,
+                                                  InvoicesRecord>(
+                                                pagingController: () {
+                                                  final Query<Object> Function(
+                                                          Query<Object>)
+                                                      queryBuilder =
+                                                      (invoicesRecord) => invoicesRecord
+                                                          .where('userEmail',
+                                                              isEqualTo:
+                                                                  currentUserEmail !=
+                                                                          ''
+                                                                      ? currentUserEmail
+                                                                      : null)
+                                                          .orderBy(
+                                                              'created_date');
+                                                  if (_pagingController !=
+                                                      null) {
+                                                    final query = queryBuilder(
+                                                        InvoicesRecord
+                                                            .collection);
+                                                    if (query != _pagingQuery) {
+                                                      // The query has changed
+                                                      _pagingQuery = query;
+                                                      _streamSubscriptions
+                                                          .forEach((s) =>
+                                                              s?.cancel());
+                                                      _streamSubscriptions
+                                                          .clear();
+                                                      _pagingController
+                                                          .refresh();
+                                                    }
+                                                    return _pagingController;
+                                                  }
+
+                                                  _pagingController =
+                                                      PagingController(
+                                                          firstPageKey: null);
+                                                  _pagingQuery = queryBuilder(
+                                                      InvoicesRecord
+                                                          .collection);
+                                                  _pagingController
+                                                      .addPageRequestListener(
+                                                          (nextPageMarker) {
+                                                    queryInvoicesRecordPage(
+                                                      queryBuilder: (invoicesRecord) =>
+                                                          invoicesRecord
+                                                              .where(
+                                                                  'userEmail',
+                                                                  isEqualTo:
+                                                                      currentUserEmail !=
+                                                                              ''
+                                                                          ? currentUserEmail
+                                                                          : null)
+                                                              .orderBy(
+                                                                  'created_date'),
+                                                      nextPageMarker:
+                                                          nextPageMarker,
+                                                      pageSize: 10,
+                                                      isStream: true,
+                                                    ).then((page) {
+                                                      _pagingController
+                                                          .appendPage(
+                                                        page.data,
+                                                        page.nextPageMarker,
+                                                      );
+                                                      final streamSubscription =
+                                                          page.dataStream
+                                                              ?.listen((data) {
+                                                        final itemIndexes =
+                                                            _pagingController
+                                                                .itemList
+                                                                .asMap()
+                                                                .map((k, v) =>
+                                                                    MapEntry(
+                                                                        v.reference
+                                                                            .id,
+                                                                        k));
+                                                        data.forEach((item) {
+                                                          final index =
+                                                              itemIndexes[item
+                                                                  .reference
+                                                                  .id];
+                                                          final items =
+                                                              _pagingController
+                                                                  .itemList;
+                                                          if (index != null) {
+                                                            items.replaceRange(
+                                                                index,
+                                                                index + 1,
+                                                                [item]);
+                                                            _pagingController
+                                                                .itemList = {
+                                                              for (var item
+                                                                  in items)
+                                                                item.reference:
+                                                                    item
+                                                            }.values.toList();
+                                                          }
+                                                        });
+                                                        setState(() {});
+                                                      });
+                                                      _streamSubscriptions.add(
+                                                          streamSubscription);
+                                                    });
+                                                  });
+                                                  return _pagingController;
+                                                }(),
+                                                padding: EdgeInsets.zero,
+                                                shrinkWrap: true,
+                                                scrollDirection: Axis.vertical,
+                                                builderDelegate:
+                                                    PagedChildBuilderDelegate<
+                                                        InvoicesRecord>(
+                                                  // Customize what your widget looks like when it's loading the first page.
+                                                  firstPageProgressIndicatorBuilder:
+                                                      (_) => Center(
+                                                    child: SizedBox(
+                                                      width: 50,
+                                                      height: 50,
+                                                      child: SpinKitRipple(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryColor,
+                                                        size: 50,
+                                                      ),
+                                                    ),
+                                                  ),
+
+                                                  itemBuilder: (context, _,
+                                                      listViewIndex) {
+                                                    final listViewInvoicesRecord =
+                                                        _pagingController
+                                                                .itemList[
+                                                            listViewIndex];
+                                                    return Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0, 0, 0, 20),
+                                                      child: StreamBuilder<
+                                                          BookingsRecord>(
+                                                        stream: BookingsRecord
+                                                            .getDocument(
+                                                                listViewInvoicesRecord
+                                                                    .bookingRef),
+                                                        builder: (context,
+                                                            snapshot) {
+                                                          // Customize what your widget looks like when it's loading.
+                                                          if (!snapshot
+                                                              .hasData) {
+                                                            return Center(
+                                                              child: SizedBox(
+                                                                width: 50,
+                                                                height: 50,
+                                                                child:
+                                                                    SpinKitRipple(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryColor,
+                                                                  size: 50,
+                                                                ),
+                                                              ),
+                                                            );
+                                                          }
+                                                          final invoicePaymentBookingsRecord =
+                                                              snapshot.data;
+                                                          return InvoicePaymentWidget(
+                                                            invoice:
+                                                                listViewInvoicesRecord
+                                                                    .reference,
+                                                            booking:
+                                                                invoicePaymentBookingsRecord,
+                                                          );
+                                                        },
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ],

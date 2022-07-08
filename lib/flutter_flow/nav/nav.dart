@@ -301,6 +301,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 reportRef: params.getParam(
                     'reportRef', ParamType.DocumentReference, 'reports'),
               ),
+            ),
+            FFRoute(
+              name: 'myPayments',
+              path: 'myPayments',
+              builder: (context, params) => MyPaymentsWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

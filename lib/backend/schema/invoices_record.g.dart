@@ -140,6 +140,21 @@ class _$InvoicesRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.bookingUser;
+    if (value != null) {
+      result
+        ..add('bookingUser')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                DocumentReference, const [const FullType(Object)])));
+    }
+    value = object.userEmail;
+    if (value != null) {
+      result
+        ..add('userEmail')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -239,6 +254,16 @@ class _$InvoicesRecordSerializer
           result.invoiceNum = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'bookingUser':
+          result.bookingUser = serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      DocumentReference, const [const FullType(Object)]))
+              as DocumentReference<Object>;
+          break;
+        case 'userEmail':
+          result.userEmail = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -286,6 +311,10 @@ class _$InvoicesRecord extends InvoicesRecord {
   @override
   final String invoiceNum;
   @override
+  final DocumentReference<Object> bookingUser;
+  @override
+  final String userEmail;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$InvoicesRecord([void Function(InvoicesRecordBuilder) updates]) =>
@@ -308,6 +337,8 @@ class _$InvoicesRecord extends InvoicesRecord {
       this.updateRole,
       this.invoiceAmount,
       this.invoiceNum,
+      this.bookingUser,
+      this.userEmail,
       this.reference})
       : super._();
 
@@ -339,6 +370,8 @@ class _$InvoicesRecord extends InvoicesRecord {
         updateRole == other.updateRole &&
         invoiceAmount == other.invoiceAmount &&
         invoiceNum == other.invoiceNum &&
+        bookingUser == other.bookingUser &&
+        userEmail == other.userEmail &&
         reference == other.reference;
   }
 
@@ -361,27 +394,33 @@ class _$InvoicesRecord extends InvoicesRecord {
                                                             $jc(
                                                                 $jc(
                                                                     $jc(
-                                                                        0,
-                                                                        bookedTestsList
+                                                                        $jc(
+                                                                            $jc(
+                                                                                0,
+                                                                                bookedTestsList
+                                                                                    .hashCode),
+                                                                            createdDate
+                                                                                .hashCode),
+                                                                        createdBy
                                                                             .hashCode),
-                                                                    createdDate
+                                                                    isPaid
                                                                         .hashCode),
-                                                                createdBy
+                                                                paymentSubmitted
                                                                     .hashCode),
-                                                            isPaid.hashCode),
-                                                        paymentSubmitted
-                                                            .hashCode),
-                                                    fullAmount.hashCode),
-                                                labRefNum.hashCode),
-                                            bookingRef.hashCode),
-                                        paymentsList.hashCode),
-                                    amountDue.hashCode),
-                                user.hashCode),
-                            dueDate.hashCode),
-                        updateDate.hashCode),
-                    updateRole.hashCode),
-                invoiceAmount.hashCode),
-            invoiceNum.hashCode),
+                                                            fullAmount
+                                                                .hashCode),
+                                                        labRefNum.hashCode),
+                                                    bookingRef.hashCode),
+                                                paymentsList.hashCode),
+                                            amountDue.hashCode),
+                                        user.hashCode),
+                                    dueDate.hashCode),
+                                updateDate.hashCode),
+                            updateRole.hashCode),
+                        invoiceAmount.hashCode),
+                    invoiceNum.hashCode),
+                bookingUser.hashCode),
+            userEmail.hashCode),
         reference.hashCode));
   }
 
@@ -404,6 +443,8 @@ class _$InvoicesRecord extends InvoicesRecord {
           ..add('updateRole', updateRole)
           ..add('invoiceAmount', invoiceAmount)
           ..add('invoiceNum', invoiceNum)
+          ..add('bookingUser', bookingUser)
+          ..add('userEmail', userEmail)
           ..add('reference', reference))
         .toString();
   }
@@ -485,6 +526,15 @@ class InvoicesRecordBuilder
   String get invoiceNum => _$this._invoiceNum;
   set invoiceNum(String invoiceNum) => _$this._invoiceNum = invoiceNum;
 
+  DocumentReference<Object> _bookingUser;
+  DocumentReference<Object> get bookingUser => _$this._bookingUser;
+  set bookingUser(DocumentReference<Object> bookingUser) =>
+      _$this._bookingUser = bookingUser;
+
+  String _userEmail;
+  String get userEmail => _$this._userEmail;
+  set userEmail(String userEmail) => _$this._userEmail = userEmail;
+
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
@@ -513,6 +563,8 @@ class InvoicesRecordBuilder
       _updateRole = $v.updateRole;
       _invoiceAmount = $v.invoiceAmount;
       _invoiceNum = $v.invoiceNum;
+      _bookingUser = $v.bookingUser;
+      _userEmail = $v.userEmail;
       _reference = $v.reference;
       _$v = null;
     }
@@ -552,6 +604,8 @@ class InvoicesRecordBuilder
               updateRole: updateRole,
               invoiceAmount: invoiceAmount,
               invoiceNum: invoiceNum,
+              bookingUser: bookingUser,
+              userEmail: userEmail,
               reference: reference);
     } catch (_) {
       String _$failedField;

@@ -110,8 +110,8 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0, 0, 2, 0),
                                           child: DateWidgetSmallWidget(
-                                            date:
-                                                containerInvoicesRecord.dueDate,
+                                            date: containerInvoicesRecord
+                                                .createdDate,
                                           ),
                                         ),
                                       ),
@@ -130,7 +130,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                     ),
                                   ),
                                   child: ReportPaymentsListWidget(
-                                    bookingRef: widget.booking,
+                                    bookingRef: widget.booking.reference,
                                   ),
                                 ),
                               ],
@@ -345,7 +345,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                               child: Text(
                                                                 formatNumber(
                                                                   containerInvoicesRecord
-                                                                      .invoiceAmount,
+                                                                      .amountDue,
                                                                   formatType:
                                                                       FormatType
                                                                           .decimal,

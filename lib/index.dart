@@ -39,3 +39,4 @@ export 'chat/chat_widget.dart' show ChatWidget;
 export 'technologist_test_deck/technologist_test_deck_widget.dart'
     show TechnologistTestDeckWidget;
 export 'booking_report/booking_report_widget.dart' show BookingReportWidget;
+export 'my_payments/my_payments_widget.dart' show MyPaymentsWidget;

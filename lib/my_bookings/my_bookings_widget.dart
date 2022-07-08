@@ -327,6 +327,15 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                             DateWidgetSmallWidget(
                                                                               date: pastbookingsItem.scheduledDate,
                                                                             ),
+                                                                            if ((pastbookingsItem.labRefNum) !=
+                                                                                '')
+                                                                              Text(
+                                                                                pastbookingsItem.labRefNum,
+                                                                                style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                      fontFamily: 'Roboto',
+                                                                                      color: Colors.white,
+                                                                                    ),
+                                                                              ),
                                                                             Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                                                                               child: Container(
@@ -868,6 +877,19 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                         date: upcomingBookingsColumnBookingsRecord
                                                                             .scheduledDate,
                                                                       ),
+                                                                      if ((upcomingBookingsColumnBookingsRecord
+                                                                              .labRefNum) !=
+                                                                          '')
+                                                                        Text(
+                                                                          upcomingBookingsColumnBookingsRecord
+                                                                              .labRefNum,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .subtitle2
+                                                                              .override(
+                                                                                fontFamily: 'Roboto',
+                                                                                color: Colors.white,
+                                                                              ),
+                                                                        ),
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0,
@@ -1132,22 +1154,22 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                   );
                                                                                                 },
                                                                                                 child: Container(
-                                                                                                  width: MediaQuery.of(context).size.width * 0.3,
                                                                                                   height: MediaQuery.of(context).size.height * 0.04,
+                                                                                                  constraints: BoxConstraints(
+                                                                                                    maxWidth: MediaQuery.of(context).size.width * 0.3,
+                                                                                                  ),
                                                                                                   decoration: BoxDecoration(
                                                                                                     color: Colors.white,
                                                                                                     borderRadius: BorderRadius.circular(8),
                                                                                                   ),
-                                                                                                  child: Row(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.start,
-                                                                                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                                                                                    children: [
-                                                                                                      Container(
-                                                                                                        width: MediaQuery.of(context).size.width * 0.28,
-                                                                                                        height: 100,
-                                                                                                        decoration: BoxDecoration(),
-                                                                                                        child: Padding(
+                                                                                                  child: SingleChildScrollView(
+                                                                                                    scrollDirection: Axis.horizontal,
+                                                                                                    child: Row(
+                                                                                                      mainAxisSize: MainAxisSize.min,
+                                                                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                                                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                                                                                      children: [
+                                                                                                        Padding(
                                                                                                           padding: EdgeInsetsDirectional.fromSTEB(10, 7, 5, 5),
                                                                                                           child: Text(
                                                                                                             functions.camelCase(containerTestsRecord.name).maybeHandleOverflow(
@@ -1161,8 +1183,8 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                                 ),
                                                                                                           ),
                                                                                                         ),
-                                                                                                      ),
-                                                                                                    ],
+                                                                                                      ],
+                                                                                                    ),
                                                                                                   ),
                                                                                                 ),
                                                                                               );
@@ -1201,8 +1223,11 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                               StreamBuilder<List<BookingsRecord>>(
                                 stream: queryBookingsRecord(
                                   queryBuilder: (bookingsRecord) =>
-                                      bookingsRecord.where('booking_confirmed',
-                                          isEqualTo: false),
+                                      bookingsRecord
+                                          .where('booking_confirmed',
+                                              isEqualTo: false)
+                                          .where('user',
+                                              isEqualTo: currentUserReference),
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
@@ -1262,15 +1287,25 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                     children: [
                                                       InkWell(
                                                         onTap: () async {
-                                                          context.pushNamed(
-                                                            'BookingUpdates',
-                                                            queryParams: {
-                                                              'bookingRef': serializeParam(
-                                                                  inactivebookingsItem
-                                                                      .reference,
-                                                                  ParamType
-                                                                      .DocumentReference),
-                                                            }.withoutNulls,
+                                                          await showModalBottomSheet(
+                                                            isScrollControlled:
+                                                                true,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            context: context,
+                                                            builder: (context) {
+                                                              return Padding(
+                                                                padding: MediaQuery.of(
+                                                                        context)
+                                                                    .viewInsets,
+                                                                child:
+                                                                    BookingUpdateWidget(
+                                                                  bookingRef:
+                                                                      inactivebookingsItem,
+                                                                ),
+                                                              );
+                                                            },
                                                           );
                                                         },
                                                         child: Material(
@@ -1347,6 +1382,15 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                             DateWidgetSmallWidget(
                                                                               date: inactivebookingsItem.createdDate,
                                                                             ),
+                                                                            if ((inactivebookingsItem.labRefNum) !=
+                                                                                '')
+                                                                              Text(
+                                                                                inactivebookingsItem.labRefNum,
+                                                                                style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                      fontFamily: 'Roboto',
+                                                                                      color: Colors.white,
+                                                                                    ),
+                                                                              ),
                                                                             Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                                                                               child: Container(
@@ -1357,7 +1401,10 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(8, 4, 4, 4),
                                                                                   child: Text(
-                                                                                    inactivebookingsItem.bookingstatus,
+                                                                                    valueOrDefault<String>(
+                                                                                      inactivebookingsItem.bookingstatus,
+                                                                                      'inactive',
+                                                                                    ),
                                                                                     style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                           fontFamily: 'Roboto',
                                                                                           color: Colors.white,
@@ -1436,75 +1483,77 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                           children: [
-                                                                                            Material(
-                                                                                              color: Colors.transparent,
-                                                                                              elevation: 2,
-                                                                                              shape: RoundedRectangleBorder(
-                                                                                                borderRadius: BorderRadius.circular(12),
-                                                                                              ),
-                                                                                              child: Container(
-                                                                                                width: 90,
-                                                                                                height: 30,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                            if ((inactivebookingsItem.flaggedTests.toList().length) > 0)
+                                                                                              Material(
+                                                                                                color: Colors.transparent,
+                                                                                                elevation: 2,
+                                                                                                shape: RoundedRectangleBorder(
                                                                                                   borderRadius: BorderRadius.circular(12),
                                                                                                 ),
-                                                                                                child: Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                                                                                                  child: Row(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                    children: [
-                                                                                                      Icon(
-                                                                                                        Icons.flag_rounded,
-                                                                                                        color: Colors.white,
-                                                                                                        size: 16,
-                                                                                                      ),
-                                                                                                      Text(
-                                                                                                        'Flagged',
-                                                                                                        style: FlutterFlowTheme.of(context).bodyText1,
-                                                                                                      ),
-                                                                                                    ],
+                                                                                                child: Container(
+                                                                                                  width: 90,
+                                                                                                  height: 30,
+                                                                                                  decoration: BoxDecoration(
+                                                                                                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                                    borderRadius: BorderRadius.circular(12),
+                                                                                                  ),
+                                                                                                  child: Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                                                                                                    child: Row(
+                                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                                      children: [
+                                                                                                        Icon(
+                                                                                                          Icons.flag_rounded,
+                                                                                                          color: Colors.white,
+                                                                                                          size: 16,
+                                                                                                        ),
+                                                                                                        Text(
+                                                                                                          'Flagged',
+                                                                                                          style: FlutterFlowTheme.of(context).bodyText1,
+                                                                                                        ),
+                                                                                                      ],
+                                                                                                    ),
                                                                                                   ),
                                                                                                 ),
                                                                                               ),
-                                                                                            ),
-                                                                                            Material(
-                                                                                              color: Colors.transparent,
-                                                                                              elevation: 2,
-                                                                                              shape: RoundedRectangleBorder(
-                                                                                                borderRadius: BorderRadius.circular(12),
-                                                                                              ),
-                                                                                              child: Container(
-                                                                                                width: 90,
-                                                                                                height: 30,
-                                                                                                decoration: BoxDecoration(
-                                                                                                  color: Color(0x33FFFFFF),
+                                                                                            if ((inactivebookingsItem.frozenTests.toList().length) > 0)
+                                                                                              Material(
+                                                                                                color: Colors.transparent,
+                                                                                                elevation: 2,
+                                                                                                shape: RoundedRectangleBorder(
                                                                                                   borderRadius: BorderRadius.circular(12),
                                                                                                 ),
-                                                                                                child: Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
-                                                                                                  child: Row(
-                                                                                                    mainAxisSize: MainAxisSize.max,
-                                                                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                                                    children: [
-                                                                                                      FaIcon(
-                                                                                                        FontAwesomeIcons.solidPauseCircle,
-                                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                                        size: 16,
-                                                                                                      ),
-                                                                                                      Text(
-                                                                                                        'On Hold',
-                                                                                                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                              fontFamily: 'Roboto',
-                                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                                            ),
-                                                                                                      ),
-                                                                                                    ],
+                                                                                                child: Container(
+                                                                                                  width: 90,
+                                                                                                  height: 30,
+                                                                                                  decoration: BoxDecoration(
+                                                                                                    color: Color(0x33FFFFFF),
+                                                                                                    borderRadius: BorderRadius.circular(12),
+                                                                                                  ),
+                                                                                                  child: Padding(
+                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
+                                                                                                    child: Row(
+                                                                                                      mainAxisSize: MainAxisSize.max,
+                                                                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                                                      children: [
+                                                                                                        FaIcon(
+                                                                                                          FontAwesomeIcons.solidPauseCircle,
+                                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                          size: 16,
+                                                                                                        ),
+                                                                                                        Text(
+                                                                                                          'On Hold',
+                                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                                fontFamily: 'Roboto',
+                                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                              ),
+                                                                                                        ),
+                                                                                                      ],
+                                                                                                    ),
                                                                                                   ),
                                                                                                 ),
                                                                                               ),
-                                                                                            ),
                                                                                           ],
                                                                                         ),
                                                                                       ),
@@ -1583,38 +1632,55 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                           );
                                                                                                         }
                                                                                                         final containerTestsRecord = snapshot.data;
-                                                                                                        return Container(
-                                                                                                          width: MediaQuery.of(context).size.width * 0.3,
-                                                                                                          height: MediaQuery.of(context).size.height * 0.04,
-                                                                                                          decoration: BoxDecoration(
-                                                                                                            color: Colors.white,
-                                                                                                            borderRadius: BorderRadius.circular(8),
-                                                                                                          ),
-                                                                                                          child: Row(
-                                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                                            mainAxisAlignment: MainAxisAlignment.start,
-                                                                                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                                                                                            children: [
-                                                                                                              Container(
-                                                                                                                width: MediaQuery.of(context).size.width * 0.28,
-                                                                                                                height: 100,
-                                                                                                                decoration: BoxDecoration(),
-                                                                                                                child: Padding(
-                                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(10, 7, 5, 5),
-                                                                                                                  child: Text(
-                                                                                                                    functions.camelCase(containerTestsRecord.name).maybeHandleOverflow(
-                                                                                                                          maxChars: 20,
-                                                                                                                          replacement: '…',
-                                                                                                                        ),
-                                                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                                          fontFamily: 'Roboto',
-                                                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                                                          fontWeight: FontWeight.normal,
-                                                                                                                        ),
+                                                                                                        return InkWell(
+                                                                                                          onTap: () async {
+                                                                                                            await showModalBottomSheet(
+                                                                                                              isScrollControlled: true,
+                                                                                                              backgroundColor: Colors.transparent,
+                                                                                                              context: context,
+                                                                                                              builder: (context) {
+                                                                                                                return Padding(
+                                                                                                                  padding: MediaQuery.of(context).viewInsets,
+                                                                                                                  child: TestDetailsPopupWidget(
+                                                                                                                    test: containerTestsRecord,
                                                                                                                   ),
-                                                                                                                ),
+                                                                                                                );
+                                                                                                              },
+                                                                                                            );
+                                                                                                          },
+                                                                                                          child: Container(
+                                                                                                            height: MediaQuery.of(context).size.height * 0.04,
+                                                                                                            constraints: BoxConstraints(
+                                                                                                              maxWidth: MediaQuery.of(context).size.width * 0.3,
+                                                                                                            ),
+                                                                                                            decoration: BoxDecoration(
+                                                                                                              color: Colors.white,
+                                                                                                              borderRadius: BorderRadius.circular(8),
+                                                                                                            ),
+                                                                                                            child: SingleChildScrollView(
+                                                                                                              scrollDirection: Axis.horizontal,
+                                                                                                              child: Row(
+                                                                                                                mainAxisSize: MainAxisSize.min,
+                                                                                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                                                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                                                                                children: [
+                                                                                                                  Padding(
+                                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(10, 7, 5, 5),
+                                                                                                                    child: Text(
+                                                                                                                      functions.camelCase(containerTestsRecord.name).maybeHandleOverflow(
+                                                                                                                            maxChars: 20,
+                                                                                                                            replacement: '…',
+                                                                                                                          ),
+                                                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                                            fontFamily: 'Roboto',
+                                                                                                                            color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                                            fontWeight: FontWeight.normal,
+                                                                                                                          ),
+                                                                                                                    ),
+                                                                                                                  ),
+                                                                                                                ],
                                                                                                               ),
-                                                                                                            ],
+                                                                                                            ),
                                                                                                           ),
                                                                                                         );
                                                                                                       },

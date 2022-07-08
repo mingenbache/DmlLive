@@ -1782,6 +1782,10 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                     updateDate: getCurrentTimestamp,
                                     updateRole: valueOrDefault(
                                         currentUserDocument?.role, ''),
+                                    bookingUser:
+                                        bookingInvoicingBookingsRecord.user,
+                                    userEmail: bookingInvoicingBookingsRecord
+                                        .emailaddress,
                                   );
                                   var invoicesRecordReference =
                                       InvoicesRecord.collection.doc();
