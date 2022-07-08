@@ -251,7 +251,7 @@ class _AccordionListState extends State<AccordionList> {
                                 color: Colors.transparent,
                                 width: 1,
                               ),
-                              borderRadius: 12.0,
+                              borderRadius: 12,
                             ),
                           ),
                         ],

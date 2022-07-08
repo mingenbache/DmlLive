@@ -114,7 +114,12 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                 Expanded(
                   child: DefaultTabController(
                     length: 3,
-                    initialIndex: 0,
+                    initialIndex: min(
+                        valueOrDefault<int>(
+                          functions.returnBookingsTab(FFAppState().testsVar),
+                          0,
+                        ),
+                        2),
                     child: Column(
                       children: [
                         TabBar(
