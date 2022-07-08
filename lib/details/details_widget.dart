@@ -1,4 +1,3 @@
-import '../all_tests/all_tests_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/top_actions_widget.dart';
@@ -6,7 +5,6 @@ import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../modify_test/modify_test_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +30,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
     'buttonOnActionTriggerAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         opacity: 0,
       ),
@@ -42,6 +41,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
     'buttonOnActionTriggerAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         opacity: 0,
       ),
@@ -73,7 +73,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -94,7 +94,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: SpinKitDoubleBounce(
+                      child: SpinKitRipple(
                         color: FlutterFlowTheme.of(context).primaryColor,
                         size: 50,
                       ),
@@ -115,7 +115,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                             child: SizedBox(
                               width: 50,
                               height: 50,
-                              child: SpinKitDoubleBounce(
+                              child: SpinKitRipple(
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
                                 size: 50,
@@ -158,14 +158,13 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                           (columnUsersRecord.role) == 'admin',
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          await Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ModifyTestWidget(
-                                                testId: widget.testId,
-                                              ),
-                                            ),
+                                          context.pushNamed(
+                                            'ModifyTest',
+                                            queryParams: {
+                                              'testId': serializeParam(
+                                                  widget.testId,
+                                                  ParamType.DocumentReference),
+                                            }.withoutNulls,
                                           );
                                         },
                                         text: 'Edit',
@@ -192,7 +191,8 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                             color: Colors.transparent,
                                             width: 1,
                                           ),
-                                          borderRadius: 12,
+                                          borderRadius:
+                                              BorderRadius.circular(12),
                                         ),
                                       ),
                                     ),
@@ -838,7 +838,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                               child: SizedBox(
                                 width: 50,
                                 height: 50,
-                                child: SpinKitDoubleBounce(
+                                child: SpinKitRipple(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   size: 50,
@@ -884,7 +884,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                         color: Colors.transparent,
                                         width: 0,
                                       ),
-                                      borderRadius: 30,
+                                      borderRadius: BorderRadius.circular(30),
                                     ),
                                   ).animated([
                                     animationsMap[
@@ -928,13 +928,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                             label: 'Added action!',
                                             textColor: Color(0x00000000),
                                             onPressed: () async {
-                                              await Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      AllTestsWidget(),
-                                                ),
-                                              );
+                                              context.pushNamed('AllTests');
                                             },
                                           ),
                                         ),
@@ -960,7 +954,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                         color: Colors.transparent,
                                         width: 1,
                                       ),
-                                      borderRadius: 30,
+                                      borderRadius: BorderRadius.circular(30),
                                     ),
                                   ).animated([
                                     animationsMap[

@@ -1,13 +1,10 @@
-import '../account/account_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_choice_chips.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../messages/messages_widget.dart';
-import '../new_booking/new_booking_widget.dart';
-import '../user_list/user_list_widget.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +13,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class TestReportWidget extends StatefulWidget {
-  const TestReportWidget({
+class LabReportWidget extends StatefulWidget {
+  const LabReportWidget({
     Key key,
     this.bookingRef,
   }) : super(key: key);
@@ -25,10 +22,10 @@ class TestReportWidget extends StatefulWidget {
   final DocumentReference bookingRef;
 
   @override
-  _TestReportWidgetState createState() => _TestReportWidgetState();
+  _LabReportWidgetState createState() => _LabReportWidgetState();
 }
 
-class _TestReportWidgetState extends State<TestReportWidget> {
+class _LabReportWidgetState extends State<LabReportWidget> {
   PageController pageViewController;
   String choiceChipsValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -44,14 +41,14 @@ class _TestReportWidgetState extends State<TestReportWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
             ),
           );
         }
-        final testReportBookingsRecord = snapshot.data;
+        final labReportBookingsRecord = snapshot.data;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -71,7 +68,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                             child: SizedBox(
                               width: 50,
                               height: 50,
-                              child: SpinKitDoubleBounce(
+                              child: SpinKitRipple(
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
                                 size: 50,
@@ -106,13 +103,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                           children: [
                                             InkWell(
                                               onTap: () async {
-                                                await Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        UserListWidget(),
-                                                  ),
-                                                );
+                                                context.pushNamed('UserList');
                                               },
                                               child: FaIcon(
                                                 FontAwesomeIcons.solidBell,
@@ -125,16 +116,12 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                                   .fromSTEB(5, 0, 0, 0),
                                               child: InkWell(
                                                 onTap: () async {
-                                                  await Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          NewBookingWidget(),
-                                                    ),
-                                                  );
+                                                  context
+                                                      .pushNamed('NewBooking');
                                                 },
                                                 child: FaIcon(
-                                                  FontAwesomeIcons.shoppingBag,
+                                                  FontAwesomeIcons
+                                                      .shoppingBasket,
                                                   color: Colors.white,
                                                   size: 18,
                                                 ),
@@ -145,13 +132,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                                   .fromSTEB(5, 0, 0, 0),
                                               child: InkWell(
                                                 onTap: () async {
-                                                  await Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          AccountWidget(),
-                                                    ),
-                                                  );
+                                                  context.pushNamed('Account');
                                                 },
                                                 child: Icon(
                                                   Icons.person_sharp,
@@ -162,13 +143,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                             ),
                                             InkWell(
                                               onTap: () async {
-                                                await Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        MessagesWidget(),
-                                                  ),
-                                                );
+                                                context.pushNamed('Messages');
                                               },
                                               child: Icon(
                                                 Icons.message,
@@ -280,7 +255,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 5, 0, 0),
                                                 child: Text(
-                                                  testReportBookingsRecord
+                                                  labReportBookingsRecord
                                                       .bookingstatus,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -367,7 +342,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0, 8, 16, 0),
                                           child: Text(
-                                            testReportBookingsRecord.labRefNum,
+                                            labReportBookingsRecord.labRefNum,
                                             textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
@@ -447,7 +422,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                               child: Text(
                                                 dateTimeFormat(
                                                     'd/M/y',
-                                                    testReportBookingsRecord
+                                                    labReportBookingsRecord
                                                         .scheduledDate),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -619,7 +594,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0, 6, 0, 0),
                                               child: Text(
-                                                testReportBookingsRecord
+                                                labReportBookingsRecord
                                                     .docNameAddress,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -759,7 +734,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                                                   .fromSTEB(6,
                                                                       6, 3, 3),
                                                           child: Text(
-                                                            '${testReportBookingsRecord.firstname}    ${testReportBookingsRecord.lastname}',
+                                                            '${labReportBookingsRecord.firstname}    ${labReportBookingsRecord.lastname}',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyText1
@@ -891,7 +866,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                                                           3,
                                                                           3),
                                                                   child: Text(
-                                                                    '${testReportBookingsRecord.firstname}     ${testReportBookingsRecord.lastname}',
+                                                                    '${labReportBookingsRecord.firstname}     ${labReportBookingsRecord.lastname}',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
@@ -996,7 +971,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                                                           3,
                                                                           3),
                                                                   child: Text(
-                                                                    testReportBookingsRecord
+                                                                    labReportBookingsRecord
                                                                         .emailaddress,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -1102,7 +1077,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                                                           3,
                                                                           3),
                                                                   child: Text(
-                                                                    testReportBookingsRecord
+                                                                    labReportBookingsRecord
                                                                         .phonenumber,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -1232,7 +1207,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                                                             Text(
                                                                           dateTimeFormat(
                                                                               'd/M/y',
-                                                                              testReportBookingsRecord.dOB),
+                                                                              labReportBookingsRecord.dOB),
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
@@ -1255,11 +1230,15 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                                                               choiceChipsValue
                                                                             ]
                                                                           : [
-                                                                              testReportBookingsRecord.sex
+                                                                              labReportBookingsRecord.sex
                                                                             ],
-                                                                  options: [
-                                                                    ChipData('')
-                                                                  ],
+                                                                  options: (functions
+                                                                              .returnSexOptions() ??
+                                                                          [])
+                                                                      .map((label) =>
+                                                                          ChipData(
+                                                                              label))
+                                                                      .toList(),
                                                                   onChanged: (val) =>
                                                                       setState(() =>
                                                                           choiceChipsValue =
@@ -1311,6 +1290,9 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                                                   initialized:
                                                                       choiceChipsValue !=
                                                                           null,
+                                                                  alignment:
+                                                                      WrapAlignment
+                                                                          .start,
                                                                 ),
                                                               ),
                                                             ],
@@ -1390,7 +1372,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(14, 14, 14, 14),
                                                 child: Text(
-                                                  testReportBookingsRecord
+                                                  labReportBookingsRecord
                                                       .diagnosis,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -1443,7 +1425,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                               testedTestsRecord.where(
                                                   'booking_ref',
                                                   isEqualTo:
-                                                      testReportBookingsRecord
+                                                      labReportBookingsRecord
                                                           .reference),
                                         ),
                                         builder: (context, snapshot) {
@@ -1453,7 +1435,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                               child: SizedBox(
                                                 width: 50,
                                                 height: 50,
-                                                child: SpinKitDoubleBounce(
+                                                child: SpinKitRipple(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryColor,
@@ -1625,7 +1607,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(14, 14, 14, 14),
                                               child: Text(
-                                                testReportBookingsRecord
+                                                labReportBookingsRecord
                                                     .diagnosis,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -1651,7 +1633,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                       },
                     ),
                   ),
-                  if (testReportBookingsRecord.completed ?? true)
+                  if (labReportBookingsRecord.completed ?? true)
                     Align(
                       alignment: AlignmentDirectional(0, 0.05),
                       child: Padding(
@@ -1678,7 +1660,7 @@ class _TestReportWidgetState extends State<TestReportWidget> {
                               color: Colors.transparent,
                               width: 1,
                             ),
-                            borderRadius: 25,
+                            borderRadius: BorderRadius.circular(25),
                           ),
                         ),
                       ),

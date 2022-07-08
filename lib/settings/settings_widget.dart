@@ -1,10 +1,6 @@
-import '../account/account_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../home/home_widget.dart';
-import '../new_booking/new_booking_widget.dart';
-import '../new_test/new_test_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -46,19 +42,14 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       alignment: AlignmentDirectional(0, 0),
                       child: InkWell(
                         onTap: () async {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HomeWidget(),
-                            ),
-                          );
+                          context.pushNamed('Home');
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.3,
                           decoration: BoxDecoration(),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              Navigator.pop(context);
+                              context.pop();
                             },
                             text: 'BACK',
                             icon: Icon(
@@ -78,7 +69,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               borderSide: BorderSide(
                                 color: Colors.transparent,
                               ),
-                              borderRadius: 0,
                             ),
                           ),
                         ),
@@ -97,15 +87,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           children: [
                             InkWell(
                               onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => NewTestWidget(),
-                                  ),
-                                );
+                                context.pushNamed('NewTest');
                               },
                               child: FaIcon(
-                                FontAwesomeIcons.bell,
+                                FontAwesomeIcons.solidBell,
                                 color: Colors.white,
                                 size: 18,
                               ),
@@ -115,12 +100,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                               child: InkWell(
                                 onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => NewBookingWidget(),
-                                    ),
-                                  );
+                                  context.pushNamed('NewBooking');
                                 },
                                 child: FaIcon(
                                   FontAwesomeIcons.shoppingBasket,
@@ -134,12 +114,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   EdgeInsetsDirectional.fromSTEB(5, 0, 1, 0),
                               child: InkWell(
                                 onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => AccountWidget(),
-                                    ),
-                                  );
+                                  context.pushNamed('Account');
                                 },
                                 child: Icon(
                                   Icons.person_rounded,
@@ -333,7 +308,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
               child: FFButtonWidget(
                 onPressed: () async {
-                  Navigator.pop(context);
+                  context.pop();
                 },
                 text: 'Confirm Changes',
                 options: FFButtonOptions(
@@ -351,7 +326,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     color: Colors.transparent,
                     width: 1,
                   ),
-                  borderRadius: 30,
+                  borderRadius: BorderRadius.circular(30),
                 ),
               ),
             ),

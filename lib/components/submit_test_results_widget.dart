@@ -32,10 +32,10 @@ class SubmitTestResultsWidget extends StatefulWidget {
 
 class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
     with TickerProviderStateMixin {
+  String uploadedFileUrl = '';
   String testMachineValue;
   bool checkboxListTileValue;
   TextEditingController testResultController;
-  String uploadedFileUrl = '';
   TextEditingController testNoteController;
   final formKey = GlobalKey<FormState>();
   final animationsMap = {
@@ -43,6 +43,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 200,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 100),
@@ -57,6 +58,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 230,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 120),
@@ -71,6 +73,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 230,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 120),
@@ -110,7 +113,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -166,7 +169,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                               ),
                               InkWell(
                                 onTap: () async {
-                                  Navigator.pop(context);
+                                  context.pop();
                                 },
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -186,7 +189,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                       size: 30,
                                     ),
                                     onPressed: () async {
-                                      Navigator.pop(context);
+                                      context.pop();
                                     },
                                   ),
                                 ),
@@ -230,7 +233,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                                   child: SizedBox(
                                                     width: 50,
                                                     height: 50,
-                                                    child: SpinKitDoubleBounce(
+                                                    child: SpinKitRipple(
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -290,7 +293,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                                 child: SizedBox(
                                                   width: 50,
                                                   height: 50,
-                                                  child: SpinKitDoubleBounce(
+                                                  child: SpinKitRipple(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryColor,
@@ -320,8 +323,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                             child: FlutterFlowDropDown(
-                              options: ['Machine 1', 'Machine 2', 'Machine 3']
-                                  .toList(),
+                              options: ['Machine 1', 'Machine 2', 'Machine 3'],
                               onChanged: (val) =>
                                   setState(() => testMachineValue = val),
                               width: MediaQuery.of(context).size.width * 0.9,
@@ -451,7 +453,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                 textAlign: TextAlign.start,
                                 maxLines: 6,
                                 validator: (val) {
-                                  if (val.isEmpty) {
+                                  if (val == null || val.isEmpty) {
                                     return 'Field is required';
                                   }
 
@@ -491,22 +493,28 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                         allowPhoto: true,
                                       );
                                       if (selectedMedia != null &&
-                                          validateFileFormat(
-                                              selectedMedia.storagePath,
-                                              context)) {
+                                          selectedMedia.every((m) =>
+                                              validateFileFormat(
+                                                  m.storagePath, context))) {
                                         showUploadMessage(
                                           context,
                                           'Uploading file...',
                                           showLoading: true,
                                         );
-                                        final downloadUrl = await uploadData(
-                                            selectedMedia.storagePath,
-                                            selectedMedia.bytes);
+                                        final downloadUrls = (await Future.wait(
+                                                selectedMedia.map((m) async =>
+                                                    await uploadData(
+                                                        m.storagePath,
+                                                        m.bytes))))
+                                            .where((u) => u != null)
+                                            .toList();
                                         ScaffoldMessenger.of(context)
                                             .hideCurrentSnackBar();
-                                        if (downloadUrl != null) {
-                                          setState(() =>
-                                              uploadedFileUrl = downloadUrl);
+                                        if (downloadUrls != null &&
+                                            downloadUrls.length ==
+                                                selectedMedia.length) {
+                                          setState(() => uploadedFileUrl =
+                                              downloadUrls.first);
                                           showUploadMessage(
                                             context,
                                             'Success!',
@@ -642,7 +650,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                   child: SizedBox(
                                     width: 50,
                                     height: 50,
-                                    child: SpinKitDoubleBounce(
+                                    child: SpinKitRipple(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryColor,
                                       size: 50,
@@ -674,7 +682,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                   );
                                   await buttonBookedTestsRecord.reference
                                       .update(bookedTestsUpdateData);
-                                  Navigator.pop(context);
+                                  context.pop();
                                 },
                                 text: 'Submit Results',
                                 options: FFButtonOptions(
@@ -694,7 +702,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                     color: Colors.transparent,
                                     width: 1,
                                   ),
-                                  borderRadius: 25,
+                                  borderRadius: BorderRadius.circular(25),
                                 ),
                               );
                             },

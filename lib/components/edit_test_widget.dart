@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../details/details_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -47,6 +46,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
       format: '###',
       locale: '',
     ));
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -63,7 +63,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -136,7 +136,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                       ),
                                       InkWell(
                                         onTap: () async {
-                                          Navigator.pop(context);
+                                          context.pop();
                                         },
                                         child: Card(
                                           clipBehavior:
@@ -159,7 +159,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                               size: 30,
                                             ),
                                             onPressed: () async {
-                                              Navigator.pop(context);
+                                              context.pop();
                                             },
                                           ),
                                         ),
@@ -194,18 +194,18 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                             .fromSTEB(
                                                                 3, 3, 3, 3),
                                                     child: TextFormField(
+                                                      controller:
+                                                          textController1 ??=
+                                                              TextEditingController(
+                                                        text: columnTestsRecord
+                                                            .name,
+                                                      ),
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         'textController1',
                                                         Duration(
                                                             milliseconds: 2000),
                                                         () => setState(() {}),
-                                                      ),
-                                                      controller:
-                                                          textController1 ??=
-                                                              TextEditingController(
-                                                        text: columnTestsRecord
-                                                            .name,
                                                       ),
                                                       obscureText: false,
                                                       decoration:
@@ -271,7 +271,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                     onTap: () =>
                                                                         setState(
                                                                       () => textController1
-                                                                          .clear(),
+                                                                          ?.clear(),
                                                                     ),
                                                                     child: Icon(
                                                                       Icons
@@ -301,12 +301,14 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               ),
                                                       maxLines: 1,
                                                       validator: (val) {
-                                                        if (val.isEmpty) {
+                                                        if (val == null ||
+                                                            val.isEmpty) {
                                                           return 'Field is required';
                                                         }
                                                         if (val.length < 3) {
                                                           return 'Requires at least 3 characters.';
                                                         }
+
                                                         return null;
                                                       },
                                                     ),
@@ -378,7 +380,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               width: 50,
                                                               height: 50,
                                                               child:
-                                                                  SpinKitDoubleBounce(
+                                                                  SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryColor,
@@ -468,18 +470,18 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(20, 10, 10, 10),
                                                 child: TextFormField(
+                                                  controller:
+                                                      testDescriptionController ??=
+                                                          TextEditingController(
+                                                    text: columnTestsRecord
+                                                        .description,
+                                                  ),
                                                   onChanged: (_) =>
                                                       EasyDebounce.debounce(
                                                     'testDescriptionController',
                                                     Duration(
                                                         milliseconds: 2000),
                                                     () => setState(() {}),
-                                                  ),
-                                                  controller:
-                                                      testDescriptionController ??=
-                                                          TextEditingController(
-                                                    text: columnTestsRecord
-                                                        .description,
                                                   ),
                                                   obscureText: false,
                                                   decoration: InputDecoration(
@@ -512,7 +514,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                 onTap: () =>
                                                                     setState(
                                                                   () => testDescriptionController
-                                                                      .clear(),
+                                                                      ?.clear(),
                                                                 ),
                                                                 child: Icon(
                                                                   Icons.clear,
@@ -896,6 +898,8 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                   .fromSTEB(6,
                                                                       0, 0, 0),
                                                           child: TextFormField(
+                                                            controller:
+                                                                resultsDurationTextController,
                                                             onChanged: (_) =>
                                                                 EasyDebounce
                                                                     .debounce(
@@ -906,8 +910,6 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               () => setState(
                                                                   () {}),
                                                             ),
-                                                            controller:
-                                                                resultsDurationTextController,
                                                             obscureText: false,
                                                             decoration:
                                                                 InputDecoration(
@@ -1151,13 +1153,15 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                 TextInputType
                                                                     .number,
                                                             validator: (val) {
-                                                              if (val.isEmpty) {
+                                                              if (val == null ||
+                                                                  val.isEmpty) {
                                                                 return 'incorrect price entered';
                                                               }
                                                               if (val.length <
                                                                   2) {
                                                                 return 'incorrect price entered';
                                                               }
+
                                                               return null;
                                                             },
                                                           ),
@@ -1207,16 +1211,16 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                 durationResults: durationResultsSliderValue,
                                 category: dropDownValue,
                                 updateDate: getCurrentTimestamp,
-                                updateRole: currentUserDocument?.role,
+                                updateRole: valueOrDefault(
+                                    currentUserDocument?.role, ''),
                               );
                               await widget.testRef.update(testsUpdateData);
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => DetailsWidget(
-                                    testId: widget.testRef,
-                                  ),
-                                ),
+                              context.pushNamed(
+                                'Details',
+                                queryParams: {
+                                  'testId': serializeParam(widget.testRef,
+                                      ParamType.DocumentReference),
+                                }.withoutNulls,
                               );
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -1249,7 +1253,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                 color: Colors.transparent,
                                 width: 1,
                               ),
-                              borderRadius: 25,
+                              borderRadius: BorderRadius.circular(25),
                             ),
                           ),
                         ),

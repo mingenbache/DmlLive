@@ -38,15 +38,15 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
               ),
             );
           }
-          List<BookedTestsRecord> bookedTestsContainerBookedTestsRecordList =
-              snapshot.data;
+          List<BookedTestsRecord>
+              bookedTestsReportContainerBookedTestsRecordList = snapshot.data;
           return Container(
             constraints: BoxConstraints(
               maxHeight: 170,
@@ -60,7 +60,9 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
               child: Builder(
                 builder: (context) {
                   final bookingTests =
-                      bookedTestsContainerBookedTestsRecordList?.toList() ?? [];
+                      bookedTestsReportContainerBookedTestsRecordList
+                              ?.toList() ??
+                          [];
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     primary: false,
@@ -83,7 +85,7 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                 child: SizedBox(
                                   width: 50,
                                   height: 50,
-                                  child: SpinKitDoubleBounce(
+                                  child: SpinKitRipple(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
                                     size: 50,
@@ -146,7 +148,7 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: SpinKitDoubleBounce(
+                                            child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
@@ -172,7 +174,7 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                                   child: SizedBox(
                                                     width: 50,
                                                     height: 50,
-                                                    child: SpinKitDoubleBounce(
+                                                    child: SpinKitRipple(
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)

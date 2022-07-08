@@ -1,10 +1,8 @@
-import '../account/account_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/new_booking_sheet_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../new_booking/new_booking_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -29,7 +27,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -56,7 +54,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: SpinKitDoubleBounce(
+                      child: SpinKitRipple(
                         color: FlutterFlowTheme.of(context).primaryColor,
                         size: 50,
                       ),
@@ -145,14 +143,13 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                   setState(() =>
                                       FFAppState().lastBookingPage = false);
                                   if (containerUsersRecord.hasCurrentBooking) {
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => NewBookingWidget(
-                                          bookingRef: currentUserDocument
-                                              ?.currentBooking,
-                                        ),
-                                      ),
+                                    context.pushNamed(
+                                      'NewBooking',
+                                      queryParams: {
+                                        'bookingRef': serializeParam(
+                                            currentUserDocument?.currentBooking,
+                                            ParamType.DocumentReference),
+                                      }.withoutNulls,
                                     );
                                   }
                                 },
@@ -168,12 +165,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                   EdgeInsetsDirectional.fromSTEB(5, 0, 1, 0),
                               child: InkWell(
                                 onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => AccountWidget(),
-                                    ),
-                                  );
+                                  context.pushNamed('Account');
                                 },
                                 child: Icon(
                                   Icons.person_rounded,

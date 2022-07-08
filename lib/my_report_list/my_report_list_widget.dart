@@ -4,8 +4,6 @@ import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../test_deck/test_deck_widget.dart';
-import '../test_report/test_report_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,7 +33,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -167,15 +165,13 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                 children: [
                                   InkWell(
                                     onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              TestReportWidget(
-                                            bookingRef: myCompletedbookingsItem
-                                                .reference,
-                                          ),
-                                        ),
+                                      context.pushNamed(
+                                        'LabReport',
+                                        queryParams: {
+                                          'bookingRef': serializeParam(
+                                              myCompletedbookingsItem.reference,
+                                              ParamType.DocumentReference),
+                                        }.withoutNulls,
                                       );
                                     },
                                     child: Material(
@@ -384,7 +380,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                           height:
                                                                               50,
                                                                           child:
-                                                                              SpinKitDoubleBounce(
+                                                                              SpinKitRipple(
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryColor,
                                                                             size:
@@ -434,7 +430,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                                         child: SizedBox(
                                                                                           width: 50,
                                                                                           height: 50,
-                                                                                          child: SpinKitDoubleBounce(
+                                                                                          child: SpinKitRipple(
                                                                                             color: FlutterFlowTheme.of(context).primaryColor,
                                                                                             size: 50,
                                                                                           ),
@@ -444,13 +440,11 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                                     final containerTestsRecord = snapshot.data;
                                                                                     return InkWell(
                                                                                       onTap: () async {
-                                                                                        await Navigator.push(
-                                                                                          context,
-                                                                                          MaterialPageRoute(
-                                                                                            builder: (context) => TestDeckWidget(
-                                                                                              testedTestRef: testsItem.reference,
-                                                                                            ),
-                                                                                          ),
+                                                                                        context.pushNamed(
+                                                                                          'TestDeck',
+                                                                                          queryParams: {
+                                                                                            'testedTestRef': serializeParam(testsItem.reference, ParamType.DocumentReference),
+                                                                                          }.withoutNulls,
                                                                                         );
                                                                                       },
                                                                                       child: Material(

@@ -1,8 +1,6 @@
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../my_bookings/my_bookings_widget.dart';
-import '../my_invoice_list/my_invoice_list_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -66,12 +64,7 @@ class _DashboardMenuWidgetLight2WidgetState
                     padding: EdgeInsetsDirectional.fromSTEB(0, 3, 0, 3),
                     child: InkWell(
                       onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MyBookingsWidget(),
-                          ),
-                        );
+                        context.pushNamed('MyBookings');
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.23,
@@ -130,12 +123,7 @@ class _DashboardMenuWidgetLight2WidgetState
                     padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                     child: InkWell(
                       onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MyBookingsWidget(),
-                          ),
-                        );
+                        context.pushNamed('MyBookings');
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.23,
@@ -190,12 +178,7 @@ class _DashboardMenuWidgetLight2WidgetState
                     padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                     child: InkWell(
                       onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MyInvoiceListWidget(),
-                          ),
-                        );
+                        context.pushNamed('myInvoiceList');
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.23,

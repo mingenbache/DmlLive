@@ -1,5 +1,4 @@
 import '../backend/backend.dart';
-import '../chat/chat_widget.dart';
 import '../components/client_user_card_widget.dart';
 import '../components/staff_user_chat_card_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -102,7 +101,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                               ),
                               InkWell(
                                 onTap: () async {
-                                  Navigator.pop(context);
+                                  context.pop();
                                 },
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -122,7 +121,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                       size: 30,
                                     ),
                                     onPressed: () async {
-                                      Navigator.pop(context);
+                                      context.pop();
                                       setState(() =>
                                           FFAppState().categorypicked = 'All');
                                     },
@@ -165,12 +164,12 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           4, 0, 0, 0),
                                       child: TextFormField(
+                                        controller: textController,
                                         onChanged: (_) => EasyDebounce.debounce(
                                           'textController',
                                           Duration(milliseconds: 500),
                                           () => setState(() {}),
                                         ),
-                                        controller: textController,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: 'Search user here...',
@@ -219,7 +218,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                               ? InkWell(
                                                   onTap: () => setState(
                                                     () =>
-                                                        textController.clear(),
+                                                        textController?.clear(),
                                                   ),
                                                   child: Icon(
                                                     Icons.clear,
@@ -310,8 +309,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                         child: SizedBox(
                                                           width: 50,
                                                           height: 50,
-                                                          child:
-                                                              SpinKitDoubleBounce(
+                                                          child: SpinKitRipple(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .primaryColor,
@@ -395,16 +393,21 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                                       InkWell(
                                                                     onTap:
                                                                         () async {
-                                                                      await Navigator
-                                                                          .push(
-                                                                        context,
-                                                                        MaterialPageRoute(
-                                                                          builder: (context) =>
-                                                                              ChatWidget(
-                                                                            chatUser:
-                                                                                clientsItem,
-                                                                          ),
-                                                                        ),
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'Chat',
+                                                                        queryParams:
+                                                                            {
+                                                                          'chatUser': serializeParam(
+                                                                              clientsItem,
+                                                                              ParamType.Document),
+                                                                        }.withoutNulls,
+                                                                        extra: <
+                                                                            String,
+                                                                            dynamic>{
+                                                                          'chatUser':
+                                                                              clientsItem,
+                                                                        },
                                                                       );
                                                                     },
                                                                     child:
@@ -437,8 +440,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                       child: SizedBox(
                                                         width: 50,
                                                         height: 50,
-                                                        child:
-                                                            SpinKitDoubleBounce(
+                                                        child: SpinKitRipple(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryColor,
@@ -507,16 +509,21 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                                       InkWell(
                                                                     onTap:
                                                                         () async {
-                                                                      await Navigator
-                                                                          .push(
-                                                                        context,
-                                                                        MaterialPageRoute(
-                                                                          builder: (context) =>
-                                                                              ChatWidget(
-                                                                            chatUser:
-                                                                                staffItem,
-                                                                          ),
-                                                                        ),
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'Chat',
+                                                                        queryParams:
+                                                                            {
+                                                                          'chatUser': serializeParam(
+                                                                              staffItem,
+                                                                              ParamType.Document),
+                                                                        }.withoutNulls,
+                                                                        extra: <
+                                                                            String,
+                                                                            dynamic>{
+                                                                          'chatUser':
+                                                                              staffItem,
+                                                                        },
                                                                       );
                                                                     },
                                                                     child:

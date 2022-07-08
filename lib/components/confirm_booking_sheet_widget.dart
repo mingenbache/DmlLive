@@ -80,7 +80,7 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                             ),
                             InkWell(
                               onTap: () async {
-                                Navigator.pop(context);
+                                context.pop();
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -100,7 +100,7 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                                     size: 30,
                                   ),
                                   onPressed: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                 ),
                               ),
@@ -182,7 +182,7 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
 
                             await Future.delayed(
                                 const Duration(milliseconds: 300));
-                            Navigator.pop(context);
+                            context.pop();
                           },
                           text: 'Yes, Continue',
                           options: FFButtonOptions(
@@ -200,7 +200,7 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                               color: Colors.transparent,
                               width: 1,
                             ),
-                            borderRadius: 25,
+                            borderRadius: BorderRadius.circular(25),
                           ),
                         ),
                       ],

@@ -1,5 +1,4 @@
 import '../backend/backend.dart';
-import '../details/details_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +24,7 @@ class _TestListLightWidgetState extends State<TestListLightWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -60,12 +59,7 @@ class _TestListLightWidgetState extends State<TestListLightWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
                     child: InkWell(
                       onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DetailsWidget(),
-                          ),
-                        );
+                        context.pushNamed('Details');
                       },
                       child: Container(
                         width: 100,

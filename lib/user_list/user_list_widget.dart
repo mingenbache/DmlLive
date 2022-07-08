@@ -173,6 +173,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(4, 0, 0, 0),
                                                   child: TextFormField(
+                                                    controller: textController,
                                                     onChanged: (_) =>
                                                         EasyDebounce.debounce(
                                                       'textController',
@@ -180,7 +181,6 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                           milliseconds: 500),
                                                       () => setState(() {}),
                                                     ),
-                                                    controller: textController,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       labelText:
@@ -242,9 +242,8 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                           ? InkWell(
                                                               onTap: () =>
                                                                   setState(
-                                                                () =>
-                                                                    textController
-                                                                        .clear(),
+                                                                () => textController
+                                                                    ?.clear(),
                                                               ),
                                                               child: Icon(
                                                                 Icons.clear,
@@ -358,7 +357,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: SpinKitDoubleBounce(
+                                            child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
@@ -432,7 +431,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                         child: SizedBox(
                                           width: 50,
                                           height: 50,
-                                          child: SpinKitDoubleBounce(
+                                          child: SpinKitRipple(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryColor,
                                             size: 50,

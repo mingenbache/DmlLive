@@ -30,6 +30,45 @@ abstract class NotificationsRecord
   bool get isSeen;
 
   @nullable
+  BuiltList<DocumentReference> get usersSeen;
+
+  @nullable
+  bool get isBooking;
+
+  @nullable
+  bool get isTest;
+
+  @nullable
+  String get type;
+
+  @nullable
+  DocumentReference get bookingRef;
+
+  @nullable
+  DocumentReference get userRef;
+
+  @nullable
+  DocumentReference get testedtestref;
+
+  @nullable
+  DocumentReference get staffref;
+
+  @nullable
+  DocumentReference get reportref;
+
+  @nullable
+  DocumentReference get testref;
+
+  @nullable
+  DocumentReference get testpackageref;
+
+  @nullable
+  DocumentReference get actionstaffuser;
+
+  @nullable
+  bool get istestedtest;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -37,7 +76,12 @@ abstract class NotificationsRecord
     ..userRole = ''
     ..message = ''
     ..usersReceiving = ListBuilder()
-    ..isSeen = false;
+    ..isSeen = false
+    ..usersSeen = ListBuilder()
+    ..isBooking = false
+    ..isTest = false
+    ..type = ''
+    ..istestedtest = false;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('notifications');
@@ -66,6 +110,18 @@ Map<String, dynamic> createNotificationsRecordData({
   String message,
   DateTime createdDate,
   bool isSeen,
+  bool isBooking,
+  bool isTest,
+  String type,
+  DocumentReference bookingRef,
+  DocumentReference userRef,
+  DocumentReference testedtestref,
+  DocumentReference staffref,
+  DocumentReference reportref,
+  DocumentReference testref,
+  DocumentReference testpackageref,
+  DocumentReference actionstaffuser,
+  bool istestedtest,
 }) =>
     serializers.toFirestore(
         NotificationsRecord.serializer,
@@ -74,4 +130,17 @@ Map<String, dynamic> createNotificationsRecordData({
           ..message = message
           ..usersReceiving = null
           ..createdDate = createdDate
-          ..isSeen = isSeen));
+          ..isSeen = isSeen
+          ..usersSeen = null
+          ..isBooking = isBooking
+          ..isTest = isTest
+          ..type = type
+          ..bookingRef = bookingRef
+          ..userRef = userRef
+          ..testedtestref = testedtestref
+          ..staffref = staffref
+          ..reportref = reportref
+          ..testref = testref
+          ..testpackageref = testpackageref
+          ..actionstaffuser = actionstaffuser
+          ..istestedtest = istestedtest));

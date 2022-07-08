@@ -28,6 +28,7 @@ dependencies:
   accordion: ^2.2.3
   algolia: 1.0.3
   auto_size_text: 3.0.0
+  badges: 2.0.2
   built_collection: 5.1.1
   built_value: 8.1.3
   cached_network_image: 3.1.0+1
@@ -38,27 +39,35 @@ dependencies:
   easy_debounce: 2.0.1
   equatable: 2.0.3
   expandable: 5.0.1
+  file_picker: 4.5.1
   firebase_auth: 3.2.0
   firebase_core: 1.12.0
+  firebase_core_platform_interface: 4.4.1
   firebase_core_web: 1.5.4
   firebase_messaging: 11.2.4
+  firebase_messaging_platform_interface: 3.3.1
   firebase_messaging_web: 2.2.7
   firebase_storage: 10.1.0
   firebase_storage_web: 3.2.8
   fl_chart: ^0.46.0
-  flutter_datetime_picker: 1.5.0
-  flutter_spinkit: 4.1.2+1
+  flutter_datetime_picker: 1.5.1
+  flutter_spinkit: 5.1.0
   flutter_svg: 0.22.0
-  font_awesome_flutter: 8.11.0
-  google_fonts: 2.1.0
+  font_awesome_flutter: 10.1.0
+  go_router: 3.1.0
+  google_fonts: 2.2.0
   google_sign_in: 5.2.1
   image_picker: 0.8.4+4
   intl: 0.17.0
-  json_path: 0.2.1
+  json_path: 0.3.1
   json_serializable: 6.1.3
   mime_type: 1.0.0
+  open_file: ^3.1.0
   page_transition: 2.0.4
+  path_provider: ^2.0.1
+  pdf: ^3.1.0
   photo_view: ^0.13.0
+  printing: ^5.3.0 
   rxdart: 0.26.0
   shared_preferences: 2.0.11
   sign_in_with_apple:
@@ -67,9 +76,9 @@ dependencies:
       ref: ab18d53a80e0a4bb90f1ad84f37f1b408930f28d
       path: packages/sign_in_with_apple/sign_in_with_apple/
   smooth_page_indicator: 1.0.0+2
-  table_calendar: 2.3.3
+  table_calendar: 3.0.5
   timeago: 3.1.0
-  url_launcher: 6.0.15
+  url_launcher: ^6.0.6
   wave:
 
 

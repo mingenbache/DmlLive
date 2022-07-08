@@ -37,7 +37,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -56,7 +56,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                   child: SizedBox(
                     width: 50,
                     height: 50,
-                    child: SpinKitDoubleBounce(
+                    child: SpinKitRipple(
                       color: FlutterFlowTheme.of(context).primaryColor,
                       size: 50,
                     ),
@@ -108,7 +108,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                     ),
                                     InkWell(
                                       onTap: () async {
-                                        Navigator.pop(context);
+                                        context.pop();
                                       },
                                       child: Card(
                                         clipBehavior:
@@ -130,7 +130,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                             size: 30,
                                           ),
                                           onPressed: () async {
-                                            Navigator.pop(context);
+                                            context.pop();
                                           },
                                         ),
                                       ),
@@ -1377,7 +1377,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                 width: 50,
                                                                 height: 50,
                                                                 child:
-                                                                    SpinKitDoubleBounce(
+                                                                    SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryColor,
@@ -1650,7 +1650,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                   width: 50,
                                                                   height: 50,
                                                                   child:
-                                                                      SpinKitDoubleBounce(
+                                                                      SpinKitRipple(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryColor,
@@ -1912,7 +1912,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                     color: Colors.transparent,
                                     width: 1,
                                   ),
-                                  borderRadius: 25,
+                                  borderRadius: BorderRadius.circular(25),
                                 ),
                               ),
                             ),

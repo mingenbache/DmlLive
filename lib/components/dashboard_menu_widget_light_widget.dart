@@ -1,8 +1,6 @@
-import '../bookings_schedule/bookings_schedule_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../payments_list/payments_list_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -23,6 +21,7 @@ class _DashboardMenuWidgetLightWidgetState
     'containerOnActionTriggerAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 500,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 0),
@@ -38,6 +37,7 @@ class _DashboardMenuWidgetLightWidgetState
     'containerOnActionTriggerAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 500,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 0),
@@ -53,6 +53,7 @@ class _DashboardMenuWidgetLightWidgetState
     'containerOnActionTriggerAnimation3': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 500,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 0),
@@ -112,14 +113,16 @@ class _DashboardMenuWidgetLightWidgetState
                   padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                   child: InkWell(
                     onTap: () async {
-                      await Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.bottomToTop,
-                          duration: Duration(milliseconds: 300),
-                          reverseDuration: Duration(milliseconds: 300),
-                          child: BookingsScheduleWidget(),
-                        ),
+                      setState(() => FFAppState().testsVar = 'previous');
+                      context.pushNamed(
+                        'MyBookings',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.rightToLeft,
+                            duration: Duration(milliseconds: 300),
+                          ),
+                        },
                       );
                     },
                     child: Material(
@@ -168,11 +171,15 @@ class _DashboardMenuWidgetLightWidgetState
                   padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                   child: InkWell(
                     onTap: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BookingsScheduleWidget(),
-                        ),
+                      setState(() => FFAppState().testsVar = 'upcoming');
+                      context.pushNamed(
+                        'MyBookings',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.rightToLeft,
+                          ),
+                        },
                       );
                     },
                     child: Material(
@@ -224,12 +231,7 @@ class _DashboardMenuWidgetLightWidgetState
                   padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                   child: InkWell(
                     onTap: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PaymentsListWidget(),
-                        ),
-                      );
+                      context.pushNamed('PaymentsList');
                     },
                     child: Material(
                       color: Colors.transparent,

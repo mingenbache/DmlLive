@@ -4,7 +4,6 @@ import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../invoice/invoice_widget.dart';
 import 'dart:ui';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -44,7 +43,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -108,7 +107,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                     child: SizedBox(
                                       width: 50,
                                       height: 50,
-                                      child: SpinKitDoubleBounce(
+                                      child: SpinKitRipple(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
                                         size: 50,
@@ -1340,8 +1339,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                         child: SizedBox(
                                                           width: 50,
                                                           height: 50,
-                                                          child:
-                                                              SpinKitDoubleBounce(
+                                                          child: SpinKitRipple(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .primaryColor,
@@ -1423,7 +1421,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                             height:
                                                                                 50,
                                                                             child:
-                                                                                SpinKitDoubleBounce(
+                                                                                SpinKitRipple(
                                                                               color: FlutterFlowTheme.of(context).primaryColor,
                                                                               size: 50,
                                                                             ),
@@ -1623,12 +1621,14 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                       keyboardType:
                                                           TextInputType.number,
                                                       validator: (val) {
-                                                        if (val.isEmpty) {
+                                                        if (val == null ||
+                                                            val.isEmpty) {
                                                           return 'required';
                                                         }
                                                         if (val.length < 2) {
                                                           return 'Requires at least 2 characters.';
                                                         }
+
                                                         return null;
                                                       },
                                                     ),
@@ -1730,7 +1730,9 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                               .transparent,
                                                           width: 1,
                                                         ),
-                                                        borderRadius: 16,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(16),
                                                       ),
                                                     ),
                                                   ),
@@ -1778,7 +1780,8 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                     user: currentUserReference,
                                     dueDate: datePicked,
                                     updateDate: getCurrentTimestamp,
-                                    updateRole: currentUserDocument?.role,
+                                    updateRole: valueOrDefault(
+                                        currentUserDocument?.role, ''),
                                   );
                                   var invoicesRecordReference =
                                       InvoicesRecord.collection.doc();
@@ -1793,7 +1796,8 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                     ...createBookingsRecordData(
                                       isInvoiced: true,
                                       updatedDate: getCurrentTimestamp,
-                                      updateRole: currentUserDocument?.role,
+                                      updateRole: valueOrDefault(
+                                          currentUserDocument?.role, ''),
                                     ),
                                     'Invoice_Refs': FieldValue.arrayUnion(
                                         [newInvoice.reference]),
@@ -1817,14 +1821,13 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                       );
                                     },
                                   );
-                                  await Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => InvoiceWidget(
-                                        invoiceRef: newInvoice.reference,
-                                      ),
-                                    ),
-                                    (r) => false,
+                                  context.goNamed(
+                                    'Invoice',
+                                    queryParams: {
+                                      'invoiceRef': serializeParam(
+                                          newInvoice.reference,
+                                          ParamType.DocumentReference),
+                                    }.withoutNulls,
                                   );
 
                                   setState(() {});
@@ -1849,7 +1852,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                     color: Colors.transparent,
                                     width: 1,
                                   ),
-                                  borderRadius: 25,
+                                  borderRadius: BorderRadius.circular(25),
                                 ),
                               ),
                             ),

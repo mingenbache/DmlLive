@@ -51,6 +51,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
       curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(-38, 0),
@@ -73,6 +74,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
           .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -89,7 +92,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -143,7 +146,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                               ),
                               InkWell(
                                 onTap: () async {
-                                  Navigator.pop(context);
+                                  context.pop();
                                 },
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -163,7 +166,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                       size: 30,
                                     ),
                                     onPressed: () async {
-                                      Navigator.pop(context);
+                                      context.pop();
                                     },
                                   ),
                                 ),
@@ -220,6 +223,13 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                   .fromSTEB(3,
                                                                       3, 3, 3),
                                                           child: TextFormField(
+                                                            controller:
+                                                                textController1 ??=
+                                                                    TextEditingController(
+                                                              text:
+                                                                  columnTestsRecord
+                                                                      .name,
+                                                            ),
                                                             onChanged: (_) =>
                                                                 EasyDebounce
                                                                     .debounce(
@@ -229,13 +239,6 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                       2000),
                                                               () => setState(
                                                                   () {}),
-                                                            ),
-                                                            controller:
-                                                                textController1 ??=
-                                                                    TextEditingController(
-                                                              text:
-                                                                  columnTestsRecord
-                                                                      .name,
                                                             ),
                                                             obscureText: false,
                                                             decoration:
@@ -308,7 +311,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           onTap: () =>
                                                                               setState(
                                                                             () =>
-                                                                                textController1.clear(),
+                                                                                textController1?.clear(),
                                                                           ),
                                                                           child:
                                                                               Icon(
@@ -414,7 +417,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                     width: 50,
                                                                     height: 50,
                                                                     child:
-                                                                        SpinKitDoubleBounce(
+                                                                        SpinKitRipple(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryColor,
@@ -1207,7 +1210,9 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 .transparent,
                                                             width: 1,
                                                           ),
-                                                          borderRadius: 40,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(40),
                                                         ),
                                                       ),
                                                     ],
@@ -1275,17 +1280,17 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(10, 0, 10, 5),
                                                 child: TextFormField(
-                                                  onChanged: (_) =>
-                                                      EasyDebounce.debounce(
-                                                    'textController3',
-                                                    Duration(milliseconds: 500),
-                                                    () => setState(() {}),
-                                                  ),
                                                   controller:
                                                       textController3 ??=
                                                           TextEditingController(
                                                     text: columnTestsRecord
                                                         .description,
+                                                  ),
+                                                  onChanged: (_) =>
+                                                      EasyDebounce.debounce(
+                                                    'textController3',
+                                                    Duration(milliseconds: 500),
+                                                    () => setState(() {}),
                                                   ),
                                                   obscureText: false,
                                                   decoration: InputDecoration(
@@ -1326,7 +1331,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 onTap: () =>
                                                                     setState(
                                                                   () => textController3
-                                                                      .clear(),
+                                                                      ?.clear(),
                                                                 ),
                                                                 child: Icon(
                                                                   Icons.clear,
@@ -1528,6 +1533,12 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                             0),
                                                                     child:
                                                                         TextFormField(
+                                                                      controller:
+                                                                          textController4 ??=
+                                                                              TextEditingController(
+                                                                        text: columnTestsRecord
+                                                                            .varianceMale,
+                                                                      ),
                                                                       onChanged:
                                                                           (_) =>
                                                                               EasyDebounce.debounce(
@@ -1537,12 +1548,6 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                                 2000),
                                                                         () => setState(
                                                                             () {}),
-                                                                      ),
-                                                                      controller:
-                                                                          textController4 ??=
-                                                                              TextEditingController(
-                                                                        text: columnTestsRecord
-                                                                            .varianceMale,
                                                                       ),
                                                                       obscureText:
                                                                           false,
@@ -1598,7 +1603,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         suffixIcon: textController4.text.isNotEmpty
                                                                             ? InkWell(
                                                                                 onTap: () => setState(
-                                                                                  () => textController4.clear(),
+                                                                                  () => textController4?.clear(),
                                                                                 ),
                                                                                 child: Icon(
                                                                                   Icons.clear,
@@ -1880,6 +1885,12 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           0),
                                                                   child:
                                                                       TextFormField(
+                                                                    controller:
+                                                                        textController6 ??=
+                                                                            TextEditingController(
+                                                                      text: columnTestsRecord
+                                                                          .varianceFemale,
+                                                                    ),
                                                                     onChanged: (_) =>
                                                                         EasyDebounce
                                                                             .debounce(
@@ -1889,12 +1900,6 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                               2000),
                                                                       () => setState(
                                                                           () {}),
-                                                                    ),
-                                                                    controller:
-                                                                        textController6 ??=
-                                                                            TextEditingController(
-                                                                      text: columnTestsRecord
-                                                                          .varianceFemale,
                                                                     ),
                                                                     obscureText:
                                                                         false,
@@ -1958,7 +1963,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                               .isNotEmpty
                                                                           ? InkWell(
                                                                               onTap: () => setState(
-                                                                                () => textController6.clear(),
+                                                                                () => textController6?.clear(),
                                                                               ),
                                                                               child: Icon(
                                                                                 Icons.clear,
@@ -2196,6 +2201,12 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                   .start,
                                                           children: [
                                                             TextFormField(
+                                                              controller:
+                                                                  textController8 ??=
+                                                                      TextEditingController(
+                                                                text: columnTestsRecord
+                                                                    .equipmentInfo,
+                                                              ),
                                                               onChanged: (_) =>
                                                                   EasyDebounce
                                                                       .debounce(
@@ -2205,12 +2216,6 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         2000),
                                                                 () => setState(
                                                                     () {}),
-                                                              ),
-                                                              controller:
-                                                                  textController8 ??=
-                                                                      TextEditingController(
-                                                                text: columnTestsRecord
-                                                                    .equipmentInfo,
                                                               ),
                                                               obscureText:
                                                                   false,
@@ -2275,7 +2280,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         ? InkWell(
                                                                             onTap: () =>
                                                                                 setState(
-                                                                              () => textController8.clear(),
+                                                                              () => textController8?.clear(),
                                                                             ),
                                                                             child:
                                                                                 Icon(
@@ -2448,6 +2453,12 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                       ),
                                                                       child:
                                                                           TextFormField(
+                                                                        controller:
+                                                                            textController9 ??=
+                                                                                TextEditingController(
+                                                                          text:
+                                                                              testProcedureItem,
+                                                                        ),
                                                                         onChanged:
                                                                             (_) =>
                                                                                 EasyDebounce.debounce(
@@ -2456,12 +2467,6 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                               milliseconds: 400),
                                                                           () =>
                                                                               setState(() {}),
-                                                                        ),
-                                                                        controller:
-                                                                            textController9 ??=
-                                                                                TextEditingController(
-                                                                          text:
-                                                                              testProcedureItem,
                                                                         ),
                                                                         obscureText:
                                                                             false,
@@ -2503,7 +2508,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           suffixIcon: textController9.text.isNotEmpty
                                                                               ? InkWell(
                                                                                   onTap: () => setState(
-                                                                                    () => textController9.clear(),
+                                                                                    () => textController9?.clear(),
                                                                                   ),
                                                                                   child: Icon(
                                                                                     Icons.clear,
@@ -2579,9 +2584,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 'procedure':
                                                                     FieldValue
                                                                         .arrayUnion([
-                                                                  textController9
-                                                                          ?.text ??
-                                                                      ''
+                                                                  ''
                                                                 ]),
                                                               };
                                                               await widget
@@ -2617,7 +2620,10 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 color: Colors
                                                                     .transparent,
                                                               ),
-                                                              borderRadius: 25,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          25),
                                                             ),
                                                           ),
                                                         ),
@@ -2693,7 +2699,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                   durationResults: resultsDurationSliderValue,
                                   category: dropDownValue,
                                   updateDate: getCurrentTimestamp,
-                                  updateRole: currentUserDocument?.role,
+                                  updateRole: valueOrDefault(
+                                      currentUserDocument?.role, ''),
                                   description: textController3?.text ?? '',
                                   varianceMale: textController4?.text ?? '',
                                   varianceFemale: textController6?.text ?? '',
@@ -2708,7 +2715,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                               };
                               await columnTestsRecord.reference
                                   .update(testsUpdateData);
-                              Navigator.pop(context);
+                              context.pop();
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
@@ -2740,7 +2747,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                 color: Colors.transparent,
                                 width: 1,
                               ),
-                              borderRadius: 25,
+                              borderRadius: BorderRadius.circular(25),
                             ),
                           ),
                         ),

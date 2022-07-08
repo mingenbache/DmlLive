@@ -42,7 +42,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -66,7 +66,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                           child: SizedBox(
                             width: 50,
                             height: 50,
-                            child: SpinKitDoubleBounce(
+                            child: SpinKitRipple(
                               color: FlutterFlowTheme.of(context).primaryColor,
                               size: 50,
                             ),
@@ -121,7 +121,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                     ),
                                     InkWell(
                                       onTap: () async {
-                                        Navigator.pop(context);
+                                        context.pop();
                                       },
                                       child: Card(
                                         clipBehavior:
@@ -143,7 +143,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                             size: 30,
                                           ),
                                           onPressed: () async {
-                                            Navigator.pop(context);
+                                            context.pop();
                                           },
                                         ),
                                       ),
@@ -519,7 +519,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: SpinKitDoubleBounce(
+                                            child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
@@ -695,8 +695,10 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                               ],
                                                             ),
                                                           ),
-                                                          if (currentUserDocument
-                                                                  ?.isStaff ??
+                                                          if (valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.isStaff,
+                                                                  false) ??
                                                               true)
                                                             AuthUserStreamWidget(
                                                               child: Container(
@@ -1119,8 +1121,10 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                               ],
                                                             ),
                                                           ),
-                                                          if (currentUserDocument
-                                                                  ?.isStaff ??
+                                                          if (valueOrDefault(
+                                                                  currentUserDocument
+                                                                      ?.isStaff,
+                                                                  false) ??
                                                               true)
                                                             AuthUserStreamWidget(
                                                               child: Container(
@@ -2184,7 +2188,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                 child: SizedBox(
                                   width: 50,
                                   height: 50,
-                                  child: SpinKitDoubleBounce(
+                                  child: SpinKitRipple(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
                                     size: 50,

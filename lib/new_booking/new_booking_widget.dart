@@ -1,15 +1,14 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/push_notifications/push_notifications_util.dart';
+import '../components/package_details_popup_widget.dart';
 import '../components/test_list_booking_sheet_widget.dart';
 import '../components/top_actions_widget.dart';
-import '../details/details_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_choice_chips.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../my_bookings/my_bookings_widget.dart';
 import 'dart:ui';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -50,6 +49,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
       curve: Curves.elasticOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 1220,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, -97),
@@ -65,6 +65,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
     'buttonOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 1100,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         opacity: 0,
@@ -101,7 +102,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -267,7 +268,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 color: Colors.transparent,
                                                 width: 1,
                                               ),
-                                              borderRadius: 16,
+                                              borderRadius:
+                                                  BorderRadius.circular(16),
                                             ),
                                           ),
                                         ),
@@ -291,7 +293,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                       child: SizedBox(
                                         width: 50,
                                         height: 50,
-                                        child: SpinKitDoubleBounce(
+                                        child: SpinKitRipple(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryColor,
                                           size: 50,
@@ -360,19 +362,19 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                             .fromSTEB(
                                                                 3, 3, 3, 3),
                                                     child: TextFormField(
-                                                      onChanged: (_) =>
-                                                          EasyDebounce.debounce(
-                                                        'firstNameController',
-                                                        Duration(
-                                                            milliseconds: 2000),
-                                                        () => setState(() {}),
-                                                      ),
                                                       controller:
                                                           firstNameController ??=
                                                               TextEditingController(
                                                         text:
                                                             newBookingBookingsRecord
                                                                 .firstname,
+                                                      ),
+                                                      onChanged: (_) =>
+                                                          EasyDebounce.debounce(
+                                                        'firstNameController',
+                                                        Duration(
+                                                            milliseconds: 2000),
+                                                        () => setState(() {}),
                                                       ),
                                                       obscureText: false,
                                                       decoration:
@@ -453,12 +455,14 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                     .normal,
                                                           ),
                                                       validator: (val) {
-                                                        if (val.isEmpty) {
+                                                        if (val == null ||
+                                                            val.isEmpty) {
                                                           return 'Field is required';
                                                         }
                                                         if (val.length < 3) {
                                                           return 'Requires at least 3 characters.';
                                                         }
+
                                                         return null;
                                                       },
                                                     ),
@@ -471,19 +475,19 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                             .fromSTEB(
                                                                 3, 3, 3, 3),
                                                     child: TextFormField(
-                                                      onChanged: (_) =>
-                                                          EasyDebounce.debounce(
-                                                        'lastNameController',
-                                                        Duration(
-                                                            milliseconds: 2000),
-                                                        () => setState(() {}),
-                                                      ),
                                                       controller:
                                                           lastNameController ??=
                                                               TextEditingController(
                                                         text:
                                                             newBookingBookingsRecord
                                                                 .lastname,
+                                                      ),
+                                                      onChanged: (_) =>
+                                                          EasyDebounce.debounce(
+                                                        'lastNameController',
+                                                        Duration(
+                                                            milliseconds: 2000),
+                                                        () => setState(() {}),
                                                       ),
                                                       obscureText: false,
                                                       decoration:
@@ -564,12 +568,14 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                     .normal,
                                                           ),
                                                       validator: (val) {
-                                                        if (val.isEmpty) {
+                                                        if (val == null ||
+                                                            val.isEmpty) {
                                                           return 'Field is required';
                                                         }
                                                         if (val.length < 2) {
                                                           return 'Requires at least 2 characters.';
                                                         }
+
                                                         return null;
                                                       },
                                                     ),
@@ -598,19 +604,19 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(3, 3, 3, 3),
                                                   child: TextFormField(
-                                                    onChanged: (_) =>
-                                                        EasyDebounce.debounce(
-                                                      'emailAddressController',
-                                                      Duration(
-                                                          milliseconds: 2000),
-                                                      () => setState(() {}),
-                                                    ),
                                                     controller:
                                                         emailAddressController ??=
                                                             TextEditingController(
                                                       text:
                                                           newBookingBookingsRecord
                                                               .emailaddress,
+                                                    ),
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      'emailAddressController',
+                                                      Duration(
+                                                          milliseconds: 2000),
+                                                      () => setState(() {}),
                                                     ),
                                                     obscureText: false,
                                                     decoration: InputDecoration(
@@ -689,7 +695,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                     keyboardType: TextInputType
                                                         .emailAddress,
                                                     validator: (val) {
-                                                      if (val.isEmpty) {
+                                                      if (val == null ||
+                                                          val.isEmpty) {
                                                         return 'Field is required';
                                                       }
 
@@ -720,19 +727,19 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(3, 3, 3, 3),
                                                   child: TextFormField(
-                                                    onChanged: (_) =>
-                                                        EasyDebounce.debounce(
-                                                      'phoneNumberController',
-                                                      Duration(
-                                                          milliseconds: 2000),
-                                                      () => setState(() {}),
-                                                    ),
                                                     controller:
                                                         phoneNumberController ??=
                                                             TextEditingController(
                                                       text:
                                                           newBookingBookingsRecord
                                                               .phonenumber,
+                                                    ),
+                                                    onChanged: (_) =>
+                                                        EasyDebounce.debounce(
+                                                      'phoneNumberController',
+                                                      Duration(
+                                                          milliseconds: 2000),
+                                                      () => setState(() {}),
                                                     ),
                                                     obscureText: false,
                                                     decoration: InputDecoration(
@@ -810,12 +817,14 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                     keyboardType:
                                                         TextInputType.phone,
                                                     validator: (val) {
-                                                      if (val.isEmpty) {
+                                                      if (val == null ||
+                                                          val.isEmpty) {
                                                         return 'Field is required';
                                                       }
                                                       if (val.length < 6) {
                                                         return 'Requires at least 6 characters.';
                                                       }
+
                                                       return null;
                                                     },
                                                   ),
@@ -885,16 +894,13 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                       containerUsersRecord
                                                                           .sex
                                                                     ],
-                                                          options: [
-                                                            ChipData(
-                                                                'Female',
-                                                                FontAwesomeIcons
-                                                                    .female),
-                                                            ChipData(
-                                                                'Male',
-                                                                FontAwesomeIcons
-                                                                    .male)
-                                                          ],
+                                                          options: (functions
+                                                                      .returnSexOptions() ??
+                                                                  [])
+                                                              .map((label) =>
+                                                                  ChipData(
+                                                                      label))
+                                                              .toList(),
                                                           onChanged: (val) =>
                                                               setState(() =>
                                                                   choiceChipsValue =
@@ -947,6 +953,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           initialized:
                                                               choiceChipsValue !=
                                                                   null,
+                                                          alignment:
+                                                              WrapAlignment
+                                                                  .start,
                                                         ),
                                                       if (newBookingBookingsRecord
                                                               .userPatient ??
@@ -1208,7 +1217,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                 .transparent,
                                                             width: 1,
                                                           ),
-                                                          borderRadius: 16,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(16),
                                                         ),
                                                       ),
                                                     ),
@@ -1234,14 +1245,14 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: TextFormField(
+                                  controller: diagnosisController ??=
+                                      TextEditingController(
+                                    text: newBookingBookingsRecord.diagnosis,
+                                  ),
                                   onChanged: (_) => EasyDebounce.debounce(
                                     'diagnosisController',
                                     Duration(milliseconds: 2000),
                                     () => setState(() {}),
-                                  ),
-                                  controller: diagnosisController ??=
-                                      TextEditingController(
-                                    text: newBookingBookingsRecord.diagnosis,
                                   ),
                                   obscureText: false,
                                   decoration: InputDecoration(
@@ -1285,7 +1296,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                             .text.isNotEmpty
                                         ? InkWell(
                                             onTap: () => setState(
-                                              () => diagnosisController.clear(),
+                                              () =>
+                                                  diagnosisController?.clear(),
                                             ),
                                             child: Icon(
                                               Icons.clear,
@@ -1305,12 +1317,13 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                   maxLines: 99,
                                   keyboardType: TextInputType.multiline,
                                   validator: (val) {
-                                    if (val.isEmpty) {
+                                    if (val == null || val.isEmpty) {
                                       return 'Field is required';
                                     }
                                     if (val.length < 10) {
                                       return 'Requires at least 10 characters.';
                                     }
+
                                     return null;
                                   },
                                 ),
@@ -1334,8 +1347,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                       child: TextFormField(
                                         controller: refDoctorController ??=
                                             TextEditingController(
-                                          text: newBookingBookingsRecord
-                                              .docNameAddress,
+                                          text:
+                                              '${newBookingBookingsRecord.docNames}',
                                         ),
                                         obscureText: false,
                                         decoration: InputDecoration(
@@ -1430,6 +1443,244 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                           borderRadius:
                                               BorderRadius.circular(20),
                                         ),
+                                        child: Visibility(
+                                          visible: newBookingBookingsRecord
+                                                  .hasTestPackages ??
+                                              true,
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 5, 0, 5),
+                                            child: Builder(
+                                              builder: (context) {
+                                                final packagesList =
+                                                    newBookingBookingsRecord
+                                                            .testPackages
+                                                            .toList()
+                                                            ?.toList() ??
+                                                        [];
+                                                return ListView.builder(
+                                                  padding: EdgeInsets.zero,
+                                                  scrollDirection:
+                                                      Axis.vertical,
+                                                  itemCount:
+                                                      packagesList.length,
+                                                  itemBuilder: (context,
+                                                      packagesListIndex) {
+                                                    final packagesListItem =
+                                                        packagesList[
+                                                            packagesListIndex];
+                                                    return Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10, 5, 10, 0),
+                                                      child: StreamBuilder<
+                                                          TestPackagesRecord>(
+                                                        stream: TestPackagesRecord
+                                                            .getDocument(
+                                                                packagesListItem),
+                                                        builder: (context,
+                                                            snapshot) {
+                                                          // Customize what your widget looks like when it's loading.
+                                                          if (!snapshot
+                                                              .hasData) {
+                                                            return Center(
+                                                              child: SizedBox(
+                                                                width: 50,
+                                                                height: 50,
+                                                                child:
+                                                                    SpinKitRipple(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryColor,
+                                                                  size: 50,
+                                                                ),
+                                                              ),
+                                                            );
+                                                          }
+                                                          final bookingTestPackageItemTestPackagesRecord =
+                                                              snapshot.data;
+                                                          return InkWell(
+                                                            onTap: () async {
+                                                              await showModalBottomSheet(
+                                                                isScrollControlled:
+                                                                    true,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (context) {
+                                                                  return Padding(
+                                                                    padding: MediaQuery.of(
+                                                                            context)
+                                                                        .viewInsets,
+                                                                    child:
+                                                                        PackageDetailsPopupWidget(
+                                                                      package:
+                                                                          bookingTestPackageItemTestPackagesRecord,
+                                                                      booking:
+                                                                          widget
+                                                                              .bookingRef,
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              );
+                                                            },
+                                                            child: Material(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              elevation: 2,
+                                                              shape:
+                                                                  RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8),
+                                                              ),
+                                                              child: Container(
+                                                                height: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height *
+                                                                    0.03,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8),
+                                                                ),
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          10,
+                                                                          0,
+                                                                          10,
+                                                                          0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .spaceBetween,
+                                                                    children: [
+                                                                      Container(
+                                                                        width: MediaQuery.of(context).size.width *
+                                                                            0.4,
+                                                                        decoration:
+                                                                            BoxDecoration(),
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            Text(
+                                                                              bookingTestPackageItemTestPackagesRecord.packageName,
+                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    fontFamily: 'Roboto',
+                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    fontWeight: FontWeight.w500,
+                                                                                  ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                      Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0,
+                                                                                0,
+                                                                                5,
+                                                                                0),
+                                                                            child:
+                                                                                Text(
+                                                                              'Ksh',
+                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    fontFamily: 'Roboto',
+                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                    fontWeight: FontWeight.w600,
+                                                                                  ),
+                                                                            ),
+                                                                          ),
+                                                                          Text(
+                                                                            bookingTestPackageItemTestPackagesRecord.price.toString(),
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Roboto',
+                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                  fontWeight: FontWeight.w500,
+                                                                                ),
+                                                                          ),
+                                                                          InkWell(
+                                                                            onTap:
+                                                                                () async {
+                                                                              final bookingsUpdateData = {
+                                                                                ...createBookingsRecordData(
+                                                                                  totalPrice: functions.removeFromCart(newBookingBookingsRecord.totalPrice, bookingTestPackageItemTestPackagesRecord.price),
+                                                                                  paymentBalance: functions.returnBookingBalance(bookingTestPackageItemTestPackagesRecord.price.toDouble(), newBookingBookingsRecord.paymentBalance),
+                                                                                ),
+                                                                                'total_tests': FieldValue.increment(-(bookingTestPackageItemTestPackagesRecord.testsIncluded.toList().length)),
+                                                                                'testPackages': FieldValue.arrayRemove([
+                                                                                  packagesListItem
+                                                                                ]),
+                                                                              };
+                                                                              await newBookingBookingsRecord.reference.update(bookingsUpdateData);
+                                                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                                                SnackBar(
+                                                                                  content: Text(
+                                                                                    'Test Removed',
+                                                                                    style: TextStyle(),
+                                                                                  ),
+                                                                                  duration: Duration(milliseconds: 4000),
+                                                                                  backgroundColor: Color(0x00000000),
+                                                                                ),
+                                                                              );
+                                                                            },
+                                                                            child:
+                                                                                Icon(
+                                                                              Icons.highlight_off,
+                                                                              color: Color(0xFFEB2424),
+                                                                              size: 18,
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 5, 0, 5),
+                                      child: Container(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.15,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -1469,7 +1720,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                               width: 50,
                                                               height: 50,
                                                               child:
-                                                                  SpinKitDoubleBounce(
+                                                                  SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryColor,
@@ -1482,17 +1733,14 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                             snapshot.data;
                                                         return InkWell(
                                                           onTap: () async {
-                                                            await Navigator
-                                                                .push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                        DetailsWidget(
-                                                                  testId:
-                                                                      testsListItem,
-                                                                ),
-                                                              ),
+                                                            context.pushNamed(
+                                                              'Details',
+                                                              queryParams: {
+                                                                'testId': serializeParam(
+                                                                    testsListItem,
+                                                                    ParamType
+                                                                        .DocumentReference),
+                                                              }.withoutNulls,
                                                             );
                                                           },
                                                           child: Material(
@@ -1717,7 +1965,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                 ),
-                                                borderRadius: 25,
+                                                borderRadius:
+                                                    BorderRadius.circular(25),
                                               ),
                                             ),
                                           ),
@@ -1815,8 +2064,11 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0, 24, 0, 10),
-                                child: StreamBuilder<List<StaffRecord>>(
-                                  stream: queryStaffRecord(),
+                                child: FutureBuilder<List<UsersRecord>>(
+                                  future: queryUsersRecordOnce(
+                                    queryBuilder: (usersRecord) => usersRecord
+                                        .where('role', isEqualTo: 'front'),
+                                  ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
                                     if (!snapshot.hasData) {
@@ -1824,7 +2076,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                         child: SizedBox(
                                           width: 50,
                                           height: 50,
-                                          child: SpinKitDoubleBounce(
+                                          child: SpinKitRipple(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryColor,
                                             size: 50,
@@ -1832,7 +2084,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                         ),
                                       );
                                     }
-                                    List<StaffRecord> buttonStaffRecordList =
+                                    List<UsersRecord> buttonUsersRecordList =
                                         snapshot.data;
                                     return InkWell(
                                       onLongPress: () async {
@@ -1868,8 +2120,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                       },
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          if (!formKey.currentState
-                                              .validate()) {
+                                          if (formKey.currentState == null ||
+                                              !formKey.currentState
+                                                  .validate()) {
                                             return;
                                           }
 
@@ -1940,12 +2193,21 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                           setState(() =>
                                               FFAppState().isSubmitted = true);
                                           if (FFAppState().isSubmitted) {
-                                            final notificationsCreateData =
-                                                createNotificationsRecordData(
-                                              userRole: 'front',
-                                              message:
-                                                  'A new booking has been made.',
-                                            );
+                                            final notificationsCreateData = {
+                                              ...createNotificationsRecordData(
+                                                userRole: 'front',
+                                                message:
+                                                    '${newBookingBookingsRecord.firstname} has made a new Booking for ${dateTimeFormat('MMMEd', newBookingBookingsRecord.scheduledDate)}',
+                                                createdDate:
+                                                    getCurrentTimestamp,
+                                                isBooking: true,
+                                                isTest: false,
+                                              ),
+                                              'users_receiving':
+                                                  buttonUsersRecordList
+                                                      .map((e) => e.reference)
+                                                      .toList(),
+                                            };
                                             await NotificationsRecord.collection
                                                 .doc()
                                                 .set(notificationsCreateData);
@@ -1967,8 +2229,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 'New Booking Created',
                                             notificationText:
                                                 'User created a new booking.',
-                                            userRefs: buttonStaffRecordList
-                                                .map((e) => e.userRef)
+                                            userRefs: buttonUsersRecordList
+                                                .map((e) => e.reference)
                                                 .toList(),
                                             initialPageName:
                                                 'BookingConfirmation',
@@ -1976,14 +2238,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                               'bookingRef': widget.bookingRef,
                                             },
                                           );
-                                          await Navigator.pushAndRemoveUntil(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  MyBookingsWidget(),
-                                            ),
-                                            (r) => false,
-                                          );
+                                          context.goNamed('MyBookings');
                                         },
                                         text: 'Submit',
                                         options: FFButtonOptions(
@@ -2007,7 +2262,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                             color: Colors.transparent,
                                             width: 1,
                                           ),
-                                          borderRadius: 25,
+                                          borderRadius:
+                                              BorderRadius.circular(25),
                                         ),
                                       ),
                                     ).animated([

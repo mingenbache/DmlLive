@@ -34,7 +34,7 @@ class _PaymentActionsWidgetWidgetState
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -76,7 +76,7 @@ class _PaymentActionsWidgetWidgetState
                       child: SizedBox(
                         width: 50,
                         height: 50,
-                        child: SpinKitDoubleBounce(
+                        child: SpinKitRipple(
                           color: FlutterFlowTheme.of(context).primaryColor,
                           size: 50,
                         ),
@@ -153,7 +153,7 @@ class _PaymentActionsWidgetWidgetState
                                     child: SizedBox(
                                       width: 50,
                                       height: 50,
-                                      child: SpinKitDoubleBounce(
+                                      child: SpinKitRipple(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
                                         size: 50,
@@ -169,7 +169,8 @@ class _PaymentActionsWidgetWidgetState
                                         createPaymentsRecordData(
                                       isApproved: true,
                                       updatedDate: getCurrentTimestamp,
-                                      updateRole: currentUserDocument?.role,
+                                      updateRole: valueOrDefault(
+                                          currentUserDocument?.role, ''),
                                     );
                                     await containerPaymentsRecord.reference
                                         .update(paymentsUpdateData);
@@ -189,7 +190,8 @@ class _PaymentActionsWidgetWidgetState
                                                 verifyButtonInvoicesRecord
                                                     .amountDue),
                                         updateDate: getCurrentTimestamp,
-                                        updateRole: currentUserDocument?.role,
+                                        updateRole: valueOrDefault(
+                                            currentUserDocument?.role, ''),
                                       ),
                                       'payments_list': FieldValue.arrayUnion(
                                           [widget.paymentRef]),
@@ -208,7 +210,8 @@ class _PaymentActionsWidgetWidgetState
                                                   rowBookingsRecord
                                                       .paymentBalance),
                                           updatedDate: getCurrentTimestamp,
-                                          updateRole: currentUserDocument?.role,
+                                          updateRole: valueOrDefault(
+                                              currentUserDocument?.role, ''),
                                         ),
                                         'payments': FieldValue.arrayUnion(
                                             [widget.paymentRef]),

@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../chat/chat_widget.dart';
 import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -59,7 +58,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                 child: SizedBox(
                   width: 50,
                   height: 50,
-                  child: SpinKitDoubleBounce(
+                  child: SpinKitRipple(
                     color: FlutterFlowTheme.of(context).primaryColor,
                     size: 50,
                   ),
@@ -217,7 +216,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                   child: SizedBox(
                                     width: 50,
                                     height: 50,
-                                    child: SpinKitDoubleBounce(
+                                    child: SpinKitRipple(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryColor,
                                       size: 50,
@@ -249,15 +248,17 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                     0, 0, 0, 4),
                                             child: InkWell(
                                               onTap: () async {
-                                                await Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        ChatWidget(
-                                                      chatUser:
-                                                          columnUsersRecord,
-                                                    ),
-                                                  ),
+                                                context.pushNamed(
+                                                  'Chat',
+                                                  queryParams: {
+                                                    'chatUser': serializeParam(
+                                                        columnUsersRecord,
+                                                        ParamType.Document),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'chatUser':
+                                                        columnUsersRecord,
+                                                  },
                                                 );
                                               },
                                               child: Material(

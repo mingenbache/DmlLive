@@ -1,10 +1,10 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../chat/chat_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -32,6 +32,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
     'buttonOnActionTriggerAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         opacity: 0,
       ),
@@ -42,6 +43,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
     'buttonOnActionTriggerAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         opacity: 0,
       ),
@@ -78,7 +80,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                   child: SizedBox(
                     width: 50,
                     height: 50,
-                    child: SpinKitDoubleBounce(
+                    child: SpinKitRipple(
                       color: FlutterFlowTheme.of(context).primaryColor,
                       size: 50,
                     ),
@@ -115,7 +117,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                               child: SizedBox(
                                 width: 50,
                                 height: 50,
-                                child: SpinKitDoubleBounce(
+                                child: SpinKitRipple(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   size: 50,
@@ -131,13 +133,15 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                                   : null;
                           return FFButtonWidget(
                             onPressed: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ChatWidget(
-                                    chatUser: buttonUsersRecord,
-                                  ),
-                                ),
+                              context.pushNamed(
+                                'Chat',
+                                queryParams: {
+                                  'chatUser': serializeParam(
+                                      buttonUsersRecord, ParamType.Document),
+                                }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  'chatUser': buttonUsersRecord,
+                                },
                               );
                             },
                             text: 'Chat',
@@ -159,7 +163,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                                 color: Colors.transparent,
                                 width: 0,
                               ),
-                              borderRadius: 30,
+                              borderRadius: BorderRadius.circular(30),
                             ),
                           ).animated([
                             animationsMap['buttonOnActionTriggerAnimation1']
@@ -172,11 +176,39 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                               .toList()
                               .contains(widget.test.reference))) {
                             final bookingsUpdateData = {
+                              ...createBookingsRecordData(
+                                totalPrice: functions.addCartTotal(
+                                    containerBookingsRecord.totalPrice,
+                                    widget.test.price),
+                              ),
                               'tests_included': FieldValue.arrayUnion(
                                   [widget.test.reference]),
+                              'total_tests': FieldValue.increment(1),
                             };
                             await containerBookingsRecord.reference
                                 .update(bookingsUpdateData);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Test Added.',
+                                  style: TextStyle(),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor: Color(0x00000000),
+                              ),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Error. This test is already in your Booking.',
+                                  style: TextStyle(),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor: Color(0x00000000),
+                              ),
+                            );
+                            return;
                           }
                         },
                         text: 'Add to Cart',
@@ -197,7 +229,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                           borderSide: BorderSide(
                             color: Colors.transparent,
                           ),
-                          borderRadius: 30,
+                          borderRadius: BorderRadius.circular(30),
                         ),
                       ).animated(
                           [animationsMap['buttonOnActionTriggerAnimation2']]),

@@ -121,7 +121,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                               children: [
                                 InkWell(
                                   onTap: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -158,7 +158,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                     child: SizedBox(
                                       width: 50,
                                       height: 50,
-                                      child: SpinKitDoubleBounce(
+                                      child: SpinKitRipple(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
                                         size: 50,
@@ -1539,14 +1539,18 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                   children: [
                     Stack(
                       children: [
-                        if (!(currentUserDocument?.isStaff) ?? true)
+                        if (!(valueOrDefault(
+                                currentUserDocument?.isStaff, false)) ??
+                            true)
                           AuthUserStreamWidget(
                             child: TestActionsWidgetWidget(
                               test: widget.test,
                               bookingRef: widget.booking,
                             ),
                           ),
-                        if (currentUserDocument?.isStaff ?? true)
+                        if (valueOrDefault(
+                                currentUserDocument?.isStaff, false) ??
+                            true)
                           AuthUserStreamWidget(
                             child: AdminTestActionsWidget(
                               testRef: widget.test.reference,

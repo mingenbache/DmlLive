@@ -1,7 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/top_actions_widget.dart';
-import '../details/details_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -49,7 +48,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -228,14 +227,14 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: TextFormField(
+                          controller: testDescriptionController ??=
+                              TextEditingController(
+                            text: modifyTestTestsRecord.description,
+                          ),
                           onChanged: (_) => EasyDebounce.debounce(
                             'testDescriptionController',
                             Duration(milliseconds: 2000),
                             () => setState(() {}),
-                          ),
-                          controller: testDescriptionController ??=
-                              TextEditingController(
-                            text: modifyTestTestsRecord.description,
                           ),
                           obscureText: false,
                           decoration: InputDecoration(
@@ -270,7 +269,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                     .text.isNotEmpty
                                 ? InkWell(
                                     onTap: () => setState(
-                                      () => testDescriptionController.clear(),
+                                      () => testDescriptionController?.clear(),
                                     ),
                                     child: Icon(
                                       Icons.clear,
@@ -326,7 +325,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                     child: SizedBox(
                                       width: 50,
                                       height: 50,
-                                      child: SpinKitDoubleBounce(
+                                      child: SpinKitRipple(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
                                         size: 50,
@@ -739,7 +738,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   maxLines: 1,
                                   keyboardType: TextInputType.number,
                                   validator: (val) {
-                                    if (val.isEmpty) {
+                                    if (val == null || val.isEmpty) {
                                       return 'incorrect price entered';
                                     }
 
@@ -781,13 +780,13 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 backgroundColor: Color(0x00000000),
                               ),
                             );
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DetailsWidget(
-                                  testId: modifyTestTestsRecord.reference,
-                                ),
-                              ),
+                            context.pushNamed(
+                              'Details',
+                              queryParams: {
+                                'testId': serializeParam(
+                                    modifyTestTestsRecord.reference,
+                                    ParamType.DocumentReference),
+                              }.withoutNulls,
                             );
                           },
                           text: 'Update Test',
@@ -808,7 +807,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                               color: Colors.transparent,
                               width: 1,
                             ),
-                            borderRadius: 25,
+                            borderRadius: BorderRadius.circular(25),
                           ),
                         ),
                       ),

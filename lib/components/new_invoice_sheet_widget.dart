@@ -46,7 +46,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -86,7 +86,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                               child: SizedBox(
                                 width: 50,
                                 height: 50,
-                                child: SpinKitDoubleBounce(
+                                child: SpinKitRipple(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   size: 50,
@@ -119,7 +119,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                       ),
                                       InkWell(
                                         onTap: () async {
-                                          Navigator.pop(context);
+                                          context.pop();
                                         },
                                         child: Card(
                                           clipBehavior:
@@ -142,7 +142,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                               size: 30,
                                             ),
                                             onPressed: () async {
-                                              Navigator.pop(context);
+                                              context.pop();
                                             },
                                           ),
                                         ),
@@ -1428,7 +1428,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                                   width: 50,
                                                                   height: 50,
                                                                   child:
-                                                                      SpinKitDoubleBounce(
+                                                                      SpinKitRipple(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryColor,
@@ -1619,12 +1619,14 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                 keyboardType:
                                                     TextInputType.number,
                                                 validator: (val) {
-                                                  if (val.isEmpty) {
+                                                  if (val == null ||
+                                                      val.isEmpty) {
                                                     return 'required';
                                                   }
                                                   if (val.length < 2) {
                                                     return 'Requires at least 2 characters.';
                                                   }
+
                                                   return null;
                                                 },
                                               ),
@@ -1716,7 +1718,8 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                     color: Colors.transparent,
                                                     width: 1,
                                                   ),
-                                                  borderRadius: 16,
+                                                  borderRadius:
+                                                      BorderRadius.circular(16),
                                                 ),
                                               ),
                                             ),
@@ -1776,7 +1779,8 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                   dueDate:
                                       functions.setInvoiceDueDate(datePicked),
                                   updateDate: getCurrentTimestamp,
-                                  updateRole: currentUserDocument?.role,
+                                  updateRole: valueOrDefault(
+                                      currentUserDocument?.role, ''),
                                 );
                                 var invoicesRecordReference =
                                     InvoicesRecord.collection.doc();
@@ -1790,7 +1794,8 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                   ...createBookingsRecordData(
                                     isInvoiced: true,
                                     updatedDate: getCurrentTimestamp,
-                                    updateRole: currentUserDocument?.role,
+                                    updateRole: valueOrDefault(
+                                        currentUserDocument?.role, ''),
                                   ),
                                   'Invoice_Refs': FieldValue.arrayUnion(
                                       [newInvoice.reference]),
@@ -1815,7 +1820,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                     );
                                   },
                                 );
-                                Navigator.pop(context);
+                                context.pop();
 
                                 setState(() {});
                               },
@@ -1839,7 +1844,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                   color: Colors.transparent,
                                   width: 1,
                                 ),
-                                borderRadius: 25,
+                                borderRadius: BorderRadius.circular(25),
                               ),
                             ),
                           ),

@@ -9,47 +9,12 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
+import '../../index.dart';
 import '../../main.dart';
-import '../../login/login_widget.dart';
-import '../../details/details_widget.dart';
-import '../../new_test/new_test_widget.dart';
-import '../../signup/signup_widget.dart';
-import '../../new_booking/new_booking_widget.dart';
-import '../../account/account_widget.dart';
-import '../../messages/messages_widget.dart';
-import '../../settings/settings_widget.dart';
-import '../../scheduled_tests/scheduled_tests_widget.dart';
-import '../../user_list/user_list_widget.dart';
-import '../../home_admin/home_admin_widget.dart';
-import '../../booking_confirmation/booking_confirmation_widget.dart';
-import '../../all_tests/all_tests_widget.dart';
-import '../../booking_invoicing/booking_invoicing_widget.dart';
-import '../../modify_test/modify_test_widget.dart';
-import '../../booking_updates/booking_updates_widget.dart';
-import '../../invoice/invoice_widget.dart';
-import '../../add_payment/add_payment_widget.dart';
-import '../../test_report/test_report_widget.dart';
-import '../../report_list/report_list_widget.dart';
-import '../../test_deck/test_deck_widget.dart';
-import '../../invoice_list/invoice_list_widget.dart';
-import '../../edit_user/edit_user_widget.dart';
-import '../../tested_tests/tested_tests_widget.dart';
-import '../../payments_list/payments_list_widget.dart';
-import '../../bookings_schedule/bookings_schedule_widget.dart';
-import '../../my_bookings/my_bookings_widget.dart';
-import '../../my_invoice_list/my_invoice_list_widget.dart';
-import '../../my_report_list/my_report_list_widget.dart';
-import '../../test_queue/test_queue_widget.dart';
-import '../../tested_tests_copy/tested_tests_copy_widget.dart';
-import '../../chat/chat_widget.dart';
-import '../../technologist_test_deck/technologist_test_deck_widget.dart';
 
 class PushNotificationsHandler extends StatefulWidget {
-  const PushNotificationsHandler(
-      {Key key, this.handlePushNotification, this.child})
-      : super(key: key);
+  const PushNotificationsHandler({Key key, this.child}) : super(key: key);
 
-  final Function(BuildContext) handlePushNotification;
   final Widget child;
 
   @override
@@ -61,6 +26,10 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
   bool _loading = false;
 
   Future handleOpenedPushNotification() async {
+    if (isWeb) {
+      return;
+    }
+
     final notification = await FirebaseMessaging.instance.getInitialMessage();
     if (notification != null) {
       await _handlePushNotification(notification);
@@ -100,7 +69,7 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
           child: SizedBox(
             width: 50,
             height: 50,
-            child: SpinKitDoubleBounce(
+            child: SpinKitRipple(
               color: FlutterFlowTheme.of(context).primaryColor,
               size: 50,
             ),
@@ -147,7 +116,7 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'AddPayment': (data) async => AddPaymentWidget(
         invoiceRef: getParameter(data, 'invoiceRef'),
       ),
-  'TestReport': (data) async => TestReportWidget(
+  'LabReport': (data) async => LabReportWidget(
         bookingRef: getParameter(data, 'bookingRef'),
       ),
   'ReportList': (data) async => ReportListWidget(),
@@ -172,6 +141,9 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'TechnologistTestDeck': (data) async => TechnologistTestDeckWidget(
         bookedTest: await getDocumentParameter(
             data, 'bookedTest', BookedTestsRecord.serializer),
+      ),
+  'BookingReport': (data) async => BookingReportWidget(
+        reportRef: getParameter(data, 'reportRef'),
       ),
 };
 

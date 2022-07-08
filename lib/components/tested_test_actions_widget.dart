@@ -4,7 +4,6 @@ import '../components/submit_test_results_widget.dart';
 import '../components/verify_test_result_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../test_deck/test_deck_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +39,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -474,16 +473,13 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                               );
                                             },
                                           );
-                                          await Navigator.pushAndRemoveUntil(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  TestDeckWidget(
-                                                testedTestRef:
-                                                    widget.testedTestRef,
-                                              ),
-                                            ),
-                                            (r) => false,
+                                          context.goNamed(
+                                            'TestDeck',
+                                            queryParams: {
+                                              'testedTestRef': serializeParam(
+                                                  widget.testedTestRef,
+                                                  ParamType.DocumentReference),
+                                            }.withoutNulls,
                                           );
                                         },
                                         child: Container(

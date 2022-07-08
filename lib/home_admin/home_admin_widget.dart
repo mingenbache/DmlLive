@@ -1,4 +1,3 @@
-import '../account/account_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/all_chats_popup_widget.dart';
@@ -6,14 +5,11 @@ import '../components/notifications_widget_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../invoice_list/invoice_list_widget.dart';
-import '../scheduled_tests/scheduled_tests_widget.dart';
-import '../test_queue/test_queue_widget.dart';
-import '../tested_tests/tested_tests_widget.dart';
-import '../user_list/user_list_widget.dart';
 import 'dart:ui';
+import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,13 +25,22 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance?.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(milliseconds: 1000));
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Align(
       alignment: AlignmentDirectional(-0.05, 0),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
-        child: StreamBuilder<UsersRecord>(
-          stream: UsersRecord.getDocument(currentUserReference),
+        child: StreamBuilder<List<TestedTestsRecord>>(
+          stream: queryTestedTestsRecord(),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
@@ -43,14 +48,15 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                 child: SizedBox(
                   width: 50,
                   height: 50,
-                  child: SpinKitDoubleBounce(
+                  child: SpinKitRipple(
                     color: FlutterFlowTheme.of(context).primaryColor,
                     size: 50,
                   ),
                 ),
               );
             }
-            final homeAdminUsersRecord = snapshot.data;
+            List<TestedTestsRecord> homeAdminTestedTestsRecordList =
+                snapshot.data;
             return Scaffold(
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -184,13 +190,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                 children: [
                                                   InkWell(
                                                     onTap: () async {
-                                                      await Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              UserListWidget(),
-                                                        ),
-                                                      );
+                                                      context.pushNamed(
+                                                          'UserList');
                                                     },
                                                     child: FaIcon(
                                                       FontAwesomeIcons
@@ -206,13 +207,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                                 5, 0, 0, 0),
                                                     child: InkWell(
                                                       onTap: () async {
-                                                        await Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                AccountWidget(),
-                                                          ),
-                                                        );
+                                                        context.pushNamed(
+                                                            'Account');
                                                       },
                                                       child: Icon(
                                                         Icons.person_rounded,
@@ -344,6 +340,78 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
                                 child: Text(
+                                  'Booking Statistics',
+                                  style: FlutterFlowTheme.of(context).title3,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                                child: StreamBuilder<List<TestedTestsRecord>>(
+                                  stream: queryTestedTestsRecord(),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: SpinKitRipple(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                            size: 50,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<TestedTestsRecord>
+                                        containerTestedTestsRecordList =
+                                        snapshot.data;
+                                    return Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.8,
+                                      height: 150,
+                                      decoration: BoxDecoration(),
+                                      child: Align(
+                                        alignment: AlignmentDirectional(0, 0),
+                                        child: Container(
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          height: 150,
+                                          child: custom_widgets.ChartTests(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: 150,
+                                            testData: functions
+                                                .returnStats(
+                                                    homeAdminTestedTestsRecordList
+                                                        .toList(),
+                                                    functions.getDayToday())
+                                                .toList(),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
+                                child: Text(
                                   'Today\'s Activities',
                                   style: FlutterFlowTheme.of(context).title3,
                                 ),
@@ -359,13 +427,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                               children: [
                                 InkWell(
                                   onTap: () async {
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            ScheduledTestsWidget(),
-                                      ),
-                                    );
+                                    context.pushNamed('ScheduledTests');
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -431,8 +493,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                     child: SizedBox(
                                                       width: 50,
                                                       height: 50,
-                                                      child:
-                                                          SpinKitDoubleBounce(
+                                                      child: SpinKitRipple(
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -575,13 +636,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                               children: [
                                 InkWell(
                                   onTap: () async {
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            TestedTestsWidget(),
-                                      ),
-                                    );
+                                    context.pushNamed('TestedTests');
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -627,7 +682,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                             width: 50,
                                                             height: 50,
                                                             child:
-                                                                SpinKitDoubleBounce(
+                                                                SpinKitRipple(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .primaryColor,
@@ -694,13 +749,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                 ),
                                 InkWell(
                                   onTap: () async {
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            InvoiceListWidget(),
-                                      ),
-                                    );
+                                    context.pushNamed('InvoiceList');
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -797,13 +846,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                       5, 5, 5, 5),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              TestQueueWidget(),
-                                        ),
-                                      );
+                                      context.pushNamed('TestQueue');
                                     },
                                     text: 'View Calendar',
                                     icon: Icon(
@@ -826,7 +869,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                       borderSide: BorderSide(
                                         color: Colors.transparent,
                                       ),
-                                      borderRadius: 25,
+                                      borderRadius: BorderRadius.circular(25),
                                     ),
                                   ),
                                 ),

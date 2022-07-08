@@ -69,7 +69,7 @@ class _ChatWidgetState extends State<ChatWidget> {
             size: 24,
           ),
           onPressed: () async {
-            Navigator.pop(context);
+            context.pop();
           },
         ),
         title: Stack(
@@ -175,7 +175,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                   child: SizedBox(
                     width: 50,
                     height: 50,
-                    child: SpinKitDoubleBounce(
+                    child: SpinKitRipple(
                       color: FlutterFlowTheme.of(context).primaryColor,
                       size: 50,
                     ),

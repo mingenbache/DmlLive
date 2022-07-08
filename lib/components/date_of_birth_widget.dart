@@ -24,6 +24,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 1990,
       delay: 10,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         opacity: 0,
@@ -103,7 +104,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                             ),
                             InkWell(
                               onTap: () async {
-                                Navigator.pop(context);
+                                context.pop();
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -124,7 +125,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                   ),
                                   onPressed: () async {
                                     if ((datePicked) < (getCurrentTimestamp)) {
-                                      Navigator.pop(context);
+                                      context.pop();
                                     }
                                   },
                                 ),
@@ -233,7 +234,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                         FFButtonWidget(
                           onPressed: () async {
                             if ((datePicked) < (getCurrentTimestamp)) {
-                              Navigator.pop(context);
+                              context.pop();
                             }
                           },
                           text: 'Continue',
@@ -252,7 +253,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                               color: Colors.transparent,
                               width: 1,
                             ),
-                            borderRadius: 25,
+                            borderRadius: BorderRadius.circular(25),
                           ),
                         ),
                       ],

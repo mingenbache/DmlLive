@@ -40,7 +40,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 child: SizedBox(
                   width: 50,
                   height: 50,
-                  child: SpinKitDoubleBounce(
+                  child: SpinKitRipple(
                     color: FlutterFlowTheme.of(context).primaryColor,
                     size: 50,
                   ),
@@ -102,7 +102,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                 ),
                                 InkWell(
                                   onTap: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -122,7 +122,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                         size: 30,
                                       ),
                                       onPressed: () async {
-                                        Navigator.pop(context);
+                                        context.pop();
                                       },
                                     ),
                                   ),
@@ -815,7 +815,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                             width: 50,
                                                             height: 50,
                                                             child:
-                                                                SpinKitDoubleBounce(
+                                                                SpinKitRipple(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .primaryColor,
@@ -1223,7 +1223,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                               child: SizedBox(
                                                                                                 width: 50,
                                                                                                 height: 50,
-                                                                                                child: SpinKitDoubleBounce(
+                                                                                                child: SpinKitRipple(
                                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                                   size: 50,
                                                                                                 ),
@@ -1325,8 +1325,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                         child: SizedBox(
                                                           width: 50,
                                                           height: 50,
-                                                          child:
-                                                              SpinKitDoubleBounce(
+                                                          child: SpinKitRipple(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .primaryColor,

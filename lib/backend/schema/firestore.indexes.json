@@ -1,15 +1,15 @@
 {
   "indexes": [
     {
-      "collectionGroup": "bookings",
+      "collectionGroup": "chats",
       "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "user",
+          "fieldPath": "user_a",
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "is_submitted",
+          "fieldPath": "last_message_time",
           "order": "ASCENDING"
         }
       ]
@@ -24,6 +24,20 @@
         },
         {
           "fieldPath": "is_paid",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "bookings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "user",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "is_submitted",
           "order": "ASCENDING"
         }
       ]
@@ -57,33 +71,11 @@
       ]
     },
     {
-      "collectionGroup": "tested_tests",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "resultPosted",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "is_verified",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "is_flagged",
-          "order": "ASCENDING"
-        }
-      ]
-    },
-    {
       "collectionGroup": "bookings",
       "queryScope": "COLLECTION",
       "fields": [
         {
           "fieldPath": "booking_confirmed",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "scheduled_date",
           "order": "ASCENDING"
         },
         {
@@ -101,8 +93,54 @@
           "order": "ASCENDING"
         },
         {
+          "fieldPath": "booking_confirmed",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "scheduled_date",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "bookings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "user",
+          "order": "ASCENDING"
+        },
+        {
           "fieldPath": "scheduled_date",
           "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "notifications",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "users_receiving",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "created_date",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "categories",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "ispackage_Category",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "name",
+          "order": "ASCENDING"
         }
       ]
     },

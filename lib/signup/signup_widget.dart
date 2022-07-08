@@ -4,8 +4,6 @@ import '../flutter_flow/flutter_flow_choice_chips.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../home/home_widget.dart';
-import '../login/login_widget.dart';
 import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -190,12 +188,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               ),
                                           keyboardType: TextInputType.name,
                                           validator: (val) {
-                                            if (val.isEmpty) {
+                                            if (val == null || val.isEmpty) {
                                               return 'Field is required';
                                             }
                                             if (val.length < 2) {
                                               return 'Requires at least 2 characters.';
                                             }
+
                                             return null;
                                           },
                                         ),
@@ -256,12 +255,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 fontWeight: FontWeight.normal,
                                               ),
                                           validator: (val) {
-                                            if (val.isEmpty) {
+                                            if (val == null || val.isEmpty) {
                                               return 'Field is required';
                                             }
                                             if (val.length < 2) {
                                               return 'incomplete name entry';
                                             }
+
                                             return null;
                                           },
                                         ),
@@ -398,12 +398,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             ),
                                         keyboardType: TextInputType.number,
                                         validator: (val) {
-                                          if (val.isEmpty) {
+                                          if (val == null || val.isEmpty) {
                                             return 'Field is required';
                                           }
                                           if (val.length < 7) {
                                             return 'incomplete telephone number';
                                           }
+
                                           return null;
                                         },
                                       ),
@@ -535,6 +536,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         multiselect: false,
                                         initialized:
                                             sexChoiceChipsValue != null,
+                                        alignment: WrapAlignment.start,
                                       ),
                                     ),
                                   ],
@@ -601,6 +603,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               () => passwordVisibility =
                                                   !passwordVisibility,
                                             ),
+                                            focusNode:
+                                                FocusNode(skipTraversal: true),
                                             child: Icon(
                                               passwordVisibility
                                                   ? Icons.visibility_outlined
@@ -675,6 +679,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               () => confirmPasswordVisibility =
                                                   !confirmPasswordVisibility,
                                             ),
+                                            focusNode:
+                                                FocusNode(skipTraversal: true),
                                             child: Icon(
                                               confirmPasswordVisibility
                                                   ? Icons.visibility_outlined
@@ -707,8 +713,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                                   children: [
                                     FFButtonWidget(
                                       onPressed: () async {
-                                        if (passwordController.text !=
-                                            confirmPasswordController.text) {
+                                        GoRouter.of(context).prepareAuthEvent();
+                                        if (passwordController?.text !=
+                                            confirmPasswordController?.text) {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             SnackBar(
@@ -768,13 +775,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             );
                                           },
                                         );
-                                        await Navigator.pushAndRemoveUntil(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => HomeWidget(),
-                                          ),
-                                          (r) => false,
-                                        );
+                                        context.goNamedAuth('Home', mounted);
                                       },
                                       text: 'Create Account',
                                       options: FFButtonOptions(
@@ -797,7 +798,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           color: Colors.transparent,
                                           width: 1,
                                         ),
-                                        borderRadius: 20,
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
                                     ),
                                   ],
@@ -839,18 +840,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                                 child: InkWell(
                                   onTap: () async {
+                                    GoRouter.of(context).prepareAuthEvent();
                                     final user =
                                         await signInWithGoogle(context);
                                     if (user == null) {
                                       return;
                                     }
-                                    await Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => HomeWidget(),
-                                      ),
-                                      (r) => false,
-                                    );
+                                    context.goNamedAuth('Home', mounted);
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -864,19 +860,14 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           2, 2, 2, 2),
                                       child: InkWell(
                                         onTap: () async {
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent();
                                           final user =
                                               await signInWithGoogle(context);
                                           if (user == null) {
                                             return;
                                           }
-                                          await Navigator.pushAndRemoveUntil(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  HomeWidget(),
-                                            ),
-                                            (r) => false,
-                                          );
+                                          context.goNamedAuth('Home', mounted);
                                         },
                                         child: Container(
                                           width: 50,
@@ -896,17 +887,12 @@ class _SignupWidgetState extends State<SignupWidget> {
                               ),
                               InkWell(
                                 onTap: () async {
+                                  GoRouter.of(context).prepareAuthEvent();
                                   final user = await signInWithApple(context);
                                   if (user == null) {
                                     return;
                                   }
-                                  await Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => HomeWidget(),
-                                    ),
-                                    (r) => false,
-                                  );
+                                  context.goNamedAuth('Home', mounted);
                                 },
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -920,18 +906,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         2, 2, 2, 2),
                                     child: InkWell(
                                       onTap: () async {
+                                        GoRouter.of(context).prepareAuthEvent();
                                         final user =
                                             await signInWithApple(context);
                                         if (user == null) {
                                           return;
                                         }
-                                        await Navigator.pushAndRemoveUntil(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => HomeWidget(),
-                                          ),
-                                          (r) => false,
-                                        );
+                                        context.goNamedAuth('Home', mounted);
                                       },
                                       child: Container(
                                         width: 50,
@@ -973,12 +954,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    await Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => LoginWidget(),
-                                      ),
-                                    );
+                                    context.pushNamed('Login');
                                   },
                                   text: 'Login',
                                   options: FFButtonOptions(
@@ -1000,7 +976,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                       color: Colors.transparent,
                                       width: 1,
                                     ),
-                                    borderRadius: 15,
+                                    borderRadius: BorderRadius.circular(15),
                                   ),
                                 ),
                               ),

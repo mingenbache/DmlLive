@@ -43,6 +43,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 200,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 100),
@@ -80,7 +81,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                 child: SizedBox(
                   width: 50,
                   height: 50,
-                  child: SpinKitDoubleBounce(
+                  child: SpinKitRipple(
                     color: FlutterFlowTheme.of(context).primaryColor,
                     size: 50,
                   ),
@@ -155,7 +156,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                 ),
                                 InkWell(
                                   onTap: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -233,7 +234,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                             child: SizedBox(
                                               width: 50,
                                               height: 50,
-                                              child: SpinKitDoubleBounce(
+                                              child: SpinKitRipple(
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryColor,
@@ -323,7 +324,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                 child: SizedBox(
                                   width: 50,
                                   height: 50,
-                                  child: SpinKitDoubleBounce(
+                                  child: SpinKitRipple(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
                                     size: 50,
@@ -357,7 +358,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                         child: SizedBox(
                                           width: 50,
                                           height: 50,
-                                          child: SpinKitDoubleBounce(
+                                          child: SpinKitRipple(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryColor,
                                             size: 50,
@@ -412,6 +413,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                             },
                                           );
                                           Navigator.pop(context);
+                                          return;
                                         } else {
                                           return;
                                         }
@@ -435,7 +437,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                           color: Colors.transparent,
                                           width: 1,
                                         ),
-                                        borderRadius: 25,
+                                        borderRadius: BorderRadius.circular(25),
                                       ),
                                     );
                                   },
