@@ -715,6 +715,9 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                           docEmail:
                                                               bookingConfirmationBookingsRecord
                                                                   .doctorEmail,
+                                                          docPhone:
+                                                              bookingConfirmationBookingsRecord
+                                                                  .doctorPhoneNumber,
                                                         ),
                                                       );
                                                     },

@@ -2156,6 +2156,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                               isBooking: true,
                                               isTest: false,
                                               type: 'newbooking',
+                                              bookingRef: widget.bookingRef,
                                             ),
                                             'users_receiving': [
                                               buttonUsersRecord.reference

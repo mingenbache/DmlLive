@@ -20,7 +20,7 @@ class AddDoctorFormWidget extends StatefulWidget {
 
   final String docNames;
   final String docEmail;
-  final int docPhone;
+  final String docPhone;
 
   @override
   _AddDoctorFormWidgetState createState() => _AddDoctorFormWidgetState();
@@ -58,9 +58,9 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
       this,
     );
 
-    doctorNamesController = TextEditingController();
-    emailAddressController = TextEditingController();
-    phoneNumberController = TextEditingController();
+    doctorNamesController = TextEditingController(text: widget.docNames);
+    emailAddressController = TextEditingController(text: widget.docEmail);
+    phoneNumberController = TextEditingController(text: widget.docPhone);
   }
 
   @override
