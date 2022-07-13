@@ -440,6 +440,8 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget>
                                                           functions.returntheDay(
                                                               uICalendarSelectedDay
                                                                   ?.start))
+                                                  .where('booking_confirmed',
+                                                      isEqualTo: true)
                                                   .orderBy('scheduled_date'),
                                         ),
                                         builder: (context, snapshot) {
