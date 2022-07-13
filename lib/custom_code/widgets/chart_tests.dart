@@ -39,7 +39,7 @@ class _ChartTestsState extends State<ChartTests> {
     return Stack(
       children: <Widget>[
         AspectRatio(
-          aspectRatio: 1.70,
+          aspectRatio: 2.0,
           child: Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(
