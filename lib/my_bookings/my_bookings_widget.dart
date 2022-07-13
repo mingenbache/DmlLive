@@ -794,15 +794,24 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                               children: [
                                                 InkWell(
                                                   onTap: () async {
-                                                    context.pushNamed(
-                                                      'BookingUpdates',
-                                                      queryParams: {
-                                                        'bookingRef': serializeParam(
-                                                            upcomingBookingsColumnBookingsRecord
-                                                                .reference,
-                                                            ParamType
-                                                                .DocumentReference),
-                                                      }.withoutNulls,
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return Padding(
+                                                          padding:
+                                                              MediaQuery.of(
+                                                                      context)
+                                                                  .viewInsets,
+                                                          child:
+                                                              BookingUpdateWidget(
+                                                            bookingRef:
+                                                                upcomingBookingsColumnBookingsRecord,
+                                                          ),
+                                                        );
+                                                      },
                                                     );
                                                   },
                                                   child: Material(
