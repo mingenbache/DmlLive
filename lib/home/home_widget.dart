@@ -49,6 +49,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
     SchedulerBinding.instance?.addPostFrameCallback((_) async {
       if (valueOrDefault(currentUserDocument?.isStaff, false)) {
         context.goNamed('HomeAdmin');
+        Navigator.pop(context);
         return;
       } else {
         return;

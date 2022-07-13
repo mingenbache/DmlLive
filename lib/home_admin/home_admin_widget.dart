@@ -197,17 +197,10 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                     MainAxisAlignment
                                                         .spaceEvenly,
                                                 children: [
-                                                  InkWell(
-                                                    onTap: () async {
-                                                      context.pushNamed(
-                                                          'UserList');
-                                                    },
-                                                    child: FaIcon(
-                                                      FontAwesomeIcons
-                                                          .solidBell,
-                                                      color: Colors.white,
-                                                      size: 18,
-                                                    ),
+                                                  FaIcon(
+                                                    FontAwesomeIcons.solidBell,
+                                                    color: Colors.white,
+                                                    size: 18,
                                                   ),
                                                   Padding(
                                                     padding:
