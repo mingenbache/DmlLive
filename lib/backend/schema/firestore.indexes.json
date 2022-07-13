@@ -57,6 +57,20 @@
       ]
     },
     {
+      "collectionGroup": "notifications",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "users_receiving",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "created_date",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "tests",
       "queryScope": "COLLECTION",
       "fields": [
@@ -112,20 +126,6 @@
         },
         {
           "fieldPath": "scheduled_date",
-          "order": "DESCENDING"
-        }
-      ]
-    },
-    {
-      "collectionGroup": "notifications",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "users_receiving",
-          "arrayConfig": "CONTAINS"
-        },
-        {
-          "fieldPath": "created_date",
           "order": "DESCENDING"
         }
       ]
