@@ -30,9 +30,9 @@ class _NotificationListItemWidgetState
   Widget build(BuildContext context) {
     return Align(
       alignment: AlignmentDirectional(0, 0),
-      child: FutureBuilder<NotificationsRecord>(
-        future: NotificationsRecord.getDocumentOnce(
-            widget.notificationRef.reference),
+      child: StreamBuilder<NotificationsRecord>(
+        stream:
+            NotificationsRecord.getDocument(widget.notificationRef.reference),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -50,6 +50,7 @@ class _NotificationListItemWidgetState
           final stackNotificationsRecord = snapshot.data;
           return Container(
             width: MediaQuery.of(context).size.width * 0.9,
+            height: 30,
             child: Stack(
               children: [
                 if ((stackNotificationsRecord.type) == 'newbooking')

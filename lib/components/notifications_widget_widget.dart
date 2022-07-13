@@ -87,6 +87,53 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
+                                Container(
+                                  height: 20,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFEEEEEE),
+                                  ),
+                                  child: Builder(
+                                    builder: (context) {
+                                      final unfilteredNotifications =
+                                          containerNotificationsRecordList
+                                                  .map((e) => e.reference)
+                                                  .toList()
+                                                  ?.toList() ??
+                                              [];
+                                      return Wrap(
+                                        spacing: 0,
+                                        runSpacing: 0,
+                                        alignment: WrapAlignment.start,
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.start,
+                                        direction: Axis.horizontal,
+                                        runAlignment: WrapAlignment.start,
+                                        verticalDirection:
+                                            VerticalDirection.down,
+                                        clipBehavior: Clip.none,
+                                        children: List.generate(
+                                            unfilteredNotifications.length,
+                                            (unfilteredNotificationsIndex) {
+                                          final unfilteredNotificationsItem =
+                                              unfilteredNotifications[
+                                                  unfilteredNotificationsIndex];
+                                          return Text(
+                                            unfilteredNotificationsIndex
+                                                .toString(),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                ),
+                                          );
+                                        }),
+                                      );
+                                    },
+                                  ),
+                                ),
                                 Expanded(
                                   child: Builder(
                                     builder: (context) {
