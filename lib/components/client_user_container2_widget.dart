@@ -1,5 +1,5 @@
 import '../backend/backend.dart';
-import '../components/client_user_card_widget.dart';
+import '../components/client_user_cardx_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
@@ -66,7 +66,7 @@ class _ClientUserContainer2WidgetState
                 itemCount: clients.length,
                 itemBuilder: (context, clientsIndex) {
                   final clientsItem = clients[clientsIndex];
-                  return ClientUserCardWidget(
+                  return ClientUserCardxWidget(
                     userRecord: clientsItem,
                   );
                 },

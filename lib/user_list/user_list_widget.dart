@@ -1,5 +1,5 @@
 import '../backend/backend.dart';
-import '../components/client_user_card2_widget.dart';
+import '../components/client_user_card_widget.dart';
 import '../components/staff_user_card_widget.dart';
 import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -403,11 +403,14 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                       .fromSTEB(0, 0, 0, 10),
                                                   child: Container(
                                                     decoration: BoxDecoration(),
-                                                    child:
-                                                        ClientUserCard2Widget(
-                                                      userRecord: clientsItem,
-                                                      index: functions
-                                                          .add1(clientsIndex),
+                                                    child: Container(
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child:
+                                                          ClientUserCardWidget(
+                                                        index: clientsIndex,
+                                                        userRecord: clientsItem,
+                                                      ),
                                                     ),
                                                   ),
                                                 );
@@ -463,15 +466,21 @@ class _UserListWidgetState extends State<UserListWidget> {
                                               [];
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
+                                            shrinkWrap: true,
                                             scrollDirection: Axis.vertical,
                                             itemCount: staff.length,
                                             itemBuilder: (context, staffIndex) {
                                               final staffItem =
                                                   staff[staffIndex];
-                                              return Container(
-                                                height: 200,
-                                                child: StaffUserCardWidget(
-                                                  userRecord: staffItem,
+                                              return Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 0, 10),
+                                                child: Container(
+                                                  decoration: BoxDecoration(),
+                                                  child: StaffUserCardWidget(
+                                                    userRecord: staffItem,
+                                                    index: staffIndex,
+                                                  ),
                                                 ),
                                               );
                                             },

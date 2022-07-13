@@ -28,6 +28,7 @@ class FFAppState {
             ?.toList() ??
         _testPackTests;
     _testPackSubmit = prefs.getBool('ff_testPackSubmit') ?? _testPackSubmit;
+    _firstTime = prefs.getBool('ff_firstTime') ?? _firstTime;
   }
 
   SharedPreferences prefs;
@@ -136,6 +137,15 @@ class FFAppState {
   DocumentReference duplicateTest;
 
   String testsVar = '';
+
+  String paymentsvar = '';
+
+  bool _firstTime = false;
+  bool get firstTime => _firstTime;
+  set firstTime(bool _value) {
+    _firstTime = _value;
+    prefs.setBool('ff_firstTime', _value);
+  }
 }
 
 LatLng _latLngFromString(String val) {

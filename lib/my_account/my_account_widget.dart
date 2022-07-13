@@ -11,14 +11,14 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AccountWidget extends StatefulWidget {
-  const AccountWidget({Key key}) : super(key: key);
+class MyAccountWidget extends StatefulWidget {
+  const MyAccountWidget({Key key}) : super(key: key);
 
   @override
-  _AccountWidgetState createState() => _AccountWidgetState();
+  _MyAccountWidgetState createState() => _MyAccountWidgetState();
 }
 
-class _AccountWidgetState extends State<AccountWidget> {
+class _MyAccountWidgetState extends State<MyAccountWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -39,7 +39,7 @@ class _AccountWidgetState extends State<AccountWidget> {
             ),
           );
         }
-        final accountUsersRecord = snapshot.data;
+        final myAccountUsersRecord = snapshot.data;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryColor,
@@ -129,7 +129,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                               padding: MediaQuery.of(context)
                                                   .viewInsets,
                                               child: EditUserDetailsCopyWidget(
-                                                userRef: accountUsersRecord
+                                                userRef: myAccountUsersRecord
                                                     .reference,
                                               ),
                                             );
@@ -200,6 +200,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                 .override(
                                                   fontFamily: 'Roboto',
                                                   color: Colors.white,
+                                                  fontSize: 14,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -228,14 +229,15 @@ class _AccountWidgetState extends State<AccountWidget> {
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    6, 6, 0, 0),
+                                                    6, 9, 0, 0),
                                             child: Text(
-                                              accountUsersRecord.firstName,
+                                              myAccountUsersRecord.firstName,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle2
                                                       .override(
                                                         fontFamily: 'Roboto',
+                                                        fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -269,6 +271,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                               .override(
                                                 fontFamily: 'Roboto',
                                                 color: Colors.white,
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                         ),
@@ -296,14 +299,15 @@ class _AccountWidgetState extends State<AccountWidget> {
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    6, 6, 0, 6),
+                                                    6, 9, 0, 6),
                                             child: Text(
-                                              accountUsersRecord.phoneNumber,
+                                              myAccountUsersRecord.phoneNumber,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle2
                                                       .override(
                                                         fontFamily: 'Roboto',
+                                                        fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -337,6 +341,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                               .override(
                                                 fontFamily: 'Roboto',
                                                 color: Colors.white,
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                         ),
@@ -359,13 +364,14 @@ class _AccountWidgetState extends State<AccountWidget> {
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  6, 6, 0, 6),
+                                                  6, 9, 0, 6),
                                           child: Text(
-                                            accountUsersRecord.email,
+                                            myAccountUsersRecord.email,
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
                                                   fontFamily: 'Roboto',
+                                                  fontSize: 14,
                                                   fontWeight: FontWeight.normal,
                                                 ),
                                           ),
@@ -396,6 +402,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                               .override(
                                                 fontFamily: 'Roboto',
                                                 color: Colors.white,
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                         ),
@@ -426,7 +433,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                             child: Text(
                                               valueOrDefault<String>(
                                                 dateTimeFormat('d/M/y',
-                                                    accountUsersRecord.dOB),
+                                                    myAccountUsersRecord.dOB),
                                                 'Date of Birth',
                                               ),
                                               style:
@@ -434,6 +441,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                       .subtitle2
                                                       .override(
                                                         fontFamily: 'Roboto',
+                                                        fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -467,7 +475,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  15, 0, 0, 0),
+                                                  15, 6, 0, 0),
                                           child: Text(
                                             'Sex:',
                                             style: FlutterFlowTheme.of(context)
@@ -475,6 +483,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                 .override(
                                                   fontFamily: 'Roboto',
                                                   color: Colors.white,
+                                                  fontSize: 14,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -536,9 +545,10 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  4, 5, 0, 0),
+                                                                  4, 9, 0, 0),
                                                       child: Text(
-                                                        accountUsersRecord.sex,
+                                                        myAccountUsersRecord
+                                                            .sex,
                                                         textAlign:
                                                             TextAlign.start,
                                                         style:
@@ -548,6 +558,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
+                                                                  fontSize: 14,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,

@@ -167,7 +167,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                     child: InkWell(
                                                       onTap: () async {
                                                         context.pushNamed(
-                                                            'Account');
+                                                            'myAccount');
                                                       },
                                                       child: Icon(
                                                         Icons.person_sharp,

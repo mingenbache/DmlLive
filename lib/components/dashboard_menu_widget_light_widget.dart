@@ -231,7 +231,7 @@ class _DashboardMenuWidgetLightWidgetState
                   padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                   child: InkWell(
                     onTap: () async {
-                      context.pushNamed('PaymentsList');
+                      context.pushNamed('myPayments');
                     },
                     child: Material(
                       color: Colors.transparent,

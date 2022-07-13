@@ -1,5 +1,5 @@
 import '../backend/backend.dart';
-import '../components/client_user_card_widget.dart';
+import '../components/client_user_cardx_widget.dart';
 import '../components/staff_user_chat_card_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -411,7 +411,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                                       );
                                                                     },
                                                                     child:
-                                                                        ClientUserCardWidget(
+                                                                        ClientUserCardxWidget(
                                                                       userRecord:
                                                                           clientsItem,
                                                                     ),

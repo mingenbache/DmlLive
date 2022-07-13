@@ -775,7 +775,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             );
                                           },
                                         );
-                                        context.goNamedAuth('Home', mounted);
+                                        context.goNamedAuth('checkup', mounted);
                                       },
                                       text: 'Create Account',
                                       options: FFButtonOptions(
@@ -846,7 +846,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     if (user == null) {
                                       return;
                                     }
-                                    context.goNamedAuth('Home', mounted);
+                                    context.goNamedAuth('checkup', mounted);
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -867,7 +867,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           if (user == null) {
                                             return;
                                           }
-                                          context.goNamedAuth('Home', mounted);
+                                          context.goNamedAuth(
+                                              'checkup', mounted);
                                         },
                                         child: Container(
                                           width: 50,
@@ -892,7 +893,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                   if (user == null) {
                                     return;
                                   }
-                                  context.goNamedAuth('Home', mounted);
+                                  context.goNamedAuth('checkup', mounted);
                                 },
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -912,7 +913,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         if (user == null) {
                                           return;
                                         }
-                                        context.goNamedAuth('Home', mounted);
+                                        context.goNamedAuth('checkup', mounted);
                                       },
                                       child: Container(
                                         width: 50,

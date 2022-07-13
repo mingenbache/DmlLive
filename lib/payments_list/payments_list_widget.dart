@@ -1,4 +1,5 @@
 import '../backend/backend.dart';
+import '../components/invoice_payment_widget.dart';
 import '../components/payment_widget.dart';
 import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -7,6 +8,7 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class PaymentsListWidget extends StatefulWidget {
   const PaymentsListWidget({Key key}) : super(key: key);
@@ -16,7 +18,17 @@ class PaymentsListWidget extends StatefulWidget {
 }
 
 class _PaymentsListWidgetState extends State<PaymentsListWidget> {
+  PagingController<DocumentSnapshot, InvoicesRecord> _pagingController;
+  Query _pagingQuery;
+  List<StreamSubscription> _streamSubscriptions = [];
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void dispose() {
+    _streamSubscriptions.forEach((s) => s?.cancel());
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +131,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                             height: MediaQuery.of(context).size.height * 1,
                             decoration: BoxDecoration(),
                             child: DefaultTabController(
-                              length: 2,
+                              length: 3,
                               initialIndex: 0,
                               child: Column(
                                 children: [
@@ -136,6 +148,9 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                       ),
                                       Tab(
                                         text: 'Confirmed ',
+                                      ),
+                                      Tab(
+                                        text: 'Invoices',
                                       ),
                                     ],
                                   ),
@@ -1188,6 +1203,219 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                 }),
                                               );
                                             },
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 100,
+                                          decoration: BoxDecoration(),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 0, 10),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.8,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Text(
+                                                        'All Invoices',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .title3
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Roboto',
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              PagedListView<
+                                                  DocumentSnapshot<Object>,
+                                                  InvoicesRecord>(
+                                                pagingController: () {
+                                                  final Query<Object> Function(
+                                                          Query<Object>)
+                                                      queryBuilder =
+                                                      (invoicesRecord) =>
+                                                          invoicesRecord.orderBy(
+                                                              'created_date',
+                                                              descending: true);
+                                                  if (_pagingController !=
+                                                      null) {
+                                                    final query = queryBuilder(
+                                                        InvoicesRecord
+                                                            .collection);
+                                                    if (query != _pagingQuery) {
+                                                      // The query has changed
+                                                      _pagingQuery = query;
+                                                      _streamSubscriptions
+                                                          .forEach((s) =>
+                                                              s?.cancel());
+                                                      _streamSubscriptions
+                                                          .clear();
+                                                      _pagingController
+                                                          .refresh();
+                                                    }
+                                                    return _pagingController;
+                                                  }
+
+                                                  _pagingController =
+                                                      PagingController(
+                                                          firstPageKey: null);
+                                                  _pagingQuery = queryBuilder(
+                                                      InvoicesRecord
+                                                          .collection);
+                                                  _pagingController
+                                                      .addPageRequestListener(
+                                                          (nextPageMarker) {
+                                                    queryInvoicesRecordPage(
+                                                      queryBuilder:
+                                                          (invoicesRecord) =>
+                                                              invoicesRecord.orderBy(
+                                                                  'created_date',
+                                                                  descending:
+                                                                      true),
+                                                      nextPageMarker:
+                                                          nextPageMarker,
+                                                      pageSize: 10,
+                                                      isStream: true,
+                                                    ).then((page) {
+                                                      _pagingController
+                                                          .appendPage(
+                                                        page.data,
+                                                        page.nextPageMarker,
+                                                      );
+                                                      final streamSubscription =
+                                                          page.dataStream
+                                                              ?.listen((data) {
+                                                        final itemIndexes =
+                                                            _pagingController
+                                                                .itemList
+                                                                .asMap()
+                                                                .map((k, v) =>
+                                                                    MapEntry(
+                                                                        v.reference
+                                                                            .id,
+                                                                        k));
+                                                        data.forEach((item) {
+                                                          final index =
+                                                              itemIndexes[item
+                                                                  .reference
+                                                                  .id];
+                                                          final items =
+                                                              _pagingController
+                                                                  .itemList;
+                                                          if (index != null) {
+                                                            items.replaceRange(
+                                                                index,
+                                                                index + 1,
+                                                                [item]);
+                                                            _pagingController
+                                                                .itemList = {
+                                                              for (var item
+                                                                  in items)
+                                                                item.reference:
+                                                                    item
+                                                            }.values.toList();
+                                                          }
+                                                        });
+                                                        setState(() {});
+                                                      });
+                                                      _streamSubscriptions.add(
+                                                          streamSubscription);
+                                                    });
+                                                  });
+                                                  return _pagingController;
+                                                }(),
+                                                padding: EdgeInsets.zero,
+                                                shrinkWrap: true,
+                                                scrollDirection: Axis.vertical,
+                                                builderDelegate:
+                                                    PagedChildBuilderDelegate<
+                                                        InvoicesRecord>(
+                                                  // Customize what your widget looks like when it's loading the first page.
+                                                  firstPageProgressIndicatorBuilder:
+                                                      (_) => Center(
+                                                    child: SizedBox(
+                                                      width: 50,
+                                                      height: 50,
+                                                      child: SpinKitRipple(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryColor,
+                                                        size: 50,
+                                                      ),
+                                                    ),
+                                                  ),
+
+                                                  itemBuilder: (context, _,
+                                                      listViewIndex) {
+                                                    final listViewInvoicesRecord =
+                                                        _pagingController
+                                                                .itemList[
+                                                            listViewIndex];
+                                                    return Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0, 0, 0, 20),
+                                                      child: StreamBuilder<
+                                                          BookingsRecord>(
+                                                        stream: BookingsRecord
+                                                            .getDocument(
+                                                                listViewInvoicesRecord
+                                                                    .bookingRef),
+                                                        builder: (context,
+                                                            snapshot) {
+                                                          // Customize what your widget looks like when it's loading.
+                                                          if (!snapshot
+                                                              .hasData) {
+                                                            return Center(
+                                                              child: SizedBox(
+                                                                width: 50,
+                                                                height: 50,
+                                                                child:
+                                                                    SpinKitRipple(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryColor,
+                                                                  size: 50,
+                                                                ),
+                                                              ),
+                                                            );
+                                                          }
+                                                          final invoicePaymentBookingsRecord =
+                                                              snapshot.data;
+                                                          return InvoicePaymentWidget(
+                                                            invoice:
+                                                                listViewInvoicesRecord
+                                                                    .reference,
+                                                            booking:
+                                                                invoicePaymentBookingsRecord,
+                                                          );
+                                                        },
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ],

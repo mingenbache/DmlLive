@@ -132,7 +132,8 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                   .fromSTEB(5, 0, 0, 0),
                                               child: InkWell(
                                                 onTap: () async {
-                                                  context.pushNamed('Account');
+                                                  context
+                                                      .pushNamed('myAccount');
                                                 },
                                                 child: Icon(
                                                   Icons.person_sharp,

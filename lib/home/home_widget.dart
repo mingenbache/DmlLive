@@ -12,6 +12,7 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,6 +45,16 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    // On page load action.
+    SchedulerBinding.instance?.addPostFrameCallback((_) async {
+      if (valueOrDefault(currentUserDocument?.isStaff, false)) {
+        context.goNamed('HomeAdmin');
+        return;
+      } else {
+        return;
+      }
+    });
+
     startPageLoadAnimations(
       animationsMap.values
           .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
@@ -387,7 +398,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                             onPressed:
                                                                 () async {
                                                               context.pushNamed(
-                                                                  'Account');
+                                                                  'myAccount');
                                                             },
                                                           ),
                                                           if (valueOrDefault(
@@ -866,8 +877,20 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                         children: [
                                           InkWell(
                                             onTap: () async {
-                                              context
-                                                  .pushNamed('ScheduledTests');
+                                              setState(() => FFAppState()
+                                                  .testsVar = 'upcoming');
+                                              context.pushNamed(
+                                                'MyBookings',
+                                                extra: <String, dynamic>{
+                                                  kTransitionInfoKey:
+                                                      TransitionInfo(
+                                                    hasTransition: true,
+                                                    transitionType:
+                                                        PageTransitionType
+                                                            .rightToLeft,
+                                                  ),
+                                                },
+                                              );
                                             },
                                             child: Material(
                                               color: Colors.transparent,
@@ -1028,8 +1051,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                           ),
                                           InkWell(
                                             onTap: () async {
-                                              context
-                                                  .pushNamed('myInvoiceList');
+                                              setState(() => FFAppState()
+                                                  .paymentsvar = 'invoices');
+                                              context.pushNamed('myPayments');
                                             },
                                             child: Material(
                                               color: Colors.transparent,

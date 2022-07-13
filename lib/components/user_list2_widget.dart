@@ -1,6 +1,7 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../components/client_user_card2_widget.dart';
-import '../components/staff_user_card2_widget.dart';
+import '../components/client_user_card_widget.dart';
+import '../components/staff_user_card_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -301,7 +302,14 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                     .fromSTEB(0, 10, 0, 0),
                                                 child: StreamBuilder<
                                                     List<UsersRecord>>(
-                                                  stream: queryUsersRecord(),
+                                                  stream: queryUsersRecord(
+                                                    queryBuilder:
+                                                        (usersRecord) =>
+                                                            usersRecord.where(
+                                                                'role',
+                                                                isEqualTo:
+                                                                    'client'),
+                                                  ),
                                                   builder: (context, snapshot) {
                                                     // Customize what your widget looks like when it's loading.
                                                     if (!snapshot.hasData) {
@@ -320,7 +328,11 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                     }
                                                     List<UsersRecord>
                                                         clientUserContainerUsersRecordList =
-                                                        snapshot.data;
+                                                        snapshot.data
+                                                            .where((u) =>
+                                                                u.uid !=
+                                                                currentUserUid)
+                                                            .toList();
                                                     return Container(
                                                       width:
                                                           MediaQuery.of(context)
@@ -387,15 +399,25 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                                             15),
                                                                 child:
                                                                     Container(
+                                                                  width: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width *
+                                                                      0.8,
+                                                                  constraints:
+                                                                      BoxConstraints(
+                                                                    maxWidth:
+                                                                        330,
+                                                                  ),
                                                                   decoration:
                                                                       BoxDecoration(),
                                                                   child:
-                                                                      ClientUserCard2Widget(
-                                                                    userRecord:
-                                                                        clientsItem,
+                                                                      ClientUserCardWidget(
                                                                     index: functions
                                                                         .add1(
                                                                             clientsIndex),
+                                                                    userRecord:
+                                                                        clientsItem,
                                                                   ),
                                                                 ),
                                                               );
@@ -471,23 +493,12 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                                 staff[
                                                                     staffIndex];
                                                             return Container(
-                                                              height: MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .height *
-                                                                  0.14,
-                                                              constraints:
-                                                                  BoxConstraints(
-                                                                maxHeight: MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .height *
-                                                                    0.24,
-                                                              ),
                                                               decoration:
                                                                   BoxDecoration(),
                                                               child:
-                                                                  StaffUserCard2Widget(
+                                                                  StaffUserCardWidget(
+                                                                index:
+                                                                    staffIndex,
                                                                 userRecord:
                                                                     staffItem,
                                                               ),

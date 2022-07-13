@@ -59,11 +59,20 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                 snapshot.data;
             return Scaffold(
               key: scaffoldKey,
-              backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
               body: Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 1,
-                decoration: BoxDecoration(),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      FlutterFlowTheme.of(context).tertiaryColor,
+                      FlutterFlowTheme.of(context).primaryColor
+                    ],
+                    stops: [0.2, 0.6],
+                    begin: AlignmentDirectional(0, -1),
+                    end: AlignmentDirectional(0, 1),
+                  ),
+                ),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -208,7 +217,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                     child: InkWell(
                                                       onTap: () async {
                                                         context.pushNamed(
-                                                            'Account');
+                                                            'myAccount');
                                                       },
                                                       child: Icon(
                                                         Icons.person_rounded,
@@ -374,29 +383,43 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                         containerTestedTestsRecordList =
                                         snapshot.data;
                                     return Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.8,
+                                      width: MediaQuery.of(context).size.width,
                                       height: 150,
                                       decoration: BoxDecoration(),
-                                      child: Align(
-                                        alignment: AlignmentDirectional(0, 0),
-                                        child: Container(
-                                          width:
-                                              MediaQuery.of(context).size.width,
-                                          height: 150,
-                                          child: custom_widgets.ChartTests(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            height: 150,
-                                            testData: functions
-                                                .returnStats(
-                                                    homeAdminTestedTestsRecordList
-                                                        .toList(),
-                                                    functions.getDayToday())
-                                                .toList(),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Expanded(
+                                            child: Align(
+                                              alignment:
+                                                  AlignmentDirectional(0.5, 0),
+                                              child: Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.9,
+                                                height: 150,
+                                                child:
+                                                    custom_widgets.ChartTests(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.9,
+                                                  height: 150,
+                                                  testData: functions
+                                                      .returnStats(
+                                                          homeAdminTestedTestsRecordList
+                                                              .toList(),
+                                                          functions
+                                                              .getDayToday())
+                                                      .toList(),
+                                                ),
+                                              ),
+                                            ),
                                           ),
-                                        ),
+                                        ],
                                       ),
                                     );
                                   },

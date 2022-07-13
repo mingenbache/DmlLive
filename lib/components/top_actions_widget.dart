@@ -165,7 +165,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                   EdgeInsetsDirectional.fromSTEB(5, 0, 1, 0),
                               child: InkWell(
                                 onTap: () async {
-                                  context.pushNamed('Account');
+                                  context.pushNamed('myAccount');
                                 },
                                 child: Icon(
                                   Icons.person_rounded,

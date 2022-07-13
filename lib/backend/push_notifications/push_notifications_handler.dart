@@ -79,31 +79,16 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
 }
 
 final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
-  'Login': (data) async => LoginWidget(),
+  'Home': (data) async => HomeWidget(),
   'Details': (data) async => DetailsWidget(
         testId: getParameter(data, 'testId'),
       ),
   'NewTest': (data) async => NewTestWidget(),
-  'Signup': (data) async => SignupWidget(),
-  'NewBooking': (data) async => NewBookingWidget(
-        bookingRef: getParameter(data, 'bookingRef'),
-      ),
-  'Account': (data) async => AccountWidget(),
-  'Messages': (data) async => MessagesWidget(),
-  'Settings': (data) async => SettingsWidget(),
-  'ScheduledTests': (data) async => ScheduledTestsWidget(),
   'UserList': (data) async => UserListWidget(
         staffFilter: getParameter(data, 'staffFilter'),
         userNameQUery: getParameter(data, 'userNameQUery'),
       ),
-  'HomeAdmin': (data) async => HomeAdminWidget(),
-  'BookingConfirmation': (data) async => BookingConfirmationWidget(
-        bookingRef: getParameter(data, 'bookingRef'),
-      ),
   'AllTests': (data) async => AllTestsWidget(),
-  'BookingInvoicing': (data) async => BookingInvoicingWidget(
-        bookingRef: getParameter(data, 'bookingRef'),
-      ),
   'ModifyTest': (data) async => ModifyTestWidget(
         testId: getParameter(data, 'testId'),
       ),
@@ -126,11 +111,12 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'InvoiceList': (data) async => InvoiceListWidget(),
   'editUser': (data) async => EditUserWidget(),
   'TestedTests': (data) async => TestedTestsWidget(),
-  'PaymentsList': (data) async => PaymentsListWidget(),
-  'BookingsSchedule': (data) async => BookingsScheduleWidget(),
+  'Login': (data) async => LoginWidget(),
   'MyBookings': (data) async => MyBookingsWidget(),
+  'Signup': (data) async => SignupWidget(),
   'myInvoiceList': (data) async => MyInvoiceListWidget(),
   'myReportList': (data) async => MyReportListWidget(),
+  'Settings': (data) async => SettingsWidget(),
   'TestQueue': (data) async => TestQueueWidget(),
   'TestedTestsCopy': (data) async => TestedTestsCopyWidget(),
   'Chat': (data) async => ChatWidget(
@@ -142,10 +128,25 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
         bookedTest: await getDocumentParameter(
             data, 'bookedTest', BookedTestsRecord.serializer),
       ),
+  'BookingInvoicing': (data) async => BookingInvoicingWidget(
+        bookingRef: getParameter(data, 'bookingRef'),
+      ),
   'BookingReport': (data) async => BookingReportWidget(
         reportRef: getParameter(data, 'reportRef'),
       ),
   'myPayments': (data) async => MyPaymentsWidget(),
+  'NewBooking': (data) async => NewBookingWidget(
+        bookingRef: getParameter(data, 'bookingRef'),
+      ),
+  'myAccount': (data) async => MyAccountWidget(),
+  'HomeAdmin': (data) async => HomeAdminWidget(),
+  'PaymentsList': (data) async => PaymentsListWidget(),
+  'ScheduledTests': (data) async => ScheduledTestsWidget(),
+  'BookingsSchedule': (data) async => BookingsScheduleWidget(),
+  'BookingConfirmation': (data) async => BookingConfirmationWidget(
+        bookingRef: getParameter(data, 'bookingRef'),
+      ),
+  'Messages': (data) async => MessagesWidget(),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>
