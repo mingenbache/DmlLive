@@ -247,55 +247,50 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                       MainAxisSize
                                                                           .max,
                                                                   children: [
-                                                                    Container(
-                                                                      width:
-                                                                          100,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .tertiaryColor,
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(12),
-                                                                      ),
+                                                                    Expanded(
                                                                       child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            5,
-                                                                            0,
-                                                                            5,
-                                                                            0),
-                                                                        child: StreamBuilder<
-                                                                            UsersRecord>(
-                                                                          stream:
-                                                                              UsersRecord.getDocument(columnChatsRecord.lastMessageSentBy),
-                                                                          builder:
-                                                                              (context, snapshot) {
-                                                                            // Customize what your widget looks like when it's loading.
-                                                                            if (!snapshot.hasData) {
-                                                                              return Center(
-                                                                                child: SizedBox(
-                                                                                  width: 50,
-                                                                                  height: 50,
-                                                                                  child: SpinKitRipple(
-                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                    size: 50,
+                                                                          Container(
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).tertiaryColor,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(12),
+                                                                        ),
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              5,
+                                                                              0,
+                                                                              5,
+                                                                              0),
+                                                                          child:
+                                                                              StreamBuilder<UsersRecord>(
+                                                                            stream:
+                                                                                UsersRecord.getDocument(columnChatsRecord.lastMessageSentBy),
+                                                                            builder:
+                                                                                (context, snapshot) {
+                                                                              // Customize what your widget looks like when it's loading.
+                                                                              if (!snapshot.hasData) {
+                                                                                return Center(
+                                                                                  child: SizedBox(
+                                                                                    width: 50,
+                                                                                    height: 50,
+                                                                                    child: SpinKitRipple(
+                                                                                      color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                      size: 50,
+                                                                                    ),
                                                                                   ),
-                                                                                ),
+                                                                                );
+                                                                              }
+                                                                              final textUsersRecord = snapshot.data;
+                                                                              return Text(
+                                                                                '${textUsersRecord.firstName} ${textUsersRecord.lastName}',
+                                                                                textAlign: TextAlign.center,
+                                                                                style: FlutterFlowTheme.of(context).subtitle2,
                                                                               );
-                                                                            }
-                                                                            final textUsersRecord =
-                                                                                snapshot.data;
-                                                                            return Text(
-                                                                              '${textUsersRecord.firstName} ${textUsersRecord.lastName}',
-                                                                              textAlign: TextAlign.center,
-                                                                              style: FlutterFlowTheme.of(context).subtitle1.override(
-                                                                                    fontFamily: 'Roboto',
-                                                                                    color: Colors.white,
-                                                                                    fontSize: 18,
-                                                                                    fontWeight: FontWeight.w500,
-                                                                                  ),
-                                                                            );
-                                                                          },
+                                                                            },
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ),
