@@ -291,7 +291,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                                 textAlign: TextAlign.center,
                                                                                 style: FlutterFlowTheme.of(context).subtitle2.override(
                                                                                       fontFamily: 'Roboto',
-                                                                                      fontSize: 14,
+                                                                                      fontSize: 11,
                                                                                       fontWeight: FontWeight.normal,
                                                                                     ),
                                                                               );
@@ -367,7 +367,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                             columnChatsRecord.lastMessage,
                                                                             style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                   fontFamily: 'Lexend Deca',
-                                                                                  color: Color(0xFF586B06),
+                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                   fontSize: 12,
                                                                                   fontWeight: FontWeight.normal,
                                                                                 ),
