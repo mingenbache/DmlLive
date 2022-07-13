@@ -287,7 +287,11 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                               return Text(
                                                                                 '${textUsersRecord.firstName} ${textUsersRecord.lastName}',
                                                                                 textAlign: TextAlign.center,
-                                                                                style: FlutterFlowTheme.of(context).subtitle2,
+                                                                                style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                      fontFamily: 'Roboto',
+                                                                                      fontSize: 14,
+                                                                                      fontWeight: FontWeight.normal,
+                                                                                    ),
                                                                               );
                                                                             },
                                                                           ),
