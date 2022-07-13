@@ -334,6 +334,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                       emailaddress: emailAddressController.text,
                     );
                     await DoctorsRecord.collection.doc().set(doctorsCreateData);
+                    Navigator.pop(context);
                   },
                   text: 'Submit',
                   options: FFButtonOptions(

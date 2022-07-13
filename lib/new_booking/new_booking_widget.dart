@@ -2151,7 +2151,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                             ...createNotificationsRecordData(
                                               userRole: 'front',
                                               message:
-                                                  '${newBookingBookingsRecord.firstname}${' ${newBookingBookingsRecord.lastname}has made a new booking for '}${dateTimeFormat('MMMEd', newBookingBookingsRecord.scheduledDate)}.',
+                                                  '${functions.camelCase(newBookingBookingsRecord.firstname)}${' ${newBookingBookingsRecord.lastname} has made a new booking for '}${dateTimeFormat('MMMEd', newBookingBookingsRecord.scheduledDate)}.',
                                               createdDate: getCurrentTimestamp,
                                               isBooking: true,
                                               isTest: false,

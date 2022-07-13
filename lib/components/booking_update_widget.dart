@@ -70,12 +70,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                       color: Colors.transparent,
                       elevation: 3,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(16),
-                          bottomRight: Radius.circular(16),
-                          topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30),
-                        ),
+                        borderRadius: BorderRadius.circular(30),
                       ),
                       child: Container(
                         width: MediaQuery.of(context).size.width,
@@ -90,12 +85,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                             begin: AlignmentDirectional(0, -1),
                             end: AlignmentDirectional(0, 1),
                           ),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(16),
-                            bottomRight: Radius.circular(16),
-                            topLeft: Radius.circular(30),
-                            topRight: Radius.circular(30),
-                          ),
+                          borderRadius: BorderRadius.circular(30),
                         ),
                         child: Padding(
                           padding:
@@ -141,7 +131,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                           size: 30,
                                         ),
                                         onPressed: () async {
-                                          context.pop();
+                                          Navigator.pop(context);
                                         },
                                       ),
                                     ),

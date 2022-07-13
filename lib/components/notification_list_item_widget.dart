@@ -92,29 +92,34 @@ class _NotificationListItemWidgetState
                                   maxWidth: 280,
                                 ),
                                 decoration: BoxDecoration(),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef.message,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -196,29 +201,34 @@ class _NotificationListItemWidgetState
                                   maxWidth: 280,
                                 ),
                                 decoration: BoxDecoration(),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef.message,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -305,29 +315,34 @@ class _NotificationListItemWidgetState
                                   maxWidth: 280,
                                 ),
                                 decoration: BoxDecoration(),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef.message,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -432,31 +447,35 @@ class _NotificationListItemWidgetState
                                       maxWidth: 280,
                                     ),
                                     decoration: BoxDecoration(),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5, 5, 5, 5),
-                                            child: Text(
-                                              widget.notificationRef.message,
-                                              maxLines: 1,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Roboto',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryColor,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5, 0, 0, 0),
+                                      child: SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5, 5, 5, 5),
+                                              child: Text(
+                                                widget.notificationRef.message,
+                                                maxLines: 1,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryColor,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -568,31 +587,35 @@ class _NotificationListItemWidgetState
                                       maxWidth: 280,
                                     ),
                                     decoration: BoxDecoration(),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5, 5, 5, 5),
-                                            child: Text(
-                                              widget.notificationRef.message,
-                                              maxLines: 1,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Roboto',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryColor,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5, 0, 0, 0),
+                                      child: SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5, 5, 5, 5),
+                                              child: Text(
+                                                widget.notificationRef.message,
+                                                maxLines: 1,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryColor,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -679,29 +702,34 @@ class _NotificationListItemWidgetState
                                   maxWidth: 280,
                                 ),
                                 decoration: BoxDecoration(),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef.message,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -783,29 +811,34 @@ class _NotificationListItemWidgetState
                                   maxWidth: 280,
                                 ),
                                 decoration: BoxDecoration(),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef.message,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -887,29 +920,34 @@ class _NotificationListItemWidgetState
                                   maxWidth: 280,
                                 ),
                                 decoration: BoxDecoration(),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef.message,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -991,29 +1029,34 @@ class _NotificationListItemWidgetState
                                   maxWidth: 280,
                                 ),
                                 decoration: BoxDecoration(),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef.message,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -1095,29 +1138,34 @@ class _NotificationListItemWidgetState
                                   maxWidth: 280,
                                 ),
                                 decoration: BoxDecoration(),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef.message,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
