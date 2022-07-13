@@ -134,19 +134,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'AddPayment',
-              path: 'addPayment',
-              builder: (context, params) => AddPaymentWidget(
-                invoiceRef: params.getParam(
-                    'invoiceRef', ParamType.DocumentReference, 'Invoices'),
-              ),
-            ),
-            FFRoute(
               name: 'LabReport',
               path: 'labReport',
               builder: (context, params) => LabReportWidget(
                 bookingRef: params.getParam(
                     'bookingRef', ParamType.DocumentReference, 'bookings'),
+              ),
+            ),
+            FFRoute(
+              name: 'AddPayment',
+              path: 'addPayment',
+              builder: (context, params) => AddPaymentWidget(
+                invoiceRef: params.getParam(
+                    'invoiceRef', ParamType.DocumentReference, 'Invoices'),
               ),
             ),
             FFRoute(

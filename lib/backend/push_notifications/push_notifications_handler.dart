@@ -98,11 +98,11 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'Invoice': (data) async => InvoiceWidget(
         invoiceRef: getParameter(data, 'invoiceRef'),
       ),
-  'AddPayment': (data) async => AddPaymentWidget(
-        invoiceRef: getParameter(data, 'invoiceRef'),
-      ),
   'LabReport': (data) async => LabReportWidget(
         bookingRef: getParameter(data, 'bookingRef'),
+      ),
+  'AddPayment': (data) async => AddPaymentWidget(
+        invoiceRef: getParameter(data, 'invoiceRef'),
       ),
   'ReportList': (data) async => ReportListWidget(),
   'TestDeck': (data) async => TestDeckWidget(

@@ -122,9 +122,9 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                       size: 30,
                                     ),
                                     onPressed: () async {
-                                      context.pop();
                                       setState(() =>
                                           FFAppState().categorypicked = 'All');
+                                      Navigator.pop(context);
                                     },
                                   ),
                                 ),
