@@ -2023,6 +2023,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                 future: queryUsersRecordOnce(
                                   queryBuilder: (usersRecord) => usersRecord
                                       .where('role', isEqualTo: 'front'),
+                                  singleRecord: true,
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
@@ -2041,6 +2042,10 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                   }
                                   List<UsersRecord> buttonUsersRecordList =
                                       snapshot.data;
+                                  final buttonUsersRecord =
+                                      buttonUsersRecordList.isNotEmpty
+                                          ? buttonUsersRecordList.first
+                                          : null;
                                   return InkWell(
                                     onLongPress: () async {
                                       ScaffoldMessenger.of(context)
@@ -2151,10 +2156,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                               isBooking: true,
                                               isTest: false,
                                             ),
-                                            'users_receiving':
-                                                buttonUsersRecordList
-                                                    .map((e) => e.reference)
-                                                    .toList(),
+                                            'users_receiving': [
+                                              buttonUsersRecord.reference
+                                            ],
                                           };
                                           await NotificationsRecord.collection
                                               .doc()
@@ -2177,9 +2181,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                               'New Booking Created',
                                           notificationText:
                                               'User created a new booking.',
-                                          userRefs: buttonUsersRecordList
-                                              .map((e) => e.reference)
-                                              .toList(),
+                                          userRefs: [
+                                            buttonUsersRecord.reference
+                                          ],
                                           initialPageName:
                                               'BookingConfirmation',
                                           parameterData: {

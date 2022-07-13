@@ -77,6 +77,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                       child: InkWell(
                         onTap: () async {
                           Navigator.pop(context);
+                          context.goNamed('checkup');
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.4,

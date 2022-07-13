@@ -1173,7 +1173,9 @@ List<NotificationsRecord> filterNotifications(
   // filter notifications if usersSeen array contains document reference
   List<NotificationsRecord> ret = [];
   allNotifications.forEach((NotificationsRecord notification) {
-    if (!notification.usersSeen.contains(userRef)) ret.add(notification);
+    if (!notification.usersSeen.contains(userRef)) {
+      ret.add(notification);
+    }
   });
   return ret;
 }
