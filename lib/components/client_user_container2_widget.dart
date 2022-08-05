@@ -52,14 +52,13 @@ class _ClientUserContainer2WidgetState
           child: Builder(
             builder: (context) {
               final clients = functions
-                      .returnUserList(
-                          widget.nameQuery,
-                          functions
-                              .filterClients(
-                                  clientUserContainerUsersRecordList.toList())
-                              .toList())
-                      ?.toList() ??
-                  [];
+                  .returnUserList(
+                      widget.nameQuery,
+                      functions
+                          .filterClients(
+                              clientUserContainerUsersRecordList.toList())
+                          .toList())
+                  .toList();
               return ListView.builder(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.vertical,

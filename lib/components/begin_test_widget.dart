@@ -480,7 +480,8 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                         snapshot.data;
                                                     return FFButtonWidget(
                                                       onPressed: () async {
-                                                        if (valueOrDefault(
+                                                        if (valueOrDefault<
+                                                                bool>(
                                                             currentUserDocument
                                                                 ?.isStaff,
                                                             false)) {

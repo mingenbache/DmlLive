@@ -35,7 +35,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
             onTap: () async {
               await showModalBottomSheet(
                 isScrollControlled: true,
-                backgroundColor: Colors.transparent,
+                backgroundColor: Color(0x51BACA68),
                 context: context,
                 builder: (context) {
                   return Padding(

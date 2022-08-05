@@ -199,9 +199,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                   children: [
                                     Stack(
                                       children: [
-                                        if (!(viewResultsTestedTestsRecord
-                                                .resultPosted) ??
-                                            true)
+                                        if (!viewResultsTestedTestsRecord
+                                            .resultPosted)
                                           Container(
                                             width: 145,
                                             height: 32,
@@ -264,8 +263,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                           child: Stack(
                                             children: [
                                               if (functions.displayUnverifiedTag(
-                                                      viewResultsTestedTestsRecord) ??
-                                                  true)
+                                                  viewResultsTestedTestsRecord))
                                                 Container(
                                                   width: 130,
                                                   height: 32,
@@ -331,8 +329,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                   ),
                                                 ),
                                               if (functions.displayVerifiedTag(
-                                                      viewResultsTestedTestsRecord) ??
-                                                  true)
+                                                  viewResultsTestedTestsRecord))
                                                 Container(
                                                   width: 130,
                                                   height: 32,
@@ -695,11 +692,11 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                               ],
                                                             ),
                                                           ),
-                                                          if (valueOrDefault(
-                                                                  currentUserDocument
-                                                                      ?.isStaff,
-                                                                  false) ??
-                                                              true)
+                                                          if (valueOrDefault<
+                                                                  bool>(
+                                                              currentUserDocument
+                                                                  ?.isStaff,
+                                                              false))
                                                             AuthUserStreamWidget(
                                                               child: Container(
                                                                 width: MediaQuery.of(
@@ -1121,11 +1118,11 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                               ],
                                                             ),
                                                           ),
-                                                          if (valueOrDefault(
-                                                                  currentUserDocument
-                                                                      ?.isStaff,
-                                                                  false) ??
-                                                              true)
+                                                          if (valueOrDefault<
+                                                                  bool>(
+                                                              currentUserDocument
+                                                                  ?.isStaff,
+                                                              false))
                                                             AuthUserStreamWidget(
                                                               child: Container(
                                                                 width: MediaQuery.of(
@@ -1386,8 +1383,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                       ),
                                                                       Visibility(
                                                                         visible:
-                                                                            !(viewResultsTestedTestsRecord.resultsPositive) ??
-                                                                                true,
+                                                                            !viewResultsTestedTestsRecord.resultsPositive,
                                                                         child:
                                                                             Container(
                                                                           width:
@@ -2082,10 +2078,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                             builder: (context) {
                                                               final resultAttachments =
                                                                   viewResultsTestedTestsRecord
-                                                                          .resultsAttachment
-                                                                          .toList()
-                                                                          ?.toList() ??
-                                                                      [];
+                                                                      .resultsAttachment
+                                                                      .toList();
                                                               return ListView
                                                                   .builder(
                                                                 padding:

@@ -264,9 +264,8 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                             children: [
                               Stack(
                                 children: [
-                                  if (!(functions.isCategorySelected(
-                                          FFAppState().categorypicked)) ??
-                                      true)
+                                  if (!functions.isCategorySelected(
+                                      FFAppState().categorypicked))
                                     InkWell(
                                       onTap: () async {
                                         setState(() => FFAppState()
@@ -303,7 +302,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                         ),
                                       ),
                                     ),
-                                  if (FFAppState().allCategories ?? true)
+                                  if (FFAppState().allCategories)
                                     Material(
                                       color: Colors.transparent,
                                       elevation: 2,
@@ -395,10 +394,8 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                         builder: (context) {
                                           final packageCategories =
                                               listViewCategoriesRecord
-                                                      .categories
-                                                      .toList()
-                                                      ?.toList() ??
-                                                  [];
+                                                  .categories
+                                                  .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             scrollDirection: Axis.horizontal,
@@ -410,13 +407,13 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                       packageCategoriesIndex];
                                               return Stack(
                                                 children: [
-                                                  if (functions.isThisCategorySelected(
+                                                  if (functions
+                                                      .isThisCategorySelected(
                                                           FFAppState()
                                                               .categorypicked,
                                                           packageCategoriesItem,
                                                           FFAppState()
-                                                              .allCategories) ??
-                                                      true)
+                                                              .allCategories))
                                                     Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
@@ -590,20 +587,16 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                       return Builder(
                                         builder: (context) {
                                           final testsListFullPage = functions
-                                                  .filterTestsByCategory(
-                                                      FFAppState()
-                                                          .allCategories,
-                                                      FFAppState()
-                                                          .categorypicked,
-                                                      functions
-                                                          .returnSearchTests(
-                                                              textController
-                                                                  .text,
-                                                              testListWidgetTestsRecordList
-                                                                  .toList())
-                                                          .toList())
-                                                  ?.toList() ??
-                                              [];
+                                              .filterTestsByCategory(
+                                                  FFAppState().allCategories,
+                                                  FFAppState().categorypicked,
+                                                  functions
+                                                      .returnSearchTests(
+                                                          textController.text,
+                                                          testListWidgetTestsRecordList
+                                                              .toList())
+                                                      .toList())
+                                              .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             primary: false,

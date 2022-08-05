@@ -279,7 +279,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                           size: 20,
                                                         ),
                                                         Text(
-                                                          '${widget.package.durationResults.toString()} Hrs',
+                                                          '${widget.package.durationResults?.toString()} Hrs',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyText1

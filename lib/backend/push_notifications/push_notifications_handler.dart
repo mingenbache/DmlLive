@@ -147,6 +147,8 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
         bookingRef: getParameter(data, 'bookingRef'),
       ),
   'Messages': (data) async => MessagesWidget(),
+  'HomeCopy': (data) async => HomeCopyWidget(),
+  'HomeAdminCopy': (data) async => HomeAdminCopyWidget(),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>

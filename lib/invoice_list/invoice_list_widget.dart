@@ -313,8 +313,8 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                   child:
                                                                       Visibility(
                                                                     visible:
-                                                                        !(overdueInvoicesInvoicesRecord.isPaid) ??
-                                                                            true,
+                                                                        !overdueInvoicesInvoicesRecord
+                                                                            .isPaid,
                                                                     child:
                                                                         Padding(
                                                                       padding: EdgeInsetsDirectional
@@ -1402,9 +1402,8 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                 child:
                                                                     Visibility(
                                                                   visible:
-                                                                      !(mainContentInvoicesRecord
-                                                                              .isPaid) ??
-                                                                          true,
+                                                                      !mainContentInvoicesRecord
+                                                                          .isPaid,
                                                                   child:
                                                                       Padding(
                                                                     padding: EdgeInsetsDirectional
@@ -2551,8 +2550,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                       child:
                                                                           Visibility(
                                                                         visible:
-                                                                            !(mainContentInvoicesRecord.isPaid) ??
-                                                                                true,
+                                                                            !mainContentInvoicesRecord.isPaid,
                                                                         child:
                                                                             Padding(
                                                                           padding: EdgeInsetsDirectional.fromSTEB(

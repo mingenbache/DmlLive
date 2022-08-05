@@ -238,9 +238,8 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                         children: [
                                           Stack(
                                             children: [
-                                              if (!(viewResultsTestedTestsRecord
-                                                      .resultPosted) ??
-                                                  true)
+                                              if (!viewResultsTestedTestsRecord
+                                                  .resultPosted)
                                                 Container(
                                                   width: 145,
                                                   height: 32,
@@ -310,9 +309,8 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                 child: Stack(
                                                   children: [
                                                     if (functions
-                                                            .displayUnverifiedTag(
-                                                                viewResultsTestedTestsRecord) ??
-                                                        true)
+                                                        .displayUnverifiedTag(
+                                                            viewResultsTestedTestsRecord))
                                                       Container(
                                                         width: 130,
                                                         height: 32,
@@ -387,9 +385,8 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                         ),
                                                       ),
                                                     if (functions
-                                                            .displayVerifiedTag(
-                                                                viewResultsTestedTestsRecord) ??
-                                                        true)
+                                                        .displayVerifiedTag(
+                                                            viewResultsTestedTestsRecord))
                                                       Container(
                                                         width: 130,
                                                         height: 32,
@@ -773,11 +770,11 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                   ],
                                                                 ),
                                                               ),
-                                                              if (valueOrDefault(
-                                                                      currentUserDocument
-                                                                          ?.isStaff,
-                                                                      false) ??
-                                                                  true)
+                                                              if (valueOrDefault<
+                                                                      bool>(
+                                                                  currentUserDocument
+                                                                      ?.isStaff,
+                                                                  false))
                                                                 AuthUserStreamWidget(
                                                                   child:
                                                                       Container(
@@ -1224,11 +1221,11 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                   ],
                                                                 ),
                                                               ),
-                                                              if (valueOrDefault(
-                                                                      currentUserDocument
-                                                                          ?.isStaff,
-                                                                      false) ??
-                                                                  true)
+                                                              if (valueOrDefault<
+                                                                      bool>(
+                                                                  currentUserDocument
+                                                                      ?.isStaff,
+                                                                  false))
                                                                 AuthUserStreamWidget(
                                                                   child:
                                                                       Container(
@@ -1462,7 +1459,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                 ),
                                                                               ),
                                                                               Visibility(
-                                                                                visible: !(viewResultsTestedTestsRecord.resultsPositive) ?? true,
+                                                                                visible: !viewResultsTestedTestsRecord.resultsPositive,
                                                                                 child: Container(
                                                                                   width: 116,
                                                                                   height: 32,
@@ -2270,11 +2267,10 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                 child: Builder(
                                                                   builder:
                                                                       (context) {
-                                                                    final resultAttachments = viewResultsTestedTestsRecord
+                                                                    final resultAttachments =
+                                                                        viewResultsTestedTestsRecord
                                                                             .resultsAttachment
-                                                                            .toList()
-                                                                            ?.toList() ??
-                                                                        [];
+                                                                            .toList();
                                                                     return ListView
                                                                         .builder(
                                                                       padding:

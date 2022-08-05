@@ -259,8 +259,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                           ),
                                         ),
                                       ),
-                                    if (!(containerTestsRecord.isAvailable) ??
-                                        true)
+                                    if (!containerTestsRecord.isAvailable)
                                       InkWell(
                                         onTap: () async {
                                           var confirmDialogResponse =

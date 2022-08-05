@@ -179,20 +179,18 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                 child: Builder(
                                   builder: (context) {
                                     final duplicatetestPackage = functions
-                                            .returnPackagesContainingDuplicateTests(
-                                                functions
-                                                    .returnPackagesinBooking(
-                                                        containerTestPackagesRecordList
-                                                            .toList(),
-                                                        widget.booking
-                                                            .testPackages
-                                                            .toList())
-                                                    .toList(),
-                                                FFAppState()
-                                                    .duplicateTests
-                                                    .toList())
-                                            ?.toList() ??
-                                        [];
+                                        .returnPackagesContainingDuplicateTests(
+                                            functions
+                                                .returnPackagesinBooking(
+                                                    containerTestPackagesRecordList
+                                                        .toList(),
+                                                    widget.booking.testPackages
+                                                        .toList())
+                                                .toList(),
+                                            FFAppState()
+                                                .duplicateTests
+                                                .toList())
+                                        .toList();
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
                                       scrollDirection: Axis.vertical,

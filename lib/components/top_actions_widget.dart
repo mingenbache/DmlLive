@@ -91,7 +91,8 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                               children: [
                                 Icon(
                                   Icons.arrow_back,
-                                  color: Colors.white,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   size: 24,
                                 ),
                                 Text(
@@ -100,6 +101,8 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                       .bodyText1
                                       .override(
                                         fontFamily: 'Roboto',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         fontSize: 20,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -126,8 +129,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                   EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                               child: InkWell(
                                 onTap: () async {
-                                  if (!(containerUsersRecord
-                                      .hasCurrentBooking)) {
+                                  if (!containerUsersRecord.hasCurrentBooking) {
                                     await showModalBottomSheet(
                                       isScrollControlled: true,
                                       backgroundColor: Colors.transparent,
@@ -156,7 +158,8 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                 },
                                 child: FaIcon(
                                   FontAwesomeIcons.shoppingBasket,
-                                  color: Colors.white,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   size: 24,
                                 ),
                               ),
@@ -170,7 +173,8 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                 },
                                 child: Icon(
                                   Icons.person_rounded,
-                                  color: Colors.white,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   size: 26,
                                 ),
                               ),

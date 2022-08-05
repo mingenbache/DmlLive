@@ -53,7 +53,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
           floatingActionButton: Visibility(
-            visible: (allTestsUsersRecord.role) == 'admin',
+            visible: allTestsUsersRecord.role == 'admin',
             child: FloatingActionButton.extended(
               onPressed: () async {
                 context.pushNamed('NewTest');
@@ -290,10 +290,8 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                         builder: (context) {
                                           final categories =
                                               listViewCategoriesRecord
-                                                      .categories
-                                                      .toList()
-                                                      ?.toList() ??
-                                                  [];
+                                                  .categories
+                                                  .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             scrollDirection: Axis.horizontal,
@@ -402,9 +400,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                 return Builder(
                                   builder: (context) {
                                     final testsListFullPage =
-                                        testListWidgetTestsRecordList
-                                                ?.toList() ??
-                                            [];
+                                        testListWidgetTestsRecordList.toList();
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
                                       scrollDirection: Axis.vertical,
@@ -611,7 +607,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                                           size: 24,
                                                                                         ),
                                                                                         Text(
-                                                                                          'Results in ${testsListFullPageItem.durationResults.toString()} Hrs',
+                                                                                          'Results in ${testsListFullPageItem.durationResults?.toString()} Hrs',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Roboto',
                                                                                                 color: FlutterFlowTheme.of(context).primaryColor,
@@ -673,7 +669,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                                                         fontWeight: FontWeight.w500,
                                                                                                       ),
                                                                                                 ),
-                                                                                                if (!(testsListFullPageItem.homeTest) ?? true)
+                                                                                                if (!testsListFullPageItem.homeTest)
                                                                                                   Align(
                                                                                                     alignment: AlignmentDirectional(1, 0),
                                                                                                     child: Icon(
@@ -754,11 +750,11 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                             Stack(
                                                               children: [
                                                                 if (columnBookingsRecord
-                                                                        .testsIncluded
-                                                                        .toList()
-                                                                        ?.contains(
-                                                                            testsListFullPageItem.reference) ??
-                                                                    true)
+                                                                    .testsIncluded
+                                                                    .toList()
+                                                                    .contains(
+                                                                        testsListFullPageItem
+                                                                            .reference))
                                                                   Align(
                                                                     alignment:
                                                                         AlignmentDirectional(
@@ -778,13 +774,13 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                       child:
                                                                           Visibility(
                                                                         visible:
-                                                                            (listViewUsersRecord.role) ==
+                                                                            listViewUsersRecord.role ==
                                                                                 'client',
                                                                         child:
                                                                             InkWell(
                                                                           onTap:
                                                                               () async {
-                                                                            if (!(columnBookingsRecord.testsIncluded.toList().contains(testsListFullPageItem.reference))) {
+                                                                            if (!columnBookingsRecord.testsIncluded.toList().contains(testsListFullPageItem.reference)) {
                                                                               final bookingsUpdateData = {
                                                                                 ...createBookingsRecordData(
                                                                                   totalPrice: functions.removeFromCart(columnBookingsRecord.totalPrice, testsListFullPageItem.price),
@@ -799,7 +795,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                             ScaffoldMessenger.of(context).showSnackBar(
                                                                               SnackBar(
                                                                                 content: Text(
-                                                                                  'Test Removed.${columnBookingsRecord.totalTests.toString()} Tests in Total.',
+                                                                                  'Test Removed.${columnBookingsRecord.totalTests?.toString()} Tests in Total.',
                                                                                   style: TextStyle(),
                                                                                 ),
                                                                                 duration: Duration(milliseconds: 4000),
@@ -819,12 +815,12 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                if (!(columnBookingsRecord
-                                                                        .testsIncluded
-                                                                        .toList()
-                                                                        .contains(
-                                                                            testsListFullPageItem.reference)) ??
-                                                                    true)
+                                                                if (!columnBookingsRecord
+                                                                    .testsIncluded
+                                                                    .toList()
+                                                                    .contains(
+                                                                        testsListFullPageItem
+                                                                            .reference))
                                                                   Align(
                                                                     alignment:
                                                                         AlignmentDirectional(
@@ -844,13 +840,13 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                       child:
                                                                           Visibility(
                                                                         visible:
-                                                                            (listViewUsersRecord.role) ==
+                                                                            listViewUsersRecord.role ==
                                                                                 'client',
                                                                         child:
                                                                             InkWell(
                                                                           onTap:
                                                                               () async {
-                                                                            if (!(columnBookingsRecord.testsIncluded.toList().contains(testsListFullPageItem.reference))) {
+                                                                            if (!columnBookingsRecord.testsIncluded.toList().contains(testsListFullPageItem.reference)) {
                                                                               final bookingsUpdateData = {
                                                                                 ...createBookingsRecordData(
                                                                                   totalPrice: functions.addCartTotal(columnBookingsRecord.totalPrice, testsListFullPageItem.price),
@@ -865,7 +861,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                             ScaffoldMessenger.of(context).showSnackBar(
                                                                               SnackBar(
                                                                                 content: Text(
-                                                                                  'Test Added.${columnBookingsRecord.totalTests.toString()} Tests in Total.',
+                                                                                  'Test Added.${columnBookingsRecord.totalTests?.toString()} Tests in Total.',
                                                                                   style: TextStyle(),
                                                                                 ),
                                                                                 duration: Duration(milliseconds: 4000),

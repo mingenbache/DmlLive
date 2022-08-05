@@ -158,9 +158,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                       Stack(
                         children: [
                           if (widget.booking.testsIncluded
-                                  .toList()
-                                  ?.contains(widget.test.reference) ??
-                              true)
+                              .toList()
+                              .contains(widget.test.reference))
                             InkWell(
                               onTap: () async {
                                 if (widget.booking.testsIncluded
@@ -242,18 +241,17 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                               animationsMap[
                                   'containerOnActionTriggerAnimation1']
                             ]),
-                          if (!(widget.booking.testsIncluded
-                                  .toList()
-                                  .contains(widget.test.reference)) ??
-                              true)
+                          if (!widget.booking.testsIncluded
+                              .toList()
+                              .contains(widget.test.reference))
                             InkWell(
                               onTap: () async {
-                                if (!(widget.booking.testsIncluded
+                                if (!widget.booking.testsIncluded
                                     .toList()
-                                    .contains(widget.test.reference))) {
-                                  if (!(widget.booking.testPackTests
+                                    .contains(widget.test.reference)) {
+                                  if (!widget.booking.testPackTests
                                       .toList()
-                                      .contains(widget.test.reference))) {
+                                      .contains(widget.test.reference)) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
                                         totalPrice: functions.addCartTotal(
@@ -647,7 +645,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                   size: 20,
                                                                 ),
                                                                 Text(
-                                                                  '${widget.test.durationResults.toString()} Hrs',
+                                                                  '${widget.test.durationResults?.toString()} Hrs',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1

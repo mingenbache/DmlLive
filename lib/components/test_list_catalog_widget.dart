@@ -393,11 +393,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                       0.05,
                                                   child: Stack(
                                                     children: [
-                                                      if (!(functions
-                                                              .isCategorySelected(
-                                                                  FFAppState()
-                                                                      .categorypicked)) ??
-                                                          true)
+                                                      if (!functions
+                                                          .isCategorySelected(
+                                                              FFAppState()
+                                                                  .categorypicked))
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -458,8 +457,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                           ),
                                                         ),
                                                       if (FFAppState()
-                                                              .allCategories ??
-                                                          true)
+                                                          .allCategories)
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -580,10 +578,8 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                           builder: (context) {
                                                             final testCategories =
                                                                 listViewCategoriesRecord
-                                                                        .categories
-                                                                        .toList()
-                                                                        ?.toList() ??
-                                                                    [];
+                                                                    .categories
+                                                                    .toList();
                                                             return ListView
                                                                 .builder(
                                                               padding:
@@ -601,10 +597,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                         testCategoriesIndex];
                                                                 return Stack(
                                                                   children: [
-                                                                    if ((functions.upperCase(
-                                                                            testCategoriesItem)) ==
-                                                                        (functions
-                                                                            .upperCase(FFAppState().categorypicked)))
+                                                                    if (functions.upperCase(
+                                                                            testCategoriesItem) ==
+                                                                        functions
+                                                                            .upperCase(FFAppState().categorypicked))
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
                                                                             10,
@@ -794,12 +790,16 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                               builder:
                                                                   (context) {
                                                                 final catalogTestsList = functions
-                                                                        .filterTestsByCategory(
-                                                                            FFAppState().allCategories,
-                                                                            FFAppState().categorypicked,
-                                                                            functions.returnSearchTests(textController1.text, testListWidgetTestsRecordList.toList()).toList())
-                                                                        ?.toList() ??
-                                                                    [];
+                                                                    .filterTestsByCategory(
+                                                                        FFAppState()
+                                                                            .allCategories,
+                                                                        FFAppState()
+                                                                            .categorypicked,
+                                                                        functions
+                                                                            .returnSearchTests(textController1.text,
+                                                                                testListWidgetTestsRecordList.toList())
+                                                                            .toList())
+                                                                    .toList();
                                                                 return ListView
                                                                     .builder(
                                                                   padding:
@@ -1052,11 +1052,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                       0.05,
                                                   child: Stack(
                                                     children: [
-                                                      if (!(functions
-                                                              .isCategorySelected(
-                                                                  FFAppState()
-                                                                      .categorypicked)) ??
-                                                          true)
+                                                      if (!functions
+                                                          .isCategorySelected(
+                                                              FFAppState()
+                                                                  .categorypicked))
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -1117,8 +1116,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                           ),
                                                         ),
                                                       if (FFAppState()
-                                                              .allPackageCategories ??
-                                                          true)
+                                                          .allPackageCategories)
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -1239,10 +1237,8 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                           builder: (context) {
                                                             final packagecategories =
                                                                 listViewCategoriesRecord
-                                                                        .categories
-                                                                        .toList()
-                                                                        ?.toList() ??
-                                                                    [];
+                                                                    .categories
+                                                                    .toList();
                                                             return ListView
                                                                 .builder(
                                                               padding:
@@ -1305,10 +1301,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                    if ((functions.upperCase(
-                                                                            packagecategoriesItem)) ==
-                                                                        (functions
-                                                                            .upperCase(FFAppState().packagecategoryPicked)))
+                                                                    if (functions.upperCase(
+                                                                            packagecategoriesItem) ==
+                                                                        functions
+                                                                            .upperCase(FFAppState().packagecategoryPicked))
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
                                                                             10,
@@ -1462,12 +1458,14 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                               builder:
                                                                   (context) {
                                                                 final packages = functions
-                                                                        .filterPackagesByCategory(
-                                                                            FFAppState().allPackageCategories,
-                                                                            FFAppState().packagecategoryPicked,
-                                                                            packageListWidgetTestPackagesRecordList.toList())
-                                                                        ?.toList() ??
-                                                                    [];
+                                                                    .filterPackagesByCategory(
+                                                                        FFAppState()
+                                                                            .allPackageCategories,
+                                                                        FFAppState()
+                                                                            .packagecategoryPicked,
+                                                                        packageListWidgetTestPackagesRecordList
+                                                                            .toList())
+                                                                    .toList();
                                                                 return ListView
                                                                     .builder(
                                                                   padding:

@@ -479,7 +479,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                       controller: testDurationTextController ??=
                                           TextEditingController(
                                         text: modifyTestTestsRecord.duration
-                                            .toString(),
+                                            ?.toString(),
                                       ),
                                       obscureText: false,
                                       decoration: InputDecoration(
@@ -605,7 +605,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                               TextEditingController(
                                         text: modifyTestTestsRecord
                                             .durationResults
-                                            .toString(),
+                                            ?.toString(),
                                       ),
                                       obscureText: false,
                                       decoration: InputDecoration(
@@ -717,7 +717,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   controller: testPriceController ??=
                                       TextEditingController(
                                     text:
-                                        modifyTestTestsRecord.price.toString(),
+                                        modifyTestTestsRecord.price?.toString(),
                                   ),
                                   obscureText: false,
                                   decoration: InputDecoration(

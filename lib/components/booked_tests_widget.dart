@@ -60,9 +60,7 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
               child: Builder(
                 builder: (context) {
                   final bookingTests =
-                      bookedTestsReportContainerBookedTestsRecordList
-                              ?.toList() ??
-                          [];
+                      bookedTestsReportContainerBookedTestsRecordList.toList();
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     primary: false,
@@ -196,7 +194,7 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .primaryText,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -377,11 +375,10 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                                                 ),
                                                               ),
                                                               if (functions.testedTestSubmitted(functions.returnTestedTest(
-                                                                      containerTestedTestsRecordList
-                                                                          .toList(),
-                                                                      bookingTestsItem
-                                                                          .reference)) ??
-                                                                  true)
+                                                                  containerTestedTestsRecordList
+                                                                      .toList(),
+                                                                  bookingTestsItem
+                                                                      .reference)))
                                                                 Container(
                                                                   decoration:
                                                                       BoxDecoration(
@@ -437,11 +434,10 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                                                 ),
                                                               ),
                                                               if (functions.testedTestVerified(functions.returnTestedTest(
-                                                                      containerTestedTestsRecordList
-                                                                          .toList(),
-                                                                      bookingTestsItem
-                                                                          .reference)) ??
-                                                                  true)
+                                                                  containerTestedTestsRecordList
+                                                                      .toList(),
+                                                                  bookingTestsItem
+                                                                      .reference)))
                                                                 Container(
                                                                   decoration:
                                                                       BoxDecoration(

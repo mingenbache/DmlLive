@@ -245,10 +245,8 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                     builder: (context) {
                                                       final phonenumbers =
                                                           containerDMLInfoRecord
-                                                                  .phoneNumbers
-                                                                  .toList()
-                                                                  ?.toList() ??
-                                                              [];
+                                                              .phoneNumbers
+                                                              .toList();
                                                       return ListView.builder(
                                                         padding:
                                                             EdgeInsets.zero,
@@ -914,10 +912,8 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                               builder: (context) {
                                                 final testPackages =
                                                     bookingReportReportsRecord
-                                                            .testpackageList
-                                                            .toList()
-                                                            ?.toList() ??
-                                                        [];
+                                                        .testpackageList
+                                                        .toList();
                                                 return ListView.builder(
                                                   padding: EdgeInsets.zero,
                                                   scrollDirection:
@@ -1058,11 +1054,10 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                               Builder(
                                                                 builder:
                                                                     (context) {
-                                                                  final packagetestedtests = containerTestPackagesRecord
+                                                                  final packagetestedtests =
+                                                                      containerTestPackagesRecord
                                                                           .testsIncluded
-                                                                          .toList()
-                                                                          ?.toList() ??
-                                                                      [];
+                                                                          .toList();
                                                                   return ListView
                                                                       .builder(
                                                                     padding:
@@ -1200,10 +1195,8 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                               builder: (context) {
                                                 final tests =
                                                     bookingReportReportsRecord
-                                                            .testedTests
-                                                            .toList()
-                                                            ?.toList() ??
-                                                        [];
+                                                        .testedTests
+                                                        .toList();
                                                 return ListView.builder(
                                                   padding: EdgeInsets.zero,
                                                   scrollDirection:
@@ -1533,10 +1526,8 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                     child: Builder(
                                       builder: (context) {
                                         final refs = containerDMLInfoRecord
-                                                .footerReferences
-                                                .toList()
-                                                ?.toList() ??
-                                            [];
+                                            .footerReferences
+                                            .toList();
                                         return Wrap(
                                           spacing: 5,
                                           runSpacing: 0,

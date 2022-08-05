@@ -46,8 +46,7 @@ class _TestListLightWidgetState extends State<TestListLightWidget> {
           ),
           child: Builder(
             builder: (context) {
-              final testsListFullPage =
-                  testListWidgetTestsRecordList?.toList() ?? [];
+              final testsListFullPage = testListWidgetTestsRecordList.toList();
               return ListView.builder(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.vertical,

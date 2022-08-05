@@ -514,11 +514,9 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                     builder:
                                                                         (context) {
                                                                       final packageTests = widget
-                                                                              .package
-                                                                              .testsIncluded
-                                                                              .toList()
-                                                                              ?.toList() ??
-                                                                          [];
+                                                                          .package
+                                                                          .testsIncluded
+                                                                          .toList();
                                                                       return ListView
                                                                           .builder(
                                                                         padding:

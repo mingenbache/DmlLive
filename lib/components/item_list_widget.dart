@@ -19,8 +19,7 @@ class _ItemListWidgetState extends State<ItemListWidget> {
       padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
       child: Builder(
         builder: (context) {
-          final duplicatetestsList =
-              FFAppState().duplicateTests?.toList() ?? [];
+          final duplicatetestsList = FFAppState().duplicateTests.toList();
           return ListView.builder(
             padding: EdgeInsets.zero,
             scrollDirection: Axis.vertical,

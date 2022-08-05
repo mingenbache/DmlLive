@@ -144,8 +144,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                   child: Builder(
                     builder: (context) {
-                      final bookings =
-                          reportListBookingsRecordList?.toList() ?? [];
+                      final bookings = reportListBookingsRecordList.toList();
                       return SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -407,7 +406,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                         builder:
                                                                             (context) {
                                                                           final tests =
-                                                                              containerTestedTestsRecordList?.toList() ?? [];
+                                                                              containerTestedTestsRecordList.toList();
                                                                           return ListView
                                                                               .builder(
                                                                             padding:

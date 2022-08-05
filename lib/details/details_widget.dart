@@ -155,7 +155,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                     decoration: BoxDecoration(),
                                     child: Visibility(
                                       visible:
-                                          (columnUsersRecord.role) == 'admin',
+                                          columnUsersRecord.role == 'admin',
                                       child: FFButtonWidget(
                                         onPressed: () async {
                                           context.pushNamed(
@@ -892,11 +892,10 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                   ]),
                                   FFButtonWidget(
                                     onPressed: () async {
-                                      if (!(containerBookingsRecord
-                                          .testsIncluded
+                                      if (!containerBookingsRecord.testsIncluded
                                           .toList()
                                           .contains(
-                                              columnTestsRecord.reference))) {
+                                              columnTestsRecord.reference)) {
                                         final bookingsUpdateData = {
                                           ...createBookingsRecordData(
                                             totalPrice: functions.addCartTotal(
@@ -918,7 +917,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                           .showSnackBar(
                                         SnackBar(
                                           content: Text(
-                                            'Test Added! ${containerBookingsRecord.totalTests.toString()}Tests in total.',
+                                            'Test Added! ${containerBookingsRecord.totalTests?.toString()}Tests in total.',
                                             style: TextStyle(),
                                           ),
                                           duration:

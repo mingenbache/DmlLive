@@ -157,19 +157,16 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                             child: Builder(
                               builder: (context) {
                                 final duplicatetestsPackages = functions
-                                        .returnPackagesContainingDuplicateTests(
-                                            functions
-                                                .returnPackagesinBooking(
-                                                    containerTestPackagesRecordList
-                                                        .toList(),
-                                                    widget.booking.testPackages
-                                                        .toList())
-                                                .toList(),
-                                            FFAppState()
-                                                .duplicateTests
-                                                .toList())
-                                        ?.toList() ??
-                                    [];
+                                    .returnPackagesContainingDuplicateTests(
+                                        functions
+                                            .returnPackagesinBooking(
+                                                containerTestPackagesRecordList
+                                                    .toList(),
+                                                widget.booking.testPackages
+                                                    .toList())
+                                            .toList(),
+                                        FFAppState().duplicateTests.toList())
+                                    .toList();
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
                                   scrollDirection: Axis.vertical,
@@ -340,13 +337,12 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                                 child: Builder(
                                                   builder: (context) {
                                                     final filterPackageTests = functions
-                                                            .returnDuplicateTestsinPackage(
-                                                                duplicatetestsPackagesItem,
-                                                                FFAppState()
-                                                                    .duplicateTests
-                                                                    .toList())
-                                                            ?.toList() ??
-                                                        [];
+                                                        .returnDuplicateTestsinPackage(
+                                                            duplicatetestsPackagesItem,
+                                                            FFAppState()
+                                                                .duplicateTests
+                                                                .toList())
+                                                        .toList();
                                                     return ListView.builder(
                                                       padding: EdgeInsets.zero,
                                                       shrinkWrap: true,

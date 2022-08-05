@@ -64,7 +64,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
         width: 240,
         height: 80,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryColor,
+          color: FlutterFlowTheme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(28),
         ),
         child: Column(
@@ -104,7 +104,8 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                       children: [
                         FaIcon(
                           FontAwesomeIcons.fileInvoiceDollar,
-                          color: FlutterFlowTheme.of(context).tertiaryColor,
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           size: 25,
                         ),
                         Row(
@@ -122,7 +123,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                                     .override(
                                       fontFamily: 'Roboto',
                                       color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                          .secondaryBackground,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -146,7 +147,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                     children: [
                       FaIcon(
                         FontAwesomeIcons.receipt,
-                        color: FlutterFlowTheme.of(context).tertiaryColor,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                         size: 25,
                       ),
                       Row(
@@ -164,7 +165,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                                   .override(
                                     fontFamily: 'Roboto',
                                     color: FlutterFlowTheme.of(context)
-                                        .tertiaryColor,
+                                        .secondaryBackground,
                                   ),
                             ),
                           ),
@@ -203,7 +204,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                                 Icon(
                                   Icons.library_books,
                                   color: FlutterFlowTheme.of(context)
-                                      .tertiaryColor,
+                                      .secondaryBackground,
                                   size: 25,
                                 ),
                                 Row(
@@ -222,7 +223,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                                               fontFamily: 'Roboto',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .tertiaryColor,
+                                                      .secondaryBackground,
                                             ),
                                       ),
                                     ),
@@ -232,7 +233,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                             ),
                           ),
                         ),
-                      if (!(widget.bookingRef.resultPublished) ?? true)
+                      if (!widget.bookingRef.resultPublished)
                         InkWell(
                           onTap: () async {
                             await showModalBottomSheet(

@@ -66,7 +66,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                             maxHeight: 170,
                           ),
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                            color: FlutterFlowTheme.of(context).secondaryColor,
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Padding(
@@ -98,7 +98,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                   fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .tertiaryColor,
+                                                      .primaryText,
                                                   fontSize: 16,
                                                 ),
                                           ),
@@ -227,7 +227,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                               BoxDecoration(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .tertiaryColor,
+                                                                .secondaryText,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
@@ -359,7 +359,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                                     TextStyle(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .alternate,
+                                                                      .primaryText,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,

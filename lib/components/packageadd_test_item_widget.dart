@@ -153,9 +153,8 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                       Stack(
                         children: [
                           if (FFAppState()
-                                  .testPackTests
-                                  ?.contains(widget.test.reference) ??
-                              true)
+                              .testPackTests
+                              .contains(widget.test.reference))
                             InkWell(
                               onTap: () async {
                                 if (FFAppState()
@@ -228,15 +227,14 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                               animationsMap[
                                   'containerOnActionTriggerAnimation1']
                             ]),
-                          if (!(FFAppState()
-                                  .testPackTests
-                                  .contains(widget.test.reference)) ??
-                              true)
+                          if (!FFAppState()
+                              .testPackTests
+                              .contains(widget.test.reference))
                             InkWell(
                               onTap: () async {
-                                if (!(FFAppState()
+                                if (!FFAppState()
                                     .testPackTests
-                                    .contains(widget.test.reference))) {
+                                    .contains(widget.test.reference)) {
                                   setState(() => FFAppState()
                                       .addToTestPackTests(
                                           widget.test.reference));
@@ -247,7 +245,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Test Added.${widget.listSize.toString()} Tests in Total.',
+                                      'Test Added.${widget.listSize?.toString()} Tests in Total.',
                                       style: TextStyle(),
                                     ),
                                     duration: Duration(milliseconds: 400),
@@ -582,7 +580,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                                                   size: 20,
                                                                 ),
                                                                 Text(
-                                                                  '${widget.test.durationResults.toString()} Hrs',
+                                                                  '${widget.test.durationResults?.toString()} Hrs',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1

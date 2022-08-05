@@ -81,7 +81,7 @@ class _$ReferencesRecord extends ReferencesRecord {
 
   factory _$ReferencesRecord(
           [void Function(ReferencesRecordBuilder) updates]) =>
-      (new ReferencesRecordBuilder()..update(updates)).build();
+      (new ReferencesRecordBuilder()..update(updates))._build();
 
   _$ReferencesRecord._({this.doctors, this.reference}) : super._();
 
@@ -108,7 +108,7 @@ class _$ReferencesRecord extends ReferencesRecord {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ReferencesRecord')
+    return (newBuiltValueToStringHelper(r'ReferencesRecord')
           ..add('doctors', doctors)
           ..add('reference', reference))
         .toString();
@@ -156,7 +156,9 @@ class ReferencesRecordBuilder
   }
 
   @override
-  _$ReferencesRecord build() {
+  ReferencesRecord build() => _build();
+
+  _$ReferencesRecord _build() {
     _$ReferencesRecord _$result;
     try {
       _$result = _$v ??
@@ -169,7 +171,7 @@ class ReferencesRecordBuilder
         _doctors?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'ReferencesRecord', _$failedField, e.toString());
+            r'ReferencesRecord', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -178,4 +180,4 @@ class ReferencesRecordBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

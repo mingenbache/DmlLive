@@ -87,14 +87,6 @@ class _$BookedTestsRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.cartRef;
-    if (value != null) {
-      result
-        ..add('cart_ref')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
-    }
     value = object.createdDate;
     if (value != null) {
       result
@@ -212,12 +204,6 @@ class _$BookedTestsRecordSerializer
           result.testAttachment = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'cart_ref':
-          result.cartRef = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
-          break;
         case 'created_date':
           result.createdDate = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime;
@@ -285,8 +271,6 @@ class _$BookedTestsRecord extends BookedTestsRecord {
   @override
   final String testAttachment;
   @override
-  final DocumentReference<Object> cartRef;
-  @override
   final DateTime createdDate;
   @override
   final bool hasResult;
@@ -305,7 +289,7 @@ class _$BookedTestsRecord extends BookedTestsRecord {
 
   factory _$BookedTestsRecord(
           [void Function(BookedTestsRecordBuilder) updates]) =>
-      (new BookedTestsRecordBuilder()..update(updates)).build();
+      (new BookedTestsRecordBuilder()..update(updates))._build();
 
   _$BookedTestsRecord._(
       {this.testRef,
@@ -317,7 +301,6 @@ class _$BookedTestsRecord extends BookedTestsRecord {
       this.user,
       this.testResult,
       this.testAttachment,
-      this.cartRef,
       this.createdDate,
       this.hasResult,
       this.labRefNum,
@@ -349,7 +332,6 @@ class _$BookedTestsRecord extends BookedTestsRecord {
         user == other.user &&
         testResult == other.testResult &&
         testAttachment == other.testAttachment &&
-        cartRef == other.cartRef &&
         createdDate == other.createdDate &&
         hasResult == other.hasResult &&
         labRefNum == other.labRefNum &&
@@ -379,24 +361,22 @@ class _$BookedTestsRecord extends BookedTestsRecord {
                                                             $jc(
                                                                 $jc(
                                                                     $jc(
-                                                                        $jc(
-                                                                            0,
-                                                                            testRef
-                                                                                .hashCode),
-                                                                        scheduledDate
+                                                                        0,
+                                                                        testRef
                                                                             .hashCode),
-                                                                    bookingRef
+                                                                    scheduledDate
                                                                         .hashCode),
-                                                                sampleCollected
+                                                                bookingRef
                                                                     .hashCode),
-                                                            sampleSlideRequested
+                                                            sampleCollected
                                                                 .hashCode),
-                                                        sampleSlideSurrendered
+                                                        sampleSlideRequested
                                                             .hashCode),
-                                                    user.hashCode),
-                                                testResult.hashCode),
-                                            testAttachment.hashCode),
-                                        cartRef.hashCode),
+                                                    sampleSlideSurrendered
+                                                        .hashCode),
+                                                user.hashCode),
+                                            testResult.hashCode),
+                                        testAttachment.hashCode),
                                     createdDate.hashCode),
                                 hasResult.hashCode),
                             labRefNum.hashCode),
@@ -409,7 +389,7 @@ class _$BookedTestsRecord extends BookedTestsRecord {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('BookedTestsRecord')
+    return (newBuiltValueToStringHelper(r'BookedTestsRecord')
           ..add('testRef', testRef)
           ..add('scheduledDate', scheduledDate)
           ..add('bookingRef', bookingRef)
@@ -419,7 +399,6 @@ class _$BookedTestsRecord extends BookedTestsRecord {
           ..add('user', user)
           ..add('testResult', testResult)
           ..add('testAttachment', testAttachment)
-          ..add('cartRef', cartRef)
           ..add('createdDate', createdDate)
           ..add('hasResult', hasResult)
           ..add('labRefNum', labRefNum)
@@ -478,10 +457,6 @@ class BookedTestsRecordBuilder
   set testAttachment(String testAttachment) =>
       _$this._testAttachment = testAttachment;
 
-  DocumentReference<Object> _cartRef;
-  DocumentReference<Object> get cartRef => _$this._cartRef;
-  set cartRef(DocumentReference<Object> cartRef) => _$this._cartRef = cartRef;
-
   DateTime _createdDate;
   DateTime get createdDate => _$this._createdDate;
   set createdDate(DateTime createdDate) => _$this._createdDate = createdDate;
@@ -534,7 +509,6 @@ class BookedTestsRecordBuilder
       _user = $v.user;
       _testResult = $v.testResult;
       _testAttachment = $v.testAttachment;
-      _cartRef = $v.cartRef;
       _createdDate = $v.createdDate;
       _hasResult = $v.hasResult;
       _labRefNum = $v.labRefNum;
@@ -560,7 +534,9 @@ class BookedTestsRecordBuilder
   }
 
   @override
-  _$BookedTestsRecord build() {
+  BookedTestsRecord build() => _build();
+
+  _$BookedTestsRecord _build() {
     final _$result = _$v ??
         new _$BookedTestsRecord._(
             testRef: testRef,
@@ -572,7 +548,6 @@ class BookedTestsRecordBuilder
             user: user,
             testResult: testResult,
             testAttachment: testAttachment,
-            cartRef: cartRef,
             createdDate: createdDate,
             hasResult: hasResult,
             labRefNum: labRefNum,
@@ -586,4 +561,4 @@ class BookedTestsRecordBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

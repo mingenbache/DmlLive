@@ -601,7 +601,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                     FFButtonWidget(
                       onPressed: () async {
                         var _shouldSetState = false;
-                        if ((datePicked) <= (getCurrentTimestamp)) {
+                        if (datePicked <= getCurrentTimestamp) {
                           final paymentsCreateData = createPaymentsRecordData(
                             userRef: currentUserReference,
                             bookingRef: columnInvoicesRecord.bookingRef,

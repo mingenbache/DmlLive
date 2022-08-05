@@ -158,9 +158,8 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                       Stack(
                         children: [
                           if (widget.booking.testPackages
-                                  .toList()
-                                  ?.contains(widget.package.reference) ??
-                              true)
+                              .toList()
+                              .contains(widget.package.reference))
                             InkWell(
                               onTap: () async {
                                 if (widget.booking.testPackages
@@ -247,16 +246,15 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                               animationsMap[
                                   'containerOnActionTriggerAnimation1']
                             ]),
-                          if (!(widget.booking.testPackages
-                                  .toList()
-                                  .contains(widget.package.reference)) ??
-                              true)
+                          if (!widget.booking.testPackages
+                              .toList()
+                              .contains(widget.package.reference))
                             InkWell(
                               onTap: () async {
                                 if (widget.booking.hasTestPackages) {
-                                  if (!(widget.booking.testPackages
+                                  if (!widget.booking.testPackages
                                       .toList()
-                                      .contains(widget.package.reference))) {
+                                      .contains(widget.package.reference)) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
                                         totalPrice: functions.addCartTotal(
@@ -661,7 +659,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                   size: 20,
                                                                 ),
                                                                 Text(
-                                                                  '${widget.package.durationResults.toString()} Hrs',
+                                                                  '${widget.package.durationResults?.toString()} Hrs',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1

@@ -243,8 +243,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                         builder: (context) {
                                           final bookedTests =
                                               calendarScheduleContainerBookedTestsRecordList
-                                                      ?.toList() ??
-                                                  [];
+                                                  .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             shrinkWrap: true,
@@ -587,7 +586,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                                   borderRadius: BorderRadius.circular(12),
                                                                                                 ),
                                                                                               ),
-                                                                                            if (!(bookedTestsItem.sampleCollected) ?? true)
+                                                                                            if (!bookedTestsItem.sampleCollected)
                                                                                               FFButtonWidget(
                                                                                                 onPressed: () {
                                                                                                   print('ButtonNotCollected pressed ...');

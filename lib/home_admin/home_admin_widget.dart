@@ -28,7 +28,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
   void initState() {
     super.initState();
     // On page load action.
-    SchedulerBinding.instance?.addPostFrameCallback((_) async {
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(milliseconds: 1000));
     });
   }
@@ -65,10 +65,11 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      FlutterFlowTheme.of(context).tertiaryColor,
-                      FlutterFlowTheme.of(context).primaryColor
+                      FlutterFlowTheme.of(context).secondaryColor,
+                      FlutterFlowTheme.of(context).primaryColor,
+                      FlutterFlowTheme.of(context).secondaryColor
                     ],
-                    stops: [0.2, 0.6],
+                    stops: [0, 0.5, 1],
                     begin: AlignmentDirectional(0, -1),
                     end: AlignmentDirectional(0, 1),
                   ),
@@ -97,7 +98,6 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                     MediaQuery.of(context).size.height * 0.35,
                               ),
                               decoration: BoxDecoration(
-                                color: Color(0xFFEEEEEE),
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(26),
                                   bottomRight: Radius.circular(26),
@@ -129,6 +129,12 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                           ),
                           Container(
                             decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [Color(0x8F006392), Color(0xA96CD7B7)],
+                                stops: [0, 1],
+                                begin: AlignmentDirectional(0, -1),
+                                end: AlignmentDirectional(0, 1),
+                              ),
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(26),
                                 bottomRight: Radius.circular(26),
@@ -160,7 +166,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                 Icons.local_police_sharp,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryColor,
+                                                        .secondaryBackground,
                                                 size: 24,
                                               ),
                                             ],
@@ -199,7 +205,9 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                 children: [
                                                   FaIcon(
                                                     FontAwesomeIcons.solidBell,
-                                                    color: Colors.white,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryColor,
                                                     size: 18,
                                                   ),
                                                   Padding(
@@ -214,7 +222,10 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                       },
                                                       child: Icon(
                                                         Icons.person_rounded,
-                                                        color: Colors.white,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryColor,
                                                         size: 24,
                                                       ),
                                                     ),
@@ -241,7 +252,10 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                     },
                                                     child: Icon(
                                                       Icons.message,
-                                                      color: Color(0xFFFEFEFE),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryColor,
                                                       size: 24,
                                                     ),
                                                   ),
@@ -289,7 +303,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryColor,
+                                                              .secondaryColor,
                                                         ),
                                                   ),
                                                 ),
@@ -441,123 +455,135 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                InkWell(
-                                  onTap: () async {
-                                    context.pushNamed('ScheduledTests');
-                                  },
-                                  child: Material(
-                                    color: Colors.transparent,
-                                    elevation: 2,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.6,
-                                      height: 100,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: Image.asset(
-                                            'assets/images/a29hc_2.jpg',
-                                          ).image,
+                                Stack(
+                                  children: [
+                                    InkWell(
+                                      onTap: () async {
+                                        context.pushNamed('ScheduledTests');
+                                      },
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        elevation: 2,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
                                         ),
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryColor
-                                          ],
-                                          stops: [1, 1],
-                                          begin: AlignmentDirectional(1, -1),
-                                          end: AlignmentDirectional(-1, 1),
-                                        ),
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.3,
-                                            height: 100,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xA258595B),
-                                              borderRadius: BorderRadius.only(
-                                                bottomLeft: Radius.circular(12),
-                                                bottomRight: Radius.circular(0),
-                                                topLeft: Radius.circular(12),
-                                                topRight: Radius.circular(0),
-                                              ),
+                                        child: Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.6,
+                                          height: 100,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: Image.asset(
+                                                'assets/images/a29hc_2.jpg',
+                                              ).image,
                                             ),
-                                            child: StreamBuilder<
-                                                List<BookedTestsRecord>>(
-                                              stream: queryBookedTestsRecord(
-                                                queryBuilder: (bookedTestsRecord) =>
-                                                    bookedTestsRecord.where(
-                                                        'scheduled_date',
-                                                        isGreaterThanOrEqualTo:
-                                                            getCurrentTimestamp),
-                                              ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 50,
-                                                      height: 50,
-                                                      child: SpinKitRipple(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryColor,
-                                                        size: 50,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<BookedTestsRecord>
-                                                    textBookedTestsRecordList =
-                                                    snapshot.data;
-                                                return Text(
-                                                  valueOrDefault<String>(
-                                                    functions
-                                                        .checkNewTests(
-                                                            textBookedTestsRecordList
-                                                                .toList())
-                                                        .toString(),
-                                                    '0',
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        fontSize: 64,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                );
-                                              },
+                                            gradient: LinearGradient(
+                                              colors: [
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryColor,
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryColor
+                                              ],
+                                              stops: [1, 1],
+                                              begin:
+                                                  AlignmentDirectional(1, -1),
+                                              end: AlignmentDirectional(-1, 1),
                                             ),
+                                            borderRadius:
+                                                BorderRadius.circular(12),
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 2, 0, 0),
-                                            child: Container(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.25,
-                                              decoration: BoxDecoration(),
-                                              child: Text(
-                                                'Tests Scheduled For Today',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.3,
+                                                height: 100,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xA258595B),
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(12),
+                                                    bottomRight:
+                                                        Radius.circular(0),
+                                                    topLeft:
+                                                        Radius.circular(12),
+                                                    topRight:
+                                                        Radius.circular(0),
+                                                  ),
+                                                ),
+                                                child: StreamBuilder<
+                                                    List<BookedTestsRecord>>(
+                                                  stream:
+                                                      queryBookedTestsRecord(
+                                                    queryBuilder: (bookedTestsRecord) =>
+                                                        bookedTestsRecord.where(
+                                                            'scheduled_date',
+                                                            isGreaterThanOrEqualTo:
+                                                                getCurrentTimestamp),
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 50,
+                                                          height: 50,
+                                                          child: SpinKitRipple(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryColor,
+                                                            size: 50,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    List<BookedTestsRecord>
+                                                        textBookedTestsRecordList =
+                                                        snapshot.data;
+                                                    return Text(
+                                                      valueOrDefault<String>(
+                                                        functions
+                                                            .checkNewTests(
+                                                                textBookedTestsRecordList
+                                                                    .toList())
+                                                            .toString(),
+                                                        '0',
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyText1
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            fontSize: 64,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 2, 0, 0),
+                                                child: Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.25,
+                                                  decoration: BoxDecoration(),
+                                                  child: Text(
+                                                    'Tests Scheduled For Today',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .bodyText1
                                                         .override(
                                                           fontFamily: 'Roboto',
@@ -567,13 +593,141 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
+                                                  ),
+                                                ),
                                               ),
-                                            ),
+                                            ],
                                           ),
-                                        ],
+                                        ),
                                       ),
                                     ),
-                                  ),
+                                    InkWell(
+                                      onTap: () async {
+                                        context.pushNamed('ScheduledTests');
+                                      },
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        elevation: 2,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                        ),
+                                        child: Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.6,
+                                          height: 100,
+                                          decoration: BoxDecoration(
+                                            color: Color(0x7F6CD7B7),
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.3,
+                                                height: 100,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(12),
+                                                    bottomRight:
+                                                        Radius.circular(0),
+                                                    topLeft:
+                                                        Radius.circular(12),
+                                                    topRight:
+                                                        Radius.circular(0),
+                                                  ),
+                                                ),
+                                                child: StreamBuilder<
+                                                    List<BookedTestsRecord>>(
+                                                  stream:
+                                                      queryBookedTestsRecord(
+                                                    queryBuilder: (bookedTestsRecord) =>
+                                                        bookedTestsRecord.where(
+                                                            'scheduled_date',
+                                                            isGreaterThanOrEqualTo:
+                                                                getCurrentTimestamp),
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 50,
+                                                          height: 50,
+                                                          child: SpinKitRipple(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryColor,
+                                                            size: 50,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    List<BookedTestsRecord>
+                                                        textBookedTestsRecordList =
+                                                        snapshot.data;
+                                                    return Text(
+                                                      valueOrDefault<String>(
+                                                        functions
+                                                            .checkNewTests(
+                                                                textBookedTestsRecordList
+                                                                    .toList())
+                                                            .toString(),
+                                                        '0',
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyText1
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            fontSize: 64,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                    );
+                                                  },
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 2, 0, 0),
+                                                child: Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.25,
+                                                  decoration: BoxDecoration(),
+                                                  child: Text(
+                                                    'Tests Scheduled For Today',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          color:
+                                                              Color(0xFFFEFEFE),
+                                                          fontSize: 19,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                                 Material(
                                   color: Colors.transparent,
@@ -587,7 +741,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                     height: 100,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                          .secondaryText,
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     child: Column(
@@ -665,7 +819,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                           0.2,
                                       height: 100,
                                       decoration: BoxDecoration(
-                                        color: Color(0xA959585B),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         borderRadius: BorderRadius.circular(12),
                                       ),
                                       child: SingleChildScrollView(
@@ -721,7 +876,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                                       'Roboto',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiaryColor,
+                                                                      .secondaryBackground,
                                                                   fontSize: 40,
                                                                   fontWeight:
                                                                       FontWeight
@@ -749,7 +904,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .tertiaryColor,
+                                                                .secondaryColor,
                                                         fontSize: 15,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -765,7 +920,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                 ),
                                 InkWell(
                                   onTap: () async {
-                                    context.pushNamed('InvoiceList');
+                                    context.pushNamed('PaymentsList');
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -777,7 +932,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                       width: MediaQuery.of(context).size.width *
                                           0.6,
                                       decoration: BoxDecoration(
-                                        color: Color(0xFFFEFEFE),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryColor,
                                         borderRadius: BorderRadius.circular(12),
                                       ),
                                       child: Row(
@@ -836,7 +992,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                     fontFamily: 'Roboto',
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryColor,
+                                                        .secondaryBackground,
                                                     fontSize: 84,
                                                     fontWeight: FontWeight.w600,
                                                   ),
@@ -862,24 +1018,26 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                       5, 5, 5, 5),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      context.pushNamed('TestQueue');
+                                      context.pushNamed('BookingsSchedule');
                                     },
                                     text: 'View Calendar',
                                     icon: Icon(
                                       Icons.calendar_today_sharp,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
                                       size: 15,
                                     ),
                                     options: FFButtonOptions(
                                       width: 150,
                                       height: 50,
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondaryBackground,
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
                                             fontFamily: 'Roboto',
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .secondaryText,
                                           ),
                                       elevation: 2,
                                       borderSide: BorderSide(

@@ -1205,7 +1205,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                             child:
                                                                                 Builder(
                                                                               builder: (context) {
-                                                                                final tests = verifyPaymentContainerBookingsRecord.testsIncluded.toList()?.toList() ?? [];
+                                                                                final tests = verifyPaymentContainerBookingsRecord.testsIncluded.toList();
                                                                                 return ListView.builder(
                                                                                   padding: EdgeInsets.zero,
                                                                                   scrollDirection: Axis.vertical,

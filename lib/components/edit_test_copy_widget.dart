@@ -746,27 +746,31 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                       0xFF586B06),
                                                                 ),
                                                               ),
-                                                              child: Text(
-                                                                testDurationSliderValue
-                                                                    .toString()
-                                                                    .maybeHandleOverflow(
-                                                                        maxChars:
-                                                                            3),
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyText1
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Roboto',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .alternate,
-                                                                      fontSize:
-                                                                          18,
-                                                                    ),
+                                                              child: Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        0, 0),
+                                                                child: Text(
+                                                                  testDurationSliderValue
+                                                                      .toString()
+                                                                      .maybeHandleOverflow(
+                                                                          maxChars:
+                                                                              3),
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .center,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyText1
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Roboto',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .alternate,
+                                                                        fontSize:
+                                                                            18,
+                                                                      ),
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
@@ -925,27 +929,32 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                     0xFF586B06),
                                                               ),
                                                             ),
-                                                            child: Text(
-                                                              resultsDurationSliderValue
-                                                                  .toString()
-                                                                  .maybeHandleOverflow(
-                                                                      maxChars:
-                                                                          3),
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyText1
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Roboto',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .alternate,
-                                                                    fontSize:
-                                                                        18,
-                                                                  ),
+                                                            child: Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.05, 0),
+                                                              child: Text(
+                                                                resultsDurationSliderValue
+                                                                    .toString()
+                                                                    .maybeHandleOverflow(
+                                                                        maxChars:
+                                                                            3),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyText1
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Roboto',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                      fontSize:
+                                                                          18,
+                                                                    ),
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
@@ -1063,7 +1072,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         TextEditingController(
                                                                   text: columnTestsRecord
                                                                       .price
-                                                                      .toString(),
+                                                                      ?.toString(),
                                                                 ),
                                                                 obscureText:
                                                                     false,
@@ -2389,10 +2398,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                       builder: (context) {
                                                         final testProcedure =
                                                             columnTestsRecord
-                                                                    .procedure
-                                                                    .toList()
-                                                                    ?.toList() ??
-                                                                [];
+                                                                .procedure
+                                                                .toList();
                                                         return ListView.builder(
                                                           padding:
                                                               EdgeInsets.zero,
@@ -2584,7 +2591,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 'procedure':
                                                                     FieldValue
                                                                         .arrayUnion([
-                                                                  ''
+                                                                  ' '
                                                                 ]),
                                                               };
                                                               await widget

@@ -1293,8 +1293,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                     builder: (context) {
                                                       final bookingTests =
                                                           bookedTestsContainerBookedTestsRecordList
-                                                                  ?.toList() ??
-                                                              [];
+                                                              .toList();
                                                       return ListView.builder(
                                                         padding:
                                                             EdgeInsets.zero,
@@ -1722,7 +1721,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                       return Container(
                         decoration: BoxDecoration(),
                         child: Visibility(
-                          visible: (containerUsersRecord.role) == 'front',
+                          visible: containerUsersRecord.role == 'front',
                           child: BookingActionsWidget(
                             bookingRef: bookingUpdatesBookingsRecord,
                           ),

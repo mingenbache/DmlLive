@@ -53,7 +53,7 @@ class _NotificationListItemWidgetState
             height: 30,
             child: Stack(
               children: [
-                if ((stackNotificationsRecord.type) == 'newbooking')
+                if (stackNotificationsRecord.type == 'newbooking')
                   InkWell(
                     onTap: () async {
                       context.pushNamed(
@@ -78,7 +78,7 @@ class _NotificationListItemWidgetState
                           maxHeight: 30,
                         ),
                         decoration: BoxDecoration(
-                          color: Color(0xFFEEEEEE),
+                          color: FlutterFlowTheme.of(context).primaryBackground,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Row(
@@ -113,7 +113,7 @@ class _NotificationListItemWidgetState
                                                   fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryColor,
+                                                      .primaryText,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -140,7 +140,7 @@ class _NotificationListItemWidgetState
                                       icon: Icon(
                                         Icons.highlight_off_sharp,
                                         color: FlutterFlowTheme.of(context)
-                                            .alternate,
+                                            .primaryText,
                                         size: 17,
                                       ),
                                       onPressed: () async {
@@ -161,7 +161,7 @@ class _NotificationListItemWidgetState
                       ),
                     ),
                   ),
-                if ((stackNotificationsRecord.type) == 'confirmedbooking')
+                if (stackNotificationsRecord.type == 'confirmedbooking')
                   InkWell(
                     onTap: () async {
                       context.pushNamed(
@@ -222,7 +222,7 @@ class _NotificationListItemWidgetState
                                                   fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryColor,
+                                                      .primaryText,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -249,7 +249,7 @@ class _NotificationListItemWidgetState
                                       icon: Icon(
                                         Icons.highlight_off_sharp,
                                         color: FlutterFlowTheme.of(context)
-                                            .alternate,
+                                            .primaryText,
                                         size: 17,
                                       ),
                                       onPressed: () async {
@@ -270,7 +270,7 @@ class _NotificationListItemWidgetState
                       ),
                     ),
                   ),
-                if ((stackNotificationsRecord.type) == 'newuser')
+                if (stackNotificationsRecord.type == 'newuser')
                   InkWell(
                     onTap: () async {
                       await showModalBottomSheet(
@@ -336,7 +336,7 @@ class _NotificationListItemWidgetState
                                                   fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryColor,
+                                                      .primaryText,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -363,7 +363,7 @@ class _NotificationListItemWidgetState
                                       icon: Icon(
                                         Icons.highlight_off_sharp,
                                         color: FlutterFlowTheme.of(context)
-                                            .alternate,
+                                            .primaryText,
                                         size: 17,
                                       ),
                                       onPressed: () async {
@@ -384,7 +384,7 @@ class _NotificationListItemWidgetState
                       ),
                     ),
                   ),
-                if ((stackNotificationsRecord.type) == 'newtest')
+                if (stackNotificationsRecord.type == 'newtest')
                   StreamBuilder<TestsRecord>(
                     stream: TestsRecord.getDocument(
                         stackNotificationsRecord.testref),
@@ -468,7 +468,7 @@ class _NotificationListItemWidgetState
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .primaryText,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -496,7 +496,7 @@ class _NotificationListItemWidgetState
                                           icon: Icon(
                                             Icons.highlight_off_sharp,
                                             color: FlutterFlowTheme.of(context)
-                                                .alternate,
+                                                .primaryText,
                                             size: 17,
                                           ),
                                           onPressed: () async {
@@ -522,7 +522,7 @@ class _NotificationListItemWidgetState
                       );
                     },
                   ),
-                if ((stackNotificationsRecord.type) == 'newtestpackage')
+                if (stackNotificationsRecord.type == 'newtestpackage')
                   StreamBuilder<TestPackagesRecord>(
                     stream: TestPackagesRecord.getDocument(
                         stackNotificationsRecord.testpackageref),
@@ -608,7 +608,7 @@ class _NotificationListItemWidgetState
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .primaryText,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -636,7 +636,7 @@ class _NotificationListItemWidgetState
                                           icon: Icon(
                                             Icons.highlight_off_sharp,
                                             color: FlutterFlowTheme.of(context)
-                                                .alternate,
+                                                .primaryText,
                                             size: 17,
                                           ),
                                           onPressed: () async {
@@ -662,7 +662,7 @@ class _NotificationListItemWidgetState
                       );
                     },
                   ),
-                if ((stackNotificationsRecord.type) == 'samplecollected')
+                if (stackNotificationsRecord.type == 'samplecollected')
                   InkWell(
                     onTap: () async {
                       context.pushNamed(
@@ -723,7 +723,7 @@ class _NotificationListItemWidgetState
                                                   fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryColor,
+                                                      .primaryText,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -750,7 +750,7 @@ class _NotificationListItemWidgetState
                                       icon: Icon(
                                         Icons.highlight_off_sharp,
                                         color: FlutterFlowTheme.of(context)
-                                            .alternate,
+                                            .primaryText,
                                         size: 17,
                                       ),
                                       onPressed: () async {
@@ -771,7 +771,7 @@ class _NotificationListItemWidgetState
                       ),
                     ),
                   ),
-                if ((stackNotificationsRecord.type) == 'resultsubmitted')
+                if (stackNotificationsRecord.type == 'resultsubmitted')
                   InkWell(
                     onTap: () async {
                       context.pushNamed(
@@ -832,7 +832,7 @@ class _NotificationListItemWidgetState
                                                   fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryColor,
+                                                      .primaryText,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -859,7 +859,7 @@ class _NotificationListItemWidgetState
                                       icon: Icon(
                                         Icons.highlight_off_sharp,
                                         color: FlutterFlowTheme.of(context)
-                                            .alternate,
+                                            .primaryText,
                                         size: 17,
                                       ),
                                       onPressed: () async {
@@ -880,7 +880,7 @@ class _NotificationListItemWidgetState
                       ),
                     ),
                   ),
-                if ((stackNotificationsRecord.type) == 'testflagged')
+                if (stackNotificationsRecord.type == 'testflagged')
                   InkWell(
                     onTap: () async {
                       context.pushNamed(
@@ -941,7 +941,7 @@ class _NotificationListItemWidgetState
                                                   fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryColor,
+                                                      .primaryText,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -968,7 +968,7 @@ class _NotificationListItemWidgetState
                                       icon: Icon(
                                         Icons.highlight_off_sharp,
                                         color: FlutterFlowTheme.of(context)
-                                            .alternate,
+                                            .primaryText,
                                         size: 17,
                                       ),
                                       onPressed: () async {
@@ -989,7 +989,7 @@ class _NotificationListItemWidgetState
                       ),
                     ),
                   ),
-                if ((stackNotificationsRecord.type) == 'testverified')
+                if (stackNotificationsRecord.type == 'testverified')
                   InkWell(
                     onTap: () async {
                       context.pushNamed(
@@ -1015,7 +1015,7 @@ class _NotificationListItemWidgetState
                           maxHeight: 30,
                         ),
                         decoration: BoxDecoration(
-                          color: Color(0xFFEEEEEE),
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Row(
@@ -1050,7 +1050,7 @@ class _NotificationListItemWidgetState
                                                   fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryColor,
+                                                      .primaryText,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -1077,7 +1077,7 @@ class _NotificationListItemWidgetState
                                       icon: Icon(
                                         Icons.highlight_off_sharp,
                                         color: FlutterFlowTheme.of(context)
-                                            .alternate,
+                                            .primaryText,
                                         size: 17,
                                       ),
                                       onPressed: () async {
@@ -1098,7 +1098,7 @@ class _NotificationListItemWidgetState
                       ),
                     ),
                   ),
-                if ((stackNotificationsRecord.type) == 'newreport')
+                if (stackNotificationsRecord.type == 'newreport')
                   InkWell(
                     onTap: () async {
                       context.pushNamed(
@@ -1124,7 +1124,8 @@ class _NotificationListItemWidgetState
                           maxHeight: 30,
                         ),
                         decoration: BoxDecoration(
-                          color: Color(0xFFEEEEEE),
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Row(
@@ -1159,7 +1160,7 @@ class _NotificationListItemWidgetState
                                                   fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryColor,
+                                                      .primaryText,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -1186,7 +1187,7 @@ class _NotificationListItemWidgetState
                                       icon: Icon(
                                         Icons.highlight_off_sharp,
                                         color: FlutterFlowTheme.of(context)
-                                            .alternate,
+                                            .primaryText,
                                         size: 17,
                                       ),
                                       onPressed: () async {

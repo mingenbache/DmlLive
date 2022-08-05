@@ -1375,10 +1375,8 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                           builder: (context) {
                                                             final tests =
                                                                 bookingInvoicingBookingsRecord
-                                                                        .testsIncluded
-                                                                        .toList()
-                                                                        ?.toList() ??
-                                                                    [];
+                                                                    .testsIncluded
+                                                                    .toList();
                                                             return ListView
                                                                 .builder(
                                                               padding:
@@ -1770,7 +1768,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                     ''),
                                             bookingInvoicingBookingsRecord
                                                 .totalPrice
-                                                .toDouble()),
+                                                ?.toDouble()),
                                     labRefNum: bookingInvoicingBookingsRecord
                                         .labRefNum,
                                     bookingRef: bookingInvoicingBookingsRecord

@@ -140,7 +140,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height * 0.9,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).tertiaryColor,
+                        color: FlutterFlowTheme.of(context).secondaryColor,
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(16),
                           bottomRight: Radius.circular(16),
@@ -163,7 +163,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                       .title1
                                       .override(
                                         fontFamily: 'Roboto',
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                       ),
                                 ),
                                 InkWell(
@@ -173,7 +174,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
                                     color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                        .secondaryBackground,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30),
                                     ),
@@ -184,7 +185,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                       icon: Icon(
                                         Icons.close_rounded,
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .primaryText,
                                         size: 30,
                                       ),
                                       onPressed: () async {
@@ -213,27 +214,31 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                         .bodyText1
                                         .override(
                                           fontFamily: 'Lexend Deca',
-                                          color: Color(0xFF586B06),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           fontSize: 14,
                                           fontWeight: FontWeight.normal,
                                         ),
                                     hintText: 'Lab Reference Number',
                                     hintStyle: GoogleFonts.getFont(
                                       'Roboto',
-                                      color: Color(0xFF586B06),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                       fontWeight: FontWeight.w300,
                                       fontSize: 16,
                                     ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         width: 2,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         width: 2,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
@@ -246,7 +251,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                   ),
                                   style: GoogleFonts.getFont(
                                     'Roboto',
-                                    color: Color(0xFF586B06),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     fontWeight: FontWeight.w300,
                                     fontSize: 16,
                                   ),
@@ -267,7 +273,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                         .subtitle2
                                         .override(
                                           fontFamily: 'Roboto',
-                                          color: Color(0xFF586B06),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                         ),
                                   ),
                                 ],
@@ -290,20 +297,22 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                     .override(
                                       fontFamily: 'Lexend Deca',
                                       color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                          .primaryText,
                                       fontSize: 14,
                                       fontWeight: FontWeight.normal,
                                     ),
+                                hintText: 'choose pathologist',
                                 icon: Icon(
                                   Icons.keyboard_arrow_down_rounded,
-                                  color: FlutterFlowTheme.of(context)
-                                      .tertiaryColor,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   size: 15,
                                 ),
-                                fillColor:
-                                    FlutterFlowTheme.of(context).secondaryColor,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                                 elevation: 2,
-                                borderColor: Color(0x00FFFFFF),
+                                borderColor:
+                                    FlutterFlowTheme.of(context).primaryText,
                                 borderWidth: 2,
                                 borderRadius: 8,
                                 margin: EdgeInsetsDirectional.fromSTEB(
@@ -317,7 +326,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                               thickness: 1,
                               indent: 4,
                               endIndent: 4,
-                              color: Color(0xFF586B06),
+                              color: FlutterFlowTheme.of(context).primaryText,
                             ),
                             Container(
                               height: 30,
@@ -331,7 +340,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                         .subtitle2
                                         .override(
                                           fontFamily: 'Roboto',
-                                          color: Color(0xFF586B06),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                         ),
                                   ),
                                   Padding(
@@ -339,7 +349,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                         5, 0, 0, 0),
                                     child: FaIcon(
                                       FontAwesomeIcons.chevronDown,
-                                      color: Color(0xFF586B06),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                       size: 18,
                                     ),
                                   ),
@@ -357,10 +368,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                     builder: (context) {
                                       final bookedTestPacks =
                                           confirmTestsSheetBookingsRecord
-                                                  .testPackages
-                                                  .toList()
-                                                  ?.toList() ??
-                                              [];
+                                              .testPackages
+                                              .toList();
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
                                         scrollDirection: Axis.vertical,
@@ -403,7 +412,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                   decoration: BoxDecoration(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryColor,
+                                                        .primaryText,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8),
@@ -529,10 +538,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                           builder: (context) {
                                                             final testPackTests =
                                                                 containerTestPackagesRecord
-                                                                        .testsIncluded
-                                                                        .toList()
-                                                                        ?.toList() ??
-                                                                    [];
+                                                                    .testsIncluded
+                                                                    .toList();
                                                             return ListView
                                                                 .builder(
                                                               padding:
@@ -693,7 +700,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                           containerTestsRecord.name,
                                                                                           style: FlutterFlowTheme.of(context).subtitle2.override(
                                                                                                 fontFamily: 'Roboto',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                               ),
                                                                                         ),
                                                                                       ],
@@ -715,7 +722,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                               size: 30,
                                                                                             ),
-                                                                                            if (confirmTestsSheetBookingsRecord.bookedTests.toList()?.contains(testPackTestsItem) ?? true)
+                                                                                            if (confirmTestsSheetBookingsRecord.bookedTests.toList().contains(testPackTestsItem))
                                                                                               StreamBuilder<List<BookedTestsRecord>>(
                                                                                                 stream: queryBookedTestsRecord(
                                                                                                   queryBuilder: (bookedTestsRecord) => bookedTestsRecord.where('testRef', isEqualTo: testPackTestsItem).where('booking_ref', isEqualTo: confirmTestsSheetBookingsRecord.reference),
@@ -743,7 +750,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                                   final iconCheckedBookedTestsRecord = iconCheckedBookedTestsRecordList.isNotEmpty ? iconCheckedBookedTestsRecordList.first : null;
                                                                                                   return Icon(
                                                                                                     Icons.check_box_outlined,
-                                                                                                    color: Color(0xFF586B06),
+                                                                                                    color: FlutterFlowTheme.of(context).primaryText,
                                                                                                     size: 30,
                                                                                                   );
                                                                                                 },
@@ -787,10 +794,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                   builder: (context) {
                                     final nopackTests =
                                         confirmTestsSheetBookingsRecord
-                                                .testsIncluded
-                                                .toList()
-                                                ?.toList() ??
-                                            [];
+                                            .testsIncluded
+                                            .toList();
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
                                       scrollDirection: Axis.vertical,
@@ -1023,8 +1028,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                       return Icon(
                                                                         Icons
                                                                             .check_box_outlined,
-                                                                        color: Color(
-                                                                            0xFF586B06),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
                                                                         size:
                                                                             30,
                                                                       );
@@ -1214,13 +1219,13 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                       width: 300,
                                       height: 70,
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondaryText,
                                       textStyle: FlutterFlowTheme.of(context)
                                           .subtitle2
                                           .override(
                                             fontFamily: 'Roboto',
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .secondaryBackground,
                                           ),
                                       elevation: 2,
                                       borderSide: BorderSide(

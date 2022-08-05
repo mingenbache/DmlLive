@@ -294,13 +294,11 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                     child: Builder(
                                       builder: (context) {
                                         final bookedTests = functions
-                                                .filterDayTests(
-                                                    calendarScheduleContainerBookedTestsRecordList
-                                                        .toList(),
-                                                    uICalendarSelectedDay
-                                                        ?.start)
-                                                ?.toList() ??
-                                            [];
+                                            .filterDayTests(
+                                                calendarScheduleContainerBookedTestsRecordList
+                                                    .toList(),
+                                                uICalendarSelectedDay?.start)
+                                            .toList();
                                         return ListView.builder(
                                           padding: EdgeInsets.zero,
                                           shrinkWrap: true,
@@ -896,8 +894,8 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                                               ],
                                                                             ),
                                                                           ),
-                                                                          if (!(bookedTestsItem.sampleCollected) ??
-                                                                              true)
+                                                                          if (!bookedTestsItem
+                                                                              .sampleCollected)
                                                                             InkWell(
                                                                               onTap: () async {
                                                                                 if (!(containerTestedTestsRecord != null)) {

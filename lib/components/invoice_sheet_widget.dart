@@ -282,9 +282,8 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                           children: [
                                             Stack(
                                               children: [
-                                                if (!(columnInvoicesRecord
-                                                        .isPaid) ??
-                                                    true)
+                                                if (!columnInvoicesRecord
+                                                    .isPaid)
                                                   Container(
                                                     width: 130,
                                                     height: 32,
@@ -1343,10 +1342,8 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                               builder: (context) {
                                                 final tests =
                                                     invoiceContainerBookingsRecord
-                                                            .bookedTests
-                                                            .toList()
-                                                            ?.toList() ??
-                                                        [];
+                                                        .bookedTests
+                                                        .toList();
                                                 return ListView.builder(
                                                   padding: EdgeInsets.zero,
                                                   primary: false,
@@ -1554,7 +1551,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                       MainAxisSize.max,
                                                   children: [
                                                     Text(
-                                                      'Kshs ${columnInvoicesRecord.invoiceAmount.toString()}',
+                                                      'Kshs ${columnInvoicesRecord.invoiceAmount?.toString()}',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1615,10 +1612,8 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                 builder: (context) {
                                                   final payments =
                                                       columnInvoicesRecord
-                                                              .paymentsList
-                                                              .toList()
-                                                              ?.toList() ??
-                                                          [];
+                                                          .paymentsList
+                                                          .toList();
                                                   return ListView.builder(
                                                     padding: EdgeInsets.zero,
                                                     primary: false,

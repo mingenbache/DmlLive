@@ -1394,10 +1394,8 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                 builder: (context) {
                                                   final tests =
                                                       bookingInvoicingContentBookingsRecord
-                                                              .bookedTests
-                                                              .toList()
-                                                              ?.toList() ??
-                                                          [];
+                                                          .bookedTests
+                                                          .toList();
                                                   return ListView.builder(
                                                     padding: EdgeInsets.zero,
                                                     primary: false,
@@ -1593,7 +1591,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                   text:
                                                       bookingInvoicingContentBookingsRecord
                                                           .paymentBalance
-                                                          .toString(),
+                                                          ?.toString(),
                                                 ),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
@@ -1766,7 +1764,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                   ''),
                                           bookingInvoicingContentBookingsRecord
                                               .totalPrice
-                                              .toDouble()),
+                                              ?.toDouble()),
                                   labRefNum:
                                       bookingInvoicingContentBookingsRecord
                                           .labRefNum,

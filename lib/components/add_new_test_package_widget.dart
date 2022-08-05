@@ -1377,9 +1377,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                         builder: (context) {
                                                           final testsList =
                                                               FFAppState()
-                                                                      .testPackTests
-                                                                      ?.toList() ??
-                                                                  [];
+                                                                  .testPackTests
+                                                                  .toList();
                                                           return ListView
                                                               .builder(
                                                             padding:
@@ -1673,7 +1672,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                   ),
                 ),
               ),
-              if (FFAppState().testPackSubmit ?? true)
+              if (FFAppState().testPackSubmit)
                 Expanded(
                   flex: 1,
                   child: Row(

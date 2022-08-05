@@ -51,7 +51,7 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                   ),
                   child: Stack(
                     children: [
-                      if ((widget.userRecord.role) == 'patho')
+                      if (widget.userRecord.role == 'patho')
                         Align(
                           alignment: AlignmentDirectional(0, -1),
                           child: Image.asset(
@@ -60,17 +60,17 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                             fit: BoxFit.fitHeight,
                           ),
                         ),
-                      if ((widget.userRecord.role) == 'front')
+                      if (widget.userRecord.role == 'front')
                         Image.asset(
                           'assets/images/reception@2x.png',
                           fit: BoxFit.fitHeight,
                         ),
-                      if ((widget.userRecord.role) == 'tech')
+                      if (widget.userRecord.role == 'tech')
                         Image.asset(
                           'assets/images/technologist@2x.png',
                           fit: BoxFit.fitWidth,
                         ),
-                      if ((widget.userRecord.role) == 'super')
+                      if (widget.userRecord.role == 'super')
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 60, 0, 0),
                           child: Image.asset(

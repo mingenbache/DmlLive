@@ -48,8 +48,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
           final listViewBookingsRecord = snapshot.data;
           return Builder(
             builder: (context) {
-              final payments =
-                  listViewBookingsRecord.payments.toList()?.toList() ?? [];
+              final payments = listViewBookingsRecord.payments.toList();
               return ListView.builder(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.vertical,
@@ -132,7 +131,9 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                             .bodyText1
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: Color(0xFF586B06),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),
@@ -158,7 +159,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                               fontFamily: 'Roboto',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryColor,
+                                                      .primaryText,
                                               fontWeight: FontWeight.normal,
                                             ),
                                       ),
@@ -215,7 +216,9 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                             .bodyText1
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: Color(0xFF586B06),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),

@@ -17,6 +17,10 @@ abstract class FlutterFlowTheme {
   Color primaryText;
   Color secondaryText;
 
+  Color primaryBtnText;
+  Color lineColor;
+  Color backgroundComponents;
+
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
   String get title2Family => typography.title2Family;
@@ -36,14 +40,18 @@ abstract class FlutterFlowTheme {
 }
 
 class LightModeTheme extends FlutterFlowTheme {
-  Color primaryColor = const Color(0xFF88993A);
-  Color secondaryColor = const Color(0xFF58595B);
-  Color tertiaryColor = const Color(0xFFBACA68);
-  Color alternate = const Color(0xFF586B06);
-  Color primaryBackground = const Color(0x00000000);
-  Color secondaryBackground = const Color(0x00000000);
-  Color primaryText = const Color(0x00000000);
-  Color secondaryText = const Color(0x00000000);
+  Color primaryColor = const Color(0xFF006392);
+  Color secondaryColor = const Color(0xFF6CD7B7);
+  Color tertiaryColor = const Color(0xFF012030);
+  Color alternate = const Color(0xFF9AEBA3);
+  Color primaryBackground = const Color(0xFFF1F4F8);
+  Color secondaryBackground = const Color(0xFFFFFFFF);
+  Color primaryText = const Color(0xFF3D806B);
+  Color secondaryText = const Color(0xFF13678A);
+
+  Color primaryBtnText = Color(0xFFFFFFFF);
+  Color lineColor = Color(0xFFE0E3E7);
+  Color backgroundComponents = Color(0xFF1D2428);
 }
 
 abstract class Typography {

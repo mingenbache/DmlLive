@@ -311,6 +311,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Messages',
               path: 'messages',
               builder: (context, params) => MessagesWidget(),
+            ),
+            FFRoute(
+              name: 'HomeCopy',
+              path: 'homeCopy',
+              builder: (context, params) => HomeCopyWidget(),
+            ),
+            FFRoute(
+              name: 'HomeAdminCopy',
+              path: 'homeAdminCopy',
+              builder: (context, params) => HomeAdminCopyWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

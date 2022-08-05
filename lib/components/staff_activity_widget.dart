@@ -1514,8 +1514,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                   (context) {
                                                                 final bookings =
                                                                     userBookingsBookingsRecordList
-                                                                            ?.toList() ??
-                                                                        [];
+                                                                        .toList();
                                                                 return SingleChildScrollView(
                                                                   primary:
                                                                       false,
@@ -1612,8 +1611,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                   (context) {
                                                                 final payments =
                                                                     containerPaymentsRecordList
-                                                                            ?.toList() ??
-                                                                        [];
+                                                                        .toList();
                                                                 return ListView
                                                                     .builder(
                                                                   padding:

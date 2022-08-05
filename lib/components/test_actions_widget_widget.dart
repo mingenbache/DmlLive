@@ -172,9 +172,9 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          if (!(containerBookingsRecord.testsIncluded
+                          if (!containerBookingsRecord.testsIncluded
                               .toList()
-                              .contains(widget.test.reference))) {
+                              .contains(widget.test.reference)) {
                             final bookingsUpdateData = {
                               ...createBookingsRecordData(
                                 totalPrice: functions.addCartTotal(

@@ -145,7 +145,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                   child: Builder(
                     builder: (context) {
                       final userInvoices =
-                          myInvoiceListInvoicesRecordList?.toList() ?? [];
+                          myInvoiceListInvoicesRecordList.toList();
                       return SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -505,8 +505,8 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                       child:
                                                                           Stack(
                                                                         children: [
-                                                                          if (!(invoiceListItemInvoicesRecord.isPaid) ??
-                                                                              true)
+                                                                          if (!invoiceListItemInvoicesRecord
+                                                                              .isPaid)
                                                                             Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                               child: Text(
@@ -588,7 +588,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                               Builder(
                                                                             builder:
                                                                                 (context) {
-                                                                              final paymentOnInvoice = containerPaymentsRecordList?.toList() ?? [];
+                                                                              final paymentOnInvoice = containerPaymentsRecordList.toList();
                                                                               return ListView.builder(
                                                                                 padding: EdgeInsets.zero,
                                                                                 scrollDirection: Axis.vertical,

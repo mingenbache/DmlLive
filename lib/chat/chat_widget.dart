@@ -56,7 +56,7 @@ class _ChatWidgetState extends State<ChatWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primaryText,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -65,7 +65,7 @@ class _ChatWidgetState extends State<ChatWidget> {
           buttonSize: 60,
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: FlutterFlowTheme.of(context).tertiaryColor,
+            color: FlutterFlowTheme.of(context).alternate,
             size: 24,
           ),
           onPressed: () async {
@@ -78,7 +78,7 @@ class _ChatWidgetState extends State<ChatWidget> {
               'CHAT',
               style: FlutterFlowTheme.of(context).bodyText1.override(
                     fontFamily: 'Roboto',
-                    color: Colors.white,
+                    color: FlutterFlowTheme.of(context).alternate,
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
@@ -87,7 +87,7 @@ class _ChatWidgetState extends State<ChatWidget> {
         ),
         actions: [
           Visibility(
-            visible: isGroupChat() ?? true,
+            visible: isGroupChat(),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
               child: InkWell(
@@ -125,10 +125,10 @@ class _ChatWidgetState extends State<ChatWidget> {
               ? FFChatPage(
                   chatInfo: snapshot.data,
                   allowImages: true,
-                  backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+                  backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
                   timeDisplaySetting: TimeDisplaySetting.visibleOnTap,
                   currentUserBoxDecoration: BoxDecoration(
-                    color: Colors.white,
+                    color: FlutterFlowTheme.of(context).primaryText,
                     border: Border.all(
                       color: Colors.transparent,
                     ),
@@ -143,7 +143,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                   ),
                   currentUserTextStyle: GoogleFonts.getFont(
                     'DM Sans',
-                    color: Color(0xFF1E2429),
+                    color: FlutterFlowTheme.of(context).alternate,
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                     fontStyle: FontStyle.normal,

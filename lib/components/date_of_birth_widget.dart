@@ -124,7 +124,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                     size: 30,
                                   ),
                                   onPressed: () async {
-                                    if ((datePicked) < (getCurrentTimestamp)) {
+                                    if (datePicked < getCurrentTimestamp) {
                                       context.pop();
                                     }
                                   },
@@ -233,7 +233,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                       children: [
                         FFButtonWidget(
                           onPressed: () async {
-                            if ((datePicked) < (getCurrentTimestamp)) {
+                            if (datePicked < getCurrentTimestamp) {
                               context.pop();
                             }
                           },

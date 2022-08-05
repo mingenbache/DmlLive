@@ -146,6 +146,10 @@ class FFAppState {
     _firstTime = _value;
     prefs.setBool('ff_firstTime', _value);
   }
+
+  List<String> images = [];
+
+  List<String> specialtests = [];
 }
 
 LatLng _latLngFromString(String val) {

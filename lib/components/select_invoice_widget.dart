@@ -491,7 +491,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                                                                   ),
                                                                                                 ),
                                                                                               ),
-                                                                                              if ((listViewInvoicesRecord.paymentsList.toList().length) > 0)
+                                                                                              if (listViewInvoicesRecord.paymentsList.toList().length > 0)
                                                                                                 Container(
                                                                                                   decoration: BoxDecoration(
                                                                                                     shape: BoxShape.circle,

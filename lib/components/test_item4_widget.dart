@@ -135,9 +135,8 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                         Stack(
                           children: [
                             if (widget.booking.testsIncluded
-                                    .toList()
-                                    ?.contains(widget.test) ??
-                                true)
+                                .toList()
+                                .contains(widget.test))
                               InkWell(
                                 onTap: () async {
                                   if (widget.booking.testsIncluded
@@ -214,15 +213,14 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                 animationsMap[
                                     'containerOnActionTriggerAnimation1']
                               ]),
-                            if (!(widget.booking.testsIncluded
-                                    .toList()
-                                    .contains(widget.test)) ??
-                                true)
+                            if (!widget.booking.testsIncluded
+                                .toList()
+                                .contains(widget.test))
                               InkWell(
                                 onTap: () async {
-                                  if (!(widget.booking.testsIncluded
+                                  if (!widget.booking.testsIncluded
                                       .toList()
-                                      .contains(widget.test))) {
+                                      .contains(widget.test)) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
                                         totalPrice: functions.addCartTotal(
@@ -559,7 +557,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                           size: 20,
                                                         ),
                                                         Text(
-                                                          '${stackTestsRecord.durationResults.toString()} Hrs',
+                                                          '${stackTestsRecord.durationResults?.toString()} Hrs',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyText1
@@ -785,7 +783,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if ((widget.listSize) > 1)
+                        if (widget.listSize > 1)
                           Material(
                             color: Colors.transparent,
                             elevation: 2,

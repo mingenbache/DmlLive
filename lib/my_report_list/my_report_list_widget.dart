@@ -62,9 +62,9 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Color(0x4DFFFFFF),
-                      Color(0xE5BACA68),
-                      Color(0xFFB5AC49)
+                      Color(0x8B6CD7B7),
+                      FlutterFlowTheme.of(context).primaryColor,
+                      FlutterFlowTheme.of(context).secondaryColor
                     ],
                     stops: [0, 0.4, 1],
                     begin: AlignmentDirectional(0, -1),
@@ -112,8 +112,9 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                         .title1
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
                                                         ),
                                                   ),
                                                 ],
@@ -144,7 +145,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                   fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryColor,
+                                                      .alternate,
                                                 ),
                                           ),
                                         ),
@@ -164,7 +165,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                         child: Builder(
                           builder: (context) {
                             final myReports =
-                                myReportListReportsRecordList?.toList() ?? [];
+                                myReportListReportsRecordList.toList();
                             return SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -225,7 +226,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryColor,
+                                                        .secondaryColor,
                                                 boxShadow: [
                                                   BoxShadow(
                                                     blurRadius: 6,
@@ -278,8 +279,8 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                   date: myReportsItem
                                                                       .createdDate,
                                                                 ),
-                                                                if ((myReportsItem
-                                                                        .labRefNum) !=
+                                                                if (myReportsItem
+                                                                        .labRefNum !=
                                                                     '')
                                                                   Text(
                                                                     myReportsItem
@@ -307,7 +308,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                         BoxDecoration(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryColor,
+                                                                          .secondaryText,
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               10),
@@ -377,7 +378,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                Colors.white,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             borderRadius:
                                                                                 BorderRadius.circular(12),
                                                                           ),
@@ -435,7 +436,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                               children: [
-                                                                                if ((containerBookingsRecord.flaggedTests.toList().length) > 0)
+                                                                                if (containerBookingsRecord.flaggedTests.toList().length > 0)
                                                                                   Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
                                                                                     child: Material(
@@ -472,7 +473,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                                       ),
                                                                                     ),
                                                                                   ),
-                                                                                if ((containerBookingsRecord.frozenTests.toList().length) > 0)
+                                                                                if (containerBookingsRecord.frozenTests.toList().length > 0)
                                                                                   Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
                                                                                     child: Material(
@@ -558,7 +559,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                               Builder(
                                                                             builder:
                                                                                 (context) {
-                                                                              final verifiedTests = containerBookingsRecord.bookedTests.toList()?.toList() ?? [];
+                                                                              final verifiedTests = containerBookingsRecord.bookedTests.toList();
                                                                               return ListView.builder(
                                                                                 padding: EdgeInsets.zero,
                                                                                 scrollDirection: Axis.horizontal,
@@ -627,7 +628,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                                                             ),
                                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                               fontFamily: 'Roboto',
-                                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                                                               fontWeight: FontWeight.normal,
                                                                                                             ),
                                                                                                       ),

@@ -7,7 +7,6 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
-import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:badges/badges.dart';
@@ -46,8 +45,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     // On page load action.
-    SchedulerBinding.instance?.addPostFrameCallback((_) async {
-      if (valueOrDefault(currentUserDocument?.isStaff, false)) {
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (valueOrDefault<bool>(currentUserDocument?.isStaff, false)) {
         context.goNamed('HomeAdmin');
         Navigator.pop(context);
         return;
@@ -89,7 +88,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
             return Scaffold(
               key: scaffoldKey,
               floatingActionButton: Visibility(
-                visible: !(homeUsersRecord.isStaff) ?? true,
+                visible: !homeUsersRecord.isStaff,
                 child: FloatingActionButton.extended(
                   onPressed: () async {
                     setState(() => FFAppState().lastBookingPage = false);
@@ -116,10 +115,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                       );
                     }
                   },
-                  backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
+                  backgroundColor: FlutterFlowTheme.of(context).primaryColor,
                   icon: Icon(
                     Icons.add_sharp,
-                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                    color: FlutterFlowTheme.of(context).alternate,
                   ),
                   elevation: 8,
                   label: Text(
@@ -134,17 +133,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                 constraints: BoxConstraints(
                   maxWidth: 500,
                 ),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      FlutterFlowTheme.of(context).tertiaryColor,
-                      FlutterFlowTheme.of(context).primaryColor
-                    ],
-                    stops: [0, 0.8],
-                    begin: AlignmentDirectional(0, -1),
-                    end: AlignmentDirectional(0, 1),
-                  ),
-                ),
+                decoration: BoxDecoration(),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -155,28 +144,17 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                           Container(
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.height * 1,
-                            constraints: BoxConstraints(
-                              maxWidth: 500,
-                            ),
-                            decoration: BoxDecoration(),
-                            child: Align(
-                              alignment: AlignmentDirectional(0, 1),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  custom_widgets.WaveImage(
-                                    width: MediaQuery.of(context).size.width,
-                                    height: 150,
-                                  ),
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  FlutterFlowTheme.of(context).primaryColor,
+                                  FlutterFlowTheme.of(context).secondaryColor
                                 ],
+                                stops: [0, 1],
+                                begin: AlignmentDirectional(0, -1),
+                                end: AlignmentDirectional(0, 1),
                               ),
                             ),
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height * 1,
-                            decoration: BoxDecoration(),
                             child: SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -188,7 +166,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                           maxHeight: 360,
                                         ),
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEEEEEE),
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryColor,
                                           borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(16),
                                             bottomRight: Radius.circular(16),
@@ -213,8 +192,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                         decoration: BoxDecoration(
                                           gradient: LinearGradient(
                                             colors: [
-                                              Color(0xB5FFFFFF),
-                                              Color(0xA888993A)
+                                              Color(0x7E6CD7B7),
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText
                                             ],
                                             stops: [0.2, 1],
                                             begin: AlignmentDirectional(0, -1),
@@ -321,8 +301,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         ),
                                                                   ),
                                                                   showBadge:
-                                                                      (badgeBookingsRecord
-                                                                              .totalTests) >
+                                                                      badgeBookingsRecord
+                                                                              .totalTests >
                                                                           0,
                                                                   shape:
                                                                       BadgeShape
@@ -362,7 +342,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                           .shoppingBasket,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryColor,
+                                                                          .primaryText,
                                                                       size: 23,
                                                                     ),
                                                                     onPressed:
@@ -393,7 +373,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                   .person_sharp,
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primaryColor,
+                                                                  .primaryText,
                                                               size: 25,
                                                             ),
                                                             onPressed:
@@ -402,11 +382,11 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                   'myAccount');
                                                             },
                                                           ),
-                                                          if (valueOrDefault(
-                                                                  currentUserDocument
-                                                                      ?.isStaff,
-                                                                  false) ??
-                                                              true)
+                                                          if (valueOrDefault<
+                                                                  bool>(
+                                                              currentUserDocument
+                                                                  ?.isStaff,
+                                                              false))
                                                             AuthUserStreamWidget(
                                                               child:
                                                                   FlutterFlowIconButton(
@@ -421,7 +401,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                       .local_police,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryColor,
+                                                                      .primaryText,
                                                                   size: 25,
                                                                 ),
                                                                 onPressed:
@@ -582,7 +562,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                           Icons
                                                                               .message_rounded,
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).primaryColor,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           size:
                                                                               25,
                                                                         ),
@@ -659,7 +639,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         'Roboto',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primaryColor,
+                                                                        .secondaryBackground,
                                                                   ),
                                                             ),
                                                           ),
@@ -683,6 +663,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Montserrat',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
@@ -715,7 +698,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                     indent: 30,
                                     endIndent: 30,
                                     color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                        .primaryText,
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -728,7 +711,13 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                         child: Text(
                                           'Dashboard',
                                           style: FlutterFlowTheme.of(context)
-                                              .title3,
+                                              .title3
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                              ),
                                         ),
                                       ),
                                     ],
@@ -785,6 +774,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                           .height *
                                                       0.1,
                                                   decoration: BoxDecoration(
+                                                    color: Color(0x98006392),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             12),
@@ -813,7 +803,13 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryColor,
                                                                   fontSize: 18,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
                                                                 ),
                                                           ),
                                                         ),
@@ -835,8 +831,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
-                                                                  color: Color(
-                                                                      0xFFFDFDFD),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
                                                                   fontSize: 80,
                                                                   fontWeight:
                                                                       FontWeight
@@ -950,6 +947,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Roboto',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
                                                                       fontSize:
                                                                           20,
                                                                     ),
@@ -1032,7 +1032,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                             fontFamily:
                                                                                 'Roboto',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).primaryColor,
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             fontSize:
                                                                                 70,
                                                                           ),
@@ -1067,7 +1067,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                 width: 100,
                                                 height: 100,
                                                 decoration: BoxDecoration(
-                                                  color: Color(0xA958595B),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                   borderRadius:
                                                       BorderRadius.circular(12),
                                                 ),
@@ -1094,6 +1096,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
                                                                   fontSize: 20,
                                                                 ),
                                                           ),
@@ -1177,6 +1182,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         .override(
                                                                           fontFamily:
                                                                               'Roboto',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
                                                                           fontSize:
                                                                               54,
                                                                         ),

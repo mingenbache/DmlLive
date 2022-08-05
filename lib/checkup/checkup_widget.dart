@@ -22,7 +22,7 @@ class _CheckupWidgetState extends State<CheckupWidget> {
   void initState() {
     super.initState();
     // On page load action.
-    SchedulerBinding.instance?.addPostFrameCallback((_) async {
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (loggedIn) {
         if (FFAppState().firstTime) {
           await showModalBottomSheet(
@@ -38,7 +38,8 @@ class _CheckupWidgetState extends State<CheckupWidget> {
           );
           return;
         } else {
-          if ((valueOrDefault(currentUserDocument?.isStaff, false)) == true) {
+          if (valueOrDefault<bool>(currentUserDocument?.isStaff, false) ==
+              true) {
             context.goNamed('HomeAdmin');
             return;
           } else {

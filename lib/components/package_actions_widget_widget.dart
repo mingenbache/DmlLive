@@ -210,9 +210,9 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                               },
                             );
                           } else {
-                            if (!(containerBookingsRecord.testPackages
+                            if (!containerBookingsRecord.testPackages
                                 .toList()
-                                .contains(widget.package.reference))) {
+                                .contains(widget.package.reference)) {
                               final bookingsUpdateData = {
                                 ...createBookingsRecordData(
                                   totalPrice: functions.addCartTotal(

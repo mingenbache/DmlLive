@@ -41,3 +41,5 @@ export 'bookings_schedule/bookings_schedule_widget.dart'
 export 'booking_confirmation/booking_confirmation_widget.dart'
     show BookingConfirmationWidget;
 export 'messages/messages_widget.dart' show MessagesWidget;
+export 'home_copy/home_copy_widget.dart' show HomeCopyWidget;
+export 'home_admin_copy/home_admin_copy_widget.dart' show HomeAdminCopyWidget;

@@ -198,7 +198,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                           ),
                                         ],
                                       ),
-                                      if (!(widget.test.isAvailable) ?? true)
+                                      if (!widget.test.isAvailable)
                                         Align(
                                           alignment:
                                               AlignmentDirectional(0.8, 0),
@@ -1539,18 +1539,16 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                   children: [
                     Stack(
                       children: [
-                        if (!(valueOrDefault(
-                                currentUserDocument?.isStaff, false)) ??
-                            true)
+                        if (!valueOrDefault<bool>(
+                            currentUserDocument?.isStaff, false))
                           AuthUserStreamWidget(
                             child: TestActionsWidgetWidget(
                               test: widget.test,
                               bookingRef: widget.booking,
                             ),
                           ),
-                        if (valueOrDefault(
-                                currentUserDocument?.isStaff, false) ??
-                            true)
+                        if (valueOrDefault<bool>(
+                            currentUserDocument?.isStaff, false))
                           AuthUserStreamWidget(
                             child: AdminTestActionsWidget(
                               testRef: widget.test.reference,

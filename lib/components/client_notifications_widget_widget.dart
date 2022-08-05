@@ -75,12 +75,10 @@ class _ClientNotificationsWidgetWidgetState
                           child: Builder(
                             builder: (context) {
                               final unseenNotifications = functions
-                                      .filterNotifications(
-                                          containerNotificationsRecordList
-                                              .toList(),
-                                          currentUserReference)
-                                      ?.toList() ??
-                                  [];
+                                  .filterNotifications(
+                                      containerNotificationsRecordList.toList(),
+                                      currentUserReference)
+                                  .toList();
                               return ListView.builder(
                                 padding: EdgeInsets.zero,
                                 shrinkWrap: true,

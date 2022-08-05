@@ -46,10 +46,6 @@ abstract class BookedTestsRecord
   String get testAttachment;
 
   @nullable
-  @BuiltValueField(wireName: 'cart_ref')
-  DocumentReference get cartRef;
-
-  @nullable
   @BuiltValueField(wireName: 'created_date')
   DateTime get createdDate;
 
@@ -119,7 +115,6 @@ Map<String, dynamic> createBookedTestsRecordData({
   DocumentReference user,
   String testResult,
   String testAttachment,
-  DocumentReference cartRef,
   DateTime createdDate,
   bool hasResult,
   String labRefNum,
@@ -140,7 +135,6 @@ Map<String, dynamic> createBookedTestsRecordData({
           ..user = user
           ..testResult = testResult
           ..testAttachment = testAttachment
-          ..cartRef = cartRef
           ..createdDate = createdDate
           ..hasResult = hasResult
           ..labRefNum = labRefNum

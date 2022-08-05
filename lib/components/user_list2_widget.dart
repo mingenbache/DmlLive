@@ -369,13 +369,12 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                       child: Builder(
                                                         builder: (context) {
                                                           final clients = functions
-                                                                  .returnUserList(
-                                                                      textController
-                                                                          .text,
-                                                                      clientUserContainerUsersRecordList
-                                                                          .toList())
-                                                                  ?.toList() ??
-                                                              [];
+                                                              .returnUserList(
+                                                                  textController
+                                                                      .text,
+                                                                  clientUserContainerUsersRecordList
+                                                                      .toList())
+                                                              .toList();
                                                           return ListView
                                                               .builder(
                                                             padding:
@@ -473,13 +472,12 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                     child: Builder(
                                                       builder: (context) {
                                                         final staff = functions
-                                                                .returnUserList(
-                                                                    textController
-                                                                        .text,
-                                                                    staffUserContainerUsersRecordList
-                                                                        .toList())
-                                                                ?.toList() ??
-                                                            [];
+                                                            .returnUserList(
+                                                                textController
+                                                                    .text,
+                                                                staffUserContainerUsersRecordList
+                                                                    .toList())
+                                                            .toList();
                                                         return ListView.builder(
                                                           padding:
                                                               EdgeInsets.zero,

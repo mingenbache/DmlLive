@@ -114,7 +114,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height * 0.3,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).tertiaryColor,
+                        color: FlutterFlowTheme.of(context).secondaryColor,
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(16),
                           bottomRight: Radius.circular(16),
@@ -146,7 +146,9 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                             .title2
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: Color(0xFF586B06),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               fontSize: 29,
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -161,7 +163,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
                                     color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                        .secondaryBackground,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30),
                                     ),
@@ -172,7 +174,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                       icon: Icon(
                                         Icons.close_rounded,
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .primaryColor,
                                         size: 30,
                                       ),
                                       onPressed: () async {
@@ -203,7 +205,8 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                           .bodyText1
                                           .override(
                                             fontFamily: 'Roboto',
-                                            color: Color(0xFF586B06),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                             fontSize: 15,
                                           ),
                                     ),
@@ -267,7 +270,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                                 fontFamily: 'Lexend Deca',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
+                                                        .primaryText,
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                               ),
@@ -275,12 +278,12 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                           icon: Icon(
                                             Icons.keyboard_arrow_down_rounded,
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .primaryText,
                                             size: 15,
                                           ),
                                           fillColor:
                                               FlutterFlowTheme.of(context)
-                                                  .secondaryColor,
+                                                  .secondaryBackground,
                                           elevation: 2,
                                           borderColor: Color(0x00FFFFFF),
                                           borderWidth: 2,
@@ -423,14 +426,14 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                         width: 300,
                                         height: 70,
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryColor,
+                                            .primaryColor,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
                                               fontFamily: 'Roboto',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .tertiaryColor,
+                                                      .secondaryBackground,
                                             ),
                                         elevation: 2,
                                         borderSide: BorderSide(
@@ -453,7 +456,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                     'Tap above to complete request',
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Roboto',
-                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          color: FlutterFlowTheme.of(context).primaryText,
                           fontSize: 15,
                           fontWeight: FontWeight.normal,
                         ),

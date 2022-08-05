@@ -440,10 +440,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                       children: [
                                                         Stack(
                                                           children: [
-                                                            if (!(functions.isCategorySelected(
+                                                            if (!functions
+                                                                .isCategorySelected(
                                                                     FFAppState()
-                                                                        .categorypicked)) ??
-                                                                true)
+                                                                        .categorypicked))
                                                               InkWell(
                                                                 onTap:
                                                                     () async {
@@ -498,8 +498,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                 ),
                                                               ),
                                                             if (FFAppState()
-                                                                    .allCategories ??
-                                                                true)
+                                                                .allCategories)
                                                               Material(
                                                                 color: Colors
                                                                     .transparent,
@@ -630,11 +629,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                 child: Builder(
                                                                   builder:
                                                                       (context) {
-                                                                    final testCategories = containerCategoriesRecord
+                                                                    final testCategories =
+                                                                        containerCategoriesRecord
                                                                             .categories
-                                                                            .toList()
-                                                                            ?.toList() ??
-                                                                        [];
+                                                                            .toList();
                                                                     return ListView
                                                                         .builder(
                                                                       padding:
@@ -652,8 +650,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                             testCategories[testCategoriesIndex];
                                                                         return Stack(
                                                                           children: [
-                                                                            if ((FFAppState().categorypicked) ==
-                                                                                (testCategoriesItem))
+                                                                            if (FFAppState().categorypicked ==
+                                                                                testCategoriesItem)
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                                                                                 child: Container(
@@ -818,12 +816,16 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                               builder:
                                                                   (context) {
                                                                 final testsListFullPage = functions
-                                                                        .filterTestsByCategory(
-                                                                            FFAppState().allCategories,
-                                                                            FFAppState().categorypicked,
-                                                                            functions.returnSearchTests(textController1.text, testListWidgetTestsRecordList.toList()).toList())
-                                                                        ?.toList() ??
-                                                                    [];
+                                                                    .filterTestsByCategory(
+                                                                        FFAppState()
+                                                                            .allCategories,
+                                                                        FFAppState()
+                                                                            .categorypicked,
+                                                                        functions
+                                                                            .returnSearchTests(textController1.text,
+                                                                                testListWidgetTestsRecordList.toList())
+                                                                            .toList())
+                                                                    .toList();
                                                                 return ListView
                                                                     .builder(
                                                                   padding:
@@ -1096,10 +1098,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                         children: [
                                                           Stack(
                                                             children: [
-                                                              if (!(functions.isCategorySelected(
+                                                              if (!functions
+                                                                  .isCategorySelected(
                                                                       FFAppState()
-                                                                          .packagecategoryPicked)) ??
-                                                                  true)
+                                                                          .packagecategoryPicked))
                                                                 InkWell(
                                                                   onTap:
                                                                       () async {
@@ -1149,8 +1151,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                   ),
                                                                 ),
                                                               if (FFAppState()
-                                                                      .allPackageCategories ??
-                                                                  true)
+                                                                  .allPackageCategories)
                                                                 Material(
                                                                   color: Colors
                                                                       .transparent,
@@ -1279,9 +1280,9 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                       Builder(
                                                                     builder:
                                                                         (context) {
-                                                                      final packageCategories =
-                                                                          containerCategoriesRecord.categories.toList()?.toList() ??
-                                                                              [];
+                                                                      final packageCategories = containerCategoriesRecord
+                                                                          .categories
+                                                                          .toList();
                                                                       return ListView
                                                                           .builder(
                                                                         padding:
@@ -1297,7 +1298,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                               packageCategories[packageCategoriesIndex];
                                                                           return Stack(
                                                                             children: [
-                                                                              if ((FFAppState().categorypicked) == (packageCategoriesItem))
+                                                                              if (FFAppState().categorypicked == packageCategoriesItem)
                                                                                 Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                                                                                   child: Container(
@@ -1457,9 +1458,13 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                     return Builder(
                                                                       builder:
                                                                           (context) {
-                                                                        final packageList =
-                                                                            functions.filterPackages(FFAppState().allPackageCategories, FFAppState().packagecategoryPicked, textController2.text, testPackageWidgetTestPackagesRecordList.toList())?.toList() ??
-                                                                                [];
+                                                                        final packageList = functions
+                                                                            .filterPackages(
+                                                                                FFAppState().allPackageCategories,
+                                                                                FFAppState().packagecategoryPicked,
+                                                                                textController2.text,
+                                                                                testPackageWidgetTestPackagesRecordList.toList())
+                                                                            .toList();
                                                                         return ListView
                                                                             .builder(
                                                                           padding:

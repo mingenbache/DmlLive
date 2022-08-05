@@ -190,12 +190,15 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                     child: Container(
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height * 0.9,
+                      constraints: BoxConstraints(
+                        maxWidth: 380,
+                      ),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Color(0x4258595B),
-                            FlutterFlowTheme.of(context).tertiaryColor,
-                            Color(0xFF77A54A)
+                            Color(0x806CD7B7),
+                            Color(0xAD006392),
+                            FlutterFlowTheme.of(context).secondaryColor
                           ],
                           stops: [0, 0.5, 1],
                           begin: AlignmentDirectional(0, -1),
@@ -236,7 +239,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
                                     color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                        .secondaryText,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30),
                                     ),
@@ -247,7 +250,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                       icon: Icon(
                                         Icons.close_rounded,
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .secondaryBackground,
                                         size: 30,
                                       ),
                                       onPressed: () async {
@@ -364,7 +367,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                         fontFamily:
                                                                             'Lexend Deca',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .secondaryBackground,
                                                                         fontSize:
                                                                             14,
                                                                         fontWeight:
@@ -670,7 +673,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                 widget.booking.bookedTests.toList().length.toString(),
                                                                                 style: FlutterFlowTheme.of(context).subtitle2.override(
                                                                                       fontFamily: 'Roboto',
-                                                                                      color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -817,7 +820,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                   widget.booking.verifiedTests.toList().length.toString(),
                                                                                   style: FlutterFlowTheme.of(context).subtitle2.override(
                                                                                         fontFamily: 'Roboto',
-                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
                                                                                       ),
                                                                                 );
                                                                               },
@@ -861,6 +864,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                   .size
                                                                   .width *
                                                               0.85,
+                                                          constraints:
+                                                              BoxConstraints(
+                                                            maxWidth: 340,
+                                                          ),
                                                           decoration:
                                                               BoxDecoration(
                                                             gradient:
@@ -868,9 +875,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                               colors: [
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryColor,
-                                                                Color(
-                                                                    0xFF77A54A)
+                                                                    .secondaryColor,
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .alternate
                                                               ],
                                                               stops: [0, 1],
                                                               begin:
@@ -888,19 +896,22 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                           child: Row(
                                                             mainAxisSize:
                                                                 MainAxisSize
-                                                                    .max,
+                                                                    .min,
                                                             children: [
                                                               Expanded(
                                                                 child:
                                                                     Container(
-                                                                  width: double
-                                                                      .infinity,
+                                                                  width: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width *
+                                                                      0.95,
                                                                   color: Color(
                                                                       0x00000000),
                                                                   child:
                                                                       ExpandableNotifier(
                                                                     initialExpanded:
-                                                                        true,
+                                                                        false,
                                                                     child:
                                                                         ExpandablePanel(
                                                                       header:
@@ -923,7 +934,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                 textAlign: TextAlign.start,
                                                                                 style: FlutterFlowTheme.of(context).subtitle2.override(
                                                                                       fontFamily: 'Roboto',
-                                                                                      color: Colors.white,
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -962,7 +973,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                     'Name',
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                           fontFamily: 'Roboto',
-                                                                                          color: Colors.white,
+                                                                                          color: FlutterFlowTheme.of(context).primaryText,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
                                                                                   ),
@@ -972,7 +983,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                 width: MediaQuery.of(context).size.width * 0.65,
                                                                                 height: MediaQuery.of(context).size.height * 0.04,
                                                                                 decoration: BoxDecoration(
-                                                                                  color: Color(0x34FCFCFC),
+                                                                                  color: FlutterFlowTheme.of(context).primaryBackground,
                                                                                   borderRadius: BorderRadius.circular(8),
                                                                                 ),
                                                                                 child: Padding(
@@ -981,7 +992,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                     '${functions.camelCase(widget.booking.firstname)}    ${functions.camelCase(widget.booking.lastname)}',
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                           fontFamily: 'Roboto',
-                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                          color: FlutterFlowTheme.of(context).primaryText,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
                                                                                   ),
@@ -1026,7 +1037,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                           'Name',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Roboto',
-                                                                                                color: Color(0xFFFEFEFE),
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
                                                                                         ),
@@ -1036,7 +1047,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                       width: MediaQuery.of(context).size.width * 0.65,
                                                                                       height: MediaQuery.of(context).size.height * 0.04,
                                                                                       decoration: BoxDecoration(
-                                                                                        color: Color(0x34FFFFFF),
+                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         borderRadius: BorderRadius.circular(8),
                                                                                       ),
                                                                                       child: Padding(
@@ -1045,7 +1056,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                           '${functions.camelCase(widget.booking.firstname)}     ${functions.camelCase(widget.booking.lastname)}',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Roboto',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
                                                                                         ),
@@ -1076,7 +1087,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                           'Email',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Roboto',
-                                                                                                color: Colors.white,
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
                                                                                         ),
@@ -1086,7 +1097,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                       width: MediaQuery.of(context).size.width * 0.65,
                                                                                       height: MediaQuery.of(context).size.height * 0.04,
                                                                                       decoration: BoxDecoration(
-                                                                                        color: Color(0x33FFFFFF),
+                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         borderRadius: BorderRadius.circular(8),
                                                                                       ),
                                                                                       child: Padding(
@@ -1095,7 +1106,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                           widget.booking.emailaddress,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Roboto',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
                                                                                         ),
@@ -1126,7 +1137,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                           'Phone',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Roboto',
-                                                                                                color: Color(0xFFFFFFFE),
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
                                                                                         ),
@@ -1136,7 +1147,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                       width: MediaQuery.of(context).size.width * 0.65,
                                                                                       height: MediaQuery.of(context).size.height * 0.04,
                                                                                       decoration: BoxDecoration(
-                                                                                        color: Color(0x33FFFFFF),
+                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         borderRadius: BorderRadius.circular(8),
                                                                                       ),
                                                                                       child: Padding(
@@ -1145,7 +1156,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                           widget.booking.phonenumber,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Roboto',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
                                                                                         ),
@@ -1179,7 +1190,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                                 'Date of\nBirth',
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                       fontFamily: 'Roboto',
-                                                                                                      color: Colors.white,
+                                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                                       fontWeight: FontWeight.w500,
                                                                                                     ),
                                                                                               ),
@@ -1193,7 +1204,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                           width: MediaQuery.of(context).size.width * 0.25,
                                                                                           height: MediaQuery.of(context).size.height * 0.04,
                                                                                           decoration: BoxDecoration(
-                                                                                            color: Color(0x2CFFFFFF),
+                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                             borderRadius: BorderRadius.circular(7),
                                                                                           ),
                                                                                           child: Column(
@@ -1206,7 +1217,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                                   dateTimeFormat('d/M/y', widget.booking.dOB),
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                         fontFamily: 'Roboto',
-                                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
                                                                                                       ),
                                                                                                 ),
                                                                                               ),
@@ -1228,7 +1239,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                                 'Sex',
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                       fontFamily: 'Roboto',
-                                                                                                      color: Colors.white,
+                                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                                       fontWeight: FontWeight.w500,
                                                                                                     ),
                                                                                               ),
@@ -1240,7 +1251,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                         width: MediaQuery.of(context).size.width * 0.21,
                                                                                         height: MediaQuery.of(context).size.height * 0.04,
                                                                                         decoration: BoxDecoration(
-                                                                                          color: Color(0x2BFFFFFF),
+                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                           borderRadius: BorderRadius.circular(7),
                                                                                         ),
                                                                                         child: Padding(
@@ -1256,7 +1267,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                                   widget.booking.sex,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                         fontFamily: 'Roboto',
-                                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
                                                                                                         fontWeight: FontWeight.normal,
                                                                                                       ),
                                                                                                 ),
@@ -1326,7 +1337,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
+                                                                .secondaryText,
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1336,7 +1347,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                       'Roboto',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiaryColor,
+                                                                      .secondaryBackground,
                                                                   fontSize: 14,
                                                                   fontWeight:
                                                                       FontWeight
@@ -1386,7 +1397,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                               .start,
                                                       children: [
                                                         Text(
-                                                          'Tests',
+                                                          'Select Tests',
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: FlutterFlowTheme
@@ -1449,7 +1460,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                           height: 30,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .secondaryText,
                                                           textStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1459,7 +1470,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                         'Roboto',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .tertiaryColor,
+                                                                        .secondaryBackground,
                                                                     fontSize:
                                                                         14,
                                                                     fontWeight:
@@ -1646,10 +1657,6 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                       )
                                                                                     ],
                                                                                     borderRadius: BorderRadius.circular(30),
-                                                                                    border: Border.all(
-                                                                                      color: Color(0xFFC7C7C7),
-                                                                                      width: 2,
-                                                                                    ),
                                                                                   ),
                                                                                   child: Row(
                                                                                     mainAxisSize: MainAxisSize.max,
@@ -1732,11 +1739,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                     child: Builder(
                                                       builder: (context) {
                                                         final invoices = widget
-                                                                .booking
-                                                                .invoiceRefs
-                                                                .toList()
-                                                                ?.toList() ??
-                                                            [];
+                                                            .booking.invoiceRefs
+                                                            .toList();
                                                         return ListView.builder(
                                                           padding:
                                                               EdgeInsets.zero,
@@ -1795,7 +1799,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                           height: 30,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .secondaryText,
                                                           textStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1805,7 +1809,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                         'Roboto',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .tertiaryColor,
+                                                                        .secondaryBackground,
                                                                     fontSize:
                                                                         14,
                                                                     fontWeight:
@@ -1903,10 +1907,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                       builder: (context) {
                                                         final reportVerifiedTests =
                                                             widget.booking
-                                                                    .verifiedTests
-                                                                    .toList()
-                                                                    ?.toList() ??
-                                                                [];
+                                                                .verifiedTests
+                                                                .toList();
                                                         return ListView.builder(
                                                           padding:
                                                               EdgeInsets.zero,
@@ -2069,7 +2071,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
+                                                                .secondaryText,
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -2079,7 +2081,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                       'Roboto',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiaryColor,
+                                                                      .secondaryBackground,
                                                                   fontSize: 14,
                                                                   fontWeight:
                                                                       FontWeight
@@ -2368,12 +2370,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                             ),
                                                           ),
                                                         ),
-                                                        if (!(functions
-                                                                .checkStringNull(
-                                                                    widget
-                                                                        .booking
-                                                                        .doctorEmail)) ??
-                                                            true)
+                                                        if (!functions
+                                                            .checkStringNull(
+                                                                widget.booking
+                                                                    .doctorEmail))
                                                           Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
@@ -2384,11 +2384,11 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                         8),
                                                             child: InkWell(
                                                               onTap: () async {
-                                                                if (!(FFAppState()
+                                                                if (!FFAppState()
                                                                     .reportEmails
                                                                     .contains(widget
                                                                         .booking
-                                                                        .doctorEmail))) {
+                                                                        .doctorEmail)) {
                                                                   setState(() => FFAppState()
                                                                       .reportEmails
                                                                       .add(widget
@@ -2539,7 +2539,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                         'Roboto',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .tertiaryColor,
+                                                                        .secondaryText,
                                                                   ),
                                                           borderSide:
                                                               BorderSide(
@@ -2617,7 +2617,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                   Container(
                     decoration: BoxDecoration(),
                     child: Visibility(
-                      visible: FFAppState().reportLastPage ?? true,
+                      visible: FFAppState().reportLastPage,
                       child: Align(
                         alignment: AlignmentDirectional(0, 0.05),
                         child: Padding(
@@ -2654,7 +2654,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                               reportRef = ReportsRecord.getDocumentFromData(
                                   reportsCreateData, reportsRecordReference);
                               _shouldSetState = true;
-                              if ((reportRef.reference != null)) {
+                              if (reportRef.reference != null) {
                                 await pageViewController.nextPage(
                                   duration: Duration(milliseconds: 300),
                                   curve: Curves.ease,
@@ -2699,14 +2699,13 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                             options: FFButtonOptions(
                               width: 260,
                               height: 60,
-                              color:
-                                  FlutterFlowTheme.of(context).secondaryColor,
+                              color: FlutterFlowTheme.of(context).secondaryText,
                               textStyle: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
                                     fontFamily: 'Roboto',
                                     color: FlutterFlowTheme.of(context)
-                                        .tertiaryColor,
+                                        .secondaryBackground,
                                     fontSize: 16,
                                     fontWeight: FontWeight.normal,
                                   ),

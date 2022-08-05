@@ -1125,7 +1125,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                     TextEditingController(
                                                               text: columnTestsRecord
                                                                   .price
-                                                                  .toString(),
+                                                                  ?.toString(),
                                                             ),
                                                             obscureText: false,
                                                             decoration:

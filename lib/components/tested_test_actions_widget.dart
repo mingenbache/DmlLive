@@ -87,12 +87,11 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                 height: 50,
                                 child: Stack(
                                   children: [
-                                    if (!(rowTestedTestsRecord.resultPosted) ??
-                                        true)
+                                    if (!rowTestedTestsRecord.resultPosted)
                                       InkWell(
                                         onTap: () async {
-                                          if (!(rowTestedTestsRecord
-                                              .resultPosted)) {
+                                          if (!rowTestedTestsRecord
+                                              .resultPosted) {
                                             await showModalBottomSheet(
                                               isScrollControlled: true,
                                               backgroundColor:
@@ -248,8 +247,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                 height: 50,
                                 child: Stack(
                                   children: [
-                                    if (!(rowTestedTestsRecord.isVerified) ??
-                                        true)
+                                    if (!rowTestedTestsRecord.isVerified)
                                       Container(
                                         height: 50,
                                         constraints: BoxConstraints(
@@ -304,9 +302,8 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                         ),
                                       ),
                                     if (functions.displayVerifyButton(
-                                            rowTestedTestsRecord.resultPosted,
-                                            rowTestedTestsRecord.isVerified) ??
-                                        true)
+                                        rowTestedTestsRecord.resultPosted,
+                                        rowTestedTestsRecord.isVerified))
                                       InkWell(
                                         onTap: () async {
                                           await showModalBottomSheet(
@@ -455,8 +452,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                           ],
                                         ),
                                       ),
-                                    if (!(rowTestedTestsRecord.isFlagged) ??
-                                        true)
+                                    if (!rowTestedTestsRecord.isFlagged)
                                       InkWell(
                                         onTap: () async {
                                           await showModalBottomSheet(

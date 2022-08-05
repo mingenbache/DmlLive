@@ -309,7 +309,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                 size: 20,
                                                               ),
                                                               Text(
-                                                                '${containerTestsRecord.durationResults.toString()} Hrs',
+                                                                '${containerTestsRecord.durationResults?.toString()} Hrs',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyText1
@@ -433,9 +433,8 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                                 16,
                                                                           ),
                                                                         ),
-                                                                      if (!(containerTestsRecord
-                                                                              .homeTest) ??
-                                                                          true)
+                                                                      if (!containerTestsRecord
+                                                                          .homeTest)
                                                                         Align(
                                                                           alignment: AlignmentDirectional(
                                                                               1,

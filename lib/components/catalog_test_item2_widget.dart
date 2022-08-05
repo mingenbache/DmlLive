@@ -207,7 +207,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                         size: 20,
                                       ),
                                       Text(
-                                        '${widget.test.durationResults.toString()} Hrs',
+                                        '${widget.test.durationResults?.toString()} Hrs',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -280,8 +280,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                                     size: 16,
                                                   ),
                                                 ),
-                                              if (!(widget.test.homeTest) ??
-                                                  true)
+                                              if (!widget.test.homeTest)
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(

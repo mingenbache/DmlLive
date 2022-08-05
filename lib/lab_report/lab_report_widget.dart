@@ -1461,8 +1461,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                               builder: (context) {
                                                 final testedTests =
                                                     containerTestedTestsRecordList
-                                                            ?.toList() ??
-                                                        [];
+                                                        .toList();
                                                 return Container(
                                                   width: double.infinity,
                                                   height: 500,

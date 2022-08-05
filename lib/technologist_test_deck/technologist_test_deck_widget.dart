@@ -272,8 +272,7 @@ class _TechnologistTestDeckWidgetState
                                           child: Stack(
                                             children: [
                                               if (functions.displayUnverifiedTag(
-                                                      viewResultsTestedTestsRecord) ??
-                                                  true)
+                                                  viewResultsTestedTestsRecord))
                                                 Container(
                                                   width: 130,
                                                   height: 32,
@@ -339,8 +338,7 @@ class _TechnologistTestDeckWidgetState
                                                   ),
                                                 ),
                                               if (functions.displayVerifiedTag(
-                                                      viewResultsTestedTestsRecord) ??
-                                                  true)
+                                                  viewResultsTestedTestsRecord))
                                                 Container(
                                                   width: 130,
                                                   height: 32,
@@ -693,11 +691,11 @@ class _TechnologistTestDeckWidgetState
                                                               ],
                                                             ),
                                                           ),
-                                                          if (valueOrDefault(
-                                                                  currentUserDocument
-                                                                      ?.isStaff,
-                                                                  false) ??
-                                                              true)
+                                                          if (valueOrDefault<
+                                                                  bool>(
+                                                              currentUserDocument
+                                                                  ?.isStaff,
+                                                              false))
                                                             AuthUserStreamWidget(
                                                               child: Container(
                                                                 width: MediaQuery.of(
@@ -1119,11 +1117,11 @@ class _TechnologistTestDeckWidgetState
                                                               ],
                                                             ),
                                                           ),
-                                                          if (valueOrDefault(
-                                                                  currentUserDocument
-                                                                      ?.isStaff,
-                                                                  false) ??
-                                                              true)
+                                                          if (valueOrDefault<
+                                                                  bool>(
+                                                              currentUserDocument
+                                                                  ?.isStaff,
+                                                              false))
                                                             AuthUserStreamWidget(
                                                               child: Container(
                                                                 width: MediaQuery.of(
