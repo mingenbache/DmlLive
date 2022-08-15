@@ -29,6 +29,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
       curve: Curves.elasticOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 1080,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         offset: Offset(0, -87),
         scale: 1,
@@ -67,7 +68,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                 child: SizedBox(
                   width: 50,
                   height: 50,
-                  child: SpinKitDoubleBounce(
+                  child: SpinKitRipple(
                     color: FlutterFlowTheme.of(context).primaryColor,
                     size: 50,
                   ),
@@ -129,7 +130,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                   ),
                                   InkWell(
                                     onTap: () async {
-                                      Navigator.pop(context);
+                                      context.pop();
                                     },
                                     child: Card(
                                       clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -149,7 +150,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                           size: 30,
                                         ),
                                         onPressed: () async {
-                                          Navigator.pop(context);
+                                          context.pop();
                                         },
                                       ),
                                     ),
@@ -661,7 +662,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                     color: Colors.transparent,
                                     width: 1,
                                   ),
-                                  borderRadius: 25,
+                                  borderRadius: BorderRadius.circular(25),
                                 ),
                               ),
                             ],

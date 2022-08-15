@@ -139,7 +139,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                     child: SizedBox(
                                       width: 50,
                                       height: 50,
-                                      child: SpinKitDoubleBounce(
+                                      child: SpinKitRipple(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
                                         size: 50,
@@ -176,7 +176,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                 child: SizedBox(
                                                   width: 50,
                                                   height: 50,
-                                                  child: SpinKitDoubleBounce(
+                                                  child: SpinKitRipple(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryColor,
@@ -313,8 +313,8 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                   child:
                                                                       Visibility(
                                                                     visible:
-                                                                        !(overdueInvoicesInvoicesRecord.isPaid) ??
-                                                                            true,
+                                                                        !overdueInvoicesInvoicesRecord
+                                                                            .isPaid,
                                                                     child:
                                                                         Padding(
                                                                       padding: EdgeInsetsDirectional
@@ -684,7 +684,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                         child: SizedBox(
                                                                                           width: 50,
                                                                                           height: 50,
-                                                                                          child: SpinKitDoubleBounce(
+                                                                                          child: SpinKitRipple(
                                                                                             color: FlutterFlowTheme.of(context).primaryColor,
                                                                                             size: 50,
                                                                                           ),
@@ -827,7 +827,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                               child: SizedBox(
                                                                                 width: 50,
                                                                                 height: 50,
-                                                                                child: SpinKitDoubleBounce(
+                                                                                child: SpinKitRipple(
                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                   size: 50,
                                                                                 ),
@@ -1231,7 +1231,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                     child: SizedBox(
                                       width: 50,
                                       height: 50,
-                                      child: SpinKitDoubleBounce(
+                                      child: SpinKitRipple(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
                                         size: 50,
@@ -1268,7 +1268,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                 child: SizedBox(
                                                   width: 50,
                                                   height: 50,
-                                                  child: SpinKitDoubleBounce(
+                                                  child: SpinKitRipple(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryColor,
@@ -1402,9 +1402,8 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                 child:
                                                                     Visibility(
                                                                   visible:
-                                                                      !(mainContentInvoicesRecord
-                                                                              .isPaid) ??
-                                                                          true,
+                                                                      !mainContentInvoicesRecord
+                                                                          .isPaid,
                                                                   child:
                                                                       Padding(
                                                                     padding: EdgeInsetsDirectional
@@ -1778,7 +1777,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                         child: SizedBox(
                                                                                           width: 50,
                                                                                           height: 50,
-                                                                                          child: SpinKitDoubleBounce(
+                                                                                          child: SpinKitRipple(
                                                                                             color: FlutterFlowTheme.of(context).primaryColor,
                                                                                             size: 50,
                                                                                           ),
@@ -1921,7 +1920,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                               child: SizedBox(
                                                                                 width: 50,
                                                                                 height: 50,
-                                                                                child: SpinKitDoubleBounce(
+                                                                                child: SpinKitRipple(
                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                   size: 50,
                                                                                 ),
@@ -2375,7 +2374,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                         child: SizedBox(
                                           width: 50,
                                           height: 50,
-                                          child: SpinKitDoubleBounce(
+                                          child: SpinKitRipple(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryColor,
                                             size: 50,
@@ -2416,8 +2415,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                     child: SizedBox(
                                                       width: 50,
                                                       height: 50,
-                                                      child:
-                                                          SpinKitDoubleBounce(
+                                                      child: SpinKitRipple(
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -2552,8 +2550,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                       child:
                                                                           Visibility(
                                                                         visible:
-                                                                            !(mainContentInvoicesRecord.isPaid) ??
-                                                                                true,
+                                                                            !mainContentInvoicesRecord.isPaid,
                                                                         child:
                                                                             Padding(
                                                                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -2896,7 +2893,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                             child: SizedBox(
                                                                                               width: 50,
                                                                                               height: 50,
-                                                                                              child: SpinKitDoubleBounce(
+                                                                                              child: SpinKitRipple(
                                                                                                 color: FlutterFlowTheme.of(context).primaryColor,
                                                                                                 size: 50,
                                                                                               ),
@@ -3036,7 +3033,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                   child: SizedBox(
                                                                                     width: 50,
                                                                                     height: 50,
-                                                                                    child: SpinKitDoubleBounce(
+                                                                                    child: SpinKitRipple(
                                                                                       color: FlutterFlowTheme.of(context).primaryColor,
                                                                                       size: 50,
                                                                                     ),

@@ -5,6 +5,7 @@ import '../components/test_actions_widget_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -37,38 +38,44 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Material(
-                color: Colors.transparent,
-                elevation: 2,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(69),
-                    bottomRight: Radius.circular(69),
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                  ),
-                ),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.85,
-                  constraints: BoxConstraints(
-                    maxHeight: 800,
-                  ),
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: Image.asset(
-                        'assets/images/cdc-XLhDvfz0sUM-unsplash-reduced.jpg',
-                      ).image,
+              Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(69),
+                        bottomRight: Radius.circular(69),
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30),
+                      ),
                     ),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(69),
-                      bottomRight: Radius.circular(69),
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30),
+                    child: ClipRect(
+                      child: ImageFiltered(
+                        imageFilter: ImageFilter.blur(
+                          sigmaX: 2,
+                          sigmaY: 2,
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional(0, -1),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(0),
+                              bottomRight: Radius.circular(0),
+                              topLeft: Radius.circular(30),
+                              topRight: Radius.circular(30),
+                            ),
+                            child: Image.asset(
+                              'assets/images/cdc-XLhDvfz0sUM-unsplash-reducedBW.jpg',
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height * 0.4,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                  child: Material(
+                  Material(
                     color: Colors.transparent,
                     elevation: 2,
                     shape: RoundedRectangleBorder(
@@ -88,10 +95,11 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
+                            Color(0x00FFFFFF),
                             Color(0x92BACA68),
                             FlutterFlowTheme.of(context).tertiaryColor
                           ],
-                          stops: [0.1, 1],
+                          stops: [0, 0.3, 0.4],
                           begin: AlignmentDirectional(0, -1),
                           end: AlignmentDirectional(0, 1),
                         ),
@@ -113,7 +121,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                               children: [
                                 InkWell(
                                   onTap: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -150,7 +158,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                     child: SizedBox(
                                       width: 50,
                                       height: 50,
-                                      child: SpinKitDoubleBounce(
+                                      child: SpinKitRipple(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
                                         size: 50,
@@ -183,15 +191,14 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                         .title1
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
+                                                          color: Colors.white,
                                                         ),
                                               ),
                                             ),
                                           ),
                                         ],
                                       ),
-                                      if (!(widget.test.isAvailable) ?? true)
+                                      if (!widget.test.isAvailable)
                                         Align(
                                           alignment:
                                               AlignmentDirectional(0.8, 0),
@@ -201,44 +208,46 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                     0, 0, 0, 5),
                                             child: InkWell(
                                               onTap: () async {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Unsuspend Test?'),
-                                                      content: Text(
-                                                          'Unsuspending will allow client bookings for this test.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () async {
-                                                            Navigator.pop(
-                                                                alertDialogContext);
-
-                                                            final testsUpdateData =
-                                                                createTestsRecordData(
-                                                              isAvailable: true,
+                                                var confirmDialogResponse =
+                                                    await showDialog<bool>(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  'Unsuspend Test?'),
+                                                              content: Text(
+                                                                  'Unsuspending will allow client bookings for this test.'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                  child: Text(
+                                                                      'Cancel'),
+                                                                ),
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                  child: Text(
+                                                                      'Confirm'),
+                                                                ),
+                                                              ],
                                                             );
-                                                            await widget
-                                                                .test.reference
-                                                                .update(
-                                                                    testsUpdateData);
-                                                            ;
                                                           },
-                                                          child:
-                                                              Text('Confirm'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
+                                                        ) ??
+                                                        false;
+                                                if (confirmDialogResponse) {
+                                                  final testsUpdateData =
+                                                      createTestsRecordData(
+                                                    isAvailable: true,
+                                                  );
+                                                  await widget.test.reference
+                                                      .update(testsUpdateData);
+                                                }
                                                 await showDialog(
                                                   context: context,
                                                   builder:
@@ -1520,7 +1529,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                       ),
                     ),
                   ),
-                ),
+                ],
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
@@ -1530,14 +1539,16 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                   children: [
                     Stack(
                       children: [
-                        if (!(currentUserDocument?.isStaff) ?? true)
+                        if (!valueOrDefault<bool>(
+                            currentUserDocument?.isStaff, false))
                           AuthUserStreamWidget(
                             child: TestActionsWidgetWidget(
                               test: widget.test,
                               bookingRef: widget.booking,
                             ),
                           ),
-                        if (currentUserDocument?.isStaff ?? true)
+                        if (valueOrDefault<bool>(
+                            currentUserDocument?.isStaff, false))
                           AuthUserStreamWidget(
                             child: AdminTestActionsWidget(
                               testRef: widget.test.reference,

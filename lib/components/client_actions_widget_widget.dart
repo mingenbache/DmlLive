@@ -1,9 +1,6 @@
-import '../bookings_schedule/bookings_schedule_widget.dart';
 import '../components/test_list_catalog_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../payments_list/payments_list_widget.dart';
-import '../user_list/user_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -49,12 +46,7 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
                 child: InkWell(
                   onTap: () async {
                     setState(() => FFAppState().userListQuery = '');
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => UserListWidget(),
-                      ),
-                    );
+                    context.pushNamed('UserList');
                   },
                   child: Material(
                     color: Colors.transparent,
@@ -100,12 +92,7 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                 child: InkWell(
                   onTap: () async {
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BookingsScheduleWidget(),
-                      ),
-                    );
+                    context.pushNamed('BookingsSchedule');
                   },
                   child: Material(
                     color: Colors.transparent,
@@ -153,12 +140,7 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                 child: InkWell(
                   onTap: () async {
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PaymentsListWidget(),
-                      ),
-                    );
+                    context.pushNamed('PaymentsList');
                   },
                   child: Material(
                     color: Colors.transparent,

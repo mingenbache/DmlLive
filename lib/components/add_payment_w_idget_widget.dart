@@ -39,6 +39,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
     'textFieldOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 40),
@@ -53,6 +54,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 170,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 80),
@@ -67,6 +69,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 200,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 100),
@@ -81,6 +84,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 230,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 120),
@@ -123,7 +127,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -171,7 +175,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                             ),
                             InkWell(
                               onTap: () async {
-                                Navigator.pop(context);
+                                context.pop();
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -191,7 +195,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                     size: 30,
                                   ),
                                   onPressed: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                 ),
                               ),
@@ -251,12 +255,13 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                             maxLines: 1,
                             keyboardType: TextInputType.number,
                             validator: (val) {
-                              if (val.isEmpty) {
+                              if (val == null || val.isEmpty) {
                                 return 'Please enter an amount';
                               }
                               if (val.length < 2) {
                                 return 'Requires at least 2 characters.';
                               }
+
                               return null;
                             },
                           ).animated(
@@ -329,7 +334,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                               'MPESA',
                               'Bank Transfer',
                               'Online Payment'
-                            ].toList(),
+                            ],
                             onChanged: (val) =>
                                 setState(() => paymentMethodValue = val),
                             width: MediaQuery.of(context).size.width * 0.9,
@@ -420,7 +425,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                         color: Colors.transparent,
                                         width: 1,
                                       ),
-                                      borderRadius: 16,
+                                      borderRadius: BorderRadius.circular(16),
                                     ),
                                   ),
                                 ),
@@ -595,7 +600,8 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
-                        if ((datePicked) <= (getCurrentTimestamp)) {
+                        var _shouldSetState = false;
+                        if (datePicked <= getCurrentTimestamp) {
                           final paymentsCreateData = createPaymentsRecordData(
                             userRef: currentUserReference,
                             bookingRef: columnInvoicesRecord.bookingRef,
@@ -612,14 +618,17 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                             transactionDate: datePicked,
                             updatedDate: getCurrentTimestamp,
                           );
-                          final paymentsRecordReference =
+                          var paymentsRecordReference =
                               PaymentsRecord.collection.doc();
                           await paymentsRecordReference.set(paymentsCreateData);
                           paymentRef = PaymentsRecord.getDocumentFromData(
                               paymentsCreateData, paymentsRecordReference);
+                          _shouldSetState = true;
                         } else {
+                          if (_shouldSetState) setState(() {});
                           return;
                         }
+
                         await showDialog(
                           context: context,
                           builder: (alertDialogContext) {
@@ -637,6 +646,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                             );
                           },
                         );
+
                         final invoicesUpdateData = {
                           ...createInvoicesRecordData(
                             paymentSubmitted: true,
@@ -645,9 +655,8 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                               FieldValue.arrayUnion([paymentRef.reference]),
                         };
                         await widget.invoiceRef.update(invoicesUpdateData);
-                        Navigator.pop(context);
-
-                        setState(() {});
+                        context.pop();
+                        if (_shouldSetState) setState(() {});
                       },
                       text: 'Submit',
                       options: FFButtonOptions(
@@ -665,7 +674,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                           color: Colors.transparent,
                           width: 1,
                         ),
-                        borderRadius: 25,
+                        borderRadius: BorderRadius.circular(25),
                       ),
                     ),
                   ],

@@ -16,6 +16,9 @@ import 'invoices_record.dart';
 import 'tested_tests_record.dart';
 import 'machines_record.dart';
 import 'notifications_record.dart';
+import 'reports_record.dart';
+import 'd_m_l_info_record.dart';
+import 'test_packages_record.dart';
 
 import 'index.dart';
 
@@ -43,6 +46,9 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   TestedTestsRecord,
   MachinesRecord,
   NotificationsRecord,
+  ReportsRecord,
+  DMLInfoRecord,
+  TestPackagesRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())
@@ -121,16 +127,27 @@ Map<String, dynamic> mapFromFirestore(Map<String, dynamic> data) =>
       if (value is Timestamp) {
         value = (value as Timestamp).toDate();
       }
+      if (value is Iterable && value.isNotEmpty && value.first is Timestamp) {
+        value = value.map((v) => (v as Timestamp).toDate()).toList();
+      }
       if (value is GeoPoint) {
         value = (value as GeoPoint).toLatLng();
+      }
+      if (value is Iterable && value.isNotEmpty && value.first is GeoPoint) {
+        value = value.map((v) => (v as GeoPoint).toLatLng()).toList();
       }
       return MapEntry(key, value);
     });
 
 Map<String, dynamic> mapToFirestore(Map<String, dynamic> data) =>
     data.map((key, value) {
+      // Handle GeoPoint
       if (value is LatLng) {
         value = (value as LatLng).toGeoPoint();
+      }
+      // Handle list of GeoPoint
+      if (value is Iterable && value.isNotEmpty && value.first is LatLng) {
+        value = value.map((v) => (v as LatLng).toGeoPoint()).toList();
       }
       return MapEntry(key, value);
     });

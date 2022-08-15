@@ -91,7 +91,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                           ),
                           InkWell(
                             onTap: () async {
-                              Navigator.pop(context);
+                              context.pop();
                             },
                             child: Card(
                               clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -111,7 +111,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                   size: 30,
                                 ),
                                 onPressed: () async {
-                                  Navigator.pop(context);
+                                  context.pop();
                                 },
                               ),
                             ),
@@ -204,7 +204,8 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                   color: Colors.transparent,
                                                   width: 1,
                                                 ),
-                                                borderRadius: 12,
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
                                               ),
                                             ),
                                           ],
@@ -226,7 +227,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                             child: SizedBox(
                                               width: 50,
                                               height: 50,
-                                              child: SpinKitDoubleBounce(
+                                              child: SpinKitRipple(
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryColor,
@@ -426,14 +427,16 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                       ),
                                                                   validator:
                                                                       (val) {
-                                                                    if (val
-                                                                        .isEmpty) {
+                                                                    if (val ==
+                                                                            null ||
+                                                                        val.isEmpty) {
                                                                       return 'Field is required';
                                                                     }
                                                                     if (val.length <
                                                                         4) {
                                                                       return 'Requires at least 4 characters.';
                                                                     }
+
                                                                     return null;
                                                                   },
                                                                 ),
@@ -464,8 +467,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                         child: SizedBox(
                                                           width: 50,
                                                           height: 50,
-                                                          child:
-                                                              SpinKitDoubleBounce(
+                                                          child: SpinKitRipple(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .primaryColor,
@@ -478,8 +480,11 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                         snapshot.data;
                                                     return FFButtonWidget(
                                                       onPressed: () async {
-                                                        if (currentUserDocument
-                                                            ?.isStaff) {
+                                                        if (valueOrDefault<
+                                                                bool>(
+                                                            currentUserDocument
+                                                                ?.isStaff,
+                                                            false)) {
                                                           final testedTestsCreateData =
                                                               createTestedTestsRecordData(
                                                             bookingRef:
@@ -505,7 +510,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                 batchNumController
                                                                     .text,
                                                           );
-                                                          final testedTestsRecordReference =
+                                                          var testedTestsRecordReference =
                                                               TestedTestsRecord
                                                                   .collection
                                                                   .doc();
@@ -539,6 +544,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                             );
                                                           },
                                                         );
+
                                                         final bookedTestsUpdateData =
                                                             createBookedTestsRecordData(
                                                           sampleCollected: true,
@@ -547,7 +553,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                             .reference
                                                             .update(
                                                                 bookedTestsUpdateData);
-                                                        Navigator.pop(context);
+                                                        context.pop();
 
                                                         setState(() {});
                                                       },
@@ -579,7 +585,9 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                               .transparent,
                                                           width: 1,
                                                         ),
-                                                        borderRadius: 12,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12),
                                                       ),
                                                     );
                                                   },

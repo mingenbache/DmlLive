@@ -6,7 +6,6 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../payments_list/payments_list_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -39,6 +38,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
     'textFieldOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 40),
@@ -53,6 +53,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 170,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 80),
@@ -67,6 +68,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 200,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 100),
@@ -81,6 +83,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 230,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 120),
@@ -161,7 +164,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                           ),
                           InkWell(
                             onTap: () async {
-                              Navigator.pop(context);
+                              context.pop();
                             },
                             child: Card(
                               clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -181,7 +184,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                                   size: 30,
                                 ),
                                 onPressed: () async {
-                                  Navigator.pop(context);
+                                  context.pop();
                                 },
                               ),
                             ),
@@ -242,7 +245,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                           maxLines: 1,
                           keyboardType: TextInputType.number,
                           validator: (val) {
-                            if (val.isEmpty) {
+                            if (val == null || val.isEmpty) {
                               return 'Please enter an amount';
                             }
 
@@ -405,8 +408,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                         child: FlutterFlowDropDown(
-                          options: ['MPESA', 'Bank Transfer', 'Online Payment']
-                              .toList(),
+                          options: ['MPESA', 'Bank Transfer', 'Online Payment'],
                           onChanged: (val) =>
                               setState(() => paymentMethodValue = val),
                           width: MediaQuery.of(context).size.width * 0.9,
@@ -524,17 +526,12 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                             firstName: firstNameController.text,
                             lastName: lastNameController.text,
                           );
-                          final paymentsRecordReference =
+                          var paymentsRecordReference =
                               PaymentsRecord.collection.doc();
                           await paymentsRecordReference.set(paymentsCreateData);
                           paymentRef = PaymentsRecord.getDocumentFromData(
                               paymentsCreateData, paymentsRecordReference);
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PaymentsListWidget(),
-                            ),
-                          );
+                          context.pushNamed('PaymentsList');
 
                           setState(() {});
                         },
@@ -555,7 +552,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                             color: Colors.transparent,
                             width: 1,
                           ),
-                          borderRadius: 25,
+                          borderRadius: BorderRadius.circular(25),
                         ),
                       ),
                     ],

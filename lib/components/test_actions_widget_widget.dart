@@ -4,6 +4,7 @@ import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -31,6 +32,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
     'buttonOnActionTriggerAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         opacity: 0,
       ),
@@ -41,6 +43,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
     'buttonOnActionTriggerAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       duration: 600,
+      hideBeforeAnimating: false,
       initialState: AnimationState(
         opacity: 0,
       ),
@@ -62,108 +65,182 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
 
   @override
   Widget build(BuildContext context) {
-    return AuthUserStreamWidget(
-      child: StreamBuilder<BookingsRecord>(
-        stream: BookingsRecord.getDocument(currentUserDocument?.currentBooking),
-        builder: (context, snapshot) {
-          // Customize what your widget looks like when it's loading.
-          if (!snapshot.hasData) {
-            return Center(
-              child: SizedBox(
-                width: 50,
-                height: 50,
-                child: SpinKitDoubleBounce(
-                  color: FlutterFlowTheme.of(context).primaryColor,
-                  size: 50,
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        AuthUserStreamWidget(
+          child: StreamBuilder<BookingsRecord>(
+            stream:
+                BookingsRecord.getDocument(currentUserDocument?.currentBooking),
+            builder: (context, snapshot) {
+              // Customize what your widget looks like when it's loading.
+              if (!snapshot.hasData) {
+                return Center(
+                  child: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: SpinKitRipple(
+                      color: FlutterFlowTheme.of(context).primaryColor,
+                      size: 50,
+                    ),
+                  ),
+                );
+              }
+              final containerBookingsRecord = snapshot.data;
+              return Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                constraints: BoxConstraints(
+                  maxWidth: 330,
+                  maxHeight: 80,
                 ),
-              ),
-            );
-          }
-          final containerBookingsRecord = snapshot.data;
-          return Container(
-            width: MediaQuery.of(context).size.width * 0.9,
-            constraints: BoxConstraints(
-              maxWidth: 330,
-              maxHeight: 80,
-            ),
-            decoration: BoxDecoration(
-              color: Color(0xFF58585C),
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(22, 22, 22, 22),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
-                    },
-                    text: 'Chat',
-                    icon: FaIcon(
-                      FontAwesomeIcons.comment,
-                      size: 20,
-                    ),
-                    options: FFButtonOptions(
-                      width: 130,
-                      height: 40,
-                      color: Color(0x00B3B2B2),
-                      textStyle:
-                          FlutterFlowTheme.of(context).bodyText1.override(
-                                fontFamily: 'Roboto',
-                                fontWeight: FontWeight.w300,
+                decoration: BoxDecoration(
+                  color: Color(0xFF58585C),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(22, 22, 22, 22),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      FutureBuilder<List<UsersRecord>>(
+                        future: queryUsersRecordOnce(
+                          queryBuilder: (usersRecord) =>
+                              usersRecord.where('role', isEqualTo: 'front'),
+                          singleRecord: true,
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50,
+                                height: 50,
+                                child: SpinKitRipple(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryColor,
+                                  size: 50,
+                                ),
                               ),
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 0,
-                      ),
-                      borderRadius: 30,
-                    ),
-                  ).animated(
-                      [animationsMap['buttonOnActionTriggerAnimation1']]),
-                  FFButtonWidget(
-                    onPressed: () async {
-                      if (!(containerBookingsRecord.testsIncluded
-                          .toList()
-                          .contains(widget.test.reference))) {
-                        final bookingsUpdateData = {
-                          'tests_included':
-                              FieldValue.arrayUnion([widget.test.reference]),
-                        };
-                        await containerBookingsRecord.reference
-                            .update(bookingsUpdateData);
-                      }
-                    },
-                    text: 'Add to Cart',
-                    icon: FaIcon(
-                      FontAwesomeIcons.shoppingBasket,
-                      size: 20,
-                    ),
-                    options: FFButtonOptions(
-                      width: 130,
-                      height: 40,
-                      color: Color(0x00B3B2B2),
-                      textStyle:
-                          FlutterFlowTheme.of(context).bodyText1.override(
-                                fontFamily: 'Roboto',
-                                color: Color(0xFFBACA68),
-                                fontWeight: FontWeight.w300,
+                            );
+                          }
+                          List<UsersRecord> buttonUsersRecordList =
+                              snapshot.data;
+                          final buttonUsersRecord =
+                              buttonUsersRecordList.isNotEmpty
+                                  ? buttonUsersRecordList.first
+                                  : null;
+                          return FFButtonWidget(
+                            onPressed: () async {
+                              context.pushNamed(
+                                'Chat',
+                                queryParams: {
+                                  'chatUser': serializeParam(
+                                      buttonUsersRecord, ParamType.Document),
+                                }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  'chatUser': buttonUsersRecord,
+                                },
+                              );
+                            },
+                            text: 'Chat',
+                            icon: FaIcon(
+                              FontAwesomeIcons.comment,
+                              size: 20,
+                            ),
+                            options: FFButtonOptions(
+                              width: 130,
+                              height: 40,
+                              color: Color(0x00B3B2B2),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 0,
                               ),
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1,
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                          ).animated([
+                            animationsMap['buttonOnActionTriggerAnimation1']
+                          ]);
+                        },
                       ),
-                      borderRadius: 30,
-                    ),
-                  ).animated(
-                      [animationsMap['buttonOnActionTriggerAnimation2']]),
-                ],
-              ),
-            ),
-          );
-        },
-      ),
+                      FFButtonWidget(
+                        onPressed: () async {
+                          if (!containerBookingsRecord.testsIncluded
+                              .toList()
+                              .contains(widget.test.reference)) {
+                            final bookingsUpdateData = {
+                              ...createBookingsRecordData(
+                                totalPrice: functions.addCartTotal(
+                                    containerBookingsRecord.totalPrice,
+                                    widget.test.price),
+                              ),
+                              'tests_included': FieldValue.arrayUnion(
+                                  [widget.test.reference]),
+                              'total_tests': FieldValue.increment(1),
+                            };
+                            await containerBookingsRecord.reference
+                                .update(bookingsUpdateData);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Test Added.',
+                                  style: TextStyle(),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor: Color(0x00000000),
+                              ),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Error. This test is already in your Booking.',
+                                  style: TextStyle(),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor: Color(0x00000000),
+                              ),
+                            );
+                            return;
+                          }
+                        },
+                        text: 'Add to Cart',
+                        icon: FaIcon(
+                          FontAwesomeIcons.shoppingBasket,
+                          size: 20,
+                        ),
+                        options: FFButtonOptions(
+                          width: 130,
+                          height: 40,
+                          color: Color(0x00B3B2B2),
+                          textStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Roboto',
+                                    color: Color(0xFFBACA68),
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                          ),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ).animated(
+                          [animationsMap['buttonOnActionTriggerAnimation2']]),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }

@@ -30,6 +30,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 230,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 120),
@@ -67,7 +68,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -123,7 +124,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                             ),
                             InkWell(
                               onTap: () async {
-                                Navigator.pop(context);
+                                context.pop();
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -143,7 +144,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                     size: 30,
                                   ),
                                   onPressed: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                 ),
                               ),
@@ -235,7 +236,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                             child: SizedBox(
                               width: 50,
                               height: 50,
-                              child: SpinKitDoubleBounce(
+                              child: SpinKitRipple(
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
                                 size: 50,
@@ -257,7 +258,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                   child: SizedBox(
                                     width: 50,
                                     height: 50,
-                                    child: SpinKitDoubleBounce(
+                                    child: SpinKitRipple(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryColor,
                                       size: 50,
@@ -286,7 +287,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: SpinKitDoubleBounce(
+                                            child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
@@ -311,20 +312,41 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                           );
                                           await widget.testedTestRef
                                               .update(testedTestsUpdateData);
-                                          if (!(rowBookingsRecord.verifiedTests
+                                          if (rowBookingsRecord.verifiedTests
                                               .toList()
-                                              .contains(columnTestedTestsRecord
-                                                  .testRef))) {
+                                              .contains(widget.testedTestRef)) {
                                             final bookingsUpdateData = {
                                               'verifiedTests':
                                                   FieldValue.arrayUnion([
-                                                columnTestedTestsRecord.testRef
+                                                columnTestedTestsRecord
+                                                    .reference
                                               ]),
                                             };
                                             await rowBookingsRecord.reference
                                                 .update(bookingsUpdateData);
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      'Test Already Verified!'),
+                                                  content: Text(
+                                                      'You cannot verify a test twice.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
                                           }
-                                          Navigator.pop(context);
+
+                                          context.pop();
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
@@ -364,7 +386,8 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                             color: Colors.transparent,
                                             width: 1,
                                           ),
-                                          borderRadius: 25,
+                                          borderRadius:
+                                              BorderRadius.circular(25),
                                         ),
                                       );
                                     },

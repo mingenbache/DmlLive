@@ -4,8 +4,6 @@ import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../test_deck/test_deck_widget.dart';
-import '../test_report/test_report_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,7 +32,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -146,8 +144,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                   child: Builder(
                     builder: (context) {
-                      final bookings =
-                          reportListBookingsRecordList?.toList() ?? [];
+                      final bookings = reportListBookingsRecordList.toList();
                       return SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -166,15 +163,13 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                   InkWell(
                                     onTap: () async {
                                       if (bookingsItem.completed) {
-                                        await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                TestReportWidget(
-                                              bookingRef:
-                                                  bookingsItem.reference,
-                                            ),
-                                          ),
+                                        context.pushNamed(
+                                          'LabReport',
+                                          queryParams: {
+                                            'bookingRef': serializeParam(
+                                                bookingsItem.reference,
+                                                ParamType.DocumentReference),
+                                          }.withoutNulls,
                                         );
                                       }
                                     },
@@ -384,7 +379,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                           height:
                                                                               50,
                                                                           child:
-                                                                              SpinKitDoubleBounce(
+                                                                              SpinKitRipple(
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryColor,
                                                                             size:
@@ -411,7 +406,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                         builder:
                                                                             (context) {
                                                                           final tests =
-                                                                              containerTestedTestsRecordList?.toList() ?? [];
+                                                                              containerTestedTestsRecordList.toList();
                                                                           return ListView
                                                                               .builder(
                                                                             padding:
@@ -434,7 +429,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                                         child: SizedBox(
                                                                                           width: 50,
                                                                                           height: 50,
-                                                                                          child: SpinKitDoubleBounce(
+                                                                                          child: SpinKitRipple(
                                                                                             color: FlutterFlowTheme.of(context).primaryColor,
                                                                                             size: 50,
                                                                                           ),
@@ -457,13 +452,11 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                                         ),
                                                                                         child: InkWell(
                                                                                           onTap: () async {
-                                                                                            await Navigator.push(
-                                                                                              context,
-                                                                                              MaterialPageRoute(
-                                                                                                builder: (context) => TestDeckWidget(
-                                                                                                  testedTestRef: testsItem.reference,
-                                                                                                ),
-                                                                                              ),
+                                                                                            context.pushNamed(
+                                                                                              'TestDeck',
+                                                                                              queryParams: {
+                                                                                                'testedTestRef': serializeParam(testsItem.reference, ParamType.DocumentReference),
+                                                                                              }.withoutNulls,
                                                                                             );
                                                                                           },
                                                                                           child: Row(

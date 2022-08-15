@@ -48,7 +48,7 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                 child: SizedBox(
                   width: 50,
                   height: 50,
-                  child: SpinKitDoubleBounce(
+                  child: SpinKitRipple(
                     color: FlutterFlowTheme.of(context).primaryColor,
                     size: 50,
                   ),
@@ -122,7 +122,7 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                     ),
                                     InkWell(
                                       onTap: () async {
-                                        Navigator.pop(context);
+                                        context.pop();
                                       },
                                       child: Card(
                                         clipBehavior:
@@ -144,7 +144,7 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                             size: 30,
                                           ),
                                           onPressed: () async {
-                                            Navigator.pop(context);
+                                            context.pop();
                                           },
                                         ),
                                       ),
@@ -547,6 +547,9 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                                 ),
                                                 chipSpacing: 5,
                                                 multiselect: false,
+                                                initialized:
+                                                    sexChoiceChipsValue != null,
+                                                alignment: WrapAlignment.start,
                                               ),
                                             ),
                                           ),
@@ -635,7 +638,8 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                                 color: Colors.transparent,
                                                 width: 1,
                                               ),
-                                              borderRadius: 16,
+                                              borderRadius:
+                                                  BorderRadius.circular(16),
                                             ),
                                           ),
                                         ),
@@ -687,7 +691,7 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                       );
                                     },
                                   );
-                                  Navigator.pop(context);
+                                  context.pop();
                                 },
                                 text: 'Update',
                                 options: FFButtonOptions(
@@ -709,7 +713,7 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                     color: Colors.transparent,
                                     width: 1,
                                   ),
-                                  borderRadius: 20,
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
                             ],

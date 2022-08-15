@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../backend/push_notifications/push_notifications_util.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -18,14 +19,16 @@ class ChooseTechnologistWidget extends StatefulWidget {
     this.bookingRef,
     this.scheduledDate,
     this.booking,
-    this.bookedTestRef,
+    this.bookedTest,
+    this.testName,
   }) : super(key: key);
 
   final DocumentReference testRef;
   final DocumentReference bookingRef;
   final DateTime scheduledDate;
   final BookingsRecord booking;
-  final DocumentReference bookedTestRef;
+  final BookedTestsRecord bookedTest;
+  final String testName;
 
   @override
   _ChooseTechnologistWidgetState createState() =>
@@ -40,6 +43,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       delay: 200,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         offset: Offset(0, 100),
@@ -77,7 +81,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                 child: SizedBox(
                   width: 50,
                   height: 50,
-                  child: SpinKitDoubleBounce(
+                  child: SpinKitRipple(
                     color: FlutterFlowTheme.of(context).primaryColor,
                     size: 50,
                   ),
@@ -110,7 +114,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height * 0.3,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).tertiaryColor,
+                        color: FlutterFlowTheme.of(context).secondaryColor,
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(16),
                           bottomRight: Radius.circular(16),
@@ -142,7 +146,9 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                             .title2
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: Color(0xFF586B06),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               fontSize: 29,
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -152,12 +158,12 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                 ),
                                 InkWell(
                                   onTap: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
                                     color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                        .secondaryBackground,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30),
                                     ),
@@ -168,7 +174,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                       icon: Icon(
                                         Icons.close_rounded,
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .primaryColor,
                                         size: 30,
                                       ),
                                       onPressed: () async {
@@ -199,7 +205,8 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                           .bodyText1
                                           .override(
                                             fontFamily: 'Roboto',
-                                            color: Color(0xFF586B06),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                             fontSize: 15,
                                           ),
                                     ),
@@ -230,7 +237,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                             child: SizedBox(
                                               width: 50,
                                               height: 50,
-                                              child: SpinKitDoubleBounce(
+                                              child: SpinKitRipple(
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryColor,
@@ -263,19 +270,20 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                                 fontFamily: 'Lexend Deca',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
+                                                        .primaryText,
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                               ),
+                                          hintText: 'Choose Technologist',
                                           icon: Icon(
                                             Icons.keyboard_arrow_down_rounded,
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .primaryText,
                                             size: 15,
                                           ),
                                           fillColor:
                                               FlutterFlowTheme.of(context)
-                                                  .secondaryColor,
+                                                  .secondaryBackground,
                                           elevation: 2,
                                           borderColor: Color(0x00FFFFFF),
                                           borderWidth: 2,
@@ -319,7 +327,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                 child: SizedBox(
                                   width: 50,
                                   height: 50,
-                                  child: SpinKitDoubleBounce(
+                                  child: SpinKitRipple(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
                                     size: 50,
@@ -339,44 +347,103 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                             return Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                FFButtonWidget(
-                                  onPressed: () async {
-                                    final bookingsUpdateData = {
-                                      'bookedTests': FieldValue.arrayUnion(
-                                          [widget.testRef]),
-                                    };
-                                    await widget.bookingRef
-                                        .update(bookingsUpdateData);
-
-                                    final bookedTestsUpdateData =
-                                        createBookedTestsRecordData(
-                                      scheduledDate: widget.scheduledDate,
-                                      createdDate: getCurrentTimestamp,
-                                    );
-                                    await widget.bookedTestRef
-                                        .update(bookedTestsUpdateData);
-                                    Navigator.pop(context);
-                                  },
-                                  text: 'Continue',
-                                  options: FFButtonOptions(
-                                    width: 300,
-                                    height: 70,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .subtitle2
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
-                                        ),
-                                    elevation: 2,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1,
-                                    ),
-                                    borderRadius: 25,
+                                StreamBuilder<List<StaffRecord>>(
+                                  stream: queryStaffRecord(
+                                    queryBuilder: (staffRecord) =>
+                                        staffRecord.where('display_name',
+                                            isEqualTo: technologistValue),
+                                    singleRecord: true,
                                   ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: SpinKitRipple(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                            size: 50,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<StaffRecord> buttonStaffRecordList =
+                                        snapshot.data;
+                                    // Return an empty Container when the document does not exist.
+                                    if (snapshot.data.isEmpty) {
+                                      return Container();
+                                    }
+                                    final buttonStaffRecord =
+                                        buttonStaffRecordList.isNotEmpty
+                                            ? buttonStaffRecordList.first
+                                            : null;
+                                    return FFButtonWidget(
+                                      onPressed: () async {
+                                        setState(() => FFAppState()
+                                            .assignTechnologist = true);
+                                        if (FFAppState().assignTechnologist) {
+                                          final bookingsUpdateData = {
+                                            'bookedTests':
+                                                FieldValue.arrayUnion(
+                                                    [widget.testRef]),
+                                          };
+                                          await widget.bookingRef
+                                              .update(bookingsUpdateData);
+
+                                          final bookedTestsUpdateData =
+                                              createBookedTestsRecordData(
+                                            scheduledDate: widget.scheduledDate,
+                                            createdDate: getCurrentTimestamp,
+                                            technologist:
+                                                buttonStaffRecord.reference,
+                                          );
+                                          await widget.bookedTest.reference
+                                              .update(bookedTestsUpdateData);
+                                          triggerPushNotification(
+                                            notificationTitle:
+                                                'New Test Assigned',
+                                            notificationText:
+                                                '${widget.testName} Test Scheduled for ${dateTimeFormat('MMMMEEEEd', widget.scheduledDate)}',
+                                            userRefs: [
+                                              buttonStaffRecord.userRef
+                                            ],
+                                            initialPageName:
+                                                'TechnologistTestDeck',
+                                            parameterData: {
+                                              'bookedTest': widget.bookedTest,
+                                            },
+                                          );
+                                          Navigator.pop(context);
+                                          return;
+                                        } else {
+                                          return;
+                                        }
+                                      },
+                                      text: 'Continue',
+                                      options: FFButtonOptions(
+                                        width: 300,
+                                        height: 70,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .subtitle2
+                                            .override(
+                                              fontFamily: 'Roboto',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                        elevation: 2,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(25),
+                                      ),
+                                    );
+                                  },
                                 ),
                               ],
                             );
@@ -389,7 +456,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                     'Tap above to complete request',
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Roboto',
-                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          color: FlutterFlowTheme.of(context).primaryText,
                           fontSize: 15,
                           fontWeight: FontWeight.normal,
                         ),

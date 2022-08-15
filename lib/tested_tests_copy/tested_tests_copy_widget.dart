@@ -113,7 +113,7 @@ class _TestedTestsCopyWidgetState extends State<TestedTestsCopyWidget> {
                                               child: SizedBox(
                                                 width: 50,
                                                 height: 50,
-                                                child: SpinKitDoubleBounce(
+                                                child: SpinKitRipple(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryColor,
@@ -153,8 +153,7 @@ class _TestedTestsCopyWidgetState extends State<TestedTestsCopyWidget> {
                                                         child: SizedBox(
                                                           width: 50,
                                                           height: 50,
-                                                          child:
-                                                              SpinKitDoubleBounce(
+                                                          child: SpinKitRipple(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .primaryColor,
@@ -216,7 +215,7 @@ class _TestedTestsCopyWidgetState extends State<TestedTestsCopyWidget> {
                                                                       height:
                                                                           50,
                                                                       child:
-                                                                          SpinKitDoubleBounce(
+                                                                          SpinKitRipple(
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryColor,
                                                                         size:
@@ -736,7 +735,7 @@ class _TestedTestsCopyWidgetState extends State<TestedTestsCopyWidget> {
                                               child: SizedBox(
                                                 width: 50,
                                                 height: 50,
-                                                child: SpinKitDoubleBounce(
+                                                child: SpinKitRipple(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryColor,
@@ -776,8 +775,7 @@ class _TestedTestsCopyWidgetState extends State<TestedTestsCopyWidget> {
                                                         child: SizedBox(
                                                           width: 50,
                                                           height: 50,
-                                                          child:
-                                                              SpinKitDoubleBounce(
+                                                          child: SpinKitRipple(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .primaryColor,
@@ -839,7 +837,7 @@ class _TestedTestsCopyWidgetState extends State<TestedTestsCopyWidget> {
                                                                       height:
                                                                           50,
                                                                       child:
-                                                                          SpinKitDoubleBounce(
+                                                                          SpinKitRipple(
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryColor,
                                                                         size:
@@ -1356,7 +1354,7 @@ class _TestedTestsCopyWidgetState extends State<TestedTestsCopyWidget> {
                                             child: SizedBox(
                                               width: 50,
                                               height: 50,
-                                              child: SpinKitDoubleBounce(
+                                              child: SpinKitRipple(
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryColor,
@@ -1423,7 +1421,7 @@ class _TestedTestsCopyWidgetState extends State<TestedTestsCopyWidget> {
                                                                   width: 50,
                                                                   height: 50,
                                                                   child:
-                                                                      SpinKitDoubleBounce(
+                                                                      SpinKitRipple(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryColor,

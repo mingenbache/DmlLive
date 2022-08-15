@@ -24,6 +24,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
       trigger: AnimationTrigger.onPageLoad,
       duration: 1990,
       delay: 10,
+      hideBeforeAnimating: false,
       fadeIn: true,
       initialState: AnimationState(
         opacity: 0,
@@ -103,7 +104,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                             ),
                             InkWell(
                               onTap: () async {
-                                Navigator.pop(context);
+                                context.pop();
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -123,8 +124,8 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                     size: 30,
                                   ),
                                   onPressed: () async {
-                                    if ((datePicked) < (getCurrentTimestamp)) {
-                                      Navigator.pop(context);
+                                    if (datePicked < getCurrentTimestamp) {
+                                      context.pop();
                                     }
                                   },
                                 ),
@@ -163,6 +164,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                     currentTime: getCurrentTimestamp,
                                     minTime: DateTime(0, 0, 0),
                                   );
+
                                   setState(() =>
                                       FFAppState().datepicked = datePicked);
                                 },
@@ -231,8 +233,8 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                       children: [
                         FFButtonWidget(
                           onPressed: () async {
-                            if ((datePicked) < (getCurrentTimestamp)) {
-                              Navigator.pop(context);
+                            if (datePicked < getCurrentTimestamp) {
+                              context.pop();
                             }
                           },
                           text: 'Continue',
@@ -251,7 +253,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                               color: Colors.transparent,
                               width: 1,
                             ),
-                            borderRadius: 25,
+                            borderRadius: BorderRadius.circular(25),
                           ),
                         ),
                       ],

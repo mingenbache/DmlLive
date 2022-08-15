@@ -34,7 +34,7 @@ class _PaymentActionsWidgetWidgetState
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -76,7 +76,7 @@ class _PaymentActionsWidgetWidgetState
                       child: SizedBox(
                         width: 50,
                         height: 50,
-                        child: SpinKitDoubleBounce(
+                        child: SpinKitRipple(
                           color: FlutterFlowTheme.of(context).primaryColor,
                           size: 50,
                         ),
@@ -90,7 +90,7 @@ class _PaymentActionsWidgetWidgetState
                     children: [
                       Stack(
                         children: [
-                          if (!(containerPaymentsRecord.isApproved) ?? true)
+                          if (!containerPaymentsRecord.isApproved)
                             Container(
                               width: 110,
                               height: 50,
@@ -142,7 +142,7 @@ class _PaymentActionsWidgetWidgetState
                       ),
                       Stack(
                         children: [
-                          if (!(containerPaymentsRecord.isApproved) ?? true)
+                          if (!containerPaymentsRecord.isApproved)
                             StreamBuilder<InvoicesRecord>(
                               stream: InvoicesRecord.getDocument(
                                   containerPaymentsRecord.invoiceRef),
@@ -153,7 +153,7 @@ class _PaymentActionsWidgetWidgetState
                                     child: SizedBox(
                                       width: 50,
                                       height: 50,
-                                      child: SpinKitDoubleBounce(
+                                      child: SpinKitRipple(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
                                         size: 50,
@@ -169,7 +169,8 @@ class _PaymentActionsWidgetWidgetState
                                         createPaymentsRecordData(
                                       isApproved: true,
                                       updatedDate: getCurrentTimestamp,
-                                      updateRole: currentUserDocument?.role,
+                                      updateRole: valueOrDefault(
+                                          currentUserDocument?.role, ''),
                                     );
                                     await containerPaymentsRecord.reference
                                         .update(paymentsUpdateData);
@@ -181,34 +182,36 @@ class _PaymentActionsWidgetWidgetState
                                             verifyButtonInvoicesRecord
                                                 .invoiceAmount,
                                             containerPaymentsRecord.amount
-                                                .toDouble()),
+                                                ?.toDouble()),
                                         amountDue: functions
                                             .returnInvoiceAmountDue(
                                                 containerPaymentsRecord.amount
-                                                    .toDouble(),
+                                                    ?.toDouble(),
                                                 verifyButtonInvoicesRecord
                                                     .amountDue),
                                         updateDate: getCurrentTimestamp,
-                                        updateRole: currentUserDocument?.role,
+                                        updateRole: valueOrDefault(
+                                            currentUserDocument?.role, ''),
                                       ),
                                       'payments_list': FieldValue.arrayUnion(
                                           [widget.paymentRef]),
                                     };
                                     await verifyButtonInvoicesRecord.reference
                                         .update(invoicesUpdateData);
-                                    if (!(rowBookingsRecord.payments
+                                    if (!rowBookingsRecord.payments
                                         .toList()
-                                        .contains(widget.paymentRef))) {
+                                        .contains(widget.paymentRef)) {
                                       final bookingsUpdateData = {
                                         ...createBookingsRecordData(
                                           paymentBalance:
                                               functions.returnBookingBalance(
                                                   containerPaymentsRecord.amount
-                                                      .toDouble(),
+                                                      ?.toDouble(),
                                                   rowBookingsRecord
                                                       .paymentBalance),
                                           updatedDate: getCurrentTimestamp,
-                                          updateRole: currentUserDocument?.role,
+                                          updateRole: valueOrDefault(
+                                              currentUserDocument?.role, ''),
                                         ),
                                         'payments': FieldValue.arrayUnion(
                                             [widget.paymentRef]),

@@ -46,7 +46,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -86,7 +86,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                               child: SizedBox(
                                 width: 50,
                                 height: 50,
-                                child: SpinKitDoubleBounce(
+                                child: SpinKitRipple(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   size: 50,
@@ -119,7 +119,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                       ),
                                       InkWell(
                                         onTap: () async {
-                                          Navigator.pop(context);
+                                          context.pop();
                                         },
                                         child: Card(
                                           clipBehavior:
@@ -142,7 +142,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                               size: 30,
                                             ),
                                             onPressed: () async {
-                                              Navigator.pop(context);
+                                              context.pop();
                                             },
                                           ),
                                         ),
@@ -1394,10 +1394,8 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                 builder: (context) {
                                                   final tests =
                                                       bookingInvoicingContentBookingsRecord
-                                                              .bookedTests
-                                                              .toList()
-                                                              ?.toList() ??
-                                                          [];
+                                                          .bookedTests
+                                                          .toList();
                                                   return ListView.builder(
                                                     padding: EdgeInsets.zero,
                                                     primary: false,
@@ -1428,7 +1426,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                                   width: 50,
                                                                   height: 50,
                                                                   child:
-                                                                      SpinKitDoubleBounce(
+                                                                      SpinKitRipple(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryColor,
@@ -1593,7 +1591,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                   text:
                                                       bookingInvoicingContentBookingsRecord
                                                           .paymentBalance
-                                                          .toString(),
+                                                          ?.toString(),
                                                 ),
                                                 obscureText: false,
                                                 decoration: InputDecoration(
@@ -1619,12 +1617,14 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                 keyboardType:
                                                     TextInputType.number,
                                                 validator: (val) {
-                                                  if (val.isEmpty) {
+                                                  if (val == null ||
+                                                      val.isEmpty) {
                                                     return 'required';
                                                   }
                                                   if (val.length < 2) {
                                                     return 'Requires at least 2 characters.';
                                                   }
+
                                                   return null;
                                                 },
                                               ),
@@ -1684,6 +1684,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                     minTime:
                                                         getCurrentTimestamp,
                                                   );
+
                                                   setState(() => FFAppState()
                                                           .selectedDate =
                                                       datePicked);
@@ -1715,7 +1716,8 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                     color: Colors.transparent,
                                                     width: 1,
                                                   ),
-                                                  borderRadius: 16,
+                                                  borderRadius:
+                                                      BorderRadius.circular(16),
                                                 ),
                                               ),
                                             ),
@@ -1762,7 +1764,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                   ''),
                                           bookingInvoicingContentBookingsRecord
                                               .totalPrice
-                                              .toDouble()),
+                                              ?.toDouble()),
                                   labRefNum:
                                       bookingInvoicingContentBookingsRecord
                                           .labRefNum,
@@ -1775,9 +1777,10 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                   dueDate:
                                       functions.setInvoiceDueDate(datePicked),
                                   updateDate: getCurrentTimestamp,
-                                  updateRole: currentUserDocument?.role,
+                                  updateRole: valueOrDefault(
+                                      currentUserDocument?.role, ''),
                                 );
-                                final invoicesRecordReference =
+                                var invoicesRecordReference =
                                     InvoicesRecord.collection.doc();
                                 await invoicesRecordReference
                                     .set(invoicesCreateData);
@@ -1789,7 +1792,8 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                   ...createBookingsRecordData(
                                     isInvoiced: true,
                                     updatedDate: getCurrentTimestamp,
-                                    updateRole: currentUserDocument?.role,
+                                    updateRole: valueOrDefault(
+                                        currentUserDocument?.role, ''),
                                   ),
                                   'Invoice_Refs': FieldValue.arrayUnion(
                                       [newInvoice.reference]),
@@ -1814,7 +1818,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                     );
                                   },
                                 );
-                                Navigator.pop(context);
+                                context.pop();
 
                                 setState(() {});
                               },
@@ -1838,7 +1842,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                   color: Colors.transparent,
                                   width: 1,
                                 ),
-                                borderRadius: 25,
+                                borderRadius: BorderRadius.circular(25),
                               ),
                             ),
                           ),

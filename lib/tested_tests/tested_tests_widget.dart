@@ -2,7 +2,6 @@ import '../backend/backend.dart';
 import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../test_deck/test_deck_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -105,11 +104,11 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                           queryBuilder: (testedTestsRecord) =>
                                               testedTestsRecord
                                                   .where('resultPosted',
-                                                      isNotEqualTo: false)
+                                                      isEqualTo: true)
                                                   .where('is_verified',
-                                                      isNotEqualTo: true)
+                                                      isEqualTo: false)
                                                   .where('is_flagged',
-                                                      isNotEqualTo: true),
+                                                      isEqualTo: false),
                                         ),
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.
@@ -118,7 +117,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                               child: SizedBox(
                                                 width: 50,
                                                 height: 50,
-                                                child: SpinKitDoubleBounce(
+                                                child: SpinKitRipple(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryColor,
@@ -158,8 +157,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                         child: SizedBox(
                                                           width: 50,
                                                           height: 50,
-                                                          child:
-                                                              SpinKitDoubleBounce(
+                                                          child: SpinKitRipple(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .primaryColor,
@@ -278,7 +276,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                               child: SizedBox(
                                                                                 width: 50,
                                                                                 height: 50,
-                                                                                child: SpinKitDoubleBounce(
+                                                                                child: SpinKitRipple(
                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                   size: 50,
                                                                                 ),
@@ -691,13 +689,11 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                           InkWell(
                                                                             onTap:
                                                                                 () async {
-                                                                              await Navigator.push(
-                                                                                context,
-                                                                                MaterialPageRoute(
-                                                                                  builder: (context) => TestDeckWidget(
-                                                                                    testedTestRef: listViewTestedTestsRecord.reference,
-                                                                                  ),
-                                                                                ),
+                                                                              context.pushNamed(
+                                                                                'TestDeck',
+                                                                                queryParams: {
+                                                                                  'testedTestRef': serializeParam(listViewTestedTestsRecord.reference, ParamType.DocumentReference),
+                                                                                }.withoutNulls,
                                                                               );
                                                                             },
                                                                             child:
@@ -788,7 +784,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                               child: SizedBox(
                                                 width: 50,
                                                 height: 50,
-                                                child: SpinKitDoubleBounce(
+                                                child: SpinKitRipple(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryColor,
@@ -828,8 +824,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                         child: SizedBox(
                                                           width: 50,
                                                           height: 50,
-                                                          child:
-                                                              SpinKitDoubleBounce(
+                                                          child: SpinKitRipple(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .primaryColor,
@@ -891,7 +886,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                       height:
                                                                           50,
                                                                       child:
-                                                                          SpinKitDoubleBounce(
+                                                                          SpinKitRipple(
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryColor,
                                                                         size:
@@ -1408,7 +1403,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                             child: SizedBox(
                                               width: 50,
                                               height: 50,
-                                              child: SpinKitDoubleBounce(
+                                              child: SpinKitRipple(
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryColor,
@@ -1475,7 +1470,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                   width: 50,
                                                                   height: 50,
                                                                   child:
-                                                                      SpinKitDoubleBounce(
+                                                                      SpinKitRipple(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryColor,

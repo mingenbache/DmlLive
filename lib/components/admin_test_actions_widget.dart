@@ -42,7 +42,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: SpinKitDoubleBounce(
+                      child: SpinKitRipple(
                         color: FlutterFlowTheme.of(context).primaryColor,
                         size: 50,
                       ),
@@ -158,40 +158,46 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                         true)
                                       InkWell(
                                         onTap: () async {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('Suspend Test?'),
-                                                content: Text(
-                                                    'Suspending the test will disable client bookings for this test.'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Cancel'),
-                                                  ),
-                                                  TextButton(
-                                                    onPressed: () async {
-                                                      Navigator.pop(
-                                                          alertDialogContext);
-
-                                                      final testsUpdateData =
-                                                          createTestsRecordData(
-                                                        isAvailable: false,
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Suspend Test?'),
+                                                        content: Text(
+                                                            'Suspending the test will disable client bookings for this test.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child:
+                                                                Text('Confirm'),
+                                                          ),
+                                                        ],
                                                       );
-                                                      await widget.testRef
-                                                          .update(
-                                                              testsUpdateData);
-                                                      ;
                                                     },
-                                                    child: Text('Confirm'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            final testsUpdateData =
+                                                createTestsRecordData(
+                                              isAvailable: false,
+                                            );
+                                            await widget.testRef
+                                                .update(testsUpdateData);
+                                          }
                                         },
                                         child: Container(
                                           width: MediaQuery.of(context)
@@ -253,44 +259,49 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                           ),
                                         ),
                                       ),
-                                    if (!(containerTestsRecord.isAvailable) ??
-                                        true)
+                                    if (!containerTestsRecord.isAvailable)
                                       InkWell(
                                         onTap: () async {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('Unsuspend Test?'),
-                                                content: Text(
-                                                    'Unsuspending will allow client bookings for this test.'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Cancel'),
-                                                  ),
-                                                  TextButton(
-                                                    onPressed: () async {
-                                                      Navigator.pop(
-                                                          alertDialogContext);
-
-                                                      final testsUpdateData =
-                                                          createTestsRecordData(
-                                                        isAvailable: true,
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Unsuspend Test?'),
+                                                        content: Text(
+                                                            'Unsuspending will allow client bookings for this test.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child:
+                                                                Text('Confirm'),
+                                                          ),
+                                                        ],
                                                       );
-                                                      await widget.testRef
-                                                          .update(
-                                                              testsUpdateData);
-                                                      ;
                                                     },
-                                                    child: Text('Confirm'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            final testsUpdateData =
+                                                createTestsRecordData(
+                                              isAvailable: true,
+                                            );
+                                            await widget.testRef
+                                                .update(testsUpdateData);
+                                          }
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {

@@ -37,7 +37,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -56,7 +56,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                   child: SizedBox(
                     width: 50,
                     height: 50,
-                    child: SpinKitDoubleBounce(
+                    child: SpinKitRipple(
                       color: FlutterFlowTheme.of(context).primaryColor,
                       size: 50,
                     ),
@@ -108,7 +108,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                     ),
                                     InkWell(
                                       onTap: () async {
-                                        Navigator.pop(context);
+                                        context.pop();
                                       },
                                       child: Card(
                                         clipBehavior:
@@ -130,7 +130,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                             size: 30,
                                           ),
                                           onPressed: () async {
-                                            Navigator.pop(context);
+                                            context.pop();
                                           },
                                         ),
                                       ),
@@ -282,9 +282,8 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                           children: [
                                             Stack(
                                               children: [
-                                                if (!(columnInvoicesRecord
-                                                        .isPaid) ??
-                                                    true)
+                                                if (!columnInvoicesRecord
+                                                    .isPaid)
                                                   Container(
                                                     width: 130,
                                                     height: 32,
@@ -1343,10 +1342,8 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                               builder: (context) {
                                                 final tests =
                                                     invoiceContainerBookingsRecord
-                                                            .bookedTests
-                                                            .toList()
-                                                            ?.toList() ??
-                                                        [];
+                                                        .bookedTests
+                                                        .toList();
                                                 return ListView.builder(
                                                   padding: EdgeInsets.zero,
                                                   primary: false,
@@ -1377,7 +1374,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                 width: 50,
                                                                 height: 50,
                                                                 child:
-                                                                    SpinKitDoubleBounce(
+                                                                    SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryColor,
@@ -1554,7 +1551,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                       MainAxisSize.max,
                                                   children: [
                                                     Text(
-                                                      'Kshs ${columnInvoicesRecord.invoiceAmount.toString()}',
+                                                      'Kshs ${columnInvoicesRecord.invoiceAmount?.toString()}',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1615,10 +1612,8 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                 builder: (context) {
                                                   final payments =
                                                       columnInvoicesRecord
-                                                              .paymentsList
-                                                              .toList()
-                                                              ?.toList() ??
-                                                          [];
+                                                          .paymentsList
+                                                          .toList();
                                                   return ListView.builder(
                                                     padding: EdgeInsets.zero,
                                                     primary: false,
@@ -1650,7 +1645,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                   width: 50,
                                                                   height: 50,
                                                                   child:
-                                                                      SpinKitDoubleBounce(
+                                                                      SpinKitRipple(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryColor,
@@ -1912,7 +1907,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                     color: Colors.transparent,
                                     width: 1,
                                   ),
-                                  borderRadius: 25,
+                                  borderRadius: BorderRadius.circular(25),
                                 ),
                               ),
                             ),

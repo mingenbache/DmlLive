@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/lat_lng.dart';
 
 class FFAppState {
@@ -18,6 +20,15 @@ class FFAppState {
     _numTests = prefs.getInt('ff_numTests') ?? _numTests;
     _numTestDone = prefs.getInt('ff_numTestDone') ?? _numTestDone;
     _notifHeight = prefs.getDouble('ff_notifHeight') ?? _notifHeight;
+    _proceedconfirmation =
+        prefs.getBool('ff_proceedconfirmation') ?? _proceedconfirmation;
+    _testPackTests = prefs
+            .getStringList('ff_testPackTests')
+            ?.map((path) => path.ref)
+            ?.toList() ??
+        _testPackTests;
+    _testPackSubmit = prefs.getBool('ff_testPackSubmit') ?? _testPackSubmit;
+    _firstTime = prefs.getBool('ff_firstTime') ?? _firstTime;
   }
 
   SharedPreferences prefs;
@@ -77,6 +88,68 @@ class FFAppState {
     _notifHeight = _value;
     prefs.setDouble('ff_notifHeight', _value);
   }
+
+  bool _proceedconfirmation = false;
+  bool get proceedconfirmation => _proceedconfirmation;
+  set proceedconfirmation(bool _value) {
+    _proceedconfirmation = _value;
+    prefs.setBool('ff_proceedconfirmation', _value);
+  }
+
+  bool assignTechnologist = false;
+
+  bool reportLastPage = false;
+
+  List<String> reportEmails = [];
+
+  List<DocumentReference> _testPackTests = [];
+  List<DocumentReference> get testPackTests => _testPackTests;
+  set testPackTests(List<DocumentReference> _value) {
+    _testPackTests = _value;
+    prefs.setStringList('ff_testPackTests', _value.map((x) => x.path).toList());
+  }
+
+  void addToTestPackTests(DocumentReference _value) {
+    _testPackTests.add(_value);
+    prefs.setStringList(
+        'ff_testPackTests', _testPackTests.map((x) => x.path).toList());
+  }
+
+  void removeFromTestPackTests(DocumentReference _value) {
+    _testPackTests.remove(_value);
+    prefs.setStringList(
+        'ff_testPackTests', _testPackTests.map((x) => x.path).toList());
+  }
+
+  bool _testPackSubmit = false;
+  bool get testPackSubmit => _testPackSubmit;
+  set testPackSubmit(bool _value) {
+    _testPackSubmit = _value;
+    prefs.setBool('ff_testPackSubmit', _value);
+  }
+
+  String packagecategoryPicked = 'all';
+
+  bool allPackageCategories = false;
+
+  List<DocumentReference> duplicateTests = [];
+
+  DocumentReference duplicateTest;
+
+  String testsVar = '';
+
+  String paymentsvar = '';
+
+  bool _firstTime = false;
+  bool get firstTime => _firstTime;
+  set firstTime(bool _value) {
+    _firstTime = _value;
+    prefs.setBool('ff_firstTime', _value);
+  }
+
+  List<String> images = [];
+
+  List<String> specialtests = [];
 }
 
 LatLng _latLngFromString(String val) {

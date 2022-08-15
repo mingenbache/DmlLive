@@ -46,10 +46,6 @@ abstract class BookedTestsRecord
   String get testAttachment;
 
   @nullable
-  @BuiltValueField(wireName: 'cart_ref')
-  DocumentReference get cartRef;
-
-  @nullable
   @BuiltValueField(wireName: 'created_date')
   DateTime get createdDate;
 
@@ -67,6 +63,14 @@ abstract class BookedTestsRecord
   DocumentReference get createUser;
 
   @nullable
+  @BuiltValueField(wireName: 'has_test_pack')
+  bool get hasTestPack;
+
+  @nullable
+  @BuiltValueField(wireName: 'test_pack_ref')
+  DocumentReference get testPackRef;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -77,7 +81,8 @@ abstract class BookedTestsRecord
     ..testResult = ''
     ..testAttachment = ''
     ..hasResult = false
-    ..labRefNum = '';
+    ..labRefNum = ''
+    ..hasTestPack = false;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('booked_tests');
@@ -110,12 +115,13 @@ Map<String, dynamic> createBookedTestsRecordData({
   DocumentReference user,
   String testResult,
   String testAttachment,
-  DocumentReference cartRef,
   DateTime createdDate,
   bool hasResult,
   String labRefNum,
   DocumentReference technologist,
   DocumentReference createUser,
+  bool hasTestPack,
+  DocumentReference testPackRef,
 }) =>
     serializers.toFirestore(
         BookedTestsRecord.serializer,
@@ -129,9 +135,10 @@ Map<String, dynamic> createBookedTestsRecordData({
           ..user = user
           ..testResult = testResult
           ..testAttachment = testAttachment
-          ..cartRef = cartRef
           ..createdDate = createdDate
           ..hasResult = hasResult
           ..labRefNum = labRefNum
           ..technologist = technologist
-          ..createUser = createUser));
+          ..createUser = createUser
+          ..hasTestPack = hasTestPack
+          ..testPackRef = testPackRef));

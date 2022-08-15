@@ -36,7 +36,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -64,7 +64,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                             child: SizedBox(
                               width: 50,
                               height: 50,
-                              child: SpinKitDoubleBounce(
+                              child: SpinKitRipple(
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
                                 size: 50,
@@ -244,9 +244,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                         children: [
                                           Stack(
                                             children: [
-                                              if (!(invoiceInvoicesRecord
-                                                      .isPaid) ??
-                                                  true)
+                                              if (!invoiceInvoicesRecord.isPaid)
                                                 Container(
                                                   width: 130,
                                                   height: 32,
@@ -1280,10 +1278,8 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                           child: Builder(
                                             builder: (context) {
                                               final tests = columnBookingsRecord
-                                                      .bookedTests
-                                                      .toList()
-                                                      ?.toList() ??
-                                                  [];
+                                                  .bookedTests
+                                                  .toList();
                                               return ListView.builder(
                                                 padding: EdgeInsets.zero,
                                                 primary: false,
@@ -1312,7 +1308,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                               width: 50,
                                                               height: 50,
                                                               child:
-                                                                  SpinKitDoubleBounce(
+                                                                  SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryColor,
@@ -1504,7 +1500,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Text(
-                                                    'Kshs ${invoiceInvoicesRecord.invoiceAmount.toString()}',
+                                                    'Kshs ${invoiceInvoicesRecord.invoiceAmount?.toString()}',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyText1,
@@ -1563,10 +1559,8 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                               builder: (context) {
                                                 final payments =
                                                     invoiceInvoicesRecord
-                                                            .paymentsList
-                                                            .toList()
-                                                            ?.toList() ??
-                                                        [];
+                                                        .paymentsList
+                                                        .toList();
                                                 return ListView.builder(
                                                   padding: EdgeInsets.zero,
                                                   primary: false,
@@ -1597,7 +1591,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                 width: 50,
                                                                 height: 50,
                                                                 child:
-                                                                    SpinKitDoubleBounce(
+                                                                    SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryColor,
@@ -1852,7 +1846,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                             color: Colors.transparent,
                             width: 1,
                           ),
-                          borderRadius: 25,
+                          borderRadius: BorderRadius.circular(25),
                         ),
                       ),
                     ),

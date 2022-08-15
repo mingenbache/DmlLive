@@ -100,12 +100,12 @@ abstract class TestsRecord implements Built<TestsRecord, TestsRecordBuilder> {
 
   static TestsRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) => TestsRecord(
         (c) => c
-          ..price = snapshot.data['price']
+          ..price = snapshot.data['price']?.round()
           ..name = snapshot.data['name']
           ..homeTest = snapshot.data['home_test']
           ..description = snapshot.data['description']
-          ..duration = snapshot.data['duration']
-          ..durationResults = snapshot.data['duration_results']
+          ..duration = snapshot.data['duration']?.toDouble()
+          ..durationResults = snapshot.data['duration_results']?.toDouble()
           ..category = snapshot.data['category']
           ..isAvailable = snapshot.data['is_available']
           ..keywords = safeGet(() => ListBuilder(snapshot.data['Keywords']))

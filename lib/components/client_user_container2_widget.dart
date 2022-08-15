@@ -1,5 +1,5 @@
 import '../backend/backend.dart';
-import '../components/client_user_card_widget.dart';
+import '../components/client_user_cardx_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
@@ -33,7 +33,7 @@ class _ClientUserContainer2WidgetState
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -52,21 +52,20 @@ class _ClientUserContainer2WidgetState
           child: Builder(
             builder: (context) {
               final clients = functions
-                      .returnUserList(
-                          widget.nameQuery,
-                          functions
-                              .filterClients(
-                                  clientUserContainerUsersRecordList.toList())
-                              .toList())
-                      ?.toList() ??
-                  [];
+                  .returnUserList(
+                      widget.nameQuery,
+                      functions
+                          .filterClients(
+                              clientUserContainerUsersRecordList.toList())
+                          .toList())
+                  .toList();
               return ListView.builder(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.vertical,
                 itemCount: clients.length,
                 itemBuilder: (context, clientsIndex) {
                   final clientsItem = clients[clientsIndex];
-                  return ClientUserCardWidget(
+                  return ClientUserCardxWidget(
                     userRecord: clientsItem,
                   );
                 },

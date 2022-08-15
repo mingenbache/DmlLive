@@ -42,7 +42,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
               child: SizedBox(
                 width: 50,
                 height: 50,
-                child: SpinKitDoubleBounce(
+                child: SpinKitRipple(
                   color: FlutterFlowTheme.of(context).primaryColor,
                   size: 50,
                 ),
@@ -66,7 +66,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                           child: SizedBox(
                             width: 50,
                             height: 50,
-                            child: SpinKitDoubleBounce(
+                            child: SpinKitRipple(
                               color: FlutterFlowTheme.of(context).primaryColor,
                               size: 50,
                             ),
@@ -121,7 +121,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                     ),
                                     InkWell(
                                       onTap: () async {
-                                        Navigator.pop(context);
+                                        context.pop();
                                       },
                                       child: Card(
                                         clipBehavior:
@@ -143,7 +143,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                             size: 30,
                                           ),
                                           onPressed: () async {
-                                            Navigator.pop(context);
+                                            context.pop();
                                           },
                                         ),
                                       ),
@@ -199,9 +199,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                   children: [
                                     Stack(
                                       children: [
-                                        if (!(viewResultsTestedTestsRecord
-                                                .resultPosted) ??
-                                            true)
+                                        if (!viewResultsTestedTestsRecord
+                                            .resultPosted)
                                           Container(
                                             width: 145,
                                             height: 32,
@@ -264,8 +263,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                           child: Stack(
                                             children: [
                                               if (functions.displayUnverifiedTag(
-                                                      viewResultsTestedTestsRecord) ??
-                                                  true)
+                                                  viewResultsTestedTestsRecord))
                                                 Container(
                                                   width: 130,
                                                   height: 32,
@@ -331,8 +329,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                   ),
                                                 ),
                                               if (functions.displayVerifiedTag(
-                                                      viewResultsTestedTestsRecord) ??
-                                                  true)
+                                                  viewResultsTestedTestsRecord))
                                                 Container(
                                                   width: 130,
                                                   height: 32,
@@ -408,41 +405,47 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                         true)
                                       InkWell(
                                         onTap: () async {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('Remove Flag?'),
-                                                content: Text(
-                                                    'Are you sure you want to remove the flag on this test? The results can be published aftehr this.'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Cancel'),
-                                                  ),
-                                                  TextButton(
-                                                    onPressed: () async {
-                                                      Navigator.pop(
-                                                          alertDialogContext);
-
-                                                      final testedTestsUpdateData =
-                                                          createTestedTestsRecordData(
-                                                        isFlagged: false,
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Remove Flag?'),
+                                                        content: Text(
+                                                            'Are you sure you want to remove the flag on this test? The results can be published aftehr this.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child:
+                                                                Text('Confirm'),
+                                                          ),
+                                                        ],
                                                       );
-                                                      await viewResultsTestedTestsRecord
-                                                          .reference
-                                                          .update(
-                                                              testedTestsUpdateData);
-                                                      ;
                                                     },
-                                                    child: Text('Confirm'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            final testedTestsUpdateData =
+                                                createTestedTestsRecordData(
+                                              isFlagged: false,
+                                            );
+                                            await viewResultsTestedTestsRecord
+                                                .reference
+                                                .update(testedTestsUpdateData);
+                                          }
                                         },
                                         child: Container(
                                           width: 116,
@@ -513,7 +516,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: SpinKitDoubleBounce(
+                                            child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
@@ -689,9 +692,11 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                               ],
                                                             ),
                                                           ),
-                                                          if (currentUserDocument
-                                                                  ?.isStaff ??
-                                                              true)
+                                                          if (valueOrDefault<
+                                                                  bool>(
+                                                              currentUserDocument
+                                                                  ?.isStaff,
+                                                              false))
                                                             AuthUserStreamWidget(
                                                               child: Container(
                                                                 width: MediaQuery.of(
@@ -1113,9 +1118,11 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                               ],
                                                             ),
                                                           ),
-                                                          if (currentUserDocument
-                                                                  ?.isStaff ??
-                                                              true)
+                                                          if (valueOrDefault<
+                                                                  bool>(
+                                                              currentUserDocument
+                                                                  ?.isStaff,
+                                                              false))
                                                             AuthUserStreamWidget(
                                                               child: Container(
                                                                 width: MediaQuery.of(
@@ -1376,8 +1383,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                       ),
                                                                       Visibility(
                                                                         visible:
-                                                                            !(viewResultsTestedTestsRecord.resultsPositive) ??
-                                                                                true,
+                                                                            !viewResultsTestedTestsRecord.resultsPositive,
                                                                         child:
                                                                             Container(
                                                                           width:
@@ -2072,10 +2078,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                             builder: (context) {
                                                               final resultAttachments =
                                                                   viewResultsTestedTestsRecord
-                                                                          .resultsAttachment
-                                                                          .toList()
-                                                                          ?.toList() ??
-                                                                      [];
+                                                                      .resultsAttachment
+                                                                      .toList();
                                                               return ListView
                                                                   .builder(
                                                                 padding:
@@ -2178,7 +2182,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                 child: SizedBox(
                                   width: 50,
                                   height: 50,
-                                  child: SpinKitDoubleBounce(
+                                  child: SpinKitRipple(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
                                     size: 50,

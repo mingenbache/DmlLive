@@ -1,7 +1,10 @@
+import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../components/dashboard_menu_widget_light_widget.dart';
+import '../components/notification_list_item_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import 'package:expandable/expandable.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,280 +33,87 @@ class _ClientNotificationsWidgetWidgetState
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Container(
-              width: double.infinity,
-              color: Color(0x00000000),
-              child: ExpandableNotifier(
-                initialExpanded: true,
-                child: ExpandablePanel(
-                  header: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(14, 0, 0, 0),
-                    child: Text(
-                      'Notifications',
-                      style: FlutterFlowTheme.of(context).title3,
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              StreamBuilder<List<NotificationsRecord>>(
+                stream: queryNotificationsRecord(
+                  queryBuilder: (notificationsRecord) => notificationsRecord
+                      .where('users_receiving',
+                          arrayContains: currentUserReference)
+                      .orderBy('created_date', descending: true),
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50,
+                        height: 50,
+                        child: SpinKitRipple(
+                          color: FlutterFlowTheme.of(context).primaryColor,
+                          size: 50,
+                        ),
+                      ),
+                    );
+                  }
+                  List<NotificationsRecord> containerNotificationsRecordList =
+                      snapshot.data;
+                  return Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    height: 100,
+                    constraints: BoxConstraints(
+                      maxWidth: 380,
                     ),
-                  ),
-                  collapsed: Container(
-                    width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                          child: Text(
-                            'You have the following updates',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Roboto',
-                                      color: Color(0x8AFFFFFF),
-                                    ),
-                          ),
-                        ),
-                        DashboardMenuWidgetLightWidget(),
-                      ],
-                    ),
-                  ),
-                  expanded: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        height: 100,
-                        constraints: BoxConstraints(
-                          maxWidth: 380,
-                        ),
-                        decoration: BoxDecoration(),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: ListView(
+                        Expanded(
+                          child: Builder(
+                            builder: (context) {
+                              final unseenNotifications = functions
+                                  .filterNotifications(
+                                      containerNotificationsRecordList.toList(),
+                                      currentUserReference)
+                                  .toList();
+                              return ListView.builder(
                                 padding: EdgeInsets.zero,
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
-                                children: [
-                                  Padding(
+                                itemCount: unseenNotifications.length,
+                                itemBuilder:
+                                    (context, unseenNotificationsIndex) {
+                                  final unseenNotificationsItem =
+                                      unseenNotifications[
+                                          unseenNotificationsIndex];
+                                  return Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 3, 0, 0),
-                                    child: Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.85,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.04,
-                                      constraints: BoxConstraints(
-                                        maxHeight: 30,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFEEEEEE),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.75,
-                                            height: 100,
-                                            decoration: BoxDecoration(),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5, 5, 5, 5),
-                                              child: Text(
-                                                'You have received a New Report',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryColor,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.1,
-                                            decoration: BoxDecoration(),
-                                            child: Icon(
-                                              Icons.highlight_off_sharp,
-                                              color: Color(0xFF586B06),
-                                              size: 24,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                        0, 0, 0, 5),
+                                    child: NotificationListItemWidget(
+                                      notificationRef: unseenNotificationsItem,
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 3, 0, 0),
-                                    child: Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.85,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.04,
-                                      constraints: BoxConstraints(
-                                        maxHeight: 30,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFEEEEEE),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.75,
-                                            height: 100,
-                                            decoration: BoxDecoration(),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5, 5, 5, 5),
-                                              child: Text(
-                                                'You have received a New Report',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryColor,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.1,
-                                            decoration: BoxDecoration(),
-                                            child: Icon(
-                                              Icons.highlight_off_sharp,
-                                              color: Color(0xFF586B06),
-                                              size: 24,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 3, 0, 0),
-                                    child: Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.85,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.04,
-                                      constraints: BoxConstraints(
-                                        maxHeight: 30,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFEEEEEE),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.75,
-                                            height: 100,
-                                            decoration: BoxDecoration(),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5, 5, 5, 5),
-                                              child: Text(
-                                                'You have received a New Report',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryColor,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.1,
-                                            decoration: BoxDecoration(),
-                                            child: Icon(
-                                              Icons.highlight_off_sharp,
-                                              color: Color(0xFF586B06),
-                                              size: 24,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                                  );
+                                },
+                              );
+                            },
+                          ),
                         ),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          DashboardMenuWidgetLightWidget(),
-                        ],
-                      ),
-                    ],
-                  ),
-                  theme: ExpandableThemeData(
-                    tapHeaderToExpand: true,
-                    tapBodyToExpand: true,
-                    tapBodyToCollapse: false,
-                    headerAlignment: ExpandablePanelHeaderAlignment.center,
-                    hasIcon: true,
-                  ),
-                ),
+                      ],
+                    ),
+                  );
+                },
               ),
-            ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  DashboardMenuWidgetLightWidget(),
+                ],
+              ),
+            ],
           ),
         ],
       ),

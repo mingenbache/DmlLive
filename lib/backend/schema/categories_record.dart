@@ -18,12 +18,22 @@ abstract class CategoriesRecord
   String get name;
 
   @nullable
+  @BuiltValueField(wireName: 'ispackage_Category')
+  bool get ispackageCategory;
+
+  @nullable
+  @BuiltValueField(wireName: 'istest_Category')
+  bool get istestCategory;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
   static void _initializeBuilder(CategoriesRecordBuilder builder) => builder
     ..categories = ListBuilder()
-    ..name = '';
+    ..name = ''
+    ..ispackageCategory = false
+    ..istestCategory = false;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('categories');
@@ -48,9 +58,13 @@ abstract class CategoriesRecord
 
 Map<String, dynamic> createCategoriesRecordData({
   String name,
+  bool ispackageCategory,
+  bool istestCategory,
 }) =>
     serializers.toFirestore(
         CategoriesRecord.serializer,
         CategoriesRecord((c) => c
           ..categories = null
-          ..name = name));
+          ..name = name
+          ..ispackageCategory = ispackageCategory
+          ..istestCategory = istestCategory));

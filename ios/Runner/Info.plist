@@ -32,7 +32,21 @@
                 
             </array>
         </dict>
+
+        <dict>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>CFBundleURLName</key>
+        <string>dmllive.com</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+        <string>dmllive</string>
+        </array>
+        </dict>
     </array>
+    <key>FlutterDeepLinkingEnabled</key>
+    <true/>
+
 
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
@@ -40,9 +54,15 @@
 	<true/>
 
 	<key>NSCameraUsageDescription</key>
-	<string>In order to take a picture or video, this app requires permission to access the camera.</string>
+      <string>In order to take a picture or video, this app requires permission to access the camera.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>In order to upload media, this app requires permission to access the photo library.</string>
+      <string>In order to upload media, this app requires permission to access the photo library.</string>
+
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>fetch</string>
+        <string>remote-notification</string>
+    </array>
 
 
 	<key>UILaunchStoryboardName</key>

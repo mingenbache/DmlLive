@@ -1,12 +1,10 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../bookings_schedule/bookings_schedule_widget.dart';
 import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_calendar.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../test_deck/test_deck_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -80,7 +78,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                     child: SizedBox(
                       width: 50,
                       height: 50,
-                      child: SpinKitDoubleBounce(
+                      child: SpinKitRipple(
                         color: FlutterFlowTheme.of(context).primaryColor,
                         size: 50,
                       ),
@@ -165,13 +163,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                   ),
                                   InkWell(
                                     onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              BookingsScheduleWidget(),
-                                        ),
-                                      );
+                                      context.pushNamed('BookingsSchedule');
                                     },
                                     child: Material(
                                       color: Colors.transparent,
@@ -227,7 +219,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                   child: SizedBox(
                                     width: 50,
                                     height: 50,
-                                    child: SpinKitDoubleBounce(
+                                    child: SpinKitRipple(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryColor,
                                       size: 50,
@@ -251,8 +243,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                         builder: (context) {
                                           final bookedTests =
                                               calendarScheduleContainerBookedTestsRecordList
-                                                      ?.toList() ??
-                                                  [];
+                                                  .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             shrinkWrap: true,
@@ -284,8 +275,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                         child: SizedBox(
                                                           width: 50,
                                                           height: 50,
-                                                          child:
-                                                              SpinKitDoubleBounce(
+                                                          child: SpinKitRipple(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .primaryColor,
@@ -305,6 +295,8 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                             : null;
                                                     return InkWell(
                                                       onTap: () async {
+                                                        var _shouldSetState =
+                                                            false;
                                                         if (testQueueItemTestedTestsRecord !=
                                                             null) {
                                                           final testedTestsCreateData =
@@ -327,7 +319,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                             dateSampleCollected:
                                                                 getCurrentTimestamp,
                                                           );
-                                                          final testedTestsRecordReference =
+                                                          var testedTestsRecordReference =
                                                               TestedTestsRecord
                                                                   .collection
                                                                   .doc();
@@ -338,20 +330,27 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                               .getDocumentFromData(
                                                                   testedTestsCreateData,
                                                                   testedTestsRecordReference);
+                                                          _shouldSetState =
+                                                              true;
+                                                        } else {
+                                                          if (_shouldSetState)
+                                                            setState(() {});
+                                                          return;
                                                         }
-                                                        await Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                TestDeckWidget(
-                                                              testedTestRef:
-                                                                  newTestedtest
-                                                                      .reference,
-                                                            ),
-                                                          ),
-                                                        );
 
-                                                        setState(() {});
+                                                        context.pushNamed(
+                                                          'TestDeck',
+                                                          queryParams: {
+                                                            'testedTestRef':
+                                                                serializeParam(
+                                                                    newTestedtest
+                                                                        .reference,
+                                                                    ParamType
+                                                                        .DocumentReference),
+                                                          }.withoutNulls,
+                                                        );
+                                                        if (_shouldSetState)
+                                                          setState(() {});
                                                       },
                                                       child: Material(
                                                         color:
@@ -391,7 +390,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                     width: 50,
                                                                     height: 50,
                                                                     child:
-                                                                        SpinKitDoubleBounce(
+                                                                        SpinKitRipple(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryColor,
@@ -430,7 +429,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                 SizedBox(
                                                                               width: 50,
                                                                               height: 50,
-                                                                              child: SpinKitDoubleBounce(
+                                                                              child: SpinKitRipple(
                                                                                 color: FlutterFlowTheme.of(context).primaryColor,
                                                                                 size: 50,
                                                                               ),
@@ -584,10 +583,10 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                     width: 1,
                                                                                                   ),
-                                                                                                  borderRadius: 12,
+                                                                                                  borderRadius: BorderRadius.circular(12),
                                                                                                 ),
                                                                                               ),
-                                                                                            if (!(bookedTestsItem.sampleCollected) ?? true)
+                                                                                            if (!bookedTestsItem.sampleCollected)
                                                                                               FFButtonWidget(
                                                                                                 onPressed: () {
                                                                                                   print('ButtonNotCollected pressed ...');
@@ -611,7 +610,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                                     color: Colors.transparent,
                                                                                                     width: 1,
                                                                                                   ),
-                                                                                                  borderRadius: 12,
+                                                                                                  borderRadius: BorderRadius.circular(12),
                                                                                                 ),
                                                                                               ),
                                                                                           ],
@@ -639,7 +638,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                               color: Colors.transparent,
                                                                                               width: 1,
                                                                                             ),
-                                                                                            borderRadius: 12,
+                                                                                            borderRadius: BorderRadius.circular(12),
                                                                                           ),
                                                                                         ),
                                                                                       ],

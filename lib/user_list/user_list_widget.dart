@@ -1,5 +1,5 @@
 import '../backend/backend.dart';
-import '../components/client_user_card2_widget.dart';
+import '../components/client_user_card_widget.dart';
 import '../components/staff_user_card_widget.dart';
 import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -173,6 +173,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(4, 0, 0, 0),
                                                   child: TextFormField(
+                                                    controller: textController,
                                                     onChanged: (_) =>
                                                         EasyDebounce.debounce(
                                                       'textController',
@@ -180,7 +181,6 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                           milliseconds: 500),
                                                       () => setState(() {}),
                                                     ),
-                                                    controller: textController,
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       labelText:
@@ -242,9 +242,8 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                           ? InkWell(
                                                               onTap: () =>
                                                                   setState(
-                                                                () =>
-                                                                    textController
-                                                                        .clear(),
+                                                                () => textController
+                                                                    ?.clear(),
                                                               ),
                                                               child: Icon(
                                                                 Icons.clear,
@@ -358,7 +357,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                           child: SizedBox(
                                             width: 50,
                                             height: 50,
-                                            child: SpinKitDoubleBounce(
+                                            child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
@@ -385,12 +384,11 @@ class _UserListWidgetState extends State<UserListWidget> {
                                         child: Builder(
                                           builder: (context) {
                                             final clients = functions
-                                                    .returnUserList(
-                                                        textController.text,
-                                                        clientUserContainerUsersRecordList
-                                                            .toList())
-                                                    ?.toList() ??
-                                                [];
+                                                .returnUserList(
+                                                    textController.text,
+                                                    clientUserContainerUsersRecordList
+                                                        .toList())
+                                                .toList();
                                             return ListView.builder(
                                               padding: EdgeInsets.zero,
                                               scrollDirection: Axis.vertical,
@@ -404,11 +402,14 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                       .fromSTEB(0, 0, 0, 10),
                                                   child: Container(
                                                     decoration: BoxDecoration(),
-                                                    child:
-                                                        ClientUserCard2Widget(
-                                                      userRecord: clientsItem,
-                                                      index: functions
-                                                          .add1(clientsIndex),
+                                                    child: Container(
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child:
+                                                          ClientUserCardWidget(
+                                                        index: clientsIndex,
+                                                        userRecord: clientsItem,
+                                                      ),
                                                     ),
                                                   ),
                                                 );
@@ -432,7 +433,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                         child: SizedBox(
                                           width: 50,
                                           height: 50,
-                                          child: SpinKitDoubleBounce(
+                                          child: SpinKitRipple(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryColor,
                                             size: 50,
@@ -456,23 +457,28 @@ class _UserListWidgetState extends State<UserListWidget> {
                                       child: Builder(
                                         builder: (context) {
                                           final staff = functions
-                                                  .returnUserList(
-                                                      textController.text,
-                                                      staffUserContainerUsersRecordList
-                                                          .toList())
-                                                  ?.toList() ??
-                                              [];
+                                              .returnUserList(
+                                                  textController.text,
+                                                  staffUserContainerUsersRecordList
+                                                      .toList())
+                                              .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
+                                            shrinkWrap: true,
                                             scrollDirection: Axis.vertical,
                                             itemCount: staff.length,
                                             itemBuilder: (context, staffIndex) {
                                               final staffItem =
                                                   staff[staffIndex];
-                                              return Container(
-                                                height: 200,
-                                                child: StaffUserCardWidget(
-                                                  userRecord: staffItem,
+                                              return Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 0, 10),
+                                                child: Container(
+                                                  decoration: BoxDecoration(),
+                                                  child: StaffUserCardWidget(
+                                                    userRecord: staffItem,
+                                                    index: staffIndex,
+                                                  ),
                                                 ),
                                               );
                                             },

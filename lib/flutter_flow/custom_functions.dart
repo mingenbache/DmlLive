@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'lat_lng.dart';
@@ -80,10 +81,27 @@ bool getDayIsWeekday(DateTime date) {
   return result;
 }
 
-int doubletoInt(double durationDouble) {
+int doubletoInt(
+  double durationDouble,
+  double defaultValue,
+) {
   // convert double to int
-  int duration = durationDouble.toInt();
-  return duration;
+  if (durationDouble is double) {
+    int duration = durationDouble.toInt();
+    return duration;
+  } else {
+    return defaultValue.toInt();
+  }
+}
+
+int doubletoIntCopy(double durationDouble) {
+  // convert double to int
+  if (durationDouble is double) {
+    int duration = durationDouble.toInt();
+    return duration;
+  } else {
+    return 0;
+  }
 }
 
 double intToDouble(int amountInt) {
@@ -534,6 +552,25 @@ List<TestsRecord> returnSearchTests(
   return list;
 }
 
+List<TestPackagesRecord> returnSearchPackages(
+  String nameQuery,
+  List<TestPackagesRecord> packageList,
+) {
+  // filter firebase collection of documents by string if string is not null
+  List<TestPackagesRecord> list = <TestPackagesRecord>[];
+  if (nameQuery != null) {
+    packageList.forEach((package) {
+      if (package.packageName != null &&
+          package.packageName.toLowerCase().contains(nameQuery.toLowerCase())) {
+        list.add(package);
+      }
+    });
+  } else {
+    list.addAll(packageList);
+  }
+  return list;
+}
+
 DocumentReference returnStaff(
   String displayName,
   List<StaffRecord> staffList,
@@ -589,7 +626,7 @@ bool displayVerifiedTag(TestedTestsRecord testedTest) {
 
 String camelCase(String name) {
   // return string formatted in sentence case
-  bool startsWithUppercase = name[0] == name[0].toUpperCase();
+  /* bool startsWithUppercase = name[0] == name[0].toUpperCase();
   String string = (startsWithUppercase)
       ? name[0].toUpperCase() + name.substring(1).toLowerCase()
       : name.toLowerCase();
@@ -600,7 +637,49 @@ String camelCase(String name) {
       nameList.add(f[0].toUpperCase() + f.substring(1));
     }
   });
-  return nameList.join(" ");
+  return nameList.join(" "); */
+  if (name.isEmpty) {
+    return "";
+  } else {
+    bool startsWithUppercase = name[0] == name[0].toUpperCase();
+    String string = (startsWithUppercase)
+        ? name[0].toUpperCase() + name.substring(1).toLowerCase()
+        : name.toLowerCase();
+    List<String> splitName = string.split(" ");
+    List<String> nameList = List();
+    var nameIterator = splitName.iterator;
+
+    while (nameIterator.moveNext()) {
+      if (nameIterator.current.isNotEmpty) {
+        nameList.add(nameIterator.current[0].toUpperCase() +
+            nameIterator.current.substring(1));
+      }
+    }
+    return nameList.join(" ");
+  }
+}
+
+String camelCaseCopy(String name) {
+  // return string formatted in sentence case
+  if (name.isEmpty) {
+    return "";
+  } else {
+    bool startsWithUppercase = name[0] == name[0].toUpperCase();
+    String string = (startsWithUppercase)
+        ? name[0].toUpperCase() + name.substring(1).toLowerCase()
+        : name.toLowerCase();
+    List<String> splitName = string.split(" ");
+    List<String> nameList = List();
+    var nameIterator = splitName.iterator;
+
+    while (nameIterator.moveNext()) {
+      if (nameIterator.current.isNotEmpty) {
+        nameList.add(nameIterator.current[0].toUpperCase() +
+            nameIterator.current.substring(1));
+      }
+    }
+    return nameList.join(" ");
+  }
 }
 
 String upperCase(String name) {
@@ -622,12 +701,11 @@ String upperCase(String name) {
 bool checkStringNull(String string) {
   // remove white spaces and check if a string value is null
   String data = string;
-  if (string == null) {
-    data = ' ';
+  if (string.isEmpty) {
+    return true;
+  } else {
+    return false;
   }
-
-  print(data.trim());
-  return data.trim().isEmpty;
 }
 
 bool allTestsConfirmed(
@@ -871,12 +949,16 @@ bool isCategorySelected(String categoryLocalState) {
 bool isThisCategorySelected(
   String categoryLocalState,
   String categoryString,
+  bool allPackageCategories,
 ) {
   // return true if string variable is "all"
-  if (categoryLocalState.toLowerCase == categoryString.toLowerCase) {
-    return true;
-  } else
+  if (allPackageCategories) {
     return false;
+  } else if (categoryLocalState.toLowerCase == categoryString.toLowerCase) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 List<TestsRecord> filterTests(
@@ -908,6 +990,37 @@ List<TestsRecord> filterTests(
   }
 }
 
+List<TestPackagesRecord> filterPackages(
+  bool allcategories,
+  String catString,
+  String searchQuery,
+  List<TestPackagesRecord> allPackages,
+) {
+  // filter collection by category parameter if boolean value true
+  //
+  if (allcategories) {
+    if (searchQuery.isNotEmpty) {
+      return allPackages
+          .where((t) => t.packageName.contains(searchQuery))
+          .toList();
+    } else {
+      return allPackages
+          .where((t) => t.category.toLowerCase() == catString.toLowerCase())
+          .toList();
+    }
+  } else {
+    if (searchQuery.isNotEmpty && !allcategories) {
+      return allPackages
+          .where((t) =>
+              t.packageName.contains(searchQuery) &&
+              t.category.toLowerCase() == catString.toLowerCase())
+          .toList();
+    } else {
+      return allPackages;
+    }
+  }
+}
+
 List<TestsRecord> filterTestsByCategory(
   bool allcategories,
   String catString,
@@ -930,6 +1043,31 @@ List<TestsRecord> filterTestsByCategory(
     return allTests;
   } else {
     return allTests;
+  }
+}
+
+List<TestPackagesRecord> filterPackagesByCategory(
+  bool allcategories,
+  String catString,
+  List<TestPackagesRecord> allPackages,
+) {
+  // filter collection by category parameter if boolean value true
+  final List<TestPackagesRecord> filteredList = [];
+  if (catString.isNotEmpty) {
+    for (int i = 0; i < allPackages.length; i++) {
+      if (allcategories == true) {
+        filteredList.add(allPackages[i]);
+      } else if (allcategories == false) {
+        if (allPackages[i].category.toLowerCase() == catString.toLowerCase()) {
+          filteredList.add(allPackages[i]);
+        }
+      }
+    }
+    return filteredList;
+  } else if (catString = null) {
+    return allPackages;
+  } else {
+    return allPackages;
   }
 }
 
@@ -962,4 +1100,421 @@ bool userHasStaffRecord(
 
 int createUniqueId() {
   return DateTime.now().millisecondsSinceEpoch.remainder(100000);
+}
+
+bool bookingValidation(
+  String fName,
+  String lName,
+  String email,
+  String phone,
+  String sex,
+  List<DocumentReference> tests,
+) {
+  // validate form entries
+  // missing entries:
+  if (fName.isEmpty ||
+      lName.isEmpty ||
+      email.isEmpty ||
+      sex.isEmpty ||
+      tests.isEmpty) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+String bookingValidator(
+  String fName,
+  String lName,
+  String email,
+  String phone,
+  String sex,
+  List<DocumentReference> tests,
+) {
+  // validate form entries
+  // missing entries:
+  String err;
+  if (fName.isEmpty) {
+    err = err + "fName";
+  }
+  if (lName.isEmpty) {
+    err = err + "lName";
+  }
+  if (email.isEmpty) {
+    err = err + "email";
+  }
+  if (sex.isEmpty) {
+    err = err + "sex";
+  }
+  if (tests.isEmpty) {
+    err = err + "tests";
+  }
+  return err;
+}
+
+double expandableSize(bool isOpen) {
+  // Add your function code here!
+  if (isOpen) {
+    return 24;
+  } else {
+    return 14;
+  }
+}
+
+List<String> splitProcedureString(String procedureString) {
+  // split string using comma
+  return procedureString.split(", ").map((String e) => e.trim()).toList();
+}
+
+List<NotificationsRecord> filterNotifications(
+  List<NotificationsRecord> allNotifications,
+  DocumentReference userRef,
+) {
+  // filter notifications if usersSeen array contains document reference
+  List<NotificationsRecord> ret = [];
+  allNotifications.forEach((NotificationsRecord notification) {
+    if (!notification.usersSeen.contains(userRef)) {
+      ret.add(notification);
+    }
+  });
+  return ret;
+}
+
+String checkNullString(String string) {
+  // check if string is null
+  return string != null ? string : "no data";
+}
+
+String returnInvoiceStatus(InvoicesRecord invoice) {
+  // return string if boolean value true and another string if not
+  if (invoice != null) {
+    if (invoice.reference != null && invoice.isPaid != null) {
+      if (invoice.isPaid) {
+        if (invoice.fullAmount) {
+          return 'Paid in full';
+        } else {
+          return 'incomplete';
+        }
+      } else {
+        return 'Pending';
+      }
+    } else {
+      return 'Pending';
+    }
+  } else {
+    return 'None';
+  }
+}
+
+bool isTestnotVerifiedorFlagged(TestedTestsRecord testedTest) {
+  // return boolean value if isVerified true and isflagged not true
+  if (testedTest.isVerified == true && testedTest.isFlagged != true) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+String returnTestName(DocumentReference testRef) {
+  // retrieve firestore document and return property
+  var test = FirebaseFirestore.instance
+      .collection('Tests')
+      .doc('testRef')
+      .get()
+      .then((snap) {
+    return TestsRecord().reference.toString;
+  });
+}
+
+DocumentReference returnstaffRef(DocumentReference userRef) {
+  var docs = FirebaseFirestore.instance
+      .collection('staff')
+      .where(
+        'UserRef',
+        isEqualTo: userRef,
+      )
+      .get()
+      .then((snap) {
+    return StaffRecord().reference;
+  });
+}
+
+String returnTestNotes(DocumentReference testRef) {
+  // retrieve firestore document and return property
+  var test = FirebaseFirestore.instance
+      .collection('Tests')
+      .doc('testRef')
+      .get()
+      .then((snap) {
+    return TestsRecord().name.toString;
+  });
+}
+
+bool isListEmpty(List<DocumentReference> tests) {
+  // check if list is empty
+  if (tests.where((test) => test != null).length != 0) {
+    return false;
+  }
+  return true;
+}
+
+List<String> returnReportFooter() {
+  // Add your function code here!
+  List<String> footerItems = [
+    'Prof. Emily A. Rogena MB Ch.B UON M Med. (Path) UON Msc. (Forensic Med)',
+    'Mrs. Susan M. Sitati Dip.Med.Lab.Tech. (UK) Dip.Med.lab.Tech. (E.A) H/Dip. Histopathology (E.A) Dip.Gyn.Cytology (UK)'
+  ];
+
+  return footerItems;
+}
+
+List<String> returnHeaderContacts() {
+  List<String> headerContacts = ['0742540718', '0777540718'];
+  return headerContacts;
+}
+
+String returnHeaderEmail() {
+  String email = 'info@dmlaboratories.co.ke';
+  return email;
+}
+
+List<DocumentReference> filterTestPackTests(
+  List<DocumentReference> testPacks,
+  List<DocumentReference> allBookingTests,
+) {
+  // query firebase document and return list of tests from record
+
+  List<DocumentReference> testPackFilter = [];
+  List<DocumentReference> testPackTests = [];
+  testPackFilter.addAll(allBookingTests);
+  //iterate through all the records in testPacks list and populate one list with all their tests records
+  for (int i = 0; i < testPacks.length; i++) {
+    var testPack = FirebaseFirestore.instance
+        .collection('test_Packages')
+        .doc('${testPacks[i]}')
+        .get()
+        .then((snap) {
+      testPackTests.addAll(TestPackagesRecord().testsIncluded);
+      //return TestPackagesRecord().testsIncluded.asList;
+      return testPackTests;
+    });
+    for (int j = 0; j < testPackTests.length; j++) {
+      testPackFilter.removeWhere((element) => testPackTests.contains(element));
+      /*if (testPackFilter.contains(testPackTests[j])) {
+        testPackFilter.remove(testPackTests[j]);
+      }*/
+
+    }
+
+    //filteredList.add(allTests[i]);
+  }
+  return testPackFilter;
+}
+
+int calculateAge(DateTime dOb) {
+  // calculate age from date of birth
+  DateTime currentDate = DateTime.now();
+  int age = 0;
+  age = currentDate.year - dOb.year;
+  return age;
+}
+
+List<DocumentReference> removeBookingPackageTests(
+  List<DocumentReference> testPackTests,
+  List<DocumentReference> allPackagesTestsList,
+) {
+  // remove all elements in allPackagesTestsList that are also in testPackTests
+  final packageTest = new List<DocumentReference>();
+
+  for (final test in allPackagesTestsList) {
+    if (!testPackTests.contains(test)) {
+      packageTest.add(test);
+    }
+  }
+  return packageTest;
+}
+
+List<DocumentReference> addBookingPackageTests(
+  List<DocumentReference> bookingPackageTests,
+  List<DocumentReference> packageTests,
+) {
+  // add all elements in packageTests into bookingPackageTests
+  for (var doctest in packageTests) {
+    bookingPackageTests.add(doctest);
+  }
+  return bookingPackageTests;
+}
+
+List<DocumentReference> returnAllBookingTests(
+  List<DocumentReference> allPackageTests,
+  List<DocumentReference> allBookingTests,
+) {
+  // combine lists into one list
+  List<DocumentReference> combinedTests = allPackageTests;
+  combinedTests.addAll(allBookingTests);
+  return combinedTests;
+}
+
+bool checkTestInBookingTests(
+  DocumentReference test,
+  List<DocumentReference> allBookingTests,
+) {
+  // check if list contains element
+  for (final bookingTest in allBookingTests) {
+    if (bookingTest == test) {
+      return true;
+    }
+  }
+  return false;
+}
+
+bool checkTestPackageBookingHasDuplicates(
+  List<DocumentReference> allBookingTests,
+  List<DocumentReference> testPackTests,
+) {
+  // Check if allBookingTests contains any elements in testPackTests
+  // loop will exit naturally if allBookingTests contains any elements in testPackTests:
+  return allBookingTests.any((element) => testPackTests.contains(element));
+}
+
+List<DocumentReference> returnDuplicateTestsinBooking(
+  List<DocumentReference> allBookingTests,
+  List<DocumentReference> testPackageTests,
+) {
+  // return elements contained in both lists
+  var duplicateTests = <DocumentReference>[];
+  allBookingTests.forEach((e) {
+    if (testPackageTests.contains(e)) {
+      duplicateTests.add(e);
+    }
+  });
+  return duplicateTests;
+}
+
+List<TestPackagesRecord> returnPackagesinBooking(
+  List<TestPackagesRecord> packagesCollection,
+  List<DocumentReference> bookingPackagesList,
+) {
+  // return list of documents where reference is contained in TestPackagesRecord list
+  List<TestPackagesRecord> newPackagesCollection = [];
+
+  for (int i = 0; i < bookingPackagesList.length; i++) {
+    for (var j = 0; j < packagesCollection.length; j++) {
+      if (bookingPackagesList[i] == packagesCollection[j].reference) {
+        newPackagesCollection.add(packagesCollection[j]);
+        break;
+      }
+    }
+  }
+
+  return newPackagesCollection;
+}
+
+List<TestPackagesRecord> returnPackagesContainingDuplicateTests(
+  List<TestPackagesRecord> bookingPackages,
+  List<DocumentReference> duplicateTests,
+) {
+  // return list of documents containing any elements in duplicateTests list
+  List<TestPackagesRecord> matchList = [];
+
+  for (var testpackage in bookingPackages.toList()) {
+    for (var test in testpackage.testsIncluded) {
+      if (duplicateTests.contains(test)) {
+        matchList.add(testpackage);
+      }
+    }
+  }
+  return matchList;
+}
+
+List<DocumentReference> returnDuplicateTestsinPackage(
+  TestPackagesRecord testPackage,
+  List<DocumentReference> duplicateTests,
+) {
+  // return list of elements contained in both TestPackage and duplicateTests
+  List<DocumentReference> duplicateTestsinPackage = [];
+
+  testPackage.testsIncluded.forEach((testRef) {
+    if (duplicateTests.contains(testRef)) {
+      if (!duplicateTestsinPackage.contains(testRef)) {
+        duplicateTestsinPackage.add(testRef);
+      }
+    }
+  });
+
+  return duplicateTestsinPackage;
+}
+
+List<double> returnStats(
+  List<TestedTestsRecord> testedTests,
+  DateTime endDate,
+) {
+  // count records with created date for previous 7 days and generate list
+  List<double> results = List<double>.filled(14, 0.0);
+  for (int i = 0; i < 14; i++) {
+    final dayStart = endDate.subtract(Duration(days: 14));
+    results[i] = testedTests
+        .where((booking) => booking.dateSampleCollected == dayStart)
+        .toList()
+        .length
+        .toDouble();
+    print(results[i]);
+  }
+  /*
+  final resultList = List<double>.generate(14, (index) {
+    final dayStart = DateTime(endDate.year, endDate.month, endDate.day);
+    final dayEnd = DateTime(
+        dayStart.year, dayStart.month, dayStart.day - index + 1, 23, 59, 59);
+    return testedTests
+        .where((booking) => booking.dateSampleCollected == dayEnd)
+        .toList()
+        .length
+        .toDouble();
+  }); */
+  /* for (int i = 0; i < resultList.length; i++) {
+    for (var test in testedTests.toList()) {
+      if (test.dateSampleCollected == endDate) {
+        resultList[i]++;
+        endDate = endDate.subtract(Duration(days: 1));
+      }
+    }
+  } */
+
+  /*var totall = 0;
+  for (int i = 0; i < resultList.length; i++) {
+    totall = totall + resultList[i];
+  }
+  resultList.add(totall); */
+  return results;
+}
+
+List<String> returnSexOptions() {
+  // Add your function code here!
+  var string = ['Male', 'Female'];
+  return string;
+}
+
+bool checkBookingTests(BookingsRecord booking) {
+  if (booking.testsIncluded.length > 1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+int returnBookingsTab(String testVar) {
+  // return integer based on string match
+  if (testVar.toLowerCase() == null || testVar.toLowerCase() == '') {
+    return 1;
+  }
+  if (testVar.toLowerCase() == 'upcoming') {
+    return 1;
+  }
+  if (testVar.toLowerCase() == 'past') {
+    return 0;
+  }
+  if (testVar.toLowerCase() == 'notif') {
+    return 2;
+  }
+  return 0;
 }

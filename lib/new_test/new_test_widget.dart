@@ -1,7 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/top_actions_widget.dart';
-import '../details/details_widget.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -38,18 +37,14 @@ class _NewTestWidgetState extends State<NewTestWidget> {
   void initState() {
     super.initState();
     resultsDurationTextController = TextEditingController(
-        text: functions
-            .doubletoInt(durationResultsSliderValue)
-            .toString()
-            .toString());
+        text:
+            functions.doubletoInt(durationResultsSliderValue, 2.0).toString());
     testDescriptionController = TextEditingController();
     testNameController = TextEditingController();
     testDurationTextController = TextEditingController(
-        text: functions
-            .doubletoInt(testDurationSliderValue)
-            .toString()
-            .toString());
+        text: functions.doubletoInt(testDurationSliderValue, 60.0).toString());
     testPriceController = TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -63,7 +58,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -185,12 +180,12 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                           child: TextFormField(
+                            controller: testDescriptionController,
                             onChanged: (_) => EasyDebounce.debounce(
                               'testDescriptionController',
                               Duration(milliseconds: 2000),
                               () => setState(() {}),
                             ),
-                            controller: testDescriptionController,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Test Description',
@@ -210,7 +205,8 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                       .text.isNotEmpty
                                   ? InkWell(
                                       onTap: () => setState(
-                                        () => testDescriptionController.clear(),
+                                        () =>
+                                            testDescriptionController?.clear(),
                                       ),
                                       child: Icon(
                                         Icons.clear,
@@ -268,7 +264,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                     child: SizedBox(
                                       width: 50,
                                       height: 50,
-                                      child: SpinKitDoubleBounce(
+                                      child: SpinKitRipple(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
                                         size: 50,
@@ -687,12 +683,13 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                   maxLines: 1,
                                   keyboardType: TextInputType.number,
                                   validator: (val) {
-                                    if (val.isEmpty) {
+                                    if (val == null || val.isEmpty) {
                                       return 'incorrect price entered';
                                     }
                                     if (val.length < 2) {
                                       return 'incorrect price entered';
                                     }
+
                                     return null;
                                   },
                                 ),
@@ -720,18 +717,17 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                               category: dropDownValue,
                               isAvailable: true,
                             );
-                            final testsRecordReference =
+                            var testsRecordReference =
                                 TestsRecord.collection.doc();
                             await testsRecordReference.set(testsCreateData);
                             newTestId = TestsRecord.getDocumentFromData(
                                 testsCreateData, testsRecordReference);
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DetailsWidget(
-                                  testId: newTestId.reference,
-                                ),
-                              ),
+                            context.pushNamed(
+                              'Details',
+                              queryParams: {
+                                'testId': serializeParam(newTestId.reference,
+                                    ParamType.DocumentReference),
+                              }.withoutNulls,
                             );
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
@@ -764,7 +760,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                               color: Colors.transparent,
                               width: 1,
                             ),
-                            borderRadius: 25,
+                            borderRadius: BorderRadius.circular(25),
                           ),
                         ),
                       ),

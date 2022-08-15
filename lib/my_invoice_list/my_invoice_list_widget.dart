@@ -4,7 +4,6 @@ import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../invoice/invoice_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,7 +32,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
             child: SizedBox(
               width: 50,
               height: 50,
-              child: SpinKitDoubleBounce(
+              child: SpinKitRipple(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 50,
               ),
@@ -146,7 +145,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                   child: Builder(
                     builder: (context) {
                       final userInvoices =
-                          myInvoiceListInvoicesRecordList?.toList() ?? [];
+                          myInvoiceListInvoicesRecordList.toList();
                       return SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -169,7 +168,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                       child: SizedBox(
                                         width: 50,
                                         height: 50,
-                                        child: SpinKitDoubleBounce(
+                                        child: SpinKitRipple(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryColor,
                                           size: 50,
@@ -181,15 +180,14 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                       snapshot.data;
                                   return InkWell(
                                     onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => InvoiceWidget(
-                                            invoiceRef:
-                                                invoiceListItemInvoicesRecord
-                                                    .reference,
-                                          ),
-                                        ),
+                                      context.pushNamed(
+                                        'Invoice',
+                                        queryParams: {
+                                          'invoiceRef': serializeParam(
+                                              invoiceListItemInvoicesRecord
+                                                  .reference,
+                                              ParamType.DocumentReference),
+                                        }.withoutNulls,
                                       );
                                     },
                                     child: Row(
@@ -213,7 +211,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                 child: SizedBox(
                                                   width: 50,
                                                   height: 50,
-                                                  child: SpinKitDoubleBounce(
+                                                  child: SpinKitRipple(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryColor,
@@ -227,16 +225,15 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                 snapshot.data;
                                             return InkWell(
                                               onTap: () async {
-                                                await Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        InvoiceWidget(
-                                                      invoiceRef:
-                                                          invoiceListItemInvoicesRecord
-                                                              .reference,
-                                                    ),
-                                                  ),
+                                                context.pushNamed(
+                                                  'Invoice',
+                                                  queryParams: {
+                                                    'invoiceRef': serializeParam(
+                                                        invoiceListItemInvoicesRecord
+                                                            .reference,
+                                                        ParamType
+                                                            .DocumentReference),
+                                                  }.withoutNulls,
                                                 );
                                               },
                                               child: Material(
@@ -508,8 +505,8 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                       child:
                                                                           Stack(
                                                                         children: [
-                                                                          if (!(invoiceListItemInvoicesRecord.isPaid) ??
-                                                                              true)
+                                                                          if (!invoiceListItemInvoicesRecord
+                                                                              .isPaid)
                                                                             Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                               child: Text(
@@ -591,7 +588,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                               Builder(
                                                                             builder:
                                                                                 (context) {
-                                                                              final paymentOnInvoice = containerPaymentsRecordList?.toList() ?? [];
+                                                                              final paymentOnInvoice = containerPaymentsRecordList.toList();
                                                                               return ListView.builder(
                                                                                 padding: EdgeInsets.zero,
                                                                                 scrollDirection: Axis.vertical,

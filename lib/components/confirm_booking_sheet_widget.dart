@@ -1,10 +1,7 @@
-import '../auth/auth_util.dart';
-import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../my_bookings/my_bookings_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -83,7 +80,7 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                             ),
                             InkWell(
                               onTap: () async {
-                                Navigator.pop(context);
+                                context.pop();
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -103,7 +100,7 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                                     size: 30,
                                   ),
                                   onPressed: () async {
-                                    Navigator.pop(context);
+                                    context.pop();
                                   },
                                 ),
                               ),
@@ -162,30 +159,30 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                         FFButtonWidget(
                           onPressed: () async {
                             setState(() => FFAppState().isSubmitted = true);
+                            setState(() => FFAppState().lastBookingPage = true);
                             if (FFAppState().isSubmitted) {
-                              final notificationsCreateData =
-                                  createNotificationsRecordData(
-                                userRole: 'front',
-                                message: 'A new booking has been made.',
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('booking  created'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
                               );
-                              await NotificationsRecord.collection
-                                  .doc()
-                                  .set(notificationsCreateData);
+                            } else {
+                              return;
                             }
-                            final usersUpdateData = {
-                              ...createUsersRecordData(
-                                hasCurrentBooking: false,
-                              ),
-                              'current_booking': FieldValue.delete(),
-                            };
-                            await currentUserReference.update(usersUpdateData);
-                            await Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MyBookingsWidget(),
-                              ),
-                              (r) => false,
-                            );
+
+                            await Future.delayed(
+                                const Duration(milliseconds: 300));
+                            context.pop();
                           },
                           text: 'Yes, Continue',
                           options: FFButtonOptions(
@@ -203,7 +200,7 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                               color: Colors.transparent,
                               width: 1,
                             ),
-                            borderRadius: 25,
+                            borderRadius: BorderRadius.circular(25),
                           ),
                         ),
                       ],

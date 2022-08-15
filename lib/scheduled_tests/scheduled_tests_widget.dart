@@ -1,12 +1,10 @@
 import '../backend/backend.dart';
-import '../bookings_schedule/bookings_schedule_widget.dart';
 import '../components/begin_test_widget.dart';
 import '../components/top_actions_widget.dart';
 import '../components/view_test_result_widget.dart';
 import '../flutter_flow/flutter_flow_calendar.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../tested_tests_copy/tested_tests_copy_widget.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -40,12 +38,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
       backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-          await Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => TestedTestsCopyWidget(),
-            ),
-          );
+          context.pushNamed('TestedTestsCopy');
         },
         backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
         icon: Icon(
@@ -126,7 +119,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                         queryBuilder: (bookedTestsRecord) => bookedTestsRecord
                             .where('scheduled_date',
                                 isGreaterThanOrEqualTo: functions
-                                    .returntheDay(uICalendarSelectedDay.start))
+                                    .returntheDay(uICalendarSelectedDay?.start))
                             .orderBy('scheduled_date'),
                       ),
                       builder: (context, snapshot) {
@@ -136,7 +129,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                             child: SizedBox(
                               width: 50,
                               height: 50,
-                              child: SpinKitDoubleBounce(
+                              child: SpinKitRipple(
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
                                 size: 50,
@@ -222,7 +215,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                         children: [
                                           Text(
                                             functions.returnDateString(
-                                                uICalendarSelectedDay.start),
+                                                uICalendarSelectedDay?.start),
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
@@ -231,7 +224,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                 ),
                                           ),
                                           Text(
-                                            '${functions.getDayTestsnumber(calendarScheduleContainerBookedTestsRecordList.toList(), uICalendarSelectedDay.start).toString()} Tests',
+                                            '${functions.getDayTestsnumber(calendarScheduleContainerBookedTestsRecordList.toList(), uICalendarSelectedDay?.start).toString()} Tests',
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
@@ -241,13 +234,8 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                           ),
                                           InkWell(
                                             onTap: () async {
-                                              await Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      BookingsScheduleWidget(),
-                                                ),
-                                              );
+                                              context.pushNamed(
+                                                  'BookingsSchedule');
                                             },
                                             child: Material(
                                               color: Colors.transparent,
@@ -306,12 +294,11 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                     child: Builder(
                                       builder: (context) {
                                         final bookedTests = functions
-                                                .filterDayTests(
-                                                    calendarScheduleContainerBookedTestsRecordList
-                                                        .toList(),
-                                                    uICalendarSelectedDay.start)
-                                                ?.toList() ??
-                                            [];
+                                            .filterDayTests(
+                                                calendarScheduleContainerBookedTestsRecordList
+                                                    .toList(),
+                                                uICalendarSelectedDay?.start)
+                                            .toList();
                                         return ListView.builder(
                                           padding: EdgeInsets.zero,
                                           shrinkWrap: true,
@@ -343,8 +330,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                       child: SizedBox(
                                                         width: 50,
                                                         height: 50,
-                                                        child:
-                                                            SpinKitDoubleBounce(
+                                                        child: SpinKitRipple(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryColor,
@@ -412,7 +398,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                                     width: 50,
                                                                     height: 50,
                                                                     child:
-                                                                        SpinKitDoubleBounce(
+                                                                        SpinKitRipple(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryColor,
@@ -688,7 +674,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                                                           child: SizedBox(
                                                                                             width: 50,
                                                                                             height: 50,
-                                                                                            child: SpinKitDoubleBounce(
+                                                                                            child: SpinKitRipple(
                                                                                               color: FlutterFlowTheme.of(context).primaryColor,
                                                                                               size: 50,
                                                                                             ),
@@ -760,7 +746,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                                                           child: SizedBox(
                                                                                             width: 50,
                                                                                             height: 50,
-                                                                                            child: SpinKitDoubleBounce(
+                                                                                            child: SpinKitRipple(
                                                                                               color: FlutterFlowTheme.of(context).primaryColor,
                                                                                               size: 50,
                                                                                             ),
@@ -827,7 +813,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                                     width: 50,
                                                                     height: 50,
                                                                     child:
-                                                                        SpinKitDoubleBounce(
+                                                                        SpinKitRipple(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryColor,
@@ -908,8 +894,8 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                                               ],
                                                                             ),
                                                                           ),
-                                                                          if (!(bookedTestsItem.sampleCollected) ??
-                                                                              true)
+                                                                          if (!bookedTestsItem
+                                                                              .sampleCollected)
                                                                             InkWell(
                                                                               onTap: () async {
                                                                                 if (!(containerTestedTestsRecord != null)) {
