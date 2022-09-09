@@ -46,6 +46,7 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
                 child: InkWell(
                   onTap: () async {
                     setState(() => FFAppState().userListQuery = '');
+
                     context.pushNamed('UserList');
                   },
                   child: Material(

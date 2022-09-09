@@ -114,6 +114,7 @@ class _DashboardMenuWidgetLightWidgetState
                   child: InkWell(
                     onTap: () async {
                       setState(() => FFAppState().testsVar = 'previous');
+
                       context.pushNamed(
                         'MyBookings',
                         extra: <String, dynamic>{
@@ -172,6 +173,7 @@ class _DashboardMenuWidgetLightWidgetState
                   child: InkWell(
                     onTap: () async {
                       setState(() => FFAppState().testsVar = 'upcoming');
+
                       context.pushNamed(
                         'MyBookings',
                         extra: <String, dynamic>{

@@ -25,9 +25,10 @@ class BeginTestWidget extends StatefulWidget {
 }
 
 class _BeginTestWidgetState extends State<BeginTestWidget> {
-  PageController pageViewController;
-  TestedTestsRecord newTestedTestRef;
   TextEditingController batchNumController;
+
+  TestedTestsRecord newTestedTestRef;
+  PageController pageViewController;
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -51,24 +52,14 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
               color: Colors.transparent,
               elevation: 3,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(0),
-                  bottomRight: Radius.circular(0),
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ),
+                borderRadius: BorderRadius.circular(30),
               ),
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.4,
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).tertiaryColor,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(0),
-                    bottomRight: Radius.circular(0),
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                  ),
+                  color: FlutterFlowTheme.of(context).secondaryColor,
+                  borderRadius: BorderRadius.circular(30),
                 ),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(20, 34, 20, 20),
@@ -83,8 +74,9 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                           Text(
                             'BEGIN TEST?',
                             style: FlutterFlowTheme.of(context).title2.override(
-                                  fontFamily: 'Roboto',
-                                  color: Color(0xFF586B06),
+                                  fontFamily: 'Montserrat',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -104,6 +96,8 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                 borderColor: Colors.transparent,
                                 borderRadius: 30,
                                 buttonSize: 48,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                                 icon: Icon(
                                   Icons.close_rounded,
                                   color: FlutterFlowTheme.of(context)
@@ -156,11 +150,12 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                           context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
+                                                                .primaryText,
                                                       ),
                                                 ),
                                               ),
@@ -187,15 +182,16 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                 height: 30,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
+                                                        .secondaryText,
                                                 textStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .subtitle2
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Montserrat',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .tertiaryColor,
+                                                              .secondaryBackground,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -248,44 +244,44 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 40, 0, 0),
-                                              child: Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.83,
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.04,
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(12),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(3, 0, 0, 3),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0, 1),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 40, 0, 0),
+                                                child: Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.83,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                3, 0, 0, 3),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceEvenly,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      0, 5, 0),
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(),
+                                                            child: Padding(
                                                               padding:
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
@@ -294,34 +290,28 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                           0,
                                                                           0),
                                                               child: Text(
-                                                                'Sample Batch Number',
+                                                                'Sample\nBatch Number',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Roboto',
-                                                                      color: Color(
-                                                                          0xFF586B06),
+                                                                          'Montserrat',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
                                                                       fontSize:
                                                                           16,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
                                                                     ),
                                                               ),
                                                             ),
-                                                          ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                      Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Padding(
+                                                        Expanded(
+                                                          child: Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
@@ -407,6 +397,42 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                             Radius.circular(4.0),
                                                                       ),
                                                                     ),
+                                                                    errorBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0x00000000),
+                                                                        width:
+                                                                            1,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          const BorderRadius
+                                                                              .only(
+                                                                        topLeft:
+                                                                            Radius.circular(4.0),
+                                                                        topRight:
+                                                                            Radius.circular(4.0),
+                                                                      ),
+                                                                    ),
+                                                                    focusedErrorBorder:
+                                                                        OutlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0x00000000),
+                                                                        width:
+                                                                            1,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          const BorderRadius
+                                                                              .only(
+                                                                        topLeft:
+                                                                            Radius.circular(4.0),
+                                                                        topRight:
+                                                                            Radius.circular(4.0),
+                                                                      ),
+                                                                    ),
                                                                     contentPadding:
                                                                         EdgeInsetsDirectional.fromSTEB(
                                                                             10,
@@ -419,9 +445,9 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Roboto',
+                                                                            'Montserrat',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .primaryText,
                                                                         fontWeight:
                                                                             FontWeight.w500,
                                                                       ),
@@ -432,6 +458,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                         val.isEmpty) {
                                                                       return 'Field is required';
                                                                     }
+
                                                                     if (val.length <
                                                                         4) {
                                                                       return 'Requires at least 4 characters.';
@@ -443,9 +470,9 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                               ),
                                                             ),
                                                           ),
-                                                        ],
-                                                      ),
-                                                    ],
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -564,17 +591,17 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
+                                                                .secondaryText,
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiaryColor,
+                                                                      .secondaryBackground,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
@@ -625,7 +652,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                       dotWidth: 16,
                                       dotHeight: 16,
                                       dotColor: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                          .primaryText,
                                       activeDotColor: Colors.white,
                                       paintStyle: PaintingStyle.fill,
                                     ),

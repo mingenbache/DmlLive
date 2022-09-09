@@ -27,7 +27,7 @@ class _NotificationsWidgeDarkWidgetState
               child: Text(
                 'Notifications',
                 style: FlutterFlowTheme.of(context).subtitle1.override(
-                      fontFamily: 'Roboto',
+                      fontFamily: 'Montserrat',
                       color: Color(0xFFFEFEFE),
                       fontWeight: FontWeight.w500,
                     ),
@@ -71,7 +71,7 @@ class _NotificationsWidgeDarkWidgetState
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Montserrat',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryColor,
                                     fontWeight: FontWeight.w500,
@@ -117,7 +117,7 @@ class _NotificationsWidgeDarkWidgetState
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Montserrat',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryColor,
                                     fontWeight: FontWeight.w500,
@@ -163,7 +163,7 @@ class _NotificationsWidgeDarkWidgetState
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Montserrat',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryColor,
                                     fontWeight: FontWeight.w500,
@@ -209,7 +209,7 @@ class _NotificationsWidgeDarkWidgetState
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Montserrat',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryColor,
                                     fontWeight: FontWeight.w500,

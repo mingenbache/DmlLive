@@ -26,13 +26,19 @@ class AddPaymentWIdgetWidget extends StatefulWidget {
 
 class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
     with TickerProviderStateMixin {
-  DateTime datePicked;
-  String paymentMethodValue;
-  TextEditingController paymentAmountController;
-  TextEditingController transactionReferenceController;
   TextEditingController firstNameController;
+
   TextEditingController lastNameController;
+
+  TextEditingController paymentAmountController;
+
+  TextEditingController transactionReferenceController;
+
+  String paymentMethodValue;
+  DateTime datePicked;
+
   TextEditingController paymentNoteController;
+
   PaymentsRecord paymentRef;
   final formKey = GlobalKey<FormState>();
   final animationsMap = {
@@ -167,7 +173,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                               'ADD PAYMENT',
                               style:
                                   FlutterFlowTheme.of(context).title2.override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: Color(0xFF586B06),
                                         fontSize: 32,
                                         fontWeight: FontWeight.bold,
@@ -238,6 +244,20 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                 ),
                                 borderRadius: BorderRadius.circular(8),
                               ),
+                              errorBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              focusedErrorBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
                               contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   20, 24, 24, 24),
                               prefixIcon: Icon(
@@ -258,6 +278,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                               if (val == null || val.isEmpty) {
                                 return 'Please enter an amount';
                               }
+
                               if (val.length < 2) {
                                 return 'Requires at least 2 characters.';
                               }
@@ -307,6 +328,20 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0xFF586B06),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
@@ -386,7 +421,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Montserrat',
                                           color: Color(0xFF586B06),
                                           fontSize: 15,
                                           fontWeight: FontWeight.w500,
@@ -463,6 +498,20 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
                                       filled: true,
                                       fillColor: Color(0x2BFFFFFF),
                                       contentPadding:
@@ -502,6 +551,20 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0xFF586B06),
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
                                           width: 2,
                                         ),
                                         borderRadius: BorderRadius.circular(8),
@@ -565,6 +628,20 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0xFF586B06),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
@@ -666,7 +743,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                         textStyle: FlutterFlowTheme.of(context)
                             .subtitle2
                             .override(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'Montserrat',
                               color: FlutterFlowTheme.of(context).tertiaryColor,
                             ),
                         elevation: 2,

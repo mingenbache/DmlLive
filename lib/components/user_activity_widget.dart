@@ -96,11 +96,10 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              Color(0x3ABACA68),
-                              Color(0xFFB5AC49),
-                              FlutterFlowTheme.of(context).primaryColor
+                              Color(0x806CD7B7),
+                              FlutterFlowTheme.of(context).secondaryColor
                             ],
-                            stops: [0, 0.4, 1],
+                            stops: [0, 0.4],
                             begin: AlignmentDirectional(0, -1),
                             end: AlignmentDirectional(0, 1),
                           ),
@@ -124,7 +123,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .title1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Montserrat',
                                             color: Colors.white,
                                           ),
                                     ),
@@ -144,10 +143,12 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                         borderColor: Colors.transparent,
                                         borderRadius: 30,
                                         buttonSize: 48,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         icon: Icon(
                                           Icons.close_rounded,
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
+                                              .primaryText,
                                           size: 30,
                                         ),
                                         onPressed: () async {
@@ -181,7 +182,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                         Icon(
                                           Icons.person,
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                              .primaryText,
                                           size: 18,
                                         ),
                                         Expanded(
@@ -192,13 +193,16 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                             child: Text(
                                               '${functions.camelCase(columnUsersRecord.firstName)} ${functions.camelCase(columnUsersRecord.lastName)}',
                                               textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle1
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        fontSize: 17,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .subtitle1
+                                                  .override(
+                                                    fontFamily: 'Montserrat',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    fontSize: 17,
+                                                  ),
                                             ),
                                           ),
                                         ),
@@ -220,7 +224,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                         ),
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                              .primaryText,
                                           boxShadow: [
                                             BoxShadow(
                                               blurRadius: 4,
@@ -289,7 +293,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                         labelColor: Colors.white,
                                         unselectedLabelColor:
                                             FlutterFlowTheme.of(context)
-                                                .alternate,
+                                                .primaryText,
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .subtitle2,
                                         indicatorColor: Colors.white,
@@ -336,11 +340,6 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                 .size
                                                                 .width *
                                                             0.8,
-                                                        height: MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .height *
-                                                            0.06,
                                                         constraints:
                                                             BoxConstraints(
                                                           maxWidth: 320,
@@ -353,315 +352,276 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                               MainAxisSize.max,
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
-                                                                  .spaceEvenly,
+                                                                  .spaceAround,
                                                           crossAxisAlignment:
                                                               CrossAxisAlignment
                                                                   .center,
                                                           children: [
-                                                            Material(
-                                                              color: Colors
-                                                                  .transparent,
-                                                              elevation: 2,
-                                                              shape:
-                                                                  RoundedRectangleBorder(
+                                                            Container(
+                                                              width: 130,
+                                                              decoration:
+                                                                  BoxDecoration(
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
                                                                             15),
                                                               ),
-                                                              child: Container(
-                                                                width: 130,
-                                                                height: 130,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              15),
-                                                                ),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Container(
-                                                                      width: 70,
-                                                                      height:
-                                                                          130,
-                                                                      constraints:
-                                                                          BoxConstraints(
-                                                                        maxWidth:
-                                                                            90,
-                                                                      ),
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryColor,
-                                                                        borderRadius:
-                                                                            BorderRadius.only(
-                                                                          bottomLeft:
-                                                                              Radius.circular(15),
-                                                                          bottomRight:
-                                                                              Radius.circular(0),
-                                                                          topLeft:
-                                                                              Radius.circular(15),
-                                                                          topRight:
-                                                                              Radius.circular(0),
-                                                                        ),
-                                                                      ),
-                                                                      child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            7,
-                                                                            7,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.center,
-                                                                          children: [
-                                                                            Container(
-                                                                              width: 50,
-                                                                              height: 100,
-                                                                              decoration: BoxDecoration(),
-                                                                              child: Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(3, 0, 3, 0),
-                                                                                child: Text(
-                                                                                  'Total Tests',
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1,
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          ],
-                                                                        ),
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Container(
+                                                                    width: 70,
+                                                                    constraints:
+                                                                        BoxConstraints(
+                                                                      maxWidth:
+                                                                          90,
+                                                                    ),
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .only(
+                                                                        bottomLeft:
+                                                                            Radius.circular(15),
+                                                                        bottomRight:
+                                                                            Radius.circular(0),
+                                                                        topLeft:
+                                                                            Radius.circular(15),
+                                                                        topRight:
+                                                                            Radius.circular(0),
                                                                       ),
                                                                     ),
-                                                                    Container(
-                                                                      width: 60,
-                                                                      height:
-                                                                          100,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Color(
-                                                                            0xFFEEEEEE),
-                                                                        borderRadius:
-                                                                            BorderRadius.only(
-                                                                          bottomLeft:
-                                                                              Radius.circular(0),
-                                                                          bottomRight:
-                                                                              Radius.circular(15),
-                                                                          topLeft:
-                                                                              Radius.circular(0),
-                                                                          topRight:
-                                                                              Radius.circular(15),
-                                                                        ),
-                                                                      ),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              7,
+                                                                              7,
+                                                                              0,
+                                                                              0),
                                                                       child:
                                                                           Row(
                                                                         mainAxisSize:
                                                                             MainAxisSize.max,
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.center,
                                                                         children: [
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                3,
-                                                                                0,
-                                                                                0,
-                                                                                0),
+                                                                          Container(
+                                                                            width:
+                                                                                50,
+                                                                            decoration:
+                                                                                BoxDecoration(),
                                                                             child:
-                                                                                StreamBuilder<List<BookedTestsRecord>>(
-                                                                              stream: queryBookedTestsRecord(
-                                                                                queryBuilder: (bookedTestsRecord) => bookedTestsRecord.where('user', isEqualTo: widget.userRef),
-                                                                              ),
-                                                                              builder: (context, snapshot) {
-                                                                                // Customize what your widget looks like when it's loading.
-                                                                                if (!snapshot.hasData) {
-                                                                                  return Center(
-                                                                                    child: SizedBox(
-                                                                                      width: 50,
-                                                                                      height: 50,
-                                                                                      child: SpinKitRipple(
-                                                                                        color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                        size: 50,
-                                                                                      ),
+                                                                                Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 3, 0),
+                                                                              child: Text(
+                                                                                'Total Tests',
+                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                      fontFamily: 'Montserrat',
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
+                                                                                      fontWeight: FontWeight.w500,
                                                                                     ),
-                                                                                  );
-                                                                                }
-                                                                                List<BookedTestsRecord> textBookedTestsRecordList = snapshot.data;
-                                                                                return Text(
-                                                                                  textBookedTestsRecordList.length.toString(),
-                                                                                  style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                        fontFamily: 'Roboto',
-                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                      ),
-                                                                                );
-                                                                              },
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                         ],
                                                                       ),
                                                                     ),
-                                                                  ],
-                                                                ),
+                                                                  ),
+                                                                  Container(
+                                                                    width: 60,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Color(
+                                                                          0xFFEEEEEE),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              12),
+                                                                    ),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              3,
+                                                                              6,
+                                                                              3,
+                                                                              6),
+                                                                      child: StreamBuilder<
+                                                                          List<
+                                                                              BookedTestsRecord>>(
+                                                                        stream:
+                                                                            queryBookedTestsRecord(
+                                                                          queryBuilder: (bookedTestsRecord) => bookedTestsRecord.where(
+                                                                              'user',
+                                                                              isEqualTo: widget.userRef),
+                                                                        ),
+                                                                        builder:
+                                                                            (context,
+                                                                                snapshot) {
+                                                                          // Customize what your widget looks like when it's loading.
+                                                                          if (!snapshot
+                                                                              .hasData) {
+                                                                            return Center(
+                                                                              child: SizedBox(
+                                                                                width: 50,
+                                                                                height: 50,
+                                                                                child: SpinKitRipple(
+                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                  size: 50,
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          }
+                                                                          List<BookedTestsRecord>
+                                                                              textBookedTestsRecordList =
+                                                                              snapshot.data;
+                                                                          return Text(
+                                                                            textBookedTestsRecordList.length.toString(),
+                                                                            maxLines:
+                                                                                1,
+                                                                            style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                  fontFamily: 'Montserrat',
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                ),
+                                                                          );
+                                                                        },
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
                                                             ),
-                                                            Material(
-                                                              color: Colors
-                                                                  .transparent,
-                                                              elevation: 2,
-                                                              shape:
-                                                                  RoundedRectangleBorder(
+                                                            Container(
+                                                              width: 140,
+                                                              constraints:
+                                                                  BoxConstraints(
+                                                                maxWidth: 140,
+                                                              ),
+                                                              decoration:
+                                                                  BoxDecoration(
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
                                                                             15),
                                                               ),
-                                                              child: Container(
-                                                                width: 140,
-                                                                height: 100,
-                                                                constraints:
-                                                                    BoxConstraints(
-                                                                  maxWidth: 140,
-                                                                ),
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              15),
-                                                                ),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Container(
-                                                                      width: 90,
-                                                                      height:
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Container(
+                                                                    width: 100,
+                                                                    constraints:
+                                                                        BoxConstraints(
+                                                                      maxWidth:
                                                                           100,
-                                                                      constraints:
-                                                                          BoxConstraints(
-                                                                        maxWidth:
-                                                                            90,
-                                                                      ),
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryColor,
-                                                                        borderRadius:
-                                                                            BorderRadius.only(
-                                                                          bottomLeft:
-                                                                              Radius.circular(15),
-                                                                          bottomRight:
-                                                                              Radius.circular(0),
-                                                                          topLeft:
-                                                                              Radius.circular(15),
-                                                                          topRight:
-                                                                              Radius.circular(0),
-                                                                        ),
-                                                                      ),
-                                                                      child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            7,
-                                                                            7,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          children: [
-                                                                            Container(
-                                                                              width: 75,
-                                                                              height: 100,
-                                                                              constraints: BoxConstraints(
-                                                                                maxWidth: 80,
-                                                                              ),
-                                                                              decoration: BoxDecoration(),
-                                                                              child: Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(3, 0, 2, 0),
-                                                                                child: Text(
-                                                                                  'Incomplete Tests',
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1,
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          ],
-                                                                        ),
+                                                                    ),
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .only(
+                                                                        bottomLeft:
+                                                                            Radius.circular(15),
+                                                                        bottomRight:
+                                                                            Radius.circular(0),
+                                                                        topLeft:
+                                                                            Radius.circular(15),
+                                                                        topRight:
+                                                                            Radius.circular(0),
                                                                       ),
                                                                     ),
-                                                                    Container(
-                                                                      width: 50,
-                                                                      height:
-                                                                          100,
-                                                                      constraints:
-                                                                          BoxConstraints(
-                                                                        maxWidth:
-                                                                            50,
-                                                                      ),
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Color(
-                                                                            0xFFEEEEEE),
-                                                                        borderRadius:
-                                                                            BorderRadius.only(
-                                                                          bottomLeft:
-                                                                              Radius.circular(0),
-                                                                          bottomRight:
-                                                                              Radius.circular(15),
-                                                                          topLeft:
-                                                                              Radius.circular(0),
-                                                                          topRight:
-                                                                              Radius.circular(15),
-                                                                        ),
-                                                                      ),
-                                                                      child:
-                                                                          Row(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        children: [
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                3,
-                                                                                0,
-                                                                                0,
-                                                                                0),
-                                                                            child:
-                                                                                StreamBuilder<List<TestedTestsRecord>>(
-                                                                              stream: queryTestedTestsRecord(),
-                                                                              builder: (context, snapshot) {
-                                                                                // Customize what your widget looks like when it's loading.
-                                                                                if (!snapshot.hasData) {
-                                                                                  return Center(
-                                                                                    child: SizedBox(
-                                                                                      width: 50,
-                                                                                      height: 50,
-                                                                                      child: SpinKitRipple(
-                                                                                        color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                        size: 50,
-                                                                                      ),
-                                                                                    ),
-                                                                                  );
-                                                                                }
-                                                                                List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data;
-                                                                                return Text(
-                                                                                  textTestedTestsRecordList.length.toString(),
-                                                                                  style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                        fontFamily: 'Roboto',
-                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                      ),
-                                                                                );
-                                                                              },
-                                                                            ),
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Container(
+                                                                          constraints:
+                                                                              BoxConstraints(
+                                                                            maxWidth:
+                                                                                100,
                                                                           ),
-                                                                        ],
-                                                                      ),
+                                                                          decoration:
+                                                                              BoxDecoration(),
+                                                                          child:
+                                                                              Text(
+                                                                            'Incomplete Tests',
+                                                                            textAlign:
+                                                                                TextAlign.start,
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Montserrat',
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                  fontWeight: FontWeight.w500,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
                                                                     ),
-                                                                  ],
-                                                                ),
+                                                                  ),
+                                                                  Container(
+                                                                    width: 50,
+                                                                    constraints:
+                                                                        BoxConstraints(
+                                                                      maxWidth:
+                                                                          50,
+                                                                    ),
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Color(
+                                                                          0xFFEEEEEE),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              12),
+                                                                    ),
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0,
+                                                                              6,
+                                                                              0,
+                                                                              6),
+                                                                          child:
+                                                                              StreamBuilder<List<TestedTestsRecord>>(
+                                                                            stream:
+                                                                                queryTestedTestsRecord(),
+                                                                            builder:
+                                                                                (context, snapshot) {
+                                                                              // Customize what your widget looks like when it's loading.
+                                                                              if (!snapshot.hasData) {
+                                                                                return Center(
+                                                                                  child: SizedBox(
+                                                                                    width: 50,
+                                                                                    height: 50,
+                                                                                    child: SpinKitRipple(
+                                                                                      color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                      size: 50,
+                                                                                    ),
+                                                                                  ),
+                                                                                );
+                                                                              }
+                                                                              List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data;
+                                                                              return Text(
+                                                                                textTestedTestsRecordList.length.toString(),
+                                                                                maxLines: 1,
+                                                                                style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                      fontFamily: 'Montserrat',
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
+                                                                                    ),
+                                                                              );
+                                                                            },
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
                                                             ),
                                                           ],
@@ -715,7 +675,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                       .calendar_today,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryColor,
+                                                                      .secondaryBackground,
                                                                   size: 24,
                                                                 ),
                                                                 Padding(
@@ -732,9 +692,9 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
-                                                                              Color(0xFF586B06),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontWeight:
                                                                               FontWeight.w500,
                                                                         ),
@@ -799,8 +759,13 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                           dateTimeFormat(
                                                                               'd/M/y',
                                                                               columnUsersRecord.createdTime),
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).subtitle1,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .subtitle1
+                                                                              .override(
+                                                                                fontFamily: 'Montserrat',
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                fontWeight: FontWeight.w500,
+                                                                              ),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -859,7 +824,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                       .calendar_today,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryColor,
+                                                                      .secondaryBackground,
                                                                   size: 24,
                                                                 ),
                                                                 Padding(
@@ -876,9 +841,9 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
-                                                                              Color(0xFF586B06),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontWeight:
                                                                               FontWeight.w500,
                                                                         ),
@@ -943,8 +908,13 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                           dateTimeFormat(
                                                                               'd/M/y',
                                                                               columnUsersRecord.lastLogin),
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).subtitle1,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .subtitle1
+                                                                              .override(
+                                                                                fontFamily: 'Montserrat',
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                fontWeight: FontWeight.w500,
+                                                                              ),
                                                                         ),
                                                                       ],
                                                                     ),
@@ -1003,7 +973,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                       .calendar_today,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryColor,
+                                                                      .secondaryBackground,
                                                                   size: 24,
                                                                 ),
                                                                 Padding(
@@ -1020,9 +990,9 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
-                                                                              Color(0xFF586B06),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontWeight:
                                                                               FontWeight.w500,
                                                                         ),
@@ -1115,23 +1085,9 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                               0.95,
                                                           decoration:
                                                               BoxDecoration(
-                                                            gradient:
-                                                                LinearGradient(
-                                                              colors: [
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                                Color(
-                                                                    0xFF77A54A)
-                                                              ],
-                                                              stops: [0, 1],
-                                                              begin:
-                                                                  AlignmentDirectional(
-                                                                      0, -1),
-                                                              end:
-                                                                  AlignmentDirectional(
-                                                                      0, 1),
-                                                            ),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
@@ -1160,7 +1116,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                           .person_sharp,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .tertiaryColor,
+                                                                          .secondaryBackground,
                                                                       size: 24,
                                                                     ),
                                                                     Container(
@@ -1178,7 +1134,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .subtitle2
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
+                                                                              fontFamily: 'Montserrat',
                                                                               color: Colors.white,
                                                                             ),
                                                                       ),
@@ -1232,7 +1188,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                               Text(
                                                                             'Display\nName',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   color: Colors.white,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1247,25 +1203,28 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              Color(0x2CEEEEEE),
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
                                                                           borderRadius:
                                                                               BorderRadius.circular(7),
                                                                         ),
+                                                                        alignment: AlignmentDirectional(
+                                                                            0,
+                                                                            0),
                                                                         child:
-                                                                            Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              6,
-                                                                              6,
-                                                                              3,
-                                                                              3),
-                                                                          child:
-                                                                              Text(
-                                                                            columnUsersRecord.displayName,
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
-                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                ),
-                                                                          ),
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            Text(
+                                                                              columnUsersRecord.displayName,
+                                                                              textAlign: TextAlign.start,
+                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    fontFamily: 'Montserrat',
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
+                                                                                    fontWeight: FontWeight.w500,
+                                                                                  ),
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                       ),
                                                                     ],
@@ -1318,7 +1277,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                               Text(
                                                                             'Email',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   color: Colors.white,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1333,25 +1292,24 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              Color(0x2CEEEEEE),
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
                                                                           borderRadius:
                                                                               BorderRadius.circular(7),
                                                                         ),
                                                                         child:
-                                                                            Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              6,
-                                                                              6,
-                                                                              3,
-                                                                              3),
-                                                                          child:
-                                                                              Text(
-                                                                            columnUsersRecord.email,
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
-                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                ),
-                                                                          ),
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            Text(
+                                                                              columnUsersRecord.email,
+                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    fontFamily: 'Montserrat',
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
+                                                                                    fontWeight: FontWeight.w500,
+                                                                                  ),
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                       ),
                                                                     ],
@@ -1413,7 +1371,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                               Text(
                                                                             'Phone',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   color: Colors.white,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1428,25 +1386,24 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              Color(0x2CEEEEEE),
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
                                                                           borderRadius:
                                                                               BorderRadius.circular(7),
                                                                         ),
                                                                         child:
-                                                                            Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              6,
-                                                                              6,
-                                                                              3,
-                                                                              3),
-                                                                          child:
-                                                                              Text(
-                                                                            columnUsersRecord.phoneNumber,
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
-                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                ),
-                                                                          ),
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            Text(
+                                                                              columnUsersRecord.phoneNumber,
+                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    fontFamily: 'Montserrat',
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
+                                                                                    fontWeight: FontWeight.w500,
+                                                                                  ),
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                       ),
                                                                     ],
@@ -1507,7 +1464,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                 Text(
                                                                                   'Date of\nBirth',
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Roboto',
+                                                                                        fontFamily: 'Montserrat',
                                                                                         color: Colors.white,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -1530,23 +1487,20 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                 MediaQuery.of(context).size.height * 0.04,
                                                                             decoration:
                                                                                 BoxDecoration(
-                                                                              color: Color(0x2CFFFFFF),
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                               borderRadius: BorderRadius.circular(7),
                                                                             ),
                                                                             child:
-                                                                                Column(
+                                                                                Row(
                                                                               mainAxisSize: MainAxisSize.max,
-                                                                              mainAxisAlignment: MainAxisAlignment.center,
                                                                               children: [
-                                                                                Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(3, 5, 3, 0),
-                                                                                  child: Text(
-                                                                                    dateTimeFormat('d/M/y', columnUsersRecord.dOB),
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Roboto',
-                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                        ),
-                                                                                  ),
+                                                                                Text(
+                                                                                  dateTimeFormat('d/M/y', columnUsersRecord.dOB),
+                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        fontFamily: 'Montserrat',
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        fontWeight: FontWeight.w500,
+                                                                                      ),
                                                                                 ),
                                                                               ],
                                                                             ),
@@ -1560,22 +1514,17 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                           decoration:
                                                                               BoxDecoration(),
                                                                           child:
-                                                                              Column(
+                                                                              Row(
                                                                             mainAxisSize:
                                                                                 MainAxisSize.max,
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.center,
                                                                             children: [
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                                                                                child: Text(
-                                                                                  'Sex',
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Roboto',
-                                                                                        color: Colors.white,
-                                                                                        fontWeight: FontWeight.w500,
-                                                                                      ),
-                                                                                ),
+                                                                              Text(
+                                                                                'Sex',
+                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                      fontFamily: 'Montserrat',
+                                                                                      color: Colors.white,
+                                                                                      fontWeight: FontWeight.w500,
+                                                                                    ),
                                                                               ),
                                                                             ],
                                                                           ),
@@ -1588,36 +1537,24 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                Color(0x2BFFFFFF),
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             borderRadius:
                                                                                 BorderRadius.circular(7),
                                                                           ),
                                                                           child:
-                                                                              Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                5,
-                                                                                0,
-                                                                                0,
-                                                                                0),
-                                                                            child:
-                                                                                Column(
-                                                                              mainAxisSize: MainAxisSize.max,
-                                                                              mainAxisAlignment: MainAxisAlignment.center,
-                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                              children: [
-                                                                                Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                                                                                  child: Text(
-                                                                                    columnUsersRecord.sex,
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Roboto',
-                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                          fontWeight: FontWeight.normal,
-                                                                                        ),
-                                                                                  ),
-                                                                                ),
-                                                                              ],
-                                                                            ),
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            children: [
+                                                                              Text(
+                                                                                columnUsersRecord.sex,
+                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                      fontFamily: 'Montserrat',
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
+                                                                                      fontWeight: FontWeight.w500,
+                                                                                    ),
+                                                                              ),
+                                                                            ],
                                                                           ),
                                                                         ),
                                                                       ],
@@ -1670,7 +1607,11 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                           .size
                                                           .width *
                                                       0.9,
-                                                  decoration: BoxDecoration(),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15),
+                                                  ),
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -1864,7 +1805,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                       shape:
                                                                           RoundedRectangleBorder(
                                                                         borderRadius:
-                                                                            BorderRadius.circular(8),
+                                                                            BorderRadius.circular(12),
                                                                       ),
                                                                       child:
                                                                           Container(
@@ -1882,7 +1823,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                           color:
                                                                               Colors.white,
                                                                           borderRadius:
-                                                                              BorderRadius.circular(8),
+                                                                              BorderRadius.circular(12),
                                                                         ),
                                                                         child:
                                                                             Row(
@@ -1905,9 +1846,10 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                 child: Text(
                                                                                   dateTimeFormat('d/M/y', containerPaymentsRecord.createdDate),
                                                                                   textAlign: TextAlign.start,
+                                                                                  maxLines: 1,
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Roboto',
-                                                                                        color: Color(0xFF586B06),
+                                                                                        fontFamily: 'Montserrat',
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
                                                                                 ),
@@ -1924,10 +1866,11 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(7, 9, 5, 5),
                                                                                 child: Text(
                                                                                   containerPaymentsRecord.transactionCode.maybeHandleOverflow(maxChars: 8),
+                                                                                  maxLines: 1,
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Roboto',
-                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                        fontWeight: FontWeight.normal,
+                                                                                        fontFamily: 'Montserrat',
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        fontWeight: FontWeight.w500,
                                                                                       ),
                                                                                 ),
                                                                               ),
@@ -1939,15 +1882,16 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                 maxWidth: 70,
                                                                               ),
                                                                               decoration: BoxDecoration(
-                                                                                color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                 borderRadius: BorderRadius.circular(0),
                                                                               ),
                                                                               child: Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(9, 9, 5, 5),
                                                                                 child: Text(
                                                                                   containerPaymentsRecord.type,
+                                                                                  maxLines: 1,
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Roboto',
+                                                                                        fontFamily: 'Montserrat',
                                                                                         color: Colors.white,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -1971,9 +1915,10 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                     currency: 'Ksh ',
                                                                                   ),
                                                                                   textAlign: TextAlign.start,
+                                                                                  maxLines: 1,
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Roboto',
-                                                                                        color: Color(0xFF586B06),
+                                                                                        fontFamily: 'Montserrat',
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
                                                                                 ),
@@ -2141,11 +2086,11 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                           Expanded(
                                                                                             child: Container(
                                                                                               decoration: BoxDecoration(
-                                                                                                color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                 borderRadius: BorderRadius.circular(12),
                                                                                               ),
                                                                                               child: Padding(
-                                                                                                padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(5, 3, 5, 3),
                                                                                                 child: StreamBuilder<UsersRecord>(
                                                                                                   stream: UsersRecord.getDocument(columnChatsRecord.lastMessageSentBy),
                                                                                                   builder: (context, snapshot) {
@@ -2166,8 +2111,10 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                                     return Text(
                                                                                                       '${textUsersRecord.firstName} ${textUsersRecord.lastName}',
                                                                                                       textAlign: TextAlign.center,
+                                                                                                      maxLines: 1,
                                                                                                       style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                                            fontFamily: 'Roboto',
+                                                                                                            fontFamily: 'Montserrat',
+                                                                                                            color: FlutterFlowTheme.of(context).primaryText,
                                                                                                             fontSize: 11,
                                                                                                             fontWeight: FontWeight.normal,
                                                                                                           ),
@@ -2298,12 +2245,12 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                           options: FFButtonOptions(
                             width: 300,
                             height: 70,
-                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            color: FlutterFlowTheme.of(context).secondaryText,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Montserrat',
                                       color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                          .secondaryBackground,
                                     ),
                             elevation: 2,
                             borderSide: BorderSide(

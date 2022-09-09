@@ -108,7 +108,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .title1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Montserrat',
                                             color: Color(0xFF586B06),
                                           ),
                                     ),
@@ -229,16 +229,15 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                   .fromSTEB(8, 8, 0, 0),
                                               child: Text(
                                                 'Lab Reference',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color: Color(0xFF586B06),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                           ),
@@ -268,17 +267,18 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                 bookingUpdatesBookingsRecord
                                                     .labRefNum,
                                                 textAlign: TextAlign.end,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                           ),
@@ -317,7 +317,8 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             Color(0xFF586B06),
                                                         fontWeight:
@@ -367,7 +368,8 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -416,7 +418,8 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             Color(0xFF586B06),
                                                         fontWeight:
@@ -458,7 +461,8 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -496,7 +500,8 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                           context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             Color(0xFF586B06),
                                                       ),
@@ -551,7 +556,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                   .bodyText1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
+                                                                        'Montserrat',
                                                                     color: Color(
                                                                         0xFF586B06),
                                                                     fontWeight:
@@ -596,7 +601,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                   .bodyText1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
+                                                                        'Montserrat',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryColor,
@@ -670,7 +675,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               Color(0xFF586B06),
                                                                           fontWeight:
@@ -713,7 +718,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryColor,
                                                                         ),
@@ -777,7 +782,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               Color(0xFF586B06),
                                                                           fontWeight:
@@ -821,7 +826,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryColor,
                                                                         ),
@@ -885,7 +890,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               Color(0xFF586B06),
                                                                           fontWeight:
@@ -929,7 +934,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryColor,
                                                                         ),
@@ -993,7 +998,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Roboto',
+                                                                                'Montserrat',
                                                                             color:
                                                                                 Color(0xFF586B06),
                                                                             fontWeight:
@@ -1049,7 +1054,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Roboto',
+                                                                                'Montserrat',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).secondaryColor,
                                                                           ),
@@ -1094,7 +1099,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Roboto',
+                                                                                'Montserrat',
                                                                             color:
                                                                                 Color(0xFF586B06),
                                                                             fontWeight:
@@ -1148,7 +1153,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Roboto',
+                                                                                'Montserrat',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).secondaryColor,
                                                                             fontWeight:
@@ -1210,7 +1215,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Montserrat',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryColor,
@@ -1236,7 +1241,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                fontFamily: 'Montserrat',
                                                 color: Color(0xFF586B06),
                                               ),
                                         ),
@@ -1465,7 +1470,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                                   return Text(
                                                                                     textTestsRecord.name,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Roboto',
+                                                                                          fontFamily: 'Montserrat',
                                                                                           color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),

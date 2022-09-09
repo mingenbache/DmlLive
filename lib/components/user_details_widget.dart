@@ -122,7 +122,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .title2
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Montserrat',
                                           color: Color(0xFF586B06),
                                           fontSize: 32,
                                           fontWeight: FontWeight.bold,
@@ -200,16 +200,15 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                               ),
                                               child: Text(
                                                 'Name:',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .subtitle2
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color: Color(0xFF586B06),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                           ),
@@ -266,16 +265,15 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                               decoration: BoxDecoration(),
                                               child: Text(
                                                 'Phone:',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .subtitle2
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color: Color(0xFF586B06),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                             Padding(
@@ -333,16 +331,15 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                               decoration: BoxDecoration(),
                                               child: Text(
                                                 'Email:',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .subtitle2
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color: Color(0xFF586B06),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                             Container(
@@ -396,16 +393,15 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                               decoration: BoxDecoration(),
                                               child: Text(
                                                 'D.O.B:',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .subtitle2
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color: Color(0xFF586B06),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                             Padding(
@@ -440,7 +436,8 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Montserrat',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryColor,
@@ -492,7 +489,8 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                             context)
                                                         .subtitle2
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Montserrat',
                                                           color:
                                                               Color(0xFF586B06),
                                                           fontWeight:
@@ -526,7 +524,8 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -569,7 +568,8 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                           context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             Color(0xFF586B06),
                                                         fontWeight:
@@ -653,7 +653,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiaryColor,
                                       ),

@@ -196,7 +196,8 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                           context)
                                                       .title1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color: Colors.white,
                                                       ),
                                                 ),
@@ -376,15 +377,17 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .primaryColor,
-                                                  labelStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
+                                                  labelStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyText1
+                                                          .override(
+                                                            fontFamily:
+                                                                'Montserrat',
+                                                            fontSize: 16,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                          ),
                                                   indicatorColor: Colors.white,
                                                   tabs: [
                                                     Tab(
@@ -498,7 +501,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle2
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Montserrat',
                                                                                 color: FlutterFlowTheme.of(context).alternate,
                                                                               ),
                                                                         ),
@@ -1513,7 +1516,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryColor,
@@ -1543,7 +1546,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: Color(
                                                                       0xFF586B06),
                                                                 ),

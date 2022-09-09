@@ -20,8 +20,9 @@ class AllTestsWidget extends StatefulWidget {
 }
 
 class _AllTestsWidgetState extends State<AllTestsWidget> {
-  List<TestsRecord> algoliaSearchResults = [];
   TextEditingController textController;
+
+  List<TestsRecord> algoliaSearchResults = [];
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -68,7 +69,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
               label: Text(
                 'ADD NEW TEST',
                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                      fontFamily: 'Roboto',
+                      fontFamily: 'Montserrat',
                       color: FlutterFlowTheme.of(context).tertiaryColor,
                     ),
               ),
@@ -108,7 +109,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                             'TEST CATALOG',
                             textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context).title1.override(
-                                  fontFamily: 'Roboto',
+                                  fontFamily: 'Montserrat',
                                   color: Color(0xFF586B06),
                                 ),
                           ),
@@ -159,6 +160,27 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x004B39EF),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        errorBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
                                             width: 1,
                                           ),
                                           borderRadius: const BorderRadius.only(
@@ -235,7 +257,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Montserrat',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
                                             fontWeight: FontWeight.w500,
@@ -323,7 +345,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Montserrat',
                                                                 fontSize: 16,
                                                               ),
                                                     ),

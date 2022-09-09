@@ -21,16 +21,25 @@ class SignupWidget extends StatefulWidget {
 }
 
 class _SignupWidgetState extends State<SignupWidget> {
+  TextEditingController confirmPasswordController;
+
+  bool confirmPasswordVisibility;
+
+  TextEditingController emailAddressController;
+
+  TextEditingController firstNameController;
+
+  TextEditingController lastNameController;
+
+  TextEditingController phoneNumberController;
+
   DateTime datePicked;
   String sexChoiceChipsValue;
-  TextEditingController emailAddressController;
-  TextEditingController firstNameController;
-  TextEditingController lastNameController;
-  TextEditingController phoneNumberController;
+
   TextEditingController passwordController;
+
   bool passwordVisibility;
-  TextEditingController confirmPasswordController;
-  bool confirmPasswordVisibility;
+
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -172,6 +181,23 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(8),
                                             ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 2,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 2,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
                                             filled: true,
                                             fillColor: Color(0x2BFFFFFF),
                                             contentPadding:
@@ -191,6 +217,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             if (val == null || val.isEmpty) {
                                               return 'Field is required';
                                             }
+
                                             if (val.length < 2) {
                                               return 'Requires at least 2 characters.';
                                             }
@@ -240,6 +267,23 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(8),
                                             ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 2,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 2,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
                                             filled: true,
                                             fillColor: Color(0x2BFFFFFF),
                                             contentPadding:
@@ -258,6 +302,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             if (val == null || val.isEmpty) {
                                               return 'Field is required';
                                             }
+
                                             if (val.length < 2) {
                                               return 'incomplete name entry';
                                             }
@@ -309,6 +354,23 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
+                                              width: 2,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 2,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
                                               width: 2,
                                             ),
                                             borderRadius:
@@ -378,6 +440,23 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                           ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 2,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 2,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
                                           filled: true,
                                           fillColor: Color(0x2CFFFFFF),
                                           contentPadding:
@@ -401,6 +480,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           if (val == null || val.isEmpty) {
                                             return 'Field is required';
                                           }
+
                                           if (val.length < 7) {
                                             return 'incomplete telephone number';
                                           }
@@ -466,7 +546,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color: Colors.white,
                                                       ),
                                             ),
@@ -496,7 +577,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                   context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                fontFamily: 'Montserrat',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .tertiaryColor,
@@ -517,7 +598,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                   context)
                                               .bodyText2
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                fontFamily: 'Montserrat',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryColor,
@@ -588,6 +669,23 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0xFF586B06),
+                                              width: 2,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 2,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
                                               width: 2,
                                             ),
                                             borderRadius:
@@ -664,6 +762,23 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                               color: Color(0xFF586B06),
+                                              width: 2,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 2,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
                                               width: 2,
                                             ),
                                             borderRadius:
@@ -775,6 +890,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             );
                                           },
                                         );
+
                                         context.goNamedAuth('checkup', mounted);
                                       },
                                       text: 'Create Account',
@@ -846,6 +962,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     if (user == null) {
                                       return;
                                     }
+
                                     context.goNamedAuth('checkup', mounted);
                                   },
                                   child: Card(
@@ -867,6 +984,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           if (user == null) {
                                             return;
                                           }
+
                                           context.goNamedAuth(
                                               'checkup', mounted);
                                         },
@@ -893,6 +1011,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                   if (user == null) {
                                     return;
                                   }
+
                                   context.goNamedAuth('checkup', mounted);
                                 },
                                 child: Card(
@@ -913,6 +1032,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         if (user == null) {
                                           return;
                                         }
+
                                         context.goNamedAuth('checkup', mounted);
                                       },
                                       child: Container(

@@ -26,12 +26,16 @@ class EditUserDetailsCopyWidget extends StatefulWidget {
 }
 
 class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
-  DateTime datePicked;
-  String sexChoiceChipsValue;
   TextEditingController emailAddressController;
+
   TextEditingController firstNameController;
+
   TextEditingController lastNameController;
+
   TextEditingController phoneNumberController;
+
+  String sexChoiceChipsValue;
+  DateTime datePicked;
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +118,7 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .title2
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Montserrat',
                                             color: Color(0xFF586B06),
                                             fontSize: 32,
                                             fontWeight: FontWeight.bold,
@@ -210,6 +214,26 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                                         BorderRadius.circular(
                                                             8),
                                                   ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 2,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 2,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
                                                   filled: true,
                                                   fillColor: Color(0x2BFFFFFF),
                                                   contentPadding:
@@ -264,6 +288,26 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
                                                       color: Color(0xFF586B06),
+                                                      width: 2,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 2,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
                                                       width: 2,
                                                     ),
                                                     borderRadius:
@@ -344,6 +388,23 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                                   borderRadius:
                                                       BorderRadius.circular(8),
                                                 ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
                                                 filled: true,
                                                 fillColor: Color(0x2BFFFFFF),
                                                 contentPadding:
@@ -412,6 +473,23 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                                     OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0xFF586B06),
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
                                                     width: 2,
                                                   ),
                                                   borderRadius:
@@ -500,7 +578,8 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                                           .of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -527,7 +606,8 @@ class _EditUserDetailsCopyWidgetState extends State<EditUserDetailsCopyWidget> {
                                                           .of(context)
                                                       .bodyText2
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)

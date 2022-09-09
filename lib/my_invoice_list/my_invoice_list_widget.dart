@@ -77,14 +77,13 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                           children: [
                                             Text(
                                               'MY INVOICES',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .title1
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            Color(0xFF586B06),
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .title1
+                                                  .override(
+                                                    fontFamily: 'Montserrat',
+                                                    color: Color(0xFF586B06),
+                                                  ),
                                             ),
                                           ],
                                         ),
@@ -109,7 +108,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .subtitle1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Montserrat',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
                                           ),
@@ -328,7 +327,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                               Text(
                                                                             '21',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                   fontSize: 22,
                                                                                   fontWeight: FontWeight.w500,
@@ -342,7 +341,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                               Text(
                                                                             'OCT',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                   fontSize: 12,
                                                                                   fontWeight: FontWeight.w500,
@@ -422,7 +421,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                             textAlign:
                                                                                 TextAlign.start,
                                                                             style: FlutterFlowTheme.of(context).subtitle1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                 ),
                                                                           ),
@@ -461,7 +460,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                               currency: 'Ksh ',
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).subtitle1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -561,7 +560,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle2
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Montserrat',
                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                 fontSize: 14,
                                                                               ),
@@ -625,7 +624,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                                   dateTimeFormat('d/M/y', paymentOnInvoiceItem.createdDate),
                                                                                                   textAlign: TextAlign.start,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                        fontFamily: 'Roboto',
+                                                                                                        fontFamily: 'Montserrat',
                                                                                                         color: Color(0xFF586B06),
                                                                                                         fontWeight: FontWeight.w500,
                                                                                                       ),
@@ -641,7 +640,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                                 child: Text(
                                                                                                   paymentOnInvoiceItem.transactionCode,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                        fontFamily: 'Roboto',
+                                                                                                        fontFamily: 'Montserrat',
                                                                                                         color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                         fontWeight: FontWeight.normal,
                                                                                                       ),
@@ -664,7 +663,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                                     currency: 'Kshs',
                                                                                                   ),
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                        fontFamily: 'Roboto',
+                                                                                                        fontFamily: 'Montserrat',
                                                                                                         color: Colors.white,
                                                                                                         fontWeight: FontWeight.w500,
                                                                                                       ),
@@ -685,7 +684,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                                   ),
                                                                                                   textAlign: TextAlign.start,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                        fontFamily: 'Roboto',
+                                                                                                        fontFamily: 'Montserrat',
                                                                                                         color: Color(0xFF586B06),
                                                                                                         fontWeight: FontWeight.w500,
                                                                                                       ),

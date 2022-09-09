@@ -95,7 +95,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Montserrat',
                                       color: Colors.white,
                                     ),
                               ),
@@ -213,13 +213,36 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                               topRight: Radius.circular(4.0),
                                             ),
                                           ),
+                                          errorBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 1,
+                                            ),
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                              topLeft: Radius.circular(4.0),
+                                              topRight: Radius.circular(4.0),
+                                            ),
+                                          ),
+                                          focusedErrorBorder:
+                                              UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 1,
+                                            ),
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                              topLeft: Radius.circular(4.0),
+                                              topRight: Radius.circular(4.0),
+                                            ),
+                                          ),
                                           suffixIcon: textController
                                                   .text.isNotEmpty
                                               ? InkWell(
-                                                  onTap: () => setState(
-                                                    () =>
-                                                        textController?.clear(),
-                                                  ),
+                                                  onTap: () async {
+                                                    textController?.clear();
+                                                    setState(() {});
+                                                  },
                                                   child: Icon(
                                                     Icons.clear,
                                                     color: FlutterFlowTheme.of(

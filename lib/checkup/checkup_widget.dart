@@ -41,14 +41,17 @@ class _CheckupWidgetState extends State<CheckupWidget> {
           if (valueOrDefault<bool>(currentUserDocument?.isStaff, false) ==
               true) {
             context.goNamed('HomeAdmin');
+
             return;
           } else {
             context.goNamed('Home');
+
             return;
           }
         }
       } else {
         context.goNamed('Login');
+
         return;
       }
     });
@@ -64,7 +67,7 @@ class _CheckupWidgetState extends State<CheckupWidget> {
         title: Text(
           'Page Title',
           style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Roboto',
+                fontFamily: 'Montserrat',
                 color: Colors.white,
                 fontSize: 22,
               ),

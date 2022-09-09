@@ -40,24 +40,14 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                 color: Colors.transparent,
                 elevation: 3,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(16),
-                    bottomRight: Radius.circular(16),
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                  ),
+                  borderRadius: BorderRadius.circular(30),
                 ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 0.3,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).tertiaryColor,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(16),
-                      bottomRight: Radius.circular(16),
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30),
-                    ),
+                    color: FlutterFlowTheme.of(context).secondaryColor,
+                    borderRadius: BorderRadius.circular(30),
                   ),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(20, 44, 20, 20),
@@ -68,15 +58,19 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              'CONFIRM BOOKING',
-                              style:
-                                  FlutterFlowTheme.of(context).title2.override(
-                                        fontFamily: 'Roboto',
-                                        color: Color(0xFF586B06),
-                                        fontSize: 32,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                            Expanded(
+                              child: Text(
+                                'CONFIRM BOOKING',
+                                style: FlutterFlowTheme.of(context)
+                                    .title2
+                                    .override(
+                                      fontFamily: 'Montserrat',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 32,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
                             ),
                             InkWell(
                               onTap: () async {
@@ -93,10 +87,12 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                                   borderColor: Colors.transparent,
                                   borderRadius: 30,
                                   buttonSize: 48,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   icon: Icon(
                                     Icons.close_rounded,
                                     color: FlutterFlowTheme.of(context)
-                                        .tertiaryColor,
+                                        .primaryText,
                                     size: 30,
                                   ),
                                   onPressed: () async {
@@ -118,6 +114,7 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
                               width: 300,
@@ -133,9 +130,9 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryColor,
+                                            .primaryText,
                                       ),
                                 ),
                               ),
@@ -188,12 +185,12 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                           options: FFButtonOptions(
                             width: 300,
                             height: 70,
-                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            color: FlutterFlowTheme.of(context).secondaryText,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Montserrat',
                                       color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                          .secondaryBackground,
                                     ),
                             elevation: 2,
                             borderSide: BorderSide(
@@ -212,7 +209,7 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                 'Tap above to complete request',
                 style: FlutterFlowTheme.of(context).bodyText1.override(
                       fontFamily: 'Roboto',
-                      color: FlutterFlowTheme.of(context).secondaryColor,
+                      color: FlutterFlowTheme.of(context).primaryText,
                       fontSize: 15,
                       fontWeight: FontWeight.normal,
                     ),

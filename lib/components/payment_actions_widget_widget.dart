@@ -54,7 +54,7 @@ class _PaymentActionsWidgetWidgetState
               maxWidth: 300,
             ),
             decoration: BoxDecoration(
-              color: Color(0xFF58585C),
+              color: FlutterFlowTheme.of(context).secondaryText,
               boxShadow: [
                 BoxShadow(
                   blurRadius: 1,
@@ -107,7 +107,7 @@ class _PaymentActionsWidgetWidgetState
                                     Icon(
                                       Icons.receipt,
                                       color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                          .secondaryBackground,
                                       size: 20,
                                     ),
                                     Row(
@@ -124,10 +124,10 @@ class _PaymentActionsWidgetWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Montserrat',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .tertiaryColor,
+                                                      .secondaryBackground,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -255,7 +255,8 @@ class _PaymentActionsWidgetWidgetState
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -290,7 +291,8 @@ class _PaymentActionsWidgetWidgetState
                                   children: [
                                     Icon(
                                       Icons.verified_sharp,
-                                      color: Color(0x74BACA68),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                       size: 18,
                                     ),
                                     Row(
@@ -307,8 +309,10 @@ class _PaymentActionsWidgetWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0x73BACA68),
+                                                  fontFamily: 'Montserrat',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),

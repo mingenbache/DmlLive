@@ -29,8 +29,11 @@ class AddDoctorFormWidget extends StatefulWidget {
 class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
     with TickerProviderStateMixin {
   TextEditingController doctorNamesController;
+
   TextEditingController emailAddressController;
+
   TextEditingController phoneNumberController;
+
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -106,7 +109,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                         Text(
                           'ADD DOCTOR',
                           style: FlutterFlowTheme.of(context).title2.override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'Montserrat',
                                 color: Color(0xFF586B06),
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold,
@@ -181,6 +184,20 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                             contentPadding:
                                 EdgeInsetsDirectional.fromSTEB(20, 10, 24, 0),
                             prefixIcon: Icon(
@@ -233,6 +250,20 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                                   borderSide: BorderSide(
                                     color:
                                         FlutterFlowTheme.of(context).alternate,
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
@@ -293,6 +324,20 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
                                 filled: true,
                                 fillColor: Color(0x2CFFFFFF),
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
@@ -342,7 +387,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                     height: 70,
                     color: FlutterFlowTheme.of(context).secondaryColor,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'Montserrat',
                           color: FlutterFlowTheme.of(context).tertiaryColor,
                         ),
                     elevation: 2,

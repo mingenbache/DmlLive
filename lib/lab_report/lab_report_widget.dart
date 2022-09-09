@@ -172,7 +172,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title1
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: Color(0xFF586B06),
                                       ),
                                 ),
@@ -211,7 +211,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Roboto',
+                                                    fontFamily: 'Montserrat',
                                                     color: Color(0xFF586B06),
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -262,7 +262,8 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color: Colors.white,
                                                       ),
                                                 ),
@@ -314,7 +315,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Montserrat',
                                                   color: Color(0xFF586B06),
                                                   fontWeight: FontWeight.w500,
                                                 ),
@@ -348,7 +349,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Montserrat',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryColor,
@@ -389,7 +390,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                fontFamily: 'Montserrat',
                                                 color: Color(0xFF586B06),
                                                 fontWeight: FontWeight.w500,
                                               ),
@@ -425,18 +426,19 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                     'd/M/y',
                                                     labReportBookingsRecord
                                                         .scheduledDate),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                          fontSize: 16,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                           ],
@@ -475,7 +477,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Roboto',
+                                                    fontFamily: 'Montserrat',
                                                     color: Color(0xFF586B06),
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -519,7 +521,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Montserrat',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,
@@ -566,7 +568,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Roboto',
+                                                    fontFamily: 'Montserrat',
                                                     color: Color(0xFF586B06),
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -597,15 +599,16 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                               child: Text(
                                                 labReportBookingsRecord
                                                     .docNameAddress,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                        ),
+                                                    ),
                                               ),
                                             ),
                                           ),
@@ -652,7 +655,8 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                           context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color: Colors.white,
                                                       ),
                                                 ),
@@ -702,7 +706,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: Colors
                                                                       .white,
                                                                   fontWeight:
@@ -741,7 +745,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .tertiaryColor,
@@ -832,7 +836,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).tertiaryColor,
                                                                           fontWeight:
@@ -873,7 +877,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -937,7 +941,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).tertiaryColor,
                                                                           fontWeight:
@@ -979,7 +983,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -1043,7 +1047,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).tertiaryColor,
                                                                           fontWeight:
@@ -1085,7 +1089,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -1154,7 +1158,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Montserrat',
                                                                                 color: FlutterFlowTheme.of(context).tertiaryColor,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -1212,7 +1216,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Montserrat',
                                                                                 color: Colors.white,
                                                                               ),
                                                                         ),
@@ -1270,7 +1274,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText2
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               Colors.white,
                                                                           fontWeight:
@@ -1346,7 +1350,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Montserrat',
                                             color: Color(0xFF586B06),
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -1379,7 +1383,8 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1412,7 +1417,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .subtitle2
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Montserrat',
                                             color: Color(0xFF586B06),
                                           ),
                                     ),
@@ -1582,7 +1587,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Montserrat',
                                           color: Color(0xFF586B06),
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -1609,15 +1614,16 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                               child: Text(
                                                 labReportBookingsRecord
                                                     .diagnosis,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                        ),
+                                                    ),
                                               ),
                                             ),
                                           ],

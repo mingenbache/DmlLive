@@ -76,51 +76,51 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get title1Family => 'Roboto';
+  String get title1Family => 'Montserrat';
   TextStyle get title1 => GoogleFonts.getFont(
-        'Roboto',
+        'Montserrat',
         color: Colors.white,
         fontWeight: FontWeight.bold,
         fontSize: 32,
       );
-  String get title2Family => 'Roboto';
+  String get title2Family => 'Montserrat';
   TextStyle get title2 => GoogleFonts.getFont(
-        'Roboto',
+        'Montserrat',
         color: Colors.white,
         fontWeight: FontWeight.bold,
         fontSize: 28,
       );
-  String get title3Family => 'Roboto';
+  String get title3Family => 'Montserrat';
   TextStyle get title3 => GoogleFonts.getFont(
-        'Roboto',
+        'Montserrat',
         color: theme.secondaryColor,
         fontWeight: FontWeight.w600,
         fontSize: 24,
       );
-  String get subtitle1Family => 'Roboto';
+  String get subtitle1Family => 'Montserrat';
   TextStyle get subtitle1 => GoogleFonts.getFont(
-        'Roboto',
+        'Montserrat',
         color: Color(0xFF424242),
         fontWeight: FontWeight.bold,
         fontSize: 20,
       );
-  String get subtitle2Family => 'Roboto';
+  String get subtitle2Family => 'Montserrat';
   TextStyle get subtitle2 => GoogleFonts.getFont(
-        'Roboto',
+        'Montserrat',
         color: Colors.white,
         fontWeight: FontWeight.w500,
         fontSize: 18,
       );
-  String get bodyText1Family => 'Roboto';
+  String get bodyText1Family => 'Montserrat';
   TextStyle get bodyText1 => GoogleFonts.getFont(
-        'Roboto',
+        'Montserrat',
         color: Colors.white,
         fontWeight: FontWeight.normal,
         fontSize: 14,
       );
-  String get bodyText2Family => 'Roboto';
+  String get bodyText2Family => 'Montserrat';
   TextStyle get bodyText2 => GoogleFonts.getFont(
-        'Roboto',
+        'Montserrat',
         color: Color(0xFF424242),
         fontWeight: FontWeight.w300,
         fontSize: 14,

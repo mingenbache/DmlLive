@@ -46,7 +46,7 @@ class _DateWidgetSmallCopyWidgetState extends State<DateWidgetSmallCopyWidget> {
                   child: Text(
                     '29',
                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'Montserrat',
                           color: FlutterFlowTheme.of(context).secondaryColor,
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
@@ -70,7 +70,7 @@ class _DateWidgetSmallCopyWidgetState extends State<DateWidgetSmallCopyWidget> {
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'Montserrat',
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
                                 fontSize: 12,
@@ -92,7 +92,7 @@ class _DateWidgetSmallCopyWidgetState extends State<DateWidgetSmallCopyWidget> {
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'Montserrat',
                                 color:
                                     FlutterFlowTheme.of(context).secondaryColor,
                                 fontSize: 11,

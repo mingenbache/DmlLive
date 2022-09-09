@@ -143,7 +143,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .title1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Montserrat',
                                                   color: Color(0xFF586B06),
                                                 ),
                                           ),
@@ -223,7 +223,8 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                             context)
                                                         .subtitle1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Montserrat',
                                                           fontSize: 17,
                                                         ),
                                                   ),
@@ -715,7 +716,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                 Text(
                                                                               'LabRef\nNumber',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
+                                                                                    fontFamily: 'Montserrat',
                                                                                     color: Color(0xFF586B06),
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
@@ -827,7 +828,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                 child: Text(
                                                                                   'Patient',
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Roboto',
+                                                                                        fontFamily: 'Montserrat',
                                                                                         color: Color(0xFF586B06),
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -940,7 +941,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                 Text(
                                                                               'Sample\ncollected',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
+                                                                                    fontFamily: 'Montserrat',
                                                                                     color: Color(0xFF586B06),
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
@@ -1058,7 +1059,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                 Text(
                                                                               'Test\nDate',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
+                                                                                    fontFamily: 'Montserrat',
                                                                                     color: Color(0xFF586B06),
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
@@ -1162,7 +1163,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                           Text(
                                                                             'Pathologist',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   color: Color(0xFF586B06),
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1271,7 +1272,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                               Text(
                                                                                 'Technologist',
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Roboto',
+                                                                                      fontFamily: 'Montserrat',
                                                                                       color: Color(0xFF586B06),
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -1399,7 +1400,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                   child: Text(
                                                                                     'Test Diagnosis',
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Roboto',
+                                                                                          fontFamily: 'Montserrat',
                                                                                           color: Colors.white,
                                                                                           fontSize: 15,
                                                                                           fontWeight: FontWeight.normal,
@@ -1564,7 +1565,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                       child: Text(
                                                                                         'Results Description',
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Roboto',
+                                                                                              fontFamily: 'Montserrat',
                                                                                               color: Color(0xFF586B06),
                                                                                               fontWeight: FontWeight.w500,
                                                                                             ),
@@ -1601,7 +1602,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                   child: Text(
                                                                                     viewResultsTestedTestsRecord.testResult,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Roboto',
+                                                                                          fontFamily: 'Montserrat',
                                                                                           color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -1667,7 +1668,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                       child: Text(
                                                                                         'Pathologist notes',
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Roboto',
+                                                                                              fontFamily: 'Montserrat',
                                                                                               color: Color(0xFF586B06),
                                                                                               fontWeight: FontWeight.w500,
                                                                                             ),
@@ -1710,7 +1711,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                     child: Text(
                                                                                       viewResultsTestedTestsRecord.pathologistNote,
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Roboto',
+                                                                                            fontFamily: 'Montserrat',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontWeight: FontWeight.w500,
                                                                                           ),
@@ -1777,7 +1778,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                       child: Text(
                                                                                         'Technical notes',
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Roboto',
+                                                                                              fontFamily: 'Montserrat',
                                                                                               color: Color(0xFF586B06),
                                                                                               fontWeight: FontWeight.w500,
                                                                                             ),
@@ -1820,7 +1821,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                     child: Text(
                                                                                       viewResultsTestedTestsRecord.testNote,
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Roboto',
+                                                                                            fontFamily: 'Montserrat',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontWeight: FontWeight.w500,
                                                                                           ),
@@ -1870,7 +1871,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle2
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Montserrat',
                                                                                 color: Color(0xFF586B06),
                                                                               ),
                                                                         ),
@@ -1968,7 +1969,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                     child: Text(
                                                                                       testResultsTestsRecord.varianceMale,
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Roboto',
+                                                                                            fontFamily: 'Montserrat',
                                                                                             color: Colors.white,
                                                                                           ),
                                                                                     ),
@@ -2000,7 +2001,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                     child: Text(
                                                                                       testResultsTestsRecord.varianceUnitsMale,
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Roboto',
+                                                                                            fontFamily: 'Montserrat',
                                                                                             color: Colors.white,
                                                                                           ),
                                                                                     ),
@@ -2104,7 +2105,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                   child: Text(
                                                                                     testResultsTestsRecord.varianceFemale,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Roboto',
+                                                                                          fontFamily: 'Montserrat',
                                                                                           color: Colors.white,
                                                                                         ),
                                                                                   ),
@@ -2141,7 +2142,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                   child: Text(
                                                                                     testResultsTestsRecord.varianceUnitsMale,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Roboto',
+                                                                                          fontFamily: 'Montserrat',
                                                                                           color: Colors.white,
                                                                                         ),
                                                                                   ),
@@ -2191,7 +2192,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                           Text(
                                                                             'Equipment Information',
                                                                             style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   color: Color(0xFF586B06),
                                                                                 ),
                                                                           ),
@@ -2236,7 +2237,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                 Text(
                                                                                   testResultsTestsRecord.equipmentInfo,
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Roboto',
+                                                                                        fontFamily: 'Montserrat',
                                                                                         color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),

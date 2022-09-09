@@ -57,7 +57,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                       'TEST QUEUE',
                       textAlign: TextAlign.start,
                       style: FlutterFlowTheme.of(context).title1.override(
-                            fontFamily: 'Roboto',
+                            fontFamily: 'Montserrat',
                             color: Color(0xFF586B06),
                           ),
                     ),
@@ -157,7 +157,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Montserrat',
                                           color: Color(0xFF586B06),
                                         ),
                                   ),
@@ -187,7 +187,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Montserrat',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .tertiaryColor,
@@ -349,6 +349,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                         .DocumentReference),
                                                           }.withoutNulls,
                                                         );
+
                                                         if (_shouldSetState)
                                                           setState(() {});
                                                       },
@@ -574,7 +575,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                                   height: 40,
                                                                                                   color: Color(0x0088993A),
                                                                                                   textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                                        fontFamily: 'Roboto',
+                                                                                                        fontFamily: 'Montserrat',
                                                                                                         color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                         fontSize: 15,
                                                                                                         fontWeight: FontWeight.normal,
@@ -601,7 +602,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                                   height: 40,
                                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                                   textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                                        fontFamily: 'Roboto',
+                                                                                                        fontFamily: 'Montserrat',
                                                                                                         color: Colors.white,
                                                                                                         fontSize: 15,
                                                                                                         fontWeight: FontWeight.normal,
@@ -629,7 +630,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                             height: 40,
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                                  fontFamily: 'Roboto',
+                                                                                                  fontFamily: 'Montserrat',
                                                                                                   color: FlutterFlowTheme.of(context).tertiaryColor,
                                                                                                   fontSize: 15,
                                                                                                   fontWeight: FontWeight.normal,

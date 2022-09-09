@@ -300,10 +300,13 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                             context)
                                                         .title2
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Montserrat',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryColor,
+                                                          fontWeight:
+                                                              FontWeight.w600,
                                                         ),
                                                   ),
                                                 ),
@@ -434,19 +437,23 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                               ),
                             ],
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
-                                child: Text(
-                                  'Today\'s Activities',
-                                  style: FlutterFlowTheme.of(context).title3,
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24, 0, 0, 0),
+                                  child: Text(
+                                    'Today\'s Activities',
+                                    style: FlutterFlowTheme.of(context).title3,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                           Padding(
                             padding:
@@ -562,7 +569,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                           .bodyText1
                                                           .override(
                                                             fontFamily:
-                                                                'Roboto',
+                                                                'Montserrat',
                                                             fontSize: 64,
                                                             fontWeight:
                                                                 FontWeight.w600,
@@ -586,7 +593,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Montserrat',
                                                           color:
                                                               Color(0xFFFEFEFE),
                                                           fontSize: 19,
@@ -688,7 +696,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                           .bodyText1
                                                           .override(
                                                             fontFamily:
-                                                                'Roboto',
+                                                                'Montserrat',
                                                             fontSize: 64,
                                                             fontWeight:
                                                                 FontWeight.w600,
@@ -712,7 +720,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Montserrat',
                                                           color:
                                                               Color(0xFFFEFEFE),
                                                           fontSize: 19,
@@ -758,18 +767,19 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                               decoration: BoxDecoration(),
                                               child: Text(
                                                 '20',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                          fontSize: 40,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
+                                                      fontSize: 40,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
                                               ),
                                             ),
                                           ],
@@ -784,7 +794,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Montserrat',
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.w500,
                                                 ),
@@ -873,7 +883,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -900,7 +910,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -954,18 +965,19 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                               child: Text(
                                                 'INVOICES DUE',
                                                 textAlign: TextAlign.end,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .primaryColor,
-                                                          fontSize: 19,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                      fontSize: 19,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                           ),
@@ -989,7 +1001,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Roboto',
+                                                    fontFamily: 'Montserrat',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
@@ -1035,7 +1047,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Montserrat',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                           ),

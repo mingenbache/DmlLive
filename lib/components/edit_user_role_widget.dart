@@ -126,7 +126,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .title2
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Montserrat',
                                           color: Color(0xFF586B06),
                                           fontSize: 32,
                                           fontWeight: FontWeight.bold,
@@ -194,7 +194,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Montserrat',
                                                   color: Color(0xFF586B06),
                                                   fontWeight: FontWeight.w500,
                                                 ),
@@ -259,7 +259,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Montserrat',
                                                   color: Color(0xFF586B06),
                                                 ),
                                           ),
@@ -291,7 +291,8 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Montserrat',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryColor,
@@ -336,7 +337,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Montserrat',
                                                   color: Color(0xFF586B06),
                                                 ),
                                           ),
@@ -345,7 +346,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Montserrat',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryColor,
@@ -445,7 +446,9 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                   );
                                   await submitRoleUsersRecord.reference
                                       .update(usersUpdateData);
+
                                   context.pushNamed('UserList');
+
                                   if (switchListTileValue) {
                                     final staffCreateData =
                                         createStaffRecordData(
@@ -470,7 +473,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiaryColor,
                                       ),

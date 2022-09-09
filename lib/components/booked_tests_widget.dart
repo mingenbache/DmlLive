@@ -52,7 +52,7 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
               maxHeight: 170,
             ),
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).tertiaryColor,
+              color: FlutterFlowTheme.of(context).primaryText,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Padding(
@@ -187,17 +187,18 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                               return Text(
                                                 functions.upperCase(
                                                     textTestsRecord.name),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .primaryText,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               );
                                             },
                                           ),

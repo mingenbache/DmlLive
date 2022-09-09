@@ -22,6 +22,7 @@ class PackageTestListWidget extends StatefulWidget {
 class _PackageTestListWidgetState extends State<PackageTestListWidget>
     with TickerProviderStateMixin {
   TextEditingController textController;
+
   final animationsMap = {
     'buttonOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
@@ -107,7 +108,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                               'ADD TESTS',
                               style:
                                   FlutterFlowTheme.of(context).title1.override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: Colors.white,
                                       ),
                             ),
@@ -223,19 +224,41 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                             topRight: Radius.circular(4.0),
                                           ),
                                         ),
-                                        suffixIcon: textController
-                                                .text.isNotEmpty
-                                            ? InkWell(
-                                                onTap: () => setState(
-                                                  () => textController?.clear(),
-                                                ),
-                                                child: Icon(
-                                                  Icons.clear,
-                                                  color: Color(0xFF586B06),
-                                                  size: 18,
-                                                ),
-                                              )
-                                            : null,
+                                        errorBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        suffixIcon:
+                                            textController.text.isNotEmpty
+                                                ? InkWell(
+                                                    onTap: () async {
+                                                      textController?.clear();
+                                                      setState(() {});
+                                                    },
+                                                    child: Icon(
+                                                      Icons.clear,
+                                                      color: Color(0xFF586B06),
+                                                      size: 18,
+                                                    ),
+                                                  )
+                                                : null,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
@@ -292,7 +315,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Montserrat',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryColor,
@@ -328,7 +351,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Montserrat',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryColor,
@@ -439,7 +462,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryColor,
@@ -498,7 +521,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                                   .bodyText1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
+                                                                        'Montserrat',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryColor,
@@ -676,7 +699,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                         textStyle: FlutterFlowTheme.of(context)
                             .subtitle2
                             .override(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'Montserrat',
                               color: FlutterFlowTheme.of(context).tertiaryColor,
                             ),
                         elevation: 2,

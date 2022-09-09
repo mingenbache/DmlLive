@@ -77,6 +77,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                       child: InkWell(
                         onTap: () async {
                           Navigator.pop(context);
+
                           context.goNamed('checkup');
                         },
                         child: Container(
@@ -100,7 +101,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                         fontSize: 20,

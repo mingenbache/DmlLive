@@ -72,7 +72,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height * 0.5,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).tertiaryColor,
+                        color: FlutterFlowTheme.of(context).secondaryColor,
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(16),
                           bottomRight: Radius.circular(16),
@@ -94,8 +94,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title2
                                       .override(
-                                        fontFamily: 'Roboto',
-                                        color: Color(0xFF586B06),
+                                        fontFamily: 'Montserrat',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         fontSize: 32,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -115,6 +116,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                       borderColor: Colors.transparent,
                                       borderRadius: 30,
                                       buttonSize: 48,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                       icon: Icon(
                                         Icons.close_rounded,
                                         color: FlutterFlowTheme.of(context)
@@ -213,7 +216,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              Colors.white,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           borderRadius:
                                                                               BorderRadius.circular(8),
                                                                         ),
@@ -234,8 +237,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                 child: Text(
                                                                                   functions.dateMonth(widget.paymentRef.createdDate),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Roboto',
-                                                                                        color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                        fontFamily: 'Montserrat',
+                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontSize: 12,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -246,7 +249,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                 child: Text(
                                                                                   functions.dateDay(widget.paymentRef.createdDate),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Roboto',
+                                                                                        fontFamily: 'Montserrat',
                                                                                         color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                         fontSize: 24,
                                                                                         fontWeight: FontWeight.w600,
@@ -258,8 +261,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                 child: Text(
                                                                                   functions.dateYear(widget.paymentRef.createdDate),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Roboto',
-                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                        fontFamily: 'Montserrat',
+                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontSize: 12,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -396,9 +399,10 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                   .bodyText1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
-                                                                    color: Color(
-                                                                        0xFF586B06),
+                                                                        'Montserrat',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
@@ -419,8 +423,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                               0.04,
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: Color(
-                                                                0x2CEEEEEE),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
@@ -441,10 +446,13 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                   .bodyText1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
+                                                                        'Montserrat',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .secondaryColor,
+                                                                        .primaryText,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
                                                                   ),
                                                             ),
                                                           ),
@@ -489,9 +497,10 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                   .bodyText1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
-                                                                    color: Color(
-                                                                        0xFF586B06),
+                                                                        'Montserrat',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
@@ -526,8 +535,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                               ),
                                                               decoration:
                                                                   BoxDecoration(
-                                                                color: Color(
-                                                                    0x2BFFFFFF),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
@@ -550,9 +560,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Roboto',
-                                                                        color: Color(
-                                                                            0xFF586B06),
+                                                                            'Montserrat',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
                                                                         fontWeight:
                                                                             FontWeight.w500,
                                                                       ),
@@ -596,9 +606,10 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                   .bodyText1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
-                                                                    color: Color(
-                                                                        0xFF586B06),
+                                                                        'Montserrat',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
@@ -633,8 +644,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                               ),
                                                               decoration:
                                                                   BoxDecoration(
-                                                                color: Color(
-                                                                    0x2BFFFFFF),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
@@ -659,9 +671,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Roboto',
-                                                                        color: Color(
-                                                                            0xFF586B06),
+                                                                            'Montserrat',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
                                                                         fontWeight:
                                                                             FontWeight.w500,
                                                                       ),
@@ -705,9 +717,10 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                   .bodyText1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
-                                                                    color: Color(
-                                                                        0xFF586B06),
+                                                                        'Montserrat',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w500,
@@ -742,8 +755,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                               ),
                                                               decoration:
                                                                   BoxDecoration(
-                                                                color: Color(
-                                                                    0x2BFFFFFF),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
@@ -776,9 +790,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Roboto',
-                                                                        color: Color(
-                                                                            0xFF586B06),
+                                                                            'Montserrat',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
                                                                         fontWeight:
                                                                             FontWeight.w500,
                                                                       ),
@@ -869,8 +883,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .subtitle2
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Color(0xFF586B06),
+                                                                              fontFamily: 'Montserrat',
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -917,8 +931,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                           Text(
                                                                             'Scheduled Date',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
-                                                                                  color: Color(0xFF586B06),
+                                                                                  fontFamily: 'Montserrat',
+                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -943,7 +957,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                             ),
                                                                             decoration:
                                                                                 BoxDecoration(
-                                                                              color: Color(0x2BFFFFFF),
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                               borderRadius: BorderRadius.circular(10),
                                                                             ),
                                                                             child:
@@ -952,8 +966,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                               child: Text(
                                                                                 dateTimeFormat('d/M/y', verifyPaymentContainerBookingsRecord.scheduledDate),
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Roboto',
-                                                                                      color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                      fontFamily: 'Montserrat',
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
+                                                                                      fontWeight: FontWeight.w500,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -1004,8 +1019,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                           Text(
                                                                             'Total Invoice Amount',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
-                                                                                  color: Color(0xFF586B06),
+                                                                                  fontFamily: 'Montserrat',
+                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -1030,7 +1045,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                             ),
                                                                             decoration:
                                                                                 BoxDecoration(
-                                                                              color: Color(0x2BFFFFFF),
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                               borderRadius: BorderRadius.circular(10),
                                                                             ),
                                                                             child:
@@ -1043,9 +1058,11 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                   decimalType: DecimalType.periodDecimal,
                                                                                   currency: 'Ksh ',
                                                                                 ),
+                                                                                maxLines: 1,
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Roboto',
-                                                                                      color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                      fontFamily: 'Montserrat',
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
+                                                                                      fontWeight: FontWeight.w500,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -1096,8 +1113,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                           Text(
                                                                             'Total Amount Due',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
-                                                                                  color: Color(0xFF586B06),
+                                                                                  fontFamily: 'Montserrat',
+                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -1122,7 +1139,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                             ),
                                                                             decoration:
                                                                                 BoxDecoration(
-                                                                              color: Color(0x2BFFFFFF),
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                               borderRadius: BorderRadius.circular(10),
                                                                             ),
                                                                             child:
@@ -1135,9 +1152,11 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                   decimalType: DecimalType.periodDecimal,
                                                                                   currency: 'Ksh ',
                                                                                 ),
+                                                                                maxLines: 1,
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Roboto',
-                                                                                      color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                      fontFamily: 'Montserrat',
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
+                                                                                      fontWeight: FontWeight.w500,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -1174,8 +1193,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .subtitle2
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Color(0xFF586B06),
+                                                                              fontFamily: 'Montserrat',
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                             ),
                                                                       ),
                                                                       Padding(
@@ -1191,7 +1210,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             borderRadius:
                                                                                 BorderRadius.circular(20),
                                                                           ),
@@ -1246,8 +1265,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                                   Text(
                                                                                                     containerTestsRecord.name,
                                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                          fontFamily: 'Roboto',
-                                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                          fontFamily: 'Montserrat',
+                                                                                                          color: FlutterFlowTheme.of(context).primaryText,
                                                                                                           fontWeight: FontWeight.w500,
                                                                                                         ),
                                                                                                   ),
@@ -1259,8 +1278,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                                         child: Text(
                                                                                                           'Ksh',
                                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                                fontFamily: 'Roboto',
-                                                                                                                color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                                fontFamily: 'Montserrat',
+                                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                                 fontWeight: FontWeight.w600,
                                                                                                               ),
                                                                                                         ),
@@ -1272,8 +1291,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                                           decimalType: DecimalType.periodDecimal,
                                                                                                         ),
                                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                              fontFamily: 'Roboto',
-                                                                                                              color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                              fontFamily: 'Montserrat',
+                                                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                                                               fontWeight: FontWeight.w500,
                                                                                                             ),
                                                                                                       ),
@@ -1379,9 +1398,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         .subtitle2
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
-                                                                              Color(0xFF586B06),
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -1441,8 +1460,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Color(0xFF586B06),
+                                                                              fontFamily: 'Montserrat',
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
@@ -1459,8 +1478,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         0.04,
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      color: Color(
-                                                                          0x2CEEEEEE),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               7),
@@ -1479,8 +1499,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                              fontFamily: 'Montserrat',
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
+                                                                              fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -1542,8 +1563,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Color(0xFF586B06),
+                                                                              fontFamily: 'Montserrat',
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
@@ -1560,8 +1581,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         0.04,
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      color: Color(
-                                                                          0x2CEEEEEE),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               7),
@@ -1581,8 +1603,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                              fontFamily: 'Montserrat',
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
+                                                                              fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -1653,8 +1676,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Color(0xFF586B06),
+                                                                              fontFamily: 'Montserrat',
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
@@ -1671,8 +1694,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         0.04,
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      color: Color(
-                                                                          0x2CEEEEEE),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               7),
@@ -1692,8 +1716,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                              fontFamily: 'Montserrat',
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
+                                                                              fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
                                                                     ),
@@ -1762,8 +1787,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                 Text(
                                                                               'Date of Birth',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
-                                                                                    color: Color(0xFF586B06),
+                                                                                    fontFamily: 'Montserrat',
+                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
                                                                             ),
@@ -1791,8 +1816,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                           0.04,
                                                                       decoration:
                                                                           BoxDecoration(
-                                                                        color: Color(
-                                                                            0x2CFFFFFF),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
                                                                         borderRadius:
                                                                             BorderRadius.circular(7),
                                                                       ),
@@ -1813,8 +1838,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                 Text(
                                                                               dateTimeFormat('d/M/y', verifyPaymentContainerBookingsRecord.dOB),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
-                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    fontFamily: 'Montserrat',
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -1858,8 +1883,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                 Text(
                                                                               'Sex',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
-                                                                                    color: Color(0xFF586B06),
+                                                                                    fontFamily: 'Montserrat',
+                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
                                                                             ),
@@ -1887,8 +1912,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                           0.04,
                                                                       decoration:
                                                                           BoxDecoration(
-                                                                        color: Color(
-                                                                            0x2BFFFFFF),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
                                                                         borderRadius:
                                                                             BorderRadius.circular(7),
                                                                       ),
@@ -1913,9 +1938,9 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                               child: Text(
                                                                                 verifyPaymentContainerBookingsRecord.sex,
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Roboto',
-                                                                                      color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                      fontWeight: FontWeight.normal,
+                                                                                      fontFamily: 'Montserrat',
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
+                                                                                      fontWeight: FontWeight.w500,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -1965,7 +1990,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                             dotHeight: 16,
                                             dotColor:
                                                 FlutterFlowTheme.of(context)
-                                                    .primaryColor,
+                                                    .primaryText,
                                             activeDotColor: Colors.white,
                                             paintStyle: PaintingStyle.fill,
                                           ),

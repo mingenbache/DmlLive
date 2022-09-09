@@ -52,12 +52,8 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [
-                    Color(0x789AEBA3),
-                    Color(0xFF398A70),
-                    Color(0xAD6CD7B7)
-                  ],
-                  stops: [0, 0.4, 1],
+                  colors: [Color(0xAF6CD7B7), Colors.white],
+                  stops: [0, 0.4],
                   begin: AlignmentDirectional(0, -1),
                   end: AlignmentDirectional(0, 1),
                 ),
@@ -102,7 +98,8 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                           context)
                                                       .title1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color: Colors.white,
                                                       ),
                                                 ),
@@ -138,7 +135,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                 FlutterFlowTheme.of(context).primaryText,
                             labelStyle:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Montserrat',
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -225,12 +222,18 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                     child: Container(
                                                       decoration:
                                                           BoxDecoration(),
-                                                      child:
-                                                          BookingWidgetWidget(
-                                                        index:
-                                                            pastbookingsIndex,
-                                                        booking:
-                                                            pastbookingsItem,
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0, 3, 0, 0),
+                                                        child:
+                                                            BookingWidgetWidget(
+                                                          index:
+                                                              pastbookingsIndex,
+                                                          booking:
+                                                              pastbookingsItem,
+                                                        ),
                                                       ),
                                                     ),
                                                   );
@@ -272,47 +275,51 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(12),
                                             ),
-                                            child: FlutterFlowCalendar(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              iconColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              weekFormat: true,
-                                              weekStartsMonday: true,
-                                              initialDate:
-                                                  functions.returntheDay(
-                                                      getCurrentTimestamp),
-                                              onChange: (DateTimeRange
-                                                  newSelectedDate) {
-                                                setState(() =>
-                                                    uICalendarSelectedDay =
-                                                        newSelectedDate);
-                                              },
-                                              titleStyle: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                              dayOfWeekStyle: TextStyle(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(6, 0, 6, 0),
+                                              child: FlutterFlowCalendar(
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                              dateStyle: TextStyle(
-                                                color:
+                                                iconColor:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                              selectedDateStyle: TextStyle(),
-                                              inactiveDateStyle: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
+                                                        .primaryText,
+                                                weekFormat: true,
+                                                weekStartsMonday: true,
+                                                initialDate:
+                                                    functions.returntheDay(
+                                                        getCurrentTimestamp),
+                                                onChange: (DateTimeRange
+                                                    newSelectedDate) {
+                                                  setState(() =>
+                                                      uICalendarSelectedDay =
+                                                          newSelectedDate);
+                                                },
+                                                titleStyle: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                                dayOfWeekStyle: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                                dateStyle: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                                selectedDateStyle: TextStyle(),
+                                                inactiveDateStyle: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -346,11 +353,12 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                           context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .alternate,
+                                                                .primaryText,
                                                       ),
                                                 ),
                                                 InkWell(
@@ -389,10 +397,10 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                               .subtitle2
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Montserrat',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryText,
+                                                                    .secondaryBackground,
                                                                 fontSize: 14,
                                                                 fontWeight:
                                                                     FontWeight
@@ -482,9 +490,9 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                           padding:
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(0,
-                                                                      0, 0, 10),
+                                                                      0, 0, 15),
                                                           child: Container(
-                                                            height: 200,
+                                                            height: 205,
                                                             decoration:
                                                                 BoxDecoration(),
                                                             child:
@@ -568,15 +576,22 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                   final unconfirmedBookingsItem =
                                                       unconfirmedBookings[
                                                           unconfirmedBookingsIndex];
-                                                  return Container(
-                                                    height: 180,
-                                                    decoration: BoxDecoration(),
-                                                    child:
-                                                        UnconfirmedBookingWidgetWidget(
-                                                      index:
-                                                          unconfirmedBookingsIndex,
-                                                      bookingRef:
-                                                          unconfirmedBookingsItem,
+                                                  return Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 0, 0, 15),
+                                                    child: Container(
+                                                      height: 180,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child:
+                                                          UnconfirmedBookingWidgetWidget(
+                                                        index:
+                                                            unconfirmedBookingsIndex,
+                                                        bookingRef:
+                                                            unconfirmedBookingsItem,
+                                                      ),
                                                     ),
                                                   );
                                                 }),

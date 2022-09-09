@@ -77,14 +77,13 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                           children: [
                                             Text(
                                               'REPORTS',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .title1
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            Color(0xFF586B06),
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .title1
+                                                  .override(
+                                                    fontFamily: 'Montserrat',
+                                                    color: Color(0xFF586B06),
+                                                  ),
                                             ),
                                           ],
                                         ),
@@ -109,7 +108,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .subtitle1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Montserrat',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryColor,
                                           ),
@@ -260,7 +259,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                       .subtitle2
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Roboto',
+                                                                            'Montserrat',
                                                                         color: Color(
                                                                             0xFF586B06),
                                                                       ),
@@ -342,7 +341,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                     .subtitle2
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Roboto',
+                                                                          'Montserrat',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .secondaryColor,
@@ -473,7 +472,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                                                   child: Text(
                                                                                                     containerTestsRecord.name,
                                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                          fontFamily: 'Roboto',
+                                                                                                          fontFamily: 'Montserrat',
                                                                                                           color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                           fontWeight: FontWeight.normal,
                                                                                                         ),
@@ -492,7 +491,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                                                       'Complete',
                                                                                                       textAlign: TextAlign.end,
                                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                            fontFamily: 'Roboto',
+                                                                                                            fontFamily: 'Montserrat',
                                                                                                             color: Color(0xFF586B06),
                                                                                                             fontWeight: FontWeight.w500,
                                                                                                           ),

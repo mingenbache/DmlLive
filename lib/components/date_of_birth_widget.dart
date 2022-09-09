@@ -96,7 +96,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                               'Date of Birth',
                               style:
                                   FlutterFlowTheme.of(context).title2.override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: Color(0xFF586B06),
                                         fontSize: 32,
                                         fontWeight: FontWeight.bold,
@@ -141,7 +141,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Montserrat',
                                     color: Color(0xFF586B06),
                                   ),
                             ),
@@ -244,7 +244,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                             color: FlutterFlowTheme.of(context).secondaryColor,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Montserrat',
                                       color: FlutterFlowTheme.of(context)
                                           .tertiaryColor,
                                     ),

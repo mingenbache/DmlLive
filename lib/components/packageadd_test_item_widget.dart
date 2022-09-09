@@ -359,16 +359,17 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                                     .maybeHandleOverflow(
                                                         maxChars: 2),
                                                 textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .tertiaryColor,
-                                                          fontSize: 16,
-                                                        ),
+                                                      fontSize: 16,
+                                                    ),
                                               ),
                                             ),
                                             Container(

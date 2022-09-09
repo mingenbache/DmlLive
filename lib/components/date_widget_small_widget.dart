@@ -32,7 +32,7 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
           maxHeight: 30,
         ),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: FlutterFlowTheme.of(context).primaryText,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Padding(
@@ -50,8 +50,9 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
                   child: Text(
                     functions.dateDay(widget.date),
                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Roboto',
-                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          fontFamily: 'Montserrat',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
                         ),
@@ -70,8 +71,9 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
                       child: Text(
                         functions.dateMonth(widget.date),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Roboto',
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                              fontFamily: 'Montserrat',
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                             ),
@@ -85,7 +87,7 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
                       child: Text(
                         functions.dateYear(widget.date),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'Montserrat',
                               color:
                                   FlutterFlowTheme.of(context).secondaryColor,
                               fontSize: 11,

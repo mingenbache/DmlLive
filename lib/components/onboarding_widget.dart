@@ -203,7 +203,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .title1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color: Colors.white,
                                                       ),
                                             ),
@@ -284,7 +285,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                                 .subtitle1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: Colors
                                                                       .white,
                                                                   fontSize: 16,
@@ -401,7 +402,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                                             textAlign:
                                                                                 TextAlign.center,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                 ),
                                                                           ),
@@ -433,7 +434,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle2
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Montserrat',
                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                 fontSize: 14,
                                                                               ),

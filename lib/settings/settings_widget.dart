@@ -30,7 +30,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             gradient: LinearGradient(
               colors: [
                 FlutterFlowTheme.of(context).secondaryColor,
-                Color(0x9B006392),
+                Color(0x9BF9FBFF),
                 FlutterFlowTheme.of(context).secondaryColor
               ],
               stops: [0, 0.5, 1],
@@ -78,7 +78,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 textStyle: FlutterFlowTheme.of(context)
                                     .subtitle2
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Montserrat',
                                       color: Colors.white,
                                     ),
                                 borderSide: BorderSide(
@@ -155,9 +155,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     'SETTINGS',
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).title1.override(
-                          fontFamily: 'Roboto',
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
+                          fontFamily: 'Montserrat',
+                          color: FlutterFlowTheme.of(context).primaryText,
                         ),
                   ),
                 ),
@@ -169,7 +168,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   children: [
                     Expanded(
                       child: Text(
-                        'Choose what notifcations you want to receive below and we will update the settings.',
+                        'Choose what notifications you want to receive below and we will update the settings.',
                         style: FlutterFlowTheme.of(context).bodyText2.override(
                               fontFamily: 'Roboto',
                               color: FlutterFlowTheme.of(context).primaryText,
@@ -193,7 +192,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     width: MediaQuery.of(context).size.width * 0.9,
                     height: 100,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryColor,
+                      color: FlutterFlowTheme.of(context).primaryText,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: SwitchListTile.adaptive(
@@ -203,7 +202,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       title: Text(
                         'Push Notifications',
                         style: FlutterFlowTheme.of(context).title3.override(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'Montserrat',
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                             ),
@@ -211,12 +210,13 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       subtitle: Text(
                         'Receive Push notifications from our application on a semi regular basis.',
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Roboto',
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Montserrat',
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              fontWeight: FontWeight.normal,
                             ),
                       ),
-                      activeColor: FlutterFlowTheme.of(context).primaryText,
+                      activeColor: FlutterFlowTheme.of(context).secondaryColor,
                       dense: false,
                       controlAffinity: ListTileControlAffinity.trailing,
                       contentPadding:
@@ -237,7 +237,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     width: MediaQuery.of(context).size.width * 0.9,
                     height: 100,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryColor,
+                      color: FlutterFlowTheme.of(context).primaryText,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: ClipRRect(
@@ -250,25 +250,26 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           'Email Notifications',
                           style:
                               FlutterFlowTheme.of(context).subtitle1.override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Montserrat',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                   ),
                         ),
                         subtitle: Text(
                           'Receive email notifications from our marketing team about new features.',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: 'Roboto',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                              ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Roboto',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
                         ),
-                        activeColor: FlutterFlowTheme.of(context).primaryText,
+                        activeColor:
+                            FlutterFlowTheme.of(context).secondaryColor,
                         activeTrackColor:
-                            FlutterFlowTheme.of(context).tertiaryColor,
+                            FlutterFlowTheme.of(context).secondaryColor,
                         dense: false,
                         controlAffinity: ListTileControlAffinity.trailing,
                         contentPadding:
@@ -290,7 +291,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     width: MediaQuery.of(context).size.width * 0.9,
                     height: 100,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryColor,
+                      color: FlutterFlowTheme.of(context).primaryText,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: SwitchListTile.adaptive(
@@ -300,7 +301,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       title: Text(
                         'Location Services',
                         style: FlutterFlowTheme.of(context).subtitle1.override(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'Montserrat',
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                             ),
@@ -308,12 +309,13 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       subtitle: Text(
                         'Allow us to track your location, this helps keep track of spending and keeps you safe.',
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Roboto',
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Montserrat',
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              fontWeight: FontWeight.normal,
                             ),
                       ),
-                      activeColor: FlutterFlowTheme.of(context).primaryText,
+                      activeColor: FlutterFlowTheme.of(context).secondaryColor,
                       activeTrackColor:
                           FlutterFlowTheme.of(context).tertiaryColor,
                       dense: false,

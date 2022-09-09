@@ -56,7 +56,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                 itemBuilder: (context, paymentsIndex) {
                   final paymentsItem = payments[paymentsIndex];
                   return Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 3, 0, 4),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 6, 0, 0),
                     child: StreamBuilder<PaymentsRecord>(
                       stream: PaymentsRecord.getDocument(paymentsItem),
                       builder: (context, snapshot) {
@@ -91,19 +91,17 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                               },
                             );
                           },
-                          child: Material(
-                            color: Colors.transparent,
-                            elevation: 2,
-                            shape: RoundedRectangleBorder(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            height: 27,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            child: Container(
-                              width: MediaQuery.of(context).size.width * 0.82,
-                              height: 28,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(12),
-                              ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(6, 0, 6, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -113,30 +111,23 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                   Container(
                                     width: MediaQuery.of(context).size.width *
                                         0.15,
-                                    height: 100,
                                     constraints: BoxConstraints(
                                       maxWidth: 80,
                                     ),
                                     decoration: BoxDecoration(),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5, 9, 5, 5),
-                                      child: Text(
-                                        dateTimeFormat(
-                                            'd/M/y',
-                                            containerPaymentsRecord
-                                                .createdDate),
-                                        textAlign: TextAlign.start,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Roboto',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                      ),
+                                    child: Text(
+                                      dateTimeFormat('d/M/y',
+                                          containerPaymentsRecord.createdDate),
+                                      textAlign: TextAlign.start,
+                                      maxLines: 1,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Montserrat',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                     ),
                                   ),
                                   Container(
@@ -147,16 +138,16 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                       maxWidth: 80,
                                     ),
                                     decoration: BoxDecoration(),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          7, 9, 5, 5),
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0, 0),
                                       child: Text(
                                         containerPaymentsRecord.transactionCode
                                             .maybeHandleOverflow(maxChars: 8),
+                                        maxLines: 1,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Montserrat',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
@@ -174,18 +165,17 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                     ),
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                          .primaryText,
                                       borderRadius: BorderRadius.circular(0),
                                     ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          9, 9, 5, 5),
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0, 0),
                                       child: Text(
                                         containerPaymentsRecord.type,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Montserrat',
                                               color: Colors.white,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -200,9 +190,8 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                       maxWidth: 90,
                                     ),
                                     decoration: BoxDecoration(),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5, 9, 5, 5),
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0, 0),
                                       child: Text(
                                         formatNumber(
                                           containerPaymentsRecord.amount,
@@ -212,10 +201,11 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                           currency: 'Ksh ',
                                         ),
                                         textAlign: TextAlign.start,
+                                        maxLines: 1,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Montserrat',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,

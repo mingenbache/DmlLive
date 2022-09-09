@@ -170,7 +170,7 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .title1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Montserrat',
                                                   color: Colors.white,
                                                 ),
                                           ),

@@ -32,11 +32,13 @@ class SubmitTestResultsWidget extends StatefulWidget {
 
 class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
     with TickerProviderStateMixin {
-  String uploadedFileUrl = '';
+  TextEditingController testNoteController;
+
+  TextEditingController testResultController;
+
   String testMachineValue;
   bool checkboxListTileValue;
-  TextEditingController testResultController;
-  TextEditingController testNoteController;
+  String uploadedFileUrl = '';
   final formKey = GlobalKey<FormState>();
   final animationsMap = {
     'dropDownOnPageLoadAnimation': AnimationInfo(
@@ -163,7 +165,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Montserrat',
                                       color: Color(0xFF586B06),
                                     ),
                               ),
@@ -436,6 +438,20 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                     ),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
                                   filled: true,
                                   fillColor: Color(0x32FFFFFF),
                                   contentPadding:
@@ -606,6 +622,20 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                     ),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
                                   contentPadding:
                                       EdgeInsetsDirectional.fromSTEB(
                                           20, 40, 24, 0),
@@ -693,7 +723,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiaryColor,
                                       ),

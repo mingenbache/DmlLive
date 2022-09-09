@@ -24,18 +24,33 @@ class ModifyTestWidget extends StatefulWidget {
 }
 
 class _ModifyTestWidgetState extends State<ModifyTestWidget> {
-  String dropDownValue;
-  TextEditingController testDescriptionController;
-  TextEditingController testNameController;
-  bool switchListTileValue;
-  bool atHomeToggleValue;
-  TextEditingController testDurationTextController;
-  double testDurationSliderValue;
   TextEditingController resultsDurationTextController;
+
   double durationResultsSliderValue;
+
+  TextEditingController testDescriptionController;
+
+  TextEditingController testNameController;
+
+  bool switchListTileValue;
+  String dropDownValue;
+  bool atHomeToggleValue;
+
+  TextEditingController testDurationTextController;
+
+  double testDurationSliderValue;
+
   TextEditingController testPriceController;
+
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +101,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                           'EDIT TEST DETAILS',
                           textAlign: TextAlign.start,
                           style: FlutterFlowTheme.of(context).title1.override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'Montserrat',
                                 color: Color(0xFF586B06),
                               ),
                         ),
@@ -115,7 +130,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title3
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiaryColor,
                                         fontWeight: FontWeight.w500,
@@ -126,7 +141,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         fontSize: 16,
                                       ),
                                 ),
@@ -196,6 +211,20 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
                                     filled: true,
                                     fillColor: Color(0x2BFFFFFF),
                                     contentPadding:
@@ -261,23 +290,38 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                             filled: true,
                             fillColor: Color(0x65FFFFFF),
                             contentPadding:
                                 EdgeInsetsDirectional.fromSTEB(5, 5, 0, 5),
-                            suffixIcon: testDescriptionController
-                                    .text.isNotEmpty
-                                ? InkWell(
-                                    onTap: () => setState(
-                                      () => testDescriptionController?.clear(),
-                                    ),
-                                    child: Icon(
-                                      Icons.clear,
-                                      color: Color(0xFF889238),
-                                      size: 15,
-                                    ),
-                                  )
-                                : null,
+                            suffixIcon:
+                                testDescriptionController.text.isNotEmpty
+                                    ? InkWell(
+                                        onTap: () async {
+                                          testDescriptionController?.clear();
+                                          setState(() {});
+                                        },
+                                        child: Icon(
+                                          Icons.clear,
+                                          color: Color(0xFF889238),
+                                          size: 15,
+                                        ),
+                                      )
+                                    : null,
                           ),
                           style: GoogleFonts.getFont(
                             'Roboto',
@@ -302,7 +346,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Montserrat',
                                     color: Color(0xFF586B06),
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -354,7 +398,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryColor,
                                       ),
@@ -391,7 +435,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryColor,
                                       ),
@@ -435,7 +479,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Montserrat',
                                       color: Color(0xFF586B06),
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -445,7 +489,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Montserrat',
                                       color: FlutterFlowTheme.of(context)
                                           .tertiaryColor,
                                       fontSize: 12,
@@ -504,6 +548,27 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                             topRight: Radius.circular(4.0),
                                           ),
                                         ),
+                                        errorBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 0, 0, 0, 15),
@@ -511,7 +576,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Montserrat',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
                                             fontSize: 18,
@@ -560,7 +625,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Montserrat',
                                       color: Color(0xFF586B06),
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -570,7 +635,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Montserrat',
                                       color: FlutterFlowTheme.of(context)
                                           .tertiaryColor,
                                       fontSize: 12,
@@ -630,6 +695,27 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                             topRight: Radius.circular(4.0),
                                           ),
                                         ),
+                                        errorBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 0, 0, 0, 15),
@@ -637,7 +723,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Montserrat',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
                                             fontSize: 18,
@@ -689,7 +775,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Montserrat',
                                     color: Color(0xFF586B06),
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -724,6 +810,8 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                     hintText: 'Kshs...',
                                     enabledBorder: InputBorder.none,
                                     focusedBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    focusedErrorBorder: InputBorder.none,
                                     contentPadding:
                                         EdgeInsetsDirectional.fromSTEB(
                                             0, 0, 0, 12),
@@ -780,6 +868,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 backgroundColor: Color(0x00000000),
                               ),
                             );
+
                             context.pushNamed(
                               'Details',
                               queryParams: {

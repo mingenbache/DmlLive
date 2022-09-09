@@ -148,7 +148,7 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Montserrat',
                                           color: Colors.white,
                                           fontSize: 19,
                                           fontWeight: FontWeight.w500,
@@ -172,7 +172,7 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Montserrat',
                                       color: Color(0x8A000000),
                                     ),
                               ),

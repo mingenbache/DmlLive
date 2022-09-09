@@ -125,7 +125,7 @@ class _TechnologistTestDeckWidgetState
                                       style: FlutterFlowTheme.of(context)
                                           .title1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Montserrat',
                                             color: Color(0xFF586B06),
                                           ),
                                     ),
@@ -194,7 +194,8 @@ class _TechnologistTestDeckWidgetState
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         fontSize: 17,
                                                       ),
                                             ),
@@ -626,7 +627,7 @@ class _TechnologistTestDeckWidgetState
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Montserrat',
                                                                                 color: Color(0xFF586B06),
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -741,7 +742,7 @@ class _TechnologistTestDeckWidgetState
                                                                                 Text(
                                                                               'Patient',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
+                                                                                    fontFamily: 'Montserrat',
                                                                                     color: Color(0xFF586B06),
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
@@ -844,7 +845,7 @@ class _TechnologistTestDeckWidgetState
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Montserrat',
                                                                                 color: Color(0xFF586B06),
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -956,7 +957,7 @@ class _TechnologistTestDeckWidgetState
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Montserrat',
                                                                                 color: Color(0xFF586B06),
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -1053,7 +1054,7 @@ class _TechnologistTestDeckWidgetState
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
+                                                                              fontFamily: 'Montserrat',
                                                                               color: Color(0xFF586B06),
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -1153,7 +1154,7 @@ class _TechnologistTestDeckWidgetState
                                                                           Text(
                                                                             'Technologist',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   color: Color(0xFF586B06),
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1352,7 +1353,7 @@ class _TechnologistTestDeckWidgetState
                                                                               Text(
                                                                             'Test Diagnosis',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   color: Colors.white,
                                                                                   fontSize: 15,
                                                                                   fontWeight: FontWeight.normal,
@@ -1535,7 +1536,7 @@ class _TechnologistTestDeckWidgetState
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
+                                                                              fontFamily: 'Montserrat',
                                                                               color: Color(0xFF586B06),
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -1578,7 +1579,7 @@ class _TechnologistTestDeckWidgetState
                                                                               Text(
                                                                             columnTestedTestsRecord.testResult,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1630,7 +1631,7 @@ class _TechnologistTestDeckWidgetState
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
+                                                                              fontFamily: 'Montserrat',
                                                                               color: Color(0xFF586B06),
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -1679,7 +1680,7 @@ class _TechnologistTestDeckWidgetState
                                                                                 Text(
                                                                               columnTestedTestsRecord.testNote,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
+                                                                                    fontFamily: 'Montserrat',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),

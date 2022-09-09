@@ -33,7 +33,7 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
             maxWidth: 380,
           ),
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryColor,
+            color: FlutterFlowTheme.of(context).secondaryText,
             borderRadius: BorderRadius.circular(25),
           ),
           child: Padding(
@@ -72,7 +72,8 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                           children: [
                             FaIcon(
                               FontAwesomeIcons.flask,
-                              color: FlutterFlowTheme.of(context).tertiaryColor,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                               size: 20,
                             ),
                             Row(
@@ -87,9 +88,9 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Montserrat',
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
+                                              .secondaryBackground,
                                           fontWeight: FontWeight.normal,
                                         ),
                                   ),
@@ -133,7 +134,8 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                         children: [
                           Icon(
                             Icons.format_list_numbered_sharp,
-                            color: FlutterFlowTheme.of(context).tertiaryColor,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             size: 20,
                           ),
                           Row(
@@ -148,9 +150,9 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .secondaryBackground,
                                         fontWeight: FontWeight.normal,
                                       ),
                                 ),

@@ -24,7 +24,9 @@ class TestListCatalogWidget extends StatefulWidget {
 class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
     with TickerProviderStateMixin {
   TextEditingController textController1;
+
   TextEditingController textController2;
+
   final animationsMap = {
     'stackOnActionTriggerAnimation1': AnimationInfo(
       curve: Curves.bounceOut,
@@ -109,15 +111,24 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.89,
                 decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0x786CD7B7),
+                      FlutterFlowTheme.of(context).secondaryBackground
+                    ],
+                    stops: [0, 0.45],
+                    begin: AlignmentDirectional(0, -1),
+                    end: AlignmentDirectional(0, 1),
+                  ),
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(16),
-                    bottomRight: Radius.circular(16),
+                    bottomLeft: Radius.circular(39),
+                    bottomRight: Radius.circular(39),
                     topLeft: Radius.circular(0),
                     topRight: Radius.circular(0),
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 34, 0, 10),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 34, 0, 0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -135,7 +146,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                               'TEST CATALOG',
                               style:
                                   FlutterFlowTheme.of(context).title1.override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: Colors.white,
                                       ),
                             ),
@@ -154,10 +165,12 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                   borderColor: Colors.transparent,
                                   borderRadius: 30,
                                   buttonSize: 48,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   icon: Icon(
                                     Icons.close_rounded,
                                     color: FlutterFlowTheme.of(context)
-                                        .tertiaryColor,
+                                        .primaryText,
                                     size: 30,
                                   ),
                                   onPressed: () async {
@@ -184,12 +197,15 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                           child: Column(
                             children: [
                               TabBar(
-                                labelColor: Colors.white,
+                                labelColor:
+                                    FlutterFlowTheme.of(context).primaryText,
                                 unselectedLabelColor:
-                                    FlutterFlowTheme.of(context).tertiaryColor,
+                                    FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                 labelStyle:
                                     FlutterFlowTheme.of(context).subtitle2,
-                                indicatorColor: Colors.white,
+                                indicatorColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                                 tabs: [
                                   Tab(
                                     text: 'Tests',
@@ -270,8 +286,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                   .override(
                                                                     fontFamily:
                                                                         'Roboto',
-                                                                    color: Color(
-                                                                        0xFF586B06),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     fontSize:
                                                                         16,
                                                                     fontWeight:
@@ -285,8 +302,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                   .override(
                                                                     fontFamily:
                                                                         'Roboto',
-                                                                    color: Color(
-                                                                        0xFF586B06),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     fontSize:
                                                                         16,
                                                                     fontWeight:
@@ -331,22 +349,62 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       4.0),
                                                             ),
                                                           ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
                                                           suffixIcon:
                                                               textController1
                                                                       .text
                                                                       .isNotEmpty
                                                                   ? InkWell(
-                                                                      onTap: () =>
-                                                                          setState(
-                                                                        () => textController1
-                                                                            ?.clear(),
-                                                                      ),
+                                                                      onTap:
+                                                                          () async {
+                                                                        textController1
+                                                                            ?.clear();
+                                                                        setState(
+                                                                            () {});
+                                                                      },
                                                                       child:
                                                                           Icon(
                                                                         Icons
                                                                             .clear,
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primaryColor,
+                                                                            .primaryText,
                                                                         size:
                                                                             18,
                                                                       ),
@@ -360,8 +418,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
-                                                                  color: Color(
-                                                                      0xFF586B06),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
                                                                   fontSize: 20,
                                                                   fontWeight:
                                                                       FontWeight
@@ -445,7 +504,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Roboto',
+                                                                            'Montserrat',
                                                                         color: Colors
                                                                             .white,
                                                                         fontWeight:
@@ -495,10 +554,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Roboto',
+                                                                          'Montserrat',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryColor,
+                                                                          .primaryText,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w500,
@@ -627,7 +686,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                                 Text(
                                                                               testCategoriesItem,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
+                                                                                    fontFamily: 'Montserrat',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                     fontSize: 16,
                                                                                   ),
@@ -671,8 +730,8 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                                 Text(
                                                                               testCategoriesItem,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
-                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    fontFamily: 'Montserrat',
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontSize: 16,
                                                                                   ),
                                                                             ),
@@ -735,12 +794,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                 decoration: BoxDecoration(
                                                   gradient: LinearGradient(
                                                     colors: [
+                                                      Color(0x00FFFFFF),
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .tertiaryColor,
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate
+                                                          .secondaryBackground
                                                     ],
                                                     stops: [0, 1],
                                                     begin: AlignmentDirectional(
@@ -749,7 +806,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                         0, 1),
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(40),
+                                                      BorderRadius.circular(49),
                                                 ),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
@@ -826,7 +883,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                               4,
                                                                               0,
                                                                               4,
-                                                                              10),
+                                                                              15),
                                                                       child:
                                                                           Container(
                                                                         decoration:
@@ -894,7 +951,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                 4, 0, 4, 0),
                                                     child: Icon(
                                                       Icons.search_rounded,
-                                                      color: Color(0xFF586B06),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                       size: 24,
                                                     ),
                                                   ),
@@ -929,8 +989,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                   .override(
                                                                     fontFamily:
                                                                         'Roboto',
-                                                                    color: Color(
-                                                                        0xFF586B06),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     fontSize:
                                                                         16,
                                                                     fontWeight:
@@ -944,8 +1005,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                   .override(
                                                                     fontFamily:
                                                                         'Roboto',
-                                                                    color: Color(
-                                                                        0xFF586B06),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     fontSize:
                                                                         16,
                                                                     fontWeight:
@@ -990,22 +1052,62 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       4.0),
                                                             ),
                                                           ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
                                                           suffixIcon:
                                                               textController2
                                                                       .text
                                                                       .isNotEmpty
                                                                   ? InkWell(
-                                                                      onTap: () =>
-                                                                          setState(
-                                                                        () => textController2
-                                                                            ?.clear(),
-                                                                      ),
+                                                                      onTap:
+                                                                          () async {
+                                                                        textController2
+                                                                            ?.clear();
+                                                                        setState(
+                                                                            () {});
+                                                                      },
                                                                       child:
                                                                           Icon(
                                                                         Icons
                                                                             .clear,
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primaryColor,
+                                                                            .primaryText,
                                                                         size:
                                                                             18,
                                                                       ),
@@ -1019,8 +1121,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
-                                                                  color: Color(
-                                                                      0xFF586B06),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
                                                                   fontSize: 20,
                                                                   fontWeight:
                                                                       FontWeight
@@ -1104,7 +1207,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Roboto',
+                                                                            'Montserrat',
                                                                         color: Colors
                                                                             .white,
                                                                         fontWeight:
@@ -1154,7 +1257,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Roboto',
+                                                                          'Montserrat',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .secondaryColor,
@@ -1292,7 +1395,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                                 Text(
                                                                               packagecategoriesItem,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
+                                                                                    fontFamily: 'Montserrat',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                     fontSize: 16,
                                                                                   ),
@@ -1331,7 +1434,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                                 Text(
                                                                               packagecategoriesItem,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
+                                                                                    fontFamily: 'Montserrat',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                     fontSize: 16,
                                                                                   ),
@@ -1394,12 +1497,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                 decoration: BoxDecoration(
                                                   gradient: LinearGradient(
                                                     colors: [
+                                                      Color(0x00F4F4F5),
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .tertiaryColor,
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate
+                                                          .secondaryBackground
                                                     ],
                                                     stops: [0, 1],
                                                     begin: AlignmentDirectional(
@@ -1408,16 +1509,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                         0, 1),
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
-                                                    bottomLeft:
-                                                        Radius.circular(16),
-                                                    bottomRight:
-                                                        Radius.circular(16),
-                                                    topLeft:
-                                                        Radius.circular(40),
-                                                    topRight:
-                                                        Radius.circular(40),
-                                                  ),
+                                                      BorderRadius.circular(40),
                                                 ),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional

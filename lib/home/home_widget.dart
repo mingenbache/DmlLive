@@ -48,6 +48,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (valueOrDefault<bool>(currentUserDocument?.isStaff, false)) {
         context.goNamed('HomeAdmin');
+
         Navigator.pop(context);
         return;
       } else {
@@ -295,7 +296,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -469,7 +470,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -636,7 +637,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                   .title1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
+                                                                        'Montserrat',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryBackground,
@@ -668,7 +669,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         .primaryText,
                                                                     fontWeight:
                                                                         FontWeight
-                                                                            .w500,
+                                                                            .w600,
                                                                   ),
                                                             ),
                                                           ),
@@ -713,7 +714,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                           style: FlutterFlowTheme.of(context)
                                               .title3
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                fontFamily: 'Montserrat',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
@@ -796,20 +797,20 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                   .fromSTEB(10,
                                                                       10, 0, 0),
                                                           child: Text(
-                                                            'Test Reports',
+                                                            'TEST\nREPORTS',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .title2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryColor,
                                                                   fontSize: 18,
                                                                   fontWeight:
                                                                       FontWeight
-                                                                          .w500,
+                                                                          .w600,
                                                                 ),
                                                           ),
                                                         ),
@@ -830,7 +831,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -877,6 +878,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                             onTap: () async {
                                               setState(() => FFAppState()
                                                   .testsVar = 'upcoming');
+
                                               context.pushNamed(
                                                 'MyBookings',
                                                 extra: <String, dynamic>{
@@ -940,18 +942,21 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                               decoration:
                                                                   BoxDecoration(),
                                                               child: Text(
-                                                                'Tests Today',
+                                                                'TESTS TODAY',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .title2
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Roboto',
+                                                                          'Montserrat',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryText,
                                                                       fontSize:
                                                                           20,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
                                                                     ),
                                                               ),
                                                             ),
@@ -1030,7 +1035,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Roboto',
+                                                                                'Montserrat',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).secondaryBackground,
                                                                             fontSize:
@@ -1054,6 +1059,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                             onTap: () async {
                                               setState(() => FFAppState()
                                                   .paymentsvar = 'invoices');
+
                                               context.pushNamed('myPayments');
                                             },
                                             child: Material(
@@ -1089,17 +1095,20 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                           decoration:
                                                               BoxDecoration(),
                                                           child: Text(
-                                                            'Outstanding Invoices',
+                                                            'OUTSTANDING\nINVOICES',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .title2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .alternate,
                                                                   fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
                                                                 ),
                                                           ),
                                                         ),
@@ -1181,7 +1190,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryBackground,
                                                                           fontSize:

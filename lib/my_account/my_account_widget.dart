@@ -68,9 +68,9 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Color(0x799AEBA3),
-                        FlutterFlowTheme.of(context).secondaryText,
-                        FlutterFlowTheme.of(context).alternate
+                        Color(0xB36CD7B7),
+                        Colors.white,
+                        FlutterFlowTheme.of(context).secondaryColor
                       ],
                       stops: [0, 0.5, 1],
                       begin: AlignmentDirectional(0, -1),
@@ -100,8 +100,9 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title1
                                       .override(
-                                        fontFamily: 'Roboto',
-                                        color: Colors.white,
+                                        fontFamily: 'Montserrat',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                       ),
                                 ),
                               ),
@@ -156,7 +157,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                   context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                fontFamily: 'Montserrat',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
@@ -178,7 +179,11 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                       0, 5, 0, 5),
                                   child: Container(
                                     height: 40,
-                                    decoration: BoxDecoration(),
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -186,10 +191,8 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
+                                        Align(
+                                          alignment: AlignmentDirectional(0, 0),
                                           child: Container(
                                             width: MediaQuery.of(context)
                                                     .size
@@ -203,57 +206,57 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                             ),
-                                            child: Text(
-                                              'Name:',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .subtitle2
-                                                  .override(
-                                                    fontFamily: 'Roboto',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .alternate,
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 2, 0, 0),
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.6,
-                                            height: 40,
-                                            decoration: BoxDecoration(
-                                              color: Color(0x2BFFFFFF),
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              border: Border.all(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                width: 1,
-                                              ),
-                                            ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(6, 9, 0, 0),
+                                            child: Align(
+                                              alignment:
+                                                  AlignmentDirectional(0, 0),
                                               child: Text(
-                                                myAccountUsersRecord.firstName,
+                                                'Name:',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .subtitle2
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Montserrat',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
                                                           fontSize: 14,
                                                           fontWeight:
-                                                              FontWeight.normal,
+                                                              FontWeight.w500,
                                                         ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.6,
+                                          height: 40,
+                                          decoration: BoxDecoration(
+                                            color: Color(0x2BFFFFFF),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              width: 1,
+                                            ),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    6, 9, 0, 0),
+                                            child: Text(
+                                              myAccountUsersRecord.firstName,
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 16,
                                               ),
                                             ),
                                           ),
@@ -267,7 +270,11 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                       0, 3, 0, 0),
                                   child: Container(
                                     height: 40,
-                                    decoration: BoxDecoration(),
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -279,56 +286,54 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                   .width *
                                               0.2,
                                           decoration: BoxDecoration(),
-                                          child: Text(
-                                            'Phone:',
-                                            style: FlutterFlowTheme.of(context)
-                                                .subtitle2
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
+                                          child: Align(
+                                            alignment:
+                                                AlignmentDirectional(0, 0),
+                                            child: Text(
+                                              'Phone:',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .subtitle2
+                                                  .override(
+                                                    fontFamily: 'Montserrat',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                            ),
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 2, 0, 0),
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.6,
-                                            height: 40,
-                                            decoration: BoxDecoration(
-                                              color: Color(0x2CFFFFFF),
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              border: Border.all(
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.6,
+                                          height: 40,
+                                          decoration: BoxDecoration(
+                                            color: Color(0x2CFFFFFF),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              width: 1,
+                                            ),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    6, 9, 0, 6),
+                                            child: Text(
+                                              myAccountUsersRecord.phoneNumber,
+                                              style: TextStyle(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                width: 1,
-                                              ),
-                                            ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(6, 9, 0, 6),
-                                              child: Text(
-                                                myAccountUsersRecord
-                                                    .phoneNumber,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
+                                                        .secondaryBackground,
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 16,
                                               ),
                                             ),
                                           ),
@@ -342,7 +347,11 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                       0, 7, 0, 0),
                                   child: Container(
                                     height: 40,
-                                    decoration: BoxDecoration(),
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -354,18 +363,23 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                   .width *
                                               0.2,
                                           decoration: BoxDecoration(),
-                                          child: Text(
-                                            'Email:',
-                                            style: FlutterFlowTheme.of(context)
-                                                .subtitle2
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
+                                          child: Align(
+                                            alignment:
+                                                AlignmentDirectional(0, 0.05),
+                                            child: Text(
+                                              'Email:',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .subtitle2
+                                                  .override(
+                                                    fontFamily: 'Montserrat',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                            ),
                                           ),
                                         ),
                                         Container(
@@ -391,15 +405,17 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                     6, 9, 0, 6),
                                             child: Text(
                                               myAccountUsersRecord.email,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .subtitle2
+                                                  .override(
+                                                    fontFamily: 'Montserrat',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
                                             ),
                                           ),
                                         ),
@@ -411,7 +427,12 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 3, 0, 0),
                                   child: Container(
-                                    decoration: BoxDecoration(),
+                                    height: 40,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -423,43 +444,47 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                   .width *
                                               0.2,
                                           decoration: BoxDecoration(),
-                                          child: Text(
-                                            'D.O.B:',
-                                            style: FlutterFlowTheme.of(context)
-                                                .subtitle2
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
+                                          child: Align(
+                                            alignment:
+                                                AlignmentDirectional(0, 0),
+                                            child: Text(
+                                              'D.O.B:',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .subtitle2
+                                                  .override(
+                                                    fontFamily: 'Montserrat',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                            ),
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 5, 5, 5),
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.25,
-                                            height: 40,
-                                            decoration: BoxDecoration(
-                                              color: Color(0x2BFFFFFF),
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              border: Border.all(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.6,
+                                          height: 40,
+                                          decoration: BoxDecoration(
+                                            color: Color(0x2BFFFFFF),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                             ),
+                                          ),
+                                          child: Align(
+                                            alignment:
+                                                AlignmentDirectional(-1, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(6, 11, 0, 6),
+                                                  .fromSTEB(6, 0, 0, 0),
                                               child: Text(
                                                 valueOrDefault<String>(
                                                   dateTimeFormat('d/M/y',
@@ -470,10 +495,14 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .subtitle2
                                                         .override(
-                                                          fontFamily: 'Roboto',
-                                                          fontSize: 14,
+                                                          fontFamily:
+                                                              'Montserrat',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          fontSize: 16,
                                                           fontWeight:
-                                                              FontWeight.normal,
+                                                              FontWeight.w600,
                                                         ),
                                               ),
                                             ),
@@ -483,13 +512,15 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.04,
-                                  decoration: BoxDecoration(),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 5, 0, 0),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 3, 0, 0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -505,23 +536,28 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                   .height *
                                               0.04,
                                           decoration: BoxDecoration(),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    15, 6, 0, 0),
-                                            child: Text(
-                                              'Sex:',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .subtitle2
-                                                  .override(
-                                                    fontFamily: 'Roboto',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .alternate,
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
+                                          child: Align(
+                                            alignment:
+                                                AlignmentDirectional(0, 0),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(15, 0, 0, 0),
+                                              child: Text(
+                                                'Sex:',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2
+                                                        .override(
+                                                          fontFamily:
+                                                              'Montserrat',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -560,7 +596,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                           MediaQuery.of(context)
                                                                   .size
                                                                   .width *
-                                                              0.25,
+                                                              0.6,
                                                       height:
                                                           MediaQuery.of(context)
                                                                   .size
@@ -579,27 +615,35 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                           width: 1,
                                                         ),
                                                       ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    4, 9, 0, 0),
-                                                        child: Text(
-                                                          myAccountUsersRecord
-                                                              .sex,
-                                                          textAlign:
-                                                              TextAlign.start,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .subtitle2
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                              ),
+                                                      child: Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -1, 0),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(6,
+                                                                      0, 0, 0),
+                                                          child: Text(
+                                                            myAccountUsersRecord
+                                                                .sex,
+                                                            textAlign:
+                                                                TextAlign.start,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .subtitle2
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Montserrat',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  fontSize: 16,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
@@ -627,9 +671,9 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: FlutterFlowTheme.of(context)
-                                            .alternate,
+                                            .primaryText,
                                       ),
                                 ),
                               ),
@@ -669,7 +713,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                               0.06,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondaryText,
                                             borderRadius:
                                                 BorderRadius.circular(10),
                                             shape: BoxShape.rectangle,
@@ -698,13 +742,12 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                       .bodyText1
                                                       .override(
                                                         fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
                                                         fontSize: 16,
                                                         fontWeight:
-                                                            FontWeight.normal,
+                                                            FontWeight.w600,
                                                       ),
                                                 ),
                                               ),
@@ -717,7 +760,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                     Icons.keyboard_arrow_right,
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryText,
+                                                        .secondaryBackground,
                                                     size: 18,
                                                   ),
                                                 ),
@@ -752,7 +795,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                 0.06,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryColor,
+                                              .secondaryText,
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           shape: BoxShape.rectangle,
@@ -789,13 +832,12 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                       .bodyText1
                                                       .override(
                                                         fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
                                                         fontSize: 16,
                                                         fontWeight:
-                                                            FontWeight.normal,
+                                                            FontWeight.w600,
                                                       ),
                                                 ),
                                               ),
@@ -808,7 +850,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                     Icons.keyboard_arrow_right,
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryText,
+                                                        .secondaryBackground,
                                                     size: 18,
                                                   ),
                                                 ),
@@ -843,7 +885,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                 0.06,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryColor,
+                                              .secondaryText,
                                           borderRadius:
                                               BorderRadius.circular(10),
                                           shape: BoxShape.rectangle,
@@ -874,10 +916,10 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryText,
+                                                              .secondaryBackground,
                                                           fontSize: 16,
                                                           fontWeight:
-                                                              FontWeight.normal,
+                                                              FontWeight.w600,
                                                         ),
                                               ),
                                             ),
@@ -889,7 +931,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                   Icons.keyboard_arrow_right,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryText,
+                                                      .secondaryBackground,
                                                   size: 18,
                                                 ),
                                               ),
@@ -919,7 +961,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                               0.06,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryColor,
+                                            .secondaryText,
                                         borderRadius: BorderRadius.circular(10),
                                         shape: BoxShape.rectangle,
                                       ),
@@ -944,19 +986,17 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                     12, 0, 0, 0),
                                             child: Text(
                                               'Terms of Service',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyText1
+                                                  .override(
+                                                    fontFamily: 'Roboto',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
                                             ),
                                           ),
                                           Expanded(
@@ -967,7 +1007,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                 Icons.keyboard_arrow_right,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryText,
+                                                        .secondaryBackground,
                                                 size: 18,
                                               ),
                                             ),
@@ -991,6 +1031,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                   onPressed: () async {
                                     GoRouter.of(context).prepareAuthEvent();
                                     await signOut();
+
                                     context.goNamedAuth('Login', mounted);
                                   },
                                   text: 'Log Out',

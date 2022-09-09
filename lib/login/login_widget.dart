@@ -18,8 +18,11 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
   TextEditingController emailaddressController;
+
   TextEditingController passwordController;
+
   bool passwordVisibility;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -136,6 +139,20 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 ),
                                 borderRadius: BorderRadius.circular(8),
                               ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
                               filled: true,
                               fillColor: Color(0x34FFFFFF),
                               contentPadding:
@@ -187,6 +204,20 @@ class _LoginWidgetState extends State<LoginWidget> {
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).alternate,
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
                                   width: 1,
                                 ),
                                 borderRadius: BorderRadius.circular(12),
@@ -272,6 +303,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   );
                                   await currentUserReference
                                       .update(usersUpdateData);
+
                                   context.goNamedAuth('checkup', mounted);
                                 },
                                 text: 'Sign In',
@@ -282,7 +314,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiaryColor,
                                       ),
@@ -329,6 +361,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             if (user == null) {
                                               return;
                                             }
+
                                             context.goNamedAuth(
                                                 'checkup', mounted);
                                           },

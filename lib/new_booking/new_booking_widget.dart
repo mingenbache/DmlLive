@@ -35,16 +35,24 @@ class NewBookingWidget extends StatefulWidget {
 
 class _NewBookingWidgetState extends State<NewBookingWidget>
     with TickerProviderStateMixin {
-  DateTime datePicked1;
-  DateTime datePicked2;
-  String choiceChipsValue;
-  TextEditingController emailAddressController;
-  TextEditingController firstNameController;
-  TextEditingController lastNameController;
-  TextEditingController phoneNumberController;
   TextEditingController diagnosisController;
+
+  TextEditingController emailAddressController;
+
+  TextEditingController firstNameController;
+
+  TextEditingController lastNameController;
+
+  TextEditingController phoneNumberController;
+
+  String choiceChipsValue;
+  DateTime datePicked2;
+  DateTime datePicked1;
+
   TextEditingController refDoctorController;
+
   TextEditingController textController7;
+
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
@@ -147,7 +155,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                     gradient: LinearGradient(
                       colors: [
                         Color(0x996CD7B7),
-                        FlutterFlowTheme.of(context).primaryColor,
+                        Colors.white,
                         Color(0x446CD7B7)
                       ],
                       stops: [0, 0.6, 1],
@@ -180,7 +188,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Montserrat',
                                       color: Colors.white,
                                     ),
                               ),
@@ -207,10 +215,10 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Montserrat',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .alternate,
+                                                      .primaryText,
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),
@@ -261,7 +269,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 FlutterFlowTheme.of(context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Roboto',
+                                                      fontFamily: 'Montserrat',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -327,15 +335,16 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                               child: Text(
                                                 'Patient Details',
                                                 textAlign: TextAlign.start,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .subtitle2
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
                                               ),
                                             ),
                                           ],
@@ -389,7 +398,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                     'Roboto',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .alternate,
+                                                                    .primaryText,
                                                                 fontSize: 14,
                                                                 fontWeight:
                                                                     FontWeight
@@ -416,7 +425,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .alternate,
+                                                              .primaryText,
                                                           width: 2,
                                                         ),
                                                         borderRadius:
@@ -428,7 +437,29 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .alternate,
+                                                              .primaryText,
+                                                          width: 2,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8),
+                                                      ),
+                                                      errorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color:
+                                                              Color(0x00000000),
+                                                          width: 2,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8),
+                                                      ),
+                                                      focusedErrorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color:
+                                                              Color(0x00000000),
                                                           width: 2,
                                                         ),
                                                         borderRadius:
@@ -450,7 +481,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .alternate,
+                                                              .primaryText,
                                                           fontSize: 14,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -460,6 +491,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           val.isEmpty) {
                                                         return 'Field is required';
                                                       }
+
                                                       if (val.length < 3) {
                                                         return 'Requires at least 3 characters.';
                                                       }
@@ -500,7 +532,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                     'Roboto',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .alternate,
+                                                                    .primaryText,
                                                                 fontSize: 14,
                                                                 fontWeight:
                                                                     FontWeight
@@ -527,7 +559,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .alternate,
+                                                              .primaryText,
                                                           width: 2,
                                                         ),
                                                         borderRadius:
@@ -539,7 +571,29 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .alternate,
+                                                              .primaryText,
+                                                          width: 2,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8),
+                                                      ),
+                                                      errorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color:
+                                                              Color(0x00000000),
+                                                          width: 2,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8),
+                                                      ),
+                                                      focusedErrorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color:
+                                                              Color(0x00000000),
                                                           width: 2,
                                                         ),
                                                         borderRadius:
@@ -561,7 +615,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .alternate,
+                                                              .primaryText,
                                                           fontSize: 14,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -571,6 +625,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           val.isEmpty) {
                                                         return 'Field is required';
                                                       }
+
                                                       if (val.length < 2) {
                                                         return 'Requires at least 2 characters.';
                                                       }
@@ -664,6 +719,28 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        width: 2,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Color(0x00000000),
+                                                        width: 2,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Color(0x00000000),
                                                         width: 2,
                                                       ),
                                                       borderRadius:
@@ -793,6 +870,28 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           BorderRadius.circular(
                                                               8),
                                                     ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Color(0x00000000),
+                                                        width: 2,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Color(0x00000000),
+                                                        width: 2,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
                                                     filled: true,
                                                     fillColor:
                                                         Color(0x2BFFFFFF),
@@ -821,6 +920,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         val.isEmpty) {
                                                       return 'Field is required';
                                                     }
+
                                                     if (val.length < 6) {
                                                       return 'Requires at least 6 characters.';
                                                     }
@@ -861,10 +961,11 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Montserrat',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .alternate,
+                                                              .primaryText,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -924,7 +1025,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                   .bodyText2
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
+                                                                        'Montserrat',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryText,
@@ -1038,7 +1139,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                     newBookingBookingsRecord.sex,
                                                                                     textAlign: TextAlign.start,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Roboto',
+                                                                                          fontFamily: 'Montserrat',
                                                                                           color: FlutterFlowTheme.of(context).primaryText,
                                                                                           fontWeight: FontWeight.normal,
                                                                                         ),
@@ -1087,11 +1188,12 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .alternate,
+                                                                .primaryText,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
@@ -1154,9 +1256,10 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
-                                                                color: Colors
-                                                                    .white,
+                                                                    'Montserrat',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                               ),
                                                         ),
                                                       ),
@@ -1206,23 +1309,26 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryText,
+                                                                .primaryBtnText,
                                                         size: 12,
                                                       ),
                                                       options: FFButtonOptions(
                                                         width: 130,
                                                         height: 30,
-                                                        color: Colors.white,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryText,
+                                                                      .primaryBtnText,
                                                                 ),
                                                         borderSide: BorderSide(
                                                           color: Colors
@@ -1268,9 +1374,10 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                   children: [
                                                     Icon(
                                                       Icons.art_track,
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                       size: 18,
                                                     ),
                                                     Text(
@@ -1281,10 +1388,10 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Montserrat',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .alternate,
+                                                                    .primaryText,
                                                                 fontSize: 18,
                                                                 fontWeight:
                                                                     FontWeight
@@ -1294,111 +1401,97 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                   ],
                                                 ),
                                               ),
-                                              Align(
-                                                alignment:
-                                                    AlignmentDirectional(0, 0),
-                                                child: Container(
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.85,
-                                                  height: 100,
-                                                  constraints: BoxConstraints(
-                                                    maxWidth: 380,
-                                                  ),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                  child: Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0, 0),
-                                                    child: Builder(
-                                                      builder: (context) {
-                                                        final testFormImages =
-                                                            newBookingBookingsRecord
-                                                                .formImages
-                                                                .toList();
-                                                        return Wrap(
-                                                          spacing: 5,
-                                                          runSpacing: 5,
-                                                          alignment:
-                                                              WrapAlignment
-                                                                  .start,
-                                                          crossAxisAlignment:
-                                                              WrapCrossAlignment
-                                                                  .start,
-                                                          direction:
-                                                              Axis.horizontal,
-                                                          runAlignment:
-                                                              WrapAlignment
-                                                                  .start,
-                                                          verticalDirection:
-                                                              VerticalDirection
-                                                                  .down,
-                                                          clipBehavior:
-                                                              Clip.none,
-                                                          children: List.generate(
-                                                              testFormImages
-                                                                  .length,
-                                                              (testFormImagesIndex) {
-                                                            final testFormImagesItem =
-                                                                testFormImages[
-                                                                    testFormImagesIndex];
-                                                            return InkWell(
-                                                              onTap: () async {
-                                                                await Navigator
-                                                                    .push(
-                                                                  context,
-                                                                  PageTransition(
-                                                                    type: PageTransitionType
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.85,
+                                                height: 100,
+                                                constraints: BoxConstraints(
+                                                  maxWidth: 380,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                child: Builder(
+                                                  builder: (context) {
+                                                    final testFormImages =
+                                                        newBookingBookingsRecord
+                                                            .formImages
+                                                            .toList();
+                                                    return Wrap(
+                                                      spacing: 5,
+                                                      runSpacing: 5,
+                                                      alignment:
+                                                          WrapAlignment.start,
+                                                      crossAxisAlignment:
+                                                          WrapCrossAlignment
+                                                              .start,
+                                                      direction:
+                                                          Axis.horizontal,
+                                                      runAlignment:
+                                                          WrapAlignment.start,
+                                                      verticalDirection:
+                                                          VerticalDirection
+                                                              .down,
+                                                      clipBehavior: Clip.none,
+                                                      children: List.generate(
+                                                          testFormImages.length,
+                                                          (testFormImagesIndex) {
+                                                        final testFormImagesItem =
+                                                            testFormImages[
+                                                                testFormImagesIndex];
+                                                        return InkWell(
+                                                          onTap: () async {
+                                                            await Navigator
+                                                                .push(
+                                                              context,
+                                                              PageTransition(
+                                                                type:
+                                                                    PageTransitionType
                                                                         .fade,
-                                                                    child:
-                                                                        FlutterFlowExpandedImageView(
-                                                                      image: Image
-                                                                          .network(
-                                                                        testFormImagesItem,
-                                                                        fit: BoxFit
-                                                                            .contain,
-                                                                      ),
-                                                                      allowRotation:
-                                                                          false,
-                                                                      tag:
-                                                                          testFormImagesItem,
-                                                                      useHeroAnimation:
-                                                                          true,
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                              child: Hero(
-                                                                tag:
-                                                                    testFormImagesItem,
-                                                                transitionOnUserGestures:
-                                                                    true,
                                                                 child:
-                                                                    ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8),
-                                                                  child: Image
+                                                                    FlutterFlowExpandedImageView(
+                                                                  image: Image
                                                                       .network(
                                                                     testFormImagesItem,
-                                                                    width: 70,
                                                                     fit: BoxFit
                                                                         .contain,
                                                                   ),
+                                                                  allowRotation:
+                                                                      false,
+                                                                  tag:
+                                                                      testFormImagesItem,
+                                                                  useHeroAnimation:
+                                                                      true,
                                                                 ),
                                                               ),
                                                             );
-                                                          }),
+                                                          },
+                                                          child: Hero(
+                                                            tag:
+                                                                testFormImagesItem,
+                                                            transitionOnUserGestures:
+                                                                true,
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8),
+                                                              child:
+                                                                  Image.network(
+                                                                testFormImagesItem,
+                                                                width: 70,
+                                                                fit: BoxFit
+                                                                    .contain,
+                                                              ),
+                                                            ),
+                                                          ),
                                                         );
-                                                      },
-                                                    ),
-                                                  ),
+                                                      }),
+                                                    );
+                                                  },
                                                 ),
                                               ),
                                             ],
@@ -1463,6 +1556,20 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                     ),
                                     borderRadius: BorderRadius.circular(12),
                                   ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
                                   filled: true,
                                   fillColor: Colors.white,
                                   contentPadding:
@@ -1471,9 +1578,10 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                   suffixIcon: diagnosisController
                                           .text.isNotEmpty
                                       ? InkWell(
-                                          onTap: () => setState(
-                                            () => diagnosisController?.clear(),
-                                          ),
+                                          onTap: () async {
+                                            diagnosisController?.clear();
+                                            setState(() {});
+                                          },
                                           child: Icon(
                                             Icons.clear,
                                             color: FlutterFlowTheme.of(context)
@@ -1496,6 +1604,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                   if (val == null || val.isEmpty) {
                                     return 'Field is required';
                                   }
+
                                   if (val.length < 10) {
                                     return 'Requires at least 10 characters.';
                                   }
@@ -1566,6 +1675,22 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
+                                        errorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 2,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 2,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
                                         filled: true,
                                         fillColor: Color(0x2BFFFFFF),
                                         contentPadding:
@@ -1603,7 +1728,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Montserrat',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                         ),
@@ -1757,7 +1882,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                           Text(
                                                                             bookingTestPackageItemTestPackagesRecord.packageName,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1780,7 +1905,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                               Text(
                                                                             'Ksh',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                   fontWeight: FontWeight.w600,
                                                                                 ),
@@ -1793,7 +1918,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Montserrat',
                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -1978,8 +2103,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
-                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                fontFamily: 'Montserrat',
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
                                                                         ),
@@ -2003,7 +2128,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Montserrat',
                                                                                 color: FlutterFlowTheme.of(context).primaryColor,
                                                                                 fontWeight: FontWeight.w600,
                                                                               ),
@@ -2016,7 +2141,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
+                                                                              fontFamily: 'Montserrat',
                                                                               color: FlutterFlowTheme.of(context).primaryText,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -2216,11 +2341,34 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                 topRight: Radius.circular(4.0),
                                                                               ),
                                                                             ),
+                                                                            errorBorder:
+                                                                                UnderlineInputBorder(
+                                                                              borderSide: BorderSide(
+                                                                                color: Color(0x00000000),
+                                                                                width: 1,
+                                                                              ),
+                                                                              borderRadius: const BorderRadius.only(
+                                                                                topLeft: Radius.circular(4.0),
+                                                                                topRight: Radius.circular(4.0),
+                                                                              ),
+                                                                            ),
+                                                                            focusedErrorBorder:
+                                                                                UnderlineInputBorder(
+                                                                              borderSide: BorderSide(
+                                                                                color: Color(0x00000000),
+                                                                                width: 1,
+                                                                              ),
+                                                                              borderRadius: const BorderRadius.only(
+                                                                                topLeft: Radius.circular(4.0),
+                                                                                topRight: Radius.circular(4.0),
+                                                                              ),
+                                                                            ),
                                                                             suffixIcon: textController7.text.isNotEmpty
                                                                                 ? InkWell(
-                                                                                    onTap: () => setState(
-                                                                                      () => textController7?.clear(),
-                                                                                    ),
+                                                                                    onTap: () async {
+                                                                                      textController7?.clear();
+                                                                                      setState(() {});
+                                                                                    },
                                                                                     child: Icon(
                                                                                       Icons.clear,
                                                                                       color: Color(0xFF757575),
@@ -2232,7 +2380,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Montserrat',
                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                 fontWeight: FontWeight.w600,
                                                                               ),
@@ -2325,7 +2473,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color: Colors.white,
                                                       ),
                                               elevation: 1,
@@ -2389,16 +2538,15 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryBackground,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
+                                              textStyle: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyText1
+                                                  .override(
+                                                    fontFamily: 'Montserrat',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                  ),
                                               elevation: 1,
                                               borderSide: BorderSide(
                                                 color: Colors.transparent,
@@ -2436,7 +2584,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Montserrat',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
                                             fontWeight: FontWeight.w500,
@@ -2477,7 +2625,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Roboto',
+                                                    fontFamily: 'Montserrat',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText,
@@ -2676,6 +2824,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                             'bookingRef': widget.bookingRef,
                                           },
                                         );
+
                                         context.goNamed('MyBookings');
                                       },
                                       text: 'Submit',

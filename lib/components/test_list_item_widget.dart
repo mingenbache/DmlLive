@@ -312,7 +312,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                   height: 100,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                        .secondaryColor,
                                     borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(0),
                                       bottomRight: Radius.circular(16),
@@ -396,7 +396,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                   ),
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                        .secondaryColor,
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Padding(
@@ -425,11 +425,12 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .tertiaryColor,
+                                                                .primaryText,
                                                         fontSize: 16,
                                                       ),
                                                 ),
@@ -576,7 +577,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                       BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .tertiaryColor,
+                                                                        .primaryText,
                                                                     borderRadius:
                                                                         BorderRadius.circular(
                                                                             12),
@@ -600,7 +601,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                             fontFamily:
                                                                                 'Lexend Deca',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             fontSize:
                                                                                 12,
                                                                             fontWeight:
@@ -641,7 +642,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                   Icons.timer,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryColor,
+                                                                      .primaryText,
                                                                   size: 20,
                                                                 ),
                                                                 Text(
@@ -653,7 +654,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                         fontFamily:
                                                                             'Roboto Mono',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .primaryText,
                                                                         fontWeight:
                                                                             FontWeight.w500,
                                                                       ),
@@ -676,7 +677,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                   decoration: BoxDecoration(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryColor,
+                                                        .primaryText,
                                                   ),
                                                 ),
                                               ),
@@ -765,7 +766,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                         style:
                                                                             TextStyle(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontWeight:
                                                                               FontWeight.w500,
                                                                           fontSize:

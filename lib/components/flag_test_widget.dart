@@ -25,6 +25,7 @@ class FlagTestWidget extends StatefulWidget {
 class _FlagTestWidgetState extends State<FlagTestWidget>
     with TickerProviderStateMixin {
   TextEditingController flagNotesController;
+
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -98,7 +99,7 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                         Text(
                           'FLAG TEST',
                           style: FlutterFlowTheme.of(context).title2.override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'Montserrat',
                                 color: Color(0xFF586B06),
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold,
@@ -172,6 +173,20 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                             contentPadding:
                                 EdgeInsetsDirectional.fromSTEB(20, 40, 24, 0),
                           ),
@@ -214,6 +229,7 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                         );
                         await widget.testedTestRef
                             .update(testedTestsUpdateData);
+
                         context.goNamed(
                           'TestDeck',
                           queryParams: {
@@ -231,7 +247,7 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                         textStyle: FlutterFlowTheme.of(context)
                             .subtitle2
                             .override(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'Montserrat',
                               color: FlutterFlowTheme.of(context).tertiaryColor,
                             ),
                         elevation: 2,

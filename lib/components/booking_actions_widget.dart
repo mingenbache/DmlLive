@@ -61,81 +61,38 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
         borderRadius: BorderRadius.circular(28),
       ),
       child: Container(
-        width: 240,
+        width: MediaQuery.of(context).size.width * 0.8,
         height: 80,
+        constraints: BoxConstraints(
+          maxWidth: 320,
+        ),
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(28),
         ),
-        child: Column(
+        child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                InkWell(
-                  onTap: () async {
-                    await showModalBottomSheet(
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (context) {
-                        return Padding(
-                          padding: MediaQuery.of(context).viewInsets,
-                          child: NewInvoiceSheetWidget(
-                            bookingRef: widget.bookingRef.reference,
-                          ),
-                        );
-                      },
-                    );
-                  },
-                  child: Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        FaIcon(
-                          FontAwesomeIcons.fileInvoiceDollar,
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          size: 25,
+            Expanded(
+              child: InkWell(
+                onTap: () async {
+                  await showModalBottomSheet(
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    context: context,
+                    builder: (context) {
+                      return Padding(
+                        padding: MediaQuery.of(context).viewInsets,
+                        child: NewInvoiceSheetWidget(
+                          bookingRef: widget.bookingRef.reference,
                         ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 45,
-                              decoration: BoxDecoration(),
-                              child: Text(
-                                'Invoice',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ).animated(
-                    [animationsMap['containerOnActionTriggerAnimation']]),
-                Container(
+                      );
+                    },
+                  );
+                },
+                child: Container(
                   width: 60,
                   height: 60,
                   decoration: BoxDecoration(
@@ -146,153 +103,217 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       FaIcon(
-                        FontAwesomeIcons.receipt,
+                        FontAwesomeIcons.fileInvoiceDollar,
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         size: 25,
                       ),
-                      Row(
+                      Expanded(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                width: 45,
+                                decoration: BoxDecoration(),
+                                child: Text(
+                                  'Invoice',
+                                  textAlign: TextAlign.center,
+                                  maxLines: 1,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Montserrat',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ).animated([animationsMap['containerOnActionTriggerAnimation']]),
+            ),
+            Expanded(
+              child: Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    FaIcon(
+                      FontAwesomeIcons.receipt,
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      size: 25,
+                    ),
+                    Expanded(
+                      child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            width: 50,
-                            decoration: BoxDecoration(),
-                            child: Text(
-                              'Receipt',
-                              textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
-                                    fontFamily: 'Roboto',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
+                          Expanded(
+                            child: Container(
+                              width: 50,
+                              decoration: BoxDecoration(),
+                              child: Text(
+                                'Receipt',
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Montserrat',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                              ),
                             ),
                           ),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                Container(
-                  width: 60,
-                  height: 60,
-                  child: Stack(
-                    children: [
-                      if (widget.bookingRef.resultPublished ?? true)
-                        InkWell(
-                          onTap: () async {
-                            context.pushNamed(
-                              'BookingReport',
-                              queryParams: {
-                                'reportRef': serializeParam(
-                                    widget.bookingRef.reportRef,
-                                    ParamType.DocumentReference),
-                              }.withoutNulls,
-                            );
-                          },
-                          child: Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Icon(
-                                  Icons.library_books,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  size: 25,
-                                ),
-                                Row(
+              ),
+            ),
+            Expanded(
+              child: Container(
+                width: 60,
+                height: 60,
+                child: Stack(
+                  children: [
+                    if (widget.bookingRef.resultPublished ?? true)
+                      InkWell(
+                        onTap: () async {
+                          context.pushNamed(
+                            'BookingReport',
+                            queryParams: {
+                              'reportRef': serializeParam(
+                                  widget.bookingRef.reportRef,
+                                  ParamType.DocumentReference),
+                            }.withoutNulls,
+                          );
+                        },
+                        child: Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Icon(
+                                Icons.library_books,
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                size: 25,
+                              ),
+                              Expanded(
+                                child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Container(
-                                      width: 45,
-                                      decoration: BoxDecoration(),
-                                      child: Text(
-                                        'Report',
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Roboto',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
+                                    Expanded(
+                                      child: Container(
+                                        width: 45,
+                                        decoration: BoxDecoration(),
+                                        child: Text(
+                                          'Report',
+                                          textAlign: TextAlign.center,
+                                          maxLines: 1,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Montserrat',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                              ),
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                      if (!widget.bookingRef.resultPublished)
-                        InkWell(
-                          onTap: () async {
-                            await showModalBottomSheet(
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              context: context,
-                              builder: (context) {
-                                return Padding(
-                                  padding: MediaQuery.of(context).viewInsets,
-                                  child: ReportWizardWidget(
-                                    booking: widget.bookingRef,
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                          child: Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Icon(
-                                  Icons.library_books,
-                                  color: Color(0x4CFFFFFF),
-                                  size: 25,
+                      ),
+                    if (!widget.bookingRef.resultPublished)
+                      InkWell(
+                        onTap: () async {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: MediaQuery.of(context).viewInsets,
+                                child: ReportWizardWidget(
+                                  booking: widget.bookingRef,
                                 ),
-                                Row(
+                              );
+                            },
+                          );
+                        },
+                        child: Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Icon(
+                                Icons.library_books,
+                                color: Color(0x4CFFFFFF),
+                                size: 25,
+                              ),
+                              Expanded(
+                                child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Container(
-                                      width: 45,
-                                      decoration: BoxDecoration(),
-                                      child: Text(
-                                        'Report',
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Roboto',
-                                              color: Color(0x4CFFFFFF),
-                                            ),
+                                    Expanded(
+                                      child: Container(
+                                        width: 45,
+                                        decoration: BoxDecoration(),
+                                        child: Text(
+                                          'Report',
+                                          textAlign: TextAlign.center,
+                                          maxLines: 1,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Montserrat',
+                                                color: Color(0x4CFFFFFF),
+                                              ),
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                    ],
-                  ),
+                      ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ],
         ),

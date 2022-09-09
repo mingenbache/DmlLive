@@ -60,7 +60,7 @@ class _ChatActionsWidgetWidgetState extends State<ChatActionsWidgetWidget> {
                     child: Text(
                       'New Message',
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Roboto',
+                            fontFamily: 'Montserrat',
                             color: FlutterFlowTheme.of(context).tertiaryColor,
                             fontSize: 16,
                             fontWeight: FontWeight.w500,

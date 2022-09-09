@@ -326,7 +326,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                   height: 100,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                        .primaryText,
                                     borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(0),
                                       bottomRight: Radius.circular(16),
@@ -409,7 +409,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                   ),
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                        .primaryText,
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Padding(
@@ -438,11 +438,12 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .tertiaryColor,
+                                                                .alternate,
                                                         fontSize: 16,
                                                       ),
                                                 ),
@@ -590,7 +591,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                       BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .tertiaryColor,
+                                                                        .primaryText,
                                                                     borderRadius:
                                                                         BorderRadius.circular(
                                                                             12),
@@ -614,7 +615,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                             fontFamily:
                                                                                 'Lexend Deca',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             fontSize:
                                                                                 12,
                                                                             fontWeight:
@@ -655,7 +656,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                   Icons.timer,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryColor,
+                                                                      .primaryText,
                                                                   size: 20,
                                                                 ),
                                                                 Text(
@@ -667,7 +668,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                         fontFamily:
                                                                             'Roboto Mono',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .primaryText,
                                                                         fontWeight:
                                                                             FontWeight.w500,
                                                                       ),
@@ -753,7 +754,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                       .delivery_dining,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryColor,
+                                                                      .primaryText,
                                                                   size: 20,
                                                                 ),
                                                                 Padding(
@@ -778,7 +779,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                             child:
                                                                                 Icon(
                                                                               Icons.check_circle_outline,
-                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               size: 16,
                                                                             ),
                                                                           ),
@@ -790,7 +791,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                             child:
                                                                                 Icon(
                                                                               Icons.not_interested,
-                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               size: 16,
                                                                             ),
                                                                           ),
@@ -858,7 +859,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                         style:
                                                                             TextStyle(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontWeight:
                                                                               FontWeight.w500,
                                                                           fontSize:

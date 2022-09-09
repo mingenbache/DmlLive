@@ -24,13 +24,16 @@ class NewBookingSheetWidget extends StatefulWidget {
 
 class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
     with TickerProviderStateMixin {
-  BookingsRecord newbookingRef;
-  List<String> uploadedFileUrls = [];
+  TextEditingController docemailAddressController;
+
+  TextEditingController doctorNamesController;
+
+  TextEditingController docphoneNumberController;
+
   PageController pageViewController;
   bool isPatientValue;
-  TextEditingController docemailAddressController;
-  TextEditingController doctorNamesController;
-  TextEditingController docphoneNumberController;
+  List<String> uploadedFileUrls = [];
+  BookingsRecord newbookingRef;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -123,7 +126,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                               'NEW BOOKING',
                               style:
                                   FlutterFlowTheme.of(context).title2.override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Montserrat',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 30,
@@ -193,7 +196,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                fontFamily: 'Montserrat',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
@@ -222,7 +225,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                         textStyle: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Montserrat',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
@@ -278,7 +281,8 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                           context)
                                                       .title3
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         color: Colors.white,
                                                       ),
                                                 ),
@@ -385,7 +389,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                   context)
                                               .subtitle2
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                fontFamily: 'Montserrat',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
@@ -434,15 +438,16 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                   .fromSTEB(10, 10, 10, 10),
                                               child: Text(
                                                 'Do you have a referring Physician?',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .subtitle2
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryText,
-                                                        ),
+                                                    ),
                                               ),
                                             ),
                                           ),
@@ -478,7 +483,8 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Montserrat',
                                                           color: Colors.white,
                                                         ),
                                               ),
@@ -539,6 +545,23 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
+                                                  width: 2,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              errorBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0x00000000),
+                                                  width: 2,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              focusedErrorBorder:
+                                                  OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0x00000000),
                                                   width: 2,
                                                 ),
                                                 borderRadius:
@@ -617,6 +640,26 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .primaryText,
+                                                      width: 2,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 2,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
                                                       width: 2,
                                                     ),
                                                     borderRadius:
@@ -720,6 +763,26 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                         BorderRadius.circular(
                                                             8),
                                                   ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 2,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 2,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
                                                   filled: true,
                                                   fillColor: Color(0x2CFFFFFF),
                                                   contentPadding:
@@ -779,17 +842,18 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                 width: 90,
                                                 height: 30,
                                                 color: Colors.white,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                textStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .subtitle2
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .primaryText,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
                                                 borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1,
@@ -836,15 +900,16 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                   .fromSTEB(10, 10, 10, 10),
                                               child: Text(
                                                 'Do you have a pre-filled Form?',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .subtitle2
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryText,
-                                                        ),
+                                                    ),
                                               ),
                                             ),
                                           ),
@@ -871,7 +936,8 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Montserrat',
                                                           color: Colors.white,
                                                         ),
                                               ),
@@ -1165,6 +1231,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                               .returnDOBLoader(newbookingRef, isPatientValue));
                           setState(() => FFAppState().selectedDate =
                               functions.getNextWeekday());
+
                           context.goNamed(
                             'NewBooking',
                             queryParams: {
@@ -1183,7 +1250,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                           color: FlutterFlowTheme.of(context).primaryColor,
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Montserrat',
                                     color: Colors.white,
                                   ),
                           elevation: 2,

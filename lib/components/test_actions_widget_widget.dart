@@ -95,7 +95,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                   maxHeight: 80,
                 ),
                 decoration: BoxDecoration(
-                  color: Color(0xFF58585C),
+                  color: FlutterFlowTheme.of(context).secondaryColor,
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Padding(
@@ -157,7 +157,9 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                                   .bodyText1
                                   .override(
                                     fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.w300,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontWeight: FontWeight.w500,
                                   ),
                               borderSide: BorderSide(
                                 color: Colors.transparent,
@@ -220,12 +222,13 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                           width: 130,
                           height: 40,
                           color: Color(0x00B3B2B2),
-                          textStyle:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Roboto',
-                                    color: Color(0xFFBACA68),
-                                    fontWeight: FontWeight.w300,
-                                  ),
+                          textStyle: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: 'Roboto',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontWeight: FontWeight.w500,
+                              ),
                           borderSide: BorderSide(
                             color: Colors.transparent,
                           ),

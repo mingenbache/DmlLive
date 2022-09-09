@@ -50,6 +50,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (valueOrDefault<bool>(currentUserDocument?.isStaff, false)) {
         context.goNamed('HomeAdmin');
+
         Navigator.pop(context);
         return;
       } else {
@@ -316,7 +317,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -490,7 +491,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -657,7 +658,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                   .title1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
+                                                                        'Montserrat',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryColor,
@@ -813,7 +814,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                 .title2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   fontSize: 18,
                                                                 ),
                                                           ),
@@ -835,7 +836,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: Color(
                                                                       0xFFFDFDFD),
                                                                   fontSize: 80,
@@ -881,6 +882,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                             onTap: () async {
                                               setState(() => FFAppState()
                                                   .testsVar = 'upcoming');
+
                                               context.pushNamed(
                                                 'MyBookings',
                                                 extra: <String, dynamic>{
@@ -950,7 +952,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                     .title2
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Roboto',
+                                                                          'Montserrat',
                                                                       fontSize:
                                                                           20,
                                                                     ),
@@ -1031,7 +1033,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Roboto',
+                                                                                'Montserrat',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryColor,
                                                                             fontSize:
@@ -1055,6 +1057,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                             onTap: () async {
                                               setState(() => FFAppState()
                                                   .paymentsvar = 'invoices');
+
                                               context.pushNamed('myPayments');
                                             },
                                             child: Material(
@@ -1094,7 +1097,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                 .title2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   fontSize: 20,
                                                                 ),
                                                           ),
@@ -1177,7 +1180,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Montserrat',
                                                                           fontSize:
                                                                               54,
                                                                         ),

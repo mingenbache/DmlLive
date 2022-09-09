@@ -43,9 +43,9 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color(0x4DFFFFFF),
-                  Color(0xE6BACA68),
-                  Color(0xFFB5AC49)
+                  Color(0xB16CD7B7),
+                  Color(0xE6FFFFFF),
+                  FlutterFlowTheme.of(context).secondaryColor
                 ],
                 stops: [0, 0.4, 1],
                 begin: AlignmentDirectional(0, -1),
@@ -87,14 +87,16 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                             children: [
                                               Text(
                                                 'MY BOOKINGS',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .title1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .title1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
                                               ),
                                             ],
                                           ),
@@ -123,17 +125,17 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                     child: Column(
                       children: [
                         TabBar(
-                          labelColor: Colors.white,
+                          labelColor: FlutterFlowTheme.of(context).primaryText,
                           unselectedLabelColor:
-                              FlutterFlowTheme.of(context).primaryColor,
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           labelStyle:
                               FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Montserrat',
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
                                   ),
                           indicatorColor:
-                              FlutterFlowTheme.of(context).primaryColor,
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           tabs: [
                             Tab(
                               text: 'Past\nBookings',
@@ -226,6 +228,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                         .DocumentReference),
                                                               }.withoutNulls,
                                                             );
+
                                                             return;
                                                           } else {
                                                             await showModalBottomSheet(
@@ -273,7 +276,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                 BoxDecoration(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primaryColor,
+                                                                  .secondaryColor,
                                                               boxShadow: [
                                                                 BoxShadow(
                                                                   blurRadius: 6,
@@ -338,7 +341,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                 Text(
                                                                                   pastbookingsItem.labRefNum,
                                                                                   style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                        fontFamily: 'Roboto',
+                                                                                        fontFamily: 'Montserrat',
                                                                                         color: Colors.white,
                                                                                       ),
                                                                                 ),
@@ -346,7 +349,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                                                                                 child: Container(
                                                                                   decoration: BoxDecoration(
-                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
                                                                                     borderRadius: BorderRadius.circular(10),
                                                                                   ),
                                                                                   child: Padding(
@@ -381,7 +384,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                 MediaQuery.of(context).size.width,
                                                                             decoration:
                                                                                 BoxDecoration(
-                                                                              color: Color(0x7EFFFFFF),
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               borderRadius: BorderRadius.circular(12),
                                                                             ),
                                                                             child:
@@ -411,7 +414,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                 child: Text(
                                                                                                   '${pastbookingsItem.firstname}   ${pastbookingsItem.lastname}',
                                                                                                   style: TextStyle(
-                                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                    color: FlutterFlowTheme.of(context).primaryBackground,
                                                                                                     fontWeight: FontWeight.w600,
                                                                                                     fontSize: 16,
                                                                                                   ),
@@ -489,7 +492,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                                 maxWidth: 290,
                                                                                                               ),
                                                                                                               decoration: BoxDecoration(
-                                                                                                                color: Color(0xBEFFFFFF),
+                                                                                                                color: FlutterFlowTheme.of(context).primaryBackground,
                                                                                                                 borderRadius: BorderRadius.circular(16),
                                                                                                               ),
                                                                                                               child: Padding(
@@ -521,8 +524,8 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                                                 replacement: '…',
                                                                                                                               ),
                                                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                                                fontFamily: 'Roboto',
-                                                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                                                fontFamily: 'Montserrat',
+                                                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                                                 fontWeight: FontWeight.w500,
                                                                                                                               ),
                                                                                                                         );
@@ -540,7 +543,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                                           child: Container(
                                                                                                                             height: MediaQuery.of(context).size.height * 0.12,
                                                                                                                             decoration: BoxDecoration(
-                                                                                                                              color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                                              color: FlutterFlowTheme.of(context).secondaryText,
                                                                                                                               boxShadow: [
                                                                                                                                 BoxShadow(
                                                                                                                                   blurRadius: 0.6,
@@ -832,7 +835,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryColor,
+                                                                .secondaryColor,
                                                         boxShadow: [
                                                           BoxShadow(
                                                             blurRadius: 6,
@@ -894,7 +897,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                           Text(
                                                                             upcomingBookingsColumnBookingsRecord.labRefNum,
                                                                             style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Montserrat',
                                                                                   color: Colors.white,
                                                                                 ),
                                                                           ),
@@ -908,7 +911,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                               Container(
                                                                             decoration:
                                                                                 BoxDecoration(
-                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                              color: FlutterFlowTheme.of(context).secondaryText,
                                                                               borderRadius: BorderRadius.circular(10),
                                                                             ),
                                                                             child:
@@ -932,6 +935,9 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                   Container(
                                                                     decoration:
                                                                         BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               15),
@@ -964,7 +970,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                     width: MediaQuery.of(context).size.width * 0.58,
                                                                                     height: MediaQuery.of(context).size.height * 0.04,
                                                                                     decoration: BoxDecoration(
-                                                                                      color: Color(0x6DFFFFFF),
+                                                                                      color: Color(0x33FFFFFF),
                                                                                       borderRadius: BorderRadius.circular(12),
                                                                                     ),
                                                                                     child: Padding(
@@ -972,7 +978,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                       child: Text(
                                                                                         '${functions.camelCase(upcomingBookingsColumnBookingsRecord.firstname)}   ${functions.camelCase(upcomingBookingsColumnBookingsRecord.lastname)}',
                                                                                         style: TextStyle(
-                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                          color: FlutterFlowTheme.of(context).primaryBtnText,
                                                                                           fontWeight: FontWeight.w600,
                                                                                           fontSize: 16,
                                                                                         ),
@@ -1068,7 +1074,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                       Text(
                                                                                                         'On Hold',
                                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                              fontFamily: 'Roboto',
+                                                                                                              fontFamily: 'Montserrat',
                                                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                             ),
                                                                                                       ),
@@ -1183,8 +1189,8 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                                       replacement: '…',
                                                                                                                     ),
                                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                                      fontFamily: 'Roboto',
-                                                                                                                      color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                                      fontFamily: 'Montserrat',
+                                                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                                                       fontWeight: FontWeight.normal,
                                                                                                                     ),
                                                                                                               ),
@@ -1336,7 +1342,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                 BoxDecoration(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primaryColor,
+                                                                  .secondaryColor,
                                                               boxShadow: [
                                                                 BoxShadow(
                                                                   blurRadius: 6,
@@ -1401,7 +1407,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                 Text(
                                                                                   inactivebookingsItem.labRefNum,
                                                                                   style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                        fontFamily: 'Roboto',
+                                                                                        fontFamily: 'Montserrat',
                                                                                         color: Colors.white,
                                                                                       ),
                                                                                 ),
@@ -1409,7 +1415,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                                                                                 child: Container(
                                                                                   decoration: BoxDecoration(
-                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
                                                                                     borderRadius: BorderRadius.circular(10),
                                                                                   ),
                                                                                   child: Padding(
@@ -1435,6 +1441,8 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                         Container(
                                                                           decoration:
                                                                               BoxDecoration(
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             borderRadius:
                                                                                 BorderRadius.circular(15),
                                                                           ),
@@ -1468,7 +1476,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                             child: Text(
                                                                                               '${functions.camelCase(inactivebookingsItem.firstname)}   ${functions.camelCase(inactivebookingsItem.lastname)}',
                                                                                               style: TextStyle(
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
                                                                                                 fontWeight: FontWeight.w600,
                                                                                                 fontSize: 16,
                                                                                               ),
@@ -1560,7 +1568,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                           Text(
                                                                                                             'On Hold',
                                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                                  fontFamily: 'Roboto',
+                                                                                                                  fontFamily: 'Montserrat',
                                                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                                 ),
                                                                                                           ),
@@ -1690,7 +1698,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                                               ),
                                                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                                                 fontFamily: 'Roboto',
-                                                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                                                 fontWeight: FontWeight.normal,
                                                                                                                               ),
                                                                                                                         ),

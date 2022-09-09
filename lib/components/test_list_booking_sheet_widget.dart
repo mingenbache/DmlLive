@@ -30,7 +30,9 @@ class TestListBookingSheetWidget extends StatefulWidget {
 class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
     with TickerProviderStateMixin {
   TextEditingController textController1;
+
   TextEditingController textController2;
+
   final animationsMap = {
     'buttonOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
@@ -124,16 +126,16 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              Color(0x542F2F2F),
-                              FlutterFlowTheme.of(context).tertiaryColor
+                              Color(0x786CD7B7),
+                              FlutterFlowTheme.of(context).secondaryBackground
                             ],
                             stops: [0, 0.4],
                             begin: AlignmentDirectional(0, -1),
                             end: AlignmentDirectional(0, 1),
                           ),
                           borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(16),
-                            bottomRight: Radius.circular(16),
+                            bottomLeft: Radius.circular(49),
+                            bottomRight: Radius.circular(49),
                             topLeft: Radius.circular(30),
                             topRight: Radius.circular(30),
                           ),
@@ -156,11 +158,11 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'ADD TESTS',
+                                      'SELECT TESTS',
                                       style: FlutterFlowTheme.of(context)
                                           .title1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Montserrat',
                                             color: Colors.white,
                                           ),
                                     ),
@@ -181,10 +183,13 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                           borderColor: Colors.transparent,
                                           borderRadius: 30,
                                           buttonSize: 48,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
                                           icon: Icon(
                                             Icons.close_rounded,
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .primaryText,
                                             size: 30,
                                           ),
                                           onPressed: () async {
@@ -219,13 +224,16 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                     children: [
                                       TabBar(
                                         isScrollable: true,
+                                        labelColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        unselectedLabelColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primaryText,
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Roboto',
-                                              fontSize: 15,
-                                            ),
-                                        indicatorColor: Colors.white,
+                                            .subtitle2,
+                                        indicatorColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
                                         tabs: [
                                           Tab(
                                             text: 'Tests',
@@ -282,7 +290,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                   .search_rounded,
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .secondaryColor,
+                                                                  .primaryText,
                                                               size: 24,
                                                             ),
                                                           ),
@@ -323,7 +331,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                         fontFamily:
                                                                             'Roboto',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .primaryText,
                                                                         fontSize:
                                                                             16,
                                                                         fontWeight:
@@ -335,8 +343,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Roboto',
-                                                                        color: Color(
-                                                                            0xFF586B06),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
                                                                         fontSize:
                                                                             16,
                                                                         fontWeight:
@@ -380,15 +388,53 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                               4.0),
                                                                     ),
                                                                   ),
+                                                                  errorBorder:
+                                                                      UnderlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Color(
+                                                                          0x00000000),
+                                                                      width: 1,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        const BorderRadius
+                                                                            .only(
+                                                                      topLeft: Radius
+                                                                          .circular(
+                                                                              4.0),
+                                                                      topRight:
+                                                                          Radius.circular(
+                                                                              4.0),
+                                                                    ),
+                                                                  ),
+                                                                  focusedErrorBorder:
+                                                                      UnderlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Color(
+                                                                          0x00000000),
+                                                                      width: 1,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        const BorderRadius
+                                                                            .only(
+                                                                      topLeft: Radius
+                                                                          .circular(
+                                                                              4.0),
+                                                                      topRight:
+                                                                          Radius.circular(
+                                                                              4.0),
+                                                                    ),
+                                                                  ),
                                                                   suffixIcon: textController1
                                                                           .text
                                                                           .isNotEmpty
                                                                       ? InkWell(
-                                                                          onTap: () =>
-                                                                              setState(
-                                                                            () =>
-                                                                                textController1?.clear(),
-                                                                          ),
+                                                                          onTap:
+                                                                              () async {
+                                                                            textController1?.clear();
+                                                                            setState(() {});
+                                                                          },
                                                                           child:
                                                                               Icon(
                                                                             Icons.clear,
@@ -467,7 +513,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                   decoration:
                                                                       BoxDecoration(
                                                                     color: Color(
-                                                                        0x35EEEEEE),
+                                                                        0x4EEEEEEE),
                                                                     borderRadius:
                                                                         BorderRadius.circular(
                                                                             10),
@@ -487,9 +533,9 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Roboto',
+                                                                                'Montserrat',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             fontWeight:
                                                                                 FontWeight.w500,
                                                                           ),
@@ -520,8 +566,9 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                   ),
                                                                   decoration:
                                                                       BoxDecoration(
-                                                                    color: Colors
-                                                                        .white,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     borderRadius:
                                                                         BorderRadius.circular(
                                                                             10),
@@ -541,9 +588,9 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Roboto',
+                                                                                'Montserrat',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             fontWeight:
                                                                                 FontWeight.w500,
                                                                           ),
@@ -664,7 +711,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                     child: Text(
                                                                                       testCategoriesItem,
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Roboto',
+                                                                                            fontFamily: 'Montserrat',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontSize: 16,
                                                                                           ),
@@ -695,8 +742,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                       child: Text(
                                                                                         testCategoriesItem,
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Roboto',
-                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                              fontFamily: 'Montserrat',
+                                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                                               fontSize: 16,
                                                                                             ),
                                                                                       ),
@@ -768,8 +815,6 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                         ),
                                                         decoration:
                                                             BoxDecoration(
-                                                          color:
-                                                              Color(0x30FFFFFF),
                                                           borderRadius:
                                                               BorderRadius.only(
                                                             bottomLeft:
@@ -848,7 +893,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                               0,
                                                                               0,
                                                                               0,
-                                                                              10),
+                                                                              15),
                                                                       child:
                                                                           Container(
                                                                         height:
@@ -943,7 +988,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                     .search_rounded,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryColor,
+                                                                    .primaryText,
                                                                 size: 24,
                                                               ),
                                                             ),
@@ -984,7 +1029,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                           fontFamily:
                                                                               'Roboto',
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               16,
                                                                           fontWeight:
@@ -997,7 +1042,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                           fontFamily:
                                                                               'Roboto',
                                                                           color:
-                                                                              Color(0xFF586B06),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               16,
                                                                           fontWeight:
@@ -1039,18 +1084,55 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                             Radius.circular(4.0),
                                                                       ),
                                                                     ),
+                                                                    errorBorder:
+                                                                        UnderlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0x00000000),
+                                                                        width:
+                                                                            1,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          const BorderRadius
+                                                                              .only(
+                                                                        topLeft:
+                                                                            Radius.circular(4.0),
+                                                                        topRight:
+                                                                            Radius.circular(4.0),
+                                                                      ),
+                                                                    ),
+                                                                    focusedErrorBorder:
+                                                                        UnderlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0x00000000),
+                                                                        width:
+                                                                            1,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          const BorderRadius
+                                                                              .only(
+                                                                        topLeft:
+                                                                            Radius.circular(4.0),
+                                                                        topRight:
+                                                                            Radius.circular(4.0),
+                                                                      ),
+                                                                    ),
                                                                     suffixIcon: textController2
                                                                             .text
                                                                             .isNotEmpty
                                                                         ? InkWell(
-                                                                            onTap: () =>
-                                                                                setState(
-                                                                              () => textController2?.clear(),
-                                                                            ),
+                                                                            onTap:
+                                                                                () async {
+                                                                              textController2?.clear();
+                                                                              setState(() {});
+                                                                            },
                                                                             child:
                                                                                 Icon(
                                                                               Icons.clear,
-                                                                              color: Color(0xFF586B06),
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               size: 18,
                                                                             ),
                                                                           )
@@ -1062,8 +1144,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Roboto',
-                                                                        color: Colors
-                                                                            .white,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
                                                                         fontSize:
                                                                             20,
                                                                         fontWeight:
@@ -1142,7 +1224,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
+                                                                              fontFamily: 'Montserrat',
                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -1192,8 +1274,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                              fontFamily: 'Montserrat',
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
@@ -1311,8 +1393,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                       child: Text(
                                                                                         packageCategoriesItem,
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Roboto',
-                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                              fontFamily: 'Montserrat',
+                                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                                               fontSize: 16,
                                                                                             ),
                                                                                       ),
@@ -1342,8 +1424,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                         child: Text(
                                                                                           packageCategoriesItem,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Roboto',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                fontFamily: 'Montserrat',
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontSize: 16,
                                                                                               ),
                                                                                         ),
@@ -1400,22 +1482,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                               .width,
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: Color(
-                                                                0x30FFFFFF),
                                                             borderRadius:
                                                                 BorderRadius
-                                                                    .only(
-                                                              bottomLeft: Radius
-                                                                  .circular(0),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          0),
-                                                              topLeft: Radius
-                                                                  .circular(49),
-                                                              topRight: Radius
-                                                                  .circular(49),
-                                                            ),
+                                                                    .circular(
+                                                                        49),
                                                           ),
                                                           child:
                                                               SingleChildScrollView(
@@ -1482,7 +1552,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                             final packageListItem =
                                                                                 packageList[packageListIndex];
                                                                             return Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
                                                                               child: Container(
                                                                                 height: 100,
                                                                                 decoration: BoxDecoration(),
@@ -1542,12 +1612,12 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                           options: FFButtonOptions(
                             width: 240,
                             height: 70,
-                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            color: FlutterFlowTheme.of(context).secondaryText,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Montserrat',
                                       color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                          .primaryBackground,
                                     ),
                             elevation: 2,
                             borderSide: BorderSide(

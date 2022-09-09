@@ -145,7 +145,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .title2
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Montserrat',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
@@ -204,7 +204,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Montserrat',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
                                             fontSize: 15,
@@ -430,7 +430,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                         textStyle: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Montserrat',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,

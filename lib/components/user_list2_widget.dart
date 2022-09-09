@@ -68,7 +68,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 0.89,
                   decoration: BoxDecoration(
-                    color: Color(0x66586B06),
+                    color: Color(0x7C6CD7B7),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(16),
                       bottomRight: Radius.circular(16),
@@ -96,7 +96,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Montserrat',
                                       color: Colors.white,
                                     ),
                               ),
@@ -115,6 +115,8 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                     borderColor: Colors.transparent,
                                     borderRadius: 30,
                                     buttonSize: 48,
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                     icon: Icon(
                                       Icons.close_rounded,
                                       color: FlutterFlowTheme.of(context)
@@ -155,7 +157,8 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                         4, 0, 4, 0),
                                     child: Icon(
                                       Icons.search_rounded,
-                                      color: Color(0xFF586B06),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                       size: 24,
                                     ),
                                   ),
@@ -174,15 +177,17 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: 'Search user here...',
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Roboto',
-                                                    color: Color(0xFF586B06),
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w500,
+                                              ),
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyText1
@@ -214,18 +219,41 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                               topRight: Radius.circular(4.0),
                                             ),
                                           ),
+                                          errorBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 1,
+                                            ),
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                              topLeft: Radius.circular(4.0),
+                                              topRight: Radius.circular(4.0),
+                                            ),
+                                          ),
+                                          focusedErrorBorder:
+                                              UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 1,
+                                            ),
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                              topLeft: Radius.circular(4.0),
+                                              topRight: Radius.circular(4.0),
+                                            ),
+                                          ),
                                           suffixIcon: textController
                                                   .text.isNotEmpty
                                               ? InkWell(
-                                                  onTap: () => setState(
-                                                    () =>
-                                                        textController?.clear(),
-                                                  ),
+                                                  onTap: () async {
+                                                    textController?.clear();
+                                                    setState(() {});
+                                                  },
                                                   child: Icon(
                                                     Icons.clear,
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryColor,
+                                                        .primaryText,
                                                     size: 18,
                                                   ),
                                                 )
@@ -235,7 +263,9 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                             .bodyText1
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: Color(0xFF586B06),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                               fontSize: 20,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -254,11 +284,10 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [
-                                Color(0x00FFFFFF),
-                                FlutterFlowTheme.of(context).tertiaryColor,
-                                FlutterFlowTheme.of(context).alternate
+                                Color(0x496CD7B7),
+                                FlutterFlowTheme.of(context).secondaryBackground
                               ],
-                              stops: [0, 0.2, 1],
+                              stops: [0, 0.3],
                               begin: AlignmentDirectional(0, -1),
                               end: AlignmentDirectional(0, 1),
                             ),

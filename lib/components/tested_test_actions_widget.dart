@@ -160,7 +160,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .tertiaryColor,
@@ -221,7 +221,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                           .bodyText1
                                                           .override(
                                                             fontFamily:
-                                                                'Roboto',
+                                                                'Montserrat',
                                                             color: Color(
                                                                 0x34FFFFFF),
                                                             fontWeight:
@@ -287,7 +287,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                           .bodyText1
                                                           .override(
                                                             fontFamily:
-                                                                'Roboto',
+                                                                'Montserrat',
                                                             color: Color(
                                                                 0x33FFFFFF),
                                                             fontWeight:
@@ -370,7 +370,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .tertiaryColor,
@@ -438,7 +438,8 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Montserrat',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .tertiaryColor,
@@ -469,6 +470,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                               );
                                             },
                                           );
+
                                           context.goNamed(
                                             'TestDeck',
                                             queryParams: {
@@ -520,7 +522,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Montserrat',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .tertiaryColor,

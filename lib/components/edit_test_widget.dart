@@ -26,14 +26,20 @@ class EditTestWidget extends StatefulWidget {
 }
 
 class _EditTestWidgetState extends State<EditTestWidget> {
-  String dropDownValue;
-  TextEditingController textController1;
+  TextEditingController resultsDurationTextController;
+
+  double durationResultsSliderValue;
+
   TextEditingController testDescriptionController;
+
+  TextEditingController textController1;
+
+  String dropDownValue;
   bool atHomeToggleValue;
   double testDurationSliderValue;
-  TextEditingController resultsDurationTextController;
-  double durationResultsSliderValue;
+
   TextEditingController testPriceController;
+
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -130,7 +136,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Montserrat',
                                               color: Color(0xFF586B06),
                                             ),
                                       ),
@@ -217,7 +223,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: Color(
                                                                       0xFF586B06),
                                                                 ),
@@ -229,7 +235,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: Color(
                                                                       0xFF586B06),
                                                                 ),
@@ -257,6 +263,30 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               BorderRadius
                                                                   .circular(12),
                                                         ),
+                                                        errorBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: Color(
+                                                                0x00000000),
+                                                            width: 2,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(12),
+                                                        ),
+                                                        focusedErrorBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                            color: Color(
+                                                                0x00000000),
+                                                            width: 2,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(12),
+                                                        ),
                                                         filled: true,
                                                         fillColor:
                                                             Color(0x65FFFFFF),
@@ -268,11 +298,13 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                             textController1.text
                                                                     .isNotEmpty
                                                                 ? InkWell(
-                                                                    onTap: () =>
-                                                                        setState(
-                                                                      () => textController1
-                                                                          ?.clear(),
-                                                                    ),
+                                                                    onTap:
+                                                                        () async {
+                                                                      textController1
+                                                                          ?.clear();
+                                                                      setState(
+                                                                          () {});
+                                                                    },
                                                                     child: Icon(
                                                                       Icons
                                                                           .clear,
@@ -289,7 +321,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Montserrat',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,
@@ -305,6 +337,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                             val.isEmpty) {
                                                           return 'Field is required';
                                                         }
+
                                                         if (val.length < 3) {
                                                           return 'Requires at least 3 characters.';
                                                         }
@@ -347,7 +380,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                           .bodyText1
                                                           .override(
                                                             fontFamily:
-                                                                'Roboto',
+                                                                'Montserrat',
                                                             color: Color(
                                                                 0xFF586B06),
                                                             fontWeight:
@@ -424,7 +457,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                   .bodyText1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
+                                                                        'Montserrat',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryColor,
@@ -503,6 +536,10 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                         InputBorder.none,
                                                     focusedBorder:
                                                         InputBorder.none,
+                                                    errorBorder:
+                                                        InputBorder.none,
+                                                    focusedErrorBorder:
+                                                        InputBorder.none,
                                                     contentPadding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
@@ -511,11 +548,13 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                         testDescriptionController
                                                                 .text.isNotEmpty
                                                             ? InkWell(
-                                                                onTap: () =>
-                                                                    setState(
-                                                                  () => testDescriptionController
-                                                                      ?.clear(),
-                                                                ),
+                                                                onTap:
+                                                                    () async {
+                                                                  testDescriptionController
+                                                                      ?.clear();
+                                                                  setState(
+                                                                      () {});
+                                                                },
                                                                 child: Icon(
                                                                   Icons.clear,
                                                                   color: Color(
@@ -603,7 +642,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Montserrat',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .tertiaryColor,
@@ -677,7 +716,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Montserrat',
                                                                 color: Color(
                                                                     0xFF586B06),
                                                                 fontWeight:
@@ -695,7 +734,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Montserrat',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,
@@ -747,7 +786,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Montserrat',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .alternate,
@@ -836,7 +875,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                           .bodyText1
                                                           .override(
                                                             fontFamily:
-                                                                'Roboto',
+                                                                'Montserrat',
                                                             color: Color(
                                                                 0xFF586B06),
                                                             fontWeight:
@@ -851,7 +890,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Montserrat',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,
@@ -953,6 +992,44 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                           4.0),
                                                                 ),
                                                               ),
+                                                              errorBorder:
+                                                                  UnderlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1,
+                                                                ),
+                                                                borderRadius:
+                                                                    const BorderRadius
+                                                                        .only(
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          4.0),
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          4.0),
+                                                                ),
+                                                              ),
+                                                              focusedErrorBorder:
+                                                                  UnderlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0x00000000),
+                                                                  width: 1,
+                                                                ),
+                                                                borderRadius:
+                                                                    const BorderRadius
+                                                                        .only(
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          4.0),
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          4.0),
+                                                                ),
+                                                              ),
                                                               contentPadding:
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
@@ -966,7 +1043,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Montserrat',
                                                                   color: Color(
                                                                       0xFF586B06),
                                                                   fontSize: 18,
@@ -1077,7 +1154,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Montserrat',
                                                                 color: Color(
                                                                     0xFF586B06),
                                                                 fontSize: 18,
@@ -1138,6 +1215,12 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               focusedBorder:
                                                                   InputBorder
                                                                       .none,
+                                                              errorBorder:
+                                                                  InputBorder
+                                                                      .none,
+                                                              focusedErrorBorder:
+                                                                  InputBorder
+                                                                      .none,
                                                             ),
                                                             style: GoogleFonts
                                                                 .getFont(
@@ -1157,6 +1240,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                   val.isEmpty) {
                                                                 return 'incorrect price entered';
                                                               }
+
                                                               if (val.length <
                                                                   2) {
                                                                 return 'incorrect price entered';
@@ -1215,6 +1299,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                     currentUserDocument?.role, ''),
                               );
                               await widget.testRef.update(testsUpdateData);
+
                               context.pushNamed(
                                 'Details',
                                 queryParams: {
@@ -1222,6 +1307,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                       ParamType.DocumentReference),
                                 }.withoutNulls,
                               );
+
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(

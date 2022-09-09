@@ -144,7 +144,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Montserrat',
                                               color: Color(0xFF586B06),
                                             ),
                                       ),
@@ -181,7 +181,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                   context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                fontFamily: 'Montserrat',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .tertiaryColor,
@@ -221,7 +221,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Montserrat',
                                               fontSize: 16,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -734,7 +734,8 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily:
+                                                            'Montserrat',
                                                         fontSize: 32,
                                                       ),
                                             ),
@@ -803,15 +804,16 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                               child: Text(
                                                 columnTestsRecord.category,
                                                 textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                        ),
+                                                    ),
                                               ),
                                             ),
                                           ),
