@@ -1032,7 +1032,10 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                         child: Text(
-                                                                                          'names',
+                                                                                          '${columnPaymentsRecord.firstName} ${columnPaymentsRecord.lastName}'.maybeHandleOverflow(
+                                                                                            maxChars: 20,
+                                                                                            replacement: '…',
+                                                                                          ),
                                                                                           style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                                 fontFamily: 'Lexend Deca',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
@@ -1094,7 +1097,10 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                         child: Text(
-                                                                                          'date',
+                                                                                          columnBookingsRecord.labRefNum.maybeHandleOverflow(
+                                                                                            maxChars: 20,
+                                                                                            replacement: '…',
+                                                                                          ),
                                                                                           style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                                 fontFamily: 'Lexend Deca',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
