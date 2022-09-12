@@ -146,7 +146,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                   fontFamily: 'Montserrat',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .primaryText,
                                                 ),
                                           ),
                                         ),
@@ -379,7 +379,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             borderRadius:
                                                                                 BorderRadius.circular(12),
                                                                           ),
@@ -394,7 +394,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                                 Text(
                                                                               '${functions.camelCase(myReportsItem.patientName)}',
                                                                               style: TextStyle(
-                                                                                color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                 fontWeight: FontWeight.w600,
                                                                                 fontSize: 16,
                                                                               ),

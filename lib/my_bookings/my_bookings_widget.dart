@@ -384,7 +384,6 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                 MediaQuery.of(context).size.width,
                                                                             decoration:
                                                                                 BoxDecoration(
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               borderRadius: BorderRadius.circular(12),
                                                                             ),
                                                                             child:
@@ -543,7 +542,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                                           child: Container(
                                                                                                                             height: MediaQuery.of(context).size.height * 0.12,
                                                                                                                             decoration: BoxDecoration(
-                                                                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                                                                               boxShadow: [
                                                                                                                                 BoxShadow(
                                                                                                                                   blurRadius: 0.6,
@@ -935,9 +934,6 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                   Container(
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText,
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               15),
@@ -978,7 +974,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                       child: Text(
                                                                                         '${functions.camelCase(upcomingBookingsColumnBookingsRecord.firstname)}   ${functions.camelCase(upcomingBookingsColumnBookingsRecord.lastname)}',
                                                                                         style: TextStyle(
-                                                                                          color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                          color: FlutterFlowTheme.of(context).primaryText,
                                                                                           fontWeight: FontWeight.w600,
                                                                                           fontSize: 16,
                                                                                         ),
@@ -1441,8 +1437,6 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                         Container(
                                                                           decoration:
                                                                               BoxDecoration(
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             borderRadius:
                                                                                 BorderRadius.circular(15),
                                                                           ),
@@ -1476,7 +1470,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                             child: Text(
                                                                                               '${functions.camelCase(inactivebookingsItem.firstname)}   ${functions.camelCase(inactivebookingsItem.lastname)}',
                                                                                               style: TextStyle(
-                                                                                                color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w600,
                                                                                                 fontSize: 16,
                                                                                               ),

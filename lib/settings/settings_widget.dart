@@ -156,7 +156,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).title1.override(
                           fontFamily: 'Montserrat',
-                          color: FlutterFlowTheme.of(context).primaryText,
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                   ),
                 ),

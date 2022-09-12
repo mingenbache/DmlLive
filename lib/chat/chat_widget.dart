@@ -65,7 +65,7 @@ class _ChatWidgetState extends State<ChatWidget> {
           buttonSize: 60,
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: FlutterFlowTheme.of(context).alternate,
+            color: FlutterFlowTheme.of(context).secondaryBackground,
             size: 24,
           ),
           onPressed: () async {
@@ -78,7 +78,7 @@ class _ChatWidgetState extends State<ChatWidget> {
               'CHAT',
               style: FlutterFlowTheme.of(context).bodyText1.override(
                     fontFamily: 'Roboto',
-                    color: FlutterFlowTheme.of(context).alternate,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
@@ -105,7 +105,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                 },
                 child: Icon(
                   Icons.person_add,
-                  color: Colors.black,
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
                   size: 24,
                 ),
               ),
@@ -135,7 +135,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   otherUsersBoxDecoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).primaryColor,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                     border: Border.all(
                       color: Colors.transparent,
                     ),
@@ -143,14 +143,14 @@ class _ChatWidgetState extends State<ChatWidget> {
                   ),
                   currentUserTextStyle: GoogleFonts.getFont(
                     'DM Sans',
-                    color: FlutterFlowTheme.of(context).alternate,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                     fontStyle: FontStyle.normal,
                   ),
                   otherUsersTextStyle: GoogleFonts.getFont(
                     'DM Sans',
-                    color: Colors.white,
+                    color: FlutterFlowTheme.of(context).primaryText,
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                   ),

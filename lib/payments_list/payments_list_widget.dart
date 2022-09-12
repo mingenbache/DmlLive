@@ -235,7 +235,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                             );
                                                           },
                                                           child: Container(
-                                                            height: 140,
+                                                            height: 210,
                                                             decoration:
                                                                 BoxDecoration(
                                                               borderRadius:
@@ -252,249 +252,410 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                       .max,
                                                               children: [
                                                                 Container(
-                                                                  width: 50,
-                                                                  decoration:
-                                                                      BoxDecoration(),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8,
-                                                                            0,
-                                                                            6,
-                                                                            0),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .center,
-                                                                      children: [
-                                                                        Material(
-                                                                          color:
-                                                                              Colors.transparent,
-                                                                          elevation:
-                                                                              3,
-                                                                          shape:
-                                                                              RoundedRectangleBorder(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(8),
-                                                                          ),
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                120,
-                                                                            height:
-                                                                                65,
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              borderRadius: BorderRadius.circular(8),
-                                                                            ),
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                                                                              child: Column(
-                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                children: [
-                                                                                  Container(
-                                                                                    decoration: BoxDecoration(),
-                                                                                    child: Text(
-                                                                                      functions.dateMonth(columnPaymentsRecord.createdDate),
-                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
-                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                            fontSize: 12,
-                                                                                            fontWeight: FontWeight.w500,
-                                                                                          ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  Container(
-                                                                                    decoration: BoxDecoration(),
-                                                                                    child: Text(
-                                                                                      functions.dateDay(columnPaymentsRecord.createdDate),
-                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
-                                                                                            color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                            fontSize: 22,
-                                                                                            fontWeight: FontWeight.w500,
-                                                                                          ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  Container(
-                                                                                    decoration: BoxDecoration(),
-                                                                                    child: Text(
-                                                                                      functions.dateYear(columnPaymentsRecord.createdDate),
-                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
-                                                                                            color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                            fontSize: 12,
-                                                                                            fontWeight: FontWeight.w500,
-                                                                                          ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
+                                                                  width: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width *
+                                                                      0.8,
+                                                                  constraints:
+                                                                      BoxConstraints(
+                                                                    maxWidth:
+                                                                        340,
                                                                   ),
-                                                                ),
-                                                                Material(
-                                                                  color: Colors
-                                                                      .transparent,
-                                                                  elevation: 2,
-                                                                  shape:
-                                                                      RoundedRectangleBorder(
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryColor,
                                                                     borderRadius:
                                                                         BorderRadius.circular(
                                                                             12),
                                                                   ),
-                                                                  child:
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    children: [
                                                                       Container(
-                                                                    width: 260,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: Color(
-                                                                          0xFFEEEEEE),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              12),
-                                                                    ),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .center,
-                                                                      children: [
-                                                                        Container(
-                                                                          width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(8),
-                                                                          ),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.spaceBetween,
-                                                                            children: [
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
-                                                                                child: Container(
-                                                                                  decoration: BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(8),
-                                                                                  ),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(8, 4, 4, 4),
-                                                                                    child: Text(
-                                                                                      formatNumber(
-                                                                                        columnPaymentsRecord.amount,
-                                                                                        formatType: FormatType.decimal,
-                                                                                        decimalType: DecimalType.periodDecimal,
-                                                                                        currency: 'Ksh ',
-                                                                                      ),
-                                                                                      style: FlutterFlowTheme.of(context).subtitle1.override(
-                                                                                            fontFamily: 'Montserrat',
-                                                                                            color: FlutterFlowTheme.of(context).primaryText,
-                                                                                            fontWeight: FontWeight.w500,
-                                                                                          ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
-                                                                                child: Container(
-                                                                                  decoration: BoxDecoration(
-                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                  ),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
-                                                                                    child: Text(
-                                                                                      columnPaymentsRecord.type,
-                                                                                      style: FlutterFlowTheme.of(context).bodyText2.override(
-                                                                                            fontFamily: 'Lexend Deca',
-                                                                                            color: Colors.white,
-                                                                                            fontSize: 14,
-                                                                                            fontWeight: FontWeight.w500,
-                                                                                          ),
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
+                                                                        width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8),
                                                                         ),
-                                                                        Align(
-                                                                          alignment: AlignmentDirectional(
-                                                                              0,
-                                                                              1),
-                                                                          child:
-                                                                              Container(
-                                                                            height:
-                                                                                100,
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                              borderRadius: BorderRadius.circular(12),
-                                                                            ),
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(4, 0, 4, 0),
-                                                                              child: StreamBuilder<BookingsRecord>(
-                                                                                stream: BookingsRecord.getDocument(columnPaymentsRecord.bookingRef),
-                                                                                builder: (context, snapshot) {
-                                                                                  // Customize what your widget looks like when it's loading.
-                                                                                  if (!snapshot.hasData) {
-                                                                                    return Center(
-                                                                                      child: SizedBox(
-                                                                                        width: 50,
-                                                                                        height: 50,
-                                                                                        child: SpinKitRipple(
-                                                                                          color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                          size: 50,
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.spaceBetween,
+                                                                          children: [
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
+                                                                              child: Container(
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(8),
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(8, 4, 4, 4),
+                                                                                  child: Text(
+                                                                                    formatNumber(
+                                                                                      columnPaymentsRecord.amount,
+                                                                                      formatType: FormatType.decimal,
+                                                                                      decimalType: DecimalType.periodDecimal,
+                                                                                      currency: 'Ksh ',
+                                                                                    ),
+                                                                                    style: FlutterFlowTheme.of(context).subtitle1.override(
+                                                                                          fontFamily: 'Montserrat',
+                                                                                          color: FlutterFlowTheme.of(context).primaryText,
+                                                                                          fontWeight: FontWeight.w500,
                                                                                         ),
-                                                                                      ),
-                                                                                    );
-                                                                                  }
-                                                                                  final columnBookingsRecord = snapshot.data;
-                                                                                  return Column(
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
+                                                                              child: Container(
+                                                                                decoration: BoxDecoration(
+                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                  borderRadius: BorderRadius.circular(10),
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
+                                                                                  child: Text(
+                                                                                    columnPaymentsRecord.type,
+                                                                                    style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                          fontFamily: 'Lexend Deca',
+                                                                                          color: Colors.white,
+                                                                                          fontSize: 14,
+                                                                                          fontWeight: FontWeight.w500,
+                                                                                        ),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            Material(
+                                                                              color: Colors.transparent,
+                                                                              elevation: 3,
+                                                                              shape: RoundedRectangleBorder(
+                                                                                borderRadius: BorderRadius.circular(8),
+                                                                              ),
+                                                                              child: Container(
+                                                                                width: 120,
+                                                                                height: 65,
+                                                                                decoration: BoxDecoration(
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                  borderRadius: BorderRadius.circular(8),
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                                                                  child: Column(
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
                                                                                       Container(
-                                                                                        width: MediaQuery.of(context).size.width,
                                                                                         decoration: BoxDecoration(),
+                                                                                        child: Text(
+                                                                                          functions.dateMonth(columnPaymentsRecord.createdDate),
+                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                fontFamily: 'Montserrat',
+                                                                                                color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                fontSize: 12,
+                                                                                                fontWeight: FontWeight.w500,
+                                                                                              ),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Container(
+                                                                                        decoration: BoxDecoration(),
+                                                                                        child: Text(
+                                                                                          functions.dateDay(columnPaymentsRecord.createdDate),
+                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                fontFamily: 'Montserrat',
+                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                fontSize: 22,
+                                                                                                fontWeight: FontWeight.w500,
+                                                                                              ),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Container(
+                                                                                        decoration: BoxDecoration(),
+                                                                                        child: Text(
+                                                                                          functions.dateYear(columnPaymentsRecord.createdDate),
+                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                fontFamily: 'Montserrat',
+                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                fontSize: 12,
+                                                                                                fontWeight: FontWeight.w500,
+                                                                                              ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                      Align(
+                                                                        alignment: AlignmentDirectional(
+                                                                            0,
+                                                                            1),
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              MediaQuery.of(context).size.width * 0.75,
+                                                                          height:
+                                                                              110,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(12),
+                                                                          ),
+                                                                          child:
+                                                                              Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                4,
+                                                                                0,
+                                                                                4,
+                                                                                0),
+                                                                            child:
+                                                                                StreamBuilder<BookingsRecord>(
+                                                                              stream: BookingsRecord.getDocument(columnPaymentsRecord.bookingRef),
+                                                                              builder: (context, snapshot) {
+                                                                                // Customize what your widget looks like when it's loading.
+                                                                                if (!snapshot.hasData) {
+                                                                                  return Center(
+                                                                                    child: SizedBox(
+                                                                                      width: 50,
+                                                                                      height: 50,
+                                                                                      child: SpinKitRipple(
+                                                                                        color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                        size: 50,
+                                                                                      ),
+                                                                                    ),
+                                                                                  );
+                                                                                }
+                                                                                final columnBookingsRecord = snapshot.data;
+                                                                                return Column(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  children: [
+                                                                                    Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0, 6, 0, 0),
+                                                                                      child: Container(
+                                                                                        decoration: BoxDecoration(
+                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                        ),
+                                                                                        child: Row(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          mainAxisAlignment: MainAxisAlignment.start,
+                                                                                          children: [
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                                                                              child: Icon(
+                                                                                                Icons.person_rounded,
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                size: 16,
+                                                                                              ),
+                                                                                            ),
+                                                                                            Container(
+                                                                                              width: MediaQuery.of(context).size.width * 0.27,
+                                                                                              constraints: BoxConstraints(
+                                                                                                maxWidth: 80,
+                                                                                              ),
+                                                                                              decoration: BoxDecoration(
+                                                                                                borderRadius: BorderRadius.circular(10),
+                                                                                              ),
+                                                                                              child: Padding(
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
+                                                                                                child: Text(
+                                                                                                  'REF',
+                                                                                                  style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                                        fontFamily: 'Lexend Deca',
+                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                        fontSize: 14,
+                                                                                                        fontWeight: FontWeight.w500,
+                                                                                                      ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                            Container(
+                                                                                              decoration: BoxDecoration(
+                                                                                                borderRadius: BorderRadius.circular(8),
+                                                                                              ),
+                                                                                              child: Padding(
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
+                                                                                                child: Text(
+                                                                                                  columnPaymentsRecord.transactionCode,
+                                                                                                  style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                                        fontFamily: 'Lexend Deca',
+                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                        fontSize: 14,
+                                                                                                        fontWeight: FontWeight.w500,
+                                                                                                      ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0, 6, 0, 0),
+                                                                                      child: Container(
+                                                                                        decoration: BoxDecoration(
+                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                        ),
+                                                                                        child: Row(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          mainAxisAlignment: MainAxisAlignment.start,
+                                                                                          children: [
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                                                                              child: Icon(
+                                                                                                Icons.person_rounded,
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                size: 16,
+                                                                                              ),
+                                                                                            ),
+                                                                                            Container(
+                                                                                              width: MediaQuery.of(context).size.width * 0.27,
+                                                                                              constraints: BoxConstraints(
+                                                                                                maxWidth: 80,
+                                                                                              ),
+                                                                                              decoration: BoxDecoration(
+                                                                                                borderRadius: BorderRadius.circular(10),
+                                                                                              ),
+                                                                                              child: Padding(
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
+                                                                                                child: Text(
+                                                                                                  'PAID BY',
+                                                                                                  style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                                        fontFamily: 'Lexend Deca',
+                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                        fontSize: 14,
+                                                                                                        fontWeight: FontWeight.w500,
+                                                                                                      ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                            Container(
+                                                                                              decoration: BoxDecoration(
+                                                                                                borderRadius: BorderRadius.circular(8),
+                                                                                              ),
+                                                                                              child: Text(
+                                                                                                '${columnPaymentsRecord.firstName}   ${columnPaymentsRecord.lastName}',
+                                                                                                textAlign: TextAlign.start,
+                                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                      fontFamily: 'Montserrat',
+                                                                                                      color: Color(0xFF586B06),
+                                                                                                      fontWeight: FontWeight.w500,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0, 6, 0, 0),
+                                                                                      child: Container(
+                                                                                        decoration: BoxDecoration(
+                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                        ),
+                                                                                        child: Row(
+                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                          mainAxisAlignment: MainAxisAlignment.start,
+                                                                                          children: [
+                                                                                            Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                                                                              child: Icon(
+                                                                                                Icons.book,
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                size: 16,
+                                                                                              ),
+                                                                                            ),
+                                                                                            Container(
+                                                                                              width: MediaQuery.of(context).size.width * 0.37,
+                                                                                              constraints: BoxConstraints(
+                                                                                                maxWidth: 140,
+                                                                                              ),
+                                                                                              decoration: BoxDecoration(
+                                                                                                borderRadius: BorderRadius.circular(10),
+                                                                                              ),
+                                                                                              child: Padding(
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
+                                                                                                child: Text(
+                                                                                                  'BOOKING NAME',
+                                                                                                  maxLines: 1,
+                                                                                                  style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                                        fontFamily: 'Lexend Deca',
+                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                        fontSize: 14,
+                                                                                                        fontWeight: FontWeight.w500,
+                                                                                                      ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                            Container(
+                                                                                              decoration: BoxDecoration(
+                                                                                                borderRadius: BorderRadius.circular(8),
+                                                                                              ),
+                                                                                              child: Text(
+                                                                                                '${columnBookingsRecord.firstname}    ${columnBookingsRecord.lastname}',
+                                                                                                textAlign: TextAlign.start,
+                                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                      fontFamily: 'Montserrat',
+                                                                                                      color: Color(0xFF586B06),
+                                                                                                      fontWeight: FontWeight.w500,
+                                                                                                    ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                                                                      child: Container(
+                                                                                        decoration: BoxDecoration(
+                                                                                          borderRadius: BorderRadius.circular(16),
+                                                                                        ),
                                                                                         child: Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(6, 0, 0, 0),
                                                                                           child: Row(
-                                                                                            mainAxisSize: MainAxisSize.min,
-                                                                                            mainAxisAlignment: MainAxisAlignment.end,
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            mainAxisAlignment: MainAxisAlignment.start,
                                                                                             children: [
+                                                                                              FaIcon(
+                                                                                                FontAwesomeIcons.cashRegister,
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                size: 16,
+                                                                                              ),
                                                                                               Container(
-                                                                                                width: MediaQuery.of(context).size.width * 0.12,
+                                                                                                width: MediaQuery.of(context).size.width * 0.195,
+                                                                                                constraints: BoxConstraints(
+                                                                                                  maxWidth: 100,
+                                                                                                ),
                                                                                                 decoration: BoxDecoration(
                                                                                                   borderRadius: BorderRadius.circular(10),
                                                                                                 ),
                                                                                                 child: Padding(
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                                   child: Text(
-                                                                                                    'REF',
+                                                                                                    'BALANCE',
+                                                                                                    maxLines: 1,
                                                                                                     style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                                           fontFamily: 'Lexend Deca',
-                                                                                                          color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                           fontSize: 14,
                                                                                                           fontWeight: FontWeight.w500,
                                                                                                         ),
@@ -508,7 +669,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                 child: Padding(
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                                   child: Text(
-                                                                                                    columnPaymentsRecord.transactionCode,
+                                                                                                    'date',
                                                                                                     style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                                           fontFamily: 'Lexend Deca',
                                                                                                           color: FlutterFlowTheme.of(context).primaryText,
@@ -522,115 +683,15 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                           ),
                                                                                         ),
                                                                                       ),
-                                                                                      Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0, 3, 0, 0),
-                                                                                        child: Container(
-                                                                                          width: MediaQuery.of(context).size.width * 0.82,
-                                                                                          height: MediaQuery.of(context).size.height * 0.03,
-                                                                                          decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(8),
-                                                                                          ),
-                                                                                          child: Row(
-                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                                                                            children: [
-                                                                                              Container(
-                                                                                                width: MediaQuery.of(context).size.width * 0.28,
-                                                                                                height: 100,
-                                                                                                decoration: BoxDecoration(),
-                                                                                                child: Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(7, 9, 5, 0),
-                                                                                                  child: Text(
-                                                                                                    'Paid By Name',
-                                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                          fontFamily: 'Montserrat',
-                                                                                                          color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                          fontWeight: FontWeight.normal,
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                              Container(
-                                                                                                width: MediaQuery.of(context).size.width * 0.54,
-                                                                                                height: 100,
-                                                                                                decoration: BoxDecoration(),
-                                                                                                child: Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 0),
-                                                                                                  child: Text(
-                                                                                                    '${columnPaymentsRecord.firstName}   ${columnPaymentsRecord.lastName}',
-                                                                                                    textAlign: TextAlign.start,
-                                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                          fontFamily: 'Montserrat',
-                                                                                                          color: Color(0xFF586B06),
-                                                                                                          fontWeight: FontWeight.w500,
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ],
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                      Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0, 3, 0, 4),
-                                                                                        child: Container(
-                                                                                          width: MediaQuery.of(context).size.width * 0.82,
-                                                                                          height: MediaQuery.of(context).size.height * 0.03,
-                                                                                          decoration: BoxDecoration(
-                                                                                            borderRadius: BorderRadius.circular(8),
-                                                                                          ),
-                                                                                          child: Row(
-                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                                                                            children: [
-                                                                                              Container(
-                                                                                                width: MediaQuery.of(context).size.width * 0.28,
-                                                                                                height: 100,
-                                                                                                decoration: BoxDecoration(),
-                                                                                                child: Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(7, 9, 5, 0),
-                                                                                                  child: Text(
-                                                                                                    'Booking Name',
-                                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                          fontFamily: 'Montserrat',
-                                                                                                          color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                          fontWeight: FontWeight.normal,
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                              Container(
-                                                                                                width: MediaQuery.of(context).size.width * 0.5,
-                                                                                                height: 100,
-                                                                                                decoration: BoxDecoration(),
-                                                                                                child: Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 0),
-                                                                                                  child: Text(
-                                                                                                    '${columnBookingsRecord.firstname}    ${columnBookingsRecord.lastname}',
-                                                                                                    textAlign: TextAlign.start,
-                                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                          fontFamily: 'Montserrat',
-                                                                                                          color: Color(0xFF586B06),
-                                                                                                          fontWeight: FontWeight.w500,
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                ),
-                                                                                              ),
-                                                                                            ],
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ],
-                                                                                  );
-                                                                                },
-                                                                              ),
+                                                                                    ),
+                                                                                  ],
+                                                                                );
+                                                                              },
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                      ],
-                                                                    ),
+                                                                      ),
+                                                                    ],
                                                                   ),
                                                                 ),
                                                                 Container(
@@ -1040,6 +1101,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                         child: Text(
                                                                                           'LABREF',
+                                                                                          maxLines: 1,
                                                                                           style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                                 fontFamily: 'Lexend Deca',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
@@ -1082,9 +1144,9 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     mainAxisAlignment: MainAxisAlignment.start,
                                                                                     children: [
-                                                                                      Icon(
-                                                                                        Icons.ballot,
-                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                      FaIcon(
+                                                                                        FontAwesomeIcons.cashRegister,
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
                                                                                         size: 16,
                                                                                       ),
                                                                                       Container(
@@ -1099,9 +1161,10 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                           child: Text(
                                                                                             'BALANCE',
+                                                                                            maxLines: 1,
                                                                                             style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                                   fontFamily: 'Lexend Deca',
-                                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 14,
                                                                                                   fontWeight: FontWeight.w500,
                                                                                                 ),
