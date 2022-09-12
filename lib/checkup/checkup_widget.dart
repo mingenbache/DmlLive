@@ -3,6 +3,7 @@ import '../auth/firebase_user_provider.dart';
 import '../components/onboarding_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -65,7 +66,7 @@ class _CheckupWidgetState extends State<CheckupWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Page Title',
+          'DML Live',
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Montserrat',
                 color: Colors.white,
@@ -97,6 +98,32 @@ class _CheckupWidgetState extends State<CheckupWidget> {
                     begin: AlignmentDirectional(0, -1),
                     end: AlignmentDirectional(0, 1),
                   ),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    FFButtonWidget(
+                      onPressed: () {
+                        print('Button pressed ...');
+                      },
+                      text: 'Home',
+                      options: FFButtonOptions(
+                        width: 130,
+                        height: 40,
+                        color: FlutterFlowTheme.of(context).primaryColor,
+                        textStyle:
+                            FlutterFlowTheme.of(context).subtitle2.override(
+                                  fontFamily: 'Montserrat',
+                                  color: Colors.white,
+                                ),
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

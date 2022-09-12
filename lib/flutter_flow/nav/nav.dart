@@ -185,6 +185,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'checkup',
               path: 'checkup',
+              requireAuth: true,
               builder: (context, params) => CheckupWidget(),
             ),
             FFRoute(
