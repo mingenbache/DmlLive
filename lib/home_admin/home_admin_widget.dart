@@ -8,6 +8,7 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '../custom_code/widgets/index.dart' as custom_widgets;
 import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -404,7 +405,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                           Expanded(
                                             child: Align(
                                               alignment:
-                                                  AlignmentDirectional(0.5, 0),
+                                                  AlignmentDirectional(0, 0),
                                               child: Container(
                                                 width: MediaQuery.of(context)
                                                         .size
@@ -714,7 +715,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                           .width *
                                                       0.25,
                                                   decoration: BoxDecoration(),
-                                                  child: Text(
+                                                  child: AutoSizeText(
                                                     'Tests Scheduled For Today',
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -788,7 +789,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   3, 3, 3, 3),
-                                          child: Text(
+                                          child: AutoSizeText(
                                             'REPORTS\nDUE',
                                             textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
@@ -903,7 +904,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(3, 3, 3, 3),
-                                                child: Text(
+                                                child: AutoSizeText(
                                                   'FLAGGED\nTESTS',
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
@@ -1047,6 +1048,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                             fontFamily: 'Montserrat',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
+                                            fontWeight: FontWeight.w500,
                                           ),
                                       elevation: 2,
                                       borderSide: BorderSide(
