@@ -78,11 +78,13 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 8, 0),
                             child: Container(
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryColor,
+                                shape: BoxShape.circle,
                               ),
                               child: Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                    EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                                 child: Text(
                                   widget.index.toString(),
                                   style: FlutterFlowTheme.of(context)
@@ -141,7 +143,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                 alignment: AlignmentDirectional(0, 0),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 5, 0, 0),
+                                      0, 5, 0, 5),
                                   child: Container(
                                     width: MediaQuery.of(context).size.width *
                                         0.75,
@@ -193,7 +195,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                               ),
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                    EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
                                 child: Container(
                                   width:
                                       MediaQuery.of(context).size.width * 0.75,

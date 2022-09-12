@@ -466,92 +466,99 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                     },
                                                   ),
                                                 ),
-                                                StreamBuilder<
-                                                    List<UsersRecord>>(
-                                                  stream: queryUsersRecord(
-                                                    queryBuilder:
-                                                        (usersRecord) =>
-                                                            usersRecord.where(
-                                                                'isStaff',
-                                                                isEqualTo:
-                                                                    true),
-                                                  ),
-                                                  builder: (context, snapshot) {
-                                                    // Customize what your widget looks like when it's loading.
-                                                    if (!snapshot.hasData) {
-                                                      return Center(
-                                                        child: SizedBox(
-                                                          width: 50,
-                                                          height: 50,
-                                                          child: SpinKitRipple(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryColor,
-                                                            size: 50,
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 5, 0, 0),
+                                                  child: StreamBuilder<
+                                                      List<UsersRecord>>(
+                                                    stream: queryUsersRecord(
+                                                      queryBuilder:
+                                                          (usersRecord) =>
+                                                              usersRecord.where(
+                                                                  'isStaff',
+                                                                  isEqualTo:
+                                                                      true),
+                                                    ),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 50,
+                                                            height: 50,
+                                                            child:
+                                                                SpinKitRipple(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryColor,
+                                                              size: 50,
+                                                            ),
                                                           ),
+                                                        );
+                                                      }
+                                                      List<UsersRecord>
+                                                          staffUserContainerUsersRecordList =
+                                                          snapshot.data;
+                                                      return Container(
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width *
+                                                            0.8,
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            1,
+                                                        constraints:
+                                                            BoxConstraints(
+                                                          maxHeight: 560,
+                                                        ),
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: Builder(
+                                                          builder: (context) {
+                                                            final staff = functions
+                                                                .returnUserList(
+                                                                    textController
+                                                                        .text,
+                                                                    staffUserContainerUsersRecordList
+                                                                        .toList())
+                                                                .toList();
+                                                            return ListView
+                                                                .builder(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .zero,
+                                                              scrollDirection:
+                                                                  Axis.vertical,
+                                                              itemCount:
+                                                                  staff.length,
+                                                              itemBuilder:
+                                                                  (context,
+                                                                      staffIndex) {
+                                                                final staffItem =
+                                                                    staff[
+                                                                        staffIndex];
+                                                                return Container(
+                                                                  decoration:
+                                                                      BoxDecoration(),
+                                                                  child:
+                                                                      StaffUserCardWidget(
+                                                                    index:
+                                                                        staffIndex,
+                                                                    userRecord:
+                                                                        staffItem,
+                                                                  ),
+                                                                );
+                                                              },
+                                                            );
+                                                          },
                                                         ),
                                                       );
-                                                    }
-                                                    List<UsersRecord>
-                                                        staffUserContainerUsersRecordList =
-                                                        snapshot.data;
-                                                    return Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width *
-                                                              0.8,
-                                                      height:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .height *
-                                                              1,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                        maxHeight: 560,
-                                                      ),
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: Builder(
-                                                        builder: (context) {
-                                                          final staff = functions
-                                                              .returnUserList(
-                                                                  textController
-                                                                      .text,
-                                                                  staffUserContainerUsersRecordList
-                                                                      .toList())
-                                                              .toList();
-                                                          return ListView
-                                                              .builder(
-                                                            padding:
-                                                                EdgeInsets.zero,
-                                                            scrollDirection:
-                                                                Axis.vertical,
-                                                            itemCount:
-                                                                staff.length,
-                                                            itemBuilder:
-                                                                (context,
-                                                                    staffIndex) {
-                                                              final staffItem =
-                                                                  staff[
-                                                                      staffIndex];
-                                                              return Container(
-                                                                decoration:
-                                                                    BoxDecoration(),
-                                                                child:
-                                                                    StaffUserCardWidget(
-                                                                  index:
-                                                                      staffIndex,
-                                                                  userRecord:
-                                                                      staffItem,
-                                                                ),
-                                                              );
-                                                            },
-                                                          );
-                                                        },
-                                                      ),
-                                                    );
-                                                  },
+                                                    },
+                                                  ),
                                                 ),
                                               ],
                                             ),

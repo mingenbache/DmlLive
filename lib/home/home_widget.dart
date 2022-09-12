@@ -194,7 +194,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                         decoration: BoxDecoration(
                                           gradient: LinearGradient(
                                             colors: [
-                                              Color(0x7E6CD7B7),
+                                              Color(0xB16CD7B7),
                                               FlutterFlowTheme.of(context)
                                                   .primaryText
                                             ],
@@ -203,8 +203,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                             end: AlignmentDirectional(0, 1),
                                           ),
                                           borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(18),
-                                            bottomRight: Radius.circular(18),
+                                            bottomLeft: Radius.circular(30),
+                                            bottomRight: Radius.circular(30),
                                             topLeft: Radius.circular(0),
                                             topRight: Radius.circular(0),
                                           ),
