@@ -77,64 +77,72 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                         children: [
                           Expanded(
                             flex: 6,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 8, 0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          3, 3, 3, 3),
-                                      child: Text(
-                                        functions.add1(widget.index).toString(),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Montserrat',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(7, 0, 0, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 8, 0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryColor,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            5, 5, 5, 5),
+                                        child: Text(
+                                          functions
+                                              .add1(widget.index)
+                                              .toString(),
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Montserrat',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 8, 0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8, 4, 4, 4),
-                                      child: Text(
-                                        '${functions.camelCase(widget.userRecord.firstName)} ${functions.camelCase(widget.userRecord.lastName)}',
-                                        style: FlutterFlowTheme.of(context)
-                                            .subtitle1
-                                            .override(
-                                              fontFamily: 'Montserrat',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 8, 0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8, 4, 4, 4),
+                                        child: Text(
+                                          '${functions.camelCase(widget.userRecord.firstName)} ${functions.camelCase(widget.userRecord.lastName)}',
+                                          maxLines: 1,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle1
+                                              .override(
+                                                fontFamily: 'Montserrat',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                           if (widget.userRecord.isStaff ?? true)
@@ -238,7 +246,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
-                                                size: 20,
+                                                size: 16,
                                               ),
                                             ],
                                           ),
@@ -253,7 +261,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
                                                 fontSize: 14,
-                                                fontWeight: FontWeight.normal,
+                                                fontWeight: FontWeight.w500,
                                               ),
                                         ),
                                       ],
@@ -345,7 +353,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText,
-                                                    size: 18,
+                                                    size: 16,
                                                   ),
                                                 ],
                                               ),
@@ -386,7 +394,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
-                                                size: 20,
+                                                size: 16,
                                               ),
                                             ),
                                             Container(
