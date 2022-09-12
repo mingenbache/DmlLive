@@ -103,8 +103,8 @@ class _CheckupWidgetState extends State<CheckupWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        context.pushNamed('checkup');
                       },
                       text: 'Home',
                       options: FFButtonOptions(
