@@ -171,8 +171,12 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
                                     unselectedLabelColor:
                                         FlutterFlowTheme.of(context)
                                             .secondaryBackground,
-                                    labelStyle:
-                                        FlutterFlowTheme.of(context).subtitle2,
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                     indicatorColor: Colors.white,
                                     tabs: [
                                       Tab(

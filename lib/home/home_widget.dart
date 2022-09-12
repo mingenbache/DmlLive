@@ -148,10 +148,11 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 colors: [
-                                  FlutterFlowTheme.of(context).primaryColor,
-                                  FlutterFlowTheme.of(context).secondaryColor
+                                  FlutterFlowTheme.of(context).secondaryColor,
+                                  FlutterFlowTheme.of(context)
+                                      .secondaryBackground
                                 ],
-                                stops: [0, 1],
+                                stops: [0.4, 1],
                                 begin: AlignmentDirectional(0, -1),
                                 end: AlignmentDirectional(0, 1),
                               ),
@@ -717,7 +718,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                 fontFamily: 'Montserrat',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                        .primaryText,
                                               ),
                                         ),
                                       ),

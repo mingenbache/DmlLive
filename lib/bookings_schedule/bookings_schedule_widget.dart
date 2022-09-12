@@ -130,6 +130,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                       child: Column(
                         children: [
                           TabBar(
+                            isScrollable: true,
                             labelColor: Colors.white,
                             unselectedLabelColor:
                                 FlutterFlowTheme.of(context).primaryText,
@@ -139,7 +140,8 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
                                     ),
-                            indicatorColor: Colors.white,
+                            indicatorColor:
+                                FlutterFlowTheme.of(context).primaryText,
                             indicatorWeight: 3,
                             tabs: [
                               Tab(

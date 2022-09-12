@@ -789,7 +789,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   3, 3, 3, 3),
                                           child: Text(
-                                            'REPORTS DUE',
+                                            'REPORTS\nDUE',
                                             textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
@@ -904,7 +904,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(3, 3, 3, 3),
                                                 child: Text(
-                                                  'FLAGGED TESTS',
+                                                  'FLAGGED\nTESTS',
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -960,23 +960,20 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                               width: MediaQuery.of(context)
                                                       .size
                                                       .width *
-                                                  0.25,
+                                                  0.3,
                                               decoration: BoxDecoration(),
                                               child: Text(
-                                                'INVOICES DUE',
+                                                'INVOICES\nDUE',
                                                 textAlign: TextAlign.end,
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .bodyText1
+                                                    .title3
                                                     .override(
                                                       fontFamily: 'Montserrat',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .primaryColor,
-                                                      fontSize: 19,
-                                                      fontWeight:
-                                                          FontWeight.w500,
+                                                              .primaryText,
                                                     ),
                                               ),
                                             ),

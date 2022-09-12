@@ -136,13 +136,18 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                 children: [
                                   TabBar(
                                     labelColor: FlutterFlowTheme.of(context)
-                                        .primaryText,
+                                        .secondaryBackground,
                                     unselectedLabelColor:
                                         FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                    labelStyle:
-                                        FlutterFlowTheme.of(context).subtitle2,
-                                    indicatorColor: Colors.white,
+                                            .primaryText,
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .subtitle2
+                                        .override(
+                                          fontFamily: 'Montserrat',
+                                          fontSize: 14,
+                                        ),
+                                    indicatorColor: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     tabs: [
                                       Tab(
                                         text: 'Unconfirmed',
@@ -555,7 +560,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                 textAlign: TextAlign.start,
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                       fontFamily: 'Montserrat',
-                                                                                                      color: Color(0xFF586B06),
+                                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                                       fontWeight: FontWeight.w500,
                                                                                                     ),
                                                                                               ),
@@ -614,7 +619,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                 textAlign: TextAlign.start,
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                       fontFamily: 'Montserrat',
-                                                                                                      color: Color(0xFF586B06),
+                                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                                       fontWeight: FontWeight.w500,
                                                                                                     ),
                                                                                               ),
@@ -633,7 +638,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(6, 0, 0, 0),
                                                                                           child: Row(
                                                                                             mainAxisSize: MainAxisSize.max,
-                                                                                            mainAxisAlignment: MainAxisAlignment.start,
+                                                                                            mainAxisAlignment: MainAxisAlignment.end,
                                                                                             children: [
                                                                                               FaIcon(
                                                                                                 FontAwesomeIcons.cashRegister,
@@ -692,43 +697,6 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                         ),
                                                                       ),
                                                                     ],
-                                                                  ),
-                                                                ),
-                                                                Container(
-                                                                  height: MediaQuery.of(
-                                                                              context)
-                                                                          .size
-                                                                          .height *
-                                                                      1,
-                                                                  decoration:
-                                                                      BoxDecoration(),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0,
-                                                                            0,
-                                                                            8,
-                                                                            0),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .center,
-                                                                      children: [
-                                                                        Icon(
-                                                                          Icons
-                                                                              .chevron_right_rounded,
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          size:
-                                                                              24,
-                                                                        ),
-                                                                      ],
-                                                                    ),
                                                                   ),
                                                                 ),
                                                               ],
@@ -1142,7 +1110,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6, 0, 0, 0),
                                                                                   child: Row(
                                                                                     mainAxisSize: MainAxisSize.max,
-                                                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                                                    mainAxisAlignment: MainAxisAlignment.end,
                                                                                     children: [
                                                                                       FaIcon(
                                                                                         FontAwesomeIcons.cashRegister,
