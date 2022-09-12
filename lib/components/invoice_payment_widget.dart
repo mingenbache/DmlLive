@@ -8,6 +8,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -51,7 +52,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
           final containerInvoicesRecord = snapshot.data;
           return Container(
             width: MediaQuery.of(context).size.width * 0.8,
-            height: 230,
+            height: 240,
             constraints: BoxConstraints(
               maxWidth: 380,
             ),
@@ -90,12 +91,48 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                             ),
                           ),
                         ),
-                        Expanded(
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(0),
+                          ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 2, 0),
-                            child: DateWidgetSmallWidget(
-                              date: containerInvoicesRecord.createdDate,
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        9, 4, 6, 4),
+                                    child: Text(
+                                      functions.returnInvoiceStatus(
+                                          containerInvoicesRecord),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Lexend Deca',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 2, 0),
+                          child: DateWidgetSmallWidget(
+                            date: containerInvoicesRecord.createdDate,
                           ),
                         ),
                       ],
@@ -104,7 +141,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                   Expanded(
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.75,
-                      height: 105,
+                      height: 115,
                       decoration: BoxDecoration(),
                       child: Container(
                         height: 500,
@@ -191,7 +228,11 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                             .fromSTEB(
                                                                 7, 3, 8, 3),
                                                     child: Text(
-                                                      'names',
+                                                      '${widget.booking.firstname} ${widget.booking.lastname}'
+                                                          .maybeHandleOverflow(
+                                                        maxChars: 20,
+                                                        replacement: '…',
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -281,7 +322,11 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                             .fromSTEB(
                                                                 7, 3, 8, 3),
                                                     child: Text(
-                                                      'date',
+                                                      widget.booking.labRefNum
+                                                          .maybeHandleOverflow(
+                                                        maxChars: 20,
+                                                        replacement: '…',
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -364,7 +409,14 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                             .fromSTEB(
                                                                 7, 3, 8, 3),
                                                     child: Text(
-                                                      'date',
+                                                      dateTimeFormat(
+                                                              'MMMEd',
+                                                              containerInvoicesRecord
+                                                                  .createdDate)
+                                                          .maybeHandleOverflow(
+                                                        maxChars: 20,
+                                                        replacement: '…',
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -510,36 +562,76 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                           ),
                           Container(
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(0),
+                              borderRadius: BorderRadius.circular(16),
                             ),
                             child: Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
+                                  EdgeInsetsDirectional.fromSTEB(6, 0, 0, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
+                                  FaIcon(
+                                    FontAwesomeIcons.cashRegister,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 16,
+                                  ),
                                   Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.195,
+                                    constraints: BoxConstraints(
+                                      maxWidth: 100,
+                                    ),
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      borderRadius: BorderRadius.circular(12),
+                                      borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          9, 4, 6, 4),
+                                          7, 3, 8, 3),
                                       child: Text(
-                                        functions.returnInvoiceStatus(
-                                            containerInvoicesRecord),
+                                        'BALANCE',
+                                        maxLines: 1,
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyText2
                                             .override(
                                               fontFamily: 'Lexend Deca',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.normal,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          7, 3, 8, 3),
+                                      child: Text(
+                                        formatNumber(
+                                          widget.booking.paymentBalance,
+                                          formatType: FormatType.decimal,
+                                          decimalType:
+                                              DecimalType.periodDecimal,
+                                          currency: 'Ksh ',
+                                        ).maybeHandleOverflow(
+                                          maxChars: 20,
+                                          replacement: '…',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Lexend Deca',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
                                             ),
                                       ),
                                     ),

@@ -674,7 +674,15 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                 child: Padding(
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                                   child: Text(
-                                                                                                    'date',
+                                                                                                    formatNumber(
+                                                                                                      columnBookingsRecord.paymentBalance,
+                                                                                                      formatType: FormatType.decimal,
+                                                                                                      decimalType: DecimalType.periodDecimal,
+                                                                                                      currency: 'Ksh ',
+                                                                                                    ).maybeHandleOverflow(
+                                                                                                      maxChars: 20,
+                                                                                                      replacement: '…',
+                                                                                                    ),
                                                                                                     style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                                           fontFamily: 'Lexend Deca',
                                                                                                           color: FlutterFlowTheme.of(context).primaryText,
@@ -1146,7 +1154,15 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                         child: Padding(
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                           child: Text(
-                                                                                            'date',
+                                                                                            formatNumber(
+                                                                                              columnBookingsRecord.paymentBalance,
+                                                                                              formatType: FormatType.decimal,
+                                                                                              decimalType: DecimalType.periodDecimal,
+                                                                                              currency: 'Ksh ',
+                                                                                            ).maybeHandleOverflow(
+                                                                                              maxChars: 20,
+                                                                                              replacement: '…',
+                                                                                            ),
                                                                                             style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                                   fontFamily: 'Lexend Deca',
                                                                                                   color: FlutterFlowTheme.of(context).primaryText,

@@ -29,6 +29,7 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
       child: Container(
         height: 30,
         constraints: BoxConstraints(
+          maxWidth: 80,
           maxHeight: 30,
         ),
         decoration: BoxDecoration(
