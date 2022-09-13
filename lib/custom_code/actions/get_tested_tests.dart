@@ -8,5 +8,5 @@ import 'package:flutter/material.dart';
 
 // Begin custom action code
 Future<List<DocumentReference>> getTestedTests(BookingsRecord? booking) async {
-  return booking!.verifiedTests.asList();
+  return booking!.verifiedTests!.asList();
 }
