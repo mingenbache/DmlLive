@@ -306,7 +306,7 @@ class _TestedTestsCopyWidgetState extends State<TestedTestsCopyWidget> {
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Text(
-                                                                                functions.add1(listViewIndex).toString(),
+                                                                                functions.add1(listViewIndex)!.toString(),
                                                                                 style: FlutterFlowTheme.of(context).subtitle1.override(
                                                                                       fontFamily: 'Montserrat',
                                                                                       color: FlutterFlowTheme.of(context).tertiaryColor,

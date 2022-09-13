@@ -802,7 +802,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                 children: [
                                   AutoSizeText(
                                     functions
-                                        .add1(widget.index)
+                                        .add1(widget.index)!
                                         .toString()
                                         .maybeHandleOverflow(maxChars: 2),
                                     textAlign: TextAlign.center,

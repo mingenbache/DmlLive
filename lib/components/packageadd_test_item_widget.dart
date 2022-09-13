@@ -354,7 +354,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                               decoration: BoxDecoration(),
                                               child: AutoSizeText(
                                                 functions
-                                                    .add1(widget.index)
+                                                    .add1(widget.index)!
                                                     .toString()
                                                     .maybeHandleOverflow(
                                                         maxChars: 2),

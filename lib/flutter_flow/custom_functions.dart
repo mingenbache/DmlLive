@@ -351,7 +351,7 @@ String dateMonth(DateTime? date) {
   return formatted;
 }
 
-int add1(int? num) {
+int? add1(int? num) {
   return num! + 1;
 }
 

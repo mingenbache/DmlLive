@@ -104,7 +104,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                           decoration: BoxDecoration(),
                                           child: AutoSizeText(
                                             functions
-                                                .add1(widget.index)
+                                                .add1(widget.index)!
                                                 .toString()
                                                 .maybeHandleOverflow(
                                                     maxChars: 2),

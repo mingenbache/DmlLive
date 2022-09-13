@@ -416,7 +416,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                 decoration: BoxDecoration(),
                                                 child: AutoSizeText(
                                                   functions
-                                                      .add1(widget.index)
+                                                      .add1(widget.index)!
                                                       .toString()
                                                       .maybeHandleOverflow(
                                                           maxChars: 2),

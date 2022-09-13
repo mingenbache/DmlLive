@@ -241,7 +241,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                     Text(
                                                                       functions
                                                                           .add1(
-                                                                              listViewIndex)
+                                                                              listViewIndex)!
                                                                           .toString(),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -937,7 +937,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                       children: [
                                                                         Text(
                                                                           functions
-                                                                              .add1(listViewIndex)
+                                                                              .add1(listViewIndex)!
                                                                               .toString(),
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle1

@@ -85,7 +85,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                       decoration: BoxDecoration(),
                                       child: AutoSizeText(
                                         functions
-                                            .add1(widget.index)
+                                            .add1(widget.index)!
                                             .toString()
                                             .maybeHandleOverflow(maxChars: 2),
                                         textAlign: TextAlign.center,
