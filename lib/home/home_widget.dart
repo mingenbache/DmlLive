@@ -230,6 +230,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                             0.45,
                                                     constraints: BoxConstraints(
                                                       maxWidth: 200,
+                                                      maxHeight: 50,
                                                     ),
                                                     decoration: BoxDecoration(
                                                       borderRadius:
