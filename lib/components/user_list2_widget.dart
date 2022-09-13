@@ -412,7 +412,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                                     textController!
                                                                         .text,
                                                                     clientUserContainerUsersRecordList
-                                                                        .toList())
+                                                                        .toList())!
                                                                 .toList();
                                                             return ListView
                                                                 .builder(
@@ -524,7 +524,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                                     textController!
                                                                         .text,
                                                                     staffUserContainerUsersRecordList
-                                                                        .toList())
+                                                                        .toList())!
                                                                 .toList();
                                                             return ListView
                                                                 .builder(

@@ -407,7 +407,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                 .returnUserList(
                                                     textController!.text,
                                                     clientUserContainerUsersRecordList
-                                                        .toList())
+                                                        .toList())!
                                                 .toList();
                                             return ListView.builder(
                                               padding: EdgeInsets.zero,
@@ -480,7 +480,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                               .returnUserList(
                                                   textController!.text,
                                                   staffUserContainerUsersRecordList
-                                                      .toList())
+                                                      .toList())!
                                               .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,

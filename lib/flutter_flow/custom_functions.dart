@@ -502,7 +502,7 @@ bool displayVerifyButton(
   return result;
 }
 
-List<UsersRecord> returnUserList(
+List<UsersRecord>? returnUserList(
   String? nameQuery,
   List<UsersRecord>? userList,
 ) {

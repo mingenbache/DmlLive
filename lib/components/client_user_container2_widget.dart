@@ -57,7 +57,7 @@ class _ClientUserContainer2WidgetState
                       functions
                           .filterClients(
                               clientUserContainerUsersRecordList.toList())
-                          .toList())
+                          .toList())!
                   .toList();
               return ListView.builder(
                 padding: EdgeInsets.zero,

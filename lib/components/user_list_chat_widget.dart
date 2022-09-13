@@ -384,7 +384,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                                   textController!
                                                                       .text,
                                                                   clientUserContainerUsersRecordList
-                                                                      .toList())
+                                                                      .toList())!
                                                               .toList();
                                                           return ListView
                                                               .builder(
@@ -496,7 +496,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                                 textController!
                                                                     .text,
                                                                 staffUserContainerUsersRecordList
-                                                                    .toList())
+                                                                    .toList())!
                                                             .toList();
                                                         return ListView.builder(
                                                           padding:

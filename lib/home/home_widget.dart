@@ -13,7 +13,6 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeWidget extends StatefulWidget {
@@ -339,10 +338,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         1,
                                                                     buttonSize:
                                                                         40,
-                                                                    icon:
-                                                                        FaIcon(
-                                                                      FontAwesomeIcons
-                                                                          .shoppingBasket,
+                                                                    icon: Icon(
+                                                                      Icons
+                                                                          .shopping_basket,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryText,
