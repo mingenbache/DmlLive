@@ -296,7 +296,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                         child:
                                                                             Row(
                                                                           mainAxisSize:
-                                                                              MainAxisSize.max,
+                                                                              MainAxisSize.min,
                                                                           mainAxisAlignment:
                                                                               MainAxisAlignment.spaceBetween,
                                                                           children: [
@@ -352,7 +352,6 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                 borderRadius: BorderRadius.circular(8),
                                                                               ),
                                                                               child: Container(
-                                                                                width: 120,
                                                                                 height: 65,
                                                                                 decoration: BoxDecoration(
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -361,7 +360,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                                                                   child: Column(
-                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    mainAxisSize: MainAxisSize.min,
                                                                                     children: [
                                                                                       Container(
                                                                                         decoration: BoxDecoration(),
@@ -589,7 +588,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                               ),
                                                                                             ),
                                                                                             Container(
-                                                                                              width: MediaQuery.of(context).size.width * 0.37,
+                                                                                              width: MediaQuery.of(context).size.width * 0.28,
                                                                                               constraints: BoxConstraints(
                                                                                                 maxWidth: 140,
                                                                                               ),
@@ -599,7 +598,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                               child: Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                                 child: Text(
-                                                                                                  'BOOKING NAME',
+                                                                                                  'BOOKING',
                                                                                                   maxLines: 1,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                                         fontFamily: 'Lexend Deca',
@@ -1069,7 +1068,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                       ),
                                                                                     ),
                                                                                     Container(
-                                                                                      width: MediaQuery.of(context).size.width * 0.185,
+                                                                                      width: MediaQuery.of(context).size.width * 0.25,
                                                                                       constraints: BoxConstraints(
                                                                                         maxWidth: 100,
                                                                                       ),
@@ -1077,7 +1076,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                         borderRadius: BorderRadius.circular(10),
                                                                                       ),
                                                                                       child: Padding(
-                                                                                        padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(7, 3, 0, 3),
                                                                                         child: Text(
                                                                                           'LABREF',
                                                                                           maxLines: 1,
@@ -1131,25 +1130,28 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                         size: 16,
                                                                                       ),
-                                                                                      Container(
-                                                                                        width: MediaQuery.of(context).size.width * 0.195,
-                                                                                        constraints: BoxConstraints(
-                                                                                          maxWidth: 100,
-                                                                                        ),
-                                                                                        decoration: BoxDecoration(
-                                                                                          borderRadius: BorderRadius.circular(10),
-                                                                                        ),
-                                                                                        child: Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
-                                                                                          child: Text(
-                                                                                            'BALANCE',
-                                                                                            maxLines: 1,
-                                                                                            style: FlutterFlowTheme.of(context).bodyText2.override(
-                                                                                                  fontFamily: 'Lexend Deca',
-                                                                                                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                  fontSize: 14,
-                                                                                                  fontWeight: FontWeight.w500,
-                                                                                                ),
+                                                                                      Expanded(
+                                                                                        flex: 1,
+                                                                                        child: Container(
+                                                                                          width: MediaQuery.of(context).size.width * 0.23,
+                                                                                          constraints: BoxConstraints(
+                                                                                            maxWidth: 120,
+                                                                                          ),
+                                                                                          decoration: BoxDecoration(
+                                                                                            borderRadius: BorderRadius.circular(10),
+                                                                                          ),
+                                                                                          child: Padding(
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(7, 3, 0, 3),
+                                                                                            child: Text(
+                                                                                              'BALANCE',
+                                                                                              maxLines: 1,
+                                                                                              style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                                    fontFamily: 'Lexend Deca',
+                                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                    fontSize: 14,
+                                                                                                    fontWeight: FontWeight.w500,
+                                                                                                  ),
+                                                                                            ),
                                                                                           ),
                                                                                         ),
                                                                                       ),
@@ -1158,7 +1160,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                           borderRadius: BorderRadius.circular(8),
                                                                                         ),
                                                                                         child: Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0, 3, 8, 3),
                                                                                           child: Text(
                                                                                             formatNumber(
                                                                                               columnBookingsRecord.paymentBalance!,

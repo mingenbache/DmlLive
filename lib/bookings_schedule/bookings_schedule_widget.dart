@@ -529,7 +529,8 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                             .where('booking_confirmed',
                                                 isEqualTo: false)
                                             .where('is_submitted',
-                                                isEqualTo: true),
+                                                isEqualTo: true)
+                                            .orderBy('created_date'),
                                   ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.

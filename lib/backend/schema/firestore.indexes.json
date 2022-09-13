@@ -117,6 +117,24 @@
       "queryScope": "COLLECTION",
       "fields": [
         {
+          "fieldPath": "booking_confirmed",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "is_submitted",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "created_date",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "bookings",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
           "fieldPath": "user",
           "order": "ASCENDING"
         },
