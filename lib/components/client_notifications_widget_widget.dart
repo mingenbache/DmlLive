@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/dashboard_menu_widget_light_widget.dart';
+import '../components/empty_list_widget.dart';
 import '../components/notification_list_item_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -79,6 +80,11 @@ class _ClientNotificationsWidgetWidgetState
                                       containerNotificationsRecordList.toList(),
                                       currentUserReference)
                                   .toList();
+                              if (unseenNotifications.isEmpty) {
+                                return Center(
+                                  child: EmptyListWidget(),
+                                );
+                              }
                               return ListView.builder(
                                 padding: EdgeInsets.zero,
                                 shrinkWrap: true,

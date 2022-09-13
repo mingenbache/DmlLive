@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/admin_actions_widget_widget.dart';
+import '../components/empty_list_widget.dart';
 import '../components/notification_list_item_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -115,8 +116,8 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                     .toList();
                                             if (filterAdminNotifications
                                                 .isEmpty) {
-                                              return Image.network(
-                                                '',
+                                              return Center(
+                                                child: EmptyListWidget(),
                                               );
                                             }
                                             return ListView.builder(
