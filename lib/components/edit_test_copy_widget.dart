@@ -17,13 +17,13 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class EditTestCopyWidget extends StatefulWidget {
   const EditTestCopyWidget({
-    Key key,
+    Key? key,
     this.userRef,
     this.testRef,
   }) : super(key: key);
 
-  final DocumentReference userRef;
-  final DocumentReference testRef;
+  final DocumentReference? userRef;
+  final DocumentReference? testRef;
 
   @override
   _EditTestCopyWidgetState createState() => _EditTestCopyWidgetState();
@@ -31,29 +31,29 @@ class EditTestCopyWidget extends StatefulWidget {
 
 class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
     with TickerProviderStateMixin {
-  TextEditingController testPriceController;
+  TextEditingController? testPriceController;
 
-  TextEditingController textController1;
+  TextEditingController? textController1;
 
-  String dropDownValue;
-  bool atHomeToggleValue;
-  double testDurationSliderValue;
-  double resultsDurationSliderValue;
-  PageController testFormPageViewController;
+  String? dropDownValue;
+  bool? atHomeToggleValue;
+  double? testDurationSliderValue;
+  double? resultsDurationSliderValue;
+  PageController? testFormPageViewController;
 
-  TextEditingController textController3;
+  TextEditingController? textController3;
 
-  TextEditingController textController4;
+  TextEditingController? textController4;
 
-  TextEditingController textController5;
+  TextEditingController? textController5;
 
-  TextEditingController textController6;
+  TextEditingController? textController6;
 
-  TextEditingController varianceUnitsFemaleController;
+  TextEditingController? varianceUnitsFemaleController;
 
-  TextEditingController textController8;
+  TextEditingController? textController8;
 
-  TextEditingController textController9;
+  TextEditingController? textController9;
 
   final formKey = GlobalKey<FormState>();
   final animationsMap = {
@@ -94,7 +94,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
       key: formKey,
       autovalidateMode: AutovalidateMode.always,
       child: StreamBuilder<TestsRecord>(
-        stream: TestsRecord.getDocument(widget.testRef),
+        stream: TestsRecord.getDocument(widget.testRef!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -109,7 +109,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
               ),
             );
           }
-          final columnTestsRecord = snapshot.data;
+          final columnTestsRecord = snapshot.data!;
           return Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -345,7 +345,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           15,
                                                                           15),
                                                               suffixIcon:
-                                                                  textController1
+                                                                  textController1!
                                                                           .text
                                                                           .isNotEmpty
                                                                       ? InkWell(
@@ -470,7 +470,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                               }
                                                               List<CategoriesRecord>
                                                                   dropDownCategoriesRecordList =
-                                                                  snapshot.data;
+                                                                  snapshot
+                                                                      .data!;
                                                               final dropDownCategoriesRecord =
                                                                   dropDownCategoriesRecordList
                                                                           .isNotEmpty
@@ -482,8 +483,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                     dropDownValue ??=
                                                                         columnTestsRecord
                                                                             .category,
-                                                                options: dropDownCategoriesRecord
-                                                                    .categories
+                                                                options: dropDownCategoriesRecord!
+                                                                    .categories!
                                                                     .toList()
                                                                     .toList(),
                                                                 onChanged: (val) =>
@@ -579,7 +580,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 SwitchListTile(
                                                               value: atHomeToggleValue ??=
                                                                   columnTestsRecord
-                                                                      .homeTest,
+                                                                      .homeTest!,
                                                               onChanged: (newValue) =>
                                                                   setState(() =>
                                                                       atHomeToggleValue =
@@ -708,7 +709,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 max: 180,
                                                                 value: testDurationSliderValue ??=
                                                                     columnTestsRecord
-                                                                        .duration,
+                                                                        .duration!,
                                                                 label: testDurationSliderValue
                                                                     .toString(),
                                                                 divisions: 33,
@@ -893,7 +894,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                               max: 180,
                                                               value: resultsDurationSliderValue ??=
                                                                   columnTestsRecord
-                                                                      .durationResults,
+                                                                      .durationResults!,
                                                               label:
                                                                   resultsDurationSliderValue
                                                                       .toString(),
@@ -964,7 +965,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                             2,
                                                                             2),
                                                                 child: Text(
-                                                                  resultsDurationSliderValue
+                                                                  resultsDurationSliderValue!
                                                                       .toString()
                                                                       .maybeHandleOverflow(
                                                                           maxChars:
@@ -1236,7 +1237,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                       FFButtonWidget(
                                                         onPressed: () async {
                                                           await testFormPageViewController
-                                                              .nextPage(
+                                                              ?.nextPage(
                                                             duration: Duration(
                                                                 milliseconds:
                                                                     300),
@@ -1410,7 +1411,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 10, 10, 10, 10),
-                                                    suffixIcon: textController3
+                                                    suffixIcon: textController3!
                                                             .text.isNotEmpty
                                                         ? InkWell(
                                                             onTap: () async {
@@ -1710,7 +1711,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                             true,
                                                                         fillColor:
                                                                             Colors.white,
-                                                                        suffixIcon: textController4.text.isNotEmpty
+                                                                        suffixIcon: textController4!.text.isNotEmpty
                                                                             ? InkWell(
                                                                                 onTap: () async {
                                                                                   textController4?.clear();
@@ -2117,7 +2118,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                       fillColor:
                                                                           Colors
                                                                               .white,
-                                                                      suffixIcon: textController6
+                                                                      suffixIcon: textController6!
                                                                               .text
                                                                               .isNotEmpty
                                                                           ? InkWell(
@@ -2484,7 +2485,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                     Colors
                                                                         .white,
                                                                 suffixIcon:
-                                                                    textController8
+                                                                    textController8!
                                                                             .text
                                                                             .isNotEmpty
                                                                         ? InkWell(
@@ -2601,7 +2602,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                       builder: (context) {
                                                         final testProcedure =
                                                             columnTestsRecord
-                                                                .procedure
+                                                                .procedure!
                                                                 .toList();
                                                         return ListView.builder(
                                                           padding:
@@ -2741,7 +2742,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                               3,
                                                                               2,
                                                                               0),
-                                                                          suffixIcon: textController9.text.isNotEmpty
+                                                                          suffixIcon: textController9!.text.isNotEmpty
                                                                               ? InkWell(
                                                                                   onTap: () async {
                                                                                     textController9?.clear();
@@ -2775,7 +2776,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           ]),
                                                                         };
                                                                         await widget
-                                                                            .testRef
+                                                                            .testRef!
                                                                             .update(testsUpdateData);
                                                                       },
                                                                       child:
@@ -2825,7 +2826,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 ]),
                                                               };
                                                               await widget
-                                                                  .testRef
+                                                                  .testRef!
                                                                   .update(
                                                                       testsUpdateData);
                                                             },
@@ -2884,7 +2885,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                     count: 4,
                                     axisDirection: Axis.horizontal,
                                     onDotClicked: (i) {
-                                      testFormPageViewController.animateToPage(
+                                      testFormPageViewController!.animateToPage(
                                         i,
                                         duration: Duration(milliseconds: 500),
                                         curve: Curves.ease,
@@ -2906,7 +2907,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                               ],
                             ),
                           ).animated(
-                              [animationsMap['pageViewOnPageLoadAnimation']]),
+                              [animationsMap['pageViewOnPageLoadAnimation']!]),
                         ),
                       ],
                     ),

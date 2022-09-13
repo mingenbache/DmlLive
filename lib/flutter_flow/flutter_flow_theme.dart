@@ -8,18 +8,18 @@ abstract class FlutterFlowTheme {
     return LightModeTheme();
   }
 
-  Color primaryColor;
-  Color secondaryColor;
-  Color tertiaryColor;
-  Color alternate;
-  Color primaryBackground;
-  Color secondaryBackground;
-  Color primaryText;
-  Color secondaryText;
+  late Color primaryColor;
+  late Color secondaryColor;
+  late Color tertiaryColor;
+  late Color alternate;
+  late Color primaryBackground;
+  late Color secondaryBackground;
+  late Color primaryText;
+  late Color secondaryText;
 
-  Color primaryBtnText;
-  Color lineColor;
-  Color backgroundComponents;
+  late Color primaryBtnText;
+  late Color lineColor;
+  late Color backgroundComponents;
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
@@ -40,18 +40,18 @@ abstract class FlutterFlowTheme {
 }
 
 class LightModeTheme extends FlutterFlowTheme {
-  Color primaryColor = const Color(0xFF006392);
-  Color secondaryColor = const Color(0xFF6CD7B7);
-  Color tertiaryColor = const Color(0xFF012030);
-  Color alternate = const Color(0xFF9AEBA3);
-  Color primaryBackground = const Color(0xFFF1F4F8);
-  Color secondaryBackground = const Color(0xFFFFFFFF);
-  Color primaryText = const Color(0xFF3D806B);
-  Color secondaryText = const Color(0xFF13678A);
+  late Color primaryColor = const Color(0xFF006392);
+  late Color secondaryColor = const Color(0xFF6CD7B7);
+  late Color tertiaryColor = const Color(0xFF012030);
+  late Color alternate = const Color(0xFF9AEBA3);
+  late Color primaryBackground = const Color(0xFFF1F4F8);
+  late Color secondaryBackground = const Color(0xFFFFFFFF);
+  late Color primaryText = const Color(0xFF3D806B);
+  late Color secondaryText = const Color(0xFF13678A);
 
-  Color primaryBtnText = Color(0xFFFFFFFF);
-  Color lineColor = Color(0xFFE0E3E7);
-  Color backgroundComponents = Color(0xFF1D2428);
+  late Color primaryBtnText = Color(0xFFFFFFFF);
+  late Color lineColor = Color(0xFFE0E3E7);
+  late Color backgroundComponents = Color(0xFF1D2428);
 }
 
 abstract class Typography {
@@ -129,19 +129,19 @@ class ThemeTypography extends Typography {
 
 extension TextStyleHelper on TextStyle {
   TextStyle override({
-    String fontFamily,
-    Color color,
-    double fontSize,
-    FontWeight fontWeight,
-    double letterSpacing,
-    FontStyle fontStyle,
+    String? fontFamily,
+    Color? color,
+    double? fontSize,
+    FontWeight? fontWeight,
+    double? letterSpacing,
+    FontStyle? fontStyle,
     bool useGoogleFonts = true,
-    TextDecoration decoration,
-    double lineHeight,
+    TextDecoration? decoration,
+    double? lineHeight,
   }) =>
       useGoogleFonts
           ? GoogleFonts.getFont(
-              fontFamily,
+              fontFamily!,
               color: color ?? this.color,
               fontSize: fontSize ?? this.fontSize,
               letterSpacing: letterSpacing ?? this.letterSpacing,

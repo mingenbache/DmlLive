@@ -13,31 +13,31 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditUserDetailsWidget extends StatefulWidget {
-  const EditUserDetailsWidget({Key key}) : super(key: key);
+  const EditUserDetailsWidget({Key? key}) : super(key: key);
 
   @override
   _EditUserDetailsWidgetState createState() => _EditUserDetailsWidgetState();
 }
 
 class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
-  TextEditingController confirmPasswordController;
+  TextEditingController? confirmPasswordController;
 
-  bool confirmPasswordVisibility;
+  late bool confirmPasswordVisibility;
 
-  TextEditingController emailAddressController;
+  TextEditingController? emailAddressController;
 
-  TextEditingController firstNameController;
+  TextEditingController? firstNameController;
 
-  TextEditingController lastNameController;
+  TextEditingController? lastNameController;
 
-  TextEditingController phoneNumberController;
+  TextEditingController? phoneNumberController;
 
-  DateTime datePicked;
-  String sexChoiceChipsValue;
+  DateTime? datePicked;
+  String? sexChoiceChipsValue;
 
-  TextEditingController passwordController;
+  TextEditingController? passwordController;
 
-  bool passwordVisibility;
+  late bool passwordVisibility;
 
   @override
   void initState() {
@@ -51,7 +51,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<UsersRecord>(
-      stream: UsersRecord.getDocument(currentUserReference),
+      stream: UsersRecord.getDocument(currentUserReference!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -66,7 +66,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
             ),
           );
         }
-        final editUserDetailsUsersRecord = snapshot.data;
+        final editUserDetailsUsersRecord = snapshot.data!;
         return Container(
           constraints: BoxConstraints(
             maxHeight: 600,
@@ -421,7 +421,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         setState(() => datePicked = date);
                                       },
                                       currentTime:
-                                          editUserDetailsUsersRecord.dOB,
+                                          editUserDetailsUsersRecord.dOB!,
                                       minTime: DateTime(0, 0, 0),
                                     );
                                   },
@@ -443,7 +443,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                           8, 8, 8, 8),
                                       child: Text(
                                         dateTimeFormat('d/M/y',
-                                            editUserDetailsUsersRecord.dOB),
+                                            editUserDetailsUsersRecord.dOB!),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -458,14 +458,14 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                               Expanded(
                                 child: FlutterFlowChoiceChips(
                                   initiallySelected: sexChoiceChipsValue != null
-                                      ? [sexChoiceChipsValue]
-                                      : [editUserDetailsUsersRecord.sex],
+                                      ? [sexChoiceChipsValue!]
+                                      : [editUserDetailsUsersRecord.sex!],
                                   options: [
                                     ChipData('Female', FontAwesomeIcons.female),
                                     ChipData('Male', FontAwesomeIcons.male)
                                   ],
                                   onChanged: (val) => setState(
-                                      () => sexChoiceChipsValue = val.first),
+                                      () => sexChoiceChipsValue = val?.first),
                                   selectedChipStyle: ChipStyle(
                                     backgroundColor:
                                         FlutterFlowTheme.of(context)

@@ -20,11 +20,11 @@ class _$NotificationTypeRecordSerializer
   final String wireName = 'NotificationTypeRecord';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, NotificationTypeRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.context;
     if (value != null) {
       result
@@ -46,46 +46,46 @@ class _$NotificationTypeRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.reference;
+    value = object.ffRef;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     return result;
   }
 
   @override
   NotificationTypeRecord deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new NotificationTypeRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'context':
           result.context = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'page_to_open':
           result.pageToOpen = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
-          result.reference = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+          result.ffRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
       }
     }
@@ -96,20 +96,20 @@ class _$NotificationTypeRecordSerializer
 
 class _$NotificationTypeRecord extends NotificationTypeRecord {
   @override
-  final String context;
+  final String? context;
   @override
-  final String pageToOpen;
+  final String? pageToOpen;
   @override
-  final String type;
+  final String? type;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object?>? ffRef;
 
   factory _$NotificationTypeRecord(
-          [void Function(NotificationTypeRecordBuilder) updates]) =>
+          [void Function(NotificationTypeRecordBuilder)? updates]) =>
       (new NotificationTypeRecordBuilder()..update(updates))._build();
 
   _$NotificationTypeRecord._(
-      {this.context, this.pageToOpen, this.type, this.reference})
+      {this.context, this.pageToOpen, this.type, this.ffRef})
       : super._();
 
   @override
@@ -128,14 +128,14 @@ class _$NotificationTypeRecord extends NotificationTypeRecord {
         context == other.context &&
         pageToOpen == other.pageToOpen &&
         type == other.type &&
-        reference == other.reference;
+        ffRef == other.ffRef;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
         $jc($jc($jc(0, context.hashCode), pageToOpen.hashCode), type.hashCode),
-        reference.hashCode));
+        ffRef.hashCode));
   }
 
   @override
@@ -144,31 +144,30 @@ class _$NotificationTypeRecord extends NotificationTypeRecord {
           ..add('context', context)
           ..add('pageToOpen', pageToOpen)
           ..add('type', type)
-          ..add('reference', reference))
+          ..add('ffRef', ffRef))
         .toString();
   }
 }
 
 class NotificationTypeRecordBuilder
     implements Builder<NotificationTypeRecord, NotificationTypeRecordBuilder> {
-  _$NotificationTypeRecord _$v;
+  _$NotificationTypeRecord? _$v;
 
-  String _context;
-  String get context => _$this._context;
-  set context(String context) => _$this._context = context;
+  String? _context;
+  String? get context => _$this._context;
+  set context(String? context) => _$this._context = context;
 
-  String _pageToOpen;
-  String get pageToOpen => _$this._pageToOpen;
-  set pageToOpen(String pageToOpen) => _$this._pageToOpen = pageToOpen;
+  String? _pageToOpen;
+  String? get pageToOpen => _$this._pageToOpen;
+  set pageToOpen(String? pageToOpen) => _$this._pageToOpen = pageToOpen;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
-      _$this._reference = reference;
+  DocumentReference<Object?>? _ffRef;
+  DocumentReference<Object?>? get ffRef => _$this._ffRef;
+  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   NotificationTypeRecordBuilder() {
     NotificationTypeRecord._initializeBuilder(this);
@@ -180,7 +179,7 @@ class NotificationTypeRecordBuilder
       _context = $v.context;
       _pageToOpen = $v.pageToOpen;
       _type = $v.type;
-      _reference = $v.reference;
+      _ffRef = $v.ffRef;
       _$v = null;
     }
     return this;
@@ -193,7 +192,7 @@ class NotificationTypeRecordBuilder
   }
 
   @override
-  void update(void Function(NotificationTypeRecordBuilder) updates) {
+  void update(void Function(NotificationTypeRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -203,10 +202,7 @@ class NotificationTypeRecordBuilder
   _$NotificationTypeRecord _build() {
     final _$result = _$v ??
         new _$NotificationTypeRecord._(
-            context: context,
-            pageToOpen: pageToOpen,
-            type: type,
-            reference: reference);
+            context: context, pageToOpen: pageToOpen, type: type, ffRef: ffRef);
     replace(_$result);
     return _$result;
   }

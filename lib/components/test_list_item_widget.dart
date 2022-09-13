@@ -14,17 +14,17 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TestListItemWidget extends StatefulWidget {
   const TestListItemWidget({
-    Key key,
+    Key? key,
     this.test,
     this.index,
     this.listSize,
     this.booking,
   }) : super(key: key);
 
-  final TestsRecord test;
-  final int index;
-  final int listSize;
-  final BookingsRecord booking;
+  final TestsRecord? test;
+  final int? index;
+  final int? listSize;
+  final BookingsRecord? booking;
 
   @override
   _TestListItemWidgetState createState() => _TestListItemWidgetState();
@@ -157,25 +157,25 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                     children: [
                       Stack(
                         children: [
-                          if (widget.booking.testsIncluded
+                          if (widget.booking!.testsIncluded!
                               .toList()
-                              .contains(widget.test.reference))
+                              .contains(widget.test!.reference))
                             InkWell(
                               onTap: () async {
-                                if (widget.booking.testsIncluded
+                                if (widget.booking!.testsIncluded!
                                     .toList()
-                                    .contains(widget.test.reference)) {
+                                    .contains(widget.test!.reference)) {
                                   final bookingsUpdateData = {
                                     ...createBookingsRecordData(
                                       totalPrice: functions.removeFromCart(
-                                          widget.booking.totalPrice,
-                                          widget.test.price),
+                                          widget.booking!.totalPrice,
+                                          widget.test!.price),
                                     ),
                                     'tests_included': FieldValue.arrayRemove(
-                                        [widget.test.reference]),
+                                        [widget.test!.reference]),
                                     'total_tests': FieldValue.increment(-1),
                                   };
-                                  await widget.booking.reference
+                                  await widget.booking!.reference
                                       .update(bookingsUpdateData);
                                 } else {
                                   return;
@@ -239,35 +239,35 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                               ),
                             ).animated([
                               animationsMap[
-                                  'containerOnActionTriggerAnimation1']
+                                  'containerOnActionTriggerAnimation1']!
                             ]),
-                          if (!widget.booking.testsIncluded
+                          if (!widget.booking!.testsIncluded!
                               .toList()
-                              .contains(widget.test.reference))
+                              .contains(widget.test!.reference))
                             InkWell(
                               onTap: () async {
-                                if (!widget.booking.testsIncluded
+                                if (!widget.booking!.testsIncluded!
                                     .toList()
-                                    .contains(widget.test.reference)) {
-                                  if (!widget.booking.testPackTests
+                                    .contains(widget.test!.reference)) {
+                                  if (!widget.booking!.testPackTests!
                                       .toList()
-                                      .contains(widget.test.reference)) {
+                                      .contains(widget.test!.reference)) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
                                         totalPrice: functions.addCartTotal(
-                                            widget.booking.totalPrice,
-                                            widget.test.price),
+                                            widget.booking!.totalPrice,
+                                            widget.test!.price),
                                       ),
                                       'tests_included': FieldValue.arrayUnion(
-                                          [widget.test.reference]),
+                                          [widget.test!.reference]),
                                       'total_tests': FieldValue.increment(1),
                                     };
-                                    await widget.booking.reference
+                                    await widget.booking!.reference
                                         .update(bookingsUpdateData);
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          'Test Added.${widget.booking.testsIncluded.toList().length.toString()} Tests in Total.',
+                                          'Test Added.${widget.booking!.testsIncluded!.toList().length.toString()} Tests in Total.',
                                           style: TextStyle(),
                                         ),
                                         duration: Duration(milliseconds: 4000),
@@ -342,10 +342,10 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                               ),
                             ).animated([
                               animationsMap[
-                                  'containerOnActionTriggerAnimation2']
+                                  'containerOnActionTriggerAnimation2']!
                             ]),
                         ],
-                      ).animated([animationsMap['stackOnPageLoadAnimation']]),
+                      ).animated([animationsMap['stackOnPageLoadAnimation']!]),
                     ],
                   ),
                 ],
@@ -380,7 +380,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                             MediaQuery.of(context).viewInsets,
                                         child: TestDetailsPopupWidget(
                                           test: widget.test,
-                                          booking: widget.booking.reference,
+                                          booking: widget.booking!.reference,
                                         ),
                                       );
                                     },
@@ -443,7 +443,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                   child: Text(
                                                     functions
                                                         .camelCase(
-                                                            widget.test.name)
+                                                            widget.test!.name)
                                                         .maybeHandleOverflow(
                                                             maxChars: 25),
                                                     style: TextStyle(
@@ -463,7 +463,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                   ),
                                 ),
                               ).animated([
-                                animationsMap['containerOnPageLoadAnimation1']
+                                animationsMap['containerOnPageLoadAnimation1']!
                               ]),
                               Align(
                                 alignment: AlignmentDirectional(0, 1),
@@ -592,8 +592,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                             4),
                                                                     child: Text(
                                                                       widget
-                                                                          .test
-                                                                          .category,
+                                                                          .test!
+                                                                          .category!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyText1
@@ -646,7 +646,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                   size: 20,
                                                                 ),
                                                                 Text(
-                                                                  '${widget.test.durationResults?.toString()} Hrs',
+                                                                  '${widget.test!.durationResults?.toString()} Hrs',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1
@@ -754,8 +754,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                           Text(
                                                                         formatNumber(
                                                                           widget
-                                                                              .test
-                                                                              .price,
+                                                                              .test!
+                                                                              .price!,
                                                                           formatType:
                                                                               FormatType.decimal,
                                                                           decimalType:
@@ -792,7 +792,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                     ),
                                   ),
                                 ).animated([
-                                  animationsMap['containerOnPageLoadAnimation2']
+                                  animationsMap[
+                                      'containerOnPageLoadAnimation2']!
                                 ]),
                               ),
                             ],

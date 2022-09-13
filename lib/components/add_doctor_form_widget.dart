@@ -12,15 +12,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AddDoctorFormWidget extends StatefulWidget {
   const AddDoctorFormWidget({
-    Key key,
+    Key? key,
     this.docNames,
     this.docEmail,
     this.docPhone,
   }) : super(key: key);
 
-  final String docNames;
-  final String docEmail;
-  final String docPhone;
+  final String? docNames;
+  final String? docEmail;
+  final String? docPhone;
 
   @override
   _AddDoctorFormWidgetState createState() => _AddDoctorFormWidgetState();
@@ -28,11 +28,11 @@ class AddDoctorFormWidget extends StatefulWidget {
 
 class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
     with TickerProviderStateMixin {
-  TextEditingController doctorNamesController;
+  TextEditingController? doctorNamesController;
 
-  TextEditingController emailAddressController;
+  TextEditingController? emailAddressController;
 
-  TextEditingController phoneNumberController;
+  TextEditingController? phoneNumberController;
 
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
@@ -214,7 +214,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                           textAlign: TextAlign.start,
                           maxLines: 1,
                         ).animated(
-                            [animationsMap['textFieldOnPageLoadAnimation']]),
+                            [animationsMap['textFieldOnPageLoadAnimation']!]),
                       ),
                     ),
                     Padding(
@@ -374,9 +374,9 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                 FFButtonWidget(
                   onPressed: () async {
                     final doctorsCreateData = createDoctorsRecordData(
-                      phonenumber: phoneNumberController.text,
-                      name: doctorNamesController.text,
-                      emailaddress: emailAddressController.text,
+                      phonenumber: phoneNumberController!.text,
+                      name: doctorNamesController!.text,
+                      emailaddress: emailAddressController!.text,
                     );
                     await DoctorsRecord.collection.doc().set(doctorsCreateData);
                     Navigator.pop(context);

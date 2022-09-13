@@ -3,11 +3,11 @@ import 'package:rxdart/rxdart.dart';
 
 class DmlLiveFirebaseUser {
   DmlLiveFirebaseUser(this.user);
-  User user;
+  User? user;
   bool get loggedIn => user != null;
 }
 
-DmlLiveFirebaseUser currentUser;
+DmlLiveFirebaseUser? currentUser;
 bool get loggedIn => currentUser?.loggedIn ?? false;
 Stream<DmlLiveFirebaseUser> dmlLiveFirebaseUserStream() => FirebaseAuth.instance
     .authStateChanges()

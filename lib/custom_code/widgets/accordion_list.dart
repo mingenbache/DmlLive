@@ -7,7 +7,6 @@ import '../actions/index.dart'; // Imports custom actions
 import '../../flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom widget code
-
 //import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:accordion/accordion.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -27,9 +26,9 @@ import '../../flutter_flow/flutter_flow_widgets.dart';
     this.users,
   }) : super(key: key);
 
-  final double width;
-  final double height;
-  final List<UsersRecord> users;
+  final double/*?*/ width;
+  final double/*?*/ height;
+  final List<UsersRecord/*!*/>/*?*/ users;
   
 
   @override

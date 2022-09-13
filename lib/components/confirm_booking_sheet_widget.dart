@@ -9,11 +9,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ConfirmBookingSheetWidget extends StatefulWidget {
   const ConfirmBookingSheetWidget({
-    Key key,
+    Key? key,
     this.bookingRef,
   }) : super(key: key);
 
-  final DocumentReference bookingRef;
+  final DocumentReference? bookingRef;
 
   @override
   _ConfirmBookingSheetWidgetState createState() =>

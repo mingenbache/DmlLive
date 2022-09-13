@@ -15,11 +15,11 @@ import 'package:page_transition/page_transition.dart';
 
 class TestDeckWidget extends StatefulWidget {
   const TestDeckWidget({
-    Key key,
+    Key? key,
     this.testedTestRef,
   }) : super(key: key);
 
-  final DocumentReference testedTestRef;
+  final DocumentReference? testedTestRef;
 
   @override
   _TestDeckWidgetState createState() => _TestDeckWidgetState();
@@ -34,7 +34,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryColor,
       body: StreamBuilder<TestedTestsRecord>(
-        stream: TestedTestsRecord.getDocument(widget.testedTestRef),
+        stream: TestedTestsRecord.getDocument(widget.testedTestRef!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -49,7 +49,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
               ),
             );
           }
-          final viewResultsTestedTestsRecord = snapshot.data;
+          final viewResultsTestedTestsRecord = snapshot.data!;
           return Container(
             decoration: BoxDecoration(),
             child: SingleChildScrollView(
@@ -58,7 +58,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                 children: [
                   StreamBuilder<TestsRecord>(
                     stream: TestsRecord.getDocument(
-                        viewResultsTestedTestsRecord.testRef),
+                        viewResultsTestedTestsRecord.testRef!),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -73,7 +73,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                           ),
                         );
                       }
-                      final testResultsTestsRecord = snapshot.data;
+                      final testResultsTestsRecord = snapshot.data!;
                       return Material(
                         color: Colors.transparent,
                         elevation: 3,
@@ -178,7 +178,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     5, 15, 0, 0),
                                             child: Text(
-                                              testResultsTestsRecord.name,
+                                              testResultsTestsRecord.name!,
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -201,7 +201,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                     Stack(
                                       children: [
                                         if (!viewResultsTestedTestsRecord
-                                            .resultPosted)
+                                            .resultPosted!)
                                           Container(
                                             width: 145,
                                             height: 32,
@@ -509,7 +509,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                   child: StreamBuilder<BookingsRecord>(
                                     stream: BookingsRecord.getDocument(
                                         viewResultsTestedTestsRecord
-                                            .bookingRef),
+                                            .bookingRef!),
                                     builder: (context, snapshot) {
                                       // Customize what your widget looks like when it's loading.
                                       if (!snapshot.hasData) {
@@ -527,7 +527,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                         );
                                       }
                                       final tabBarBookingsRecord =
-                                          snapshot.data;
+                                          snapshot.data!;
                                       return DefaultTabController(
                                         length: 4,
                                         initialIndex: 0,
@@ -680,7 +680,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Text(
-                                                                                tabBarBookingsRecord.labRefNum,
+                                                                                tabBarBookingsRecord.labRefNum!,
                                                                                 style: FlutterFlowTheme.of(context).subtitle1,
                                                                               ),
                                                                             ],
@@ -898,7 +898,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Text(
-                                                                                dateTimeFormat('d/M/y', viewResultsTestedTestsRecord.dateSampleCollected),
+                                                                                dateTimeFormat('d/M/y', viewResultsTestedTestsRecord.dateSampleCollected!),
                                                                                 style: FlutterFlowTheme.of(context).subtitle1,
                                                                               ),
                                                                             ],
@@ -1010,7 +1010,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Text(
-                                                                                dateTimeFormat('d/M/y', viewResultsTestedTestsRecord.dateConducted),
+                                                                                dateTimeFormat('d/M/y', viewResultsTestedTestsRecord.dateConducted!),
                                                                                 style: FlutterFlowTheme.of(context).subtitle1,
                                                                               ),
                                                                             ],
@@ -1384,7 +1384,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                       ),
                                                                       Visibility(
                                                                         visible:
-                                                                            !viewResultsTestedTestsRecord.resultsPositive,
+                                                                            !viewResultsTestedTestsRecord.resultsPositive!,
                                                                         child:
                                                                             Container(
                                                                           width:
@@ -1530,7 +1530,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               4),
                                                                           child:
                                                                               Text(
-                                                                            viewResultsTestedTestsRecord.testResult,
+                                                                            viewResultsTestedTestsRecord.testResult!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1631,7 +1631,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 4),
                                                                             child:
                                                                                 Text(
-                                                                              viewResultsTestedTestsRecord.testNote,
+                                                                              viewResultsTestedTestsRecord.testNote!,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Montserrat',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
@@ -2079,7 +2079,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                             builder: (context) {
                                                               final resultAttachments =
                                                                   viewResultsTestedTestsRecord
-                                                                      .resultsAttachment
+                                                                      .resultsAttachment!
                                                                       .toList();
                                                               return ListView
                                                                   .builder(
@@ -2175,7 +2175,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         StreamBuilder<UsersRecord>(
-                          stream: UsersRecord.getDocument(currentUserReference),
+                          stream:
+                              UsersRecord.getDocument(currentUserReference!),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -2191,7 +2192,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                 ),
                               );
                             }
-                            final stackUsersRecord = snapshot.data;
+                            final stackUsersRecord = snapshot.data!;
                             return Container(
                               width: MediaQuery.of(context).size.width * 0.9,
                               height: MediaQuery.of(context).size.height * 0.1,

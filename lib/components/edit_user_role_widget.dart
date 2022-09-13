@@ -13,11 +13,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class EditUserRoleWidget extends StatefulWidget {
   const EditUserRoleWidget({
-    Key key,
+    Key? key,
     this.userRef,
   }) : super(key: key);
 
-  final DocumentReference userRef;
+  final DocumentReference? userRef;
 
   @override
   _EditUserRoleWidgetState createState() => _EditUserRoleWidgetState();
@@ -25,8 +25,8 @@ class EditUserRoleWidget extends StatefulWidget {
 
 class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
     with TickerProviderStateMixin {
-  String userRolesValue;
-  bool switchListTileValue;
+  String? userRolesValue;
+  bool? switchListTileValue;
   final animationsMap = {
     'dropDownOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -62,7 +62,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         StreamBuilder<UsersRecord>(
-          stream: UsersRecord.getDocument(widget.userRef),
+          stream: UsersRecord.getDocument(widget.userRef!),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
@@ -77,7 +77,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                 ),
               );
             }
-            final submitRoleUsersRecord = snapshot.data;
+            final submitRoleUsersRecord = snapshot.data!;
             return Container(
               constraints: BoxConstraints(
                 maxHeight: MediaQuery.of(context).size.height * 0.63,
@@ -286,7 +286,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Text(
-                                                    submitRoleUsersRecord.role,
+                                                    submitRoleUsersRecord.role!,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyText1
@@ -328,7 +328,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                       Expanded(
                                         child: SwitchListTile.adaptive(
                                           value: switchListTileValue ??=
-                                              submitRoleUsersRecord.isStaff,
+                                              submitRoleUsersRecord.isStaff!,
                                           onChanged: (newValue) => setState(
                                               () => switchListTileValue =
                                                   newValue),
@@ -421,7 +421,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                       hidesUnderline: true,
                                     ).animated([
                                       animationsMap[
-                                          'dropDownOnPageLoadAnimation']
+                                          'dropDownOnPageLoadAnimation']!
                                     ]),
                                   ),
                                 ),
@@ -449,7 +449,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
 
                                   context.pushNamed('UserList');
 
-                                  if (switchListTileValue) {
+                                  if (switchListTileValue!) {
                                     final staffCreateData =
                                         createStaffRecordData(
                                       email: submitRoleUsersRecord.email,

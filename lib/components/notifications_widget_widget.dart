@@ -10,7 +10,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NotificationsWidgetWidget extends StatefulWidget {
-  const NotificationsWidgetWidget({Key key}) : super(key: key);
+  const NotificationsWidgetWidget({Key? key}) : super(key: key);
 
   @override
   _NotificationsWidgetWidgetState createState() =>
@@ -88,7 +88,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                               }
                               List<NotificationsRecord>
                                   containerNotificationsRecordList =
-                                  snapshot.data;
+                                  snapshot.data!;
                               return Container(
                                 width: MediaQuery.of(context).size.width * 0.9,
                                 height: 100,
@@ -101,43 +101,49 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Expanded(
-                                      child: Builder(
-                                        builder: (context) {
-                                          final filterAdminNotifications = functions
-                                              .filterNotifications(
-                                                  containerNotificationsRecordList
-                                                      .toList(),
-                                                  currentUserReference)
-                                              .toList();
-                                          if (filterAdminNotifications
-                                              .isEmpty) {
-                                            return Image.network(
-                                              '',
-                                            );
-                                          }
-                                          return ListView.builder(
-                                            padding: EdgeInsets.zero,
-                                            shrinkWrap: true,
-                                            scrollDirection: Axis.vertical,
-                                            itemCount:
-                                                filterAdminNotifications.length,
-                                            itemBuilder: (context,
-                                                filterAdminNotificationsIndex) {
-                                              final filterAdminNotificationsItem =
-                                                  filterAdminNotifications[
-                                                      filterAdminNotificationsIndex];
-                                              return Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 0, 5),
-                                                child:
-                                                    NotificationListItemWidget(
-                                                  notificationRef:
-                                                      filterAdminNotificationsItem,
-                                                ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 5, 0, 0),
+                                        child: Builder(
+                                          builder: (context) {
+                                            final filterAdminNotifications =
+                                                functions
+                                                    .filterNotifications(
+                                                        containerNotificationsRecordList
+                                                            .toList(),
+                                                        currentUserReference)
+                                                    .toList();
+                                            if (filterAdminNotifications
+                                                .isEmpty) {
+                                              return Image.network(
+                                                '',
                                               );
-                                            },
-                                          );
-                                        },
+                                            }
+                                            return ListView.builder(
+                                              padding: EdgeInsets.zero,
+                                              shrinkWrap: true,
+                                              scrollDirection: Axis.vertical,
+                                              itemCount:
+                                                  filterAdminNotifications
+                                                      .length,
+                                              itemBuilder: (context,
+                                                  filterAdminNotificationsIndex) {
+                                                final filterAdminNotificationsItem =
+                                                    filterAdminNotifications[
+                                                        filterAdminNotificationsIndex];
+                                                return Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 0, 0, 5),
+                                                  child:
+                                                      NotificationListItemWidget(
+                                                    notificationRef:
+                                                        filterAdminNotificationsItem,
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -179,7 +185,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                     );
                                   }
                                   List<ChatsRecord> columnChatsRecordList =
-                                      snapshot.data;
+                                      snapshot.data!;
                                   return SingleChildScrollView(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -281,7 +287,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                                 Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
                                                                               child: StreamBuilder<UsersRecord>(
-                                                                                stream: UsersRecord.getDocument(columnChatsRecord.lastMessageSentBy),
+                                                                                stream: UsersRecord.getDocument(columnChatsRecord.lastMessageSentBy!),
                                                                                 builder: (context, snapshot) {
                                                                                   // Customize what your widget looks like when it's loading.
                                                                                   if (!snapshot.hasData) {
@@ -296,7 +302,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                                       ),
                                                                                     );
                                                                                   }
-                                                                                  final textUsersRecord = snapshot.data;
+                                                                                  final textUsersRecord = snapshot.data!;
                                                                                   return Text(
                                                                                     '${textUsersRecord.firstName} ${textUsersRecord.lastName}',
                                                                                     textAlign: TextAlign.center,
@@ -318,7 +324,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                                 AlignmentDirectional(0.7, 0),
                                                                             child:
                                                                                 Text(
-                                                                              dateTimeFormat('d/M H:mm', columnChatsRecord.lastMessageTime),
+                                                                              dateTimeFormat('d/M H:mm', columnChatsRecord.lastMessageTime!),
                                                                               textAlign: TextAlign.end,
                                                                               style: TextStyle(
                                                                                 color: Color(0xFF57636C),
@@ -359,7 +365,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                                 Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(0, 4, 4, 0),
                                                                               child: Text(
-                                                                                columnChatsRecord.lastMessage,
+                                                                                columnChatsRecord.lastMessage!,
                                                                                 style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                       fontFamily: 'Lexend Deca',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,

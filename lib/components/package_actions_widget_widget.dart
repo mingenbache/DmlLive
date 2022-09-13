@@ -14,13 +14,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PackageActionsWidgetWidget extends StatefulWidget {
   const PackageActionsWidgetWidget({
-    Key key,
+    Key? key,
     this.package,
     this.bookingRef,
   }) : super(key: key);
 
-  final TestPackagesRecord package;
-  final DocumentReference bookingRef;
+  final TestPackagesRecord? package;
+  final DocumentReference? bookingRef;
 
   @override
   _PackageActionsWidgetWidgetState createState() =>
@@ -72,8 +72,8 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
       children: [
         AuthUserStreamWidget(
           child: StreamBuilder<BookingsRecord>(
-            stream:
-                BookingsRecord.getDocument(currentUserDocument?.currentBooking),
+            stream: BookingsRecord.getDocument(
+                currentUserDocument!.currentBooking!),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {
@@ -88,7 +88,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                   ),
                 );
               }
-              final containerBookingsRecord = snapshot.data;
+              final containerBookingsRecord = snapshot.data!;
               return Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 constraints: BoxConstraints(
@@ -127,7 +127,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                             );
                           }
                           List<UsersRecord> buttonUsersRecordList =
-                              snapshot.data;
+                              snapshot.data!;
                           final buttonUsersRecord =
                               buttonUsersRecordList.isNotEmpty
                                   ? buttonUsersRecordList.first
@@ -167,7 +167,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                               borderRadius: BorderRadius.circular(30),
                             ),
                           ).animated([
-                            animationsMap['buttonOnActionTriggerAnimation1']
+                            animationsMap['buttonOnActionTriggerAnimation1']!
                           ]);
                         },
                       ),
@@ -176,25 +176,25 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                           if (functions.checkTestPackageBookingHasDuplicates(
                               functions
                                   .returnAllBookingTests(
-                                      containerBookingsRecord.testPackTests
+                                      containerBookingsRecord.testPackTests!
                                           .toList(),
-                                      containerBookingsRecord.testsIncluded
+                                      containerBookingsRecord.testsIncluded!
                                           .toList())
                                   .toList(),
-                              widget.package.testsIncluded.toList())) {
+                              widget.package!.testsIncluded!.toList())) {
                             setState(() => FFAppState().duplicateTests =
                                 functions
                                     .returnDuplicateTestsinBooking(
                                         functions
                                             .returnAllBookingTests(
                                                 containerBookingsRecord
-                                                    .testPackTests
+                                                    .testPackTests!
                                                     .toList(),
                                                 containerBookingsRecord
-                                                    .testsIncluded
+                                                    .testsIncluded!
                                                     .toList())
                                             .toList(),
-                                        widget.package.testsIncluded.toList())
+                                        widget.package!.testsIncluded!.toList())
                                     .toList());
                             await showModalBottomSheet(
                               isScrollControlled: true,
@@ -210,23 +210,24 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                               },
                             );
                           } else {
-                            if (!containerBookingsRecord.testPackages
+                            if (!containerBookingsRecord.testPackages!
                                 .toList()
-                                .contains(widget.package.reference)) {
+                                .contains(widget.package!.reference)) {
                               final bookingsUpdateData = {
                                 ...createBookingsRecordData(
                                   totalPrice: functions.addCartTotal(
                                       containerBookingsRecord.totalPrice,
-                                      widget.package.price),
+                                      widget.package!.price),
                                 ),
                                 'total_tests': FieldValue.increment(1),
                                 'testPackages': FieldValue.arrayUnion(
-                                    [widget.package.reference]),
+                                    [widget.package!.reference]),
                                 'testPackTests':
                                     functions.addBookingPackageTests(
-                                        containerBookingsRecord.testPackTests
+                                        containerBookingsRecord.testPackTests!
                                             .toList(),
-                                        widget.package.testsIncluded.toList()),
+                                        widget.package!.testsIncluded!
+                                            .toList()),
                               };
                               await containerBookingsRecord.reference
                                   .update(bookingsUpdateData);
@@ -257,7 +258,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ).animated(
-                          [animationsMap['buttonOnActionTriggerAnimation2']]),
+                          [animationsMap['buttonOnActionTriggerAnimation2']!]),
                     ],
                   ),
                 ),

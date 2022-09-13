@@ -9,11 +9,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ClientUserCardxWidget extends StatefulWidget {
   const ClientUserCardxWidget({
-    Key key,
+    Key? key,
     this.userRecord,
   }) : super(key: key);
 
-  final UsersRecord userRecord;
+  final UsersRecord? userRecord;
 
   @override
   _ClientUserCardxWidgetState createState() => _ClientUserCardxWidgetState();
@@ -99,7 +99,7 @@ class _ClientUserCardxWidgetState extends State<ClientUserCardxWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Text(
-                                '${functions.camelCase(widget.userRecord.firstName)} ${functions.camelCase(widget.userRecord.lastName)}',
+                                '${functions.camelCase(widget.userRecord!.firstName)} ${functions.camelCase(widget.userRecord!.lastName)}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
@@ -135,7 +135,7 @@ class _ClientUserCardxWidgetState extends State<ClientUserCardxWidget> {
                                 ),
                               ),
                               Text(
-                                widget.userRecord.email,
+                                widget.userRecord!.email!,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
@@ -171,7 +171,7 @@ class _ClientUserCardxWidgetState extends State<ClientUserCardxWidget> {
                                 ),
                               ),
                               Text(
-                                widget.userRecord.phoneNumber,
+                                widget.userRecord!.phoneNumber!,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(

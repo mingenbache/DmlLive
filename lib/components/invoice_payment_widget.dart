@@ -14,27 +14,27 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class InvoicePaymentWidget extends StatefulWidget {
   const InvoicePaymentWidget({
-    Key key,
+    Key? key,
     this.invoice,
     this.booking,
   }) : super(key: key);
 
-  final DocumentReference invoice;
-  final BookingsRecord booking;
+  final DocumentReference? invoice;
+  final BookingsRecord? booking;
 
   @override
   _InvoicePaymentWidgetState createState() => _InvoicePaymentWidgetState();
 }
 
 class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
-  PageController pageViewController;
+  PageController? pageViewController;
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: AlignmentDirectional(0, 0),
       child: StreamBuilder<InvoicesRecord>(
-        stream: InvoicesRecord.getDocument(widget.invoice),
+        stream: InvoicesRecord.getDocument(widget.invoice!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -49,7 +49,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
               ),
             );
           }
-          final containerInvoicesRecord = snapshot.data;
+          final containerInvoicesRecord = snapshot.data!;
           return Container(
             width: MediaQuery.of(context).size.width * 0.8,
             height: 240,
@@ -228,7 +228,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                             .fromSTEB(
                                                                 7, 3, 8, 3),
                                                     child: Text(
-                                                      '${widget.booking.firstname} ${widget.booking.lastname}'
+                                                      '${widget.booking!.firstname} ${widget.booking!.lastname}'
                                                           .maybeHandleOverflow(
                                                         maxChars: 20,
                                                         replacement: '…',
@@ -322,7 +322,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                             .fromSTEB(
                                                                 7, 3, 8, 3),
                                                     child: Text(
-                                                      widget.booking.labRefNum
+                                                      widget.booking!.labRefNum!
                                                           .maybeHandleOverflow(
                                                         maxChars: 20,
                                                         replacement: '…',
@@ -412,7 +412,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                       dateTimeFormat(
                                                               'MMMEd',
                                                               containerInvoicesRecord
-                                                                  .createdDate)
+                                                                  .createdDate!)
                                                           .maybeHandleOverflow(
                                                         maxChars: 20,
                                                         replacement: '…',
@@ -453,7 +453,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                       ),
                                     ),
                                     child: ReportPaymentsListWidget(
-                                      bookingRef: widget.booking.reference,
+                                      bookingRef: widget.booking!.reference,
                                     ),
                                   ),
                                   Image.network(
@@ -476,7 +476,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                   count: 3,
                                   axisDirection: Axis.horizontal,
                                   onDotClicked: (i) {
-                                    pageViewController.animateToPage(
+                                    pageViewController!.animateToPage(
                                       i,
                                       duration: Duration(milliseconds: 500),
                                       curve: Curves.ease,
@@ -540,7 +540,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                             5, 0, 0, 0),
                                         child: Text(
                                           formatNumber(
-                                            containerInvoicesRecord.amountDue,
+                                            containerInvoicesRecord.amountDue!,
                                             formatType: FormatType.decimal,
                                             decimalType:
                                                 DecimalType.periodDecimal,
@@ -614,7 +614,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                           7, 3, 8, 3),
                                       child: Text(
                                         formatNumber(
-                                          widget.booking.paymentBalance,
+                                          widget.booking!.paymentBalance!,
                                           formatType: FormatType.decimal,
                                           decimalType:
                                               DecimalType.periodDecimal,

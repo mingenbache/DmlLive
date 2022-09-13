@@ -14,11 +14,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class StaffActivityWidget extends StatefulWidget {
   const StaffActivityWidget({
-    Key key,
+    Key? key,
     this.userRef,
   }) : super(key: key);
 
-  final DocumentReference userRef;
+  final DocumentReference? userRef;
 
   @override
   _StaffActivityWidgetState createState() => _StaffActivityWidgetState();
@@ -28,7 +28,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<UsersRecord>(
-      stream: UsersRecord.getDocument(widget.userRef),
+      stream: UsersRecord.getDocument(widget.userRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -43,7 +43,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
             ),
           );
         }
-        final columnUsersRecord = snapshot.data;
+        final columnUsersRecord = snapshot.data!;
         return Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -294,7 +294,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                       0, 0, 0),
                                                           child: Text(
                                                             columnUsersRecord
-                                                                .role,
+                                                                .role!,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyText1
@@ -515,7 +515,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                             ),
                                                                                           );
                                                                                         }
-                                                                                        List<BookedTestsRecord> textBookedTestsRecordList = snapshot.data;
+                                                                                        List<BookedTestsRecord> textBookedTestsRecordList = snapshot.data!;
                                                                                         return Text(
                                                                                           textBookedTestsRecordList.length.toString(),
                                                                                           style: FlutterFlowTheme.of(context).subtitle2.override(
@@ -639,7 +639,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                             ),
                                                                                           );
                                                                                         }
-                                                                                        List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data;
+                                                                                        List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data!;
                                                                                         return Text(
                                                                                           textTestedTestsRecordList.length.toString(),
                                                                                           style: FlutterFlowTheme.of(context).subtitle2.override(
@@ -778,7 +778,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
                                                                                 Text(
-                                                                                  dateTimeFormat('d/M/y', columnUsersRecord.createdTime),
+                                                                                  dateTimeFormat('d/M/y', columnUsersRecord.createdTime!),
                                                                                   style: FlutterFlowTheme.of(context).subtitle1,
                                                                                 ),
                                                                               ],
@@ -908,7 +908,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
                                                                                 Text(
-                                                                                  dateTimeFormat('d/M/y', columnUsersRecord.lastLogin),
+                                                                                  dateTimeFormat('d/M/y', columnUsersRecord.lastLogin!),
                                                                                   style: FlutterFlowTheme.of(context).subtitle1,
                                                                                 ),
                                                                               ],
@@ -1185,7 +1185,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6, 6, 3, 3),
                                                                                   child: Text(
-                                                                                    columnUsersRecord.displayName,
+                                                                                    columnUsersRecord.displayName!,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                           fontFamily: 'Montserrat',
                                                                                           color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1244,7 +1244,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6, 6, 3, 3),
                                                                                   child: Text(
-                                                                                    columnUsersRecord.email,
+                                                                                    columnUsersRecord.email!,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                           fontFamily: 'Montserrat',
                                                                                           color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1309,7 +1309,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6, 6, 3, 3),
                                                                                   child: Text(
-                                                                                    columnUsersRecord.phoneNumber,
+                                                                                    columnUsersRecord.phoneNumber!,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                           fontFamily: 'Montserrat',
                                                                                           color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1382,7 +1382,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         Padding(
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(3, 5, 3, 0),
                                                                                           child: Text(
-                                                                                            dateTimeFormat('d/M/y', columnUsersRecord.dOB),
+                                                                                            dateTimeFormat('d/M/y', columnUsersRecord.dOB!),
                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                   fontFamily: 'Montserrat',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1432,7 +1432,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         Padding(
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                                                                           child: Text(
-                                                                                            columnUsersRecord.sex,
+                                                                                            columnUsersRecord.sex!,
                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                   fontFamily: 'Montserrat',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1493,7 +1493,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                         }
                                                         List<BookingsRecord>
                                                             userBookingsBookingsRecordList =
-                                                            snapshot.data;
+                                                            snapshot.data!;
                                                         return Container(
                                                           width: MediaQuery.of(
                                                                       context)
@@ -1582,7 +1582,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                         }
                                                         List<PaymentsRecord>
                                                             containerPaymentsRecordList =
-                                                            snapshot.data;
+                                                            snapshot.data!;
                                                         return Container(
                                                           width: MediaQuery.of(
                                                                   context)
@@ -1658,7 +1658,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                             );
                                                                           }
                                                                           final containerPaymentsRecord =
-                                                                              snapshot.data;
+                                                                              snapshot.data!;
                                                                           return InkWell(
                                                                             onTap:
                                                                                 () async {
@@ -1708,7 +1708,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
                                                                                         child: Text(
-                                                                                          dateTimeFormat('d/M/y', containerPaymentsRecord.createdDate),
+                                                                                          dateTimeFormat('d/M/y', containerPaymentsRecord.createdDate!),
                                                                                           textAlign: TextAlign.start,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Montserrat',
@@ -1728,7 +1728,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(7, 9, 5, 5),
                                                                                         child: Text(
-                                                                                          containerPaymentsRecord.transactionCode.maybeHandleOverflow(maxChars: 8),
+                                                                                          containerPaymentsRecord.transactionCode!.maybeHandleOverflow(maxChars: 8),
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Montserrat',
                                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1750,7 +1750,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(9, 9, 5, 5),
                                                                                         child: Text(
-                                                                                          containerPaymentsRecord.type,
+                                                                                          containerPaymentsRecord.type!,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Montserrat',
                                                                                                 color: Colors.white,
@@ -1770,7 +1770,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
                                                                                         child: Text(
                                                                                           formatNumber(
-                                                                                            containerPaymentsRecord.amount,
+                                                                                            containerPaymentsRecord.amount!,
                                                                                             formatType: FormatType.decimal,
                                                                                             decimalType: DecimalType.periodDecimal,
                                                                                             currency: 'Ksh ',

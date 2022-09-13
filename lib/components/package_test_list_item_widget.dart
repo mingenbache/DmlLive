@@ -10,13 +10,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PackageTestListItemWidget extends StatefulWidget {
   const PackageTestListItemWidget({
-    Key key,
+    Key? key,
     this.testRef,
     this.isAdmin,
   }) : super(key: key);
 
-  final DocumentReference testRef;
-  final bool isAdmin;
+  final DocumentReference? testRef;
+  final bool? isAdmin;
 
   @override
   _PackageTestListItemWidgetState createState() =>
@@ -29,7 +29,7 @@ class _PackageTestListItemWidgetState extends State<PackageTestListItemWidget> {
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(10, 5, 10, 5),
       child: StreamBuilder<TestsRecord>(
-        stream: TestsRecord.getDocument(widget.testRef),
+        stream: TestsRecord.getDocument(widget.testRef!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -44,7 +44,7 @@ class _PackageTestListItemWidgetState extends State<PackageTestListItemWidget> {
               ),
             );
           }
-          final containerTestsRecord = snapshot.data;
+          final containerTestsRecord = snapshot.data!;
           return InkWell(
             onTap: () async {
               await showModalBottomSheet(

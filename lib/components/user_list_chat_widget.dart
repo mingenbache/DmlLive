@@ -12,14 +12,14 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class UserListChatWidget extends StatefulWidget {
-  const UserListChatWidget({Key key}) : super(key: key);
+  const UserListChatWidget({Key? key}) : super(key: key);
 
   @override
   _UserListChatWidgetState createState() => _UserListChatWidgetState();
 }
 
 class _UserListChatWidgetState extends State<UserListChatWidget> {
-  TextEditingController textController;
+  TextEditingController? textController;
 
   @override
   void initState() {
@@ -236,7 +236,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                               topRight: Radius.circular(4.0),
                                             ),
                                           ),
-                                          suffixIcon: textController
+                                          suffixIcon: textController!
                                                   .text.isNotEmpty
                                               ? InkWell(
                                                   onTap: () async {
@@ -343,7 +343,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                     }
                                                     List<UsersRecord>
                                                         clientUserContainerUsersRecordList =
-                                                        snapshot.data;
+                                                        snapshot.data!;
                                                     return Container(
                                                       width:
                                                           MediaQuery.of(context)
@@ -381,7 +381,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                         builder: (context) {
                                                           final clients = functions
                                                               .returnUserList(
-                                                                  textController
+                                                                  textController!
                                                                       .text,
                                                                   clientUserContainerUsersRecordList
                                                                       .toList())
@@ -473,7 +473,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                   }
                                                   List<UsersRecord>
                                                       staffUserContainerUsersRecordList =
-                                                      snapshot.data;
+                                                      snapshot.data!;
                                                   return Container(
                                                     width:
                                                         MediaQuery.of(context)
@@ -493,7 +493,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                       builder: (context) {
                                                         final staff = functions
                                                             .returnUserList(
-                                                                textController
+                                                                textController!
                                                                     .text,
                                                                 staffUserContainerUsersRecordList
                                                                     .toList())

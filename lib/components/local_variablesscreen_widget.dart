@@ -9,11 +9,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class LocalVariablesscreenWidget extends StatefulWidget {
   const LocalVariablesscreenWidget({
-    Key key,
+    Key? key,
     this.testedTestRef,
   }) : super(key: key);
 
-  final DocumentReference testedTestRef;
+  final DocumentReference? testedTestRef;
 
   @override
   _LocalVariablesscreenWidgetState createState() =>
@@ -22,7 +22,7 @@ class LocalVariablesscreenWidget extends StatefulWidget {
 
 class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
     with TickerProviderStateMixin {
-  TextEditingController localStateDataController;
+  TextEditingController? localStateDataController;
 
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
@@ -200,7 +200,7 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
                           textAlign: TextAlign.start,
                           maxLines: 1,
                         ).animated(
-                            [animationsMap['textFieldOnPageLoadAnimation']]),
+                            [animationsMap['textFieldOnPageLoadAnimation']!]),
                       ),
                     ),
                   ],

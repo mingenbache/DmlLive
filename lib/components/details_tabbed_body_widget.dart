@@ -7,11 +7,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class DetailsTabbedBodyWidget extends StatefulWidget {
   const DetailsTabbedBodyWidget({
-    Key key,
+    Key? key,
     this.test,
   }) : super(key: key);
 
-  final TestsRecord test;
+  final TestsRecord? test;
 
   @override
   _DetailsTabbedBodyWidgetState createState() =>
@@ -36,7 +36,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(15, 10, 0, 0),
                   child: Text(
-                    widget.test.name,
+                    widget.test!.name!,
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Roboto',
@@ -81,7 +81,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(13, 0, 13, 0),
                               child: Text(
-                                widget.test.description,
+                                widget.test!.description!,
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
@@ -500,7 +500,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                         children: [
                           Text(
                             formatNumber(
-                              widget.test.price,
+                              widget.test!.price!,
                               formatType: FormatType.decimal,
                               decimalType: DecimalType.periodDecimal,
                               currency: 'Kshs. ',
@@ -520,7 +520,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(8, 4, 8, 4),
                               child: Text(
-                                widget.test.category,
+                                widget.test!.category!,
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1

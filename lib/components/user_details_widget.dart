@@ -12,11 +12,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class UserDetailsWidget extends StatefulWidget {
   const UserDetailsWidget({
-    Key key,
+    Key? key,
     this.userRef,
   }) : super(key: key);
 
-  final DocumentReference userRef;
+  final DocumentReference? userRef;
 
   @override
   _UserDetailsWidgetState createState() => _UserDetailsWidgetState();
@@ -60,7 +60,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         StreamBuilder<UsersRecord>(
-          stream: UsersRecord.getDocument(widget.userRef),
+          stream: UsersRecord.getDocument(widget.userRef!),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
@@ -75,7 +75,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                 ),
               );
             }
-            final submitRoleUsersRecord = snapshot.data;
+            final submitRoleUsersRecord = snapshot.data!;
             return Container(
               height: MediaQuery.of(context).size.height * 0.66,
               decoration: BoxDecoration(
@@ -294,7 +294,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                       .fromSTEB(3, 6, 0, 6),
                                                   child: Text(
                                                     submitRoleUsersRecord
-                                                        .phoneNumber,
+                                                        .phoneNumber!,
                                                     style: TextStyle(
                                                       color:
                                                           FlutterFlowTheme.of(
@@ -356,7 +356,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(3, 6, 0, 6),
                                                 child: Text(
-                                                  submitRoleUsersRecord.email,
+                                                  submitRoleUsersRecord.email!,
                                                   style: TextStyle(
                                                     color: FlutterFlowTheme.of(
                                                             context)
@@ -518,7 +518,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(4, 9, 0, 0),
                                                 child: Text(
-                                                  submitRoleUsersRecord.sex,
+                                                  submitRoleUsersRecord.sex!,
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -595,7 +595,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(3, 6, 0, 6),
                                                 child: Text(
-                                                  submitRoleUsersRecord.role,
+                                                  submitRoleUsersRecord.role!,
                                                   style: TextStyle(
                                                     color: FlutterFlowTheme.of(
                                                             context)
@@ -617,7 +617,8 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                           ],
                         ),
                       ),
-                    ).animated([animationsMap['containerOnPageLoadAnimation']]),
+                    ).animated(
+                        [animationsMap['containerOnPageLoadAnimation']!]),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                       child: Row(

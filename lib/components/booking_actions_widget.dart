@@ -11,11 +11,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class BookingActionsWidget extends StatefulWidget {
   const BookingActionsWidget({
-    Key key,
+    Key? key,
     this.bookingRef,
   }) : super(key: key);
 
-  final BookingsRecord bookingRef;
+  final BookingsRecord? bookingRef;
 
   @override
   _BookingActionsWidgetState createState() => _BookingActionsWidgetState();
@@ -86,7 +86,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                       return Padding(
                         padding: MediaQuery.of(context).viewInsets,
                         child: NewInvoiceSheetWidget(
-                          bookingRef: widget.bookingRef.reference,
+                          bookingRef: widget.bookingRef!.reference,
                         ),
                       );
                     },
@@ -137,7 +137,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                     ],
                   ),
                 ),
-              ).animated([animationsMap['containerOnActionTriggerAnimation']]),
+              ).animated([animationsMap['containerOnActionTriggerAnimation']!]),
             ),
             Expanded(
               child: Container(
@@ -191,14 +191,14 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                 height: 60,
                 child: Stack(
                   children: [
-                    if (widget.bookingRef.resultPublished ?? true)
+                    if (widget.bookingRef!.resultPublished ?? true)
                       InkWell(
                         onTap: () async {
                           context.pushNamed(
                             'BookingReport',
                             queryParams: {
                               'reportRef': serializeParam(
-                                  widget.bookingRef.reportRef,
+                                  widget.bookingRef!.reportRef,
                                   ParamType.DocumentReference),
                             }.withoutNulls,
                           );
@@ -250,7 +250,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                           ),
                         ),
                       ),
-                    if (!widget.bookingRef.resultPublished)
+                    if (!widget.bookingRef!.resultPublished!)
                       InkWell(
                         onTap: () async {
                           await showModalBottomSheet(

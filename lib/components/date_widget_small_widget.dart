@@ -7,11 +7,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class DateWidgetSmallWidget extends StatefulWidget {
   const DateWidgetSmallWidget({
-    Key key,
+    Key? key,
     this.date,
   }) : super(key: key);
 
-  final DateTime date;
+  final DateTime? date;
 
   @override
   _DateWidgetSmallWidgetState createState() => _DateWidgetSmallWidgetState();
@@ -39,7 +39,7 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(2, 0, 2, 0),
           child: Row(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0),

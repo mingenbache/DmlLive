@@ -9,36 +9,35 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignupWidget extends StatefulWidget {
-  const SignupWidget({Key key}) : super(key: key);
+  const SignupWidget({Key? key}) : super(key: key);
 
   @override
   _SignupWidgetState createState() => _SignupWidgetState();
 }
 
 class _SignupWidgetState extends State<SignupWidget> {
-  TextEditingController confirmPasswordController;
+  TextEditingController? confirmPasswordController;
 
-  bool confirmPasswordVisibility;
+  late bool confirmPasswordVisibility;
 
-  TextEditingController emailAddressController;
+  TextEditingController? emailAddressController;
 
-  TextEditingController firstNameController;
+  TextEditingController? firstNameController;
 
-  TextEditingController lastNameController;
+  TextEditingController? lastNameController;
 
-  TextEditingController phoneNumberController;
+  TextEditingController? phoneNumberController;
 
-  DateTime datePicked;
-  String sexChoiceChipsValue;
+  DateTime? datePicked;
+  String? sexChoiceChipsValue;
 
-  TextEditingController passwordController;
+  TextEditingController? passwordController;
 
-  bool passwordVisibility;
+  late bool passwordVisibility;
 
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -95,11 +94,11 @@ class _SignupWidgetState extends State<SignupWidget> {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Color(0x27000000),
-                      FlutterFlowTheme.of(context).tertiaryColor,
-                      FlutterFlowTheme.of(context).primaryColor
+                      Color(0x806CD7B7),
+                      FlutterFlowTheme.of(context).secondaryColor,
+                      FlutterFlowTheme.of(context).primaryText
                     ],
-                    stops: [0, 0.6, 1],
+                    stops: [0, 0.5, 0.75],
                     begin: AlignmentDirectional(0, -1),
                     end: AlignmentDirectional(0, 1),
                   ),
@@ -119,7 +118,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.asset(
-                                'assets/images/dml_logo.png',
+                                'assets/images/Logo_Img_asset.png',
                                 height:
                                     MediaQuery.of(context).size.height * 0.08,
                                 fit: BoxFit.cover,
@@ -165,7 +164,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               borderSide: BorderSide(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .alternate,
+                                                        .primaryText,
                                                 width: 2,
                                               ),
                                               borderRadius:
@@ -175,7 +174,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               borderSide: BorderSide(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .alternate,
+                                                        .primaryText,
                                                 width: 2,
                                               ),
                                               borderRadius:
@@ -251,7 +250,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               borderSide: BorderSide(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .alternate,
+                                                        .primaryText,
                                                 width: 2,
                                               ),
                                               borderRadius:
@@ -261,7 +260,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               borderSide: BorderSide(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .alternate,
+                                                        .primaryText,
                                                 width: 2,
                                               ),
                                               borderRadius:
@@ -343,7 +342,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             borderSide: BorderSide(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .alternate,
+                                                      .primaryText,
                                               width: 2,
                                             ),
                                             borderRadius:
@@ -353,7 +352,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             borderSide: BorderSide(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .alternate,
+                                                      .primaryText,
                                               width: 2,
                                             ),
                                             borderRadius:
@@ -426,7 +425,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                   ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Color(0xFF586B06),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                               width: 2,
                                             ),
                                             borderRadius:
@@ -434,7 +435,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           ),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Color(0xFF586B06),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                               width: 2,
                                             ),
                                             borderRadius:
@@ -492,64 +495,65 @@ class _SignupWidgetState extends State<SignupWidget> {
                                   ],
                                 ),
                               ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                              Align(
+                                alignment: AlignmentDirectional(0, 0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 5, 5, 5),
-                                      child: InkWell(
-                                        onTap: () async {
-                                          await DatePicker.showDatePicker(
-                                            context,
-                                            showTitleActions: true,
-                                            onConfirm: (date) {
-                                              setState(() => datePicked = date);
-                                            },
-                                            currentTime: getCurrentTimestamp,
-                                            minTime: DateTime(0, 0, 0),
-                                          );
-                                        },
-                                        child: Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.24,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.05,
-                                          decoration: BoxDecoration(
-                                            color: Color(0x2CFFFFFF),
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                            border: Border.all(
-                                              color: Color(0xFF586B06),
-                                              width: 2,
-                                            ),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8, 12, 8, 8),
-                                            child: Text(
-                                              valueOrDefault<String>(
-                                                dateTimeFormat(
-                                                    'd/M/y', datePicked),
-                                                'Date of Birth',
+                                    Align(
+                                      alignment: AlignmentDirectional(0, 0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 0, 5, 0),
+                                        child: InkWell(
+                                          onTap: () async {
+                                            await DatePicker.showDatePicker(
+                                              context,
+                                              showTitleActions: true,
+                                              onConfirm: (date) {
+                                                setState(
+                                                    () => datePicked = date);
+                                              },
+                                              currentTime: getCurrentTimestamp,
+                                              minTime: DateTime(0, 0, 0),
+                                            );
+                                          },
+                                          child: Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.24,
+                                            decoration: BoxDecoration(
+                                              color: Color(0x2CFFFFFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              border: Border.all(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                width: 2,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily:
-                                                            'Montserrat',
-                                                        color: Colors.white,
-                                                      ),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(3, 3, 3, 3),
+                                              child: Text(
+                                                valueOrDefault<String>(
+                                                  dateTimeFormat(
+                                                      'd/M/y', datePicked),
+                                                  'Date of Birth',
+                                                ),
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily:
+                                                              'Montserrat',
+                                                          color: Colors.white,
+                                                        ),
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -559,7 +563,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                       child: FlutterFlowChoiceChips(
                                         initiallySelected:
                                             sexChoiceChipsValue != null
-                                                ? [sexChoiceChipsValue]
+                                                ? [sexChoiceChipsValue!]
                                                 : ['Female'],
                                         options: [
                                           ChipData('Female',
@@ -568,11 +572,11 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               'Male', FontAwesomeIcons.male)
                                         ],
                                         onChanged: (val) => setState(() =>
-                                            sexChoiceChipsValue = val.first),
+                                            sexChoiceChipsValue = val?.first),
                                         selectedChipStyle: ChipStyle(
                                           backgroundColor:
                                               FlutterFlowTheme.of(context)
-                                                  .secondaryColor,
+                                                  .primaryText,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
                                               .bodyText1
@@ -580,12 +584,12 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 fontFamily: 'Montserrat',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
+                                                        .secondaryBackground,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                           iconColor:
                                               FlutterFlowTheme.of(context)
-                                                  .tertiaryColor,
+                                                  .secondaryBackground,
                                           iconSize: 18,
                                           labelPadding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -593,7 +597,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           elevation: 4,
                                         ),
                                         unselectedChipStyle: ChipStyle(
-                                          backgroundColor: Color(0x157C7C7C),
+                                          backgroundColor: Colors.transparent,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
                                               .bodyText2
@@ -601,12 +605,12 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 fontFamily: 'Montserrat',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
+                                                        .primaryText,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                           iconColor:
                                               FlutterFlowTheme.of(context)
-                                                  .secondaryColor,
+                                                  .primaryText,
                                           iconSize: 18,
                                           labelPadding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -648,19 +652,22 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                   ),
                                           hintText:
                                               'Enter your password here...',
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: Color(0xFF586B06),
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                  ),
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Lexend Deca',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.normal,
+                                              ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Color(0xFF586B06),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                               width: 2,
                                             ),
                                             borderRadius:
@@ -668,7 +675,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           ),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Color(0xFF586B06),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                               width: 2,
                                             ),
                                             borderRadius:
@@ -721,6 +730,17 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),
+                                        validator: (val) {
+                                          if (val == null || val.isEmpty) {
+                                            return 'Field is required';
+                                          }
+
+                                          if (val.length < 6) {
+                                            return 'Requires at least 6 characters.';
+                                          }
+
+                                          return null;
+                                        },
                                       ),
                                     ),
                                   ],
@@ -753,7 +773,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                   ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Color(0xFF586B06),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                               width: 2,
                                             ),
                                             borderRadius:
@@ -761,7 +783,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           ),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Color(0xFF586B06),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                               width: 2,
                                             ),
                                             borderRadius:
@@ -814,6 +838,17 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),
+                                        validator: (val) {
+                                          if (val == null || val.isEmpty) {
+                                            return 'Field is required';
+                                          }
+
+                                          if (val.length < 6) {
+                                            return 'Requires at least 6 characters.';
+                                          }
+
+                                          return null;
+                                        },
                                       ),
                                     ),
                                   ],
@@ -845,8 +880,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         final user =
                                             await createAccountWithEmail(
                                           context,
-                                          emailAddressController.text,
-                                          passwordController.text,
+                                          emailAddressController!.text,
+                                          passwordController!.text,
                                         );
                                         if (user == null) {
                                           return;
@@ -854,19 +889,19 @@ class _SignupWidgetState extends State<SignupWidget> {
 
                                         final usersCreateData =
                                             createUsersRecordData(
-                                          email: emailAddressController.text,
-                                          firstName: firstNameController.text,
-                                          lastName: lastNameController.text,
+                                          email: emailAddressController!.text,
+                                          firstName: firstNameController!.text,
+                                          lastName: lastNameController!.text,
                                           phoneNumber:
-                                              phoneNumberController.text,
+                                              phoneNumberController!.text,
                                           sex: sexChoiceChipsValue,
-                                          password: passwordController.text,
+                                          password: passwordController!.text,
                                           dOB: datePicked,
                                           createdTime: getCurrentTimestamp,
                                           role: 'client',
                                           hasInitAccount: false,
                                           displayName:
-                                              '${firstNameController.text} ${lastNameController.text}',
+                                              '${firstNameController!.text} ${lastNameController!.text}',
                                         );
                                         await UsersRecord.collection
                                             .doc(user.uid)
@@ -898,14 +933,14 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         width: 210,
                                         height: 60,
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryColor,
+                                            .secondaryText,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .subtitle1
                                             .override(
                                               fontFamily: 'Roboto',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .tertiaryColor,
+                                                      .secondaryBackground,
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -968,13 +1003,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
                                     color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                        .secondaryText,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(50),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          2, 2, 2, 2),
+                                          15, 11, 15, 11),
                                       child: InkWell(
                                         onTap: () async {
                                           GoRouter.of(context)
@@ -988,16 +1023,11 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           context.goNamedAuth(
                                               'checkup', mounted);
                                         },
-                                        child: Container(
-                                          width: 50,
-                                          height: 50,
-                                          clipBehavior: Clip.antiAlias,
-                                          decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: SvgPicture.asset(
-                                            'assets/images/social_GoogleWhite.svg',
-                                          ),
+                                        child: FaIcon(
+                                          FontAwesomeIcons.google,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          size: 30,
                                         ),
                                       ),
                                     ),
@@ -1017,33 +1047,33 @@ class _SignupWidgetState extends State<SignupWidget> {
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
                                   color: FlutterFlowTheme.of(context)
-                                      .secondaryColor,
+                                      .secondaryText,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50),
                                   ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        2, 2, 2, 2),
-                                    child: InkWell(
-                                      onTap: () async {
-                                        GoRouter.of(context).prepareAuthEvent();
-                                        final user =
-                                            await signInWithApple(context);
-                                        if (user == null) {
-                                          return;
-                                        }
+                                  child: Align(
+                                    alignment: AlignmentDirectional(0, 0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15, 11, 15, 11),
+                                      child: InkWell(
+                                        onTap: () async {
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent();
+                                          final user =
+                                              await signInWithApple(context);
+                                          if (user == null) {
+                                            return;
+                                          }
 
-                                        context.goNamedAuth('checkup', mounted);
-                                      },
-                                      child: Container(
-                                        width: 50,
-                                        height: 50,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: SvgPicture.asset(
-                                          'assets/images/social_Apple.svg',
+                                          context.goNamedAuth(
+                                              'checkup', mounted);
+                                        },
+                                        child: FaIcon(
+                                          FontAwesomeIcons.apple,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBtnText,
+                                          size: 30,
                                         ),
                                       ),
                                     ),
@@ -1082,13 +1112,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     width: 70,
                                     height: 30,
                                     color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                        .secondaryText,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
                                           fontFamily: 'Lexend Deca',
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
+                                              .secondaryBackground,
                                           fontSize: 14,
                                           fontWeight: FontWeight.bold,
                                         ),

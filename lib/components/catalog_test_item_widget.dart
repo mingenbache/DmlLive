@@ -11,15 +11,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CatalogTestItemWidget extends StatefulWidget {
   const CatalogTestItemWidget({
-    Key key,
+    Key? key,
     this.test,
     this.index,
     this.listSize,
   }) : super(key: key);
 
-  final DocumentReference test;
-  final int index;
-  final int listSize;
+  final DocumentReference? test;
+  final int? index;
+  final int? listSize;
 
   @override
   _CatalogTestItemWidgetState createState() => _CatalogTestItemWidgetState();
@@ -29,7 +29,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<TestsRecord>(
-      stream: TestsRecord.getDocument(widget.test),
+      stream: TestsRecord.getDocument(widget.test!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -44,7 +44,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
             ),
           );
         }
-        final containerTestsRecord = snapshot.data;
+        final containerTestsRecord = snapshot.data!;
         return Container(
           height: 100,
           decoration: BoxDecoration(),
@@ -266,7 +266,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                           4),
                                                                   child: Text(
                                                                     containerTestsRecord
-                                                                        .category,
+                                                                        .category!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
@@ -437,7 +437,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                           ),
                                                                         ),
                                                                       if (!containerTestsRecord
-                                                                          .homeTest)
+                                                                          .homeTest!)
                                                                         Align(
                                                                           alignment: AlignmentDirectional(
                                                                               1,
@@ -499,7 +499,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                     child: Text(
                                                                       formatNumber(
                                                                         containerTestsRecord
-                                                                            .price,
+                                                                            .price!,
                                                                         formatType:
                                                                             FormatType.decimal,
                                                                         decimalType:

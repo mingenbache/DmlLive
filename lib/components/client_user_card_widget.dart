@@ -10,13 +10,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ClientUserCardWidget extends StatefulWidget {
   const ClientUserCardWidget({
-    Key key,
+    Key? key,
     this.userRecord,
     this.index,
   }) : super(key: key);
 
-  final UsersRecord userRecord;
-  final int index;
+  final UsersRecord? userRecord;
+  final int? index;
 
   @override
   _ClientUserCardWidgetState createState() => _ClientUserCardWidgetState();
@@ -41,7 +41,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                   return Padding(
                     padding: MediaQuery.of(context).viewInsets,
                     child: UserActivityWidget(
-                      userRef: widget.userRecord.reference,
+                      userRef: widget.userRecord!.reference,
                     ),
                   );
                 },
@@ -89,13 +89,13 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5, 5, 5, 5),
                                   child: Text(
-                                    widget.index.toString(),
+                                    widget.index!.toString(),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
                                           fontFamily: 'Montserrat',
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                              .secondaryBackground,
                                           fontWeight: FontWeight.w500,
                                         ),
                                   ),
@@ -113,7 +113,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8, 4, 4, 4),
                                   child: Text(
-                                    '${functions.camelCase(widget.userRecord.firstName)} ${functions.camelCase(widget.userRecord.lastName)}',
+                                    '${functions.camelCase(widget.userRecord!.firstName)} ${functions.camelCase(widget.userRecord!.lastName)}',
                                     style: FlutterFlowTheme.of(context)
                                         .subtitle1
                                         .override(
@@ -180,7 +180,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                             ),
                                           ),
                                           Text(
-                                            widget.userRecord.email,
+                                            widget.userRecord!.email!,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
@@ -232,7 +232,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                           ),
                                         ),
                                         Text(
-                                          widget.userRecord.phoneNumber,
+                                          widget.userRecord!.phoneNumber!,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
@@ -302,8 +302,8 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                                 child: Text(
                                                   dateTimeFormat(
                                                       'd/M/y',
-                                                      widget.userRecord
-                                                          .createdTime),
+                                                      widget.userRecord!
+                                                          .createdTime!),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
@@ -358,8 +358,8 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                                 child: Text(
                                                   dateTimeFormat(
                                                       'd/M/y',
-                                                      widget.userRecord
-                                                          .lastLogin),
+                                                      widget.userRecord!
+                                                          .lastLogin!),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1

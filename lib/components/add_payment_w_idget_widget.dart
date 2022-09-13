@@ -14,11 +14,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AddPaymentWIdgetWidget extends StatefulWidget {
   const AddPaymentWIdgetWidget({
-    Key key,
+    Key? key,
     this.invoiceRef,
   }) : super(key: key);
 
-  final DocumentReference invoiceRef;
+  final DocumentReference? invoiceRef;
 
   @override
   _AddPaymentWIdgetWidgetState createState() => _AddPaymentWIdgetWidgetState();
@@ -26,20 +26,20 @@ class AddPaymentWIdgetWidget extends StatefulWidget {
 
 class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
     with TickerProviderStateMixin {
-  TextEditingController firstNameController;
+  TextEditingController? firstNameController;
 
-  TextEditingController lastNameController;
+  TextEditingController? lastNameController;
 
-  TextEditingController paymentAmountController;
+  TextEditingController? paymentAmountController;
 
-  TextEditingController transactionReferenceController;
+  TextEditingController? transactionReferenceController;
 
-  String paymentMethodValue;
-  DateTime datePicked;
+  String? paymentMethodValue;
+  DateTime? datePicked;
 
-  TextEditingController paymentNoteController;
+  TextEditingController? paymentNoteController;
 
-  PaymentsRecord paymentRef;
+  PaymentsRecord? paymentRef;
   final formKey = GlobalKey<FormState>();
   final animationsMap = {
     'textFieldOnPageLoadAnimation1': AnimationInfo(
@@ -125,7 +125,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
       key: formKey,
       autovalidateMode: AutovalidateMode.disabled,
       child: StreamBuilder<InvoicesRecord>(
-        stream: InvoicesRecord.getDocument(widget.invoiceRef),
+        stream: InvoicesRecord.getDocument(widget.invoiceRef!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -140,7 +140,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
               ),
             );
           }
-          final columnInvoicesRecord = snapshot.data;
+          final columnInvoicesRecord = snapshot.data!;
           return Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -285,8 +285,9 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
 
                               return null;
                             },
-                          ).animated(
-                              [animationsMap['textFieldOnPageLoadAnimation1']]),
+                          ).animated([
+                            animationsMap['textFieldOnPageLoadAnimation1']!
+                          ]),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
@@ -358,7 +359,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                               ),
                               maxLines: 1,
                             ).animated([
-                              animationsMap['textFieldOnPageLoadAnimation2']
+                              animationsMap['textFieldOnPageLoadAnimation2']!
                             ]),
                           ),
                         ),
@@ -398,7 +399,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                 EdgeInsetsDirectional.fromSTEB(20, 20, 12, 20),
                             hidesUnderline: true,
                           ).animated(
-                              [animationsMap['dropDownOnPageLoadAnimation']]),
+                              [animationsMap['dropDownOnPageLoadAnimation']!]),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
@@ -660,7 +661,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                               textAlign: TextAlign.start,
                               maxLines: 4,
                             ).animated([
-                              animationsMap['textFieldOnPageLoadAnimation3']
+                              animationsMap['textFieldOnPageLoadAnimation3']!
                             ]),
                           ),
                         ),
@@ -678,20 +679,20 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                     FFButtonWidget(
                       onPressed: () async {
                         var _shouldSetState = false;
-                        if (datePicked <= getCurrentTimestamp) {
+                        if (datePicked! <= getCurrentTimestamp) {
                           final paymentsCreateData = createPaymentsRecordData(
                             userRef: currentUserReference,
                             bookingRef: columnInvoicesRecord.bookingRef,
                             type: paymentMethodValue,
                             transactionCode:
-                                transactionReferenceController.text,
+                                transactionReferenceController!.text,
                             createdDate: getCurrentTimestamp,
                             isApproved: false,
                             invoiceRef: widget.invoiceRef,
-                            amount: int.parse(paymentAmountController.text),
-                            firstName: firstNameController.text,
-                            lastName: lastNameController.text,
-                            paymentNotes: paymentNoteController.text,
+                            amount: int.parse(paymentAmountController!.text),
+                            firstName: firstNameController!.text,
+                            lastName: lastNameController!.text,
+                            paymentNotes: paymentNoteController!.text,
                             transactionDate: datePicked,
                             updatedDate: getCurrentTimestamp,
                           );
@@ -729,9 +730,9 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                             paymentSubmitted: true,
                           ),
                           'payments_list':
-                              FieldValue.arrayUnion([paymentRef.reference]),
+                              FieldValue.arrayUnion([paymentRef!.reference]),
                         };
-                        await widget.invoiceRef.update(invoicesUpdateData);
+                        await widget.invoiceRef!.update(invoicesUpdateData);
                         context.pop();
                         if (_shouldSetState) setState(() {});
                       },

@@ -17,17 +17,17 @@ class _$BookedTestsRecordSerializer
   final String wireName = 'BookedTestsRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, BookedTestsRecord object,
+  Iterable<Object?> serialize(Serializers serializers, BookedTestsRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.testRef;
     if (value != null) {
       result
         ..add('testRef')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.scheduledDate;
     if (value != null) {
@@ -42,7 +42,7 @@ class _$BookedTestsRecordSerializer
         ..add('booking_ref')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.sampleCollected;
     if (value != null) {
@@ -71,7 +71,7 @@ class _$BookedTestsRecordSerializer
         ..add('user')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.testResult;
     if (value != null) {
@@ -114,7 +114,7 @@ class _$BookedTestsRecordSerializer
         ..add('technologist')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.createUser;
     if (value != null) {
@@ -122,7 +122,7 @@ class _$BookedTestsRecordSerializer
         ..add('createUser')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.hasTestPack;
     if (value != null) {
@@ -137,112 +137,112 @@ class _$BookedTestsRecordSerializer
         ..add('test_pack_ref')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
-    value = object.reference;
+    value = object.ffRef;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     return result;
   }
 
   @override
   BookedTestsRecord deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new BookedTestsRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'testRef':
           result.testRef = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'scheduled_date':
           result.scheduledDate = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'booking_ref':
           result.bookingRef = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'sample_collected':
           result.sampleCollected = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'sample_slide_requested':
           result.sampleSlideRequested = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'sample_slide_surrendered':
           result.sampleSlideSurrendered = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'user':
           result.user = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'test_result':
           result.testResult = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'test_attachment':
           result.testAttachment = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'created_date':
           result.createdDate = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'has_result':
           result.hasResult = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'labRefNum':
           result.labRefNum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'technologist':
           result.technologist = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'createUser':
           result.createUser = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'has_test_pack':
           result.hasTestPack = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'test_pack_ref':
           result.testPackRef = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'Document__Reference__Field':
-          result.reference = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+          result.ffRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
       }
     }
@@ -253,42 +253,42 @@ class _$BookedTestsRecordSerializer
 
 class _$BookedTestsRecord extends BookedTestsRecord {
   @override
-  final DocumentReference<Object> testRef;
+  final DocumentReference<Object?>? testRef;
   @override
-  final DateTime scheduledDate;
+  final DateTime? scheduledDate;
   @override
-  final DocumentReference<Object> bookingRef;
+  final DocumentReference<Object?>? bookingRef;
   @override
-  final bool sampleCollected;
+  final bool? sampleCollected;
   @override
-  final bool sampleSlideRequested;
+  final bool? sampleSlideRequested;
   @override
-  final bool sampleSlideSurrendered;
+  final bool? sampleSlideSurrendered;
   @override
-  final DocumentReference<Object> user;
+  final DocumentReference<Object?>? user;
   @override
-  final String testResult;
+  final String? testResult;
   @override
-  final String testAttachment;
+  final String? testAttachment;
   @override
-  final DateTime createdDate;
+  final DateTime? createdDate;
   @override
-  final bool hasResult;
+  final bool? hasResult;
   @override
-  final String labRefNum;
+  final String? labRefNum;
   @override
-  final DocumentReference<Object> technologist;
+  final DocumentReference<Object?>? technologist;
   @override
-  final DocumentReference<Object> createUser;
+  final DocumentReference<Object?>? createUser;
   @override
-  final bool hasTestPack;
+  final bool? hasTestPack;
   @override
-  final DocumentReference<Object> testPackRef;
+  final DocumentReference<Object?>? testPackRef;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object?>? ffRef;
 
   factory _$BookedTestsRecord(
-          [void Function(BookedTestsRecordBuilder) updates]) =>
+          [void Function(BookedTestsRecordBuilder)? updates]) =>
       (new BookedTestsRecordBuilder()..update(updates))._build();
 
   _$BookedTestsRecord._(
@@ -308,7 +308,7 @@ class _$BookedTestsRecord extends BookedTestsRecord {
       this.createUser,
       this.hasTestPack,
       this.testPackRef,
-      this.reference})
+      this.ffRef})
       : super._();
 
   @override
@@ -339,7 +339,7 @@ class _$BookedTestsRecord extends BookedTestsRecord {
         createUser == other.createUser &&
         hasTestPack == other.hasTestPack &&
         testPackRef == other.testPackRef &&
-        reference == other.reference;
+        ffRef == other.ffRef;
   }
 
   @override
@@ -384,7 +384,7 @@ class _$BookedTestsRecord extends BookedTestsRecord {
                     createUser.hashCode),
                 hasTestPack.hashCode),
             testPackRef.hashCode),
-        reference.hashCode));
+        ffRef.hashCode));
   }
 
   @override
@@ -406,92 +406,91 @@ class _$BookedTestsRecord extends BookedTestsRecord {
           ..add('createUser', createUser)
           ..add('hasTestPack', hasTestPack)
           ..add('testPackRef', testPackRef)
-          ..add('reference', reference))
+          ..add('ffRef', ffRef))
         .toString();
   }
 }
 
 class BookedTestsRecordBuilder
     implements Builder<BookedTestsRecord, BookedTestsRecordBuilder> {
-  _$BookedTestsRecord _$v;
+  _$BookedTestsRecord? _$v;
 
-  DocumentReference<Object> _testRef;
-  DocumentReference<Object> get testRef => _$this._testRef;
-  set testRef(DocumentReference<Object> testRef) => _$this._testRef = testRef;
+  DocumentReference<Object?>? _testRef;
+  DocumentReference<Object?>? get testRef => _$this._testRef;
+  set testRef(DocumentReference<Object?>? testRef) => _$this._testRef = testRef;
 
-  DateTime _scheduledDate;
-  DateTime get scheduledDate => _$this._scheduledDate;
-  set scheduledDate(DateTime scheduledDate) =>
+  DateTime? _scheduledDate;
+  DateTime? get scheduledDate => _$this._scheduledDate;
+  set scheduledDate(DateTime? scheduledDate) =>
       _$this._scheduledDate = scheduledDate;
 
-  DocumentReference<Object> _bookingRef;
-  DocumentReference<Object> get bookingRef => _$this._bookingRef;
-  set bookingRef(DocumentReference<Object> bookingRef) =>
+  DocumentReference<Object?>? _bookingRef;
+  DocumentReference<Object?>? get bookingRef => _$this._bookingRef;
+  set bookingRef(DocumentReference<Object?>? bookingRef) =>
       _$this._bookingRef = bookingRef;
 
-  bool _sampleCollected;
-  bool get sampleCollected => _$this._sampleCollected;
-  set sampleCollected(bool sampleCollected) =>
+  bool? _sampleCollected;
+  bool? get sampleCollected => _$this._sampleCollected;
+  set sampleCollected(bool? sampleCollected) =>
       _$this._sampleCollected = sampleCollected;
 
-  bool _sampleSlideRequested;
-  bool get sampleSlideRequested => _$this._sampleSlideRequested;
-  set sampleSlideRequested(bool sampleSlideRequested) =>
+  bool? _sampleSlideRequested;
+  bool? get sampleSlideRequested => _$this._sampleSlideRequested;
+  set sampleSlideRequested(bool? sampleSlideRequested) =>
       _$this._sampleSlideRequested = sampleSlideRequested;
 
-  bool _sampleSlideSurrendered;
-  bool get sampleSlideSurrendered => _$this._sampleSlideSurrendered;
-  set sampleSlideSurrendered(bool sampleSlideSurrendered) =>
+  bool? _sampleSlideSurrendered;
+  bool? get sampleSlideSurrendered => _$this._sampleSlideSurrendered;
+  set sampleSlideSurrendered(bool? sampleSlideSurrendered) =>
       _$this._sampleSlideSurrendered = sampleSlideSurrendered;
 
-  DocumentReference<Object> _user;
-  DocumentReference<Object> get user => _$this._user;
-  set user(DocumentReference<Object> user) => _$this._user = user;
+  DocumentReference<Object?>? _user;
+  DocumentReference<Object?>? get user => _$this._user;
+  set user(DocumentReference<Object?>? user) => _$this._user = user;
 
-  String _testResult;
-  String get testResult => _$this._testResult;
-  set testResult(String testResult) => _$this._testResult = testResult;
+  String? _testResult;
+  String? get testResult => _$this._testResult;
+  set testResult(String? testResult) => _$this._testResult = testResult;
 
-  String _testAttachment;
-  String get testAttachment => _$this._testAttachment;
-  set testAttachment(String testAttachment) =>
+  String? _testAttachment;
+  String? get testAttachment => _$this._testAttachment;
+  set testAttachment(String? testAttachment) =>
       _$this._testAttachment = testAttachment;
 
-  DateTime _createdDate;
-  DateTime get createdDate => _$this._createdDate;
-  set createdDate(DateTime createdDate) => _$this._createdDate = createdDate;
+  DateTime? _createdDate;
+  DateTime? get createdDate => _$this._createdDate;
+  set createdDate(DateTime? createdDate) => _$this._createdDate = createdDate;
 
-  bool _hasResult;
-  bool get hasResult => _$this._hasResult;
-  set hasResult(bool hasResult) => _$this._hasResult = hasResult;
+  bool? _hasResult;
+  bool? get hasResult => _$this._hasResult;
+  set hasResult(bool? hasResult) => _$this._hasResult = hasResult;
 
-  String _labRefNum;
-  String get labRefNum => _$this._labRefNum;
-  set labRefNum(String labRefNum) => _$this._labRefNum = labRefNum;
+  String? _labRefNum;
+  String? get labRefNum => _$this._labRefNum;
+  set labRefNum(String? labRefNum) => _$this._labRefNum = labRefNum;
 
-  DocumentReference<Object> _technologist;
-  DocumentReference<Object> get technologist => _$this._technologist;
-  set technologist(DocumentReference<Object> technologist) =>
+  DocumentReference<Object?>? _technologist;
+  DocumentReference<Object?>? get technologist => _$this._technologist;
+  set technologist(DocumentReference<Object?>? technologist) =>
       _$this._technologist = technologist;
 
-  DocumentReference<Object> _createUser;
-  DocumentReference<Object> get createUser => _$this._createUser;
-  set createUser(DocumentReference<Object> createUser) =>
+  DocumentReference<Object?>? _createUser;
+  DocumentReference<Object?>? get createUser => _$this._createUser;
+  set createUser(DocumentReference<Object?>? createUser) =>
       _$this._createUser = createUser;
 
-  bool _hasTestPack;
-  bool get hasTestPack => _$this._hasTestPack;
-  set hasTestPack(bool hasTestPack) => _$this._hasTestPack = hasTestPack;
+  bool? _hasTestPack;
+  bool? get hasTestPack => _$this._hasTestPack;
+  set hasTestPack(bool? hasTestPack) => _$this._hasTestPack = hasTestPack;
 
-  DocumentReference<Object> _testPackRef;
-  DocumentReference<Object> get testPackRef => _$this._testPackRef;
-  set testPackRef(DocumentReference<Object> testPackRef) =>
+  DocumentReference<Object?>? _testPackRef;
+  DocumentReference<Object?>? get testPackRef => _$this._testPackRef;
+  set testPackRef(DocumentReference<Object?>? testPackRef) =>
       _$this._testPackRef = testPackRef;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
-      _$this._reference = reference;
+  DocumentReference<Object?>? _ffRef;
+  DocumentReference<Object?>? get ffRef => _$this._ffRef;
+  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   BookedTestsRecordBuilder() {
     BookedTestsRecord._initializeBuilder(this);
@@ -516,7 +515,7 @@ class BookedTestsRecordBuilder
       _createUser = $v.createUser;
       _hasTestPack = $v.hasTestPack;
       _testPackRef = $v.testPackRef;
-      _reference = $v.reference;
+      _ffRef = $v.ffRef;
       _$v = null;
     }
     return this;
@@ -529,7 +528,7 @@ class BookedTestsRecordBuilder
   }
 
   @override
-  void update(void Function(BookedTestsRecordBuilder) updates) {
+  void update(void Function(BookedTestsRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -555,7 +554,7 @@ class BookedTestsRecordBuilder
             createUser: createUser,
             hasTestPack: hasTestPack,
             testPackRef: testPackRef,
-            reference: reference);
+            ffRef: ffRef);
     replace(_$result);
     return _$result;
   }

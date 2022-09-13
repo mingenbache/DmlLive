@@ -16,11 +16,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class UserActivityWidget extends StatefulWidget {
   const UserActivityWidget({
-    Key key,
+    Key? key,
     this.userRef,
   }) : super(key: key);
 
-  final DocumentReference userRef;
+  final DocumentReference? userRef;
 
   @override
   _UserActivityWidgetState createState() => _UserActivityWidgetState();
@@ -30,7 +30,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<UsersRecord>(
-      stream: UsersRecord.getDocument(widget.userRef),
+      stream: UsersRecord.getDocument(widget.userRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -45,7 +45,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
             ),
           );
         }
-        final columnUsersRecord = snapshot.data;
+        final columnUsersRecord = snapshot.data!;
         return Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -253,7 +253,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(8, 0, 0, 0),
                                                 child: Text(
-                                                  columnUsersRecord.role,
+                                                  columnUsersRecord.role!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
@@ -476,7 +476,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                           }
                                                                           List<BookedTestsRecord>
                                                                               textBookedTestsRecordList =
-                                                                              snapshot.data;
+                                                                              snapshot.data!;
                                                                           return Text(
                                                                             textBookedTestsRecordList.length.toString(),
                                                                             maxLines:
@@ -606,7 +606,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                   ),
                                                                                 );
                                                                               }
-                                                                              List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data;
+                                                                              List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data!;
                                                                               return Text(
                                                                                 textTestedTestsRecordList.length.toString(),
                                                                                 maxLines: 1,
@@ -758,7 +758,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                         Text(
                                                                           dateTimeFormat(
                                                                               'd/M/y',
-                                                                              columnUsersRecord.createdTime),
+                                                                              columnUsersRecord.createdTime!),
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle1
                                                                               .override(
@@ -907,7 +907,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                         Text(
                                                                           dateTimeFormat(
                                                                               'd/M/y',
-                                                                              columnUsersRecord.lastLogin),
+                                                                              columnUsersRecord.lastLogin!),
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle1
                                                                               .override(
@@ -1211,20 +1211,28 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                             0,
                                                                             0),
                                                                         child:
-                                                                            Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          children: [
-                                                                            Text(
-                                                                              columnUsersRecord.displayName,
-                                                                              textAlign: TextAlign.start,
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Montserrat',
-                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                    fontWeight: FontWeight.w500,
-                                                                                  ),
-                                                                            ),
-                                                                          ],
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              5,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            children: [
+                                                                              Text(
+                                                                                columnUsersRecord.displayName!,
+                                                                                textAlign: TextAlign.start,
+                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                      fontFamily: 'Montserrat',
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
+                                                                                      fontWeight: FontWeight.w500,
+                                                                                    ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ],
@@ -1276,6 +1284,8 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                           child:
                                                                               Text(
                                                                             'Email',
+                                                                            maxLines:
+                                                                                1,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
                                                                                   color: Colors.white,
@@ -1297,19 +1307,27 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                               BorderRadius.circular(7),
                                                                         ),
                                                                         child:
-                                                                            Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          children: [
-                                                                            Text(
-                                                                              columnUsersRecord.email,
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Montserrat',
-                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                    fontWeight: FontWeight.w500,
-                                                                                  ),
-                                                                            ),
-                                                                          ],
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              5,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            children: [
+                                                                              Text(
+                                                                                columnUsersRecord.email!,
+                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                      fontFamily: 'Montserrat',
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
+                                                                                      fontWeight: FontWeight.w500,
+                                                                                    ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ],
@@ -1370,6 +1388,8 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                           child:
                                                                               Text(
                                                                             'Phone',
+                                                                            maxLines:
+                                                                                1,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
                                                                                   color: Colors.white,
@@ -1391,19 +1411,27 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                               BorderRadius.circular(7),
                                                                         ),
                                                                         child:
-                                                                            Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          children: [
-                                                                            Text(
-                                                                              columnUsersRecord.phoneNumber,
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Montserrat',
-                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                    fontWeight: FontWeight.w500,
-                                                                                  ),
-                                                                            ),
-                                                                          ],
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              5,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            children: [
+                                                                              Text(
+                                                                                columnUsersRecord.phoneNumber!,
+                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                      fontFamily: 'Montserrat',
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
+                                                                                      fontWeight: FontWeight.w500,
+                                                                                    ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ],
@@ -1491,18 +1519,21 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                               borderRadius: BorderRadius.circular(7),
                                                                             ),
                                                                             child:
-                                                                                Row(
-                                                                              mainAxisSize: MainAxisSize.max,
-                                                                              children: [
-                                                                                Text(
-                                                                                  dateTimeFormat('d/M/y', columnUsersRecord.dOB),
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Montserrat',
-                                                                                        color: FlutterFlowTheme.of(context).primaryText,
-                                                                                        fontWeight: FontWeight.w500,
-                                                                                      ),
-                                                                                ),
-                                                                              ],
+                                                                                Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                                                              child: Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                children: [
+                                                                                  Text(
+                                                                                    dateTimeFormat('d/M/y', columnUsersRecord.dOB!),
+                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          fontFamily: 'Montserrat',
+                                                                                          color: FlutterFlowTheme.of(context).primaryText,
+                                                                                          fontWeight: FontWeight.w500,
+                                                                                        ),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                         ),
@@ -1542,19 +1573,26 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                 BorderRadius.circular(7),
                                                                           ),
                                                                           child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children: [
-                                                                              Text(
-                                                                                columnUsersRecord.sex,
-                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Montserrat',
-                                                                                      color: FlutterFlowTheme.of(context).primaryText,
-                                                                                      fontWeight: FontWeight.w500,
-                                                                                    ),
-                                                                              ),
-                                                                            ],
+                                                                              Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                5,
+                                                                                0,
+                                                                                0,
+                                                                                0),
+                                                                            child:
+                                                                                Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              children: [
+                                                                                Text(
+                                                                                  columnUsersRecord.sex!,
+                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        fontFamily: 'Montserrat',
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        fontWeight: FontWeight.w500,
+                                                                                      ),
+                                                                                ),
+                                                                              ],
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       ],
@@ -1601,7 +1639,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                 }
                                                 List<BookingsRecord>
                                                     userBookingsBookingsRecordList =
-                                                    snapshot.data;
+                                                    snapshot.data!;
                                                 return Container(
                                                   width: MediaQuery.of(context)
                                                           .size
@@ -1699,7 +1737,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                 }
                                                 List<PaymentsRecord>
                                                     containerPaymentsRecordList =
-                                                    snapshot.data;
+                                                    snapshot.data!;
                                                 return Container(
                                                   width: MediaQuery.of(context)
                                                       .size
@@ -1772,7 +1810,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                   }
                                                                   final containerPaymentsRecord =
                                                                       snapshot
-                                                                          .data;
+                                                                          .data!;
                                                                   return InkWell(
                                                                     onTap:
                                                                         () async {
@@ -1844,7 +1882,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                               child: Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
                                                                                 child: Text(
-                                                                                  dateTimeFormat('d/M/y', containerPaymentsRecord.createdDate),
+                                                                                  dateTimeFormat('d/M/y', containerPaymentsRecord.createdDate!),
                                                                                   textAlign: TextAlign.start,
                                                                                   maxLines: 1,
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
@@ -1865,7 +1903,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                               child: Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(7, 9, 5, 5),
                                                                                 child: Text(
-                                                                                  containerPaymentsRecord.transactionCode.maybeHandleOverflow(maxChars: 8),
+                                                                                  containerPaymentsRecord.transactionCode!.maybeHandleOverflow(maxChars: 8),
                                                                                   maxLines: 1,
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                         fontFamily: 'Montserrat',
@@ -1888,7 +1926,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                               child: Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(9, 9, 5, 5),
                                                                                 child: Text(
-                                                                                  containerPaymentsRecord.type,
+                                                                                  containerPaymentsRecord.type!,
                                                                                   maxLines: 1,
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                         fontFamily: 'Montserrat',
@@ -1909,7 +1947,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
                                                                                 child: Text(
                                                                                   formatNumber(
-                                                                                    containerPaymentsRecord.amount,
+                                                                                    containerPaymentsRecord.amount!,
                                                                                     formatType: FormatType.decimal,
                                                                                     decimalType: DecimalType.periodDecimal,
                                                                                     currency: 'Ksh ',
@@ -1984,7 +2022,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                     }
                                                     List<ChatsRecord>
                                                         columnChatsRecordList =
-                                                        snapshot.data;
+                                                        snapshot.data!;
                                                     return SingleChildScrollView(
                                                       child: Column(
                                                         mainAxisSize:
@@ -2092,7 +2130,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                               child: Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5, 3, 5, 3),
                                                                                                 child: StreamBuilder<UsersRecord>(
-                                                                                                  stream: UsersRecord.getDocument(columnChatsRecord.lastMessageSentBy),
+                                                                                                  stream: UsersRecord.getDocument(columnChatsRecord.lastMessageSentBy!),
                                                                                                   builder: (context, snapshot) {
                                                                                                     // Customize what your widget looks like when it's loading.
                                                                                                     if (!snapshot.hasData) {
@@ -2107,7 +2145,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                                         ),
                                                                                                       );
                                                                                                     }
-                                                                                                    final textUsersRecord = snapshot.data;
+                                                                                                    final textUsersRecord = snapshot.data!;
                                                                                                     return Text(
                                                                                                       '${textUsersRecord.firstName} ${textUsersRecord.lastName}',
                                                                                                       textAlign: TextAlign.center,
@@ -2128,7 +2166,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                             child: Align(
                                                                                               alignment: AlignmentDirectional(0.7, 0),
                                                                                               child: Text(
-                                                                                                dateTimeFormat('d/M H:mm', columnChatsRecord.lastMessageTime),
+                                                                                                dateTimeFormat('d/M H:mm', columnChatsRecord.lastMessageTime!),
                                                                                                 textAlign: TextAlign.end,
                                                                                                 style: TextStyle(
                                                                                                   color: Color(0xFF57636C),
@@ -2156,7 +2194,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                               child: Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0, 4, 4, 0),
                                                                                                 child: Text(
-                                                                                                  columnChatsRecord.lastMessage,
+                                                                                                  columnChatsRecord.lastMessage!,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                                         fontFamily: 'Lexend Deca',
                                                                                                         color: FlutterFlowTheme.of(context).secondaryColor,

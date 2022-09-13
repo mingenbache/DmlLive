@@ -16,7 +16,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
 class NewBookingSheetWidget extends StatefulWidget {
-  const NewBookingSheetWidget({Key key}) : super(key: key);
+  const NewBookingSheetWidget({Key? key}) : super(key: key);
 
   @override
   _NewBookingSheetWidgetState createState() => _NewBookingSheetWidgetState();
@@ -24,16 +24,16 @@ class NewBookingSheetWidget extends StatefulWidget {
 
 class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
     with TickerProviderStateMixin {
-  TextEditingController docemailAddressController;
+  TextEditingController? docemailAddressController;
 
-  TextEditingController doctorNamesController;
+  TextEditingController? doctorNamesController;
 
-  TextEditingController docphoneNumberController;
+  TextEditingController? docphoneNumberController;
 
-  PageController pageViewController;
-  bool isPatientValue;
+  PageController? pageViewController;
+  bool? isPatientValue;
   List<String> uploadedFileUrls = [];
-  BookingsRecord newbookingRef;
+  BookingsRecord? newbookingRef;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -212,7 +212,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                   children: [
                                     FFButtonWidget(
                                       onPressed: () async {
-                                        await pageViewController.nextPage(
+                                        await pageViewController?.nextPage(
                                           duration: Duration(milliseconds: 300),
                                           curve: Curves.ease,
                                         );
@@ -338,7 +338,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                         onChanged: (newValue) =>
                                                             setState(() =>
                                                                 isPatientValue =
-                                                                    newValue),
+                                                                    newValue!),
                                                         tileColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -373,8 +373,8 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                       FFButtonWidget(
                                         onPressed: () async {
                                           setState(() => FFAppState()
-                                              .isPatient = isPatientValue);
-                                          await pageViewController.nextPage(
+                                              .isPatient = isPatientValue!);
+                                          await pageViewController?.nextPage(
                                             duration:
                                                 Duration(milliseconds: 300),
                                             curve: Curves.ease,
@@ -589,7 +589,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                             maxLines: 1,
                                           ).animated([
                                             animationsMap[
-                                                'textFieldOnPageLoadAnimation']
+                                                'textFieldOnPageLoadAnimation']!
                                           ]),
                                         ),
                                       ),
@@ -829,9 +829,9 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                     .lastBookingPage = true);
                                                 setState(() =>
                                                     FFAppState().isPatient =
-                                                        isPatientValue);
+                                                        isPatientValue!);
                                                 await pageViewController
-                                                    .nextPage(
+                                                    ?.nextPage(
                                                   duration: Duration(
                                                       milliseconds: 300),
                                                   curve: Curves.ease,
@@ -997,14 +997,13 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                                         m.storagePath,
                                                                         m.bytes))))
                                                         .where((u) => u != null)
+                                                        .map((u) => u!)
                                                         .toList();
                                                     ScaffoldMessenger.of(
                                                             context)
                                                         .hideCurrentSnackBar();
-                                                    if (downloadUrls != null &&
-                                                        downloadUrls.length ==
-                                                            selectedMedia
-                                                                .length) {
+                                                    if (downloadUrls.length ==
+                                                        selectedMedia.length) {
                                                       setState(() =>
                                                           uploadedFileUrls =
                                                               downloadUrls);
@@ -1180,9 +1179,9 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                               isInvoiced: false,
                               paidFull: false,
                               resultPublished: false,
-                              docNames: doctorNamesController.text,
-                              doctorPhoneNumber: docphoneNumberController.text,
-                              doctorEmail: docemailAddressController.text,
+                              docNames: doctorNamesController!.text,
+                              doctorPhoneNumber: docphoneNumberController!.text,
+                              doctorEmail: docemailAddressController!.text,
                             ),
                             'form_images':
                                 uploadedFileUrls.map((e) => e).toList(),
@@ -1193,8 +1192,8 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                           newbookingRef = BookingsRecord.getDocumentFromData(
                               bookingsCreateData, bookingsRecordReference);
                           setState(
-                              () => FFAppState().isPatient = isPatientValue);
-                          if (isPatientValue) {
+                              () => FFAppState().isPatient = isPatientValue!);
+                          if (isPatientValue!) {
                             final bookingsUpdateData = createBookingsRecordData(
                               firstname: valueOrDefault(
                                   currentUserDocument?.firstName, ''),
@@ -1203,18 +1202,18 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                               emailaddress: currentUserEmail,
                               sex: valueOrDefault(currentUserDocument?.sex, ''),
                               phonenumber: currentPhoneNumber,
-                              dOB: currentUserDocument?.dOB,
+                              dOB: currentUserDocument!.dOB,
                             );
-                            await newbookingRef.reference
+                            await newbookingRef!.reference
                                 .update(bookingsUpdateData);
                           }
 
                           final usersUpdateData = createUsersRecordData(
-                            currentBooking: newbookingRef.reference,
+                            currentBooking: newbookingRef!.reference,
                             hasCurrentBooking: true,
                           );
-                          await currentUserReference.update(usersUpdateData);
-                          if (!isPatientValue) {
+                          await currentUserReference!.update(usersUpdateData);
+                          if (!isPatientValue!) {
                             setState(() => FFAppState().dobEntered = false);
                           }
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -1236,7 +1235,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                             'NewBooking',
                             queryParams: {
                               'bookingRef': serializeParam(
-                                  newbookingRef.reference,
+                                  newbookingRef!.reference,
                                   ParamType.DocumentReference),
                             }.withoutNulls,
                           );
@@ -1273,7 +1272,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                         ),
                   ),
                 ],
-              ).animated([animationsMap['columnOnPageLoadAnimation']]),
+              ).animated([animationsMap['columnOnPageLoadAnimation']!]),
             ),
           ),
         ],

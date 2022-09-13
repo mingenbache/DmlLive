@@ -5,7 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NotificationsWidgeDarkWidget extends StatefulWidget {
-  const NotificationsWidgeDarkWidget({Key key}) : super(key: key);
+  const NotificationsWidgeDarkWidget({Key? key}) : super(key: key);
 
   @override
   _NotificationsWidgeDarkWidgetState createState() =>

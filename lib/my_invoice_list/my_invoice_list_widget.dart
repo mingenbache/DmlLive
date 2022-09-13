@@ -9,7 +9,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyInvoiceListWidget extends StatefulWidget {
-  const MyInvoiceListWidget({Key key}) : super(key: key);
+  const MyInvoiceListWidget({Key? key}) : super(key: key);
 
   @override
   _MyInvoiceListWidgetState createState() => _MyInvoiceListWidgetState();
@@ -39,7 +39,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
             ),
           );
         }
-        List<InvoicesRecord> myInvoiceListInvoicesRecordList = snapshot.data;
+        List<InvoicesRecord> myInvoiceListInvoicesRecordList = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -176,7 +176,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                     );
                                   }
                                   final invoiceListItemInvoicesRecord =
-                                      snapshot.data;
+                                      snapshot.data!;
                                   return InkWell(
                                     onTap: () async {
                                       context.pushNamed(
@@ -221,7 +221,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                             }
                                             List<PaymentsRecord>
                                                 containerPaymentsRecordList =
-                                                snapshot.data;
+                                                snapshot.data!;
                                             return InkWell(
                                               onTap: () async {
                                                 context.pushNamed(
@@ -454,7 +454,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                           child:
                                                                               Text(
                                                                             formatNumber(
-                                                                              invoiceListItemInvoicesRecord.invoiceAmount,
+                                                                              invoiceListItemInvoicesRecord.invoiceAmount!,
                                                                               formatType: FormatType.decimal,
                                                                               decimalType: DecimalType.periodDecimal,
                                                                               currency: 'Ksh ',
@@ -505,7 +505,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                           Stack(
                                                                         children: [
                                                                           if (!invoiceListItemInvoicesRecord
-                                                                              .isPaid)
+                                                                              .isPaid!)
                                                                             Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                               child: Text(
@@ -621,7 +621,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                               child: Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
                                                                                                 child: Text(
-                                                                                                  dateTimeFormat('d/M/y', paymentOnInvoiceItem.createdDate),
+                                                                                                  dateTimeFormat('d/M/y', paymentOnInvoiceItem.createdDate!),
                                                                                                   textAlign: TextAlign.start,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                         fontFamily: 'Montserrat',
@@ -638,7 +638,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                               child: Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(7, 9, 5, 5),
                                                                                                 child: Text(
-                                                                                                  paymentOnInvoiceItem.transactionCode,
+                                                                                                  paymentOnInvoiceItem.transactionCode!,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                         fontFamily: 'Montserrat',
                                                                                                         color: FlutterFlowTheme.of(context).secondaryColor,
@@ -657,7 +657,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(9, 9, 5, 5),
                                                                                                 child: Text(
                                                                                                   formatNumber(
-                                                                                                    paymentOnInvoiceItem.amount,
+                                                                                                    paymentOnInvoiceItem.amount!,
                                                                                                     formatType: FormatType.decimal,
                                                                                                     decimalType: DecimalType.periodDecimal,
                                                                                                     currency: 'Kshs',
@@ -678,7 +678,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
                                                                                                 child: Text(
                                                                                                   formatNumber(
-                                                                                                    paymentOnInvoiceItem.amount,
+                                                                                                    paymentOnInvoiceItem.amount!,
                                                                                                     formatType: FormatType.decimal,
                                                                                                     decimalType: DecimalType.periodDecimal,
                                                                                                   ),

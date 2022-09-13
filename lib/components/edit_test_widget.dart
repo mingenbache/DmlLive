@@ -13,32 +13,32 @@ import 'package:google_fonts/google_fonts.dart';
 
 class EditTestWidget extends StatefulWidget {
   const EditTestWidget({
-    Key key,
+    Key? key,
     this.userRef,
     this.testRef,
   }) : super(key: key);
 
-  final DocumentReference userRef;
-  final DocumentReference testRef;
+  final DocumentReference? userRef;
+  final DocumentReference? testRef;
 
   @override
   _EditTestWidgetState createState() => _EditTestWidgetState();
 }
 
 class _EditTestWidgetState extends State<EditTestWidget> {
-  TextEditingController resultsDurationTextController;
+  TextEditingController? resultsDurationTextController;
 
-  double durationResultsSliderValue;
+  double? durationResultsSliderValue;
 
-  TextEditingController testDescriptionController;
+  TextEditingController? testDescriptionController;
 
-  TextEditingController textController1;
+  TextEditingController? textController1;
 
-  String dropDownValue;
-  bool atHomeToggleValue;
-  double testDurationSliderValue;
+  String? dropDownValue;
+  bool? atHomeToggleValue;
+  double? testDurationSliderValue;
 
-  TextEditingController testPriceController;
+  TextEditingController? testPriceController;
 
   final formKey = GlobalKey<FormState>();
 
@@ -61,7 +61,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
       key: formKey,
       autovalidateMode: AutovalidateMode.always,
       child: StreamBuilder<TestsRecord>(
-        stream: TestsRecord.getDocument(widget.testRef),
+        stream: TestsRecord.getDocument(widget.testRef!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -76,7 +76,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
               ),
             );
           }
-          final columnTestsRecord = snapshot.data;
+          final columnTestsRecord = snapshot.data!;
           return Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -295,7 +295,8 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                 .fromSTEB(15,
                                                                     15, 15, 15),
                                                         suffixIcon:
-                                                            textController1.text
+                                                            textController1!
+                                                                    .text
                                                                     .isNotEmpty
                                                                 ? InkWell(
                                                                     onTap:
@@ -424,7 +425,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                         }
                                                         List<CategoriesRecord>
                                                             dropDownCategoriesRecordList =
-                                                            snapshot.data;
+                                                            snapshot.data!;
                                                         final dropDownCategoriesRecord =
                                                             dropDownCategoriesRecordList
                                                                     .isNotEmpty
@@ -437,8 +438,8 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                   columnTestsRecord
                                                                       .category,
                                                           options:
-                                                              dropDownCategoriesRecord
-                                                                  .categories
+                                                              dropDownCategoriesRecord!
+                                                                  .categories!
                                                                   .toList()
                                                                   .toList(),
                                                           onChanged: (val) =>
@@ -545,7 +546,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                             .fromSTEB(
                                                                 5, 0, 0, 5),
                                                     suffixIcon:
-                                                        testDescriptionController
+                                                        testDescriptionController!
                                                                 .text.isNotEmpty
                                                             ? InkWell(
                                                                 onTap:
@@ -630,7 +631,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                         value:
                                                             atHomeToggleValue ??=
                                                                 columnTestsRecord
-                                                                    .homeTest,
+                                                                    .homeTest!,
                                                         onChanged: (newValue) =>
                                                             setState(() =>
                                                                 atHomeToggleValue =
@@ -777,7 +778,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                         ),
                                                         child: Text(
                                                           columnTestsRecord
-                                                              .duration
+                                                              .duration!
                                                               .toString()
                                                               .maybeHandleOverflow(
                                                                   maxChars: 3),
@@ -819,7 +820,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                           max: 180,
                                                           value: testDurationSliderValue ??=
                                                               columnTestsRecord
-                                                                  .duration,
+                                                                  .duration!,
                                                           label:
                                                               testDurationSliderValue
                                                                   .toString(),
@@ -1078,7 +1079,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                           max: 120,
                                                           value: durationResultsSliderValue ??=
                                                               columnTestsRecord
-                                                                  .durationResults,
+                                                                  .durationResults!,
                                                           label:
                                                               durationResultsSliderValue
                                                                   .toString(),
@@ -1298,7 +1299,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                 updateRole: valueOrDefault(
                                     currentUserDocument?.role, ''),
                               );
-                              await widget.testRef.update(testsUpdateData);
+                              await widget.testRef!.update(testsUpdateData);
 
                               context.pushNamed(
                                 'Details',

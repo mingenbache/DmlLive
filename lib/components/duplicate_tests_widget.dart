@@ -12,13 +12,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class DuplicateTestsWidget extends StatefulWidget {
   const DuplicateTestsWidget({
-    Key key,
+    Key? key,
     this.booking,
     this.packageRef,
   }) : super(key: key);
 
-  final BookingsRecord booking;
-  final DocumentReference packageRef;
+  final BookingsRecord? booking;
+  final DocumentReference? packageRef;
 
   @override
   _DuplicateTestsWidgetState createState() => _DuplicateTestsWidgetState();
@@ -50,7 +50,7 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                 );
               }
               List<TestPackagesRecord> containerTestPackagesRecordList =
-                  snapshot.data;
+                  snapshot.data!;
               return Material(
                 color: Colors.transparent,
                 elevation: 3,
@@ -162,7 +162,7 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                             .returnPackagesinBooking(
                                                 containerTestPackagesRecordList
                                                     .toList(),
-                                                widget.booking.testPackages
+                                                widget.booking!.testPackages!
                                                     .toList())
                                             .toList(),
                                         FFAppState().duplicateTests.toList())
@@ -226,7 +226,7 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                                         children: [
                                                           Text(
                                                             duplicatetestsPackagesItem
-                                                                .packageName,
+                                                                .packageName!,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyText1
@@ -249,8 +249,8 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                                       children: [
                                                         InkWell(
                                                           onTap: () async {
-                                                            if (widget.booking
-                                                                .testPackages
+                                                            if (widget.booking!
+                                                                .testPackages!
                                                                 .toList()
                                                                 .contains(widget
                                                                     .packageRef)) {
@@ -259,7 +259,7 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                                                 ...createBookingsRecordData(
                                                                   totalPrice: functions.removeFromCart(
                                                                       widget
-                                                                          .booking
+                                                                          .booking!
                                                                           .totalPrice,
                                                                       duplicatetestsPackagesItem
                                                                           .price),
@@ -272,15 +272,15 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                                                 ]),
                                                                 'testPackTests': functions.removeBookingPackageTests(
                                                                     duplicatetestsPackagesItem
-                                                                        .testsIncluded
+                                                                        .testsIncluded!
                                                                         .toList(),
                                                                     widget
-                                                                        .booking
-                                                                        .testPackTests
+                                                                        .booking!
+                                                                        .testPackTests!
                                                                         .toList()),
                                                               };
                                                               await widget
-                                                                  .booking
+                                                                  .booking!
                                                                   .reference
                                                                   .update(
                                                                       bookingsUpdateData);
@@ -387,7 +387,8 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                                                 );
                                                               }
                                                               final containerTestsRecord =
-                                                                  snapshot.data;
+                                                                  snapshot
+                                                                      .data!;
                                                               return Material(
                                                                 color: Colors
                                                                     .transparent,

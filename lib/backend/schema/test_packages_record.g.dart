@@ -17,10 +17,11 @@ class _$TestPackagesRecordSerializer
   final String wireName = 'TestPackagesRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, TestPackagesRecord object,
+  Iterable<Object?> serialize(
+      Serializers serializers, TestPackagesRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.packageName;
     if (value != null) {
       result
@@ -40,7 +41,8 @@ class _$TestPackagesRecordSerializer
         ..add('TestsIncluded')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType(DocumentReference, const [const FullType(Object)])
+              const FullType(
+                  DocumentReference, const [const FullType.nullable(Object)])
             ])));
     }
     value = object.description;
@@ -91,7 +93,7 @@ class _$TestPackagesRecordSerializer
         ..add('create_Staff')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.createDate;
     if (value != null) {
@@ -100,83 +102,83 @@ class _$TestPackagesRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
     }
-    value = object.reference;
+    value = object.ffRef;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     return result;
   }
 
   @override
   TestPackagesRecord deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new TestPackagesRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'PackageName':
           result.packageName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'Price':
           result.price = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'TestsIncluded':
           result.testsIncluded.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType(
-                    DocumentReference, const [const FullType(Object)])
-              ])) as BuiltList<Object>);
+                    DocumentReference, const [const FullType.nullable(Object)])
+              ]))! as BuiltList<Object?>);
           break;
         case 'description':
           result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'duration':
           result.duration = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double)) as double?;
           break;
         case 'duration_results':
           result.durationResults = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double)) as double?;
           break;
         case 'category':
           result.category = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'atHome':
           result.atHome = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'isAvailable':
           result.isAvailable = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'create_Staff':
           result.createStaff = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'create_date':
           result.createDate = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'Document__Reference__Field':
-          result.reference = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+          result.ffRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
       }
     }
@@ -187,32 +189,32 @@ class _$TestPackagesRecordSerializer
 
 class _$TestPackagesRecord extends TestPackagesRecord {
   @override
-  final String packageName;
+  final String? packageName;
   @override
-  final int price;
+  final int? price;
   @override
-  final BuiltList<DocumentReference<Object>> testsIncluded;
+  final BuiltList<DocumentReference<Object?>>? testsIncluded;
   @override
-  final String description;
+  final String? description;
   @override
-  final double duration;
+  final double? duration;
   @override
-  final double durationResults;
+  final double? durationResults;
   @override
-  final String category;
+  final String? category;
   @override
-  final bool atHome;
+  final bool? atHome;
   @override
-  final bool isAvailable;
+  final bool? isAvailable;
   @override
-  final DocumentReference<Object> createStaff;
+  final DocumentReference<Object?>? createStaff;
   @override
-  final DateTime createDate;
+  final DateTime? createDate;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object?>? ffRef;
 
   factory _$TestPackagesRecord(
-          [void Function(TestPackagesRecordBuilder) updates]) =>
+          [void Function(TestPackagesRecordBuilder)? updates]) =>
       (new TestPackagesRecordBuilder()..update(updates))._build();
 
   _$TestPackagesRecord._(
@@ -227,7 +229,7 @@ class _$TestPackagesRecord extends TestPackagesRecord {
       this.isAvailable,
       this.createStaff,
       this.createDate,
-      this.reference})
+      this.ffRef})
       : super._();
 
   @override
@@ -254,7 +256,7 @@ class _$TestPackagesRecord extends TestPackagesRecord {
         isAvailable == other.isAvailable &&
         createStaff == other.createStaff &&
         createDate == other.createDate &&
-        reference == other.reference;
+        ffRef == other.ffRef;
   }
 
   @override
@@ -280,7 +282,7 @@ class _$TestPackagesRecord extends TestPackagesRecord {
                     isAvailable.hashCode),
                 createStaff.hashCode),
             createDate.hashCode),
-        reference.hashCode));
+        ffRef.hashCode));
   }
 
   @override
@@ -297,67 +299,66 @@ class _$TestPackagesRecord extends TestPackagesRecord {
           ..add('isAvailable', isAvailable)
           ..add('createStaff', createStaff)
           ..add('createDate', createDate)
-          ..add('reference', reference))
+          ..add('ffRef', ffRef))
         .toString();
   }
 }
 
 class TestPackagesRecordBuilder
     implements Builder<TestPackagesRecord, TestPackagesRecordBuilder> {
-  _$TestPackagesRecord _$v;
+  _$TestPackagesRecord? _$v;
 
-  String _packageName;
-  String get packageName => _$this._packageName;
-  set packageName(String packageName) => _$this._packageName = packageName;
+  String? _packageName;
+  String? get packageName => _$this._packageName;
+  set packageName(String? packageName) => _$this._packageName = packageName;
 
-  int _price;
-  int get price => _$this._price;
-  set price(int price) => _$this._price = price;
+  int? _price;
+  int? get price => _$this._price;
+  set price(int? price) => _$this._price = price;
 
-  ListBuilder<DocumentReference<Object>> _testsIncluded;
-  ListBuilder<DocumentReference<Object>> get testsIncluded =>
-      _$this._testsIncluded ??= new ListBuilder<DocumentReference<Object>>();
-  set testsIncluded(ListBuilder<DocumentReference<Object>> testsIncluded) =>
+  ListBuilder<DocumentReference<Object?>>? _testsIncluded;
+  ListBuilder<DocumentReference<Object?>> get testsIncluded =>
+      _$this._testsIncluded ??= new ListBuilder<DocumentReference<Object?>>();
+  set testsIncluded(ListBuilder<DocumentReference<Object?>>? testsIncluded) =>
       _$this._testsIncluded = testsIncluded;
 
-  String _description;
-  String get description => _$this._description;
-  set description(String description) => _$this._description = description;
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
 
-  double _duration;
-  double get duration => _$this._duration;
-  set duration(double duration) => _$this._duration = duration;
+  double? _duration;
+  double? get duration => _$this._duration;
+  set duration(double? duration) => _$this._duration = duration;
 
-  double _durationResults;
-  double get durationResults => _$this._durationResults;
-  set durationResults(double durationResults) =>
+  double? _durationResults;
+  double? get durationResults => _$this._durationResults;
+  set durationResults(double? durationResults) =>
       _$this._durationResults = durationResults;
 
-  String _category;
-  String get category => _$this._category;
-  set category(String category) => _$this._category = category;
+  String? _category;
+  String? get category => _$this._category;
+  set category(String? category) => _$this._category = category;
 
-  bool _atHome;
-  bool get atHome => _$this._atHome;
-  set atHome(bool atHome) => _$this._atHome = atHome;
+  bool? _atHome;
+  bool? get atHome => _$this._atHome;
+  set atHome(bool? atHome) => _$this._atHome = atHome;
 
-  bool _isAvailable;
-  bool get isAvailable => _$this._isAvailable;
-  set isAvailable(bool isAvailable) => _$this._isAvailable = isAvailable;
+  bool? _isAvailable;
+  bool? get isAvailable => _$this._isAvailable;
+  set isAvailable(bool? isAvailable) => _$this._isAvailable = isAvailable;
 
-  DocumentReference<Object> _createStaff;
-  DocumentReference<Object> get createStaff => _$this._createStaff;
-  set createStaff(DocumentReference<Object> createStaff) =>
+  DocumentReference<Object?>? _createStaff;
+  DocumentReference<Object?>? get createStaff => _$this._createStaff;
+  set createStaff(DocumentReference<Object?>? createStaff) =>
       _$this._createStaff = createStaff;
 
-  DateTime _createDate;
-  DateTime get createDate => _$this._createDate;
-  set createDate(DateTime createDate) => _$this._createDate = createDate;
+  DateTime? _createDate;
+  DateTime? get createDate => _$this._createDate;
+  set createDate(DateTime? createDate) => _$this._createDate = createDate;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
-      _$this._reference = reference;
+  DocumentReference<Object?>? _ffRef;
+  DocumentReference<Object?>? get ffRef => _$this._ffRef;
+  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   TestPackagesRecordBuilder() {
     TestPackagesRecord._initializeBuilder(this);
@@ -377,7 +378,7 @@ class TestPackagesRecordBuilder
       _isAvailable = $v.isAvailable;
       _createStaff = $v.createStaff;
       _createDate = $v.createDate;
-      _reference = $v.reference;
+      _ffRef = $v.ffRef;
       _$v = null;
     }
     return this;
@@ -390,7 +391,7 @@ class TestPackagesRecordBuilder
   }
 
   @override
-  void update(void Function(TestPackagesRecordBuilder) updates) {
+  void update(void Function(TestPackagesRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -413,9 +414,9 @@ class TestPackagesRecordBuilder
               isAvailable: isAvailable,
               createStaff: createStaff,
               createDate: createDate,
-              reference: reference);
+              ffRef: ffRef);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'testsIncluded';
         _testsIncluded?.build();

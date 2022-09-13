@@ -13,11 +13,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AddPaymentWidget extends StatefulWidget {
   const AddPaymentWidget({
-    Key key,
+    Key? key,
     this.invoiceRef,
   }) : super(key: key);
 
-  final DocumentReference invoiceRef;
+  final DocumentReference? invoiceRef;
 
   @override
   _AddPaymentWidgetState createState() => _AddPaymentWidgetState();
@@ -25,19 +25,19 @@ class AddPaymentWidget extends StatefulWidget {
 
 class _AddPaymentWidgetState extends State<AddPaymentWidget>
     with TickerProviderStateMixin {
-  TextEditingController firstNameController;
+  TextEditingController? firstNameController;
 
-  TextEditingController lastNameController;
+  TextEditingController? lastNameController;
 
-  TextEditingController textController1;
+  TextEditingController? textController1;
 
-  TextEditingController transactionReferenceController;
+  TextEditingController? transactionReferenceController;
 
-  String paymentMethodValue;
+  String? paymentMethodValue;
 
-  TextEditingController paymentNotesController;
+  TextEditingController? paymentNotesController;
 
-  PaymentsRecord paymentRef;
+  PaymentsRecord? paymentRef;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
@@ -268,7 +268,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                             return null;
                           },
                         ).animated(
-                            [animationsMap['textFieldOnPageLoadAnimation1']]),
+                            [animationsMap['textFieldOnPageLoadAnimation1']!]),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
@@ -501,8 +501,9 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
                             ),
-                          ).animated(
-                              [animationsMap['textFieldOnPageLoadAnimation2']]),
+                          ).animated([
+                            animationsMap['textFieldOnPageLoadAnimation2']!
+                          ]),
                         ),
                       ),
                       Padding(
@@ -537,7 +538,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                               EdgeInsetsDirectional.fromSTEB(20, 20, 12, 20),
                           hidesUnderline: true,
                         ).animated(
-                            [animationsMap['dropDownOnPageLoadAnimation']]),
+                            [animationsMap['dropDownOnPageLoadAnimation']!]),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
@@ -614,8 +615,9 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                                 ),
                             textAlign: TextAlign.start,
                             maxLines: 4,
-                          ).animated(
-                              [animationsMap['textFieldOnPageLoadAnimation3']]),
+                          ).animated([
+                            animationsMap['textFieldOnPageLoadAnimation3']!
+                          ]),
                         ),
                       ),
                     ],
@@ -640,10 +642,10 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                             createdDate: getCurrentTimestamp,
                             isApproved: false,
                             transactionCode:
-                                transactionReferenceController.text,
-                            amount: int.parse(textController1.text),
-                            firstName: firstNameController.text,
-                            lastName: lastNameController.text,
+                                transactionReferenceController!.text,
+                            amount: int.parse(textController1!.text),
+                            firstName: firstNameController!.text,
+                            lastName: lastNameController!.text,
                           );
                           var paymentsRecordReference =
                               PaymentsRecord.collection.doc();

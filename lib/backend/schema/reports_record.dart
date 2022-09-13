@@ -10,62 +10,45 @@ abstract class ReportsRecord
     implements Built<ReportsRecord, ReportsRecordBuilder> {
   static Serializer<ReportsRecord> get serializer => _$reportsRecordSerializer;
 
-  @nullable
-  DocumentReference get booking;
+  DocumentReference? get booking;
 
-  @nullable
-  BuiltList<DocumentReference> get testedTests;
+  BuiltList<DocumentReference>? get testedTests;
 
-  @nullable
-  DocumentReference get bookinguser;
+  DocumentReference? get bookinguser;
 
-  @nullable
-  DocumentReference get doctor;
+  DocumentReference? get doctor;
 
-  @nullable
-  BuiltList<DocumentReference> get technologist;
+  BuiltList<DocumentReference>? get technologist;
 
-  @nullable
-  String get pathologistComments;
+  String? get pathologistComments;
 
-  @nullable
   @BuiltValueField(wireName: 'samples_released')
-  BuiltList<String> get samplesReleased;
+  BuiltList<String>? get samplesReleased;
 
-  @nullable
-  DateTime get createdDate;
+  DateTime? get createdDate;
 
-  @nullable
-  DocumentReference get createdUser;
+  DocumentReference? get createdUser;
 
-  @nullable
-  bool get isComplete;
+  bool? get isComplete;
 
-  @nullable
-  String get patientName;
+  String? get patientName;
 
-  @nullable
-  String get patientSex;
+  String? get patientSex;
 
-  @nullable
-  String get labRefNum;
+  String? get labRefNum;
 
-  @nullable
-  String get pathologist;
+  String? get pathologist;
 
-  @nullable
   @BuiltValueField(wireName: 'DML_Email')
-  String get dMLEmail;
+  String? get dMLEmail;
 
-  @nullable
-  int get patientAge;
+  int? get patientAge;
 
-  @nullable
-  BuiltList<DocumentReference> get testpackageList;
+  BuiltList<DocumentReference>? get testpackageList;
 
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(ReportsRecordBuilder builder) => builder
     ..testedTests = ListBuilder()
@@ -86,11 +69,11 @@ abstract class ReportsRecord
 
   static Stream<ReportsRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   static Future<ReportsRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   ReportsRecord._();
   factory ReportsRecord([void Function(ReportsRecordBuilder) updates]) =
@@ -99,41 +82,47 @@ abstract class ReportsRecord
   static ReportsRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
 Map<String, dynamic> createReportsRecordData({
-  DocumentReference booking,
-  DocumentReference bookinguser,
-  DocumentReference doctor,
-  String pathologistComments,
-  DateTime createdDate,
-  DocumentReference createdUser,
-  bool isComplete,
-  String patientName,
-  String patientSex,
-  String labRefNum,
-  String pathologist,
-  String dMLEmail,
-  int patientAge,
-}) =>
-    serializers.toFirestore(
-        ReportsRecord.serializer,
-        ReportsRecord((r) => r
-          ..booking = booking
-          ..testedTests = null
-          ..bookinguser = bookinguser
-          ..doctor = doctor
-          ..technologist = null
-          ..pathologistComments = pathologistComments
-          ..samplesReleased = null
-          ..createdDate = createdDate
-          ..createdUser = createdUser
-          ..isComplete = isComplete
-          ..patientName = patientName
-          ..patientSex = patientSex
-          ..labRefNum = labRefNum
-          ..pathologist = pathologist
-          ..dMLEmail = dMLEmail
-          ..patientAge = patientAge
-          ..testpackageList = null));
+  DocumentReference? booking,
+  DocumentReference? bookinguser,
+  DocumentReference? doctor,
+  String? pathologistComments,
+  DateTime? createdDate,
+  DocumentReference? createdUser,
+  bool? isComplete,
+  String? patientName,
+  String? patientSex,
+  String? labRefNum,
+  String? pathologist,
+  String? dMLEmail,
+  int? patientAge,
+}) {
+  final firestoreData = serializers.toFirestore(
+    ReportsRecord.serializer,
+    ReportsRecord(
+      (r) => r
+        ..booking = booking
+        ..testedTests = null
+        ..bookinguser = bookinguser
+        ..doctor = doctor
+        ..technologist = null
+        ..pathologistComments = pathologistComments
+        ..samplesReleased = null
+        ..createdDate = createdDate
+        ..createdUser = createdUser
+        ..isComplete = isComplete
+        ..patientName = patientName
+        ..patientSex = patientSex
+        ..labRefNum = labRefNum
+        ..pathologist = pathologist
+        ..dMLEmail = dMLEmail
+        ..patientAge = patientAge
+        ..testpackageList = null,
+    ),
+  );
+
+  return firestoreData;
+}

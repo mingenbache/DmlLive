@@ -13,7 +13,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PackageTestListWidget extends StatefulWidget {
-  const PackageTestListWidget({Key key}) : super(key: key);
+  const PackageTestListWidget({Key? key}) : super(key: key);
 
   @override
   _PackageTestListWidgetState createState() => _PackageTestListWidgetState();
@@ -21,7 +21,7 @@ class PackageTestListWidget extends StatefulWidget {
 
 class _PackageTestListWidgetState extends State<PackageTestListWidget>
     with TickerProviderStateMixin {
-  TextEditingController textController;
+  TextEditingController? textController;
 
   final animationsMap = {
     'buttonOnActionTriggerAnimation': AnimationInfo(
@@ -246,7 +246,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                           ),
                                         ),
                                         suffixIcon:
-                                            textController.text.isNotEmpty
+                                            textController!.text.isNotEmpty
                                                 ? InkWell(
                                                     onTap: () async {
                                                       textController?.clear();
@@ -402,9 +402,9 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                       }
                                       List<CategoriesRecord>
                                           listViewCategoriesRecordList =
-                                          snapshot.data;
+                                          snapshot.data!;
                                       // Return an empty Container when the document does not exist.
-                                      if (snapshot.data.isEmpty) {
+                                      if (snapshot.data!.isEmpty) {
                                         return Container();
                                       }
                                       final listViewCategoriesRecord =
@@ -416,8 +416,8 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                       return Builder(
                                         builder: (context) {
                                           final packageCategories =
-                                              listViewCategoriesRecord
-                                                  .categories
+                                              listViewCategoriesRecord!
+                                                  .categories!
                                                   .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
@@ -569,7 +569,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                             );
                           }
                           List<TestsRecord> testListWidgetTestsRecordList =
-                              snapshot.data;
+                              snapshot.data!;
                           return Container(
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.height * 0.55,
@@ -589,7 +589,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                 children: [
                                   StreamBuilder<UsersRecord>(
                                     stream: UsersRecord.getDocument(
-                                        currentUserReference),
+                                        currentUserReference!),
                                     builder: (context, snapshot) {
                                       // Customize what your widget looks like when it's loading.
                                       if (!snapshot.hasData) {
@@ -606,7 +606,8 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                           ),
                                         );
                                       }
-                                      final listViewUsersRecord = snapshot.data;
+                                      final listViewUsersRecord =
+                                          snapshot.data!;
                                       return Builder(
                                         builder: (context) {
                                           final testsListFullPage = functions
@@ -615,7 +616,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                   FFAppState().categorypicked,
                                                   functions
                                                       .returnSearchTests(
-                                                          textController.text,
+                                                          textController!.text,
                                                           testListWidgetTestsRecordList
                                                               .toList())
                                                       .toList())
@@ -710,7 +711,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                         borderRadius: BorderRadius.circular(25),
                       ),
                     ).animated(
-                        [animationsMap['buttonOnActionTriggerAnimation']]),
+                        [animationsMap['buttonOnActionTriggerAnimation']!]),
                   ],
                 ),
               ],

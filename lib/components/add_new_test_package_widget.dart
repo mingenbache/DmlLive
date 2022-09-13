@@ -17,11 +17,11 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class AddNewTestPackageWidget extends StatefulWidget {
   const AddNewTestPackageWidget({
-    Key key,
+    Key? key,
     this.userRef,
   }) : super(key: key);
 
-  final DocumentReference userRef;
+  final DocumentReference? userRef;
 
   @override
   _AddNewTestPackageWidgetState createState() =>
@@ -30,26 +30,26 @@ class AddNewTestPackageWidget extends StatefulWidget {
 
 class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
     with TickerProviderStateMixin {
-  TextEditingController packageDescriptionController;
+  TextEditingController? packageDescriptionController;
 
-  String packageCategoryDropDownValue;
-  bool atHomeToggleValue;
+  String? packageCategoryDropDownValue;
+  bool? atHomeToggleValue;
 
-  TextEditingController testDurationTextController;
+  TextEditingController? testDurationTextController;
 
-  double testDurationSliderValue;
+  double? testDurationSliderValue;
 
-  TextEditingController resultsDurationTextController;
+  TextEditingController? resultsDurationTextController;
 
-  double durationResultsSliderValue;
+  double? durationResultsSliderValue;
 
-  TextEditingController testPriceController;
+  TextEditingController? testPriceController;
 
-  PageController pageViewController;
+  PageController? pageViewController;
 
-  TextEditingController testPackageNameController;
+  TextEditingController? testPackageNameController;
 
-  TestPackagesRecord newTestPackId;
+  TestPackagesRecord? newTestPackId;
   final formKey = GlobalKey<FormState>();
   final animationsMap = {
     'buttonOnPageLoadAnimation': AnimationInfo(
@@ -115,9 +115,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
               ),
             );
           }
-          List<StaffRecord> columnStaffRecordList = snapshot.data;
+          List<StaffRecord> columnStaffRecordList = snapshot.data!;
           // Return an empty Container when the document does not exist.
-          if (snapshot.data.isEmpty) {
+          if (snapshot.data!.isEmpty) {
             return Container();
           }
           final columnStaffRecord = columnStaffRecordList.isNotEmpty
@@ -271,7 +271,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 15, 15, 15, 15),
-                                        suffixIcon: testPackageNameController
+                                        suffixIcon: testPackageNameController!
                                                 .text.isNotEmpty
                                             ? InkWell(
                                                 onTap: () async {
@@ -414,7 +414,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                             }
                                                             List<CategoriesRecord>
                                                                 packageCategoryDropDownCategoriesRecordList =
-                                                                snapshot.data;
+                                                                snapshot.data!;
                                                             final packageCategoryDropDownCategoriesRecord =
                                                                 packageCategoryDropDownCategoriesRecordList
                                                                         .isNotEmpty
@@ -423,8 +423,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     : null;
                                                             return FlutterFlowDropDown(
                                                               options:
-                                                                  packageCategoryDropDownCategoriesRecord
-                                                                      .categories
+                                                                  packageCategoryDropDownCategoriesRecord!
+                                                                      .categories!
                                                                       .toList()
                                                                       .toList(),
                                                               onChanged: (val) =>
@@ -569,7 +569,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .fromSTEB(
                                                                   5, 5, 0, 5),
                                                       suffixIcon:
-                                                          packageDescriptionController
+                                                          packageDescriptionController!
                                                                   .text
                                                                   .isNotEmpty
                                                               ? InkWell(
@@ -1436,7 +1436,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                     FFButtonWidget(
                                                       onPressed: () async {
                                                         await pageViewController
-                                                            .nextPage(
+                                                            ?.nextPage(
                                                           duration: Duration(
                                                               milliseconds:
                                                                   300),
@@ -1583,7 +1583,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     }
                                                                     final testPackTestItemTestsRecord =
                                                                         snapshot
-                                                                            .data;
+                                                                            .data!;
                                                                     return Material(
                                                                       color: Colors
                                                                           .transparent,
@@ -1626,7 +1626,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
                                                                                     Text(
-                                                                                      testPackTestItemTestsRecord.name,
+                                                                                      testPackTestItemTestsRecord.name!,
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                             fontFamily: 'Montserrat',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1651,7 +1651,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                                     ),
                                                                                   ),
                                                                                   Text(
-                                                                                    testPackTestItemTestsRecord.price.toString(),
+                                                                                    testPackTestItemTestsRecord.price!.toString(),
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                           fontFamily: 'Montserrat',
                                                                                           color: FlutterFlowTheme.of(context).primaryColor,
@@ -1794,7 +1794,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                         count: 2,
                                         axisDirection: Axis.horizontal,
                                         onDotClicked: (i) {
-                                          pageViewController.animateToPage(
+                                          pageViewController!.animateToPage(
                                             i,
                                             duration:
                                                 Duration(milliseconds: 500),
@@ -1845,15 +1845,15 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                   final testPackagesCreateData = {
                                     ...createTestPackagesRecordData(
                                       price:
-                                          int.parse(testPriceController.text),
+                                          int.parse(testPriceController!.text),
                                       packageName:
-                                          testPackageNameController.text,
+                                          testPackageNameController!.text,
                                       description:
-                                          packageDescriptionController.text,
+                                          packageDescriptionController!.text,
                                       duration: double.parse(
-                                          testDurationTextController.text),
+                                          testDurationTextController!.text),
                                       durationResults: double.parse(
-                                          resultsDurationTextController.text),
+                                          resultsDurationTextController!.text),
                                       category: packageCategoryDropDownValue,
                                       atHome: atHomeToggleValue,
                                       createDate: getCurrentTimestamp,
@@ -1894,8 +1894,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                   ),
                                   borderRadius: BorderRadius.circular(25),
                                 ),
-                              ).animated(
-                                  [animationsMap['buttonOnPageLoadAnimation']]),
+                              ).animated([
+                                animationsMap['buttonOnPageLoadAnimation']!
+                              ]),
                             ),
                           ),
                         ],

@@ -13,15 +13,15 @@ import 'package:fl_chart/fl_chart.dart';
 
 class ChartTests extends StatefulWidget {
   const ChartTests({
-    Key key,
+    Key? key,
     this.width,
     this.height,
     this.testData,
   }) : super(key: key);
 
-  final double width;
-  final double height;
-  final List<double> testData;
+  final double? width;
+  final double? height;
+  final List<double>? testData;
   @override
   _ChartTestsState createState() => _ChartTestsState();
 }
@@ -364,9 +364,9 @@ class _ChartTestsState extends State<ChartTests> {
           isCurved: true,
           colors: [
             ColorTween(begin: gradientColors[0], end: gradientColors[1])
-                .lerp(0.2),
+                .lerp(0.2)!,
             ColorTween(begin: gradientColors[0], end: gradientColors[1])
-                .lerp(0.2),
+                .lerp(0.2)!,
           ],
           barWidth: 5,
           isStrokeCapRound: true,
@@ -375,10 +375,10 @@ class _ChartTestsState extends State<ChartTests> {
           ),
           belowBarData: BarAreaData(show: true, colors: [
             ColorTween(begin: gradientColors[0], end: gradientColors[1])
-                .lerp(0.2)
+                .lerp(0.2)!
                 .withOpacity(0.1),
             ColorTween(begin: gradientColors[0], end: gradientColors[1])
-                .lerp(0.2)
+                .lerp(0.2)!
                 .withOpacity(0.1),
           ]),
         ),

@@ -14,7 +14,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ChooseTechnologistWidget extends StatefulWidget {
   const ChooseTechnologistWidget({
-    Key key,
+    Key? key,
     this.testRef,
     this.bookingRef,
     this.scheduledDate,
@@ -23,12 +23,12 @@ class ChooseTechnologistWidget extends StatefulWidget {
     this.testName,
   }) : super(key: key);
 
-  final DocumentReference testRef;
-  final DocumentReference bookingRef;
-  final DateTime scheduledDate;
-  final BookingsRecord booking;
-  final BookedTestsRecord bookedTest;
-  final String testName;
+  final DocumentReference? testRef;
+  final DocumentReference? bookingRef;
+  final DateTime? scheduledDate;
+  final BookingsRecord? booking;
+  final BookedTestsRecord? bookedTest;
+  final String? testName;
 
   @override
   _ChooseTechnologistWidgetState createState() =>
@@ -37,7 +37,7 @@ class ChooseTechnologistWidget extends StatefulWidget {
 
 class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
     with TickerProviderStateMixin {
-  String technologistValue;
+  String? technologistValue;
   final animationsMap = {
     'dropDownOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -89,7 +89,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
               );
             }
             List<StaffRecord> technologistContainerStaffRecordList =
-                snapshot.data;
+                snapshot.data!;
             return Container(
               constraints: BoxConstraints(
                 maxHeight: 350,
@@ -248,12 +248,12 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                         }
                                         List<StaffRecord>
                                             technologistStaffRecordList =
-                                            snapshot.data;
+                                            snapshot.data!;
                                         return FlutterFlowDropDown(
                                           initialOption: technologistValue ??=
                                               'No Technologist Assigned',
                                           options: technologistStaffRecordList
-                                              .map((e) => e.displayName)
+                                              .map((e) => e.displayName!)
                                               .toList()
                                               .toList(),
                                           onChanged: (val) => setState(
@@ -294,7 +294,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                           hidesUnderline: true,
                                         ).animated([
                                           animationsMap[
-                                              'dropDownOnPageLoadAnimation']
+                                              'dropDownOnPageLoadAnimation']!
                                         ]);
                                       },
                                     ),
@@ -336,9 +336,9 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                               );
                             }
                             List<StaffRecord> rowStaffRecordList =
-                                snapshot.data;
+                                snapshot.data!;
                             // Return an empty Container when the document does not exist.
-                            if (snapshot.data.isEmpty) {
+                            if (snapshot.data!.isEmpty) {
                               return Container();
                             }
                             final rowStaffRecord = rowStaffRecordList.isNotEmpty
@@ -370,9 +370,9 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                       );
                                     }
                                     List<StaffRecord> buttonStaffRecordList =
-                                        snapshot.data;
+                                        snapshot.data!;
                                     // Return an empty Container when the document does not exist.
-                                    if (snapshot.data.isEmpty) {
+                                    if (snapshot.data!.isEmpty) {
                                       return Container();
                                     }
                                     final buttonStaffRecord =
@@ -389,7 +389,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                                 FieldValue.arrayUnion(
                                                     [widget.testRef]),
                                           };
-                                          await widget.bookingRef
+                                          await widget.bookingRef!
                                               .update(bookingsUpdateData);
 
                                           final bookedTestsUpdateData =
@@ -397,9 +397,9 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                             scheduledDate: widget.scheduledDate,
                                             createdDate: getCurrentTimestamp,
                                             technologist:
-                                                buttonStaffRecord.reference,
+                                                buttonStaffRecord!.reference,
                                           );
-                                          await widget.bookedTest.reference
+                                          await widget.bookedTest!.reference
                                               .update(bookedTestsUpdateData);
                                           triggerPushNotification(
                                             notificationTitle:
@@ -407,7 +407,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                             notificationText:
                                                 '${widget.testName} Test Scheduled for ${dateTimeFormat('MMMMEEEEd', widget.scheduledDate)}',
                                             userRefs: [
-                                              buttonStaffRecord.userRef
+                                              buttonStaffRecord!.userRef!
                                             ],
                                             initialPageName:
                                                 'TechnologistTestDeck',

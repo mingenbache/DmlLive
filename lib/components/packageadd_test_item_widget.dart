@@ -10,15 +10,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PackageaddTestItemWidget extends StatefulWidget {
   const PackageaddTestItemWidget({
-    Key key,
+    Key? key,
     this.index,
     this.listSize,
     this.test,
   }) : super(key: key);
 
-  final int index;
-  final int listSize;
-  final TestsRecord test;
+  final int? index;
+  final int? listSize;
+  final TestsRecord? test;
 
   @override
   _PackageaddTestItemWidgetState createState() =>
@@ -154,15 +154,15 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                         children: [
                           if (FFAppState()
                               .testPackTests
-                              .contains(widget.test.reference))
+                              .contains(widget.test!.reference))
                             InkWell(
                               onTap: () async {
                                 if (FFAppState()
                                     .testPackTests
-                                    .contains(widget.test.reference)) {
+                                    .contains(widget.test!.reference)) {
                                   setState(() => FFAppState()
                                       .removeFromTestPackTests(
-                                          widget.test.reference));
+                                          widget.test!.reference));
                                 } else {
                                   return;
                                 }
@@ -225,19 +225,19 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                               ),
                             ).animated([
                               animationsMap[
-                                  'containerOnActionTriggerAnimation1']
+                                  'containerOnActionTriggerAnimation1']!
                             ]),
                           if (!FFAppState()
                               .testPackTests
-                              .contains(widget.test.reference))
+                              .contains(widget.test!.reference))
                             InkWell(
                               onTap: () async {
                                 if (!FFAppState()
                                     .testPackTests
-                                    .contains(widget.test.reference)) {
+                                    .contains(widget.test!.reference)) {
                                   setState(() => FFAppState()
                                       .addToTestPackTests(
-                                          widget.test.reference));
+                                          widget.test!.reference));
                                 } else {
                                   return;
                                 }
@@ -300,10 +300,10 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                               ),
                             ).animated([
                               animationsMap[
-                                  'containerOnActionTriggerAnimation2']
+                                  'containerOnActionTriggerAnimation2']!
                             ]),
                         ],
-                      ).animated([animationsMap['stackOnPageLoadAnimation']]),
+                      ).animated([animationsMap['stackOnPageLoadAnimation']!]),
                     ],
                   ),
                 ],
@@ -380,7 +380,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                                 child: Text(
                                                   functions
                                                       .camelCase(
-                                                          widget.test.name)
+                                                          widget.test!.name)
                                                       .maybeHandleOverflow(
                                                           maxChars: 25),
                                                   style: TextStyle(
@@ -398,7 +398,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                   ),
                                 ),
                               ).animated([
-                                animationsMap['containerOnPageLoadAnimation1']
+                                animationsMap['containerOnPageLoadAnimation1']!
                               ]),
                               Align(
                                 alignment: AlignmentDirectional(0, 1),
@@ -527,8 +527,8 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                                                             4),
                                                                     child: Text(
                                                                       widget
-                                                                          .test
-                                                                          .category,
+                                                                          .test!
+                                                                          .category!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyText1
@@ -581,7 +581,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                                                   size: 20,
                                                                 ),
                                                                 Text(
-                                                                  '${widget.test.durationResults?.toString()} Hrs',
+                                                                  '${widget.test!.durationResults?.toString()} Hrs',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1
@@ -689,8 +689,8 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                                                           Text(
                                                                         formatNumber(
                                                                           widget
-                                                                              .test
-                                                                              .price,
+                                                                              .test!
+                                                                              .price!,
                                                                           formatType:
                                                                               FormatType.decimal,
                                                                           decimalType:
@@ -727,7 +727,8 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                     ),
                                   ),
                                 ).animated([
-                                  animationsMap['containerOnPageLoadAnimation2']
+                                  animationsMap[
+                                      'containerOnPageLoadAnimation2']!
                                 ]),
                               ),
                             ],

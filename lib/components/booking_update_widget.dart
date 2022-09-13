@@ -15,25 +15,25 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BookingUpdateWidget extends StatefulWidget {
   const BookingUpdateWidget({
-    Key key,
+    Key? key,
     this.bookingRef,
   }) : super(key: key);
 
-  final BookingsRecord bookingRef;
+  final BookingsRecord? bookingRef;
 
   @override
   _BookingUpdateWidgetState createState() => _BookingUpdateWidgetState();
 }
 
 class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
-  PageController pageViewController;
+  PageController? pageViewController;
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: AlignmentDirectional(0, 1),
       child: StreamBuilder<BookingsRecord>(
-        stream: BookingsRecord.getDocument(widget.bookingRef.reference),
+        stream: BookingsRecord.getDocument(widget.bookingRef!.reference),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -48,7 +48,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
               ),
             );
           }
-          final bookingUpdatesContainerBookingsRecord = snapshot.data;
+          final bookingUpdatesContainerBookingsRecord = snapshot.data!;
           return Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.8,
@@ -289,7 +289,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            bookingUpdatesContainerBookingsRecord.bookingstatus,
+                                                                            bookingUpdatesContainerBookingsRecord.bookingstatus!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Lexend Deca',
                                                                                   color: Colors.white,
@@ -316,7 +316,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                             UsersRecord>(
                                                           stream: UsersRecord
                                                               .getDocument(
-                                                                  currentUserReference),
+                                                                  currentUserReference!),
                                                           builder: (context,
                                                               snapshot) {
                                                             // Customize what your widget looks like when it's loading.
@@ -337,7 +337,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                               );
                                                             }
                                                             final containerUsersRecord =
-                                                                snapshot.data;
+                                                                snapshot.data!;
                                                             return Container(
                                                               width: MediaQuery.of(
                                                                           context)
@@ -566,7 +566,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                             Padding(
                                                                                               padding: EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0),
                                                                                               child: Text(
-                                                                                                bookingUpdatesContainerBookingsRecord.bookedTests.toList().length.toString(),
+                                                                                                bookingUpdatesContainerBookingsRecord.bookedTests!.toList().length.toString(),
                                                                                                 style: FlutterFlowTheme.of(context).subtitle2.override(
                                                                                                       fontFamily: 'Montserrat',
                                                                                                       color: FlutterFlowTheme.of(context).primaryText,
@@ -665,9 +665,9 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                     ),
                                                                                                   );
                                                                                                 }
-                                                                                                List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data;
+                                                                                                List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data!;
                                                                                                 return Text(
-                                                                                                  bookingUpdatesContainerBookingsRecord.verifiedTests.toList().length.toString(),
+                                                                                                  bookingUpdatesContainerBookingsRecord.verifiedTests!.toList().length.toString(),
                                                                                                   style: FlutterFlowTheme.of(context).subtitle2.override(
                                                                                                         fontFamily: 'Montserrat',
                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
@@ -743,7 +743,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(3, 7, 0, 0),
                                                                                     child: Text(
                                                                                       formatNumber(
-                                                                                        bookingUpdatesContainerBookingsRecord.totalPrice,
+                                                                                        bookingUpdatesContainerBookingsRecord.totalPrice!,
                                                                                         formatType: FormatType.decimal,
                                                                                         decimalType: DecimalType.periodDecimal,
                                                                                         currency: 'Ksh ',
@@ -818,7 +818,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(3, 7, 0, 0),
                                                                                     child: Text(
                                                                                       formatNumber(
-                                                                                        bookingUpdatesContainerBookingsRecord.paymentBalance,
+                                                                                        bookingUpdatesContainerBookingsRecord.paymentBalance!,
                                                                                         formatType: FormatType.decimal,
                                                                                         decimalType: DecimalType.periodDecimal,
                                                                                         currency: 'Ksh ',
@@ -860,7 +860,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                         UsersRecord>(
                                                       stream: UsersRecord
                                                           .getDocument(
-                                                              currentUserReference),
+                                                              currentUserReference!),
                                                       builder:
                                                           (context, snapshot) {
                                                         // Customize what your widget looks like when it's loading.
@@ -880,7 +880,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                           );
                                                         }
                                                         final containerUsersRecord =
-                                                            snapshot.data;
+                                                            snapshot.data!;
                                                         return Container(
                                                           width: MediaQuery.of(
                                                                       context)
@@ -1091,7 +1091,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               3),
                                                                           child:
                                                                               Text(
-                                                                            bookingUpdatesContainerBookingsRecord.emailaddress,
+                                                                            bookingUpdatesContainerBookingsRecord.emailaddress!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -1187,7 +1187,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               3),
                                                                           child:
                                                                               Text(
-                                                                            bookingUpdatesContainerBookingsRecord.phonenumber,
+                                                                            bookingUpdatesContainerBookingsRecord.phonenumber!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -1288,7 +1288,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(3, 5, 3, 0),
                                                                                 child: Text(
-                                                                                  dateTimeFormat('d/M/y', bookingUpdatesContainerBookingsRecord.dOB),
+                                                                                  dateTimeFormat('d/M/y', bookingUpdatesContainerBookingsRecord.dOB!),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                         fontFamily: 'Montserrat',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
@@ -1371,7 +1371,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                 Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                                                                   child: Text(
-                                                                                    bookingUpdatesContainerBookingsRecord.sex,
+                                                                                    bookingUpdatesContainerBookingsRecord.sex!,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                           fontFamily: 'Montserrat',
                                                                                           color: FlutterFlowTheme.of(context).primaryText,
@@ -1429,7 +1429,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                       ),
                                                       BookedTestsWidget(
                                                         bookingRef: widget
-                                                            .bookingRef
+                                                            .bookingRef!
                                                             .reference,
                                                       ),
                                                     ],
@@ -1506,7 +1506,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                   (context) {
                                                                 final invoices =
                                                                     bookingUpdatesContainerBookingsRecord
-                                                                        .invoiceRefs
+                                                                        .invoiceRefs!
                                                                         .toList();
                                                                 return ListView
                                                                     .builder(
@@ -1555,7 +1555,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                             );
                                                                           }
                                                                           final containerInvoicesRecord =
-                                                                              snapshot.data;
+                                                                              snapshot.data!;
                                                                           return InkWell(
                                                                             onTap:
                                                                                 () async {
@@ -1568,7 +1568,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                     padding: MediaQuery.of(context).viewInsets,
                                                                                     child: InvoiceSheetWidget(
                                                                                       invoiceRef: invoicesItem,
-                                                                                      booking: widget.bookingRef.reference,
+                                                                                      booking: widget.bookingRef!.reference,
                                                                                     ),
                                                                                   );
                                                                                 },
@@ -1608,7 +1608,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                         children: [
                                                                                           Text(
                                                                                             formatNumber(
-                                                                                              containerInvoicesRecord.invoiceAmount,
+                                                                                              containerInvoicesRecord.invoiceAmount!,
                                                                                               formatType: FormatType.decimal,
                                                                                               decimalType: DecimalType.periodDecimal,
                                                                                               currency: 'Ksh ',
@@ -1672,7 +1672,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                   Padding(
                                                                                                     padding: EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0),
                                                                                                     child: Text(
-                                                                                                      dateTimeFormat('yMMMd', containerInvoicesRecord.dueDate),
+                                                                                                      dateTimeFormat('yMMMd', containerInvoicesRecord.dueDate!),
                                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                             fontFamily: 'Montserrat',
                                                                                                             color: FlutterFlowTheme.of(context).primaryText,
@@ -1737,7 +1737,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                                   height: 25,
                                                                                                                   child: Stack(
                                                                                                                     children: [
-                                                                                                                      if (!containerInvoicesRecord.isPaid)
+                                                                                                                      if (!containerInvoicesRecord.isPaid!)
                                                                                                                         Container(
                                                                                                                           decoration: BoxDecoration(
                                                                                                                             shape: BoxShape.circle,
@@ -1887,7 +1887,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                               count: 5,
                                               axisDirection: Axis.horizontal,
                                               onDotClicked: (i) {
-                                                pageViewController
+                                                pageViewController!
                                                     .animateToPage(
                                                   i,
                                                   duration: Duration(

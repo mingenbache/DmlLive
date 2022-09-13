@@ -11,68 +11,52 @@ abstract class BookedTestsRecord
   static Serializer<BookedTestsRecord> get serializer =>
       _$bookedTestsRecordSerializer;
 
-  @nullable
-  DocumentReference get testRef;
+  DocumentReference? get testRef;
 
-  @nullable
   @BuiltValueField(wireName: 'scheduled_date')
-  DateTime get scheduledDate;
+  DateTime? get scheduledDate;
 
-  @nullable
   @BuiltValueField(wireName: 'booking_ref')
-  DocumentReference get bookingRef;
+  DocumentReference? get bookingRef;
 
-  @nullable
   @BuiltValueField(wireName: 'sample_collected')
-  bool get sampleCollected;
+  bool? get sampleCollected;
 
-  @nullable
   @BuiltValueField(wireName: 'sample_slide_requested')
-  bool get sampleSlideRequested;
+  bool? get sampleSlideRequested;
 
-  @nullable
   @BuiltValueField(wireName: 'sample_slide_surrendered')
-  bool get sampleSlideSurrendered;
+  bool? get sampleSlideSurrendered;
 
-  @nullable
-  DocumentReference get user;
+  DocumentReference? get user;
 
-  @nullable
   @BuiltValueField(wireName: 'test_result')
-  String get testResult;
+  String? get testResult;
 
-  @nullable
   @BuiltValueField(wireName: 'test_attachment')
-  String get testAttachment;
+  String? get testAttachment;
 
-  @nullable
   @BuiltValueField(wireName: 'created_date')
-  DateTime get createdDate;
+  DateTime? get createdDate;
 
-  @nullable
   @BuiltValueField(wireName: 'has_result')
-  bool get hasResult;
+  bool? get hasResult;
 
-  @nullable
-  String get labRefNum;
+  String? get labRefNum;
 
-  @nullable
-  DocumentReference get technologist;
+  DocumentReference? get technologist;
 
-  @nullable
-  DocumentReference get createUser;
+  DocumentReference? get createUser;
 
-  @nullable
   @BuiltValueField(wireName: 'has_test_pack')
-  bool get hasTestPack;
+  bool? get hasTestPack;
 
-  @nullable
   @BuiltValueField(wireName: 'test_pack_ref')
-  DocumentReference get testPackRef;
+  DocumentReference? get testPackRef;
 
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(BookedTestsRecordBuilder builder) => builder
     ..sampleCollected = false
@@ -89,11 +73,11 @@ abstract class BookedTestsRecord
 
   static Stream<BookedTestsRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   static Future<BookedTestsRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   BookedTestsRecord._();
   factory BookedTestsRecord([void Function(BookedTestsRecordBuilder) updates]) =
@@ -102,43 +86,49 @@ abstract class BookedTestsRecord
   static BookedTestsRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
 Map<String, dynamic> createBookedTestsRecordData({
-  DocumentReference testRef,
-  DateTime scheduledDate,
-  DocumentReference bookingRef,
-  bool sampleCollected,
-  bool sampleSlideRequested,
-  bool sampleSlideSurrendered,
-  DocumentReference user,
-  String testResult,
-  String testAttachment,
-  DateTime createdDate,
-  bool hasResult,
-  String labRefNum,
-  DocumentReference technologist,
-  DocumentReference createUser,
-  bool hasTestPack,
-  DocumentReference testPackRef,
-}) =>
-    serializers.toFirestore(
-        BookedTestsRecord.serializer,
-        BookedTestsRecord((b) => b
-          ..testRef = testRef
-          ..scheduledDate = scheduledDate
-          ..bookingRef = bookingRef
-          ..sampleCollected = sampleCollected
-          ..sampleSlideRequested = sampleSlideRequested
-          ..sampleSlideSurrendered = sampleSlideSurrendered
-          ..user = user
-          ..testResult = testResult
-          ..testAttachment = testAttachment
-          ..createdDate = createdDate
-          ..hasResult = hasResult
-          ..labRefNum = labRefNum
-          ..technologist = technologist
-          ..createUser = createUser
-          ..hasTestPack = hasTestPack
-          ..testPackRef = testPackRef));
+  DocumentReference? testRef,
+  DateTime? scheduledDate,
+  DocumentReference? bookingRef,
+  bool? sampleCollected,
+  bool? sampleSlideRequested,
+  bool? sampleSlideSurrendered,
+  DocumentReference? user,
+  String? testResult,
+  String? testAttachment,
+  DateTime? createdDate,
+  bool? hasResult,
+  String? labRefNum,
+  DocumentReference? technologist,
+  DocumentReference? createUser,
+  bool? hasTestPack,
+  DocumentReference? testPackRef,
+}) {
+  final firestoreData = serializers.toFirestore(
+    BookedTestsRecord.serializer,
+    BookedTestsRecord(
+      (b) => b
+        ..testRef = testRef
+        ..scheduledDate = scheduledDate
+        ..bookingRef = bookingRef
+        ..sampleCollected = sampleCollected
+        ..sampleSlideRequested = sampleSlideRequested
+        ..sampleSlideSurrendered = sampleSlideSurrendered
+        ..user = user
+        ..testResult = testResult
+        ..testAttachment = testAttachment
+        ..createdDate = createdDate
+        ..hasResult = hasResult
+        ..labRefNum = labRefNum
+        ..technologist = technologist
+        ..createUser = createUser
+        ..hasTestPack = hasTestPack
+        ..testPackRef = testPackRef,
+    ),
+  );
+
+  return firestoreData;
+}

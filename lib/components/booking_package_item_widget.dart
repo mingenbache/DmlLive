@@ -13,17 +13,17 @@ import 'package:google_fonts/google_fonts.dart';
 
 class BookingPackageItemWidget extends StatefulWidget {
   const BookingPackageItemWidget({
-    Key key,
+    Key? key,
     this.package,
     this.index,
     this.listSize,
     this.booking,
   }) : super(key: key);
 
-  final TestPackagesRecord package;
-  final int index;
-  final int listSize;
-  final BookingsRecord booking;
+  final TestPackagesRecord? package;
+  final int? index;
+  final int? listSize;
+  final BookingsRecord? booking;
 
   @override
   _BookingPackageItemWidgetState createState() =>
@@ -157,30 +157,30 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                     children: [
                       Stack(
                         children: [
-                          if (widget.booking.testPackages
+                          if (widget.booking!.testPackages!
                               .toList()
-                              .contains(widget.package.reference))
+                              .contains(widget.package!.reference))
                             InkWell(
                               onTap: () async {
-                                if (widget.booking.testPackages
+                                if (widget.booking!.testPackages!
                                     .toList()
-                                    .contains(widget.package.reference)) {
+                                    .contains(widget.package!.reference)) {
                                   final bookingsUpdateData = {
                                     ...createBookingsRecordData(
                                       totalPrice: functions.removeFromCart(
-                                          widget.booking.totalPrice,
-                                          widget.package.price),
+                                          widget.booking!.totalPrice,
+                                          widget.package!.price),
                                     ),
                                     'testPackages': FieldValue.arrayRemove(
-                                        [widget.package.reference]),
+                                        [widget.package!.reference]),
                                     'testPackTests':
                                         functions.removeBookingPackageTests(
-                                            widget.package.testsIncluded
+                                            widget.package!.testsIncluded!
                                                 .toList(),
-                                            widget.booking.testPackTests
+                                            widget.booking!.testPackTests!
                                                 .toList()),
                                   };
-                                  await widget.booking.reference
+                                  await widget.booking!.reference
                                       .update(bookingsUpdateData);
                                 } else {
                                   return;
@@ -244,34 +244,34 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                               ),
                             ).animated([
                               animationsMap[
-                                  'containerOnActionTriggerAnimation1']
+                                  'containerOnActionTriggerAnimation1']!
                             ]),
-                          if (!widget.booking.testPackages
+                          if (!widget.booking!.testPackages!
                               .toList()
-                              .contains(widget.package.reference))
+                              .contains(widget.package!.reference))
                             InkWell(
                               onTap: () async {
-                                if (widget.booking.hasTestPackages) {
-                                  if (!widget.booking.testPackages
+                                if (widget.booking!.hasTestPackages!) {
+                                  if (!widget.booking!.testPackages!
                                       .toList()
-                                      .contains(widget.package.reference)) {
+                                      .contains(widget.package!.reference)) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
                                         totalPrice: functions.addCartTotal(
-                                            widget.booking.totalPrice,
-                                            widget.package.price),
+                                            widget.booking!.totalPrice,
+                                            widget.package!.price),
                                         hasTestPackages: true,
                                       ),
                                       'testPackages': FieldValue.arrayUnion(
-                                          [widget.package.reference]),
+                                          [widget.package!.reference]),
                                       'testPackTests':
                                           functions.addBookingPackageTests(
-                                              widget.booking.testPackTests
+                                              widget.booking!.testPackTests!
                                                   .toList(),
-                                              widget.package.testsIncluded
+                                              widget.package!.testsIncluded!
                                                   .toList()),
                                     };
-                                    await widget.booking.reference
+                                    await widget.booking!.reference
                                         .update(bookingsUpdateData);
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
@@ -291,20 +291,20 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                   final bookingsUpdateData = {
                                     ...createBookingsRecordData(
                                       totalPrice: functions.addCartTotal(
-                                          widget.booking.totalPrice,
-                                          widget.package.price),
+                                          widget.booking!.totalPrice,
+                                          widget.package!.price),
                                       hasTestPackages: true,
                                     ),
                                     'testPackages': FieldValue.arrayUnion(
-                                        [widget.package.reference]),
+                                        [widget.package!.reference]),
                                     'testPackTests':
                                         functions.addBookingPackageTests(
-                                            widget.booking.testPackTests
+                                            widget.booking!.testPackTests!
                                                 .toList(),
-                                            widget.package.testsIncluded
+                                            widget.package!.testsIncluded!
                                                 .toList()),
                                   };
-                                  await widget.booking.reference
+                                  await widget.booking!.reference
                                       .update(bookingsUpdateData);
                                   return;
                                 }
@@ -356,10 +356,10 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                               ),
                             ).animated([
                               animationsMap[
-                                  'containerOnActionTriggerAnimation2']
+                                  'containerOnActionTriggerAnimation2']!
                             ]),
                         ],
-                      ).animated([animationsMap['stackOnPageLoadAnimation']]),
+                      ).animated([animationsMap['stackOnPageLoadAnimation']!]),
                     ],
                   ),
                 ],
@@ -456,7 +456,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                   child: Text(
                                                     functions
                                                         .camelCase(widget
-                                                            .package
+                                                            .package!
                                                             .packageName)
                                                         .maybeHandleOverflow(
                                                             maxChars: 25),
@@ -477,7 +477,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                   ),
                                 ),
                               ).animated([
-                                animationsMap['containerOnPageLoadAnimation1']
+                                animationsMap['containerOnPageLoadAnimation1']!
                               ]),
                               Align(
                                 alignment: AlignmentDirectional(0, 1),
@@ -606,8 +606,8 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                             4),
                                                                     child: Text(
                                                                       widget
-                                                                          .package
-                                                                          .category,
+                                                                          .package!
+                                                                          .category!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyText1
@@ -660,7 +660,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                   size: 20,
                                                                 ),
                                                                 Text(
-                                                                  '${widget.package.durationResults?.toString()} Hrs',
+                                                                  '${widget.package!.durationResults?.toString()} Hrs',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1
@@ -771,7 +771,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                     child:
                                                                         Stack(
                                                                       children: [
-                                                                        if (widget.package.atHome ??
+                                                                        if (widget.package!.atHome ??
                                                                             true)
                                                                           Align(
                                                                             alignment:
@@ -783,7 +783,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                               size: 16,
                                                                             ),
                                                                           ),
-                                                                        if (widget.package.atHome ??
+                                                                        if (widget.package!.atHome ??
                                                                             true)
                                                                           Align(
                                                                             alignment:
@@ -847,8 +847,8 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                           Text(
                                                                         formatNumber(
                                                                           widget
-                                                                              .package
-                                                                              .price,
+                                                                              .package!
+                                                                              .price!,
                                                                           formatType:
                                                                               FormatType.decimal,
                                                                           decimalType:
@@ -885,7 +885,8 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                     ),
                                   ),
                                 ).animated([
-                                  animationsMap['containerOnPageLoadAnimation2']
+                                  animationsMap[
+                                      'containerOnPageLoadAnimation2']!
                                 ]),
                               ),
                             ],

@@ -27,17 +27,17 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 
   static _MyAppState of(BuildContext context) =>
-      context.findAncestorStateOfType<_MyAppState>();
+      context.findAncestorStateOfType<_MyAppState>()!;
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale _locale;
+  Locale? _locale;
   ThemeMode _themeMode = ThemeMode.system;
 
-  Stream<DmlLiveFirebaseUser> userStream;
+  late Stream<DmlLiveFirebaseUser> userStream;
 
-  AppStateNotifier _appStateNotifier;
-  GoRouter _router;
+  late AppStateNotifier _appStateNotifier;
+  late GoRouter _router;
 
   final authUserSub = authenticatedUserStream.listen((_) {});
   final fcmTokenSub = fcmTokenUserStream.listen((_) {});

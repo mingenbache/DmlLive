@@ -24,11 +24,11 @@ import 'package:page_transition/page_transition.dart';
 
 class BookingConfirmationWidget extends StatefulWidget {
   const BookingConfirmationWidget({
-    Key key,
+    Key? key,
     this.bookingRef,
   }) : super(key: key);
 
-  final DocumentReference bookingRef;
+  final DocumentReference? bookingRef;
 
   @override
   _BookingConfirmationWidgetState createState() =>
@@ -37,10 +37,10 @@ class BookingConfirmationWidget extends StatefulWidget {
 
 class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
     with TickerProviderStateMixin {
-  TextEditingController labRefNumController;
+  TextEditingController? labRefNumController;
 
-  DateTime datePicked;
-  String refDoctorValue;
+  DateTime? datePicked;
+  String? refDoctorValue;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
@@ -78,7 +78,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<BookingsRecord>(
-      stream: BookingsRecord.getDocument(widget.bookingRef),
+      stream: BookingsRecord.getDocument(widget.bookingRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -93,7 +93,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
             ),
           );
         }
-        final bookingConfirmationBookingsRecord = snapshot.data;
+        final bookingConfirmationBookingsRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -157,7 +157,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
                     child: StreamBuilder<UsersRecord>(
-                      stream: UsersRecord.getDocument(currentUserReference),
+                      stream: UsersRecord.getDocument(currentUserReference!),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -173,7 +173,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                             ),
                           );
                         }
-                        final columnUsersRecord = snapshot.data;
+                        final columnUsersRecord = snapshot.data!;
                         return SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -473,7 +473,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                               },
                                             ).animated([
                                               animationsMap[
-                                                  'textFieldOnPageLoadAnimation']
+                                                  'textFieldOnPageLoadAnimation']!
                                             ]),
                                           ),
                                         ),
@@ -551,10 +551,10 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                 },
                                                 currentTime:
                                                     bookingConfirmationBookingsRecord
-                                                        .scheduledDate,
+                                                        .scheduledDate!,
                                                 minTime:
                                                     bookingConfirmationBookingsRecord
-                                                        .scheduledDate,
+                                                        .scheduledDate!,
                                               );
                                             },
                                             child: Container(
@@ -704,7 +704,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                 6, 6, 3, 3),
                                                     child: AutoSizeText(
                                                       bookingConfirmationBookingsRecord
-                                                          .docNameAddress,
+                                                          .docNameAddress!,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -860,11 +860,11 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                               }
                                               List<DoctorsRecord>
                                                   refDoctorDoctorsRecordList =
-                                                  snapshot.data;
+                                                  snapshot.data!;
                                               return FlutterFlowDropDown(
                                                 options:
                                                     refDoctorDoctorsRecordList
-                                                        .map((e) => e.name)
+                                                        .map((e) => e.name!)
                                                         .toList()
                                                         .toList(),
                                                 onChanged: (val) => setState(
@@ -905,7 +905,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                     0, 10, 0, 20),
                                 child: StreamBuilder<UsersRecord>(
                                   stream: UsersRecord.getDocument(
-                                      currentUserReference),
+                                      currentUserReference!),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
                                     if (!snapshot.hasData) {
@@ -921,7 +921,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                         ),
                                       );
                                     }
-                                    final containerUsersRecord = snapshot.data;
+                                    final containerUsersRecord = snapshot.data!;
                                     return Material(
                                       color: Colors.transparent,
                                       elevation: 2,
@@ -1156,7 +1156,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                     6, 6, 3, 3),
                                                         child: Text(
                                                           bookingConfirmationBookingsRecord
-                                                              .emailaddress,
+                                                              .emailaddress!,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyText1
@@ -1260,7 +1260,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                     6, 6, 3, 3),
                                                         child: Text(
                                                           bookingConfirmationBookingsRecord
-                                                              .phonenumber,
+                                                              .phonenumber!,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyText1
@@ -1385,7 +1385,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                   dateTimeFormat(
                                                                       'd/M/y',
                                                                       bookingConfirmationBookingsRecord
-                                                                          .dOB),
+                                                                          .dOB!),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1
@@ -1494,7 +1494,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                             0),
                                                                 child: Text(
                                                                   bookingConfirmationBookingsRecord
-                                                                      .sex,
+                                                                      .sex!,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1
@@ -1590,7 +1590,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                               builder: (context) {
                                                 final testFormImages =
                                                     bookingConfirmationBookingsRecord
-                                                        .formImages
+                                                        .formImages!
                                                         .toList();
                                                 return Wrap(
                                                   spacing: 5,
@@ -1758,7 +1758,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                     4, 4, 4, 4),
                                                         child: Text(
                                                           bookingConfirmationBookingsRecord
-                                                              .diagnosis,
+                                                              .diagnosis!,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyText1
@@ -1862,7 +1862,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                         builder: (context) {
                                                           final packagesList =
                                                               bookingConfirmationBookingsRecord
-                                                                  .testPackages
+                                                                  .testPackages!
                                                                   .toList();
                                                           return ListView
                                                               .builder(
@@ -1915,7 +1915,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                     }
                                                                     final bookingTestPackageItemTestPackagesRecord =
                                                                         snapshot
-                                                                            .data;
+                                                                            .data!;
                                                                     return InkWell(
                                                                       onTap:
                                                                           () async {
@@ -1979,7 +1979,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
                                                                                       Text(
-                                                                                        bookingTestPackageItemTestPackagesRecord.packageName,
+                                                                                        bookingTestPackageItemTestPackagesRecord.packageName!,
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                               fontFamily: 'Montserrat',
                                                                                               color: FlutterFlowTheme.of(context).primaryText,
@@ -2004,7 +2004,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                       ),
                                                                                     ),
                                                                                     Text(
-                                                                                      bookingTestPackageItemTestPackagesRecord.price.toString(),
+                                                                                      bookingTestPackageItemTestPackagesRecord.price!.toString(),
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                             fontFamily: 'Montserrat',
                                                                                             color: FlutterFlowTheme.of(context).primaryText,
@@ -2018,12 +2018,12 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                             totalPrice: functions.removeFromCart(bookingConfirmationBookingsRecord.totalPrice, bookingTestPackageItemTestPackagesRecord.price),
                                                                                             paymentBalance: functions.returnBookingBalance(bookingTestPackageItemTestPackagesRecord.price?.toDouble(), bookingConfirmationBookingsRecord.paymentBalance),
                                                                                           ),
-                                                                                          'total_tests': FieldValue.increment(-(bookingTestPackageItemTestPackagesRecord.testsIncluded.toList().length)),
+                                                                                          'total_tests': FieldValue.increment(-(bookingTestPackageItemTestPackagesRecord.testsIncluded!.toList().length)),
                                                                                           'testPackages': FieldValue.arrayRemove([
                                                                                             packagesListItem
                                                                                           ]),
                                                                                         };
-                                                                                        await widget.bookingRef.update(bookingsUpdateData);
+                                                                                        await widget.bookingRef!.update(bookingsUpdateData);
                                                                                         ScaffoldMessenger.of(context).showSnackBar(
                                                                                           SnackBar(
                                                                                             content: Text(
@@ -2067,7 +2067,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                     builder: (context) {
                                                       final testsList =
                                                           bookingConfirmationBookingsRecord
-                                                              .testsIncluded
+                                                              .testsIncluded!
                                                               .toList();
                                                       return ListView.builder(
                                                         padding:
@@ -2117,7 +2117,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                 }
                                                                 final bookingTestItemTestsRecord =
                                                                     snapshot
-                                                                        .data;
+                                                                        .data!;
                                                                 return InkWell(
                                                                   onTap:
                                                                       () async {
@@ -2178,7 +2178,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 children: [
                                                                                   Text(
-                                                                                    bookingTestItemTestsRecord.name,
+                                                                                    bookingTestItemTestsRecord.name!,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                           fontFamily: 'Montserrat',
                                                                                           color: FlutterFlowTheme.of(context).primaryText,
@@ -2203,7 +2203,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                   ),
                                                                                 ),
                                                                                 Text(
-                                                                                  bookingTestItemTestsRecord.price.toString(),
+                                                                                  bookingTestItemTestsRecord.price!.toString(),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                         fontFamily: 'Montserrat',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
@@ -2221,7 +2221,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                       ]),
                                                                                       'total_tests': FieldValue.increment(-1),
                                                                                     };
-                                                                                    await widget.bookingRef.update(bookingsUpdateData);
+                                                                                    await widget.bookingRef!.update(bookingsUpdateData);
                                                                                     ScaffoldMessenger.of(context).showSnackBar(
                                                                                       SnackBar(
                                                                                         content: Text(
@@ -2397,7 +2397,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                 Text(
                                                   formatNumber(
                                                     bookingConfirmationBookingsRecord
-                                                        .totalPrice,
+                                                        .totalPrice!,
                                                     formatType:
                                                         FormatType.decimal,
                                                     decimalType: DecimalType
@@ -2460,7 +2460,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                       }
                                       List<DoctorsRecord>
                                           buttonDoctorsRecordList =
-                                          snapshot.data;
+                                          snapshot.data!;
                                       final buttonDoctorsRecord =
                                           buttonDoctorsRecordList.isNotEmpty
                                               ? buttonDoctorsRecordList.first
@@ -2468,7 +2468,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                       return FFButtonWidget(
                                         onPressed: () async {
                                           if (functions.checkStringNull(
-                                              labRefNumController.text)) {
+                                              labRefNumController!.text)) {
                                             await showDialog(
                                               context: context,
                                               builder: (alertDialogContext) {
@@ -2491,7 +2491,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                             return;
                                           } else {
                                             if (formKey.currentState == null ||
-                                                !formKey.currentState
+                                                !formKey.currentState!
                                                     .validate()) {
                                               return;
                                             }
@@ -2511,7 +2511,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                         bookingConfirmationBookingsRecord
                                                             .reference,
                                                     labRefNum:
-                                                        labRefNumController
+                                                        labRefNumController!
                                                             .text,
                                                   ),
                                                 );
@@ -2521,21 +2521,21 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                             final bookingsUpdateData =
                                                 createBookingsRecordData(
                                               labRefNum:
-                                                  labRefNumController.text,
+                                                  labRefNumController!.text,
                                               docNameAddress: refDoctorValue,
                                               paymentBalance:
                                                   bookingConfirmationBookingsRecord
                                                       .totalPrice
                                                       ?.toDouble(),
                                               confirmationBegan: true,
-                                              docRef:
-                                                  buttonDoctorsRecord.reference,
+                                              docRef: buttonDoctorsRecord!
+                                                  .reference,
                                             );
                                             await bookingConfirmationBookingsRecord
                                                 .reference
                                                 .update(bookingsUpdateData);
                                             setState(() => FFAppState().labRef =
-                                                labRefNumController.text);
+                                                labRefNumController!.text);
                                             setState(() => FFAppState()
                                                 .pathologistassigned = false);
                                             setState(() => FFAppState()
@@ -2543,7 +2543,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                             setState(() => FFAppState()
                                                     .numTests =
                                                 bookingConfirmationBookingsRecord
-                                                    .testsIncluded
+                                                    .testsIncluded!
                                                     .toList()
                                                     .length);
                                             setState(() =>

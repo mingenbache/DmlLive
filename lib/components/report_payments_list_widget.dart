@@ -9,11 +9,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ReportPaymentsListWidget extends StatefulWidget {
   const ReportPaymentsListWidget({
-    Key key,
+    Key? key,
     this.bookingRef,
   }) : super(key: key);
 
-  final DocumentReference bookingRef;
+  final DocumentReference? bookingRef;
 
   @override
   _ReportPaymentsListWidgetState createState() =>
@@ -30,7 +30,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
       ),
       decoration: BoxDecoration(),
       child: StreamBuilder<BookingsRecord>(
-        stream: BookingsRecord.getDocument(widget.bookingRef),
+        stream: BookingsRecord.getDocument(widget.bookingRef!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -45,10 +45,10 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
               ),
             );
           }
-          final listViewBookingsRecord = snapshot.data;
+          final listViewBookingsRecord = snapshot.data!;
           return Builder(
             builder: (context) {
-              final payments = listViewBookingsRecord.payments.toList();
+              final payments = listViewBookingsRecord.payments!.toList();
               return ListView.builder(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.vertical,
@@ -74,7 +74,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                             ),
                           );
                         }
-                        final containerPaymentsRecord = snapshot.data;
+                        final containerPaymentsRecord = snapshot.data!;
                         return InkWell(
                           onTap: () async {
                             await showModalBottomSheet(
@@ -117,7 +117,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                     decoration: BoxDecoration(),
                                     child: Text(
                                       dateTimeFormat('d/M/y',
-                                          containerPaymentsRecord.createdDate),
+                                          containerPaymentsRecord.createdDate!),
                                       textAlign: TextAlign.start,
                                       maxLines: 1,
                                       style: FlutterFlowTheme.of(context)
@@ -141,7 +141,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                     child: Align(
                                       alignment: AlignmentDirectional(0, 0),
                                       child: Text(
-                                        containerPaymentsRecord.transactionCode
+                                        containerPaymentsRecord.transactionCode!
                                             .maybeHandleOverflow(maxChars: 8),
                                         maxLines: 1,
                                         style: FlutterFlowTheme.of(context)
@@ -171,7 +171,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                     child: Align(
                                       alignment: AlignmentDirectional(0, 0),
                                       child: Text(
-                                        containerPaymentsRecord.type,
+                                        containerPaymentsRecord.type!,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -194,7 +194,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                       alignment: AlignmentDirectional(0, 0),
                                       child: Text(
                                         formatNumber(
-                                          containerPaymentsRecord.amount,
+                                          containerPaymentsRecord.amount!,
                                           formatType: FormatType.decimal,
                                           decimalType:
                                               DecimalType.periodDecimal,

@@ -10,11 +10,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PaymentActionsWidgetWidget extends StatefulWidget {
   const PaymentActionsWidgetWidget({
-    Key key,
+    Key? key,
     this.paymentRef,
   }) : super(key: key);
 
-  final DocumentReference paymentRef;
+  final DocumentReference? paymentRef;
 
   @override
   _PaymentActionsWidgetWidgetState createState() =>
@@ -26,7 +26,7 @@ class _PaymentActionsWidgetWidgetState
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<PaymentsRecord>(
-      stream: PaymentsRecord.getDocument(widget.paymentRef),
+      stream: PaymentsRecord.getDocument(widget.paymentRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -41,7 +41,7 @@ class _PaymentActionsWidgetWidgetState
             ),
           );
         }
-        final containerPaymentsRecord = snapshot.data;
+        final containerPaymentsRecord = snapshot.data!;
         return Material(
           color: Colors.transparent,
           elevation: 2,
@@ -68,7 +68,7 @@ class _PaymentActionsWidgetWidgetState
               padding: EdgeInsetsDirectional.fromSTEB(22, 22, 22, 22),
               child: StreamBuilder<BookingsRecord>(
                 stream: BookingsRecord.getDocument(
-                    containerPaymentsRecord.bookingRef),
+                    containerPaymentsRecord.bookingRef!),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
@@ -83,14 +83,14 @@ class _PaymentActionsWidgetWidgetState
                       ),
                     );
                   }
-                  final rowBookingsRecord = snapshot.data;
+                  final rowBookingsRecord = snapshot.data!;
                   return Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Stack(
                         children: [
-                          if (!containerPaymentsRecord.isApproved)
+                          if (!containerPaymentsRecord.isApproved!)
                             Container(
                               width: 110,
                               height: 50,
@@ -142,10 +142,10 @@ class _PaymentActionsWidgetWidgetState
                       ),
                       Stack(
                         children: [
-                          if (!containerPaymentsRecord.isApproved)
+                          if (!containerPaymentsRecord.isApproved!)
                             StreamBuilder<InvoicesRecord>(
                               stream: InvoicesRecord.getDocument(
-                                  containerPaymentsRecord.invoiceRef),
+                                  containerPaymentsRecord.invoiceRef!),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
@@ -162,7 +162,7 @@ class _PaymentActionsWidgetWidgetState
                                   );
                                 }
                                 final verifyButtonInvoicesRecord =
-                                    snapshot.data;
+                                    snapshot.data!;
                                 return InkWell(
                                   onTap: () async {
                                     final paymentsUpdateData =
@@ -198,7 +198,7 @@ class _PaymentActionsWidgetWidgetState
                                     };
                                     await verifyButtonInvoicesRecord.reference
                                         .update(invoicesUpdateData);
-                                    if (!rowBookingsRecord.payments
+                                    if (!rowBookingsRecord.payments!
                                         .toList()
                                         .contains(widget.paymentRef)) {
                                       final bookingsUpdateData = {

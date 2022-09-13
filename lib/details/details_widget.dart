@@ -14,11 +14,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class DetailsWidget extends StatefulWidget {
   const DetailsWidget({
-    Key key,
+    Key? key,
     this.testId,
   }) : super(key: key);
 
-  final DocumentReference testId;
+  final DocumentReference? testId;
 
   @override
   _DetailsWidgetState createState() => _DetailsWidgetState();
@@ -65,7 +65,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<UsersRecord>(
-      stream: UsersRecord.getDocument(currentUserReference),
+      stream: UsersRecord.getDocument(currentUserReference!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -80,13 +80,13 @@ class _DetailsWidgetState extends State<DetailsWidget>
             ),
           );
         }
-        final detailsUsersRecord = snapshot.data;
+        final detailsUsersRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
           body: SafeArea(
             child: StreamBuilder<TestsRecord>(
-              stream: TestsRecord.getDocument(widget.testId),
+              stream: TestsRecord.getDocument(widget.testId!),
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {
@@ -101,13 +101,13 @@ class _DetailsWidgetState extends State<DetailsWidget>
                     ),
                   );
                 }
-                final columnTestsRecord = snapshot.data;
+                final columnTestsRecord = snapshot.data!;
                 return Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     TopActionsWidget(),
                     StreamBuilder<UsersRecord>(
-                      stream: UsersRecord.getDocument(currentUserReference),
+                      stream: UsersRecord.getDocument(currentUserReference!),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -123,7 +123,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                             ),
                           );
                         }
-                        final columnUsersRecord = snapshot.data;
+                        final columnUsersRecord = snapshot.data!;
                         return SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -139,7 +139,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           15, 0, 0, 0),
                                       child: Text(
-                                        columnTestsRecord.name,
+                                        columnTestsRecord.name!,
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .title1
@@ -256,7 +256,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                       .fromSTEB(13, 13, 13, 0),
                                                   child: Text(
                                                     columnTestsRecord
-                                                        .description,
+                                                        .description!,
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -780,7 +780,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                           ),
                                           Text(
                                             formatNumber(
-                                              columnTestsRecord.price,
+                                              columnTestsRecord.price!,
                                               formatType: FormatType.decimal,
                                               decimalType:
                                                   DecimalType.periodDecimal,
@@ -802,7 +802,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(8, 4, 8, 4),
                                               child: Text(
-                                                columnTestsRecord.category,
+                                                columnTestsRecord.category!,
                                                 textAlign: TextAlign.center,
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -832,7 +832,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                       padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                       child: StreamBuilder<BookingsRecord>(
                         stream: BookingsRecord.getDocument(
-                            detailsUsersRecord.currentBooking),
+                            detailsUsersRecord.currentBooking!),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
@@ -848,7 +848,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                               ),
                             );
                           }
-                          final containerBookingsRecord = snapshot.data;
+                          final containerBookingsRecord = snapshot.data!;
                           return Container(
                             width: MediaQuery.of(context).size.width * 0.9,
                             decoration: BoxDecoration(
@@ -890,11 +890,12 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                     ),
                                   ).animated([
                                     animationsMap[
-                                        'buttonOnActionTriggerAnimation1']
+                                        'buttonOnActionTriggerAnimation1']!
                                   ]),
                                   FFButtonWidget(
                                     onPressed: () async {
-                                      if (!containerBookingsRecord.testsIncluded
+                                      if (!containerBookingsRecord
+                                          .testsIncluded!
                                           .toList()
                                           .contains(
                                               columnTestsRecord.reference)) {
@@ -959,7 +960,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                     ),
                                   ).animated([
                                     animationsMap[
-                                        'buttonOnActionTriggerAnimation2']
+                                        'buttonOnActionTriggerAnimation2']!
                                   ]),
                                 ],
                               ),

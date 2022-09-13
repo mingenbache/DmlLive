@@ -11,13 +11,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class UnconfirmedBookingWidgetWidget extends StatefulWidget {
   const UnconfirmedBookingWidgetWidget({
-    Key key,
+    Key? key,
     this.bookingRef,
     this.index,
   }) : super(key: key);
 
-  final BookingsRecord bookingRef;
-  final int index;
+  final BookingsRecord? bookingRef;
+  final int? index;
 
   @override
   _UnconfirmedBookingWidgetWidgetState createState() =>
@@ -136,7 +136,7 @@ class _UnconfirmedBookingWidgetWidgetState
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0, 0, 0, 2),
                                               child: Text(
-                                                widget.index
+                                                widget.index!
                                                     .toString()
                                                     .maybeHandleOverflow(
                                                         maxChars: 2),
@@ -171,7 +171,7 @@ class _UnconfirmedBookingWidgetWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   6, 6, 0, 0),
                                           child: Text(
-                                            '${widget.bookingRef.firstname}   ${widget.bookingRef.lastname}',
+                                            '${widget.bookingRef!.firstname}   ${widget.bookingRef!.lastname}',
                                             style: TextStyle(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -183,7 +183,7 @@ class _UnconfirmedBookingWidgetWidgetState
                                         ),
                                       ).animated([
                                         animationsMap[
-                                            'containerOnPageLoadAnimation']
+                                            'containerOnPageLoadAnimation']!
                                       ]),
                                     ),
                                   ],
@@ -197,7 +197,7 @@ class _UnconfirmedBookingWidgetWidgetState
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 5, 5, 0),
                             child: DateWidgetSmallWidget(
-                              date: widget.bookingRef.scheduledDate,
+                              date: widget.bookingRef!.scheduledDate,
                             ),
                           ),
                         ),
@@ -217,7 +217,7 @@ class _UnconfirmedBookingWidgetWidgetState
                         child: Builder(
                           builder: (context) {
                             final includedTests =
-                                widget.bookingRef.testsIncluded.toList();
+                                widget.bookingRef!.testsIncluded!.toList();
                             return Wrap(
                               spacing: 4,
                               runSpacing: 2,
@@ -249,7 +249,7 @@ class _UnconfirmedBookingWidgetWidgetState
                                         ),
                                       );
                                     }
-                                    final containerTestsRecord = snapshot.data;
+                                    final containerTestsRecord = snapshot.data!;
                                     return Container(
                                       height: 25,
                                       decoration: BoxDecoration(
@@ -264,7 +264,7 @@ class _UnconfirmedBookingWidgetWidgetState
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     7, 0, 7, 0),
                                             child: Text(
-                                              containerTestsRecord.name,
+                                              containerTestsRecord.name!,
                                               textAlign: TextAlign.center,
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -351,7 +351,7 @@ class _UnconfirmedBookingWidgetWidgetState
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0, 0, 0, 2),
                                             child: Text(
-                                              widget.bookingRef.bookedTests
+                                              widget.bookingRef!.bookedTests!
                                                   .toList()
                                                   .length
                                                   .toString()

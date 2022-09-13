@@ -17,17 +17,18 @@ class _$InvoicesRecordSerializer
   final String wireName = 'InvoicesRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, InvoicesRecord object,
+  Iterable<Object?> serialize(Serializers serializers, InvoicesRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.bookedTestsList;
     if (value != null) {
       result
         ..add('booked_tests_list')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType(DocumentReference, const [const FullType(Object)])
+              const FullType(
+                  DocumentReference, const [const FullType.nullable(Object)])
             ])));
     }
     value = object.createdDate;
@@ -43,7 +44,7 @@ class _$InvoicesRecordSerializer
         ..add('created_by')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.isPaid;
     if (value != null) {
@@ -79,7 +80,7 @@ class _$InvoicesRecordSerializer
         ..add('Booking_ref')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.paymentsList;
     if (value != null) {
@@ -87,7 +88,8 @@ class _$InvoicesRecordSerializer
         ..add('payments_list')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType(DocumentReference, const [const FullType(Object)])
+              const FullType(
+                  DocumentReference, const [const FullType.nullable(Object)])
             ])));
     }
     value = object.amountDue;
@@ -103,7 +105,7 @@ class _$InvoicesRecordSerializer
         ..add('user')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.dueDate;
     if (value != null) {
@@ -146,7 +148,7 @@ class _$InvoicesRecordSerializer
         ..add('bookingUser')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.userEmail;
     if (value != null) {
@@ -155,120 +157,120 @@ class _$InvoicesRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.reference;
+    value = object.ffRef;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     return result;
   }
 
   @override
   InvoicesRecord deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new InvoicesRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'booked_tests_list':
           result.bookedTestsList.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType(
-                    DocumentReference, const [const FullType(Object)])
-              ])) as BuiltList<Object>);
+                    DocumentReference, const [const FullType.nullable(Object)])
+              ]))! as BuiltList<Object?>);
           break;
         case 'created_date':
           result.createdDate = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'created_by':
           result.createdBy = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'is_paid':
           result.isPaid = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'payment_submitted':
           result.paymentSubmitted = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'full_amount':
           result.fullAmount = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'labRefNum':
           result.labRefNum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'Booking_ref':
           result.bookingRef = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'payments_list':
           result.paymentsList.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType(
-                    DocumentReference, const [const FullType(Object)])
-              ])) as BuiltList<Object>);
+                    DocumentReference, const [const FullType.nullable(Object)])
+              ]))! as BuiltList<Object?>);
           break;
         case 'Amount_due':
           result.amountDue = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double)) as double?;
           break;
         case 'user':
           result.user = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'due_date':
           result.dueDate = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'updateDate':
           result.updateDate = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'updateRole':
           result.updateRole = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'Invoice_amount':
           result.invoiceAmount = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double)) as double?;
           break;
         case 'invoiceNum':
           result.invoiceNum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'bookingUser':
           result.bookingUser = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'userEmail':
           result.userEmail = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
-          result.reference = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+          result.ffRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
       }
     }
@@ -279,45 +281,45 @@ class _$InvoicesRecordSerializer
 
 class _$InvoicesRecord extends InvoicesRecord {
   @override
-  final BuiltList<DocumentReference<Object>> bookedTestsList;
+  final BuiltList<DocumentReference<Object?>>? bookedTestsList;
   @override
-  final DateTime createdDate;
+  final DateTime? createdDate;
   @override
-  final DocumentReference<Object> createdBy;
+  final DocumentReference<Object?>? createdBy;
   @override
-  final bool isPaid;
+  final bool? isPaid;
   @override
-  final bool paymentSubmitted;
+  final bool? paymentSubmitted;
   @override
-  final bool fullAmount;
+  final bool? fullAmount;
   @override
-  final String labRefNum;
+  final String? labRefNum;
   @override
-  final DocumentReference<Object> bookingRef;
+  final DocumentReference<Object?>? bookingRef;
   @override
-  final BuiltList<DocumentReference<Object>> paymentsList;
+  final BuiltList<DocumentReference<Object?>>? paymentsList;
   @override
-  final double amountDue;
+  final double? amountDue;
   @override
-  final DocumentReference<Object> user;
+  final DocumentReference<Object?>? user;
   @override
-  final DateTime dueDate;
+  final DateTime? dueDate;
   @override
-  final DateTime updateDate;
+  final DateTime? updateDate;
   @override
-  final String updateRole;
+  final String? updateRole;
   @override
-  final double invoiceAmount;
+  final double? invoiceAmount;
   @override
-  final String invoiceNum;
+  final String? invoiceNum;
   @override
-  final DocumentReference<Object> bookingUser;
+  final DocumentReference<Object?>? bookingUser;
   @override
-  final String userEmail;
+  final String? userEmail;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object?>? ffRef;
 
-  factory _$InvoicesRecord([void Function(InvoicesRecordBuilder) updates]) =>
+  factory _$InvoicesRecord([void Function(InvoicesRecordBuilder)? updates]) =>
       (new InvoicesRecordBuilder()..update(updates))._build();
 
   _$InvoicesRecord._(
@@ -339,7 +341,7 @@ class _$InvoicesRecord extends InvoicesRecord {
       this.invoiceNum,
       this.bookingUser,
       this.userEmail,
-      this.reference})
+      this.ffRef})
       : super._();
 
   @override
@@ -372,7 +374,7 @@ class _$InvoicesRecord extends InvoicesRecord {
         invoiceNum == other.invoiceNum &&
         bookingUser == other.bookingUser &&
         userEmail == other.userEmail &&
-        reference == other.reference;
+        ffRef == other.ffRef;
   }
 
   @override
@@ -421,7 +423,7 @@ class _$InvoicesRecord extends InvoicesRecord {
                     invoiceNum.hashCode),
                 bookingUser.hashCode),
             userEmail.hashCode),
-        reference.hashCode));
+        ffRef.hashCode));
   }
 
   @override
@@ -445,100 +447,100 @@ class _$InvoicesRecord extends InvoicesRecord {
           ..add('invoiceNum', invoiceNum)
           ..add('bookingUser', bookingUser)
           ..add('userEmail', userEmail)
-          ..add('reference', reference))
+          ..add('ffRef', ffRef))
         .toString();
   }
 }
 
 class InvoicesRecordBuilder
     implements Builder<InvoicesRecord, InvoicesRecordBuilder> {
-  _$InvoicesRecord _$v;
+  _$InvoicesRecord? _$v;
 
-  ListBuilder<DocumentReference<Object>> _bookedTestsList;
-  ListBuilder<DocumentReference<Object>> get bookedTestsList =>
-      _$this._bookedTestsList ??= new ListBuilder<DocumentReference<Object>>();
-  set bookedTestsList(ListBuilder<DocumentReference<Object>> bookedTestsList) =>
+  ListBuilder<DocumentReference<Object?>>? _bookedTestsList;
+  ListBuilder<DocumentReference<Object?>> get bookedTestsList =>
+      _$this._bookedTestsList ??= new ListBuilder<DocumentReference<Object?>>();
+  set bookedTestsList(
+          ListBuilder<DocumentReference<Object?>>? bookedTestsList) =>
       _$this._bookedTestsList = bookedTestsList;
 
-  DateTime _createdDate;
-  DateTime get createdDate => _$this._createdDate;
-  set createdDate(DateTime createdDate) => _$this._createdDate = createdDate;
+  DateTime? _createdDate;
+  DateTime? get createdDate => _$this._createdDate;
+  set createdDate(DateTime? createdDate) => _$this._createdDate = createdDate;
 
-  DocumentReference<Object> _createdBy;
-  DocumentReference<Object> get createdBy => _$this._createdBy;
-  set createdBy(DocumentReference<Object> createdBy) =>
+  DocumentReference<Object?>? _createdBy;
+  DocumentReference<Object?>? get createdBy => _$this._createdBy;
+  set createdBy(DocumentReference<Object?>? createdBy) =>
       _$this._createdBy = createdBy;
 
-  bool _isPaid;
-  bool get isPaid => _$this._isPaid;
-  set isPaid(bool isPaid) => _$this._isPaid = isPaid;
+  bool? _isPaid;
+  bool? get isPaid => _$this._isPaid;
+  set isPaid(bool? isPaid) => _$this._isPaid = isPaid;
 
-  bool _paymentSubmitted;
-  bool get paymentSubmitted => _$this._paymentSubmitted;
-  set paymentSubmitted(bool paymentSubmitted) =>
+  bool? _paymentSubmitted;
+  bool? get paymentSubmitted => _$this._paymentSubmitted;
+  set paymentSubmitted(bool? paymentSubmitted) =>
       _$this._paymentSubmitted = paymentSubmitted;
 
-  bool _fullAmount;
-  bool get fullAmount => _$this._fullAmount;
-  set fullAmount(bool fullAmount) => _$this._fullAmount = fullAmount;
+  bool? _fullAmount;
+  bool? get fullAmount => _$this._fullAmount;
+  set fullAmount(bool? fullAmount) => _$this._fullAmount = fullAmount;
 
-  String _labRefNum;
-  String get labRefNum => _$this._labRefNum;
-  set labRefNum(String labRefNum) => _$this._labRefNum = labRefNum;
+  String? _labRefNum;
+  String? get labRefNum => _$this._labRefNum;
+  set labRefNum(String? labRefNum) => _$this._labRefNum = labRefNum;
 
-  DocumentReference<Object> _bookingRef;
-  DocumentReference<Object> get bookingRef => _$this._bookingRef;
-  set bookingRef(DocumentReference<Object> bookingRef) =>
+  DocumentReference<Object?>? _bookingRef;
+  DocumentReference<Object?>? get bookingRef => _$this._bookingRef;
+  set bookingRef(DocumentReference<Object?>? bookingRef) =>
       _$this._bookingRef = bookingRef;
 
-  ListBuilder<DocumentReference<Object>> _paymentsList;
-  ListBuilder<DocumentReference<Object>> get paymentsList =>
-      _$this._paymentsList ??= new ListBuilder<DocumentReference<Object>>();
-  set paymentsList(ListBuilder<DocumentReference<Object>> paymentsList) =>
+  ListBuilder<DocumentReference<Object?>>? _paymentsList;
+  ListBuilder<DocumentReference<Object?>> get paymentsList =>
+      _$this._paymentsList ??= new ListBuilder<DocumentReference<Object?>>();
+  set paymentsList(ListBuilder<DocumentReference<Object?>>? paymentsList) =>
       _$this._paymentsList = paymentsList;
 
-  double _amountDue;
-  double get amountDue => _$this._amountDue;
-  set amountDue(double amountDue) => _$this._amountDue = amountDue;
+  double? _amountDue;
+  double? get amountDue => _$this._amountDue;
+  set amountDue(double? amountDue) => _$this._amountDue = amountDue;
 
-  DocumentReference<Object> _user;
-  DocumentReference<Object> get user => _$this._user;
-  set user(DocumentReference<Object> user) => _$this._user = user;
+  DocumentReference<Object?>? _user;
+  DocumentReference<Object?>? get user => _$this._user;
+  set user(DocumentReference<Object?>? user) => _$this._user = user;
 
-  DateTime _dueDate;
-  DateTime get dueDate => _$this._dueDate;
-  set dueDate(DateTime dueDate) => _$this._dueDate = dueDate;
+  DateTime? _dueDate;
+  DateTime? get dueDate => _$this._dueDate;
+  set dueDate(DateTime? dueDate) => _$this._dueDate = dueDate;
 
-  DateTime _updateDate;
-  DateTime get updateDate => _$this._updateDate;
-  set updateDate(DateTime updateDate) => _$this._updateDate = updateDate;
+  DateTime? _updateDate;
+  DateTime? get updateDate => _$this._updateDate;
+  set updateDate(DateTime? updateDate) => _$this._updateDate = updateDate;
 
-  String _updateRole;
-  String get updateRole => _$this._updateRole;
-  set updateRole(String updateRole) => _$this._updateRole = updateRole;
+  String? _updateRole;
+  String? get updateRole => _$this._updateRole;
+  set updateRole(String? updateRole) => _$this._updateRole = updateRole;
 
-  double _invoiceAmount;
-  double get invoiceAmount => _$this._invoiceAmount;
-  set invoiceAmount(double invoiceAmount) =>
+  double? _invoiceAmount;
+  double? get invoiceAmount => _$this._invoiceAmount;
+  set invoiceAmount(double? invoiceAmount) =>
       _$this._invoiceAmount = invoiceAmount;
 
-  String _invoiceNum;
-  String get invoiceNum => _$this._invoiceNum;
-  set invoiceNum(String invoiceNum) => _$this._invoiceNum = invoiceNum;
+  String? _invoiceNum;
+  String? get invoiceNum => _$this._invoiceNum;
+  set invoiceNum(String? invoiceNum) => _$this._invoiceNum = invoiceNum;
 
-  DocumentReference<Object> _bookingUser;
-  DocumentReference<Object> get bookingUser => _$this._bookingUser;
-  set bookingUser(DocumentReference<Object> bookingUser) =>
+  DocumentReference<Object?>? _bookingUser;
+  DocumentReference<Object?>? get bookingUser => _$this._bookingUser;
+  set bookingUser(DocumentReference<Object?>? bookingUser) =>
       _$this._bookingUser = bookingUser;
 
-  String _userEmail;
-  String get userEmail => _$this._userEmail;
-  set userEmail(String userEmail) => _$this._userEmail = userEmail;
+  String? _userEmail;
+  String? get userEmail => _$this._userEmail;
+  set userEmail(String? userEmail) => _$this._userEmail = userEmail;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
-      _$this._reference = reference;
+  DocumentReference<Object?>? _ffRef;
+  DocumentReference<Object?>? get ffRef => _$this._ffRef;
+  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   InvoicesRecordBuilder() {
     InvoicesRecord._initializeBuilder(this);
@@ -565,7 +567,7 @@ class InvoicesRecordBuilder
       _invoiceNum = $v.invoiceNum;
       _bookingUser = $v.bookingUser;
       _userEmail = $v.userEmail;
-      _reference = $v.reference;
+      _ffRef = $v.ffRef;
       _$v = null;
     }
     return this;
@@ -578,7 +580,7 @@ class InvoicesRecordBuilder
   }
 
   @override
-  void update(void Function(InvoicesRecordBuilder) updates) {
+  void update(void Function(InvoicesRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -608,9 +610,9 @@ class InvoicesRecordBuilder
               invoiceNum: invoiceNum,
               bookingUser: bookingUser,
               userEmail: userEmail,
-              reference: reference);
+              ffRef: ffRef);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'bookedTestsList';
         _bookedTestsList?.build();

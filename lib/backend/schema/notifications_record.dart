@@ -11,66 +11,48 @@ abstract class NotificationsRecord
   static Serializer<NotificationsRecord> get serializer =>
       _$notificationsRecordSerializer;
 
-  @nullable
   @BuiltValueField(wireName: 'user_role')
-  String get userRole;
+  String? get userRole;
 
-  @nullable
-  String get message;
+  String? get message;
 
-  @nullable
   @BuiltValueField(wireName: 'users_receiving')
-  BuiltList<DocumentReference> get usersReceiving;
+  BuiltList<DocumentReference>? get usersReceiving;
 
-  @nullable
   @BuiltValueField(wireName: 'created_date')
-  DateTime get createdDate;
+  DateTime? get createdDate;
 
-  @nullable
-  bool get isSeen;
+  bool? get isSeen;
 
-  @nullable
-  BuiltList<DocumentReference> get usersSeen;
+  BuiltList<DocumentReference>? get usersSeen;
 
-  @nullable
-  bool get isBooking;
+  bool? get isBooking;
 
-  @nullable
-  bool get isTest;
+  bool? get isTest;
 
-  @nullable
-  String get type;
+  String? get type;
 
-  @nullable
-  DocumentReference get bookingRef;
+  DocumentReference? get bookingRef;
 
-  @nullable
-  DocumentReference get userRef;
+  DocumentReference? get userRef;
 
-  @nullable
-  DocumentReference get testedtestref;
+  DocumentReference? get testedtestref;
 
-  @nullable
-  DocumentReference get staffref;
+  DocumentReference? get staffref;
 
-  @nullable
-  DocumentReference get reportref;
+  DocumentReference? get reportref;
 
-  @nullable
-  DocumentReference get testref;
+  DocumentReference? get testref;
 
-  @nullable
-  DocumentReference get testpackageref;
+  DocumentReference? get testpackageref;
 
-  @nullable
-  DocumentReference get actionstaffuser;
+  DocumentReference? get actionstaffuser;
 
-  @nullable
-  bool get istestedtest;
+  bool? get istestedtest;
 
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(NotificationsRecordBuilder builder) => builder
     ..userRole = ''
@@ -88,11 +70,11 @@ abstract class NotificationsRecord
 
   static Stream<NotificationsRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   static Future<NotificationsRecord> getDocumentOnce(DocumentReference ref) =>
       ref.get().then(
-          (s) => serializers.deserializeWith(serializer, serializedData(s)));
+          (s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   NotificationsRecord._();
   factory NotificationsRecord(
@@ -102,45 +84,51 @@ abstract class NotificationsRecord
   static NotificationsRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
 Map<String, dynamic> createNotificationsRecordData({
-  String userRole,
-  String message,
-  DateTime createdDate,
-  bool isSeen,
-  bool isBooking,
-  bool isTest,
-  String type,
-  DocumentReference bookingRef,
-  DocumentReference userRef,
-  DocumentReference testedtestref,
-  DocumentReference staffref,
-  DocumentReference reportref,
-  DocumentReference testref,
-  DocumentReference testpackageref,
-  DocumentReference actionstaffuser,
-  bool istestedtest,
-}) =>
-    serializers.toFirestore(
-        NotificationsRecord.serializer,
-        NotificationsRecord((n) => n
-          ..userRole = userRole
-          ..message = message
-          ..usersReceiving = null
-          ..createdDate = createdDate
-          ..isSeen = isSeen
-          ..usersSeen = null
-          ..isBooking = isBooking
-          ..isTest = isTest
-          ..type = type
-          ..bookingRef = bookingRef
-          ..userRef = userRef
-          ..testedtestref = testedtestref
-          ..staffref = staffref
-          ..reportref = reportref
-          ..testref = testref
-          ..testpackageref = testpackageref
-          ..actionstaffuser = actionstaffuser
-          ..istestedtest = istestedtest));
+  String? userRole,
+  String? message,
+  DateTime? createdDate,
+  bool? isSeen,
+  bool? isBooking,
+  bool? isTest,
+  String? type,
+  DocumentReference? bookingRef,
+  DocumentReference? userRef,
+  DocumentReference? testedtestref,
+  DocumentReference? staffref,
+  DocumentReference? reportref,
+  DocumentReference? testref,
+  DocumentReference? testpackageref,
+  DocumentReference? actionstaffuser,
+  bool? istestedtest,
+}) {
+  final firestoreData = serializers.toFirestore(
+    NotificationsRecord.serializer,
+    NotificationsRecord(
+      (n) => n
+        ..userRole = userRole
+        ..message = message
+        ..usersReceiving = null
+        ..createdDate = createdDate
+        ..isSeen = isSeen
+        ..usersSeen = null
+        ..isBooking = isBooking
+        ..isTest = isTest
+        ..type = type
+        ..bookingRef = bookingRef
+        ..userRef = userRef
+        ..testedtestref = testedtestref
+        ..staffref = staffref
+        ..reportref = reportref
+        ..testref = testref
+        ..testpackageref = testpackageref
+        ..actionstaffuser = actionstaffuser
+        ..istestedtest = istestedtest,
+    ),
+  );
+
+  return firestoreData;
+}

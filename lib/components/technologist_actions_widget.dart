@@ -9,11 +9,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TechnologistActionsWidget extends StatefulWidget {
   const TechnologistActionsWidget({
-    Key key,
+    Key? key,
     this.testedTestRef,
   }) : super(key: key);
 
-  final DocumentReference testedTestRef;
+  final DocumentReference? testedTestRef;
 
   @override
   _TechnologistActionsWidgetState createState() =>

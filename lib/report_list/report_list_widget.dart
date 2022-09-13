@@ -9,7 +9,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ReportListWidget extends StatefulWidget {
-  const ReportListWidget({Key key}) : super(key: key);
+  const ReportListWidget({Key? key}) : super(key: key);
 
   @override
   _ReportListWidgetState createState() => _ReportListWidgetState();
@@ -39,7 +39,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
             ),
           );
         }
-        List<BookingsRecord> reportListBookingsRecordList = snapshot.data;
+        List<BookingsRecord> reportListBookingsRecordList = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -161,7 +161,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                 children: [
                                   InkWell(
                                     onTap: () async {
-                                      if (bookingsItem.completed) {
+                                      if (bookingsItem.completed!) {
                                         context.pushNamed(
                                           'LabReport',
                                           queryParams: {
@@ -253,7 +253,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                   dateTimeFormat(
                                                                       'MMMEd',
                                                                       bookingsItem
-                                                                          .scheduledDate),
+                                                                          .scheduledDate!),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .subtitle2
@@ -305,7 +305,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                             4),
                                                                 child: Text(
                                                                   bookingsItem
-                                                                      .bookingstatus,
+                                                                      .bookingstatus!,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText2
@@ -390,7 +390,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                     List<TestedTestsRecord>
                                                                         containerTestedTestsRecordList =
                                                                         snapshot
-                                                                            .data;
+                                                                            .data!;
                                                                     return Container(
                                                                       width: MediaQuery.of(
                                                                               context)
@@ -420,7 +420,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                               return Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0, 3, 0, 0),
                                                                                 child: StreamBuilder<TestsRecord>(
-                                                                                  stream: TestsRecord.getDocument(testsItem.testRef),
+                                                                                  stream: TestsRecord.getDocument(testsItem.testRef!),
                                                                                   builder: (context, snapshot) {
                                                                                     // Customize what your widget looks like when it's loading.
                                                                                     if (!snapshot.hasData) {
@@ -435,7 +435,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                                         ),
                                                                                       );
                                                                                     }
-                                                                                    final containerTestsRecord = snapshot.data;
+                                                                                    final containerTestsRecord = snapshot.data!;
                                                                                     return Material(
                                                                                       color: Colors.transparent,
                                                                                       elevation: 1,
@@ -470,7 +470,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                                                 child: Padding(
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(10, 7, 5, 5),
                                                                                                   child: Text(
-                                                                                                    containerTestsRecord.name,
+                                                                                                    containerTestsRecord.name!,
                                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                           fontFamily: 'Montserrat',
                                                                                                           color: FlutterFlowTheme.of(context).secondaryColor,

@@ -12,11 +12,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class FlagTestWidget extends StatefulWidget {
   const FlagTestWidget({
-    Key key,
+    Key? key,
     this.testedTestRef,
   }) : super(key: key);
 
-  final DocumentReference testedTestRef;
+  final DocumentReference? testedTestRef;
 
   @override
   _FlagTestWidgetState createState() => _FlagTestWidgetState();
@@ -24,7 +24,7 @@ class FlagTestWidget extends StatefulWidget {
 
 class _FlagTestWidgetState extends State<FlagTestWidget>
     with TickerProviderStateMixin {
-  TextEditingController flagNotesController;
+  TextEditingController? flagNotesController;
 
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
@@ -200,7 +200,7 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                           textAlign: TextAlign.start,
                           maxLines: 6,
                         ).animated(
-                            [animationsMap['textFieldOnPageLoadAnimation']]),
+                            [animationsMap['textFieldOnPageLoadAnimation']!]),
                       ),
                     ),
                   ],
@@ -224,10 +224,10 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                           isVerified: false,
                           isFlagged: true,
                           flaggedDate: getCurrentTimestamp,
-                          flagNotes: flagNotesController.text,
+                          flagNotes: flagNotesController!.text,
                           pathologistRef: currentUserReference,
                         );
-                        await widget.testedTestRef
+                        await widget.testedTestRef!
                             .update(testedTestsUpdateData);
 
                         context.goNamed(

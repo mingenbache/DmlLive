@@ -15,13 +15,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PackageDetailsPopupWidget extends StatefulWidget {
   const PackageDetailsPopupWidget({
-    Key key,
+    Key? key,
     this.package,
     this.booking,
   }) : super(key: key);
 
-  final TestPackagesRecord package;
-  final DocumentReference booking;
+  final TestPackagesRecord? package;
+  final DocumentReference? booking;
 
   @override
   _PackageDetailsPopupWidgetState createState() =>
@@ -156,7 +156,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                               ),
                               StreamBuilder<UsersRecord>(
                                 stream: UsersRecord.getDocument(
-                                    currentUserReference),
+                                    currentUserReference!),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
@@ -172,7 +172,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                       ),
                                     );
                                   }
-                                  final columnUsersRecord = snapshot.data;
+                                  final columnUsersRecord = snapshot.data!;
                                   return SingleChildScrollView(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -190,7 +190,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(15, 0, 0, 0),
                                                 child: AutoSizeText(
-                                                  widget.package.packageName,
+                                                  widget.package!.packageName!,
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -205,7 +205,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                             ),
                                           ],
                                         ),
-                                        if (widget.package.isAvailable ?? true)
+                                        if (widget.package!.isAvailable ?? true)
                                           Align(
                                             alignment:
                                                 AlignmentDirectional(0.8, 0),
@@ -252,7 +252,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                       isAvailable: true,
                                                     );
                                                     await widget
-                                                        .package.reference
+                                                        .package!.reference
                                                         .update(
                                                             testPackagesUpdateData);
                                                   } else {
@@ -447,8 +447,8 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                           0),
                                                                   child: Text(
                                                                     widget
-                                                                        .package
-                                                                        .description,
+                                                                        .package!
+                                                                        .description!,
                                                                     textAlign:
                                                                         TextAlign
                                                                             .start,
@@ -517,8 +517,8 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                     builder:
                                                                         (context) {
                                                                       final packageTests = widget
-                                                                          .package
-                                                                          .testsIncluded
+                                                                          .package!
+                                                                          .testsIncluded!
                                                                           .toList();
                                                                       return ListView
                                                                           .builder(
@@ -1507,8 +1507,8 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                   .fromSTEB(8,
                                                                       4, 8, 4),
                                                           child: Text(
-                                                            widget.package
-                                                                .category,
+                                                            widget.package!
+                                                                .category!,
                                                             textAlign: TextAlign
                                                                 .center,
                                                             style: FlutterFlowTheme
@@ -1532,7 +1532,8 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                     children: [
                                                       Text(
                                                         formatNumber(
-                                                          widget.package.price,
+                                                          widget
+                                                              .package!.price!,
                                                           formatType: FormatType
                                                               .decimal,
                                                           decimalType:

@@ -10,11 +10,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AdminTestActionsWidget extends StatefulWidget {
   const AdminTestActionsWidget({
-    Key key,
+    Key? key,
     this.testRef,
   }) : super(key: key);
 
-  final DocumentReference testRef;
+  final DocumentReference? testRef;
 
   @override
   _AdminTestActionsWidgetState createState() => _AdminTestActionsWidgetState();
@@ -34,7 +34,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             StreamBuilder<TestsRecord>(
-              stream: TestsRecord.getDocument(widget.testRef),
+              stream: TestsRecord.getDocument(widget.testRef!),
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {
@@ -49,7 +49,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                     ),
                   );
                 }
-                final containerTestsRecord = snapshot.data;
+                final containerTestsRecord = snapshot.data!;
                 return Material(
                   color: Colors.transparent,
                   elevation: 4,
@@ -195,7 +195,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                 createTestsRecordData(
                                               isAvailable: false,
                                             );
-                                            await widget.testRef
+                                            await widget.testRef!
                                                 .update(testsUpdateData);
                                           }
                                         },
@@ -259,7 +259,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                           ),
                                         ),
                                       ),
-                                    if (!containerTestsRecord.isAvailable)
+                                    if (!containerTestsRecord.isAvailable!)
                                       InkWell(
                                         onTap: () async {
                                           var confirmDialogResponse =
@@ -299,7 +299,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                 createTestsRecordData(
                                               isAvailable: true,
                                             );
-                                            await widget.testRef
+                                            await widget.testRef!
                                                 .update(testsUpdateData);
                                           }
                                           await showDialog(

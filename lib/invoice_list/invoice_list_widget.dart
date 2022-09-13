@@ -11,17 +11,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class InvoiceListWidget extends StatefulWidget {
-  const InvoiceListWidget({Key key}) : super(key: key);
+  const InvoiceListWidget({Key? key}) : super(key: key);
 
   @override
   _InvoiceListWidgetState createState() => _InvoiceListWidgetState();
 }
 
 class _InvoiceListWidgetState extends State<InvoiceListWidget> {
-  DateTimeRange uICalendarSelectedDay;
-  PageController pageViewController3;
-  PageController pageViewController1;
-  PageController pageViewController2;
+  DateTimeRange? uICalendarSelectedDay;
+  PageController? pageViewController3;
+  PageController? pageViewController1;
+  PageController? pageViewController2;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -149,7 +149,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                 }
                                 List<InvoicesRecord>
                                     overdueInvoicesInvoicesRecordList =
-                                    snapshot.data;
+                                    snapshot.data!;
                                 return SingleChildScrollView(
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
@@ -168,7 +168,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                         child: StreamBuilder<BookingsRecord>(
                                           stream: BookingsRecord.getDocument(
                                               overdueInvoicesInvoicesRecord
-                                                  .bookingRef),
+                                                  .bookingRef!),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.
                                             if (!snapshot.hasData) {
@@ -186,7 +186,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                               );
                                             }
                                             final containerBookingsRecord =
-                                                snapshot.data;
+                                                snapshot.data!;
                                             return Material(
                                               color: Colors.transparent,
                                               elevation: 2,
@@ -254,7 +254,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                 child: Text(
                                                                   formatNumber(
                                                                     overdueInvoicesInvoicesRecord
-                                                                        .invoiceAmount,
+                                                                        .invoiceAmount!,
                                                                     formatType:
                                                                         FormatType
                                                                             .decimal,
@@ -314,7 +314,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                       Visibility(
                                                                     visible:
                                                                         !overdueInvoicesInvoicesRecord
-                                                                            .isPaid,
+                                                                            .isPaid!,
                                                                     child:
                                                                         Padding(
                                                                       padding: EdgeInsetsDirectional
@@ -491,7 +491,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                             child: Padding(
                                                                                               padding: EdgeInsetsDirectional.fromSTEB(0, 5, 6, 0),
                                                                                               child: Text(
-                                                                                                dateTimeFormat('d/M/y', containerBookingsRecord.scheduledDate),
+                                                                                                dateTimeFormat('d/M/y', containerBookingsRecord.scheduledDate!),
                                                                                                 textAlign: TextAlign.end,
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                       fontFamily: 'Montserrat',
@@ -558,7 +558,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                             child: Padding(
                                                                                               padding: EdgeInsetsDirectional.fromSTEB(0, 5, 6, 0),
                                                                                               child: Text(
-                                                                                                dateTimeFormat('d/M/y', overdueInvoicesInvoicesRecord.dueDate),
+                                                                                                dateTimeFormat('d/M/y', overdueInvoicesInvoicesRecord.dueDate!),
                                                                                                 textAlign: TextAlign.end,
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                       fontFamily: 'Montserrat',
@@ -623,7 +623,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(0, 8, 4, 0),
                                                                                         child: Text(
-                                                                                          overdueInvoicesInvoicesRecord.labRefNum,
+                                                                                          overdueInvoicesInvoicesRecord.labRefNum!,
                                                                                           textAlign: TextAlign.end,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Montserrat',
@@ -691,7 +691,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                         ),
                                                                                       );
                                                                                     }
-                                                                                    List<PaymentsRecord> paymentsListViewPaymentsRecordList = snapshot.data;
+                                                                                    List<PaymentsRecord> paymentsListViewPaymentsRecordList = snapshot.data!;
                                                                                     return ListView.builder(
                                                                                       padding: EdgeInsets.zero,
                                                                                       scrollDirection: Axis.vertical,
@@ -725,7 +725,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                     child: Padding(
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
                                                                                                       child: Text(
-                                                                                                        dateTimeFormat('d/M/y', paymentsListViewPaymentsRecord.transactionDate),
+                                                                                                        dateTimeFormat('d/M/y', paymentsListViewPaymentsRecord.transactionDate!),
                                                                                                         textAlign: TextAlign.start,
                                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                               fontFamily: 'Montserrat',
@@ -742,7 +742,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                     child: Padding(
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(7, 9, 5, 5),
                                                                                                       child: Text(
-                                                                                                        paymentsListViewPaymentsRecord.transactionCode,
+                                                                                                        paymentsListViewPaymentsRecord.transactionCode!,
                                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                               fontFamily: 'Montserrat',
                                                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
@@ -760,7 +760,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                     child: Padding(
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(9, 9, 5, 5),
                                                                                                       child: Text(
-                                                                                                        paymentsListViewPaymentsRecord.type,
+                                                                                                        paymentsListViewPaymentsRecord.type!,
                                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                               fontFamily: 'Montserrat',
                                                                                                               color: Colors.white,
@@ -777,7 +777,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
                                                                                                       child: Text(
                                                                                                         formatNumber(
-                                                                                                          paymentsListViewPaymentsRecord.amount,
+                                                                                                          paymentsListViewPaymentsRecord.amount!,
                                                                                                           formatType: FormatType.decimal,
                                                                                                           decimalType: DecimalType.periodDecimal,
                                                                                                           currency: 'Ksh ',
@@ -816,7 +816,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                       child: StreamBuilder<
                                                                           UsersRecord>(
                                                                         stream:
-                                                                            UsersRecord.getDocument(currentUserReference),
+                                                                            UsersRecord.getDocument(currentUserReference!),
                                                                         builder:
                                                                             (context,
                                                                                 snapshot) {
@@ -835,7 +835,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                             );
                                                                           }
                                                                           final containerUsersRecord =
-                                                                              snapshot.data;
+                                                                              snapshot.data!;
                                                                           return Container(
                                                                             width:
                                                                                 MediaQuery.of(context).size.width * 0.8,
@@ -954,7 +954,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                             child: Padding(
                                                                                               padding: EdgeInsetsDirectional.fromSTEB(6, 6, 3, 3),
                                                                                               child: Text(
-                                                                                                containerBookingsRecord.emailaddress,
+                                                                                                containerBookingsRecord.emailaddress!,
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                       fontFamily: 'Montserrat',
                                                                                                       color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1003,7 +1003,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                             child: Padding(
                                                                                               padding: EdgeInsetsDirectional.fromSTEB(6, 6, 3, 3),
                                                                                               child: Text(
-                                                                                                containerBookingsRecord.phonenumber,
+                                                                                                containerBookingsRecord.phonenumber!,
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                       fontFamily: 'Montserrat',
                                                                                                       color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1065,7 +1065,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                   Padding(
                                                                                                     padding: EdgeInsetsDirectional.fromSTEB(3, 5, 3, 0),
                                                                                                     child: Text(
-                                                                                                      dateTimeFormat('d/M/y', containerBookingsRecord.dOB),
+                                                                                                      dateTimeFormat('d/M/y', containerBookingsRecord.dOB!),
                                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                             fontFamily: 'Montserrat',
                                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1120,7 +1120,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                     Padding(
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                                                                                       child: Text(
-                                                                                                        containerBookingsRecord.sex,
+                                                                                                        containerBookingsRecord.sex!,
                                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                               fontFamily: 'Montserrat',
                                                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1162,7 +1162,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                       Axis.horizontal,
                                                                   onDotClicked:
                                                                       (i) {
-                                                                    pageViewController1
+                                                                    pageViewController1!
                                                                         .animateToPage(
                                                                       i,
                                                                       duration: Duration(
@@ -1241,7 +1241,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                 }
                                 List<InvoicesRecord>
                                     mainContentInvoicesRecordList =
-                                    snapshot.data;
+                                    snapshot.data!;
                                 return SingleChildScrollView(
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
@@ -1260,7 +1260,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                         child: StreamBuilder<BookingsRecord>(
                                           stream: BookingsRecord.getDocument(
                                               mainContentInvoicesRecord
-                                                  .bookingRef),
+                                                  .bookingRef!),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.
                                             if (!snapshot.hasData) {
@@ -1278,7 +1278,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                               );
                                             }
                                             final containerBookingsRecord =
-                                                snapshot.data;
+                                                snapshot.data!;
                                             return Material(
                                               color: Colors.transparent,
                                               elevation: 2,
@@ -1346,7 +1346,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                 child: Text(
                                                                   formatNumber(
                                                                     mainContentInvoicesRecord
-                                                                        .invoiceAmount,
+                                                                        .invoiceAmount!,
                                                                     formatType:
                                                                         FormatType
                                                                             .decimal,
@@ -1403,7 +1403,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                     Visibility(
                                                                   visible:
                                                                       !mainContentInvoicesRecord
-                                                                          .isPaid,
+                                                                          .isPaid!,
                                                                   child:
                                                                       Padding(
                                                                     padding: EdgeInsetsDirectional
@@ -1584,7 +1584,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                             child: Padding(
                                                                                               padding: EdgeInsetsDirectional.fromSTEB(0, 5, 6, 0),
                                                                                               child: Text(
-                                                                                                dateTimeFormat('d/M/y', containerBookingsRecord.scheduledDate),
+                                                                                                dateTimeFormat('d/M/y', containerBookingsRecord.scheduledDate!),
                                                                                                 textAlign: TextAlign.end,
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                       fontFamily: 'Montserrat',
@@ -1651,7 +1651,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                             child: Padding(
                                                                                               padding: EdgeInsetsDirectional.fromSTEB(0, 5, 6, 0),
                                                                                               child: Text(
-                                                                                                dateTimeFormat('d/M/y', mainContentInvoicesRecord.dueDate),
+                                                                                                dateTimeFormat('d/M/y', mainContentInvoicesRecord.dueDate!),
                                                                                                 textAlign: TextAlign.end,
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                       fontFamily: 'Montserrat',
@@ -1716,7 +1716,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(0, 8, 4, 0),
                                                                                         child: Text(
-                                                                                          mainContentInvoicesRecord.labRefNum,
+                                                                                          mainContentInvoicesRecord.labRefNum!,
                                                                                           textAlign: TextAlign.end,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Montserrat',
@@ -1784,7 +1784,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                         ),
                                                                                       );
                                                                                     }
-                                                                                    List<PaymentsRecord> paymentsListView2PaymentsRecordList = snapshot.data;
+                                                                                    List<PaymentsRecord> paymentsListView2PaymentsRecordList = snapshot.data!;
                                                                                     return ListView.builder(
                                                                                       padding: EdgeInsets.zero,
                                                                                       scrollDirection: Axis.vertical,
@@ -1818,7 +1818,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                     child: Padding(
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
                                                                                                       child: Text(
-                                                                                                        dateTimeFormat('d/M/y', paymentsListView2PaymentsRecord.transactionDate),
+                                                                                                        dateTimeFormat('d/M/y', paymentsListView2PaymentsRecord.transactionDate!),
                                                                                                         textAlign: TextAlign.start,
                                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                               fontFamily: 'Montserrat',
@@ -1835,7 +1835,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                     child: Padding(
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(7, 9, 5, 5),
                                                                                                       child: Text(
-                                                                                                        paymentsListView2PaymentsRecord.transactionCode,
+                                                                                                        paymentsListView2PaymentsRecord.transactionCode!,
                                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                               fontFamily: 'Montserrat',
                                                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1853,7 +1853,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                     child: Padding(
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(9, 9, 5, 5),
                                                                                                       child: Text(
-                                                                                                        paymentsListView2PaymentsRecord.type,
+                                                                                                        paymentsListView2PaymentsRecord.type!,
                                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                               fontFamily: 'Montserrat',
                                                                                                               color: Colors.white,
@@ -1870,7 +1870,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
                                                                                                       child: Text(
                                                                                                         formatNumber(
-                                                                                                          paymentsListView2PaymentsRecord.amount,
+                                                                                                          paymentsListView2PaymentsRecord.amount!,
                                                                                                           formatType: FormatType.decimal,
                                                                                                           decimalType: DecimalType.periodDecimal,
                                                                                                           currency: 'Ksh ',
@@ -1909,7 +1909,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                       child: StreamBuilder<
                                                                           UsersRecord>(
                                                                         stream:
-                                                                            UsersRecord.getDocument(currentUserReference),
+                                                                            UsersRecord.getDocument(currentUserReference!),
                                                                         builder:
                                                                             (context,
                                                                                 snapshot) {
@@ -1928,7 +1928,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                             );
                                                                           }
                                                                           final containerUsersRecord =
-                                                                              snapshot.data;
+                                                                              snapshot.data!;
                                                                           return Container(
                                                                             width:
                                                                                 MediaQuery.of(context).size.width * 0.8,
@@ -2047,7 +2047,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                             child: Padding(
                                                                                               padding: EdgeInsetsDirectional.fromSTEB(6, 6, 3, 3),
                                                                                               child: Text(
-                                                                                                containerBookingsRecord.emailaddress,
+                                                                                                containerBookingsRecord.emailaddress!,
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                       fontFamily: 'Montserrat',
                                                                                                       color: FlutterFlowTheme.of(context).secondaryColor,
@@ -2096,7 +2096,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                             child: Padding(
                                                                                               padding: EdgeInsetsDirectional.fromSTEB(6, 6, 3, 3),
                                                                                               child: Text(
-                                                                                                containerBookingsRecord.phonenumber,
+                                                                                                containerBookingsRecord.phonenumber!,
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                       fontFamily: 'Montserrat',
                                                                                                       color: FlutterFlowTheme.of(context).secondaryColor,
@@ -2158,7 +2158,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                   Padding(
                                                                                                     padding: EdgeInsetsDirectional.fromSTEB(3, 5, 3, 0),
                                                                                                     child: Text(
-                                                                                                      dateTimeFormat('d/M/y', containerBookingsRecord.dOB),
+                                                                                                      dateTimeFormat('d/M/y', containerBookingsRecord.dOB!),
                                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                             fontFamily: 'Montserrat',
                                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
@@ -2213,7 +2213,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                     Padding(
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                                                                                       child: Text(
-                                                                                                        containerBookingsRecord.sex,
+                                                                                                        containerBookingsRecord.sex!,
                                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                               fontFamily: 'Montserrat',
                                                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
@@ -2255,7 +2255,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                       Axis.horizontal,
                                                                   onDotClicked:
                                                                       (i) {
-                                                                    pageViewController2
+                                                                    pageViewController2!
                                                                         .animateToPage(
                                                                       i,
                                                                       duration: Duration(
@@ -2330,7 +2330,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                   weekStartsMonday: true,
                                   initialDate: functions
                                       .returntheDay(getCurrentTimestamp),
-                                  onChange: (DateTimeRange newSelectedDate) {
+                                  onChange: (DateTimeRange? newSelectedDate) {
                                     setState(() => uICalendarSelectedDay =
                                         newSelectedDate);
                                   },
@@ -2384,7 +2384,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                     }
                                     List<InvoicesRecord>
                                         mainContentInvoicesRecordList =
-                                        snapshot.data;
+                                        snapshot.data!;
                                     return SingleChildScrollView(
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
@@ -2407,7 +2407,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                               stream:
                                                   BookingsRecord.getDocument(
                                                       mainContentInvoicesRecord
-                                                          .bookingRef),
+                                                          .bookingRef!),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
                                                 if (!snapshot.hasData) {
@@ -2426,7 +2426,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                   );
                                                 }
                                                 final containerBookingsRecord =
-                                                    snapshot.data;
+                                                    snapshot.data!;
                                                 return Material(
                                                   color: Colors.transparent,
                                                   elevation: 2,
@@ -2496,7 +2496,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                     child: Text(
                                                                       formatNumber(
                                                                         mainContentInvoicesRecord
-                                                                            .invoiceAmount,
+                                                                            .invoiceAmount!,
                                                                         formatType:
                                                                             FormatType.decimal,
                                                                         decimalType:
@@ -2550,7 +2550,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                       child:
                                                                           Visibility(
                                                                         visible:
-                                                                            !mainContentInvoicesRecord.isPaid,
+                                                                            !mainContentInvoicesRecord.isPaid!,
                                                                         child:
                                                                             Padding(
                                                                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -2714,7 +2714,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                 child: Padding(
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(0, 5, 6, 0),
                                                                                                   child: Text(
-                                                                                                    dateTimeFormat('d/M/y', containerBookingsRecord.scheduledDate),
+                                                                                                    dateTimeFormat('d/M/y', containerBookingsRecord.scheduledDate!),
                                                                                                     textAlign: TextAlign.end,
                                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                           fontFamily: 'Montserrat',
@@ -2776,7 +2776,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                 child: Padding(
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(0, 5, 6, 0),
                                                                                                   child: Text(
-                                                                                                    dateTimeFormat('d/M/y', mainContentInvoicesRecord.dueDate),
+                                                                                                    dateTimeFormat('d/M/y', mainContentInvoicesRecord.dueDate!),
                                                                                                     textAlign: TextAlign.end,
                                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                           fontFamily: 'Montserrat',
@@ -2836,7 +2836,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                           child: Padding(
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(0, 8, 4, 0),
                                                                                             child: Text(
-                                                                                              mainContentInvoicesRecord.labRefNum,
+                                                                                              mainContentInvoicesRecord.labRefNum!,
                                                                                               textAlign: TextAlign.end,
                                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                     fontFamily: 'Montserrat',
@@ -2900,7 +2900,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                             ),
                                                                                           );
                                                                                         }
-                                                                                        List<PaymentsRecord> paymentsListView3PaymentsRecordList = snapshot.data;
+                                                                                        List<PaymentsRecord> paymentsListView3PaymentsRecordList = snapshot.data!;
                                                                                         return ListView.builder(
                                                                                           padding: EdgeInsets.zero,
                                                                                           scrollDirection: Axis.vertical,
@@ -2934,7 +2934,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                         child: Padding(
                                                                                                           padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
                                                                                                           child: Text(
-                                                                                                            dateTimeFormat('d/M/y', paymentsListView3PaymentsRecord.transactionDate),
+                                                                                                            dateTimeFormat('d/M/y', paymentsListView3PaymentsRecord.transactionDate!),
                                                                                                             textAlign: TextAlign.start,
                                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                                   fontFamily: 'Montserrat',
@@ -2951,7 +2951,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                         child: Padding(
                                                                                                           padding: EdgeInsetsDirectional.fromSTEB(7, 9, 5, 5),
                                                                                                           child: Text(
-                                                                                                            paymentsListView3PaymentsRecord.transactionCode,
+                                                                                                            paymentsListView3PaymentsRecord.transactionCode!,
                                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                                   fontFamily: 'Montserrat',
                                                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
@@ -2969,7 +2969,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                         child: Padding(
                                                                                                           padding: EdgeInsetsDirectional.fromSTEB(9, 9, 5, 5),
                                                                                                           child: Text(
-                                                                                                            paymentsListView3PaymentsRecord.type,
+                                                                                                            paymentsListView3PaymentsRecord.type!,
                                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                                   fontFamily: 'Montserrat',
                                                                                                                   color: Colors.white,
@@ -2986,7 +2986,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                           padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
                                                                                                           child: Text(
                                                                                                             formatNumber(
-                                                                                                              paymentsListView3PaymentsRecord.amount,
+                                                                                                              paymentsListView3PaymentsRecord.amount!,
                                                                                                               formatType: FormatType.decimal,
                                                                                                               decimalType: DecimalType.periodDecimal,
                                                                                                               currency: 'Ksh ',
@@ -3024,7 +3024,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                           child:
                                                                               StreamBuilder<UsersRecord>(
                                                                             stream:
-                                                                                UsersRecord.getDocument(currentUserReference),
+                                                                                UsersRecord.getDocument(currentUserReference!),
                                                                             builder:
                                                                                 (context, snapshot) {
                                                                               // Customize what your widget looks like when it's loading.
@@ -3040,7 +3040,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                   ),
                                                                                 );
                                                                               }
-                                                                              final containerUsersRecord = snapshot.data;
+                                                                              final containerUsersRecord = snapshot.data!;
                                                                               return Container(
                                                                                 width: MediaQuery.of(context).size.width * 0.8,
                                                                                 height: MediaQuery.of(context).size.height * 0.35,
@@ -3155,7 +3155,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                 child: Padding(
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6, 6, 3, 3),
                                                                                                   child: Text(
-                                                                                                    containerBookingsRecord.emailaddress,
+                                                                                                    containerBookingsRecord.emailaddress!,
                                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                           fontFamily: 'Montserrat',
                                                                                                           color: FlutterFlowTheme.of(context).secondaryColor,
@@ -3204,7 +3204,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                 child: Padding(
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6, 6, 3, 3),
                                                                                                   child: Text(
-                                                                                                    containerBookingsRecord.phonenumber,
+                                                                                                    containerBookingsRecord.phonenumber!,
                                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                           fontFamily: 'Montserrat',
                                                                                                           color: FlutterFlowTheme.of(context).secondaryColor,
@@ -3266,7 +3266,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                       Padding(
                                                                                                         padding: EdgeInsetsDirectional.fromSTEB(3, 5, 3, 0),
                                                                                                         child: Text(
-                                                                                                          dateTimeFormat('d/M/y', containerBookingsRecord.dOB),
+                                                                                                          dateTimeFormat('d/M/y', containerBookingsRecord.dOB!),
                                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                                 fontFamily: 'Montserrat',
                                                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
@@ -3321,7 +3321,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                                                         Padding(
                                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                                                                                           child: Text(
-                                                                                                            containerBookingsRecord.sex,
+                                                                                                            containerBookingsRecord.sex!,
                                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                                   fontFamily: 'Montserrat',
                                                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
@@ -3363,7 +3363,7 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                           Axis.horizontal,
                                                                       onDotClicked:
                                                                           (i) {
-                                                                        pageViewController3
+                                                                        pageViewController3!
                                                                             .animateToPage(
                                                                           i,
                                                                           duration:

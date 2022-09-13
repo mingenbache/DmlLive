@@ -14,13 +14,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class BookingViewWidgetWidget extends StatefulWidget {
   const BookingViewWidgetWidget({
-    Key key,
+    Key? key,
     this.bookingRef,
     this.index,
   }) : super(key: key);
 
-  final BookingsRecord bookingRef;
-  final int index;
+  final BookingsRecord? bookingRef;
+  final int? index;
 
   @override
   _BookingViewWidgetWidgetState createState() =>
@@ -178,7 +178,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   6, 6, 0, 0),
                                           child: Text(
-                                            '${widget.bookingRef.firstname}   ${widget.bookingRef.lastname}',
+                                            '${widget.bookingRef!.firstname}   ${widget.bookingRef!.lastname}',
                                             style: TextStyle(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -190,7 +190,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                         ),
                                       ).animated([
                                         animationsMap[
-                                            'containerOnPageLoadAnimation']
+                                            'containerOnPageLoadAnimation']!
                                       ]),
                                     ),
                                   ],
@@ -204,7 +204,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 5, 5, 0),
                             child: DateWidgetSmallWidget(
-                              date: widget.bookingRef.scheduledDate,
+                              date: widget.bookingRef!.scheduledDate,
                             ),
                           ),
                         ),
@@ -221,7 +221,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                       child: Builder(
                         builder: (context) {
                           final bookedTests =
-                              widget.bookingRef.bookedTests.toList();
+                              widget.bookingRef!.bookedTests!.toList();
                           return SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
@@ -238,7 +238,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                           testedTestsRecord
                                               .where('booking_ref',
                                                   isEqualTo: widget
-                                                      .bookingRef.reference)
+                                                      .bookingRef!.reference)
                                               .where('test_ref',
                                                   isEqualTo: bookedTestsItem),
                                       singleRecord: true,
@@ -261,7 +261,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                       }
                                       List<TestedTestsRecord>
                                           testItemContainerTestedTestsRecordList =
-                                          snapshot.data;
+                                          snapshot.data!;
                                       final testItemContainerTestedTestsRecord =
                                           testItemContainerTestedTestsRecordList
                                                   .isNotEmpty
@@ -284,7 +284,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                           .viewInsets,
                                                   child: ViewTestResultWidget(
                                                     testedTestRef:
-                                                        testItemContainerTestedTestsRecord
+                                                        testItemContainerTestedTestsRecord!
                                                             .reference,
                                                   ),
                                                 );
@@ -303,7 +303,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                           .viewInsets,
                                                   child: BeginTestWidget(
                                                     bookedTestRef:
-                                                        testItemContainerTestedTestsRecord
+                                                        testItemContainerTestedTestsRecord!
                                                             .bookedTestRef,
                                                     booking: widget.bookingRef,
                                                   ),
@@ -337,8 +337,8 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                 FutureBuilder<TestsRecord>(
                                                   future: TestsRecord
                                                       .getDocumentOnce(
-                                                          testItemContainerTestedTestsRecord
-                                                              .testRef),
+                                                          testItemContainerTestedTestsRecord!
+                                                              .testRef!),
                                                   builder: (context, snapshot) {
                                                     // Customize what your widget looks like when it's loading.
                                                     if (!snapshot.hasData) {
@@ -356,7 +356,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                       );
                                                     }
                                                     final textTestsRecord =
-                                                        snapshot.data;
+                                                        snapshot.data!;
                                                     return Text(
                                                       functions
                                                           .upperCase(
@@ -400,7 +400,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                                 .where(
                                                                     'booking_ref',
                                                                     isEqualTo: widget
-                                                                        .bookingRef
+                                                                        .bookingRef!
                                                                         .reference)
                                                                 .where(
                                                                     'test_ref',
@@ -428,7 +428,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                         }
                                                         List<TestedTestsRecord>
                                                             containerTestedTestsRecordList =
-                                                            snapshot.data;
+                                                            snapshot.data!;
                                                         final containerTestedTestsRecord =
                                                             containerTestedTestsRecordList
                                                                     .isNotEmpty
@@ -594,7 +594,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                        if (containerTestedTestsRecord.resultPosted ??
+                                                                        if (containerTestedTestsRecord!.resultPosted ??
                                                                             true)
                                                                           Container(
                                                                             decoration:
@@ -643,13 +643,13 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                        if (containerTestedTestsRecord.isVerified ??
+                                                                        if (containerTestedTestsRecord!.isVerified ??
                                                                             true)
                                                                           StreamBuilder<
                                                                               List<TestedTestsRecord>>(
                                                                             stream:
                                                                                 queryTestedTestsRecord(
-                                                                              queryBuilder: (testedTestsRecord) => testedTestsRecord.where('booked_test_Ref', isEqualTo: containerTestedTestsRecord.bookedTestRef),
+                                                                              queryBuilder: (testedTestsRecord) => testedTestsRecord.where('booked_test_Ref', isEqualTo: containerTestedTestsRecord!.bookedTestRef),
                                                                               singleRecord: true,
                                                                             ),
                                                                             builder:
@@ -667,9 +667,9 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                                                   ),
                                                                                 );
                                                                               }
-                                                                              List<TestedTestsRecord> testVerifiedTestedTestsRecordList = snapshot.data;
+                                                                              List<TestedTestsRecord> testVerifiedTestedTestsRecordList = snapshot.data!;
                                                                               // Return an empty Container when the document does not exist.
-                                                                              if (snapshot.data.isEmpty) {
+                                                                              if (snapshot.data!.isEmpty) {
                                                                                 return Container();
                                                                               }
                                                                               final testVerifiedTestedTestsRecord = testVerifiedTestedTestsRecordList.isNotEmpty ? testVerifiedTestedTestsRecordList.first : null;
@@ -776,7 +776,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0, 0, 0, 2),
                                             child: Text(
-                                              widget.bookingRef.bookedTests
+                                              widget.bookingRef!.bookedTests!
                                                   .toList()
                                                   .length
                                                   .toString()
@@ -843,7 +843,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0, 0, 0, 2),
                                             child: Text(
-                                              widget.bookingRef.verifiedTests
+                                              widget.bookingRef!.verifiedTests!
                                                   .toList()
                                                   .length
                                                   .toString()
@@ -866,7 +866,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                 ),
                               ),
                             ),
-                            if (widget.bookingRef.completed ?? true)
+                            if (widget.bookingRef!.completed ?? true)
                               Container(
                                 height: 32,
                                 constraints: BoxConstraints(

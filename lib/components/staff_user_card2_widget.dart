@@ -11,11 +11,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class StaffUserCard2Widget extends StatefulWidget {
   const StaffUserCard2Widget({
-    Key key,
+    Key? key,
     this.userRecord,
   }) : super(key: key);
 
-  final UsersRecord userRecord;
+  final UsersRecord? userRecord;
 
   @override
   _StaffUserCard2WidgetState createState() => _StaffUserCard2WidgetState();
@@ -51,7 +51,7 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                   ),
                   child: Stack(
                     children: [
-                      if (widget.userRecord.role == 'patho')
+                      if (widget.userRecord!.role == 'patho')
                         Align(
                           alignment: AlignmentDirectional(0, -1),
                           child: Image.asset(
@@ -60,17 +60,17 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                             fit: BoxFit.fitHeight,
                           ),
                         ),
-                      if (widget.userRecord.role == 'front')
+                      if (widget.userRecord!.role == 'front')
                         Image.asset(
                           'assets/images/reception@2x.png',
                           fit: BoxFit.fitHeight,
                         ),
-                      if (widget.userRecord.role == 'tech')
+                      if (widget.userRecord!.role == 'tech')
                         Image.asset(
                           'assets/images/technologist@2x.png',
                           fit: BoxFit.fitWidth,
                         ),
-                      if (widget.userRecord.role == 'super')
+                      if (widget.userRecord!.role == 'super')
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 60, 0, 0),
                           child: Image.asset(
@@ -95,7 +95,7 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                       return Padding(
                         padding: MediaQuery.of(context).viewInsets,
                         child: UserActivityWidget(
-                          userRef: widget.userRecord.reference,
+                          userRef: widget.userRecord!.reference,
                         ),
                       );
                     },
@@ -144,7 +144,7 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Text(
-                                    '${functions.camelCase(widget.userRecord.firstName)} ${functions.camelCase(widget.userRecord.lastName)}',
+                                    '${functions.camelCase(widget.userRecord!.firstName)} ${functions.camelCase(widget.userRecord!.lastName)}',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
@@ -216,7 +216,7 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                                         ),
                                       ),
                                       Text(
-                                        widget.userRecord.email,
+                                        widget.userRecord!.email!,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -260,8 +260,8 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                                             child: Text(
                                               dateTimeFormat(
                                                   'd/M/y',
-                                                  widget
-                                                      .userRecord.createdTime),
+                                                  widget.userRecord!
+                                                      .createdTime!),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyText1
@@ -298,8 +298,10 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                                             width: 75,
                                             decoration: BoxDecoration(),
                                             child: Text(
-                                              dateTimeFormat('d/M/y',
-                                                  widget.userRecord.lastLogin),
+                                              dateTimeFormat(
+                                                  'd/M/y',
+                                                  widget
+                                                      .userRecord!.lastLogin!),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyText1
@@ -358,7 +360,7 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     3, 0, 0, 0),
                                             child: Text(
-                                              widget.userRecord.role,
+                                              widget.userRecord!.role!,
                                               textAlign: TextAlign.center,
                                               style:
                                                   FlutterFlowTheme.of(context)

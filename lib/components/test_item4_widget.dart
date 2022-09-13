@@ -13,17 +13,17 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TestItem4Widget extends StatefulWidget {
   const TestItem4Widget({
-    Key key,
+    Key? key,
     this.test,
     this.index,
     this.booking,
     this.listSize,
   }) : super(key: key);
 
-  final DocumentReference test;
-  final int index;
-  final BookingsRecord booking;
-  final int listSize;
+  final DocumentReference? test;
+  final int? index;
+  final BookingsRecord? booking;
+  final int? listSize;
 
   @override
   _TestItem4WidgetState createState() => _TestItem4WidgetState();
@@ -103,7 +103,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
       child: StreamBuilder<TestsRecord>(
-        stream: TestsRecord.getDocument(widget.test),
+        stream: TestsRecord.getDocument(widget.test!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -118,7 +118,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
               ),
             );
           }
-          final stackTestsRecord = snapshot.data;
+          final stackTestsRecord = snapshot.data!;
           return Stack(
             children: [
               Padding(
@@ -134,31 +134,31 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                       children: [
                         Stack(
                           children: [
-                            if (widget.booking.testsIncluded
+                            if (widget.booking!.testsIncluded!
                                 .toList()
                                 .contains(widget.test))
                               InkWell(
                                 onTap: () async {
-                                  if (widget.booking.testsIncluded
+                                  if (widget.booking!.testsIncluded!
                                       .toList()
                                       .contains(widget.test)) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
                                         totalPrice: functions.removeFromCart(
-                                            widget.booking.totalPrice,
+                                            widget.booking!.totalPrice,
                                             stackTestsRecord.price),
                                       ),
                                       'tests_included':
                                           FieldValue.arrayRemove([widget.test]),
                                       'total_tests': FieldValue.increment(-1),
                                     };
-                                    await widget.booking.reference
+                                    await widget.booking!.reference
                                         .update(bookingsUpdateData);
                                   }
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'Test Removed.${widget.booking.testsIncluded.toList().length.toString()} Tests in Total.',
+                                        'Test Removed.${widget.booking!.testsIncluded!.toList().length.toString()} Tests in Total.',
                                         style: TextStyle(),
                                       ),
                                       duration: Duration(milliseconds: 4000),
@@ -211,33 +211,33 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                 ),
                               ).animated([
                                 animationsMap[
-                                    'containerOnActionTriggerAnimation1']
+                                    'containerOnActionTriggerAnimation1']!
                               ]),
-                            if (!widget.booking.testsIncluded
+                            if (!widget.booking!.testsIncluded!
                                 .toList()
                                 .contains(widget.test))
                               InkWell(
                                 onTap: () async {
-                                  if (!widget.booking.testsIncluded
+                                  if (!widget.booking!.testsIncluded!
                                       .toList()
                                       .contains(widget.test)) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
                                         totalPrice: functions.addCartTotal(
-                                            widget.booking.totalPrice,
+                                            widget.booking!.totalPrice,
                                             stackTestsRecord.price),
                                       ),
                                       'tests_included':
                                           FieldValue.arrayUnion([widget.test]),
                                       'total_tests': FieldValue.increment(1),
                                     };
-                                    await widget.booking.reference
+                                    await widget.booking!.reference
                                         .update(bookingsUpdateData);
                                   }
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'Test Added.${widget.booking.testsIncluded.toList().length.toString()} Tests in Total.',
+                                        'Test Added.${widget.booking!.testsIncluded!.toList().length.toString()} Tests in Total.',
                                         style: TextStyle(),
                                       ),
                                       duration: Duration(milliseconds: 4000),
@@ -290,10 +290,11 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                 ),
                               ).animated([
                                 animationsMap[
-                                    'containerOnActionTriggerAnimation2']
+                                    'containerOnActionTriggerAnimation2']!
                               ]),
                           ],
-                        ).animated([animationsMap['stackOnPageLoadAnimation']]),
+                        ).animated(
+                            [animationsMap['stackOnPageLoadAnimation']!]),
                       ],
                     ),
                   ],
@@ -511,7 +512,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                                         4),
                                                             child: Text(
                                                               stackTestsRecord
-                                                                  .category,
+                                                                  .category!,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyText1
@@ -727,7 +728,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                                 child: Text(
                                                                   formatNumber(
                                                                     stackTestsRecord
-                                                                        .price,
+                                                                        .price!,
                                                                     formatType:
                                                                         FormatType
                                                                             .decimal,
@@ -783,7 +784,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (widget.listSize > 1)
+                        if (widget.listSize! > 1)
                           Material(
                             color: Colors.transparent,
                             elevation: 2,

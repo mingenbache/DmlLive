@@ -12,7 +12,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyAccountWidget extends StatefulWidget {
-  const MyAccountWidget({Key key}) : super(key: key);
+  const MyAccountWidget({Key? key}) : super(key: key);
 
   @override
   _MyAccountWidgetState createState() => _MyAccountWidgetState();
@@ -24,7 +24,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<UsersRecord>(
-      stream: UsersRecord.getDocument(currentUserReference),
+      stream: UsersRecord.getDocument(currentUserReference!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -39,7 +39,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
             ),
           );
         }
-        final myAccountUsersRecord = snapshot.data;
+        final myAccountUsersRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           body: Container(
@@ -237,7 +237,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                     .fromSTEB(6, 0, 0, 0),
                                                 child: Text(
                                                   myAccountUsersRecord
-                                                      .firstName,
+                                                      .firstName!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText2
@@ -319,7 +319,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                     .fromSTEB(6, 0, 0, 0),
                                                 child: Text(
                                                   myAccountUsersRecord
-                                                      .phoneNumber,
+                                                      .phoneNumber!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText2
@@ -400,7 +400,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(6, 0, 0, 0),
                                                 child: Text(
-                                                  myAccountUsersRecord.email,
+                                                  myAccountUsersRecord.email!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText2
@@ -568,7 +568,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(6, 0, 0, 0),
                                                 child: Text(
-                                                  myAccountUsersRecord.sex,
+                                                  myAccountUsersRecord.sex!,
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)

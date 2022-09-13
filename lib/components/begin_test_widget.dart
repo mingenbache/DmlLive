@@ -12,23 +12,23 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BeginTestWidget extends StatefulWidget {
   const BeginTestWidget({
-    Key key,
+    Key? key,
     this.bookedTestRef,
     this.booking,
   }) : super(key: key);
 
-  final DocumentReference bookedTestRef;
-  final BookingsRecord booking;
+  final DocumentReference? bookedTestRef;
+  final BookingsRecord? booking;
 
   @override
   _BeginTestWidgetState createState() => _BeginTestWidgetState();
 }
 
 class _BeginTestWidgetState extends State<BeginTestWidget> {
-  TextEditingController batchNumController;
+  TextEditingController? batchNumController;
 
-  TestedTestsRecord newTestedTestRef;
-  PageController pageViewController;
+  TestedTestsRecord? newTestedTestRef;
+  PageController? pageViewController;
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -170,7 +170,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                             FFButtonWidget(
                                               onPressed: () async {
                                                 await pageViewController
-                                                    .nextPage(
+                                                    ?.nextPage(
                                                   duration: Duration(
                                                       milliseconds: 300),
                                                   curve: Curves.ease,
@@ -234,7 +234,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                         }
                                         List<StaffRecord>
                                             columnStaffRecordList =
-                                            snapshot.data;
+                                            snapshot.data!;
                                         final columnStaffRecord =
                                             columnStaffRecordList.isNotEmpty
                                                 ? columnStaffRecordList.first
@@ -485,8 +485,8 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                 StreamBuilder<
                                                     BookedTestsRecord>(
                                                   stream: BookedTestsRecord
-                                                      .getDocument(
-                                                          widget.bookedTestRef),
+                                                      .getDocument(widget
+                                                          .bookedTestRef!),
                                                   builder: (context, snapshot) {
                                                     // Customize what your widget looks like when it's loading.
                                                     if (!snapshot.hasData) {
@@ -504,7 +504,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                       );
                                                     }
                                                     final buttonBookedTestsRecord =
-                                                        snapshot.data;
+                                                        snapshot.data!;
                                                     return FFButtonWidget(
                                                       onPressed: () async {
                                                         if (valueOrDefault<
@@ -527,14 +527,14 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                             dateSampleCollected:
                                                                 getCurrentTimestamp,
                                                             labRefNum: widget
-                                                                .booking
+                                                                .booking!
                                                                 .labRefNum,
                                                             resultPosted: false,
                                                             staffReference:
-                                                                columnStaffRecord
+                                                                columnStaffRecord!
                                                                     .userRef,
                                                             batchNum:
-                                                                batchNumController
+                                                                batchNumController!
                                                                     .text,
                                                           );
                                                           var testedTestsRecordReference =
@@ -639,7 +639,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                     count: 2,
                                     axisDirection: Axis.horizontal,
                                     onDotClicked: (i) {
-                                      pageViewController.animateToPage(
+                                      pageViewController!.animateToPage(
                                         i,
                                         duration: Duration(milliseconds: 500),
                                         curve: Curves.ease,

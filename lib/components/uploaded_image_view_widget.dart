@@ -10,11 +10,11 @@ import 'package:page_transition/page_transition.dart';
 
 class UploadedImageViewWidget extends StatefulWidget {
   const UploadedImageViewWidget({
-    Key key,
+    Key? key,
     this.imgPath,
   }) : super(key: key);
 
-  final String imgPath;
+  final String? imgPath;
 
   @override
   _UploadedImageViewWidgetState createState() =>
@@ -57,18 +57,18 @@ class _UploadedImageViewWidgetState extends State<UploadedImageViewWidget> {
                             type: PageTransitionType.fade,
                             child: FlutterFlowExpandedImageView(
                               image: CachedNetworkImage(
-                                imageUrl: widget.imgPath,
+                                imageUrl: widget.imgPath!,
                                 fit: BoxFit.contain,
                               ),
                               allowRotation: true,
-                              tag: widget.imgPath,
+                              tag: widget.imgPath!,
                               useHeroAnimation: true,
                             ),
                           ),
                         );
                       },
                       child: Hero(
-                        tag: widget.imgPath,
+                        tag: widget.imgPath!,
                         transitionOnUserGestures: true,
                         child: ClipRRect(
                           borderRadius: BorderRadius.only(
@@ -78,7 +78,7 @@ class _UploadedImageViewWidgetState extends State<UploadedImageViewWidget> {
                             topRight: Radius.circular(8),
                           ),
                           child: CachedNetworkImage(
-                            imageUrl: widget.imgPath,
+                            imageUrl: widget.imgPath!,
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.height * 1,
                             fit: BoxFit.fill,

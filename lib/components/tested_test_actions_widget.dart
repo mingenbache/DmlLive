@@ -12,11 +12,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TestedTestActionsWidget extends StatefulWidget {
   const TestedTestActionsWidget({
-    Key key,
+    Key? key,
     this.testedTestRef,
   }) : super(key: key);
 
-  final DocumentReference testedTestRef;
+  final DocumentReference? testedTestRef;
 
   @override
   _TestedTestActionsWidgetState createState() =>
@@ -31,7 +31,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
       height: 90,
       decoration: BoxDecoration(),
       child: StreamBuilder<TestedTestsRecord>(
-        stream: TestedTestsRecord.getDocument(widget.testedTestRef),
+        stream: TestedTestsRecord.getDocument(widget.testedTestRef!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -46,7 +46,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
               ),
             );
           }
-          final rowTestedTestsRecord = snapshot.data;
+          final rowTestedTestsRecord = snapshot.data!;
           return Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -87,11 +87,11 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                 height: 50,
                                 child: Stack(
                                   children: [
-                                    if (!rowTestedTestsRecord.resultPosted)
+                                    if (!rowTestedTestsRecord.resultPosted!)
                                       InkWell(
                                         onTap: () async {
                                           if (!rowTestedTestsRecord
-                                              .resultPosted) {
+                                              .resultPosted!) {
                                             await showModalBottomSheet(
                                               isScrollControlled: true,
                                               backgroundColor:
@@ -247,7 +247,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                 height: 50,
                                 child: Stack(
                                   children: [
-                                    if (!rowTestedTestsRecord.isVerified)
+                                    if (!rowTestedTestsRecord.isVerified!)
                                       Container(
                                         height: 50,
                                         constraints: BoxConstraints(
@@ -453,7 +453,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                           ],
                                         ),
                                       ),
-                                    if (!rowTestedTestsRecord.isFlagged)
+                                    if (!rowTestedTestsRecord.isFlagged!)
                                       InkWell(
                                         onTap: () async {
                                           await showModalBottomSheet(

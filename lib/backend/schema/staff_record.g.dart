@@ -15,10 +15,10 @@ class _$StaffRecordSerializer implements StructuredSerializer<StaffRecord> {
   final String wireName = 'StaffRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, StaffRecord object,
+  Iterable<Object?> serialize(Serializers serializers, StaffRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.email;
     if (value != null) {
       result
@@ -53,7 +53,7 @@ class _$StaffRecordSerializer implements StructuredSerializer<StaffRecord> {
         ..add('UserRef')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.createDate;
     if (value != null) {
@@ -68,7 +68,7 @@ class _$StaffRecordSerializer implements StructuredSerializer<StaffRecord> {
         ..add('createUser')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.displayName;
     if (value != null) {
@@ -77,69 +77,69 @@ class _$StaffRecordSerializer implements StructuredSerializer<StaffRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.reference;
+    value = object.ffRef;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     return result;
   }
 
   @override
-  StaffRecord deserialize(Serializers serializers, Iterable<Object> serialized,
+  StaffRecord deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new StaffRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'email':
           result.email = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'first_name':
           result.firstName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'last_name':
           result.lastName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'role':
           result.role = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'UserRef':
           result.userRef = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'createDate':
           result.createDate = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'createUser':
           result.createUser = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'display_name':
           result.displayName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
-          result.reference = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+          result.ffRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
       }
     }
@@ -150,25 +150,25 @@ class _$StaffRecordSerializer implements StructuredSerializer<StaffRecord> {
 
 class _$StaffRecord extends StaffRecord {
   @override
-  final String email;
+  final String? email;
   @override
-  final String firstName;
+  final String? firstName;
   @override
-  final String lastName;
+  final String? lastName;
   @override
-  final String role;
+  final String? role;
   @override
-  final DocumentReference<Object> userRef;
+  final DocumentReference<Object?>? userRef;
   @override
-  final DateTime createDate;
+  final DateTime? createDate;
   @override
-  final DocumentReference<Object> createUser;
+  final DocumentReference<Object?>? createUser;
   @override
-  final String displayName;
+  final String? displayName;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object?>? ffRef;
 
-  factory _$StaffRecord([void Function(StaffRecordBuilder) updates]) =>
+  factory _$StaffRecord([void Function(StaffRecordBuilder)? updates]) =>
       (new StaffRecordBuilder()..update(updates))._build();
 
   _$StaffRecord._(
@@ -180,7 +180,7 @@ class _$StaffRecord extends StaffRecord {
       this.createDate,
       this.createUser,
       this.displayName,
-      this.reference})
+      this.ffRef})
       : super._();
 
   @override
@@ -202,7 +202,7 @@ class _$StaffRecord extends StaffRecord {
         createDate == other.createDate &&
         createUser == other.createUser &&
         displayName == other.displayName &&
-        reference == other.reference;
+        ffRef == other.ffRef;
   }
 
   @override
@@ -220,7 +220,7 @@ class _$StaffRecord extends StaffRecord {
                     createDate.hashCode),
                 createUser.hashCode),
             displayName.hashCode),
-        reference.hashCode));
+        ffRef.hashCode));
   }
 
   @override
@@ -234,51 +234,50 @@ class _$StaffRecord extends StaffRecord {
           ..add('createDate', createDate)
           ..add('createUser', createUser)
           ..add('displayName', displayName)
-          ..add('reference', reference))
+          ..add('ffRef', ffRef))
         .toString();
   }
 }
 
 class StaffRecordBuilder implements Builder<StaffRecord, StaffRecordBuilder> {
-  _$StaffRecord _$v;
+  _$StaffRecord? _$v;
 
-  String _email;
-  String get email => _$this._email;
-  set email(String email) => _$this._email = email;
+  String? _email;
+  String? get email => _$this._email;
+  set email(String? email) => _$this._email = email;
 
-  String _firstName;
-  String get firstName => _$this._firstName;
-  set firstName(String firstName) => _$this._firstName = firstName;
+  String? _firstName;
+  String? get firstName => _$this._firstName;
+  set firstName(String? firstName) => _$this._firstName = firstName;
 
-  String _lastName;
-  String get lastName => _$this._lastName;
-  set lastName(String lastName) => _$this._lastName = lastName;
+  String? _lastName;
+  String? get lastName => _$this._lastName;
+  set lastName(String? lastName) => _$this._lastName = lastName;
 
-  String _role;
-  String get role => _$this._role;
-  set role(String role) => _$this._role = role;
+  String? _role;
+  String? get role => _$this._role;
+  set role(String? role) => _$this._role = role;
 
-  DocumentReference<Object> _userRef;
-  DocumentReference<Object> get userRef => _$this._userRef;
-  set userRef(DocumentReference<Object> userRef) => _$this._userRef = userRef;
+  DocumentReference<Object?>? _userRef;
+  DocumentReference<Object?>? get userRef => _$this._userRef;
+  set userRef(DocumentReference<Object?>? userRef) => _$this._userRef = userRef;
 
-  DateTime _createDate;
-  DateTime get createDate => _$this._createDate;
-  set createDate(DateTime createDate) => _$this._createDate = createDate;
+  DateTime? _createDate;
+  DateTime? get createDate => _$this._createDate;
+  set createDate(DateTime? createDate) => _$this._createDate = createDate;
 
-  DocumentReference<Object> _createUser;
-  DocumentReference<Object> get createUser => _$this._createUser;
-  set createUser(DocumentReference<Object> createUser) =>
+  DocumentReference<Object?>? _createUser;
+  DocumentReference<Object?>? get createUser => _$this._createUser;
+  set createUser(DocumentReference<Object?>? createUser) =>
       _$this._createUser = createUser;
 
-  String _displayName;
-  String get displayName => _$this._displayName;
-  set displayName(String displayName) => _$this._displayName = displayName;
+  String? _displayName;
+  String? get displayName => _$this._displayName;
+  set displayName(String? displayName) => _$this._displayName = displayName;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
-      _$this._reference = reference;
+  DocumentReference<Object?>? _ffRef;
+  DocumentReference<Object?>? get ffRef => _$this._ffRef;
+  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   StaffRecordBuilder() {
     StaffRecord._initializeBuilder(this);
@@ -295,7 +294,7 @@ class StaffRecordBuilder implements Builder<StaffRecord, StaffRecordBuilder> {
       _createDate = $v.createDate;
       _createUser = $v.createUser;
       _displayName = $v.displayName;
-      _reference = $v.reference;
+      _ffRef = $v.ffRef;
       _$v = null;
     }
     return this;
@@ -308,7 +307,7 @@ class StaffRecordBuilder implements Builder<StaffRecord, StaffRecordBuilder> {
   }
 
   @override
-  void update(void Function(StaffRecordBuilder) updates) {
+  void update(void Function(StaffRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -326,7 +325,7 @@ class StaffRecordBuilder implements Builder<StaffRecord, StaffRecordBuilder> {
             createDate: createDate,
             createUser: createUser,
             displayName: displayName,
-            reference: reference);
+            ffRef: ffRef);
     replace(_$result);
     return _$result;
   }

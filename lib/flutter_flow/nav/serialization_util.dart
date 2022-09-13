@@ -24,7 +24,7 @@ String placeToString(FFPlace place) => jsonEncode({
       'zipCode': place.zipCode,
     });
 
-String serializeParam(dynamic param, ParamType paramType) {
+String? serializeParam(dynamic param, ParamType paramType) {
   try {
     if (param == null) {
       return null;
@@ -66,7 +66,7 @@ String serializeParam(dynamic param, ParamType paramType) {
 
 /// DESERIALIZATION HELPERS
 
-DateTimeRange dateTimeRangeFromString(String dateTimeRangeStr) {
+DateTimeRange? dateTimeRangeFromString(String dateTimeRangeStr) {
   final pieces = dateTimeRangeStr.split('|');
   if (pieces.length != 2) {
     return null;
@@ -77,7 +77,7 @@ DateTimeRange dateTimeRangeFromString(String dateTimeRangeStr) {
   );
 }
 
-LatLng latLngFromString(String latLngStr) {
+LatLng? latLngFromString(String latLngStr) {
   final pieces = latLngStr.split(',');
   if (pieces.length != 2) {
     return null;
@@ -127,9 +127,9 @@ enum ParamType {
 }
 
 dynamic deserializeParam(
-  String param,
+  String? param,
   ParamType paramType, [
-  String collectionName,
+  String? collectionName,
 ]) {
   try {
     if (param == null) {

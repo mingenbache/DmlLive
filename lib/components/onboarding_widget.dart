@@ -15,13 +15,13 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingWidget extends StatefulWidget {
   const OnboardingWidget({
-    Key key,
+    Key? key,
     this.package,
     this.booking,
   }) : super(key: key);
 
-  final TestPackagesRecord package;
-  final DocumentReference booking;
+  final TestPackagesRecord? package;
+  final DocumentReference? booking;
 
   @override
   _OnboardingWidgetState createState() => _OnboardingWidgetState();
@@ -29,7 +29,7 @@ class OnboardingWidget extends StatefulWidget {
 
 class _OnboardingWidgetState extends State<OnboardingWidget>
     with TickerProviderStateMixin {
-  PageController pageViewController;
+  PageController? pageViewController;
   final animationsMap = {
     'buttonOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
@@ -504,7 +504,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                             axisDirection:
                                                                 Axis.horizontal,
                                                             onDotClicked: (i) {
-                                                              pageViewController
+                                                              pageViewController!
                                                                   .animateToPage(
                                                                 i,
                                                                 duration: Duration(
@@ -639,7 +639,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                         children: [
                           InkWell(
                             onTap: () async {
-                              await pageViewController.nextPage(
+                              await pageViewController?.nextPage(
                                 duration: Duration(milliseconds: 300),
                                 curve: Curves.ease,
                               );
@@ -686,7 +686,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                       ),
                                     ).animated([
                                       animationsMap[
-                                          'buttonOnActionTriggerAnimation']
+                                          'buttonOnActionTriggerAnimation']!
                                     ]),
                                   ],
                                 ),

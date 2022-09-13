@@ -11,13 +11,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CatalogTestItem2Widget extends StatefulWidget {
   const CatalogTestItem2Widget({
-    Key key,
+    Key? key,
     this.testRef,
     this.test,
   }) : super(key: key);
 
-  final DocumentReference testRef;
-  final TestsRecord test;
+  final DocumentReference? testRef;
+  final TestsRecord? test;
 
   @override
   _CatalogTestItem2WidgetState createState() => _CatalogTestItem2WidgetState();
@@ -110,7 +110,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                     EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                 child: Text(
                                   functions
-                                      .camelCase(widget.test.name)
+                                      .camelCase(widget.test!.name)
                                       .maybeHandleOverflow(maxChars: 20),
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
@@ -172,7 +172,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   6, 3, 6, 3),
                                           child: Text(
-                                            widget.test.category,
+                                            widget.test!.category!,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
@@ -207,7 +207,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                         size: 20,
                                       ),
                                       Text(
-                                        '${widget.test.durationResults?.toString()} Hrs',
+                                        '${widget.test!.durationResults?.toString()} Hrs',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -267,7 +267,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                           height: 20,
                                           child: Stack(
                                             children: [
-                                              if (widget.test.homeTest ?? true)
+                                              if (widget.test!.homeTest ?? true)
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
@@ -280,7 +280,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                                     size: 16,
                                                   ),
                                                 ),
-                                              if (!widget.test.homeTest)
+                                              if (!widget.test!.homeTest!)
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
@@ -319,7 +319,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                                   5, 0, 0, 0),
                                           child: Text(
                                             formatNumber(
-                                              widget.test.price,
+                                              widget.test!.price!,
                                               formatType: FormatType.decimal,
                                               decimalType:
                                                   DecimalType.periodDecimal,

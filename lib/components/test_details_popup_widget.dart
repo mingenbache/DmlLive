@@ -15,13 +15,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TestDetailsPopupWidget extends StatefulWidget {
   const TestDetailsPopupWidget({
-    Key key,
+    Key? key,
     this.test,
     this.booking,
   }) : super(key: key);
 
-  final TestsRecord test;
-  final DocumentReference booking;
+  final TestsRecord? test;
+  final DocumentReference? booking;
 
   @override
   _TestDetailsPopupWidgetState createState() => _TestDetailsPopupWidgetState();
@@ -149,8 +149,8 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                               ],
                             ),
                             StreamBuilder<UsersRecord>(
-                              stream:
-                                  UsersRecord.getDocument(currentUserReference),
+                              stream: UsersRecord.getDocument(
+                                  currentUserReference!),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
@@ -166,7 +166,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                     ),
                                   );
                                 }
-                                final columnUsersRecord = snapshot.data;
+                                final columnUsersRecord = snapshot.data!;
                                 return SingleChildScrollView(
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -184,7 +184,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(15, 0, 0, 0),
                                               child: AutoSizeText(
-                                                widget.test.name,
+                                                widget.test!.name!,
                                                 textAlign: TextAlign.start,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -199,7 +199,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                           ),
                                         ],
                                       ),
-                                      if (!widget.test.isAvailable)
+                                      if (!widget.test!.isAvailable!)
                                         Align(
                                           alignment:
                                               AlignmentDirectional(0.8, 0),
@@ -246,7 +246,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                       createTestsRecordData(
                                                     isAvailable: true,
                                                   );
-                                                  await widget.test.reference
+                                                  await widget.test!.reference
                                                       .update(testsUpdateData);
                                                 }
                                                 await showDialog(
@@ -430,8 +430,8 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                             13,
                                                                             0),
                                                                 child: Text(
-                                                                  widget.test
-                                                                      .description,
+                                                                  widget.test!
+                                                                      .description!,
                                                                   textAlign:
                                                                       TextAlign
                                                                           .start,
@@ -1472,7 +1472,8 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                 .fromSTEB(
                                                                     8, 4, 8, 4),
                                                         child: Text(
-                                                          widget.test.category,
+                                                          widget
+                                                              .test!.category!,
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: FlutterFlowTheme
@@ -1496,7 +1497,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                   children: [
                                                     Text(
                                                       formatNumber(
-                                                        widget.test.price,
+                                                        widget.test!.price!,
                                                         formatType:
                                                             FormatType.decimal,
                                                         decimalType: DecimalType
@@ -1554,7 +1555,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                             currentUserDocument?.isStaff, false))
                           AuthUserStreamWidget(
                             child: AdminTestActionsWidget(
-                              testRef: widget.test.reference,
+                              testRef: widget.test!.reference,
                             ),
                           ),
                       ],

@@ -23,11 +23,11 @@ import 'package:page_transition/page_transition.dart';
 
 class NewBookingWidget extends StatefulWidget {
   const NewBookingWidget({
-    Key key,
+    Key? key,
     this.bookingRef,
   }) : super(key: key);
 
-  final DocumentReference bookingRef;
+  final DocumentReference? bookingRef;
 
   @override
   _NewBookingWidgetState createState() => _NewBookingWidgetState();
@@ -35,23 +35,23 @@ class NewBookingWidget extends StatefulWidget {
 
 class _NewBookingWidgetState extends State<NewBookingWidget>
     with TickerProviderStateMixin {
-  TextEditingController diagnosisController;
+  TextEditingController? diagnosisController;
 
-  TextEditingController emailAddressController;
+  TextEditingController? emailAddressController;
 
-  TextEditingController firstNameController;
+  TextEditingController? firstNameController;
 
-  TextEditingController lastNameController;
+  TextEditingController? lastNameController;
 
-  TextEditingController phoneNumberController;
+  TextEditingController? phoneNumberController;
 
-  String choiceChipsValue;
-  DateTime datePicked2;
-  DateTime datePicked1;
+  String? choiceChipsValue;
+  DateTime? datePicked2;
+  DateTime? datePicked1;
 
-  TextEditingController refDoctorController;
+  TextEditingController? refDoctorController;
 
-  TextEditingController textController7;
+  TextEditingController? textController7;
 
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -105,7 +105,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<BookingsRecord>(
-      stream: BookingsRecord.getDocument(widget.bookingRef),
+      stream: BookingsRecord.getDocument(widget.bookingRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -120,7 +120,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
             ),
           );
         }
-        final newBookingBookingsRecord = snapshot.data;
+        final newBookingBookingsRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           body: Stack(
@@ -244,9 +244,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                               },
                                               currentTime:
                                                   newBookingBookingsRecord
-                                                      .scheduledDate,
+                                                      .scheduledDate!,
                                               minTime: newBookingBookingsRecord
-                                                  .scheduledDate,
+                                                  .scheduledDate!,
                                             );
 
                                             setState(() => FFAppState()
@@ -288,15 +288,15 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                   ),
                                 ],
                               ).animated(
-                                  [animationsMap['rowOnPageLoadAnimation']]),
+                                  [animationsMap['rowOnPageLoadAnimation']!]),
                             ),
                           ),
                           Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 10, 0, 20),
                             child: StreamBuilder<UsersRecord>(
-                              stream:
-                                  UsersRecord.getDocument(currentUserReference),
+                              stream: UsersRecord.getDocument(
+                                  currentUserReference!),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
@@ -312,7 +312,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                     ),
                                   );
                                 }
-                                final containerUsersRecord = snapshot.data;
+                                final containerUsersRecord = snapshot.data!;
                                 return Container(
                                   width:
                                       MediaQuery.of(context).size.width * 0.9,
@@ -978,28 +978,27 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 child: Stack(
                                                   children: [
                                                     if (!newBookingBookingsRecord
-                                                        .userPatient)
+                                                        .userPatient!)
                                                       FlutterFlowChoiceChips(
                                                         initiallySelected:
                                                             choiceChipsValue !=
                                                                     null
                                                                 ? [
-                                                                    choiceChipsValue
+                                                                    choiceChipsValue!
                                                                   ]
                                                                 : [
                                                                     containerUsersRecord
-                                                                        .sex
+                                                                        .sex!
                                                                   ],
-                                                        options: (functions
-                                                                    .returnSexOptions() ??
-                                                                [])
+                                                        options: functions
+                                                            .returnSexOptions()
                                                             .map((label) =>
                                                                 ChipData(label))
                                                             .toList(),
                                                         onChanged: (val) =>
                                                             setState(() =>
                                                                 choiceChipsValue =
-                                                                    val.first),
+                                                                    val?.first),
                                                         selectedChipStyle:
                                                             ChipStyle(
                                                           backgroundColor:
@@ -1136,7 +1135,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                 Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(4, 9, 0, 0),
                                                                                   child: Text(
-                                                                                    newBookingBookingsRecord.sex,
+                                                                                    newBookingBookingsRecord.sex!,
                                                                                     textAlign: TextAlign.start,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                           fontFamily: 'Montserrat',
@@ -1266,7 +1265,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                     ),
                                                   ),
                                                 if (!newBookingBookingsRecord
-                                                    .userPatient)
+                                                    .userPatient!)
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
@@ -1418,7 +1417,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                   builder: (context) {
                                                     final testFormImages =
                                                         newBookingBookingsRecord
-                                                            .formImages
+                                                            .formImages!
                                                             .toList();
                                                     return Wrap(
                                                       spacing: 5,
@@ -1575,7 +1574,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                   contentPadding:
                                       EdgeInsetsDirectional.fromSTEB(
                                           15, 15, 0, 5),
-                                  suffixIcon: diagnosisController
+                                  suffixIcon: diagnosisController!
                                           .text.isNotEmpty
                                       ? InkWell(
                                           onTap: () async {
@@ -1758,7 +1757,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                             builder: (context) {
                                               final packagesList =
                                                   newBookingBookingsRecord
-                                                      .testPackages
+                                                      .testPackages!
                                                       .toList();
                                               return ListView.builder(
                                                 padding: EdgeInsets.zero,
@@ -1798,7 +1797,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           );
                                                         }
                                                         final bookingTestPackageItemTestPackagesRecord =
-                                                            snapshot.data;
+                                                            snapshot.data!;
                                                         return InkWell(
                                                           onTap: () async {
                                                             await showModalBottomSheet(
@@ -1880,7 +1879,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                             MainAxisSize.max,
                                                                         children: [
                                                                           Text(
-                                                                            bookingTestPackageItemTestPackagesRecord.packageName,
+                                                                            bookingTestPackageItemTestPackagesRecord.packageName!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -1913,7 +1912,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                         ),
                                                                         Text(
                                                                           bookingTestPackageItemTestPackagesRecord
-                                                                              .price
+                                                                              .price!
                                                                               .toString(),
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
@@ -1932,7 +1931,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                 totalPrice: functions.removeFromCart(newBookingBookingsRecord.totalPrice, bookingTestPackageItemTestPackagesRecord.price),
                                                                                 paymentBalance: functions.returnBookingBalance(bookingTestPackageItemTestPackagesRecord.price?.toDouble(), newBookingBookingsRecord.paymentBalance),
                                                                               ),
-                                                                              'total_tests': FieldValue.increment(-(bookingTestPackageItemTestPackagesRecord.testsIncluded.toList().length)),
+                                                                              'total_tests': FieldValue.increment(-(bookingTestPackageItemTestPackagesRecord.testsIncluded!.toList().length)),
                                                                               'testPackages': FieldValue.arrayRemove([
                                                                                 packagesListItem
                                                                               ]),
@@ -1993,7 +1992,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                           builder: (context) {
                                             final testsList =
                                                 newBookingBookingsRecord
-                                                    .testsIncluded
+                                                    .testsIncluded!
                                                     .toList();
                                             return ListView.builder(
                                               padding: EdgeInsets.zero,
@@ -2030,7 +2029,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         );
                                                       }
                                                       final bookingTestItemTestsRecord =
-                                                          snapshot.data;
+                                                          snapshot.data!;
                                                       return InkWell(
                                                         onTap: () async {
                                                           context.pushNamed(
@@ -2099,7 +2098,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                       children: [
                                                                         Text(
                                                                           bookingTestItemTestsRecord
-                                                                              .name,
+                                                                              .name!,
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
@@ -2136,7 +2135,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                       ),
                                                                       Text(
                                                                         bookingTestItemTestsRecord
-                                                                            .price
+                                                                            .price!
                                                                             .toString(),
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
@@ -2363,7 +2362,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                 topRight: Radius.circular(4.0),
                                                                               ),
                                                                             ),
-                                                                            suffixIcon: textController7.text.isNotEmpty
+                                                                            suffixIcon: textController7!.text.isNotEmpty
                                                                                 ? InkWell(
                                                                                     onTap: () async {
                                                                                       textController7?.clear();
@@ -2615,7 +2614,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                             Text(
                                               formatNumber(
                                                 newBookingBookingsRecord
-                                                    .totalPrice,
+                                                    .totalPrice!,
                                                 formatType: FormatType.decimal,
                                                 decimalType:
                                                     DecimalType.periodDecimal,
@@ -2669,7 +2668,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                     );
                                   }
                                   List<UsersRecord> buttonUsersRecordList =
-                                      snapshot.data;
+                                      snapshot.data!;
                                   final buttonUsersRecord =
                                       buttonUsersRecordList.isNotEmpty
                                           ? buttonUsersRecordList.first
@@ -2689,7 +2688,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                     '',
                                                 choiceChipsValue,
                                                 newBookingBookingsRecord
-                                                    .testsIncluded
+                                                    .testsIncluded!
                                                     .toList()),
                                             style: TextStyle(
                                               color:
@@ -2706,7 +2705,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         if (formKey.currentState == null ||
-                                            !formKey.currentState.validate()) {
+                                            !formKey.currentState!.validate()) {
                                           return;
                                         }
 
@@ -2774,7 +2773,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                           'specialTests':
                                               FFAppState().specialtests,
                                         };
-                                        await widget.bookingRef
+                                        await widget.bookingRef!
                                             .update(bookingsUpdateData);
                                         setState(() =>
                                             FFAppState().isSubmitted = true);
@@ -2791,7 +2790,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                               bookingRef: widget.bookingRef,
                                             ),
                                             'users_receiving': [
-                                              buttonUsersRecord.reference
+                                              buttonUsersRecord!.reference
                                             ],
                                           };
                                           await NotificationsRecord.collection
@@ -2808,7 +2807,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                           'current_booking':
                                               FieldValue.delete(),
                                         };
-                                        await currentUserReference
+                                        await currentUserReference!
                                             .update(usersUpdateData);
                                         triggerPushNotification(
                                           notificationTitle:
@@ -2816,7 +2815,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                           notificationText:
                                               'User created a new booking.',
                                           userRefs: [
-                                            buttonUsersRecord.reference
+                                            buttonUsersRecord!.reference
                                           ],
                                           initialPageName:
                                               'BookingConfirmation',
@@ -2853,7 +2852,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                     ),
                                   ).animated([
                                     animationsMap[
-                                        'buttonOnActionTriggerAnimation']
+                                        'buttonOnActionTriggerAnimation']!
                                   ]);
                                 },
                               ),

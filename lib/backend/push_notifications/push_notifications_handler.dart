@@ -13,7 +13,8 @@ import '../../index.dart';
 import '../../main.dart';
 
 class PushNotificationsHandler extends StatefulWidget {
-  const PushNotificationsHandler({Key key, this.child}) : super(key: key);
+  const PushNotificationsHandler({Key? key, required this.child})
+      : super(key: key);
 
   final Widget child;
 

@@ -12,18 +12,18 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class PaymentWidget extends StatefulWidget {
   const PaymentWidget({
-    Key key,
+    Key? key,
     this.paymentRef,
   }) : super(key: key);
 
-  final PaymentsRecord paymentRef;
+  final PaymentsRecord? paymentRef;
 
   @override
   _PaymentWidgetState createState() => _PaymentWidgetState();
 }
 
 class _PaymentWidgetState extends State<PaymentWidget> {
-  PageController pageViewController;
+  PageController? pageViewController;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         StreamBuilder<BookingsRecord>(
-          stream: BookingsRecord.getDocument(widget.paymentRef.bookingRef),
+          stream: BookingsRecord.getDocument(widget.paymentRef!.bookingRef!),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
@@ -47,7 +47,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 ),
               );
             }
-            final verifyPaymentContainerBookingsRecord = snapshot.data;
+            final verifyPaymentContainerBookingsRecord = snapshot.data!;
             return Container(
               constraints: BoxConstraints(
                 maxHeight: 550,
@@ -235,7 +235,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                               Container(
                                                                                 decoration: BoxDecoration(),
                                                                                 child: Text(
-                                                                                  functions.dateMonth(widget.paymentRef.createdDate),
+                                                                                  functions.dateMonth(widget.paymentRef!.createdDate),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                         fontFamily: 'Montserrat',
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -247,7 +247,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                               Container(
                                                                                 decoration: BoxDecoration(),
                                                                                 child: Text(
-                                                                                  functions.dateDay(widget.paymentRef.createdDate),
+                                                                                  functions.dateDay(widget.paymentRef!.createdDate),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                         fontFamily: 'Montserrat',
                                                                                         color: FlutterFlowTheme.of(context).secondaryColor,
@@ -259,7 +259,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                               Container(
                                                                                 decoration: BoxDecoration(),
                                                                                 child: Text(
-                                                                                  functions.dateYear(widget.paymentRef.createdDate),
+                                                                                  functions.dateYear(widget.paymentRef!.createdDate),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                         fontFamily: 'Montserrat',
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -324,8 +324,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         child:
                                                                             Text(
                                                                           widget
-                                                                              .paymentRef
-                                                                              .type,
+                                                                              .paymentRef!
+                                                                              .type!,
                                                                           textAlign:
                                                                               TextAlign.center,
                                                                           style: FlutterFlowTheme.of(context)
@@ -440,7 +440,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                         3,
                                                                         3),
                                                             child: Text(
-                                                              '${widget.paymentRef.firstName}    ${widget.paymentRef.lastName}',
+                                                              '${widget.paymentRef!.firstName}    ${widget.paymentRef!.lastName}',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyText1
@@ -553,8 +553,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                             0),
                                                                 child: Text(
                                                                   widget
-                                                                      .paymentRef
-                                                                      .transactionCode,
+                                                                      .paymentRef!
+                                                                      .transactionCode!,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1
@@ -664,8 +664,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                   dateTimeFormat(
                                                                       'd/M/y',
                                                                       widget
-                                                                          .paymentRef
-                                                                          .transactionDate),
+                                                                          .paymentRef!
+                                                                          .transactionDate!),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1
@@ -774,8 +774,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                 child: Text(
                                                                   formatNumber(
                                                                     widget
-                                                                        .paymentRef
-                                                                        .amount,
+                                                                        .paymentRef!
+                                                                        .amount!,
                                                                     formatType:
                                                                         FormatType
                                                                             .decimal,
@@ -819,7 +819,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                       UsersRecord>(
                                                     stream:
                                                         UsersRecord.getDocument(
-                                                            currentUserReference),
+                                                            currentUserReference!),
                                                     builder:
                                                         (context, snapshot) {
                                                       // Customize what your widget looks like when it's loading.
@@ -839,7 +839,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                         );
                                                       }
                                                       final containerUsersRecord =
-                                                          snapshot.data;
+                                                          snapshot.data!;
                                                       return Container(
                                                         width: MediaQuery.of(
                                                                     context)
@@ -964,7 +964,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                 Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(4, 6, 0, 0),
                                                                               child: Text(
-                                                                                dateTimeFormat('d/M/y', verifyPaymentContainerBookingsRecord.scheduledDate),
+                                                                                dateTimeFormat('d/M/y', verifyPaymentContainerBookingsRecord.scheduledDate!),
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                       fontFamily: 'Montserrat',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
@@ -1053,7 +1053,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                               padding: EdgeInsetsDirectional.fromSTEB(3, 7, 0, 0),
                                                                               child: Text(
                                                                                 formatNumber(
-                                                                                  verifyPaymentContainerBookingsRecord.totalPrice,
+                                                                                  verifyPaymentContainerBookingsRecord.totalPrice!,
                                                                                   formatType: FormatType.decimal,
                                                                                   decimalType: DecimalType.periodDecimal,
                                                                                   currency: 'Ksh ',
@@ -1147,7 +1147,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                               padding: EdgeInsetsDirectional.fromSTEB(3, 7, 0, 0),
                                                                               child: Text(
                                                                                 formatNumber(
-                                                                                  verifyPaymentContainerBookingsRecord.paymentBalance,
+                                                                                  verifyPaymentContainerBookingsRecord.paymentBalance!,
                                                                                   formatType: FormatType.decimal,
                                                                                   decimalType: DecimalType.periodDecimal,
                                                                                   currency: 'Ksh ',
@@ -1224,7 +1224,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                             child:
                                                                                 Builder(
                                                                               builder: (context) {
-                                                                                final tests = verifyPaymentContainerBookingsRecord.testsIncluded.toList();
+                                                                                final tests = verifyPaymentContainerBookingsRecord.testsIncluded!.toList();
                                                                                 return ListView.builder(
                                                                                   padding: EdgeInsets.zero,
                                                                                   scrollDirection: Axis.vertical,
@@ -1249,7 +1249,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                               ),
                                                                                             );
                                                                                           }
-                                                                                          final containerTestsRecord = snapshot.data;
+                                                                                          final containerTestsRecord = snapshot.data!;
                                                                                           return Container(
                                                                                             height: MediaQuery.of(context).size.height * 0.03,
                                                                                             decoration: BoxDecoration(
@@ -1263,7 +1263,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                 children: [
                                                                                                   Text(
-                                                                                                    containerTestsRecord.name,
+                                                                                                    containerTestsRecord.name!,
                                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                           fontFamily: 'Montserrat',
                                                                                                           color: FlutterFlowTheme.of(context).primaryText,
@@ -1286,7 +1286,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                                       ),
                                                                                                       Text(
                                                                                                         formatNumber(
-                                                                                                          containerTestsRecord.price,
+                                                                                                          containerTestsRecord.price!,
                                                                                                           formatType: FormatType.decimal,
                                                                                                           decimalType: DecimalType.periodDecimal,
                                                                                                         ),
@@ -1336,7 +1336,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                     StreamBuilder<UsersRecord>(
                                                   stream:
                                                       UsersRecord.getDocument(
-                                                          currentUserReference),
+                                                          currentUserReference!),
                                                   builder: (context, snapshot) {
                                                     // Customize what your widget looks like when it's loading.
                                                     if (!snapshot.hasData) {
@@ -1354,7 +1354,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                       );
                                                     }
                                                     final containerUsersRecord =
-                                                        snapshot.data;
+                                                        snapshot.data!;
                                                     return Container(
                                                       width:
                                                           MediaQuery.of(context)
@@ -1599,7 +1599,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                       child:
                                                                           Text(
                                                                         verifyPaymentContainerBookingsRecord
-                                                                            .emailaddress,
+                                                                            .emailaddress!,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
@@ -1712,7 +1712,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                       child:
                                                                           Text(
                                                                         verifyPaymentContainerBookingsRecord
-                                                                            .phonenumber,
+                                                                            .phonenumber!,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
@@ -1836,7 +1836,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                 0),
                                                                             child:
                                                                                 Text(
-                                                                              dateTimeFormat('d/M/y', verifyPaymentContainerBookingsRecord.dOB),
+                                                                              dateTimeFormat('d/M/y', verifyPaymentContainerBookingsRecord.dOB!),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Montserrat',
                                                                                     color: FlutterFlowTheme.of(context).primaryText,
@@ -1936,7 +1936,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                             Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                                                               child: Text(
-                                                                                verifyPaymentContainerBookingsRecord.sex,
+                                                                                verifyPaymentContainerBookingsRecord.sex!,
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                       fontFamily: 'Montserrat',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
@@ -1975,7 +1975,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                           count: 3,
                                           axisDirection: Axis.horizontal,
                                           onDotClicked: (i) {
-                                            pageViewController.animateToPage(
+                                            pageViewController!.animateToPage(
                                               i,
                                               duration:
                                                   Duration(milliseconds: 500),
@@ -2016,7 +2016,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             PaymentActionsWidgetWidget(
-                              paymentRef: widget.paymentRef.reference,
+                              paymentRef: widget.paymentRef!.reference,
                             ),
                           ],
                         ),

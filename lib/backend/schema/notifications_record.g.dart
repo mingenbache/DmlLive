@@ -20,11 +20,11 @@ class _$NotificationsRecordSerializer
   final String wireName = 'NotificationsRecord';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, NotificationsRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.userRole;
     if (value != null) {
       result
@@ -45,7 +45,8 @@ class _$NotificationsRecordSerializer
         ..add('users_receiving')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType(DocumentReference, const [const FullType(Object)])
+              const FullType(
+                  DocumentReference, const [const FullType.nullable(Object)])
             ])));
     }
     value = object.createdDate;
@@ -68,7 +69,8 @@ class _$NotificationsRecordSerializer
         ..add('usersSeen')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType(DocumentReference, const [const FullType(Object)])
+              const FullType(
+                  DocumentReference, const [const FullType.nullable(Object)])
             ])));
     }
     value = object.isBooking;
@@ -98,7 +100,7 @@ class _$NotificationsRecordSerializer
         ..add('bookingRef')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.userRef;
     if (value != null) {
@@ -106,7 +108,7 @@ class _$NotificationsRecordSerializer
         ..add('userRef')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.testedtestref;
     if (value != null) {
@@ -114,7 +116,7 @@ class _$NotificationsRecordSerializer
         ..add('testedtestref')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.staffref;
     if (value != null) {
@@ -122,7 +124,7 @@ class _$NotificationsRecordSerializer
         ..add('staffref')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.reportref;
     if (value != null) {
@@ -130,7 +132,7 @@ class _$NotificationsRecordSerializer
         ..add('reportref')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.testref;
     if (value != null) {
@@ -138,7 +140,7 @@ class _$NotificationsRecordSerializer
         ..add('testref')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.testpackageref;
     if (value != null) {
@@ -146,7 +148,7 @@ class _$NotificationsRecordSerializer
         ..add('testpackageref')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.actionstaffuser;
     if (value != null) {
@@ -154,7 +156,7 @@ class _$NotificationsRecordSerializer
         ..add('actionstaffuser')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.istestedtest;
     if (value != null) {
@@ -163,128 +165,128 @@ class _$NotificationsRecordSerializer
         ..add(
             serializers.serialize(value, specifiedType: const FullType(bool)));
     }
-    value = object.reference;
+    value = object.ffRef;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     return result;
   }
 
   @override
   NotificationsRecord deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new NotificationsRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'user_role':
           result.userRole = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'message':
           result.message = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'users_receiving':
           result.usersReceiving.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType(
-                    DocumentReference, const [const FullType(Object)])
-              ])) as BuiltList<Object>);
+                    DocumentReference, const [const FullType.nullable(Object)])
+              ]))! as BuiltList<Object?>);
           break;
         case 'created_date':
           result.createdDate = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'isSeen':
           result.isSeen = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'usersSeen':
           result.usersSeen.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType(
-                    DocumentReference, const [const FullType(Object)])
-              ])) as BuiltList<Object>);
+                    DocumentReference, const [const FullType.nullable(Object)])
+              ]))! as BuiltList<Object?>);
           break;
         case 'isBooking':
           result.isBooking = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'isTest':
           result.isTest = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'bookingRef':
           result.bookingRef = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'userRef':
           result.userRef = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'testedtestref':
           result.testedtestref = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'staffref':
           result.staffref = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'reportref':
           result.reportref = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'testref':
           result.testref = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'testpackageref':
           result.testpackageref = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'actionstaffuser':
           result.actionstaffuser = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'istestedtest':
           result.istestedtest = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'Document__Reference__Field':
-          result.reference = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+          result.ffRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
       }
     }
@@ -295,46 +297,46 @@ class _$NotificationsRecordSerializer
 
 class _$NotificationsRecord extends NotificationsRecord {
   @override
-  final String userRole;
+  final String? userRole;
   @override
-  final String message;
+  final String? message;
   @override
-  final BuiltList<DocumentReference<Object>> usersReceiving;
+  final BuiltList<DocumentReference<Object?>>? usersReceiving;
   @override
-  final DateTime createdDate;
+  final DateTime? createdDate;
   @override
-  final bool isSeen;
+  final bool? isSeen;
   @override
-  final BuiltList<DocumentReference<Object>> usersSeen;
+  final BuiltList<DocumentReference<Object?>>? usersSeen;
   @override
-  final bool isBooking;
+  final bool? isBooking;
   @override
-  final bool isTest;
+  final bool? isTest;
   @override
-  final String type;
+  final String? type;
   @override
-  final DocumentReference<Object> bookingRef;
+  final DocumentReference<Object?>? bookingRef;
   @override
-  final DocumentReference<Object> userRef;
+  final DocumentReference<Object?>? userRef;
   @override
-  final DocumentReference<Object> testedtestref;
+  final DocumentReference<Object?>? testedtestref;
   @override
-  final DocumentReference<Object> staffref;
+  final DocumentReference<Object?>? staffref;
   @override
-  final DocumentReference<Object> reportref;
+  final DocumentReference<Object?>? reportref;
   @override
-  final DocumentReference<Object> testref;
+  final DocumentReference<Object?>? testref;
   @override
-  final DocumentReference<Object> testpackageref;
+  final DocumentReference<Object?>? testpackageref;
   @override
-  final DocumentReference<Object> actionstaffuser;
+  final DocumentReference<Object?>? actionstaffuser;
   @override
-  final bool istestedtest;
+  final bool? istestedtest;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object?>? ffRef;
 
   factory _$NotificationsRecord(
-          [void Function(NotificationsRecordBuilder) updates]) =>
+          [void Function(NotificationsRecordBuilder)? updates]) =>
       (new NotificationsRecordBuilder()..update(updates))._build();
 
   _$NotificationsRecord._(
@@ -356,7 +358,7 @@ class _$NotificationsRecord extends NotificationsRecord {
       this.testpackageref,
       this.actionstaffuser,
       this.istestedtest,
-      this.reference})
+      this.ffRef})
       : super._();
 
   @override
@@ -390,7 +392,7 @@ class _$NotificationsRecord extends NotificationsRecord {
         testpackageref == other.testpackageref &&
         actionstaffuser == other.actionstaffuser &&
         istestedtest == other.istestedtest &&
-        reference == other.reference;
+        ffRef == other.ffRef;
   }
 
   @override
@@ -438,7 +440,7 @@ class _$NotificationsRecord extends NotificationsRecord {
                     testpackageref.hashCode),
                 actionstaffuser.hashCode),
             istestedtest.hashCode),
-        reference.hashCode));
+        ffRef.hashCode));
   }
 
   @override
@@ -462,101 +464,100 @@ class _$NotificationsRecord extends NotificationsRecord {
           ..add('testpackageref', testpackageref)
           ..add('actionstaffuser', actionstaffuser)
           ..add('istestedtest', istestedtest)
-          ..add('reference', reference))
+          ..add('ffRef', ffRef))
         .toString();
   }
 }
 
 class NotificationsRecordBuilder
     implements Builder<NotificationsRecord, NotificationsRecordBuilder> {
-  _$NotificationsRecord _$v;
+  _$NotificationsRecord? _$v;
 
-  String _userRole;
-  String get userRole => _$this._userRole;
-  set userRole(String userRole) => _$this._userRole = userRole;
+  String? _userRole;
+  String? get userRole => _$this._userRole;
+  set userRole(String? userRole) => _$this._userRole = userRole;
 
-  String _message;
-  String get message => _$this._message;
-  set message(String message) => _$this._message = message;
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
 
-  ListBuilder<DocumentReference<Object>> _usersReceiving;
-  ListBuilder<DocumentReference<Object>> get usersReceiving =>
-      _$this._usersReceiving ??= new ListBuilder<DocumentReference<Object>>();
-  set usersReceiving(ListBuilder<DocumentReference<Object>> usersReceiving) =>
+  ListBuilder<DocumentReference<Object?>>? _usersReceiving;
+  ListBuilder<DocumentReference<Object?>> get usersReceiving =>
+      _$this._usersReceiving ??= new ListBuilder<DocumentReference<Object?>>();
+  set usersReceiving(ListBuilder<DocumentReference<Object?>>? usersReceiving) =>
       _$this._usersReceiving = usersReceiving;
 
-  DateTime _createdDate;
-  DateTime get createdDate => _$this._createdDate;
-  set createdDate(DateTime createdDate) => _$this._createdDate = createdDate;
+  DateTime? _createdDate;
+  DateTime? get createdDate => _$this._createdDate;
+  set createdDate(DateTime? createdDate) => _$this._createdDate = createdDate;
 
-  bool _isSeen;
-  bool get isSeen => _$this._isSeen;
-  set isSeen(bool isSeen) => _$this._isSeen = isSeen;
+  bool? _isSeen;
+  bool? get isSeen => _$this._isSeen;
+  set isSeen(bool? isSeen) => _$this._isSeen = isSeen;
 
-  ListBuilder<DocumentReference<Object>> _usersSeen;
-  ListBuilder<DocumentReference<Object>> get usersSeen =>
-      _$this._usersSeen ??= new ListBuilder<DocumentReference<Object>>();
-  set usersSeen(ListBuilder<DocumentReference<Object>> usersSeen) =>
+  ListBuilder<DocumentReference<Object?>>? _usersSeen;
+  ListBuilder<DocumentReference<Object?>> get usersSeen =>
+      _$this._usersSeen ??= new ListBuilder<DocumentReference<Object?>>();
+  set usersSeen(ListBuilder<DocumentReference<Object?>>? usersSeen) =>
       _$this._usersSeen = usersSeen;
 
-  bool _isBooking;
-  bool get isBooking => _$this._isBooking;
-  set isBooking(bool isBooking) => _$this._isBooking = isBooking;
+  bool? _isBooking;
+  bool? get isBooking => _$this._isBooking;
+  set isBooking(bool? isBooking) => _$this._isBooking = isBooking;
 
-  bool _isTest;
-  bool get isTest => _$this._isTest;
-  set isTest(bool isTest) => _$this._isTest = isTest;
+  bool? _isTest;
+  bool? get isTest => _$this._isTest;
+  set isTest(bool? isTest) => _$this._isTest = isTest;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
-  DocumentReference<Object> _bookingRef;
-  DocumentReference<Object> get bookingRef => _$this._bookingRef;
-  set bookingRef(DocumentReference<Object> bookingRef) =>
+  DocumentReference<Object?>? _bookingRef;
+  DocumentReference<Object?>? get bookingRef => _$this._bookingRef;
+  set bookingRef(DocumentReference<Object?>? bookingRef) =>
       _$this._bookingRef = bookingRef;
 
-  DocumentReference<Object> _userRef;
-  DocumentReference<Object> get userRef => _$this._userRef;
-  set userRef(DocumentReference<Object> userRef) => _$this._userRef = userRef;
+  DocumentReference<Object?>? _userRef;
+  DocumentReference<Object?>? get userRef => _$this._userRef;
+  set userRef(DocumentReference<Object?>? userRef) => _$this._userRef = userRef;
 
-  DocumentReference<Object> _testedtestref;
-  DocumentReference<Object> get testedtestref => _$this._testedtestref;
-  set testedtestref(DocumentReference<Object> testedtestref) =>
+  DocumentReference<Object?>? _testedtestref;
+  DocumentReference<Object?>? get testedtestref => _$this._testedtestref;
+  set testedtestref(DocumentReference<Object?>? testedtestref) =>
       _$this._testedtestref = testedtestref;
 
-  DocumentReference<Object> _staffref;
-  DocumentReference<Object> get staffref => _$this._staffref;
-  set staffref(DocumentReference<Object> staffref) =>
+  DocumentReference<Object?>? _staffref;
+  DocumentReference<Object?>? get staffref => _$this._staffref;
+  set staffref(DocumentReference<Object?>? staffref) =>
       _$this._staffref = staffref;
 
-  DocumentReference<Object> _reportref;
-  DocumentReference<Object> get reportref => _$this._reportref;
-  set reportref(DocumentReference<Object> reportref) =>
+  DocumentReference<Object?>? _reportref;
+  DocumentReference<Object?>? get reportref => _$this._reportref;
+  set reportref(DocumentReference<Object?>? reportref) =>
       _$this._reportref = reportref;
 
-  DocumentReference<Object> _testref;
-  DocumentReference<Object> get testref => _$this._testref;
-  set testref(DocumentReference<Object> testref) => _$this._testref = testref;
+  DocumentReference<Object?>? _testref;
+  DocumentReference<Object?>? get testref => _$this._testref;
+  set testref(DocumentReference<Object?>? testref) => _$this._testref = testref;
 
-  DocumentReference<Object> _testpackageref;
-  DocumentReference<Object> get testpackageref => _$this._testpackageref;
-  set testpackageref(DocumentReference<Object> testpackageref) =>
+  DocumentReference<Object?>? _testpackageref;
+  DocumentReference<Object?>? get testpackageref => _$this._testpackageref;
+  set testpackageref(DocumentReference<Object?>? testpackageref) =>
       _$this._testpackageref = testpackageref;
 
-  DocumentReference<Object> _actionstaffuser;
-  DocumentReference<Object> get actionstaffuser => _$this._actionstaffuser;
-  set actionstaffuser(DocumentReference<Object> actionstaffuser) =>
+  DocumentReference<Object?>? _actionstaffuser;
+  DocumentReference<Object?>? get actionstaffuser => _$this._actionstaffuser;
+  set actionstaffuser(DocumentReference<Object?>? actionstaffuser) =>
       _$this._actionstaffuser = actionstaffuser;
 
-  bool _istestedtest;
-  bool get istestedtest => _$this._istestedtest;
-  set istestedtest(bool istestedtest) => _$this._istestedtest = istestedtest;
+  bool? _istestedtest;
+  bool? get istestedtest => _$this._istestedtest;
+  set istestedtest(bool? istestedtest) => _$this._istestedtest = istestedtest;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
-      _$this._reference = reference;
+  DocumentReference<Object?>? _ffRef;
+  DocumentReference<Object?>? get ffRef => _$this._ffRef;
+  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   NotificationsRecordBuilder() {
     NotificationsRecord._initializeBuilder(this);
@@ -583,7 +584,7 @@ class NotificationsRecordBuilder
       _testpackageref = $v.testpackageref;
       _actionstaffuser = $v.actionstaffuser;
       _istestedtest = $v.istestedtest;
-      _reference = $v.reference;
+      _ffRef = $v.ffRef;
       _$v = null;
     }
     return this;
@@ -596,7 +597,7 @@ class NotificationsRecordBuilder
   }
 
   @override
-  void update(void Function(NotificationsRecordBuilder) updates) {
+  void update(void Function(NotificationsRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -626,9 +627,9 @@ class NotificationsRecordBuilder
               testpackageref: testpackageref,
               actionstaffuser: actionstaffuser,
               istestedtest: istestedtest,
-              reference: reference);
+              ffRef: ffRef);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'usersReceiving';
         _usersReceiving?.build();

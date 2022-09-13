@@ -11,36 +11,36 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../auth/auth_util.dart';
 
 double addBookingPaymentBalance(
-  int current,
-  int itemprice,
+  int? current,
+  int? itemprice,
 ) {
-  current = current + itemprice;
+  current = current! + itemprice!;
   return current.toDouble(); // Add your function code here!
 }
 
 int addCartTotal(
-  int current,
-  int itemprice,
+  int? current,
+  int? itemprice,
 ) {
-  current = current + itemprice;
+  current = current! + itemprice!;
   return current; // Add your function code here!
 }
 
 int removeFromCart(
-  int current,
-  int itemprice,
+  int? current,
+  int? itemprice,
 ) {
-  current = current - itemprice;
+  current = current! - itemprice!;
   return current;
   // Add your function code here!
 }
 
 List<String> keyWordsMultipleFields(
-  String field1,
-  String field2,
+  String? field1,
+  String? field2,
 ) {
-  var string1 = field1.toLowerCase();
-  var string2 = field2.toLowerCase();
+  var string1 = field1!.toLowerCase();
+  var string2 = field2!.toLowerCase();
   var inputString = string1 + " " + string2;
   final list = inputString.split(" ");
   var keywords = [
@@ -69,10 +69,10 @@ DateTime getDayToday() {
   return today;
 }
 
-bool getDayIsWeekday(DateTime date) {
+bool getDayIsWeekday(DateTime? date) {
   bool result;
 
-  if (date.weekday != 7) {
+  if (date!.weekday != 7) {
     result = true;
   } else {
     result = false;
@@ -82,19 +82,19 @@ bool getDayIsWeekday(DateTime date) {
 }
 
 int doubletoInt(
-  double durationDouble,
-  double defaultValue,
+  double? durationDouble,
+  double? defaultValue,
 ) {
   // convert double to int
   if (durationDouble is double) {
     int duration = durationDouble.toInt();
     return duration;
   } else {
-    return defaultValue.toInt();
+    return defaultValue!.toInt();
   }
 }
 
-int doubletoIntCopy(double durationDouble) {
+int doubletoIntCopy(double? durationDouble) {
   // convert double to int
   if (durationDouble is double) {
     int duration = durationDouble.toInt();
@@ -104,17 +104,17 @@ int doubletoIntCopy(double durationDouble) {
   }
 }
 
-double intToDouble(int amountInt) {
+double intToDouble(int? amountInt) {
   // convert int to double
-  return (amountInt + 0.0).toDouble();
+  return (amountInt! + 0.0).toDouble();
 }
 
 String isPatientFillDetails(
-  BookingsRecord booking,
-  String string,
+  BookingsRecord? booking,
+  String? string,
 ) {
   // check if boolean field in document is true and return string field , if false return null
-  var _isUserPatient = booking.userPatient;
+  var _isUserPatient = booking!.userPatient;
   var returnString;
   if (_isUserPatient == true && string == 'firstname') {
     returnString = booking.firstname;
@@ -128,16 +128,6 @@ String isPatientFillDetails(
     returnString = booking.emailaddress;
   } else if (_isUserPatient == true && string == 'd_o_b') {
     returnString = booking.dOB;
-  } else if (_isUserPatient == false && string == 'firstname') {
-    return null;
-  } else if (_isUserPatient == false && string == 'lastname') {
-    return null;
-  } else if (_isUserPatient == false && string == 'phonenumber') {
-    return null;
-  } else if (_isUserPatient == false && string == 'sex') {
-    return null;
-  } else if (_isUserPatient == false && string == 'emailaddress') {
-    return null;
   } else {
     return 'error';
   }
@@ -145,9 +135,9 @@ String isPatientFillDetails(
   return returnString;
 }
 
-String isPatientFillFname(BookingsRecord booking) {
+String isPatientFillFname(BookingsRecord? booking) {
   // check if boolean field in document is true and return string field , if false return null
-  var _isUserPatient = booking.userPatient;
+  var _isUserPatient = booking!.userPatient;
   var returnString;
   if (_isUserPatient == true) {
     returnString = booking.firstname;
@@ -157,17 +147,17 @@ String isPatientFillFname(BookingsRecord booking) {
   return returnString;
 }
 
-String datetoString(DateTime dateGiven) {
+String datetoString(DateTime? dateGiven) {
   // Add your function code here! return timestamp as string
   //var formatter = new DateFormat('yyyy-MM-dd');
   var formatter = new DateFormat('yMMMMd');
-  String formatted = formatter.format(dateGiven);
+  String formatted = formatter.format(dateGiven!);
   return formatted;
 }
 
-DateTime returntheDay(DateTime date) {
+DateTime returntheDay(DateTime? date) {
   // Add your function code here!
-  var newDate = DateTime(date.year, date.month, date.day);
+  var newDate = DateTime(date!.year, date.month, date.day);
   return newDate;
 }
 
@@ -187,53 +177,53 @@ DateTime getNextWeekday() {
 }
 
 DateTime returnDOB(
-  BookingsRecord booking,
-  DateTime statedateofbirth,
-  bool dobEntered,
-  bool isPatient,
+  BookingsRecord? booking,
+  DateTime? statedateofbirth,
+  bool? dobEntered,
+  bool? isPatient,
 ) {
   // Add your function code here!
-  DateTime date;
+  DateTime? date;
   // check if document boolean value is true, return datetime field, if false return current date
   //check if user is patient and set dob value if so
-  if (isPatient) {
-    date = booking.dOB;
+  if (isPatient!) {
+    date = booking!.dOB;
   } else {
     //check if the user is not the patient but has entered the dob
-    if (!isPatient && dobEntered) {
+    if (!isPatient && dobEntered!) {
       date = statedateofbirth;
     } else {
       date = null;
     }
   }
-  return date;
+  return date!;
 }
 
 DateTime returnDOBLoader(
-  BookingsRecord booking,
-  bool isPatient,
+  BookingsRecord? booking,
+  bool? isPatient,
 ) {
   // Add your function code here!
-  DateTime date;
+  DateTime? date;
   // check if document boolean value is true, return datetime field, if false return current date
   //check if user is patient and set dob value if so
-  if (isPatient) {
-    date = booking.dOB;
+  if (isPatient!) {
+    date = booking!.dOB;
   } else {
     //return null
     date = DateTime(1980, 1, 20);
   }
-  return date;
+  return date!;
 }
 
 bool displayDOBButton(
-  BookingsRecord booking,
-  bool stateIsPatient,
-  DateTime stateDobVariable,
-  bool stateVarIsSet,
+  BookingsRecord? booking,
+  bool? stateIsPatient,
+  DateTime? stateDobVariable,
+  bool? stateVarIsSet,
 ) {
   bool result;
-  if (!booking.userPatient) {
+  if (!booking!.userPatient!) {
     result = true;
   } else {
     result = false;
@@ -242,14 +232,14 @@ bool displayDOBButton(
 }
 
 bool displayDOBField(
-  BookingsRecord booking,
-  bool stateIsPatient,
-  DateTime stateDobVariable,
-  bool stateVarIsSet,
+  BookingsRecord? booking,
+  bool? stateIsPatient,
+  DateTime? stateDobVariable,
+  bool? stateVarIsSet,
 ) {
   bool result;
-  if (!booking.userPatient && stateIsPatient) {
-    if (stateVarIsSet) {
+  if (!booking!.userPatient! && stateIsPatient!) {
+    if (stateVarIsSet!) {
       result = true;
     } else {
       result = false;
@@ -260,20 +250,20 @@ bool displayDOBField(
   return result;
 }
 
-String returnDateString(DateTime date) {
+String returnDateString(DateTime? date) {
   // Add your function code here!
-  var formatted = DateFormat('yMMMd').format(date);
+  var formatted = DateFormat('yMMMd').format(date!);
   return formatted;
 }
 
 String dobButtonString(
-  bool dobStateIsSet,
-  DateTime dob,
+  bool? dobStateIsSet,
+  DateTime? dob,
 ) {
   var dobString;
   var formatted;
-  if (dobStateIsSet) {
-    dobString = DateFormat('yMMMd').format(dob);
+  if (dobStateIsSet!) {
+    dobString = DateFormat('yMMMd').format(dob!);
   } else {
     dobString = 'Enter Date';
   }
@@ -281,33 +271,33 @@ String dobButtonString(
 }
 
 String scheduleButtonString(
-  DateTime scheduleDate,
-  DateTime nextWeekday,
+  DateTime? scheduleDate,
+  DateTime? nextWeekday,
 ) {
   var dobString;
   if (scheduleDate != null) {
     dobString = DateFormat('yMMMd').format(scheduleDate);
   } else {
-    dobString = DateFormat('yMMMd').format(nextWeekday);
+    dobString = DateFormat('yMMMd').format(nextWeekday!);
   }
   return dobString;
 }
 
-DateTime getNextDay(DateTime date) {
-  DateTime nextDay = date.add(Duration(days: 1));
+DateTime getNextDay(DateTime? date) {
+  DateTime nextDay = date!.add(Duration(days: 1));
   return nextDay;
 }
 
 bool isTestBooked(
-  DocumentReference testref,
-  DocumentReference bookingref,
-  List<BookedTestsRecord> bookedTests,
+  DocumentReference? testref,
+  DocumentReference? bookingref,
+  List<BookedTestsRecord>? bookedTests,
 ) {
   // check if document with matching parameters exists in list
-  var found;
+  late var found;
   var end = false;
   while (!end) {
-    if (bookedTests.length > 0) {
+    if (bookedTests!.length > 0) {
       if (testref == bookedTests[0].testRef &&
           bookingref == bookedTests[0].bookingRef) {
         found = true;
@@ -328,12 +318,12 @@ bool isTestBooked(
 }
 
 bool isTestBookedCopy(
-  DocumentReference testRef,
-  DocumentReference bookingRef,
-  List<BookedTestsRecord> bookedTests,
+  DocumentReference? testRef,
+  DocumentReference? bookingRef,
+  List<BookedTestsRecord>? bookedTests,
 ) {
   // check if a document with matching parametersexists in list
-  for (BookedTestsRecord bookedTest in bookedTests) {
+  for (BookedTestsRecord bookedTest in bookedTests!) {
     if (testRef == bookedTest.testRef && bookingRef == bookedTest.bookingRef) {
       return true;
     }
@@ -342,49 +332,49 @@ bool isTestBookedCopy(
   return false;
 }
 
-String dateDay(DateTime date) {
+String dateDay(DateTime? date) {
   var formatted;
-  formatted = DateFormat('d').format(date);
+  formatted = DateFormat('d').format(date!);
   return formatted;
 }
 
-String dateYear(DateTime date) {
+String dateYear(DateTime? date) {
   var formatted;
-  formatted = DateFormat('y').format(date);
+  formatted = DateFormat('y').format(date!);
   return formatted;
 }
 
-String dateMonth(DateTime date) {
+String dateMonth(DateTime? date) {
   var formatted;
   //formatted = DateFormat('MMM').format(date);
-  formatted = DateFormat('MMM').format(date);
+  formatted = DateFormat('MMM').format(date!);
   return formatted;
 }
 
-int add1(int num) {
-  return num + 1;
+int add1(int? num) {
+  return num! + 1;
 }
 
 bool invoiceFullAmountBooking(
-  double invoiceAmount,
-  double bookingtotal,
+  double? invoiceAmount,
+  double? bookingtotal,
 ) {
   // compare two numbers and return true if they are equal
   return (invoiceAmount == bookingtotal);
 }
 
 bool invoiceFullAmount(
-  double invoiceAmount,
-  double paymentAmount,
+  double? invoiceAmount,
+  double? paymentAmount,
 ) {
   // compare two numbers and return true if they are equal
   return (invoiceAmount == paymentAmount);
 }
 
-String returnBookingListSize(List<BookingsRecord> tests) {
+String returnBookingListSize(List<BookingsRecord>? tests) {
   // return number of elements in list
   int numberOfElementsINlist;
-  if (tests.isNotEmpty) {
+  if (tests!.isNotEmpty) {
     numberOfElementsINlist = tests.length;
   } else {
     numberOfElementsINlist = tests.length;
@@ -392,10 +382,10 @@ String returnBookingListSize(List<BookingsRecord> tests) {
   return numberOfElementsINlist.toString();
 }
 
-int returnTestListSizeCopy(List<DocumentReference> tests) {
+int returnTestListSizeCopy(List<DocumentReference>? tests) {
   // return number of elements in list
   int numberOfElementsINlist;
-  if (tests.isNotEmpty) {
+  if (tests!.isNotEmpty) {
     numberOfElementsINlist = tests.length;
   } else {
     numberOfElementsINlist = 0;
@@ -403,10 +393,10 @@ int returnTestListSizeCopy(List<DocumentReference> tests) {
   return numberOfElementsINlist;
 }
 
-int returnBookedTestListSize(List<BookedTestsRecord> tests) {
+int returnBookedTestListSize(List<BookedTestsRecord>? tests) {
   // return number of elements in list
   int numberOfElementsINlist;
-  if (tests.isNotEmpty) {
+  if (tests!.isNotEmpty) {
     numberOfElementsINlist = tests.length;
   } else {
     numberOfElementsINlist = 0;
@@ -414,10 +404,10 @@ int returnBookedTestListSize(List<BookedTestsRecord> tests) {
   return numberOfElementsINlist;
 }
 
-int returnInvoiceListSize(List<DocumentReference> invoices) {
+int returnInvoiceListSize(List<DocumentReference>? invoices) {
   // return number of elements in list
   int numberOfElementsINlist;
-  if (invoices.isNotEmpty) {
+  if (invoices!.isNotEmpty) {
     numberOfElementsINlist = invoices.length;
   } else {
     numberOfElementsINlist = 0;
@@ -426,11 +416,11 @@ int returnInvoiceListSize(List<DocumentReference> invoices) {
   return numberOfElementsINlist;
 }
 
-List<BookingsRecord> returnTodayBookings(List<BookingsRecord> bookings) {
+List<BookingsRecord> returnTodayBookings(List<BookingsRecord>? bookings) {
   // return list of documents with a date value today
   DateTime today = new DateTime.now();
-  List<BookingsRecord> todayBookings = bookings.where((test) {
-    if (DateTimeRange(start: test.scheduledDate, end: test.scheduledDate)
+  List<BookingsRecord> todayBookings = bookings!.where((test) {
+    if (DateTimeRange(start: test.scheduledDate!, end: test.scheduledDate!)
             .duration
             .compareTo(const Duration(days: 1)) ==
         0) {
@@ -443,28 +433,28 @@ List<BookingsRecord> returnTodayBookings(List<BookingsRecord> bookings) {
   return todayBookings;
 }
 
-int checkNewBookings(List<BookingsRecord> bookingsList) {
+int checkNewBookings(List<BookingsRecord>? bookingsList) {
   // return the total number of documents with the same date as today
   int count = 0;
   DateTime today = DateTime.now();
-  for (var i = 0; i < bookingsList.length; i++) {
-    if (bookingsList[i].scheduledDate.day == today.day) {
+  for (var i = 0; i < bookingsList!.length; i++) {
+    if (bookingsList[i].scheduledDate!.day == today.day) {
       count += 1;
     }
   }
   return count;
 }
 
-int checkNewTests(List<BookedTestsRecord> testsList) {
+int checkNewTests(List<BookedTestsRecord>? testsList) {
   // return the total number of documents with the same date as today
 
-  if (testsList.isNotEmpty) {
+  if (testsList!.isNotEmpty) {
     int count = 0;
     DateTime today = DateTime.now();
     for (var i = 0; i < testsList.length; i++) {
-      if (testsList[i].scheduledDate.day == today.day &&
-          testsList[i].scheduledDate.month == today.month &&
-          testsList[i].scheduledDate.year == today.year) {
+      if (testsList[i].scheduledDate!.day == today.day &&
+          testsList[i].scheduledDate!.month == today.month &&
+          testsList[i].scheduledDate!.year == today.year) {
         count += 1;
       }
     }
@@ -475,36 +465,36 @@ int checkNewTests(List<BookedTestsRecord> testsList) {
 }
 
 double returnInvoiceAmountDue(
-  double paymentAmount,
-  double invoiceAmountDue,
+  double? paymentAmount,
+  double? invoiceAmountDue,
 ) {
   // subtract two numbers and return the result
-  return invoiceAmountDue - paymentAmount;
+  return invoiceAmountDue! - paymentAmount!;
 }
 
 double returnBookingBalance(
-  double paymentAmount,
-  double bookingCurrentBalance,
+  double? paymentAmount,
+  double? bookingCurrentBalance,
 ) {
   // subtract two numbers and return the result
-  return bookingCurrentBalance - paymentAmount;
+  return bookingCurrentBalance! - paymentAmount!;
 }
 
-String returnRef(DocumentReference testRef) {
-  return testRef.id;
+String returnRef(DocumentReference? testRef) {
+  return testRef!.id;
 }
 
-String returnRefCopy(DocumentReference testRef) {
-  return testRef.id;
+String returnRefCopy(DocumentReference? testRef) {
+  return testRef!.id;
 }
 
 bool displayVerifyButton(
-  bool isPosted,
-  bool isVerified,
+  bool? isPosted,
+  bool? isVerified,
 ) {
   // return true if only one condition is true and return false if both conditions are true
   bool result;
-  if ((isPosted) && (!isVerified)) {
+  if (isPosted! && (!isVerified!)) {
     result = true;
   } else {
     result = false;
@@ -513,72 +503,74 @@ bool displayVerifyButton(
 }
 
 List<UsersRecord> returnUserList(
-  String nameQuery,
-  List<UsersRecord> userList,
+  String? nameQuery,
+  List<UsersRecord>? userList,
 ) {
   // filter firebase collection of documents by string if string is not null
   List<UsersRecord> list = <UsersRecord>[];
   if (nameQuery != null) {
-    userList.forEach((user) {
+    userList!.forEach((user) {
       if (user.firstName != null &&
-              user.firstName.toLowerCase().contains(nameQuery.toLowerCase()) ||
+              user.firstName!.toLowerCase().contains(nameQuery.toLowerCase()) ||
           user.lastName != null &&
-              user.lastName.toLowerCase().contains(nameQuery.toLowerCase())) {
+              user.lastName!.toLowerCase().contains(nameQuery.toLowerCase())) {
         list.add(user);
       }
     });
   } else {
-    list.addAll(userList);
+    list.addAll(userList!);
   }
   return list;
 }
 
 List<TestsRecord> returnSearchTests(
-  String nameQuery,
-  List<TestsRecord> testList,
+  String? nameQuery,
+  List<TestsRecord>? testList,
 ) {
   // filter firebase collection of documents by string if string is not null
   List<TestsRecord> list = <TestsRecord>[];
   if (nameQuery != null) {
-    testList.forEach((test) {
+    testList!.forEach((test) {
       if (test.name != null &&
-          test.name.toLowerCase().contains(nameQuery.toLowerCase())) {
+          test.name!.toLowerCase().contains(nameQuery.toLowerCase())) {
         list.add(test);
       }
     });
   } else {
-    list.addAll(testList);
+    list.addAll(testList!);
   }
   return list;
 }
 
 List<TestPackagesRecord> returnSearchPackages(
-  String nameQuery,
-  List<TestPackagesRecord> packageList,
+  String? nameQuery,
+  List<TestPackagesRecord>? packageList,
 ) {
   // filter firebase collection of documents by string if string is not null
   List<TestPackagesRecord> list = <TestPackagesRecord>[];
   if (nameQuery != null) {
-    packageList.forEach((package) {
+    packageList!.forEach((package) {
       if (package.packageName != null &&
-          package.packageName.toLowerCase().contains(nameQuery.toLowerCase())) {
+          package.packageName!
+              .toLowerCase()
+              .contains(nameQuery.toLowerCase())) {
         list.add(package);
       }
     });
   } else {
-    list.addAll(packageList);
+    list.addAll(packageList!);
   }
   return list;
 }
 
 DocumentReference returnStaff(
-  String displayName,
-  List<StaffRecord> staffList,
+  String? displayName,
+  List<StaffRecord>? staffList,
 ) {
   // filter firebase collection of documents by string and return single document
   StaffRecord foundStaff = new StaffRecord();
 
-  staffList.forEach((element) {
+  staffList!.forEach((element) {
     if (element.displayName == displayName) {
       foundStaff = element;
     }
@@ -587,25 +579,25 @@ DocumentReference returnStaff(
   return foundStaff.reference;
 }
 
-List<UsersRecord> filterClients(List<UsersRecord> usersList) {
+List<UsersRecord> filterClients(List<UsersRecord>? usersList) {
   // filter a list of documents based on a boolean value not true
   var result =
-      List<UsersRecord>.from(usersList.where((e) => e.isStaff != true));
+      List<UsersRecord>.from(usersList!.where((e) => e.isStaff != true));
   return result;
 
   List<UsersRecord> list = <UsersRecord>[];
   usersList.forEach((user) {
-    if (!user.isStaff) {
+    if (!user.isStaff!) {
       list.add(user);
     }
   });
   return list;
 }
 
-bool displayUnverifiedTag(TestedTestsRecord testedTest) {
+bool displayUnverifiedTag(TestedTestsRecord? testedTest) {
   // return boolean value based on two boolean fields in a document
   bool result;
-  if (testedTest.resultPosted && !testedTest.isVerified) {
+  if (testedTest!.resultPosted! && !testedTest.isVerified!) {
     result = true;
   } else {
     result = false;
@@ -613,10 +605,10 @@ bool displayUnverifiedTag(TestedTestsRecord testedTest) {
   return result;
 }
 
-bool displayVerifiedTag(TestedTestsRecord testedTest) {
+bool displayVerifiedTag(TestedTestsRecord? testedTest) {
   // return boolean value based on two boolean fields in a document
   bool result;
-  if (testedTest.resultPosted && testedTest.isVerified) {
+  if (testedTest!.resultPosted! && testedTest.isVerified!) {
     result = true;
   } else {
     result = false;
@@ -624,7 +616,7 @@ bool displayVerifiedTag(TestedTestsRecord testedTest) {
   return result;
 }
 
-String camelCase(String name) {
+String camelCase(String? name) {
   // return string formatted in sentence case
   /* bool startsWithUppercase = name[0] == name[0].toUpperCase();
   String string = (startsWithUppercase)
@@ -638,7 +630,7 @@ String camelCase(String name) {
     }
   });
   return nameList.join(" "); */
-  if (name.isEmpty) {
+  if (name!.isEmpty) {
     return "";
   } else {
     bool startsWithUppercase = name[0] == name[0].toUpperCase();
@@ -646,7 +638,7 @@ String camelCase(String name) {
         ? name[0].toUpperCase() + name.substring(1).toLowerCase()
         : name.toLowerCase();
     List<String> splitName = string.split(" ");
-    List<String> nameList = List();
+    List<String> nameList = [];
     var nameIterator = splitName.iterator;
 
     while (nameIterator.moveNext()) {
@@ -659,9 +651,9 @@ String camelCase(String name) {
   }
 }
 
-String camelCaseCopy(String name) {
+String camelCaseCopy(String? name) {
   // return string formatted in sentence case
-  if (name.isEmpty) {
+  if (name!.isEmpty) {
     return "";
   } else {
     bool startsWithUppercase = name[0] == name[0].toUpperCase();
@@ -669,7 +661,7 @@ String camelCaseCopy(String name) {
         ? name[0].toUpperCase() + name.substring(1).toLowerCase()
         : name.toLowerCase();
     List<String> splitName = string.split(" ");
-    List<String> nameList = List();
+    List<String> nameList = [];
     var nameIterator = splitName.iterator;
 
     while (nameIterator.moveNext()) {
@@ -682,14 +674,14 @@ String camelCaseCopy(String name) {
   }
 }
 
-String upperCase(String name) {
+String upperCase(String? name) {
   // return string formatted in sentence case
-  bool startsWithUppercase = name[0] == name[0].toUpperCase();
+  bool startsWithUppercase = name![0] == name[0].toUpperCase();
   String string = (startsWithUppercase)
       ? name[0].toUpperCase() + name.substring(1).toLowerCase()
       : name.toLowerCase();
   List<String> splitName = string.split(" ");
-  List<String> nameList = List();
+  List<String> nameList = [];
   splitName.forEach((f) {
     if (f.length > 0) {
       nameList.add(f[0].toUpperCase() + f.substring(1));
@@ -698,10 +690,10 @@ String upperCase(String name) {
   return nameList.join(" ");
 }
 
-bool checkStringNull(String string) {
+bool checkStringNull(String? string) {
   // remove white spaces and check if a string value is null
-  String data = string;
-  if (string.isEmpty) {
+  String? data = string;
+  if (string!.isEmpty) {
     return true;
   } else {
     return false;
@@ -709,8 +701,8 @@ bool checkStringNull(String string) {
 }
 
 bool allTestsConfirmed(
-  int numTests,
-  int testsConfirmed,
+  int? numTests,
+  int? testsConfirmed,
 ) {
   // if two numbers are not equal to zero, and equal, return true
   if ((numTests == 0.0 || testsConfirmed == 0.0) |
@@ -724,26 +716,26 @@ bool allTestsConfirmed(
 }
 
 int checkTestListSize(
-  int listSize,
-  int itemIndex,
+  int? listSize,
+  int? itemIndex,
 ) {
   // Add your function code here!
-  if (listSize < 2) {
+  if (listSize! < 2) {
     return 0;
   } else {
-    return itemIndex;
+    return itemIndex!;
   }
 }
 
 int testsConfirmed(
-  List<BookedTestsRecord> bookedTests,
-  List<DocumentReference> bookingTests,
+  List<BookedTestsRecord>? bookedTests,
+  List<DocumentReference>? bookingTests,
 ) {
   // check if all the elements in one list are contained in another list
   int numTests = 0;
-  for (int i = 0; i < bookedTests.length; i++) {
+  for (int i = 0; i < bookedTests!.length; i++) {
     bool contains = false;
-    for (int j = 0; j < bookingTests.length; j++) {
+    for (int j = 0; j < bookingTests!.length; j++) {
       if (bookedTests[i].testRef == bookingTests[j]) {
         contains = true;
         break;
@@ -755,8 +747,8 @@ int testsConfirmed(
 }
 
 DocumentReference returnBookedTest(
-  DocumentReference bookingRef,
-  DocumentReference testRef,
+  DocumentReference? bookingRef,
+  DocumentReference? testRef,
 ) {
   // query firebase collection for document that matches parameters
   var docs = FirebaseFirestore.instance
@@ -771,15 +763,15 @@ DocumentReference returnBookedTest(
       )
       .get()
       .then((snap) {
-    return BookedTestsRecord().reference;
+    return BookedTestsRecord().reference!;
   });
 
-  return BookedTestsRecord().reference;
+  return BookedTestsRecord().reference!;
 }
 
 bool returnBookedTestExists(
-  DocumentReference bookingRef,
-  DocumentReference testRef,
+  DocumentReference? bookingRef,
+  DocumentReference? testRef,
 ) {
   // query firebase collection for document that matches parameters
   var docs = FirebaseFirestore.instance
@@ -803,60 +795,60 @@ bool returnBookedTestExists(
   }
 }
 
-int stringToInt(String string) {
+int stringToInt(String? string) {
   // parse string to integer
-  return int.parse(string);
+  return int.parse(string!);
 }
 
-double stringToDouble(String string) {
+double stringToDouble(String? string) {
   // parse string to integer
-  return double.parse(string);
+  return double.parse(string!);
 }
 
 TestedTestsRecord returnTestedTest(
-  List<TestedTestsRecord> testedTests,
-  DocumentReference bookedtestRef,
+  List<TestedTestsRecord>? testedTests,
+  DocumentReference? bookedtestRef,
 ) {
   // query list for document with matching parameters
   final TestedTestsRecord toReturn =
-      testedTests.firstWhere((TestedTestsRecord test) {
+      testedTests!.firstWhere((TestedTestsRecord test) {
     return test.bookedTestRef != null
-        ? test.bookedTestRef.path == bookedtestRef.path
+        ? test.bookedTestRef!.path == bookedtestRef!.path
         : false;
-  }, orElse: () => null);
+  })!;
   return toReturn;
 }
 
 DocumentReference returnTestedTestRef(
-  List<TestedTestsRecord> testedTests,
-  DocumentReference bookedtestRef,
+  List<TestedTestsRecord>? testedTests,
+  DocumentReference? bookedtestRef,
 ) {
   // query list for document with matching parameters
   final TestedTestsRecord toReturn =
-      testedTests.firstWhere((TestedTestsRecord test) {
+      testedTests!.firstWhere((TestedTestsRecord test) {
     return test.bookedTestRef != null
-        ? test.bookedTestRef.path == bookedtestRef.path
+        ? test.bookedTestRef!.path == bookedtestRef!.path
         : false;
-  }, orElse: () => null);
+  })!;
   return toReturn.reference;
 }
 
-bool testedTestSubmitted(TestedTestsRecord testedtest) {
+bool testedTestSubmitted(TestedTestsRecord? testedtest) {
   // check if parameter is true
   if (testedtest == null) {
     return false;
-  } else if (testedtest.resultPosted) {
+  } else if (testedtest.resultPosted!) {
     return true;
   } else {
     return false;
   }
 }
 
-bool testedTestVerified(TestedTestsRecord testedtest) {
+bool testedTestVerified(TestedTestsRecord? testedtest) {
   // check if parameter is true
   if (testedtest == null) {
     return false;
-  } else if (testedtest.isVerified) {
+  } else if (testedtest.isVerified!) {
     return true;
   } else {
     return false;
@@ -864,45 +856,45 @@ bool testedTestVerified(TestedTestsRecord testedtest) {
 }
 
 List<BookingsRecord> filterDayBookings(
-  List<BookingsRecord> calendarBookings,
-  DateTime calendarDate,
+  List<BookingsRecord>? calendarBookings,
+  DateTime? calendarDate,
 ) {
   // return all documents with same day
-  List<BookingsRecord> dayBookings = calendarBookings
-      .where((booking) => booking.scheduledDate.day == calendarDate.day)
+  List<BookingsRecord> dayBookings = calendarBookings!
+      .where((booking) => booking.scheduledDate!.day == calendarDate!.day)
       .toList();
   return dayBookings;
 }
 
 List<BookedTestsRecord> filterDayTests(
-  List<BookedTestsRecord> calendarTests,
-  DateTime calendarDate,
+  List<BookedTestsRecord>? calendarTests,
+  DateTime? calendarDate,
 ) {
   // return all documents with same day
-  List<BookedTestsRecord> dayBookings = calendarTests
-      .where((bookedTest) => bookedTest.scheduledDate.day == calendarDate.day)
+  List<BookedTestsRecord> dayBookings = calendarTests!
+      .where((bookedTest) => bookedTest.scheduledDate!.day == calendarDate!.day)
       .toList();
   return dayBookings;
 }
 
 int getDayTestsnumber(
-  List<BookedTestsRecord> calendarTests,
-  DateTime calendarDate,
+  List<BookedTestsRecord>? calendarTests,
+  DateTime? calendarDate,
 ) {
   // return all documents with same day
-  List<BookedTestsRecord> dayBookings = calendarTests
-      .where((bookedTest) => bookedTest.scheduledDate.day == calendarDate.day)
+  List<BookedTestsRecord> dayBookings = calendarTests!
+      .where((bookedTest) => bookedTest.scheduledDate!.day == calendarDate!.day)
       .toList();
   return dayBookings.length;
 }
 
 bool checkAllTestVerified(
-  List<BookedTestsRecord> bookedTests,
-  List<TestedTestsRecord> verifiedTests,
+  List<BookedTestsRecord>? bookedTests,
+  List<TestedTestsRecord>? verifiedTests,
 ) {
   // check if all documents in one list have a corresponding document in another list
-  if (bookedTests.isEmpty && verifiedTests.isEmpty) return true;
-  if (bookedTests.length == verifiedTests.length) {
+  if (bookedTests!.isEmpty && verifiedTests!.isEmpty) return true;
+  if (bookedTests.length == verifiedTests!.length) {
     for (int i = 0; i < bookedTests.length; i++) {
       if (!verifiedTests
           .map((item) => item.bookedTestRef)
@@ -917,20 +909,20 @@ bool checkAllTestVerified(
 }
 
 bool checktestsListsEqual(
-  List<DocumentReference> bookingTests,
-  List<DocumentReference> bookedTests,
+  List<DocumentReference>? bookingTests,
+  List<DocumentReference>? bookedTests,
 ) {
   // check if two lists contain the same elements
   if (bookingTests == null && bookedTests == null) return false;
   bool res = true;
-  if (bookingTests.length != bookedTests.length) res = false;
+  if (bookingTests!.length != bookedTests!.length) res = false;
   for (int i = 0; i < bookingTests.length; i++) {
     res = res && bookingTests.contains(bookedTests[i]);
   }
   return res;
 }
 
-DateTime setInvoiceDueDate(DateTime datePicked) {
+DateTime setInvoiceDueDate(DateTime? datePicked) {
   // if datetime parameter is null, return next day from current timestamp
   if (datePicked == null)
     return DateTime.now().add(Duration(days: 1));
@@ -938,23 +930,23 @@ DateTime setInvoiceDueDate(DateTime datePicked) {
     return datePicked;
 }
 
-bool isCategorySelected(String categoryLocalState) {
+bool isCategorySelected(String? categoryLocalState) {
   // return true if string variable is "all"
-  if (categoryLocalState.toLowerCase == 'All') {
+  if (categoryLocalState!.toLowerCase == 'All') {
     return true;
   } else
     return false;
 }
 
 bool isThisCategorySelected(
-  String categoryLocalState,
-  String categoryString,
-  bool allPackageCategories,
+  String? categoryLocalState,
+  String? categoryString,
+  bool? allPackageCategories,
 ) {
   // return true if string variable is "all"
-  if (allPackageCategories) {
+  if (allPackageCategories!) {
     return false;
-  } else if (categoryLocalState.toLowerCase == categoryString.toLowerCase) {
+  } else if (categoryLocalState!.toLowerCase == categoryString!.toLowerCase) {
     return true;
   } else {
     return false;
@@ -962,119 +954,115 @@ bool isThisCategorySelected(
 }
 
 List<TestsRecord> filterTests(
-  bool allcategories,
-  String catString,
-  String searchQuery,
-  List<TestsRecord> allTests,
+  bool? allcategories,
+  String? catString,
+  String? searchQuery,
+  List<TestsRecord>? allTests,
 ) {
   // filter collection by category parameter if boolean value true
   //
-  if (allcategories) {
-    if (searchQuery.isNotEmpty) {
-      return allTests.where((t) => t.name.contains(searchQuery)).toList();
+  if (allcategories!) {
+    if (searchQuery!.isNotEmpty) {
+      return allTests!.where((t) => t.name!.contains(searchQuery)).toList();
     } else {
-      return allTests
-          .where((t) => t.category.toLowerCase() == catString.toLowerCase())
+      return allTests!
+          .where((t) => t.category!.toLowerCase() == catString!.toLowerCase())
           .toList();
     }
   } else {
-    if (searchQuery.isNotEmpty && !allcategories) {
-      return allTests
+    if (searchQuery!.isNotEmpty && !allcategories) {
+      return allTests!
           .where((t) =>
-              t.name.contains(searchQuery) &&
-              t.category.toLowerCase() == catString.toLowerCase())
+              t.name!.contains(searchQuery) &&
+              t.category!.toLowerCase() == catString!.toLowerCase())
           .toList();
     } else {
-      return allTests;
+      return allTests!;
     }
   }
 }
 
 List<TestPackagesRecord> filterPackages(
-  bool allcategories,
-  String catString,
-  String searchQuery,
-  List<TestPackagesRecord> allPackages,
+  bool? allcategories,
+  String? catString,
+  String? searchQuery,
+  List<TestPackagesRecord>? allPackages,
 ) {
   // filter collection by category parameter if boolean value true
   //
-  if (allcategories) {
-    if (searchQuery.isNotEmpty) {
-      return allPackages
-          .where((t) => t.packageName.contains(searchQuery))
+  if (allcategories!) {
+    if (searchQuery!.isNotEmpty) {
+      return allPackages!
+          .where((t) => t.packageName!.contains(searchQuery))
           .toList();
     } else {
-      return allPackages
-          .where((t) => t.category.toLowerCase() == catString.toLowerCase())
+      return allPackages!
+          .where((t) => t.category!.toLowerCase() == catString!.toLowerCase())
           .toList();
     }
   } else {
-    if (searchQuery.isNotEmpty && !allcategories) {
-      return allPackages
+    if (searchQuery!.isNotEmpty && !allcategories) {
+      return allPackages!
           .where((t) =>
-              t.packageName.contains(searchQuery) &&
-              t.category.toLowerCase() == catString.toLowerCase())
+              t.packageName!.contains(searchQuery) &&
+              t.category!.toLowerCase() == catString!.toLowerCase())
           .toList();
     } else {
-      return allPackages;
+      return allPackages!;
     }
   }
 }
 
 List<TestsRecord> filterTestsByCategory(
-  bool allcategories,
-  String catString,
-  List<TestsRecord> allTests,
+  bool? allcategories,
+  String? catString,
+  List<TestsRecord>? allTests,
 ) {
   // filter collection by category parameter if boolean value true
   final List<TestsRecord> filteredList = [];
-  if (catString.isNotEmpty) {
-    for (int i = 0; i < allTests.length; i++) {
+  if (catString!.isNotEmpty) {
+    for (int i = 0; i < allTests!.length; i++) {
       if (allcategories == true) {
         filteredList.add(allTests[i]);
       } else if (allcategories == false) {
-        if (allTests[i].category.toLowerCase() == catString.toLowerCase()) {
+        if (allTests[i].category!.toLowerCase() == catString.toLowerCase()) {
           filteredList.add(allTests[i]);
         }
       }
     }
     return filteredList;
-  } else if (catString = null) {
-    return allTests;
   } else {
-    return allTests;
+    return allTests!;
   }
 }
 
 List<TestPackagesRecord> filterPackagesByCategory(
-  bool allcategories,
-  String catString,
-  List<TestPackagesRecord> allPackages,
+  bool? allcategories,
+  String? catString,
+  List<TestPackagesRecord>? allPackages,
 ) {
   // filter collection by category parameter if boolean value true
   final List<TestPackagesRecord> filteredList = [];
-  if (catString.isNotEmpty) {
-    for (int i = 0; i < allPackages.length; i++) {
+  if (catString!.isNotEmpty) {
+    for (int i = 0; i < allPackages!.length; i++) {
       if (allcategories == true) {
         filteredList.add(allPackages[i]);
       } else if (allcategories == false) {
-        if (allPackages[i].category.toLowerCase() == catString.toLowerCase()) {
+        if (allPackages[i].category!.toLowerCase() == catString.toLowerCase()) {
           filteredList.add(allPackages[i]);
         }
       }
     }
     return filteredList;
-  } else if (catString = null) {
-    return allPackages;
   } else {
-    return allPackages;
+    return allPackages!;
   }
 }
 
-String returnNewTestsifZero(int tests) {
+String returnNewTestsifZero(int? tests) {
   // if list is empty or null return string
   String _returnThis;
-  if (tests > 0)
+  if (tests! > 0)
     // something
     _returnThis = tests.toString();
   else
@@ -1083,14 +1071,14 @@ String returnNewTestsifZero(int tests) {
 }
 
 bool userHasStaffRecord(
-  DocumentReference userRef,
-  List<StaffRecord> staffList,
+  DocumentReference? userRef,
+  List<StaffRecord>? staffList,
 ) {
   // check list for record with a matching userRef field and return true if found
   if (userRef == null) {
     return false;
   }
-  for (var staff in staffList) {
+  for (var staff in staffList!) {
     if (staff.userRef == userRef) {
       return true;
     }
@@ -1103,20 +1091,20 @@ int createUniqueId() {
 }
 
 bool bookingValidation(
-  String fName,
-  String lName,
-  String email,
-  String phone,
-  String sex,
-  List<DocumentReference> tests,
+  String? fName,
+  String? lName,
+  String? email,
+  String? phone,
+  String? sex,
+  List<DocumentReference>? tests,
 ) {
   // validate form entries
   // missing entries:
-  if (fName.isEmpty ||
-      lName.isEmpty ||
-      email.isEmpty ||
-      sex.isEmpty ||
-      tests.isEmpty) {
+  if (fName!.isEmpty ||
+      lName!.isEmpty ||
+      email!.isEmpty ||
+      sex!.isEmpty ||
+      tests!.isEmpty) {
     return false;
   } else {
     return true;
@@ -1124,73 +1112,73 @@ bool bookingValidation(
 }
 
 String bookingValidator(
-  String fName,
-  String lName,
-  String email,
-  String phone,
-  String sex,
-  List<DocumentReference> tests,
+  String? fName,
+  String? lName,
+  String? email,
+  String? phone,
+  String? sex,
+  List<DocumentReference>? tests,
 ) {
   // validate form entries
   // missing entries:
-  String err;
-  if (fName.isEmpty) {
-    err = err + "fName";
+  late String err;
+  if (fName!.isEmpty) {
+    err = "fName";
   }
-  if (lName.isEmpty) {
+  if (lName!.isEmpty) {
     err = err + "lName";
   }
-  if (email.isEmpty) {
+  if (email!.isEmpty) {
     err = err + "email";
   }
-  if (sex.isEmpty) {
+  if (sex!.isEmpty) {
     err = err + "sex";
   }
-  if (tests.isEmpty) {
+  if (tests!.isEmpty) {
     err = err + "tests";
   }
   return err;
 }
 
-double expandableSize(bool isOpen) {
+double expandableSize(bool? isOpen) {
   // Add your function code here!
-  if (isOpen) {
+  if (isOpen!) {
     return 24;
   } else {
     return 14;
   }
 }
 
-List<String> splitProcedureString(String procedureString) {
+List<String> splitProcedureString(String? procedureString) {
   // split string using comma
-  return procedureString.split(", ").map((String e) => e.trim()).toList();
+  return procedureString!.split(", ").map((String e) => e.trim()).toList();
 }
 
 List<NotificationsRecord> filterNotifications(
-  List<NotificationsRecord> allNotifications,
-  DocumentReference userRef,
+  List<NotificationsRecord>? allNotifications,
+  DocumentReference? userRef,
 ) {
   // filter notifications if usersSeen array contains document reference
   List<NotificationsRecord> ret = [];
-  allNotifications.forEach((NotificationsRecord notification) {
-    if (!notification.usersSeen.contains(userRef)) {
+  allNotifications!.forEach((NotificationsRecord notification) {
+    if (!notification.usersSeen!.contains(userRef)) {
       ret.add(notification);
     }
   });
   return ret;
 }
 
-String checkNullString(String string) {
+String checkNullString(String? string) {
   // check if string is null
   return string != null ? string : "no data";
 }
 
-String returnInvoiceStatus(InvoicesRecord invoice) {
+String returnInvoiceStatus(InvoicesRecord? invoice) {
   // return string if boolean value true and another string if not
   if (invoice != null) {
     if (invoice.reference != null && invoice.isPaid != null) {
-      if (invoice.isPaid) {
-        if (invoice.fullAmount) {
+      if (invoice.isPaid!) {
+        if (invoice.fullAmount!) {
           return 'Paid in full';
         } else {
           return 'incomplete';
@@ -1206,27 +1194,27 @@ String returnInvoiceStatus(InvoicesRecord invoice) {
   }
 }
 
-bool isTestnotVerifiedorFlagged(TestedTestsRecord testedTest) {
+bool isTestnotVerifiedorFlagged(TestedTestsRecord? testedTest) {
   // return boolean value if isVerified true and isflagged not true
-  if (testedTest.isVerified == true && testedTest.isFlagged != true) {
+  if (testedTest!.isVerified == true && testedTest.isFlagged != true) {
     return true;
   } else {
     return false;
   }
 }
 
-String returnTestName(DocumentReference testRef) {
+String? returnTestName(DocumentReference? testRef) {
   // retrieve firestore document and return property
   var test = FirebaseFirestore.instance
       .collection('Tests')
       .doc('testRef')
       .get()
       .then((snap) {
-    return TestsRecord().reference.toString;
+    return TestsRecord().reference!.toString;
   });
 }
 
-DocumentReference returnstaffRef(DocumentReference userRef) {
+DocumentReference? returnstaffRef(DocumentReference? userRef) {
   var docs = FirebaseFirestore.instance
       .collection('staff')
       .where(
@@ -1239,7 +1227,7 @@ DocumentReference returnstaffRef(DocumentReference userRef) {
   });
 }
 
-String returnTestNotes(DocumentReference testRef) {
+String? returnTestNotes(DocumentReference? testRef) {
   // retrieve firestore document and return property
   var test = FirebaseFirestore.instance
       .collection('Tests')
@@ -1250,9 +1238,9 @@ String returnTestNotes(DocumentReference testRef) {
   });
 }
 
-bool isListEmpty(List<DocumentReference> tests) {
+bool isListEmpty(List<DocumentReference>? tests) {
   // check if list is empty
-  if (tests.where((test) => test != null).length != 0) {
+  if (tests!.length != 0) {
     return false;
   }
   return true;
@@ -1278,26 +1266,28 @@ String returnHeaderEmail() {
   return email;
 }
 
-List<DocumentReference> filterTestPackTests(
-  List<DocumentReference> testPacks,
-  List<DocumentReference> allBookingTests,
+List<DocumentReference>? filterTestPackTests(
+  List<DocumentReference>? testPacks,
+  List<DocumentReference>? allBookingTests,
 ) {
   // query firebase document and return list of tests from record
 
   List<DocumentReference> testPackFilter = [];
   List<DocumentReference> testPackTests = [];
-  testPackFilter.addAll(allBookingTests);
+  testPackFilter.addAll(allBookingTests!);
   //iterate through all the records in testPacks list and populate one list with all their tests records
-  for (int i = 0; i < testPacks.length; i++) {
+  for (int i = 0; i < testPacks!.length; i++) {
     var testPack = FirebaseFirestore.instance
         .collection('test_Packages')
         .doc('${testPacks[i]}')
         .get()
         .then((snap) {
-      testPackTests.addAll(TestPackagesRecord().testsIncluded);
-      //return TestPackagesRecord().testsIncluded.asList;
-      return testPackTests;
+      // testPackTests.addAll(TestPackagesRecord().testsIncluded);
+      // testPackTests. (TestPackagesRecord().testsIncluded!.asList);
+      return TestPackagesRecord().testsIncluded!.asList;
+      // return testPackTests;
     });
+
     for (int j = 0; j < testPackTests.length; j++) {
       testPackFilter.removeWhere((element) => testPackTests.contains(element));
       /*if (testPackFilter.contains(testPackTests[j])) {
@@ -1311,23 +1301,23 @@ List<DocumentReference> filterTestPackTests(
   return testPackFilter;
 }
 
-int calculateAge(DateTime dOb) {
+int calculateAge(DateTime? dOb) {
   // calculate age from date of birth
   DateTime currentDate = DateTime.now();
   int age = 0;
-  age = currentDate.year - dOb.year;
+  age = currentDate.year - dOb!.year;
   return age;
 }
 
 List<DocumentReference> removeBookingPackageTests(
-  List<DocumentReference> testPackTests,
-  List<DocumentReference> allPackagesTestsList,
+  List<DocumentReference>? testPackTests,
+  List<DocumentReference>? allPackagesTestsList,
 ) {
   // remove all elements in allPackagesTestsList that are also in testPackTests
-  final packageTest = new List<DocumentReference>();
-
-  for (final test in allPackagesTestsList) {
-    if (!testPackTests.contains(test)) {
+  //final packageTest = new List<DocumentReference>();
+  var packageTest = List<DocumentReference>.empty(growable: true);
+  for (final test in allPackagesTestsList!) {
+    if (!testPackTests!.contains(test)) {
       packageTest.add(test);
     }
   }
@@ -1335,32 +1325,32 @@ List<DocumentReference> removeBookingPackageTests(
 }
 
 List<DocumentReference> addBookingPackageTests(
-  List<DocumentReference> bookingPackageTests,
-  List<DocumentReference> packageTests,
+  List<DocumentReference>? bookingPackageTests,
+  List<DocumentReference>? packageTests,
 ) {
   // add all elements in packageTests into bookingPackageTests
-  for (var doctest in packageTests) {
-    bookingPackageTests.add(doctest);
+  for (var doctest in packageTests!) {
+    bookingPackageTests!.add(doctest);
   }
-  return bookingPackageTests;
+  return bookingPackageTests!;
 }
 
 List<DocumentReference> returnAllBookingTests(
-  List<DocumentReference> allPackageTests,
-  List<DocumentReference> allBookingTests,
+  List<DocumentReference>? allPackageTests,
+  List<DocumentReference>? allBookingTests,
 ) {
   // combine lists into one list
-  List<DocumentReference> combinedTests = allPackageTests;
-  combinedTests.addAll(allBookingTests);
+  List<DocumentReference> combinedTests = allPackageTests!;
+  combinedTests.addAll(allBookingTests!);
   return combinedTests;
 }
 
 bool checkTestInBookingTests(
-  DocumentReference test,
-  List<DocumentReference> allBookingTests,
+  DocumentReference? test,
+  List<DocumentReference>? allBookingTests,
 ) {
   // check if list contains element
-  for (final bookingTest in allBookingTests) {
+  for (final bookingTest in allBookingTests!) {
     if (bookingTest == test) {
       return true;
     }
@@ -1369,22 +1359,22 @@ bool checkTestInBookingTests(
 }
 
 bool checkTestPackageBookingHasDuplicates(
-  List<DocumentReference> allBookingTests,
-  List<DocumentReference> testPackTests,
+  List<DocumentReference>? allBookingTests,
+  List<DocumentReference>? testPackTests,
 ) {
   // Check if allBookingTests contains any elements in testPackTests
   // loop will exit naturally if allBookingTests contains any elements in testPackTests:
-  return allBookingTests.any((element) => testPackTests.contains(element));
+  return allBookingTests!.any((element) => testPackTests!.contains(element));
 }
 
 List<DocumentReference> returnDuplicateTestsinBooking(
-  List<DocumentReference> allBookingTests,
-  List<DocumentReference> testPackageTests,
+  List<DocumentReference>? allBookingTests,
+  List<DocumentReference>? testPackageTests,
 ) {
   // return elements contained in both lists
   var duplicateTests = <DocumentReference>[];
-  allBookingTests.forEach((e) {
-    if (testPackageTests.contains(e)) {
+  allBookingTests!.forEach((e) {
+    if (testPackageTests!.contains(e)) {
       duplicateTests.add(e);
     }
   });
@@ -1392,14 +1382,14 @@ List<DocumentReference> returnDuplicateTestsinBooking(
 }
 
 List<TestPackagesRecord> returnPackagesinBooking(
-  List<TestPackagesRecord> packagesCollection,
-  List<DocumentReference> bookingPackagesList,
+  List<TestPackagesRecord>? packagesCollection,
+  List<DocumentReference>? bookingPackagesList,
 ) {
   // return list of documents where reference is contained in TestPackagesRecord list
   List<TestPackagesRecord> newPackagesCollection = [];
 
-  for (int i = 0; i < bookingPackagesList.length; i++) {
-    for (var j = 0; j < packagesCollection.length; j++) {
+  for (int i = 0; i < bookingPackagesList!.length; i++) {
+    for (var j = 0; j < packagesCollection!.length; j++) {
       if (bookingPackagesList[i] == packagesCollection[j].reference) {
         newPackagesCollection.add(packagesCollection[j]);
         break;
@@ -1411,15 +1401,15 @@ List<TestPackagesRecord> returnPackagesinBooking(
 }
 
 List<TestPackagesRecord> returnPackagesContainingDuplicateTests(
-  List<TestPackagesRecord> bookingPackages,
-  List<DocumentReference> duplicateTests,
+  List<TestPackagesRecord>? bookingPackages,
+  List<DocumentReference>? duplicateTests,
 ) {
   // return list of documents containing any elements in duplicateTests list
   List<TestPackagesRecord> matchList = [];
 
-  for (var testpackage in bookingPackages.toList()) {
-    for (var test in testpackage.testsIncluded) {
-      if (duplicateTests.contains(test)) {
+  for (var testpackage in bookingPackages!.toList()) {
+    for (var test in testpackage!.testsIncluded!) {
+      if (duplicateTests!.contains(test)) {
         matchList.add(testpackage);
       }
     }
@@ -1428,14 +1418,14 @@ List<TestPackagesRecord> returnPackagesContainingDuplicateTests(
 }
 
 List<DocumentReference> returnDuplicateTestsinPackage(
-  TestPackagesRecord testPackage,
-  List<DocumentReference> duplicateTests,
+  TestPackagesRecord? testPackage,
+  List<DocumentReference>? duplicateTests,
 ) {
   // return list of elements contained in both TestPackage and duplicateTests
   List<DocumentReference> duplicateTestsinPackage = [];
 
-  testPackage.testsIncluded.forEach((testRef) {
-    if (duplicateTests.contains(testRef)) {
+  testPackage!.testsIncluded!.forEach((testRef) {
+    if (duplicateTests!.contains(testRef)) {
       if (!duplicateTestsinPackage.contains(testRef)) {
         duplicateTestsinPackage.add(testRef);
       }
@@ -1446,14 +1436,14 @@ List<DocumentReference> returnDuplicateTestsinPackage(
 }
 
 List<double> returnStats(
-  List<TestedTestsRecord> testedTests,
-  DateTime endDate,
+  List<TestedTestsRecord>? testedTests,
+  DateTime? endDate,
 ) {
   // count records with created date for previous 7 days and generate list
   List<double> results = List<double>.filled(14, 0.0);
   for (int i = 0; i < 14; i++) {
-    final dayStart = endDate.subtract(Duration(days: 14));
-    results[i] = testedTests
+    final dayStart = endDate!.subtract(Duration(days: 14));
+    results[i] = testedTests!
         .where((booking) => booking.dateSampleCollected == dayStart)
         .toList()
         .length
@@ -1494,17 +1484,17 @@ List<String> returnSexOptions() {
   return string;
 }
 
-bool checkBookingTests(BookingsRecord booking) {
-  if (booking.testsIncluded.length > 1) {
+bool checkBookingTests(BookingsRecord? booking) {
+  if (booking!.testsIncluded!.length > 1) {
     return true;
   } else {
     return false;
   }
 }
 
-int returnBookingsTab(String testVar) {
+int returnBookingsTab(String? testVar) {
   // return integer based on string match
-  if (testVar.toLowerCase() == null || testVar.toLowerCase() == '') {
+  if (testVar!.toLowerCase() == null || testVar.toLowerCase() == '') {
     return 1;
   }
   if (testVar.toLowerCase() == 'upcoming') {

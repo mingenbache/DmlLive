@@ -10,20 +10,20 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ChatWidget extends StatefulWidget {
   const ChatWidget({
-    Key key,
+    Key? key,
     this.chatUser,
     this.chatRef,
   }) : super(key: key);
 
-  final UsersRecord chatUser;
-  final DocumentReference chatRef;
+  final UsersRecord? chatUser;
+  final DocumentReference? chatRef;
 
   @override
   _ChatWidgetState createState() => _ChatWidgetState();
 }
 
 class _ChatWidgetState extends State<ChatWidget> {
-  FFChatInfo _chatInfo;
+  FFChatInfo? _chatInfo;
   bool isGroupChat() {
     if (widget.chatUser == null) {
       return true;
@@ -123,7 +123,7 @@ class _ChatWidgetState extends State<ChatWidget> {
           ),
           builder: (context, snapshot) => snapshot.hasData
               ? FFChatPage(
-                  chatInfo: snapshot.data,
+                  chatInfo: snapshot.data!,
                   allowImages: true,
                   backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
                   timeDisplaySetting: TimeDisplaySetting.visibleOnTap,

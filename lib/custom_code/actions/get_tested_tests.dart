@@ -7,6 +7,6 @@ import '../../flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 
 // Begin custom action code
-Future<List<DocumentReference>> getTestedTests(BookingsRecord booking) async {
-  return booking.verifiedTests.asList();
+Future<List<DocumentReference>> getTestedTests(BookingsRecord? booking) async {
+  return booking!.verifiedTests.asList();
 }

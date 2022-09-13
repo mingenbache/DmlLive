@@ -13,13 +13,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class InvoiceSheetWidget extends StatefulWidget {
   const InvoiceSheetWidget({
-    Key key,
+    Key? key,
     this.booking,
     this.invoiceRef,
   }) : super(key: key);
 
-  final DocumentReference booking;
-  final DocumentReference invoiceRef;
+  final DocumentReference? booking;
+  final DocumentReference? invoiceRef;
 
   @override
   _InvoiceSheetWidgetState createState() => _InvoiceSheetWidgetState();
@@ -29,7 +29,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<BookingsRecord>(
-      stream: BookingsRecord.getDocument(widget.booking),
+      stream: BookingsRecord.getDocument(widget.booking!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -44,11 +44,11 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
             ),
           );
         }
-        final invoiceContainerBookingsRecord = snapshot.data;
+        final invoiceContainerBookingsRecord = snapshot.data!;
         return Container(
           decoration: BoxDecoration(),
           child: StreamBuilder<InvoicesRecord>(
-            stream: InvoicesRecord.getDocument(widget.invoiceRef),
+            stream: InvoicesRecord.getDocument(widget.invoiceRef!),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {
@@ -63,7 +63,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                   ),
                 );
               }
-              final columnInvoicesRecord = snapshot.data;
+              final columnInvoicesRecord = snapshot.data!;
               return Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -201,7 +201,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                         alignment: AlignmentDirectional(0, 0),
                                         child: Text(
                                           dateTimeFormat('d/M/y',
-                                              columnInvoicesRecord.dueDate),
+                                              columnInvoicesRecord.dueDate!),
                                           textAlign: TextAlign.center,
                                           maxLines: 1,
                                           style: FlutterFlowTheme.of(context)
@@ -275,7 +275,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                             Stack(
                                               children: [
                                                 if (!columnInvoicesRecord
-                                                    .isPaid)
+                                                    .isPaid!)
                                                   Container(
                                                     width: 130,
                                                     height: 32,
@@ -481,7 +481,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                         ),
                                         alignment: AlignmentDirectional(0, 0),
                                         child: Text(
-                                          columnInvoicesRecord.labRefNum,
+                                          columnInvoicesRecord.labRefNum!,
                                           textAlign: TextAlign.end,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -887,7 +887,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                           3),
                                                                   child: Text(
                                                                     invoiceContainerBookingsRecord
-                                                                        .emailaddress,
+                                                                        .emailaddress!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
@@ -998,7 +998,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                           3),
                                                                   child: Text(
                                                                     invoiceContainerBookingsRecord
-                                                                        .phonenumber,
+                                                                        .phonenumber!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
@@ -1128,7 +1128,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                           child:
                                                                               Text(
                                                                             dateTimeFormat('d/M/y',
-                                                                                invoiceContainerBookingsRecord.dOB),
+                                                                                invoiceContainerBookingsRecord.dOB!),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -1230,7 +1230,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            invoiceContainerBookingsRecord.sex,
+                                                                            invoiceContainerBookingsRecord.sex!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -1320,7 +1320,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                               builder: (context) {
                                                 final tests =
                                                     invoiceContainerBookingsRecord
-                                                        .bookedTests
+                                                        .bookedTests!
                                                         .toList();
                                                 return ListView.builder(
                                                   padding: EdgeInsets.zero,
@@ -1362,7 +1362,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                             );
                                                           }
                                                           final containerTestsRecord =
-                                                              snapshot.data;
+                                                              snapshot.data!;
                                                           return Material(
                                                             color: Colors
                                                                 .transparent,
@@ -1407,7 +1407,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                   children: [
                                                                     Text(
                                                                       containerTestsRecord
-                                                                          .name,
+                                                                          .name!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyText1
@@ -1427,7 +1427,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                       children: [
                                                                         Text(
                                                                           formatNumber(
-                                                                            containerTestsRecord.price,
+                                                                            containerTestsRecord.price!,
                                                                             formatType:
                                                                                 FormatType.decimal,
                                                                             decimalType:
@@ -1610,7 +1610,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                 builder: (context) {
                                                   final payments =
                                                       columnInvoicesRecord
-                                                          .paymentsList
+                                                          .paymentsList!
                                                           .toList();
                                                   return ListView.builder(
                                                     padding: EdgeInsets.zero,
@@ -1653,7 +1653,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                               );
                                                             }
                                                             final containerPaymentsRecord =
-                                                                snapshot.data;
+                                                                snapshot.data!;
                                                             return Material(
                                                               color: Colors
                                                                   .transparent,
@@ -1716,7 +1716,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                             Text(
                                                                           dateTimeFormat(
                                                                               'd/M/y',
-                                                                              containerPaymentsRecord.createdDate),
+                                                                              containerPaymentsRecord.createdDate!),
                                                                           textAlign:
                                                                               TextAlign.start,
                                                                           style: FlutterFlowTheme.of(context)
@@ -1748,7 +1748,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                         child:
                                                                             Text(
                                                                           containerPaymentsRecord
-                                                                              .transactionCode,
+                                                                              .transactionCode!,
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
@@ -1781,7 +1781,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                         child:
                                                                             Text(
                                                                           containerPaymentsRecord
-                                                                              .type,
+                                                                              .type!,
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
@@ -1811,7 +1811,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                         child:
                                                                             Text(
                                                                           formatNumber(
-                                                                            containerPaymentsRecord.amount,
+                                                                            containerPaymentsRecord.amount!,
                                                                             formatType:
                                                                                 FormatType.decimal,
                                                                             decimalType:

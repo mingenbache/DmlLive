@@ -8,7 +8,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TestedTestsWidget extends StatefulWidget {
-  const TestedTestsWidget({Key key}) : super(key: key);
+  const TestedTestsWidget({Key? key}) : super(key: key);
 
   @override
   _TestedTestsWidgetState createState() => _TestedTestsWidgetState();
@@ -128,7 +128,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                           }
                                           List<TestedTestsRecord>
                                               listViewTestedTestsRecordList =
-                                              snapshot.data;
+                                              snapshot.data!;
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             shrinkWrap: true,
@@ -149,7 +149,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                   stream: BookingsRecord
                                                       .getDocument(
                                                           listViewTestedTestsRecord
-                                                              .bookingRef),
+                                                              .bookingRef!),
                                                   builder: (context, snapshot) {
                                                     // Customize what your widget looks like when it's loading.
                                                     if (!snapshot.hasData) {
@@ -167,7 +167,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                       );
                                                     }
                                                     final containerBookingsRecord =
-                                                        snapshot.data;
+                                                        snapshot.data!;
                                                     return Material(
                                                       color: Colors.transparent,
                                                       elevation: 2,
@@ -265,7 +265,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                       child: FutureBuilder<
                                                                           TestsRecord>(
                                                                         future:
-                                                                            TestsRecord.getDocumentOnce(listViewTestedTestsRecord.testRef),
+                                                                            TestsRecord.getDocumentOnce(listViewTestedTestsRecord.testRef!),
                                                                         builder:
                                                                             (context,
                                                                                 snapshot) {
@@ -284,9 +284,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                             );
                                                                           }
                                                                           final textTestsRecord =
-                                                                              snapshot.data;
+                                                                              snapshot.data!;
                                                                           return Text(
-                                                                            textTestsRecord.name.maybeHandleOverflow(
+                                                                            textTestsRecord.name!.maybeHandleOverflow(
                                                                               maxChars: 20,
                                                                               replacement: '…',
                                                                             ),
@@ -479,7 +479,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                         child: Text(
-                                                                                          listViewTestedTestsRecord.labRefNum,
+                                                                                          listViewTestedTestsRecord.labRefNum!,
                                                                                           style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                                 fontFamily: 'Lexend Deca',
                                                                                                 color: Color(0xFF586B06),
@@ -795,7 +795,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                           }
                                           List<TestedTestsRecord>
                                               listViewTestedTestsRecordList =
-                                              snapshot.data;
+                                              snapshot.data!;
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             shrinkWrap: true,
@@ -816,7 +816,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                   stream: BookingsRecord
                                                       .getDocument(
                                                           listViewTestedTestsRecord
-                                                              .bookingRef),
+                                                              .bookingRef!),
                                                   builder: (context, snapshot) {
                                                     // Customize what your widget looks like when it's loading.
                                                     if (!snapshot.hasData) {
@@ -834,7 +834,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                       );
                                                     }
                                                     final containerBookingsRecord =
-                                                        snapshot.data;
+                                                        snapshot.data!;
                                                     return Material(
                                                       color: Colors.transparent,
                                                       elevation: 2,
@@ -873,7 +873,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                               future: TestsRecord
                                                                   .getDocumentOnce(
                                                                       listViewTestedTestsRecord
-                                                                          .testRef),
+                                                                          .testRef!),
                                                               builder: (context,
                                                                   snapshot) {
                                                                 // Customize what your widget looks like when it's loading.
@@ -897,7 +897,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                 }
                                                                 final containerTestsRecord =
                                                                     snapshot
-                                                                        .data;
+                                                                        .data!;
                                                                 return Container(
                                                                   height: 30,
                                                                   decoration:
@@ -955,7 +955,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            containerTestsRecord.name.maybeHandleOverflow(
+                                                                            containerTestsRecord.name!.maybeHandleOverflow(
                                                                               maxChars: 20,
                                                                               replacement: '…',
                                                                             ),
@@ -1148,7 +1148,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                         child: Text(
-                                                                                          listViewTestedTestsRecord.labRefNum,
+                                                                                          listViewTestedTestsRecord.labRefNum!,
                                                                                           style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                                 fontFamily: 'Lexend Deca',
                                                                                                 color: Color(0xFF586B06),
@@ -1414,7 +1414,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                         }
                                         List<TestedTestsRecord>
                                             listViewTestedTestsRecordList =
-                                            snapshot.data;
+                                            snapshot.data!;
                                         return ListView.builder(
                                           padding: EdgeInsets.zero,
                                           shrinkWrap: true,
@@ -1459,7 +1459,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                           stream: TestsRecord
                                                               .getDocument(
                                                                   listViewTestedTestsRecord
-                                                                      .testRef),
+                                                                      .testRef!),
                                                           builder: (context,
                                                               snapshot) {
                                                             // Customize what your widget looks like when it's loading.
@@ -1480,7 +1480,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                               );
                                                             }
                                                             final containerTestsRecord =
-                                                                snapshot.data;
+                                                                snapshot.data!;
                                                             return Container(
                                                               height: 30,
                                                               decoration:
@@ -1500,7 +1500,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                   children: [
                                                                     Text(
                                                                       containerTestsRecord
-                                                                          .name,
+                                                                          .name!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .subtitle1,
@@ -1691,7 +1691,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                               child: Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                 child: Text(
-                                                                                  listViewTestedTestsRecord.labRefNum,
+                                                                                  listViewTestedTestsRecord.labRefNum!,
                                                                                   style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                         fontFamily: 'Lexend Deca',
                                                                                         color: Color(0xFF586B06),
@@ -1757,7 +1757,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
                                                                                       Text(
-                                                                                        dateTimeFormat('MMMEd', listViewTestedTestsRecord.dateConducted),
+                                                                                        dateTimeFormat('MMMEd', listViewTestedTestsRecord.dateConducted!),
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                               fontFamily: 'Montserrat',
                                                                                               color: Color(0xFF586B06),

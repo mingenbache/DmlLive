@@ -15,29 +15,29 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AddNewTestWidget extends StatefulWidget {
   const AddNewTestWidget({
-    Key key,
+    Key? key,
     this.userRef,
   }) : super(key: key);
 
-  final DocumentReference userRef;
+  final DocumentReference? userRef;
 
   @override
   _AddNewTestWidgetState createState() => _AddNewTestWidgetState();
 }
 
 class _AddNewTestWidgetState extends State<AddNewTestWidget> {
-  TextEditingController testDescriptionController;
+  TextEditingController? testDescriptionController;
 
-  TextEditingController textController1;
+  TextEditingController? textController1;
 
-  String testCategoryValue;
-  bool atHomeToggleValue;
-  double testDurationSliderValue;
-  double resultsDurationSliderValue;
+  String? testCategoryValue;
+  bool? atHomeToggleValue;
+  double? testDurationSliderValue;
+  double? resultsDurationSliderValue;
 
-  TextEditingController testPriceController;
+  TextEditingController? testPriceController;
 
-  TestsRecord newTestId;
+  TestsRecord? newTestId;
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -74,7 +74,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
               ),
             );
           }
-          List<StaffRecord> columnStaffRecordList = snapshot.data;
+          List<StaffRecord> columnStaffRecordList = snapshot.data!;
           final columnStaffRecord = columnStaffRecordList.isNotEmpty
               ? columnStaffRecordList.first
               : null;
@@ -288,7 +288,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                     EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             15, 15, 15, 15),
-                                                suffixIcon: textController1
+                                                suffixIcon: textController1!
                                                         .text.isNotEmpty
                                                     ? InkWell(
                                                         onTap: () async {
@@ -390,7 +390,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                 }
                                                 List<CategoriesRecord>
                                                     testCategoryCategoriesRecordList =
-                                                    snapshot.data;
+                                                    snapshot.data!;
                                                 final testCategoryCategoriesRecord =
                                                     testCategoryCategoriesRecordList
                                                             .isNotEmpty
@@ -399,8 +399,8 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                         : null;
                                                 return FlutterFlowDropDown(
                                                   options:
-                                                      testCategoryCategoriesRecord
-                                                          .categories
+                                                      testCategoryCategoriesRecord!
+                                                          .categories!
                                                           .toList()
                                                           .toList(),
                                                   onChanged: (val) => setState(
@@ -557,7 +557,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     5, 2, 0, 5),
                                             suffixIcon:
-                                                testDescriptionController
+                                                testDescriptionController!
                                                         .text.isNotEmpty
                                                     ? InkWell(
                                                         onTap: () async {
@@ -1096,10 +1096,10 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                         child: FFButtonWidget(
                           onPressed: () async {
                             final testsCreateData = createTestsRecordData(
-                              price: int.parse(testPriceController.text),
-                              name: textController1.text,
+                              price: int.parse(testPriceController!.text),
+                              name: textController1!.text,
                               homeTest: atHomeToggleValue,
-                              description: testDescriptionController.text,
+                              description: testDescriptionController!.text,
                               duration: testDurationSliderValue,
                               durationResults: resultsDurationSliderValue,
                               category: testCategoryValue,
@@ -1114,7 +1114,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                             context.pushNamed(
                               'Details',
                               queryParams: {
-                                'testId': serializeParam(newTestId.reference,
+                                'testId': serializeParam(newTestId!.reference,
                                     ParamType.DocumentReference),
                               }.withoutNulls,
                             );

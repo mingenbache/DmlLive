@@ -10,18 +10,18 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginWidget extends StatefulWidget {
-  const LoginWidget({Key key}) : super(key: key);
+  const LoginWidget({Key? key}) : super(key: key);
 
   @override
   _LoginWidgetState createState() => _LoginWidgetState();
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  TextEditingController emailaddressController;
+  TextEditingController? emailaddressController;
 
-  TextEditingController passwordController;
+  TextEditingController? passwordController;
 
-  bool passwordVisibility;
+  late bool passwordVisibility;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -68,7 +68,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   colors: [
                     Color(0x656CD7B7),
                     FlutterFlowTheme.of(context).secondaryColor,
-                    FlutterFlowTheme.of(context).secondaryText
+                    FlutterFlowTheme.of(context).primaryText
                   ],
                   stops: [0, 0.5, 1],
                   begin: AlignmentDirectional(0, -1),
@@ -295,8 +295,8 @@ class _LoginWidgetState extends State<LoginWidget> {
 
                                   final user = await signInWithEmail(
                                     context,
-                                    emailaddressController.text,
-                                    passwordController.text,
+                                    emailaddressController!.text,
+                                    passwordController!.text,
                                   );
                                   if (user == null) {
                                     return;
@@ -305,7 +305,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   final usersUpdateData = createUsersRecordData(
                                     lastLogin: getCurrentTimestamp,
                                   );
-                                  await currentUserReference
+                                  await currentUserReference!
                                       .update(usersUpdateData);
 
                                   context.goNamedAuth('checkup', mounted);

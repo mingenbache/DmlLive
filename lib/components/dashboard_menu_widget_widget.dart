@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DashboardMenuWidgetWidget extends StatefulWidget {
-  const DashboardMenuWidgetWidget({Key key}) : super(key: key);
+  const DashboardMenuWidgetWidget({Key? key}) : super(key: key);
 
   @override
   _DashboardMenuWidgetWidgetState createState() =>

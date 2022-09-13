@@ -12,11 +12,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class VerifyTestResultWidget extends StatefulWidget {
   const VerifyTestResultWidget({
-    Key key,
+    Key? key,
     this.testedTestRef,
   }) : super(key: key);
 
-  final DocumentReference testedTestRef;
+  final DocumentReference? testedTestRef;
 
   @override
   _VerifyTestResultWidgetState createState() => _VerifyTestResultWidgetState();
@@ -24,7 +24,7 @@ class VerifyTestResultWidget extends StatefulWidget {
 
 class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
     with TickerProviderStateMixin {
-  TextEditingController pathologistNotesController;
+  TextEditingController? pathologistNotesController;
 
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
@@ -61,7 +61,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
     return Container(
       decoration: BoxDecoration(),
       child: StreamBuilder<TestedTestsRecord>(
-        stream: TestedTestsRecord.getDocument(widget.testedTestRef),
+        stream: TestedTestsRecord.getDocument(widget.testedTestRef!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -76,7 +76,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
               ),
             );
           }
-          final columnTestedTestsRecord = snapshot.data;
+          final columnTestedTestsRecord = snapshot.data!;
           return Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
@@ -233,7 +233,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                               textAlign: TextAlign.start,
                               maxLines: 6,
                             ).animated([
-                              animationsMap['textFieldOnPageLoadAnimation']
+                              animationsMap['textFieldOnPageLoadAnimation']!
                             ]),
                           ),
                         ),
@@ -271,12 +271,12 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                           );
                         }
                         List<BookedTestsRecord> containerBookedTestsRecordList =
-                            snapshot.data;
+                            snapshot.data!;
                         return Container(
                           decoration: BoxDecoration(),
                           child: StreamBuilder<BookingsRecord>(
                             stream: BookingsRecord.getDocument(
-                                columnTestedTestsRecord.bookingRef),
+                                columnTestedTestsRecord.bookingRef!),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -292,7 +292,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                   ),
                                 );
                               }
-                              final rowBookingsRecord = snapshot.data;
+                              final rowBookingsRecord = snapshot.data!;
                               return Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -324,7 +324,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                       }
                                       List<TestedTestsRecord>
                                           buttonTestedTestsRecordList =
-                                          snapshot.data;
+                                          snapshot.data!;
                                       return FFButtonWidget(
                                         onPressed: () async {
                                           final testedTestsUpdateData =
@@ -334,11 +334,12 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                                 currentUserReference,
                                             verifiedDate: getCurrentTimestamp,
                                             pathologistNote:
-                                                pathologistNotesController.text,
+                                                pathologistNotesController!
+                                                    .text,
                                           );
-                                          await widget.testedTestRef
+                                          await widget.testedTestRef!
                                               .update(testedTestsUpdateData);
-                                          if (rowBookingsRecord.verifiedTests
+                                          if (rowBookingsRecord.verifiedTests!
                                               .toList()
                                               .contains(widget.testedTestRef)) {
                                             final bookingsUpdateData = {

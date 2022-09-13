@@ -18,7 +18,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeCopyWidget extends StatefulWidget {
-  const HomeCopyWidget({Key key}) : super(key: key);
+  const HomeCopyWidget({Key? key}) : super(key: key);
 
   @override
   _HomeCopyWidgetState createState() => _HomeCopyWidgetState();
@@ -72,7 +72,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
         child: StreamBuilder<UsersRecord>(
-          stream: UsersRecord.getDocument(currentUserReference),
+          stream: UsersRecord.getDocument(currentUserReference!),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
@@ -87,15 +87,15 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                 ),
               );
             }
-            final homeCopyUsersRecord = snapshot.data;
+            final homeCopyUsersRecord = snapshot.data!;
             return Scaffold(
               key: scaffoldKey,
               floatingActionButton: Visibility(
-                visible: !homeCopyUsersRecord.isStaff,
+                visible: !homeCopyUsersRecord.isStaff!,
                 child: FloatingActionButton.extended(
                   onPressed: () async {
                     setState(() => FFAppState().lastBookingPage = false);
-                    if (homeCopyUsersRecord.hasCurrentBooking) {
+                    if (homeCopyUsersRecord.hasCurrentBooking!) {
                       context.pushNamed(
                         'NewBooking',
                         queryParams: {
@@ -128,8 +128,9 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                     'Request a Test',
                     style: FlutterFlowTheme.of(context).bodyText1,
                   ),
-                ).animated(
-                    [animationsMap['floatingActionButtonOnPageLoadAnimation']]),
+                ).animated([
+                  animationsMap['floatingActionButtonOnPageLoadAnimation']!
+                ]),
               ),
               body: Container(
                 width: MediaQuery.of(context).size.width,
@@ -279,7 +280,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                               stream: BookingsRecord
                                                                   .getDocument(
                                                                       homeCopyUsersRecord
-                                                                          .currentBooking),
+                                                                          .currentBooking!),
                                                               builder: (context,
                                                                   snapshot) {
                                                                 // Customize what your widget looks like when it's loading.
@@ -303,12 +304,12 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                 }
                                                                 final badgeBookingsRecord =
                                                                     snapshot
-                                                                        .data;
+                                                                        .data!;
                                                                 return Badge(
                                                                   badgeContent:
                                                                       Text(
                                                                     badgeBookingsRecord
-                                                                        .testsIncluded
+                                                                        .testsIncluded!
                                                                         .toList()
                                                                         .length
                                                                         .toString(),
@@ -324,7 +325,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                   ),
                                                                   showBadge:
                                                                       badgeBookingsRecord
-                                                                              .totalTests >
+                                                                              .totalTests! >
                                                                           0,
                                                                   shape:
                                                                       BadgeShape
@@ -447,7 +448,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                     .where(
                                                                         'last_message_time',
                                                                         isGreaterThan:
-                                                                            currentUserDocument?.lastLogin),
+                                                                            currentUserDocument!.lastLogin),
                                                                 singleRecord:
                                                                     true,
                                                               ),
@@ -475,7 +476,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                 List<ChatsRecord>
                                                                     badgeChatsRecordList =
                                                                     snapshot
-                                                                        .data;
+                                                                        .data!;
                                                                 final badgeChatsRecord =
                                                                     badgeChatsRecordList
                                                                             .isNotEmpty
@@ -556,10 +557,10 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                       List<UsersRecord>
                                                                           iconButtonUsersRecordList =
                                                                           snapshot
-                                                                              .data;
+                                                                              .data!;
                                                                       // Return an empty Container when the document does not exist.
                                                                       if (snapshot
-                                                                          .data
+                                                                          .data!
                                                                           .isEmpty) {
                                                                         return Container();
                                                                       }
@@ -675,7 +676,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                         0),
                                                             child: AutoSizeText(
                                                               homeCopyUsersRecord
-                                                                  .firstName
+                                                                  .firstName!
                                                                   .maybeHandleOverflow(
                                                                       maxChars:
                                                                           13),
@@ -1022,7 +1023,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                     List<BookedTestsRecord>
                                                                         textBookedTestsRecordList =
                                                                         snapshot
-                                                                            .data;
+                                                                            .data!;
                                                                     return AutoSizeText(
                                                                       functions
                                                                           .checkNewTests(
@@ -1167,7 +1168,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                   List<InvoicesRecord>
                                                                       textInvoicesRecordList =
                                                                       snapshot
-                                                                          .data;
+                                                                          .data!;
                                                                   return Text(
                                                                     functions
                                                                         .returnInvoiceListSize(textInvoicesRecordList

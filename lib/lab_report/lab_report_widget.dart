@@ -15,25 +15,25 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class LabReportWidget extends StatefulWidget {
   const LabReportWidget({
-    Key key,
+    Key? key,
     this.bookingRef,
   }) : super(key: key);
 
-  final DocumentReference bookingRef;
+  final DocumentReference? bookingRef;
 
   @override
   _LabReportWidgetState createState() => _LabReportWidgetState();
 }
 
 class _LabReportWidgetState extends State<LabReportWidget> {
-  PageController pageViewController;
-  String choiceChipsValue;
+  PageController? pageViewController;
+  String? choiceChipsValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<BookingsRecord>(
-      stream: BookingsRecord.getDocument(widget.bookingRef),
+      stream: BookingsRecord.getDocument(widget.bookingRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -48,7 +48,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
             ),
           );
         }
-        final labReportBookingsRecord = snapshot.data;
+        final labReportBookingsRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -60,7 +60,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                     child: StreamBuilder<UsersRecord>(
-                      stream: UsersRecord.getDocument(currentUserReference),
+                      stream: UsersRecord.getDocument(currentUserReference!),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -76,7 +76,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                             ),
                           );
                         }
-                        final columnUsersRecord = snapshot.data;
+                        final columnUsersRecord = snapshot.data!;
                         return Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -257,7 +257,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                     .fromSTEB(0, 5, 0, 0),
                                                 child: Text(
                                                   labReportBookingsRecord
-                                                      .bookingstatus,
+                                                      .bookingstatus!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
@@ -344,7 +344,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0, 8, 16, 0),
                                           child: Text(
-                                            labReportBookingsRecord.labRefNum,
+                                            labReportBookingsRecord.labRefNum!,
                                             textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
@@ -425,7 +425,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                 dateTimeFormat(
                                                     'd/M/y',
                                                     labReportBookingsRecord
-                                                        .scheduledDate),
+                                                        .scheduledDate!),
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyText1
@@ -598,7 +598,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                   .fromSTEB(0, 6, 0, 0),
                                               child: Text(
                                                 labReportBookingsRecord
-                                                    .docNameAddress,
+                                                    .docNameAddress!,
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyText1
@@ -977,7 +977,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                           3),
                                                                   child: Text(
                                                                     labReportBookingsRecord
-                                                                        .emailaddress,
+                                                                        .emailaddress!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
@@ -1083,7 +1083,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                           3),
                                                                   child: Text(
                                                                     labReportBookingsRecord
-                                                                        .phonenumber,
+                                                                        .phonenumber!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
@@ -1212,7 +1212,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                             Text(
                                                                           dateTimeFormat(
                                                                               'd/M/y',
-                                                                              labReportBookingsRecord.dOB),
+                                                                              labReportBookingsRecord.dOB!),
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
@@ -1232,14 +1232,13 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                       choiceChipsValue !=
                                                                               null
                                                                           ? [
-                                                                              choiceChipsValue
+                                                                              choiceChipsValue!
                                                                             ]
                                                                           : [
-                                                                              labReportBookingsRecord.sex
+                                                                              labReportBookingsRecord.sex!
                                                                             ],
-                                                                  options: (functions
-                                                                              .returnSexOptions() ??
-                                                                          [])
+                                                                  options: functions
+                                                                      .returnSexOptions()
                                                                       .map((label) =>
                                                                           ChipData(
                                                                               label))
@@ -1247,7 +1246,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                   onChanged: (val) =>
                                                                       setState(() =>
                                                                           choiceChipsValue =
-                                                                              val.first),
+                                                                              val?.first),
                                                                   selectedChipStyle:
                                                                       ChipStyle(
                                                                     backgroundColor:
@@ -1378,7 +1377,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                     .fromSTEB(14, 14, 14, 14),
                                                 child: Text(
                                                   labReportBookingsRecord
-                                                      .diagnosis,
+                                                      .diagnosis!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
@@ -1452,7 +1451,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                           }
                                           List<TestedTestsRecord>
                                               containerTestedTestsRecordList =
-                                              snapshot.data;
+                                              snapshot.data!;
                                           return Container(
                                             height: MediaQuery.of(context)
                                                     .size
@@ -1526,7 +1525,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                             axisDirection:
                                                                 Axis.horizontal,
                                                             onDotClicked: (i) {
-                                                              pageViewController
+                                                              pageViewController!
                                                                   .animateToPage(
                                                                 i,
                                                                 duration: Duration(
@@ -1613,7 +1612,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                   .fromSTEB(14, 14, 14, 14),
                                               child: Text(
                                                 labReportBookingsRecord
-                                                    .diagnosis,
+                                                    .diagnosis!,
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyText1

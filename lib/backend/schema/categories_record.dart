@@ -11,23 +11,19 @@ abstract class CategoriesRecord
   static Serializer<CategoriesRecord> get serializer =>
       _$categoriesRecordSerializer;
 
-  @nullable
-  BuiltList<String> get categories;
+  BuiltList<String>? get categories;
 
-  @nullable
-  String get name;
+  String? get name;
 
-  @nullable
   @BuiltValueField(wireName: 'ispackage_Category')
-  bool get ispackageCategory;
+  bool? get ispackageCategory;
 
-  @nullable
   @BuiltValueField(wireName: 'istest_Category')
-  bool get istestCategory;
+  bool? get istestCategory;
 
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(CategoriesRecordBuilder builder) => builder
     ..categories = ListBuilder()
@@ -40,11 +36,11 @@ abstract class CategoriesRecord
 
   static Stream<CategoriesRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   static Future<CategoriesRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   CategoriesRecord._();
   factory CategoriesRecord([void Function(CategoriesRecordBuilder) updates]) =
@@ -53,18 +49,24 @@ abstract class CategoriesRecord
   static CategoriesRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
 Map<String, dynamic> createCategoriesRecordData({
-  String name,
-  bool ispackageCategory,
-  bool istestCategory,
-}) =>
-    serializers.toFirestore(
-        CategoriesRecord.serializer,
-        CategoriesRecord((c) => c
-          ..categories = null
-          ..name = name
-          ..ispackageCategory = ispackageCategory
-          ..istestCategory = istestCategory));
+  String? name,
+  bool? ispackageCategory,
+  bool? istestCategory,
+}) {
+  final firestoreData = serializers.toFirestore(
+    CategoriesRecord.serializer,
+    CategoriesRecord(
+      (c) => c
+        ..categories = null
+        ..name = name
+        ..ispackageCategory = ispackageCategory
+        ..istestCategory = istestCategory,
+    ),
+  );
+
+  return firestoreData;
+}

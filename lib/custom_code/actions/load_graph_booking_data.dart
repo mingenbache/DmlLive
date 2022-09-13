@@ -8,6 +8,6 @@ import 'package:flutter/material.dart';
 
 // Begin custom action code
 Future<List<int>> loadGraphBookingData(
-    List<TestedTestsRecord> testedTests) async {
+    List<TestedTestsRecord>? testedTests) async {
   // Add your function code here!
 }

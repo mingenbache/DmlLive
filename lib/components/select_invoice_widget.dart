@@ -11,11 +11,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class SelectInvoiceWidget extends StatefulWidget {
   const SelectInvoiceWidget({
-    Key key,
+    Key? key,
     this.bookingRef,
   }) : super(key: key);
 
-  final DocumentReference bookingRef;
+  final DocumentReference? bookingRef;
 
   @override
   _SelectInvoiceWidgetState createState() => _SelectInvoiceWidgetState();
@@ -178,7 +178,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                             }
                                             List<InvoicesRecord>
                                                 listViewInvoicesRecordList =
-                                                snapshot.data;
+                                                snapshot.data!;
                                             return ListView.builder(
                                               padding: EdgeInsets.zero,
                                               primary: false,
@@ -278,7 +278,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                                   Text(
                                                                     formatNumber(
                                                                       listViewInvoicesRecord
-                                                                          .amountDue,
+                                                                          .amountDue!,
                                                                       formatType:
                                                                           FormatType
                                                                               .decimal,
@@ -397,7 +397,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                                                 0),
                                                                             child:
                                                                                 Text(
-                                                                              dateTimeFormat('yMMMd', listViewInvoicesRecord.createdDate),
+                                                                              dateTimeFormat('yMMMd', listViewInvoicesRecord.createdDate!),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Montserrat',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
@@ -491,7 +491,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                                                                   ),
                                                                                                 ),
                                                                                               ),
-                                                                                              if (listViewInvoicesRecord.paymentsList.toList().length > 0)
+                                                                                              if (listViewInvoicesRecord.paymentsList!.toList().length > 0)
                                                                                                 Container(
                                                                                                   decoration: BoxDecoration(
                                                                                                     shape: BoxShape.circle,

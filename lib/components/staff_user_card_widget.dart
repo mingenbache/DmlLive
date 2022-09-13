@@ -10,13 +10,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class StaffUserCardWidget extends StatefulWidget {
   const StaffUserCardWidget({
-    Key key,
+    Key? key,
     this.userRecord,
     this.index,
   }) : super(key: key);
 
-  final UsersRecord userRecord;
-  final int index;
+  final UsersRecord? userRecord;
+  final int? index;
 
   @override
   _StaffUserCardWidgetState createState() => _StaffUserCardWidgetState();
@@ -42,7 +42,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                   return Padding(
                     padding: MediaQuery.of(context).viewInsets,
                     child: UserActivityWidget(
-                      userRef: widget.userRecord.reference,
+                      userRef: widget.userRecord!.reference,
                     ),
                   );
                 },
@@ -107,7 +107,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                                 fontFamily: 'Montserrat',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryText,
+                                                        .secondaryBackground,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                         ),
@@ -125,7 +125,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             8, 4, 4, 4),
                                         child: Text(
-                                          '${functions.camelCase(widget.userRecord.firstName)} ${functions.camelCase(widget.userRecord.lastName)}',
+                                          '${functions.camelCase(widget.userRecord!.firstName)} ${functions.camelCase(widget.userRecord!.lastName)}',
                                           maxLines: 1,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle1
@@ -145,7 +145,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                               ),
                             ),
                           ),
-                          if (widget.userRecord.isStaff ?? true)
+                          if (widget.userRecord!.isStaff ?? true)
                             Expanded(
                               flex: 4,
                               child: Padding(
@@ -184,7 +184,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             3, 0, 0, 0),
                                         child: Text(
-                                          widget.userRecord.role,
+                                          widget.userRecord!.role!,
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
@@ -225,8 +225,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                   width:
                                       MediaQuery.of(context).size.width * 0.75,
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Padding(
@@ -252,7 +251,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                           ),
                                         ),
                                         Text(
-                                          widget.userRecord.email,
+                                          widget.userRecord!.email!,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
@@ -261,7 +260,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
                                                 fontSize: 14,
-                                                fontWeight: FontWeight.w500,
+                                                fontWeight: FontWeight.normal,
                                               ),
                                         ),
                                       ],
@@ -276,8 +275,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                   width:
                                       MediaQuery.of(context).size.width * 0.75,
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Padding(
@@ -303,7 +301,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                           ),
                                         ),
                                         Text(
-                                          widget.userRecord.phoneNumber,
+                                          widget.userRecord!.phoneNumber!,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
@@ -327,8 +325,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                   width:
                                       MediaQuery.of(context).size.width * 0.75,
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Padding(
@@ -364,8 +361,8 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                               child: Text(
                                                 dateTimeFormat(
                                                     'd/M/y',
-                                                    widget.userRecord
-                                                        .createdTime),
+                                                    widget.userRecord!
+                                                        .createdTime!),
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyText1
@@ -403,8 +400,8 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                               child: Text(
                                                 dateTimeFormat(
                                                     'd/M/y',
-                                                    widget
-                                                        .userRecord.lastLogin),
+                                                    widget.userRecord!
+                                                        .lastLogin!),
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyText1

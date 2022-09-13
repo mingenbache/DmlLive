@@ -13,14 +13,14 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class UserList2Widget extends StatefulWidget {
-  const UserList2Widget({Key key}) : super(key: key);
+  const UserList2Widget({Key? key}) : super(key: key);
 
   @override
   _UserList2WidgetState createState() => _UserList2WidgetState();
 }
 
 class _UserList2WidgetState extends State<UserList2Widget> {
-  TextEditingController textController;
+  TextEditingController? textController;
 
   @override
   void initState() {
@@ -71,7 +71,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                         colors: [
                           Color(0x656CD7B7),
                           FlutterFlowTheme.of(context).secondaryColor,
-                          FlutterFlowTheme.of(context).secondaryBackground
+                          FlutterFlowTheme.of(context).primaryText
                         ],
                         stops: [0, 0.3, 0.6],
                         begin: AlignmentDirectional(0, -1),
@@ -255,7 +255,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                 topRight: Radius.circular(4.0),
                                               ),
                                             ),
-                                            suffixIcon: textController
+                                            suffixIcon: textController!
                                                     .text.isNotEmpty
                                                 ? InkWell(
                                                     onTap: () async {
@@ -366,7 +366,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                       }
                                                       List<UsersRecord>
                                                           clientUserContainerUsersRecordList =
-                                                          snapshot.data
+                                                          snapshot.data!
                                                               .where((u) =>
                                                                   u.uid !=
                                                                   currentUserUid)
@@ -409,7 +409,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                           builder: (context) {
                                                             final clients = functions
                                                                 .returnUserList(
-                                                                    textController
+                                                                    textController!
                                                                         .text,
                                                                     clientUserContainerUsersRecordList
                                                                         .toList())
@@ -499,7 +499,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                       }
                                                       List<UsersRecord>
                                                           staffUserContainerUsersRecordList =
-                                                          snapshot.data;
+                                                          snapshot.data!;
                                                       return Container(
                                                         width: MediaQuery.of(
                                                                     context)
@@ -521,7 +521,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                           builder: (context) {
                                                             final staff = functions
                                                                 .returnUserList(
-                                                                    textController
+                                                                    textController!
                                                                         .text,
                                                                     staffUserContainerUsersRecordList
                                                                         .toList())

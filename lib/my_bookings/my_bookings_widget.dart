@@ -14,7 +14,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyBookingsWidget extends StatefulWidget {
-  const MyBookingsWidget({Key key}) : super(key: key);
+  const MyBookingsWidget({Key? key}) : super(key: key);
 
   @override
   _MyBookingsWidgetState createState() => _MyBookingsWidgetState();
@@ -176,7 +176,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                   }
                                   List<BookingsRecord>
                                       pastBookingsBookingsRecordList =
-                                      snapshot.data;
+                                      snapshot.data!;
                                   return Container(
                                     width:
                                         MediaQuery.of(context).size.width * 0.9,
@@ -217,7 +217,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                       InkWell(
                                                         onTap: () async {
                                                           if (pastbookingsItem
-                                                              .completed) {
+                                                              .completed!) {
                                                             context.pushNamed(
                                                               'LabReport',
                                                               queryParams: {
@@ -339,7 +339,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                               ),
                                                                               if (pastbookingsItem.labRefNum != '')
                                                                                 Text(
-                                                                                  pastbookingsItem.labRefNum,
+                                                                                  pastbookingsItem.labRefNum!,
                                                                                   style: FlutterFlowTheme.of(context).subtitle2.override(
                                                                                         fontFamily: 'Montserrat',
                                                                                         color: Colors.white,
@@ -447,7 +447,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                 ),
                                                                                               );
                                                                                             }
-                                                                                            List<TestedTestsRecord> containerTestedTestsRecordList = snapshot.data;
+                                                                                            List<TestedTestsRecord> containerTestedTestsRecordList = snapshot.data!;
                                                                                             return Container(
                                                                                               height: 100,
                                                                                               decoration: BoxDecoration(),
@@ -501,7 +501,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                                                   children: [
                                                                                                                     StreamBuilder<TestsRecord>(
-                                                                                                                      stream: TestsRecord.getDocument(testsOfBookingItem.testRef),
+                                                                                                                      stream: TestsRecord.getDocument(testsOfBookingItem.testRef!),
                                                                                                                       builder: (context, snapshot) {
                                                                                                                         // Customize what your widget looks like when it's loading.
                                                                                                                         if (!snapshot.hasData) {
@@ -516,7 +516,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                                             ),
                                                                                                                           );
                                                                                                                         }
-                                                                                                                        final textTestsRecord = snapshot.data;
+                                                                                                                        final textTestsRecord = snapshot.data!;
                                                                                                                         return Text(
                                                                                                                           functions.upperCase(textTestsRecord.name).maybeHandleOverflow(
                                                                                                                                 maxChars: 15,
@@ -774,7 +774,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                       }
                                       List<BookingsRecord>
                                           upcomingBookingsColumnBookingsRecordList =
-                                          snapshot.data;
+                                          snapshot.data!;
                                       return Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: List.generate(
@@ -894,7 +894,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                         if (upcomingBookingsColumnBookingsRecord.labRefNum !=
                                                                             '')
                                                                           Text(
-                                                                            upcomingBookingsColumnBookingsRecord.labRefNum,
+                                                                            upcomingBookingsColumnBookingsRecord.labRefNum!,
                                                                             style: FlutterFlowTheme.of(context).subtitle2.override(
                                                                                   fontFamily: 'Montserrat',
                                                                                   color: Colors.white,
@@ -917,7 +917,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                 Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(8, 4, 4, 4),
                                                                               child: Text(
-                                                                                upcomingBookingsColumnBookingsRecord.bookingstatus,
+                                                                                upcomingBookingsColumnBookingsRecord.bookingstatus!,
                                                                                 style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                       fontFamily: 'Roboto',
                                                                                       color: Colors.white,
@@ -1003,7 +1003,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                       children: [
-                                                                                        if (upcomingBookingsColumnBookingsRecord.flaggedTests.toList().length > 0)
+                                                                                        if (upcomingBookingsColumnBookingsRecord.flaggedTests!.toList().length > 0)
                                                                                           Padding(
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
                                                                                             child: Material(
@@ -1040,7 +1040,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                               ),
                                                                                             ),
                                                                                           ),
-                                                                                        if (upcomingBookingsColumnBookingsRecord.frozenTests.toList().length > 0)
+                                                                                        if (upcomingBookingsColumnBookingsRecord.frozenTests!.toList().length > 0)
                                                                                           Padding(
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
                                                                                             child: Material(
@@ -1117,7 +1117,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
                                                                                   child: Builder(
                                                                                     builder: (context) {
-                                                                                      final bookedTests = upcomingBookingsColumnBookingsRecord.bookedTests.toList();
+                                                                                      final bookedTests = upcomingBookingsColumnBookingsRecord.bookedTests!.toList();
                                                                                       return ListView.builder(
                                                                                         padding: EdgeInsets.zero,
                                                                                         scrollDirection: Axis.horizontal,
@@ -1142,7 +1142,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                     ),
                                                                                                   );
                                                                                                 }
-                                                                                                final containerTestsRecord = snapshot.data;
+                                                                                                final containerTestsRecord = snapshot.data!;
                                                                                                 return InkWell(
                                                                                                   onTap: () async {
                                                                                                     await showModalBottomSheet(
@@ -1256,7 +1256,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                   }
                                   List<BookingsRecord>
                                       inactiveBookingsBookingsRecordList =
-                                      snapshot.data;
+                                      snapshot.data!;
                                   return Container(
                                     width:
                                         MediaQuery.of(context).size.width * 0.9,
@@ -1401,7 +1401,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                               ),
                                                                               if (inactivebookingsItem.labRefNum != '')
                                                                                 Text(
-                                                                                  inactivebookingsItem.labRefNum,
+                                                                                  inactivebookingsItem.labRefNum!,
                                                                                   style: FlutterFlowTheme.of(context).subtitle2.override(
                                                                                         fontFamily: 'Montserrat',
                                                                                         color: Colors.white,
@@ -1495,7 +1495,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                           mainAxisSize: MainAxisSize.max,
                                                                                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                                           children: [
-                                                                                            if (inactivebookingsItem.flaggedTests.toList().length > 0)
+                                                                                            if (inactivebookingsItem.flaggedTests!.toList().length > 0)
                                                                                               Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                                                                                 child: Material(
@@ -1532,7 +1532,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                   ),
                                                                                                 ),
                                                                                               ),
-                                                                                            if (inactivebookingsItem.frozenTests.toList().length > 0)
+                                                                                            if (inactivebookingsItem.frozenTests!.toList().length > 0)
                                                                                               Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                                                                                 child: Material(
@@ -1615,7 +1615,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                             ),
                                                                                           );
                                                                                         }
-                                                                                        List<TestedTestsRecord> containerTestedTestsRecordList = snapshot.data;
+                                                                                        List<TestedTestsRecord> containerTestedTestsRecordList = snapshot.data!;
                                                                                         return Container(
                                                                                           height: 35,
                                                                                           decoration: BoxDecoration(),
@@ -1623,7 +1623,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
                                                                                             child: Builder(
                                                                                               builder: (context) {
-                                                                                                final bookingtests = inactivebookingsItem.testsIncluded.toList();
+                                                                                                final bookingtests = inactivebookingsItem.testsIncluded!.toList();
                                                                                                 return ListView.builder(
                                                                                                   padding: EdgeInsets.zero,
                                                                                                   scrollDirection: Axis.horizontal,
@@ -1648,7 +1648,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                               ),
                                                                                                             );
                                                                                                           }
-                                                                                                          final containerTestsRecord = snapshot.data;
+                                                                                                          final containerTestsRecord = snapshot.data!;
                                                                                                           return InkWell(
                                                                                                             onTap: () async {
                                                                                                               await showModalBottomSheet(

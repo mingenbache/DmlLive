@@ -13,11 +13,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class BookingUpdatesWidget extends StatefulWidget {
   const BookingUpdatesWidget({
-    Key key,
+    Key? key,
     this.bookingRef,
   }) : super(key: key);
 
-  final DocumentReference bookingRef;
+  final DocumentReference? bookingRef;
 
   @override
   _BookingUpdatesWidgetState createState() => _BookingUpdatesWidgetState();
@@ -29,7 +29,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<BookingsRecord>(
-      stream: BookingsRecord.getDocument(widget.bookingRef),
+      stream: BookingsRecord.getDocument(widget.bookingRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -44,7 +44,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
             ),
           );
         }
-        final bookingUpdatesBookingsRecord = snapshot.data;
+        final bookingUpdatesBookingsRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -63,7 +63,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                     child: Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                       child: StreamBuilder<UsersRecord>(
-                        stream: UsersRecord.getDocument(currentUserReference),
+                        stream: UsersRecord.getDocument(currentUserReference!),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
@@ -79,7 +79,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                               ),
                             );
                           }
-                          final columnUsersRecord = snapshot.data;
+                          final columnUsersRecord = snapshot.data!;
                           return SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -168,7 +168,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                 3, 0, 0, 0),
                                                     child: Text(
                                                       bookingUpdatesBookingsRecord
-                                                          .bookingstatus,
+                                                          .bookingstatus!,
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyText1
@@ -265,7 +265,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                   .fromSTEB(0, 8, 16, 0),
                                               child: Text(
                                                 bookingUpdatesBookingsRecord
-                                                    .labRefNum,
+                                                    .labRefNum!,
                                                 textAlign: TextAlign.end,
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -363,7 +363,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                   dateTimeFormat(
                                                       'd/M/y',
                                                       bookingUpdatesBookingsRecord
-                                                          .scheduledDate),
+                                                          .scheduledDate!),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
@@ -456,7 +456,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                     .fromSTEB(4, 6, 0, 0),
                                                 child: Text(
                                                   bookingUpdatesBookingsRecord
-                                                      .docNameAddress,
+                                                      .docNameAddress!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
@@ -820,7 +820,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                           3),
                                                                   child: Text(
                                                                     bookingUpdatesBookingsRecord
-                                                                        .emailaddress,
+                                                                        .emailaddress!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
@@ -928,7 +928,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                           3),
                                                                   child: Text(
                                                                     bookingUpdatesBookingsRecord
-                                                                        .phonenumber,
+                                                                        .phonenumber!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
@@ -1048,7 +1048,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                       dateTimeFormat(
                                                                           'd/M/y',
                                                                           bookingUpdatesBookingsRecord
-                                                                              .dOB),
+                                                                              .dOB!),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyText1
@@ -1147,7 +1147,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                             0),
                                                                     child: Text(
                                                                       bookingUpdatesBookingsRecord
-                                                                          .sex,
+                                                                          .sex!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyText1
@@ -1211,7 +1211,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           4, 4, 4, 4),
                                       child: Text(
-                                        bookingUpdatesBookingsRecord.diagnosis,
+                                        bookingUpdatesBookingsRecord.diagnosis!,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -1278,7 +1278,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                               }
                                               List<BookedTestsRecord>
                                                   bookedTestsContainerBookedTestsRecordList =
-                                                  snapshot.data;
+                                                  snapshot.data!;
                                               return Container(
                                                 height: MediaQuery.of(context)
                                                         .size
@@ -1357,7 +1357,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                 List<TestedTestsRecord>
                                                                     containerTestedTestsRecordList =
                                                                     snapshot
-                                                                        .data;
+                                                                        .data!;
                                                                 final containerTestedTestsRecord =
                                                                     containerTestedTestsRecordList
                                                                             .isNotEmpty
@@ -1368,14 +1368,14 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                   onTap:
                                                                       () async {
                                                                     if (bookingTestsItem
-                                                                        .sampleCollected) {
+                                                                        .sampleCollected!) {
                                                                       context
                                                                           .pushNamed(
                                                                         'TestDeck',
                                                                         queryParams:
                                                                             {
                                                                           'testedTestRef': serializeParam(
-                                                                              containerTestedTestsRecord.reference,
+                                                                              containerTestedTestsRecord!.reference,
                                                                               ParamType.DocumentReference),
                                                                         }.withoutNulls,
                                                                       );
@@ -1443,7 +1443,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                             );
                                                                           }
                                                                           final rowBookedTestsRecord =
-                                                                              snapshot.data;
+                                                                              snapshot.data!;
                                                                           return Row(
                                                                             mainAxisSize:
                                                                                 MainAxisSize.max,
@@ -1451,7 +1451,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                                 MainAxisAlignment.spaceBetween,
                                                                             children: [
                                                                               StreamBuilder<TestsRecord>(
-                                                                                stream: TestsRecord.getDocument(bookingTestsItem.testRef),
+                                                                                stream: TestsRecord.getDocument(bookingTestsItem.testRef!),
                                                                                 builder: (context, snapshot) {
                                                                                   // Customize what your widget looks like when it's loading.
                                                                                   if (!snapshot.hasData) {
@@ -1466,9 +1466,9 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                                       ),
                                                                                     );
                                                                                   }
-                                                                                  final textTestsRecord = snapshot.data;
+                                                                                  final textTestsRecord = snapshot.data!;
                                                                                   return Text(
-                                                                                    textTestsRecord.name,
+                                                                                    textTestsRecord.name!,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                           fontFamily: 'Montserrat',
                                                                                           color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1499,7 +1499,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                                           ),
                                                                                         );
                                                                                       }
-                                                                                      List<TestedTestsRecord> containerTestedTestsRecordList = snapshot.data;
+                                                                                      List<TestedTestsRecord> containerTestedTestsRecordList = snapshot.data!;
                                                                                       final containerTestedTestsRecord = containerTestedTestsRecordList.isNotEmpty ? containerTestedTestsRecordList.first : null;
                                                                                       return Material(
                                                                                         color: Colors.transparent,
@@ -1609,7 +1609,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                                                           ),
                                                                                                         ),
                                                                                                       ),
-                                                                                                      if (containerTestedTestsRecord.resultPosted ?? true)
+                                                                                                      if (containerTestedTestsRecord!.resultPosted ?? true)
                                                                                                         Container(
                                                                                                           decoration: BoxDecoration(
                                                                                                             shape: BoxShape.circle,
@@ -1643,7 +1643,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                                                           ),
                                                                                                         ),
                                                                                                       ),
-                                                                                                      if (containerTestedTestsRecord.isVerified ?? true)
+                                                                                                      if (containerTestedTestsRecord!.isVerified ?? true)
                                                                                                         Container(
                                                                                                           decoration: BoxDecoration(
                                                                                                             shape: BoxShape.circle,
@@ -1707,7 +1707,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                     ),
                   ),
                   StreamBuilder<UsersRecord>(
-                    stream: UsersRecord.getDocument(currentUserReference),
+                    stream: UsersRecord.getDocument(currentUserReference!),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -1722,7 +1722,7 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                           ),
                         );
                       }
-                      final containerUsersRecord = snapshot.data;
+                      final containerUsersRecord = snapshot.data!;
                       return Container(
                         decoration: BoxDecoration(),
                         child: Visibility(

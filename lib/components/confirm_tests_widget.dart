@@ -17,13 +17,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ConfirmTestsWidget extends StatefulWidget {
   const ConfirmTestsWidget({
-    Key key,
+    Key? key,
     this.labRefNum,
     this.booking,
   }) : super(key: key);
 
-  final String labRefNum;
-  final DocumentReference booking;
+  final String? labRefNum;
+  final DocumentReference? booking;
 
   @override
   _ConfirmTestsWidgetState createState() => _ConfirmTestsWidgetState();
@@ -31,11 +31,11 @@ class ConfirmTestsWidget extends StatefulWidget {
 
 class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
     with TickerProviderStateMixin {
-  TextEditingController labReferenceController;
+  TextEditingController? labReferenceController;
 
-  String pathologistValue;
-  BookedTestsRecord newBookedTest;
-  BookedTestsRecord newTestPackBookedTest;
+  String? pathologistValue;
+  BookedTestsRecord? newBookedTest;
+  BookedTestsRecord? newTestPackBookedTest;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -84,7 +84,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<BookingsRecord>(
-      stream: BookingsRecord.getDocument(widget.booking),
+      stream: BookingsRecord.getDocument(widget.booking!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -99,7 +99,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
             ),
           );
         }
-        final confirmTestsSheetBookingsRecord = snapshot.data;
+        final confirmTestsSheetBookingsRecord = snapshot.data!;
         return Container(
           decoration: BoxDecoration(),
           child: Column(
@@ -125,7 +125,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                     );
                   }
                   List<StaffRecord> testConfirmationStaffRecordList =
-                      snapshot.data;
+                      snapshot.data!;
                   return Material(
                     color: Colors.transparent,
                     elevation: 3,
@@ -273,7 +273,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                     fontSize: 16,
                                   ),
                                 ).animated([
-                                  animationsMap['textFieldOnPageLoadAnimation']
+                                  animationsMap['textFieldOnPageLoadAnimation']!
                                 ]),
                               ),
                             ),
@@ -301,7 +301,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                   EdgeInsetsDirectional.fromSTEB(0, 16, 0, 10),
                               child: FlutterFlowDropDown(
                                 options: testConfirmationStaffRecordList
-                                    .map((e) => e.displayName)
+                                    .map((e) => e.displayName!)
                                     .toList()
                                     .toList(),
                                 onChanged: (val) =>
@@ -335,7 +335,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                     20, 20, 12, 20),
                                 hidesUnderline: true,
                               ).animated([
-                                animationsMap['dropDownOnPageLoadAnimation']
+                                animationsMap['dropDownOnPageLoadAnimation']!
                               ]),
                             ),
                             Divider(
@@ -384,7 +384,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                     builder: (context) {
                                       final bookedTestPacks =
                                           confirmTestsSheetBookingsRecord
-                                              .testPackages
+                                              .testPackages!
                                               .toList();
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
@@ -422,7 +422,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                   );
                                                 }
                                                 final containerTestPackagesRecord =
-                                                    snapshot.data;
+                                                    snapshot.data!;
                                                 return Container(
                                                   width: 100,
                                                   decoration: BoxDecoration(
@@ -472,7 +472,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                     flex: 2,
                                                                     child: Text(
                                                                       containerTestPackagesRecord
-                                                                          .packageName,
+                                                                          .packageName!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .subtitle2
@@ -487,7 +487,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                   Expanded(
                                                                     flex: 1,
                                                                     child: Text(
-                                                                      '${containerTestPackagesRecord.testsIncluded.toList().length.toString()} Tests',
+                                                                      '${containerTestPackagesRecord.testsIncluded!.toList().length.toString()} Tests',
                                                                       textAlign:
                                                                           TextAlign
                                                                               .end,
@@ -554,7 +554,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                           builder: (context) {
                                                             final testPackTests =
                                                                 containerTestPackagesRecord
-                                                                    .testsIncluded
+                                                                    .testsIncluded!
                                                                     .toList();
                                                             return ListView
                                                                 .builder(
@@ -608,14 +608,14 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                       }
                                                                       final containerTestsRecord =
                                                                           snapshot
-                                                                              .data;
+                                                                              .data!;
                                                                       return InkWell(
                                                                         onTap:
                                                                             () async {
                                                                           var _shouldSetState =
                                                                               false;
                                                                           if (confirmTestsSheetBookingsRecord
-                                                                              .bookedTests
+                                                                              .bookedTests!
                                                                               .toList()
                                                                               .contains(testPackTestsItem)) {
                                                                             if (_shouldSetState)
@@ -631,7 +631,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                             ]),
                                                                           };
                                                                           await widget
-                                                                              .booking
+                                                                              .booking!
                                                                               .update(bookingsUpdateData);
 
                                                                           final bookedTestsCreateData =
@@ -713,7 +713,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       children: [
                                                                                         Text(
-                                                                                          containerTestsRecord.name,
+                                                                                          containerTestsRecord.name!,
                                                                                           style: FlutterFlowTheme.of(context).subtitle2.override(
                                                                                                 fontFamily: 'Montserrat',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
@@ -738,7 +738,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                               size: 30,
                                                                                             ),
-                                                                                            if (confirmTestsSheetBookingsRecord.bookedTests.toList().contains(testPackTestsItem))
+                                                                                            if (confirmTestsSheetBookingsRecord.bookedTests!.toList().contains(testPackTestsItem))
                                                                                               StreamBuilder<List<BookedTestsRecord>>(
                                                                                                 stream: queryBookedTestsRecord(
                                                                                                   queryBuilder: (bookedTestsRecord) => bookedTestsRecord.where('testRef', isEqualTo: testPackTestsItem).where('booking_ref', isEqualTo: confirmTestsSheetBookingsRecord.reference),
@@ -758,9 +758,9 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                                       ),
                                                                                                     );
                                                                                                   }
-                                                                                                  List<BookedTestsRecord> iconCheckedBookedTestsRecordList = snapshot.data;
+                                                                                                  List<BookedTestsRecord> iconCheckedBookedTestsRecordList = snapshot.data!;
                                                                                                   // Return an empty Container when the document does not exist.
-                                                                                                  if (snapshot.data.isEmpty) {
+                                                                                                  if (snapshot.data!.isEmpty) {
                                                                                                     return Container();
                                                                                                   }
                                                                                                   final iconCheckedBookedTestsRecord = iconCheckedBookedTestsRecordList.isNotEmpty ? iconCheckedBookedTestsRecordList.first : null;
@@ -810,7 +810,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                   builder: (context) {
                                     final nopackTests =
                                         confirmTestsSheetBookingsRecord
-                                            .testsIncluded
+                                            .testsIncluded!
                                             .toList();
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
@@ -844,12 +844,12 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                 );
                                               }
                                               final containerTestsRecord =
-                                                  snapshot.data;
+                                                  snapshot.data!;
                                               return InkWell(
                                                 onTap: () async {
                                                   var _shouldSetState = false;
                                                   if (confirmTestsSheetBookingsRecord
-                                                      .bookedTests
+                                                      .bookedTests!
                                                       .toList()
                                                       .contains(
                                                           nopackTestsItem)) {
@@ -863,7 +863,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                         FieldValue.arrayUnion(
                                                             [nopackTestsItem]),
                                                   };
-                                                  await widget.booking.update(
+                                                  await widget.booking!.update(
                                                       bookingsUpdateData);
 
                                                   final bookedTestsCreateData =
@@ -952,7 +952,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                             children: [
                                                               Text(
                                                                 containerTestsRecord
-                                                                    .name,
+                                                                    .name!,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .subtitle2
@@ -1029,10 +1029,10 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                       List<BookedTestsRecord>
                                                                           iconCheckedBookedTestsRecordList =
                                                                           snapshot
-                                                                              .data;
+                                                                              .data!;
                                                                       // Return an empty Container when the document does not exist.
                                                                       if (snapshot
-                                                                          .data
+                                                                          .data!
                                                                           .isEmpty) {
                                                                         return Container();
                                                                       }
@@ -1101,7 +1101,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                           );
                         }
                         List<StaffRecord> containerStaffRecordList =
-                            snapshot.data;
+                            snapshot.data!;
                         return Container(
                           decoration: BoxDecoration(),
                           child: Row(
@@ -1130,7 +1130,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                     );
                                   }
                                   List<StaffRecord> buttonStaffRecordList =
-                                      snapshot.data;
+                                      snapshot.data!;
                                   final buttonStaffRecord =
                                       buttonStaffRecordList.isNotEmpty
                                           ? buttonStaffRecordList.first
@@ -1141,10 +1141,10 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                           .proceedconfirmation = true);
                                       if (functions.checktestsListsEqual(
                                           confirmTestsSheetBookingsRecord
-                                              .testsIncluded
+                                              .testsIncluded!
                                               .toList(),
                                           confirmTestsSheetBookingsRecord
-                                              .bookedTests
+                                              .bookedTests!
                                               .toList())) {
                                         if (FFAppState().proceedconfirmation) {
                                           final bookingsUpdateData =
@@ -1155,7 +1155,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                             labRefNum: widget.labRefNum,
                                             updatedDate: getCurrentTimestamp,
                                             updateStaff:
-                                                buttonStaffRecord.reference,
+                                                buttonStaffRecord!.reference,
                                           );
                                           await confirmTestsSheetBookingsRecord
                                               .reference
@@ -1166,7 +1166,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                             notificationText:
                                                 'A New Booking has been confirmed for ${dateTimeFormat('MMMMEEEEd', confirmTestsSheetBookingsRecord.scheduledDate)}',
                                             userRefs: containerStaffRecordList
-                                                .map((e) => e.userRef)
+                                                .map((e) => e.userRef!)
                                                 .toList(),
                                             initialPageName: 'BookingUpdates',
                                             parameterData: {
@@ -1180,7 +1180,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                 'YourBooking has been confirmed for ${dateTimeFormat('MMMMEEEEd', confirmTestsSheetBookingsRecord.scheduledDate)}',
                                             userRefs: [
                                               confirmTestsSheetBookingsRecord
-                                                  .user
+                                                  .user!
                                             ],
                                             initialPageName: 'BookingUpdates',
                                             parameterData: {

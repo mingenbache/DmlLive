@@ -10,11 +10,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ReportBookedTestsWidget extends StatefulWidget {
   const ReportBookedTestsWidget({
-    Key key,
+    Key? key,
     this.booking,
   }) : super(key: key);
 
-  final BookingsRecord booking;
+  final BookingsRecord? booking;
 
   @override
   _ReportBookedTestsWidgetState createState() =>
@@ -35,7 +35,7 @@ class _ReportBookedTestsWidgetState extends State<ReportBookedTestsWidget> {
       padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
       child: Builder(
         builder: (context) {
-          final bookedTests = widget.booking.bookedTests.toList();
+          final bookedTests = widget.booking!.bookedTests!.toList();
           return ListView.builder(
             padding: EdgeInsets.zero,
             primary: false,
@@ -48,7 +48,7 @@ class _ReportBookedTestsWidgetState extends State<ReportBookedTestsWidget> {
                   queryBuilder: (testedTestsRecord) => testedTestsRecord
                       .where('test_ref', isEqualTo: bookedTestsItem)
                       .where('booking_ref',
-                          isEqualTo: widget.booking.reference),
+                          isEqualTo: widget.booking!.reference),
                   singleRecord: true,
                 ),
                 builder: (context, snapshot) {
@@ -66,7 +66,7 @@ class _ReportBookedTestsWidgetState extends State<ReportBookedTestsWidget> {
                     );
                   }
                   List<TestedTestsRecord>
-                      bookedTestContainerTestedTestsRecordList = snapshot.data;
+                      bookedTestContainerTestedTestsRecordList = snapshot.data!;
                   final bookedTestContainerTestedTestsRecord =
                       bookedTestContainerTestedTestsRecordList.isNotEmpty
                           ? bookedTestContainerTestedTestsRecordList.first
@@ -129,7 +129,7 @@ class _ReportBookedTestsWidgetState extends State<ReportBookedTestsWidget> {
                                             onChanged: (newValue) => setState(
                                                 () => checkboxListTileValueMap[
                                                         bookedTestsItem] =
-                                                    newValue),
+                                                    newValue!),
                                             title: Text(
                                               'Title',
                                               style:
@@ -194,15 +194,15 @@ class _ReportBookedTestsWidgetState extends State<ReportBookedTestsWidget> {
                               ),
                             ),
                           ),
-                        if (bookedTestContainerTestedTestsRecord.isVerified ??
+                        if (bookedTestContainerTestedTestsRecord!.isVerified ??
                             true)
                           Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(10, 5, 10, 5),
                             child: InkWell(
                               onTap: () async {
-                                if (bookedTestContainerTestedTestsRecord
-                                    .resultPosted) {
+                                if (bookedTestContainerTestedTestsRecord!
+                                    .resultPosted!) {
                                   await showModalBottomSheet(
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
@@ -213,7 +213,7 @@ class _ReportBookedTestsWidgetState extends State<ReportBookedTestsWidget> {
                                             MediaQuery.of(context).viewInsets,
                                         child: ViewTestResultWidget(
                                           testedTestRef:
-                                              bookedTestContainerTestedTestsRecord
+                                              bookedTestContainerTestedTestsRecord!
                                                   .reference,
                                         ),
                                       );
@@ -275,7 +275,7 @@ class _ReportBookedTestsWidgetState extends State<ReportBookedTestsWidget> {
                                               );
                                             }
                                             final textTestsRecord =
-                                                snapshot.data;
+                                                snapshot.data!;
                                             return Text(
                                               functions.upperCase(
                                                   textTestsRecord.name),

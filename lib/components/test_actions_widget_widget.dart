@@ -13,13 +13,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TestActionsWidgetWidget extends StatefulWidget {
   const TestActionsWidgetWidget({
-    Key key,
+    Key? key,
     this.test,
     this.bookingRef,
   }) : super(key: key);
 
-  final TestsRecord test;
-  final DocumentReference bookingRef;
+  final TestsRecord? test;
+  final DocumentReference? bookingRef;
 
   @override
   _TestActionsWidgetWidgetState createState() =>
@@ -71,8 +71,8 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
       children: [
         AuthUserStreamWidget(
           child: StreamBuilder<BookingsRecord>(
-            stream:
-                BookingsRecord.getDocument(currentUserDocument?.currentBooking),
+            stream: BookingsRecord.getDocument(
+                currentUserDocument!.currentBooking!),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {
@@ -87,7 +87,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                   ),
                 );
               }
-              final containerBookingsRecord = snapshot.data;
+              final containerBookingsRecord = snapshot.data!;
               return Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 constraints: BoxConstraints(
@@ -126,7 +126,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                             );
                           }
                           List<UsersRecord> buttonUsersRecordList =
-                              snapshot.data;
+                              snapshot.data!;
                           final buttonUsersRecord =
                               buttonUsersRecordList.isNotEmpty
                                   ? buttonUsersRecordList.first
@@ -168,23 +168,23 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                               borderRadius: BorderRadius.circular(30),
                             ),
                           ).animated([
-                            animationsMap['buttonOnActionTriggerAnimation1']
+                            animationsMap['buttonOnActionTriggerAnimation1']!
                           ]);
                         },
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          if (!containerBookingsRecord.testsIncluded
+                          if (!containerBookingsRecord.testsIncluded!
                               .toList()
-                              .contains(widget.test.reference)) {
+                              .contains(widget.test!.reference)) {
                             final bookingsUpdateData = {
                               ...createBookingsRecordData(
                                 totalPrice: functions.addCartTotal(
                                     containerBookingsRecord.totalPrice,
-                                    widget.test.price),
+                                    widget.test!.price),
                               ),
                               'tests_included': FieldValue.arrayUnion(
-                                  [widget.test.reference]),
+                                  [widget.test!.reference]),
                               'total_tests': FieldValue.increment(1),
                             };
                             await containerBookingsRecord.reference
@@ -235,7 +235,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ).animated(
-                          [animationsMap['buttonOnActionTriggerAnimation2']]),
+                          [animationsMap['buttonOnActionTriggerAnimation2']!]),
                     ],
                   ),
                 ),

@@ -15,7 +15,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TestListCatalogWidget extends StatefulWidget {
-  const TestListCatalogWidget({Key key}) : super(key: key);
+  const TestListCatalogWidget({Key? key}) : super(key: key);
 
   @override
   _TestListCatalogWidgetState createState() => _TestListCatalogWidgetState();
@@ -23,9 +23,9 @@ class TestListCatalogWidget extends StatefulWidget {
 
 class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
     with TickerProviderStateMixin {
-  TextEditingController textController1;
+  TextEditingController? textController1;
 
-  TextEditingController textController2;
+  TextEditingController? textController2;
 
   final animationsMap = {
     'stackOnActionTriggerAnimation1': AnimationInfo(
@@ -388,7 +388,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                             ),
                                                           ),
                                                           suffixIcon:
-                                                              textController1
+                                                              textController1!
                                                                       .text
                                                                       .isNotEmpty
                                                                   ? InkWell(
@@ -621,10 +621,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                         }
                                                         List<CategoriesRecord>
                                                             listViewCategoriesRecordList =
-                                                            snapshot.data;
+                                                            snapshot.data!;
                                                         // Return an empty Container when the document does not exist.
                                                         if (snapshot
-                                                            .data.isEmpty) {
+                                                            .data!.isEmpty) {
                                                           return Container();
                                                         }
                                                         final listViewCategoriesRecord =
@@ -636,8 +636,8 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                         return Builder(
                                                           builder: (context) {
                                                             final testCategories =
-                                                                listViewCategoriesRecord
-                                                                    .categories
+                                                                listViewCategoriesRecord!
+                                                                    .categories!
                                                                     .toList();
                                                             return ListView
                                                                 .builder(
@@ -742,7 +742,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                   ],
                                                                 ).animated([
                                                                   animationsMap[
-                                                                      'stackOnActionTriggerAnimation1']
+                                                                      'stackOnActionTriggerAnimation1']!
                                                                 ]);
                                                               },
                                                             );
@@ -779,7 +779,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                               }
                                               List<TestsRecord>
                                                   testListWidgetTestsRecordList =
-                                                  snapshot.data;
+                                                  snapshot.data!;
                                               return Container(
                                                 width: MediaQuery.of(context)
                                                     .size
@@ -821,7 +821,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                             UsersRecord>(
                                                           stream: UsersRecord
                                                               .getDocument(
-                                                                  currentUserReference),
+                                                                  currentUserReference!),
                                                           builder: (context,
                                                               snapshot) {
                                                             // Customize what your widget looks like when it's loading.
@@ -842,7 +842,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                               );
                                                             }
                                                             final listViewUsersRecord =
-                                                                snapshot.data;
+                                                                snapshot.data!;
                                                             return Builder(
                                                               builder:
                                                                   (context) {
@@ -853,7 +853,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                         FFAppState()
                                                                             .categorypicked,
                                                                         functions
-                                                                            .returnSearchTests(textController1.text,
+                                                                            .returnSearchTests(textController1!.text,
                                                                                 testListWidgetTestsRecordList.toList())
                                                                             .toList())
                                                                     .toList();
@@ -1091,7 +1091,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                             ),
                                                           ),
                                                           suffixIcon:
-                                                              textController2
+                                                              textController2!
                                                                       .text
                                                                       .isNotEmpty
                                                                   ? InkWell(
@@ -1324,10 +1324,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                         }
                                                         List<CategoriesRecord>
                                                             listViewCategoriesRecordList =
-                                                            snapshot.data;
+                                                            snapshot.data!;
                                                         // Return an empty Container when the document does not exist.
                                                         if (snapshot
-                                                            .data.isEmpty) {
+                                                            .data!.isEmpty) {
                                                           return Container();
                                                         }
                                                         final listViewCategoriesRecord =
@@ -1339,8 +1339,8 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                         return Builder(
                                                           builder: (context) {
                                                             final packagecategories =
-                                                                listViewCategoriesRecord
-                                                                    .categories
+                                                                listViewCategoriesRecord!
+                                                                    .categories!
                                                                     .toList();
                                                             return ListView
                                                                 .builder(
@@ -1445,7 +1445,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                   ],
                                                                 ).animated([
                                                                   animationsMap[
-                                                                      'stackOnActionTriggerAnimation2']
+                                                                      'stackOnActionTriggerAnimation2']!
                                                                 ]);
                                                               },
                                                             );
@@ -1482,7 +1482,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                               }
                                               List<TestPackagesRecord>
                                                   packageListWidgetTestPackagesRecordList =
-                                                  snapshot.data;
+                                                  snapshot.data!;
                                               return Container(
                                                 width: MediaQuery.of(context)
                                                     .size
@@ -1524,7 +1524,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                             UsersRecord>(
                                                           stream: UsersRecord
                                                               .getDocument(
-                                                                  currentUserReference),
+                                                                  currentUserReference!),
                                                           builder: (context,
                                                               snapshot) {
                                                             // Customize what your widget looks like when it's loading.
@@ -1545,7 +1545,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                               );
                                                             }
                                                             final listViewUsersRecord =
-                                                                snapshot.data;
+                                                                snapshot.data!;
                                                             return Builder(
                                                               builder:
                                                                   (context) {

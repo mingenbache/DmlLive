@@ -14,23 +14,23 @@ import 'package:google_fonts/google_fonts.dart';
 
 class NewInvoiceSheetWidget extends StatefulWidget {
   const NewInvoiceSheetWidget({
-    Key key,
+    Key? key,
     this.labRefNum,
     this.bookingRef,
   }) : super(key: key);
 
-  final String labRefNum;
-  final DocumentReference bookingRef;
+  final String? labRefNum;
+  final DocumentReference? bookingRef;
 
   @override
   _NewInvoiceSheetWidgetState createState() => _NewInvoiceSheetWidgetState();
 }
 
 class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
-  TextEditingController invoiceAmountController;
+  TextEditingController? invoiceAmountController;
 
-  DateTime datePicked;
-  InvoicesRecord newInvoice;
+  DateTime? datePicked;
+  InvoicesRecord? newInvoice;
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -39,7 +39,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
       key: formKey,
       autovalidateMode: AutovalidateMode.always,
       child: StreamBuilder<BookingsRecord>(
-        stream: BookingsRecord.getDocument(widget.bookingRef),
+        stream: BookingsRecord.getDocument(widget.bookingRef!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -54,7 +54,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
               ),
             );
           }
-          final bookingInvoicingContentBookingsRecord = snapshot.data;
+          final bookingInvoicingContentBookingsRecord = snapshot.data!;
           return Container(
             decoration: BoxDecoration(),
             child: Column(
@@ -79,7 +79,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                     child: Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 30),
                       child: StreamBuilder<UsersRecord>(
-                        stream: UsersRecord.getDocument(currentUserReference),
+                        stream: UsersRecord.getDocument(currentUserReference!),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
@@ -95,7 +95,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                               ),
                             );
                           }
-                          final columnUsersRecord = snapshot.data;
+                          final columnUsersRecord = snapshot.data!;
                           return SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -225,7 +225,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                   .fromSTEB(2, 0, 2, 0),
                                               child: Text(
                                                 bookingInvoicingContentBookingsRecord
-                                                    .bookingstatus,
+                                                    .bookingstatus!,
                                                 textAlign: TextAlign.end,
                                                 maxLines: 1,
                                                 style: FlutterFlowTheme.of(
@@ -306,7 +306,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                 0, 0.050000000000000044),
                                             child: Text(
                                               bookingInvoicingContentBookingsRecord
-                                                  .labRefNum,
+                                                  .labRefNum!,
                                               textAlign: TextAlign.end,
                                               maxLines: 1,
                                               style: FlutterFlowTheme.of(
@@ -396,7 +396,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                   dateTimeFormat(
                                                       'd/M/y',
                                                       bookingInvoicingContentBookingsRecord
-                                                          .scheduledDate),
+                                                          .scheduledDate!),
                                                   textAlign: TextAlign.end,
                                                   maxLines: 1,
                                                   style: FlutterFlowTheme.of(
@@ -487,7 +487,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                     .fromSTEB(0, 6, 6, 0),
                                                 child: Text(
                                                   bookingInvoicingContentBookingsRecord
-                                                      .docNameAddress,
+                                                      .docNameAddress!,
                                                   textAlign: TextAlign.end,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -892,7 +892,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                                           3),
                                                                   child: Text(
                                                                     bookingInvoicingContentBookingsRecord
-                                                                        .emailaddress,
+                                                                        .emailaddress!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
@@ -1003,7 +1003,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                                           3),
                                                                   child: Text(
                                                                     bookingInvoicingContentBookingsRecord
-                                                                        .phonenumber,
+                                                                        .phonenumber!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
@@ -1133,7 +1133,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                                           child:
                                                                               Text(
                                                                             dateTimeFormat('d/M/y',
-                                                                                bookingInvoicingContentBookingsRecord.dOB),
+                                                                                bookingInvoicingContentBookingsRecord.dOB!),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -1235,7 +1235,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                                               0),
                                                                           child:
                                                                               Text(
-                                                                            bookingInvoicingContentBookingsRecord.sex,
+                                                                            bookingInvoicingContentBookingsRecord.sex!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -1297,7 +1297,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                           8, 8, 4, 4),
                                       child: Text(
                                         bookingInvoicingContentBookingsRecord
-                                            .diagnosis,
+                                            .diagnosis!,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -1356,7 +1356,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                 builder: (context) {
                                                   final tests =
                                                       bookingInvoicingContentBookingsRecord
-                                                          .bookedTests
+                                                          .bookedTests!
                                                           .toList();
                                                   return ListView.builder(
                                                     padding: EdgeInsets.zero,
@@ -1398,7 +1398,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                               );
                                                             }
                                                             final containerTestsRecord =
-                                                                snapshot.data;
+                                                                snapshot.data!;
                                                             return Container(
                                                               height: MediaQuery.of(
                                                                           context)
@@ -1432,7 +1432,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                                   children: [
                                                                     Text(
                                                                       containerTestsRecord
-                                                                          .name,
+                                                                          .name!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyText1
@@ -1468,7 +1468,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                                         ),
                                                                         Text(
                                                                           containerTestsRecord
-                                                                              .price
+                                                                              .price!
                                                                               .toString(),
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
@@ -1830,7 +1830,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                         currentUserDocument?.role, ''),
                                   ),
                                   'Invoice_Refs': FieldValue.arrayUnion(
-                                      [newInvoice.reference]),
+                                      [newInvoice!.reference]),
                                 };
                                 await bookingInvoicingContentBookingsRecord
                                     .reference

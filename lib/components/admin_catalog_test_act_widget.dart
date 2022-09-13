@@ -8,7 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AdminCatalogTestActWidget extends StatefulWidget {
-  const AdminCatalogTestActWidget({Key key}) : super(key: key);
+  const AdminCatalogTestActWidget({Key? key}) : super(key: key);
 
   @override
   _AdminCatalogTestActWidgetState createState() =>

@@ -13,34 +13,34 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ModifyTestWidget extends StatefulWidget {
   const ModifyTestWidget({
-    Key key,
+    Key? key,
     this.testId,
   }) : super(key: key);
 
-  final DocumentReference testId;
+  final DocumentReference? testId;
 
   @override
   _ModifyTestWidgetState createState() => _ModifyTestWidgetState();
 }
 
 class _ModifyTestWidgetState extends State<ModifyTestWidget> {
-  TextEditingController resultsDurationTextController;
+  TextEditingController? resultsDurationTextController;
 
-  double durationResultsSliderValue;
+  double? durationResultsSliderValue;
 
-  TextEditingController testDescriptionController;
+  TextEditingController? testDescriptionController;
 
-  TextEditingController testNameController;
+  TextEditingController? testNameController;
 
-  bool switchListTileValue;
-  String dropDownValue;
-  bool atHomeToggleValue;
+  bool? switchListTileValue;
+  String? dropDownValue;
+  bool? atHomeToggleValue;
 
-  TextEditingController testDurationTextController;
+  TextEditingController? testDurationTextController;
 
-  double testDurationSliderValue;
+  double? testDurationSliderValue;
 
-  TextEditingController testPriceController;
+  TextEditingController? testPriceController;
 
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -55,7 +55,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<TestsRecord>(
-      stream: TestsRecord.getDocument(widget.testId),
+      stream: TestsRecord.getDocument(widget.testId!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -70,7 +70,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
             ),
           );
         }
-        final modifyTestTestsRecord = snapshot.data;
+        final modifyTestTestsRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -122,7 +122,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                             Expanded(
                               child: SwitchListTile(
                                 value: switchListTileValue ??=
-                                    modifyTestTestsRecord.isAvailable,
+                                    modifyTestTestsRecord.isAvailable!,
                                 onChanged: (newValue) => setState(
                                     () => switchListTileValue = newValue),
                                 title: Text(
@@ -309,7 +309,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                             contentPadding:
                                 EdgeInsetsDirectional.fromSTEB(5, 5, 0, 5),
                             suffixIcon:
-                                testDescriptionController.text.isNotEmpty
+                                testDescriptionController!.text.isNotEmpty
                                     ? InkWell(
                                         onTap: () async {
                                           testDescriptionController?.clear();
@@ -379,7 +379,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 }
                                 List<CategoriesRecord>
                                     dropDownCategoriesRecordList =
-                                    snapshot.data;
+                                    snapshot.data!;
                                 final dropDownCategoriesRecord =
                                     dropDownCategoriesRecordList.isNotEmpty
                                         ? dropDownCategoriesRecordList.first
@@ -387,7 +387,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 return FlutterFlowDropDown(
                                   initialOption: dropDownValue ??=
                                       modifyTestTestsRecord.category,
-                                  options: dropDownCategoriesRecord.categories
+                                  options: dropDownCategoriesRecord!.categories!
                                       .toList()
                                       .toList(),
                                   onChanged: (val) =>
@@ -427,7 +427,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                               borderRadius: BorderRadius.circular(8),
                               child: SwitchListTile(
                                 value: atHomeToggleValue ??=
-                                    modifyTestTestsRecord.homeTest,
+                                    modifyTestTestsRecord.homeTest!,
                                 onChanged: (newValue) => setState(
                                     () => atHomeToggleValue = newValue),
                                 title: Text(
@@ -743,7 +743,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   min: 1,
                                   max: 120,
                                   value: durationResultsSliderValue ??=
-                                      testDurationSliderValue,
+                                      testDurationSliderValue!,
                                   label: durationResultsSliderValue.toString(),
                                   divisions: 119,
                                   onChanged: (newValue) {

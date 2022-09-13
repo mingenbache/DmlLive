@@ -12,7 +12,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyReportListWidget extends StatefulWidget {
-  const MyReportListWidget({Key key}) : super(key: key);
+  const MyReportListWidget({Key? key}) : super(key: key);
 
   @override
   _MyReportListWidgetState createState() => _MyReportListWidgetState();
@@ -43,7 +43,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
             ),
           );
         }
-        List<ReportsRecord> myReportListReportsRecordList = snapshot.data;
+        List<ReportsRecord> myReportListReportsRecordList = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -181,7 +181,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                         0, 0, 0, 15),
                                     child: StreamBuilder<BookingsRecord>(
                                       stream: BookingsRecord.getDocument(
-                                          myReportsItem.booking),
+                                          myReportsItem.booking!),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {
@@ -199,7 +199,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                           );
                                         }
                                         final containerBookingsRecord =
-                                            snapshot.data;
+                                            snapshot.data!;
                                         return InkWell(
                                           onTap: () async {
                                             context.pushNamed(
@@ -285,7 +285,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                     '')
                                                                   Text(
                                                                     myReportsItem
-                                                                        .labRefNum,
+                                                                        .labRefNum!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .subtitle2
@@ -437,7 +437,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                                               children: [
-                                                                                if (containerBookingsRecord.flaggedTests.toList().length > 0)
+                                                                                if (containerBookingsRecord.flaggedTests!.toList().length > 0)
                                                                                   Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
                                                                                     child: Material(
@@ -474,7 +474,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                                       ),
                                                                                     ),
                                                                                   ),
-                                                                                if (containerBookingsRecord.frozenTests.toList().length > 0)
+                                                                                if (containerBookingsRecord.frozenTests!.toList().length > 0)
                                                                                   Padding(
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
                                                                                     child: Material(
@@ -560,7 +560,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                               Builder(
                                                                             builder:
                                                                                 (context) {
-                                                                              final verifiedTests = containerBookingsRecord.bookedTests.toList();
+                                                                              final verifiedTests = containerBookingsRecord.bookedTests!.toList();
                                                                               return ListView.builder(
                                                                                 padding: EdgeInsets.zero,
                                                                                 scrollDirection: Axis.horizontal,
@@ -585,7 +585,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                                             ),
                                                                                           );
                                                                                         }
-                                                                                        final containerTestsRecord = snapshot.data;
+                                                                                        final containerTestsRecord = snapshot.data!;
                                                                                         return InkWell(
                                                                                           onTap: () async {
                                                                                             await showModalBottomSheet(

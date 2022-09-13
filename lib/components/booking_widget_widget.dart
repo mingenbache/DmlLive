@@ -11,13 +11,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class BookingWidgetWidget extends StatefulWidget {
   const BookingWidgetWidget({
-    Key key,
+    Key? key,
     this.booking,
     this.index,
   }) : super(key: key);
 
-  final BookingsRecord booking;
-  final int index;
+  final BookingsRecord? booking;
+  final int? index;
 
   @override
   _BookingWidgetWidgetState createState() => _BookingWidgetWidgetState();
@@ -29,7 +29,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
     return StreamBuilder<List<TestedTestsRecord>>(
       stream: queryTestedTestsRecord(
         queryBuilder: (testedTestsRecord) => testedTestsRecord
-            .where('booking_ref', isEqualTo: widget.booking.reference),
+            .where('booking_ref', isEqualTo: widget.booking!.reference),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -45,7 +45,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
             ),
           );
         }
-        List<TestedTestsRecord> containerTestedTestsRecordList = snapshot.data;
+        List<TestedTestsRecord> containerTestedTestsRecordList = snapshot.data!;
         return InkWell(
           onTap: () async {
             await showModalBottomSheet(
@@ -146,7 +146,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         6, 0, 0, 0),
                                     child: Text(
-                                      '${functions.camelCase(widget.booking.firstname)} ${functions.camelCase(widget.booking.lastname)}',
+                                      '${functions.camelCase(widget.booking!.firstname)} ${functions.camelCase(widget.booking!.lastname)}',
                                       style: TextStyle(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -158,7 +158,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                 ],
                               ),
                               DateWidgetSmallWidget(
-                                date: widget.booking.scheduledDate,
+                                date: widget.booking!.scheduledDate,
                               ),
                             ],
                           ),
@@ -170,7 +170,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                           stream: queryBookedTestsRecord(
                             queryBuilder: (bookedTestsRecord) =>
                                 bookedTestsRecord.where('booking_ref',
-                                    isEqualTo: widget.booking.reference),
+                                    isEqualTo: widget.booking!.reference),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
@@ -189,7 +189,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                             }
                             List<BookedTestsRecord>
                                 bookedTestsContainerBookedTestsRecordList =
-                                snapshot.data;
+                                snapshot.data!;
                             return Container(
                               height: 120,
                               decoration: BoxDecoration(
@@ -246,7 +246,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                                     stream:
                                                         TestsRecord.getDocument(
                                                             pastBookingTestsItem
-                                                                .testRef),
+                                                                .testRef!),
                                                     builder:
                                                         (context, snapshot) {
                                                       // Customize what your widget looks like when it's loading.
@@ -266,7 +266,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                                         );
                                                       }
                                                       final textTestsRecord =
-                                                          snapshot.data;
+                                                          snapshot.data!;
                                                       return Text(
                                                         functions
                                                             .upperCase(
@@ -552,10 +552,10 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                                                           }
                                                                           List<TestedTestsRecord>
                                                                               testVerifiedTestedTestsRecordList =
-                                                                              snapshot.data;
+                                                                              snapshot.data!;
                                                                           // Return an empty Container when the document does not exist.
                                                                           if (snapshot
-                                                                              .data
+                                                                              .data!
                                                                               .isEmpty) {
                                                                             return Container();
                                                                           }
@@ -569,7 +569,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                                                             ),
                                                                             child:
                                                                                 Visibility(
-                                                                              visible: testVerifiedTestedTestsRecord.isVerified ?? true,
+                                                                              visible: testVerifiedTestedTestsRecord!.isVerified ?? true,
                                                                               child: Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
                                                                                 child: Icon(
@@ -669,7 +669,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(0, 0, 0, 2),
                                                 child: Text(
-                                                  widget.booking.totalTests
+                                                  widget.booking!.totalTests!
                                                       .toString()
                                                       .maybeHandleOverflow(
                                                           maxChars: 2),
@@ -688,7 +688,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                     ),
                                   ),
                                 ),
-                                if (widget.booking.completed ?? true)
+                                if (widget.booking!.completed ?? true)
                                   Container(
                                     height: 32,
                                     constraints: BoxConstraints(

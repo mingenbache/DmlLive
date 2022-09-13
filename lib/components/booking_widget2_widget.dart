@@ -8,7 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BookingWidget2Widget extends StatefulWidget {
-  const BookingWidget2Widget({Key key}) : super(key: key);
+  const BookingWidget2Widget({Key? key}) : super(key: key);
 
   @override
   _BookingWidget2WidgetState createState() => _BookingWidget2WidgetState();
@@ -158,7 +158,7 @@ class _BookingWidget2WidgetState extends State<BookingWidget2Widget> {
                               ),
                               AuthUserStreamWidget(
                                 child: DateWidgetSmallWidget(
-                                  date: currentUserDocument?.lastLogin,
+                                  date: currentUserDocument!.lastLogin,
                                 ),
                               ),
                             ],

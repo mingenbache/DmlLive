@@ -12,15 +12,15 @@ import 'package:wave/config.dart';
 
 class WaveImage extends StatefulWidget {
   const WaveImage({
-    Key key,
+    Key? key,
     this.width,
     this.height,
     this.image,
   }) : super(key: key);
 
-  final double width;
-  final double height;
-  final String image;
+  final double? width;
+  final double? height;
+  final String? image;
   // Colors, animation durations, heights could
   // be parameters.
 
@@ -52,7 +52,7 @@ class _WaveImageState extends State<WaveImage> {
         gradientEnd: Alignment.topRight,
       ),
       waveAmplitude: 5,
-      size: Size(widget.width, widget.height),
+      size: Size(widget.width!, widget.height!),
     );
   }
 }

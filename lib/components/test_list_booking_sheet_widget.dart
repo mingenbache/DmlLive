@@ -16,11 +16,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TestListBookingSheetWidget extends StatefulWidget {
   const TestListBookingSheetWidget({
-    Key key,
+    Key? key,
     this.bookingRef,
   }) : super(key: key);
 
-  final DocumentReference bookingRef;
+  final DocumentReference? bookingRef;
 
   @override
   _TestListBookingSheetWidgetState createState() =>
@@ -29,9 +29,9 @@ class TestListBookingSheetWidget extends StatefulWidget {
 
 class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
     with TickerProviderStateMixin {
-  TextEditingController textController1;
+  TextEditingController? textController1;
 
-  TextEditingController textController2;
+  TextEditingController? textController2;
 
   final animationsMap = {
     'buttonOnActionTriggerAnimation': AnimationInfo(
@@ -64,7 +64,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<BookingsRecord>(
-      stream: BookingsRecord.getDocument(widget.bookingRef),
+      stream: BookingsRecord.getDocument(widget.bookingRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -79,7 +79,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
             ),
           );
         }
-        final containerBookingsRecord = snapshot.data;
+        final containerBookingsRecord = snapshot.data!;
         return Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -426,7 +426,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                               4.0),
                                                                     ),
                                                                   ),
-                                                                  suffixIcon: textController1
+                                                                  suffixIcon: textController1!
                                                                           .text
                                                                           .isNotEmpty
                                                                       ? InkWell(
@@ -633,10 +633,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                             }
                                                             List<CategoriesRecord>
                                                                 containerCategoriesRecordList =
-                                                                snapshot.data;
+                                                                snapshot.data!;
                                                             // Return an empty Container when the document does not exist.
-                                                            if (snapshot
-                                                                .data.isEmpty) {
+                                                            if (snapshot.data!
+                                                                .isEmpty) {
                                                               return Container();
                                                             }
                                                             final containerCategoriesRecord =
@@ -677,8 +677,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                   builder:
                                                                       (context) {
                                                                     final testCategories =
-                                                                        containerCategoriesRecord
-                                                                            .categories
+                                                                        containerCategoriesRecord!
+                                                                            .categories!
                                                                             .toList();
                                                                     return ListView
                                                                         .builder(
@@ -797,7 +797,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                       }
                                                       List<TestsRecord>
                                                           testListWidgetTestsRecordList =
-                                                          snapshot.data;
+                                                          snapshot.data!;
                                                       return Container(
                                                         width: MediaQuery.of(
                                                                 context)
@@ -835,7 +835,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                             UsersRecord>(
                                                           stream: UsersRecord
                                                               .getDocument(
-                                                                  currentUserReference),
+                                                                  currentUserReference!),
                                                           builder: (context,
                                                               snapshot) {
                                                             // Customize what your widget looks like when it's loading.
@@ -856,7 +856,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                               );
                                                             }
                                                             final listViewUsersRecord =
-                                                                snapshot.data;
+                                                                snapshot.data!;
                                                             return Builder(
                                                               builder:
                                                                   (context) {
@@ -867,7 +867,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                         FFAppState()
                                                                             .categorypicked,
                                                                         functions
-                                                                            .returnSearchTests(textController1.text,
+                                                                            .returnSearchTests(textController1!.text,
                                                                                 testListWidgetTestsRecordList.toList())
                                                                             .toList())
                                                                     .toList();
@@ -1120,7 +1120,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                             Radius.circular(4.0),
                                                                       ),
                                                                     ),
-                                                                    suffixIcon: textController2
+                                                                    suffixIcon: textController2!
                                                                             .text
                                                                             .isNotEmpty
                                                                         ? InkWell(
@@ -1319,9 +1319,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                               }
                                                               List<CategoriesRecord>
                                                                   containerCategoriesRecordList =
-                                                                  snapshot.data;
+                                                                  snapshot
+                                                                      .data!;
                                                               // Return an empty Container when the document does not exist.
-                                                              if (snapshot.data
+                                                              if (snapshot.data!
                                                                   .isEmpty) {
                                                                 return Container();
                                                               }
@@ -1362,8 +1363,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                       Builder(
                                                                     builder:
                                                                         (context) {
-                                                                      final packageCategories = containerCategoriesRecord
-                                                                          .categories
+                                                                      final packageCategories = containerCategoriesRecord!
+                                                                          .categories!
                                                                           .toList();
                                                                       return ListView
                                                                           .builder(
@@ -1474,7 +1475,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                         }
                                                         List<TestPackagesRecord>
                                                             testPackageWidgetTestPackagesRecordList =
-                                                            snapshot.data;
+                                                            snapshot.data!;
                                                         return Container(
                                                           width: MediaQuery.of(
                                                                   context)
@@ -1499,7 +1500,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                     UsersRecord>(
                                                                   stream: UsersRecord
                                                                       .getDocument(
-                                                                          currentUserReference),
+                                                                          currentUserReference!),
                                                                   builder: (context,
                                                                       snapshot) {
                                                                     // Customize what your widget looks like when it's loading.
@@ -1524,7 +1525,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                     }
                                                                     final listViewUsersRecord =
                                                                         snapshot
-                                                                            .data;
+                                                                            .data!;
                                                                     return Builder(
                                                                       builder:
                                                                           (context) {
@@ -1532,7 +1533,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                             .filterPackages(
                                                                                 FFAppState().allPackageCategories,
                                                                                 FFAppState().packagecategoryPicked,
-                                                                                textController2.text,
+                                                                                textController2!.text,
                                                                                 testPackageWidgetTestPackagesRecordList.toList())
                                                                             .toList();
                                                                         return ListView
@@ -1627,7 +1628,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                             borderRadius: BorderRadius.circular(25),
                           ),
                         ).animated(
-                            [animationsMap['buttonOnActionTriggerAnimation']]),
+                            [animationsMap['buttonOnActionTriggerAnimation']!]),
                       ],
                     ),
                   ],

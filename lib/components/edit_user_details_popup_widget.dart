@@ -15,11 +15,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class EditUserDetailsPopupWidget extends StatefulWidget {
   const EditUserDetailsPopupWidget({
-    Key key,
+    Key? key,
     this.userRef,
   }) : super(key: key);
 
-  final DocumentReference userRef;
+  final DocumentReference? userRef;
 
   @override
   _EditUserDetailsPopupWidgetState createState() =>
@@ -28,16 +28,16 @@ class EditUserDetailsPopupWidget extends StatefulWidget {
 
 class _EditUserDetailsPopupWidgetState
     extends State<EditUserDetailsPopupWidget> {
-  TextEditingController emailAddressController;
+  TextEditingController? emailAddressController;
 
-  TextEditingController firstNameController;
+  TextEditingController? firstNameController;
 
-  TextEditingController lastNameController;
+  TextEditingController? lastNameController;
 
-  TextEditingController phoneNumberController;
+  TextEditingController? phoneNumberController;
 
-  String sexChoiceChipsValue;
-  DateTime datePicked;
+  String? sexChoiceChipsValue;
+  DateTime? datePicked;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class _EditUserDetailsPopupWidgetState
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         StreamBuilder<UsersRecord>(
-          stream: UsersRecord.getDocument(widget.userRef),
+          stream: UsersRecord.getDocument(widget.userRef!),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
@@ -61,7 +61,7 @@ class _EditUserDetailsPopupWidgetState
                 ),
               );
             }
-            final editUserContainerUsersRecord = snapshot.data;
+            final editUserContainerUsersRecord = snapshot.data!;
             return Container(
               height: MediaQuery.of(context).size.height * 0.67,
               constraints: BoxConstraints(
@@ -669,11 +669,11 @@ class _EditUserDetailsPopupWidgetState
                                                         sexChoiceChipsValue !=
                                                                 null
                                                             ? [
-                                                                sexChoiceChipsValue
+                                                                sexChoiceChipsValue!
                                                               ]
                                                             : [
                                                                 editUserContainerUsersRecord
-                                                                    .sex
+                                                                    .sex!
                                                               ],
                                                     options: [
                                                       ChipData(
@@ -686,7 +686,7 @@ class _EditUserDetailsPopupWidgetState
                                                     onChanged: (val) =>
                                                         setState(() =>
                                                             sexChoiceChipsValue =
-                                                                val.first),
+                                                                val?.first),
                                                     selectedChipStyle:
                                                         ChipStyle(
                                                       backgroundColor:
@@ -819,14 +819,14 @@ class _EditUserDetailsPopupWidgetState
                                                     },
                                                     currentTime:
                                                         editUserContainerUsersRecord
-                                                            .dOB,
+                                                            .dOB!,
                                                     minTime: DateTime(0, 0, 0),
                                                   );
                                                 },
                                                 text: dateTimeFormat(
                                                     'd/M/y',
                                                     editUserContainerUsersRecord
-                                                        .dOB),
+                                                        .dOB!),
                                                 icon: Icon(
                                                   Icons.calendar_today,
                                                   color: FlutterFlowTheme.of(

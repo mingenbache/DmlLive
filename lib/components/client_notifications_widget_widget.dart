@@ -10,7 +10,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ClientNotificationsWidgetWidget extends StatefulWidget {
-  const ClientNotificationsWidgetWidget({Key key}) : super(key: key);
+  const ClientNotificationsWidgetWidget({Key? key}) : super(key: key);
 
   @override
   _ClientNotificationsWidgetWidgetState createState() =>
@@ -59,7 +59,7 @@ class _ClientNotificationsWidgetWidgetState
                     );
                   }
                   List<NotificationsRecord> containerNotificationsRecordList =
-                      snapshot.data;
+                      snapshot.data!;
                   return Container(
                     width: MediaQuery.of(context).size.width * 0.9,
                     height: 100,

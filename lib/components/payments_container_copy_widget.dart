@@ -7,11 +7,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PaymentsContainerCopyWidget extends StatefulWidget {
   const PaymentsContainerCopyWidget({
-    Key key,
+    Key? key,
     this.invoice,
   }) : super(key: key);
 
-  final InvoicesRecord invoice;
+  final InvoicesRecord? invoice;
 
   @override
   _PaymentsContainerCopyWidgetState createState() =>

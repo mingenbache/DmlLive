@@ -13,20 +13,20 @@ import 'package:google_fonts/google_fonts.dart';
 
 class UserListWidget extends StatefulWidget {
   const UserListWidget({
-    Key key,
+    Key? key,
     this.staffFilter,
     this.userNameQUery,
   }) : super(key: key);
 
-  final bool staffFilter;
-  final String userNameQUery;
+  final bool? staffFilter;
+  final String? userNameQUery;
 
   @override
   _UserListWidgetState createState() => _UserListWidgetState();
 }
 
 class _UserListWidgetState extends State<UserListWidget> {
-  TextEditingController textController;
+  TextEditingController? textController;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -257,20 +257,23 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                                   4.0),
                                                         ),
                                                       ),
-                                                      suffixIcon: textController
-                                                              .text.isNotEmpty
-                                                          ? InkWell(
-                                                              onTap: () async {
-                                                                textController
-                                                                    ?.clear();
-                                                                setState(() {});
-                                                              },
-                                                              child: Icon(
-                                                                Icons.clear,
-                                                                size: 22,
-                                                              ),
-                                                            )
-                                                          : null,
+                                                      suffixIcon:
+                                                          textController!.text
+                                                                  .isNotEmpty
+                                                              ? InkWell(
+                                                                  onTap:
+                                                                      () async {
+                                                                    textController
+                                                                        ?.clear();
+                                                                    setState(
+                                                                        () {});
+                                                                  },
+                                                                  child: Icon(
+                                                                    Icons.clear,
+                                                                    size: 22,
+                                                                  ),
+                                                                )
+                                                              : null,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -385,7 +388,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                       }
                                       List<UsersRecord>
                                           clientUserContainerUsersRecordList =
-                                          snapshot.data;
+                                          snapshot.data!;
                                       return Container(
                                         width:
                                             MediaQuery.of(context).size.width *
@@ -402,7 +405,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                           builder: (context) {
                                             final clients = functions
                                                 .returnUserList(
-                                                    textController.text,
+                                                    textController!.text,
                                                     clientUserContainerUsersRecordList
                                                         .toList())
                                                 .toList();
@@ -460,7 +463,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                     }
                                     List<UsersRecord>
                                         staffUserContainerUsersRecordList =
-                                        snapshot.data;
+                                        snapshot.data!;
                                     return Container(
                                       width: MediaQuery.of(context).size.width *
                                           0.8,
@@ -475,7 +478,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                         builder: (context) {
                                           final staff = functions
                                               .returnUserList(
-                                                  textController.text,
+                                                  textController!.text,
                                                   staffUserContainerUsersRecordList
                                                       .toList())
                                               .toList();

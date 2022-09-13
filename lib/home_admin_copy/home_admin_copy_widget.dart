@@ -15,7 +15,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeAdminCopyWidget extends StatefulWidget {
-  const HomeAdminCopyWidget({Key key}) : super(key: key);
+  const HomeAdminCopyWidget({Key? key}) : super(key: key);
 
   @override
   _HomeAdminCopyWidgetState createState() => _HomeAdminCopyWidgetState();
@@ -56,7 +56,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
               );
             }
             List<TestedTestsRecord> homeAdminCopyTestedTestsRecordList =
-                snapshot.data;
+                snapshot.data!;
             return Scaffold(
               key: scaffoldKey,
               body: Container(
@@ -375,7 +375,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                     }
                                     List<TestedTestsRecord>
                                         containerTestedTestsRecordList =
-                                        snapshot.data;
+                                        snapshot.data!;
                                     return Container(
                                       width: MediaQuery.of(context).size.width,
                                       height: 150,
@@ -522,7 +522,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                 }
                                                 List<BookedTestsRecord>
                                                     textBookedTestsRecordList =
-                                                    snapshot.data;
+                                                    snapshot.data!;
                                                 return Text(
                                                   valueOrDefault<String>(
                                                     functions
@@ -711,7 +711,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                       }
                                                       List<TestedTestsRecord>
                                                           textTestedTestsRecordList =
-                                                          snapshot.data;
+                                                          snapshot.data!;
                                                       return Text(
                                                         '0',
                                                         style:

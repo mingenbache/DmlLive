@@ -13,16 +13,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class PaymentsListWidget extends StatefulWidget {
-  const PaymentsListWidget({Key key}) : super(key: key);
+  const PaymentsListWidget({Key? key}) : super(key: key);
 
   @override
   _PaymentsListWidgetState createState() => _PaymentsListWidgetState();
 }
 
 class _PaymentsListWidgetState extends State<PaymentsListWidget> {
-  PagingController<DocumentSnapshot, InvoicesRecord> _pagingController;
-  Query _pagingQuery;
-  List<StreamSubscription> _streamSubscriptions = [];
+  PagingController<DocumentSnapshot?, InvoicesRecord>? _pagingController;
+  Query? _pagingQuery;
+  List<StreamSubscription?> _streamSubscriptions = [];
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -194,7 +194,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                               }
                                               List<PaymentsRecord>
                                                   columnPaymentsRecordList =
-                                                  snapshot.data;
+                                                  snapshot.data!;
                                               return Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: List.generate(
@@ -310,7 +310,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(8, 4, 4, 4),
                                                                                   child: Text(
                                                                                     formatNumber(
-                                                                                      columnPaymentsRecord.amount,
+                                                                                      columnPaymentsRecord.amount!,
                                                                                       formatType: FormatType.decimal,
                                                                                       decimalType: DecimalType.periodDecimal,
                                                                                       currency: 'Ksh ',
@@ -334,7 +334,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                   child: Text(
-                                                                                    columnPaymentsRecord.type,
+                                                                                    columnPaymentsRecord.type!,
                                                                                     style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                           fontFamily: 'Lexend Deca',
                                                                                           color: Colors.white,
@@ -431,7 +431,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                 0),
                                                                             child:
                                                                                 StreamBuilder<BookingsRecord>(
-                                                                              stream: BookingsRecord.getDocument(columnPaymentsRecord.bookingRef),
+                                                                              stream: BookingsRecord.getDocument(columnPaymentsRecord.bookingRef!),
                                                                               builder: (context, snapshot) {
                                                                                 // Customize what your widget looks like when it's loading.
                                                                                 if (!snapshot.hasData) {
@@ -446,7 +446,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                     ),
                                                                                   );
                                                                                 }
-                                                                                final columnBookingsRecord = snapshot.data;
+                                                                                final columnBookingsRecord = snapshot.data!;
                                                                                 return Column(
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
@@ -497,7 +497,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                               child: Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                                 child: Text(
-                                                                                                  columnPaymentsRecord.transactionCode,
+                                                                                                  columnPaymentsRecord.transactionCode!,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                                         fontFamily: 'Lexend Deca',
                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
@@ -675,7 +675,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                                   child: Text(
                                                                                                     formatNumber(
-                                                                                                      columnBookingsRecord.paymentBalance,
+                                                                                                      columnBookingsRecord.paymentBalance!,
                                                                                                       formatType: FormatType.decimal,
                                                                                                       decimalType: DecimalType.periodDecimal,
                                                                                                       currency: 'Ksh ',
@@ -750,7 +750,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                               }
                                               List<PaymentsRecord>
                                                   columnPaymentsRecordList =
-                                                  snapshot.data;
+                                                  snapshot.data!;
                                               return Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: List.generate(
@@ -890,7 +890,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                               padding: EdgeInsetsDirectional.fromSTEB(6, 4, 4, 4),
                                                                               child: Text(
                                                                                 formatNumber(
-                                                                                  columnPaymentsRecord.amount,
+                                                                                  columnPaymentsRecord.amount!,
                                                                                   formatType: FormatType.decimal,
                                                                                   decimalType: DecimalType.periodDecimal,
                                                                                   currency: 'Ksh ',
@@ -921,7 +921,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                 Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                               child: Text(
-                                                                                columnPaymentsRecord.type,
+                                                                                columnPaymentsRecord.type!,
                                                                                 style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                       fontFamily: 'Lexend Deca',
                                                                                       color: Colors.white,
@@ -960,7 +960,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                         BookingsRecord>(
                                                                       stream: BookingsRecord.getDocument(
                                                                           columnPaymentsRecord
-                                                                              .bookingRef),
+                                                                              .bookingRef!),
                                                                       builder:
                                                                           (context,
                                                                               snapshot) {
@@ -980,7 +980,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                           );
                                                                         }
                                                                         final columnBookingsRecord =
-                                                                            snapshot.data;
+                                                                            snapshot.data!;
                                                                         return Column(
                                                                           mainAxisSize:
                                                                               MainAxisSize.max,
@@ -1097,7 +1097,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                         child: Text(
-                                                                                          columnBookingsRecord.labRefNum.maybeHandleOverflow(
+                                                                                          columnBookingsRecord.labRefNum!.maybeHandleOverflow(
                                                                                             maxChars: 20,
                                                                                             replacement: '…',
                                                                                           ),
@@ -1161,7 +1161,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                           child: Text(
                                                                                             formatNumber(
-                                                                                              columnBookingsRecord.paymentBalance,
+                                                                                              columnBookingsRecord.paymentBalance!,
                                                                                               formatType: FormatType.decimal,
                                                                                               decimalType: DecimalType.periodDecimal,
                                                                                               currency: 'Ksh ',
@@ -1240,11 +1240,11 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                 ),
                                               ),
                                               PagedListView<
-                                                  DocumentSnapshot<Object>,
+                                                  DocumentSnapshot<Object?>?,
                                                   InvoicesRecord>(
                                                 pagingController: () {
-                                                  final Query<Object> Function(
-                                                          Query<Object>)
+                                                  final Query<Object?> Function(
+                                                          Query<Object?>)
                                                       queryBuilder =
                                                       (invoicesRecord) =>
                                                           invoicesRecord.orderBy(
@@ -1263,10 +1263,10 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                               s?.cancel());
                                                       _streamSubscriptions
                                                           .clear();
-                                                      _pagingController
+                                                      _pagingController!
                                                           .refresh();
                                                     }
-                                                    return _pagingController;
+                                                    return _pagingController!;
                                                   }
 
                                                   _pagingController =
@@ -1275,7 +1275,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                   _pagingQuery = queryBuilder(
                                                       InvoicesRecord
                                                           .collection);
-                                                  _pagingController
+                                                  _pagingController!
                                                       .addPageRequestListener(
                                                           (nextPageMarker) {
                                                     queryInvoicesRecordPage(
@@ -1290,7 +1290,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                       pageSize: 10,
                                                       isStream: true,
                                                     ).then((page) {
-                                                      _pagingController
+                                                      _pagingController!
                                                           .appendPage(
                                                         page.data,
                                                         page.nextPageMarker,
@@ -1299,8 +1299,8 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                           page.dataStream
                                                               ?.listen((data) {
                                                         final itemIndexes =
-                                                            _pagingController
-                                                                .itemList
+                                                            _pagingController!
+                                                                .itemList!
                                                                 .asMap()
                                                                 .map((k, v) =>
                                                                     MapEntry(
@@ -1313,14 +1313,14 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                   .reference
                                                                   .id];
                                                           final items =
-                                                              _pagingController
-                                                                  .itemList;
+                                                              _pagingController!
+                                                                  .itemList!;
                                                           if (index != null) {
                                                             items.replaceRange(
                                                                 index,
                                                                 index + 1,
                                                                 [item]);
-                                                            _pagingController
+                                                            _pagingController!
                                                                 .itemList = {
                                                               for (var item
                                                                   in items)
@@ -1335,7 +1335,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                           streamSubscription);
                                                     });
                                                   });
-                                                  return _pagingController;
+                                                  return _pagingController!;
                                                 }(),
                                                 padding: EdgeInsets.zero,
                                                 shrinkWrap: true,
@@ -1362,8 +1362,8 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                   itemBuilder: (context, _,
                                                       listViewIndex) {
                                                     final listViewInvoicesRecord =
-                                                        _pagingController
-                                                                .itemList[
+                                                        _pagingController!
+                                                                .itemList![
                                                             listViewIndex];
                                                     return Container(
                                                       width:
@@ -1384,7 +1384,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                           stream: BookingsRecord
                                                               .getDocument(
                                                                   listViewInvoicesRecord
-                                                                      .bookingRef),
+                                                                      .bookingRef!),
                                                           builder: (context,
                                                               snapshot) {
                                                             // Customize what your widget looks like when it's loading.
@@ -1405,7 +1405,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                               );
                                                             }
                                                             final invoicePaymentBookingsRecord =
-                                                                snapshot.data;
+                                                                snapshot.data!;
                                                             return InvoicePaymentWidget(
                                                               invoice:
                                                                   listViewInvoicesRecord

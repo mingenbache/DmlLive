@@ -8,14 +8,14 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MessagesWidget extends StatefulWidget {
-  const MessagesWidget({Key key}) : super(key: key);
+  const MessagesWidget({Key? key}) : super(key: key);
 
   @override
   _MessagesWidgetState createState() => _MessagesWidgetState();
 }
 
 class _MessagesWidgetState extends State<MessagesWidget> {
-  TextEditingController textController;
+  TextEditingController? textController;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -50,7 +50,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
       ),
       body: SafeArea(
         child: FutureBuilder<UsersRecord>(
-          future: UsersRecord.getDocumentOnce(currentUserReference),
+          future: UsersRecord.getDocumentOnce(currentUserReference!),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
@@ -65,7 +65,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                 ),
               );
             }
-            final columnUsersRecord = snapshot.data;
+            final columnUsersRecord = snapshot.data!;
             return Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -238,7 +238,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                 );
                               }
                               List<ChatsRecord> columnChatsRecordList =
-                                  snapshot.data;
+                                  snapshot.data!;
                               return SingleChildScrollView(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -318,7 +318,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                                 children: [
                                                                   Text(
                                                                     columnChatsRecord
-                                                                        .topic,
+                                                                        .topic!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .subtitle1
@@ -344,7 +344,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                                           Text(
                                                                         dateTimeFormat(
                                                                             'd/M H:mm',
-                                                                            columnChatsRecord.lastMessageTime),
+                                                                            columnChatsRecord.lastMessageTime!),
                                                                         textAlign:
                                                                             TextAlign.end,
                                                                         style:
@@ -390,7 +390,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                                       child:
                                                                           Text(
                                                                         columnChatsRecord
-                                                                            .lastMessage,
+                                                                            .lastMessage!,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText2
                                                                             .override(

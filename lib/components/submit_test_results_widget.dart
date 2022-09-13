@@ -15,15 +15,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 class SubmitTestResultsWidget extends StatefulWidget {
   const SubmitTestResultsWidget({
-    Key key,
+    Key? key,
     this.testedTestRef,
     this.labRefNum,
     this.testId,
   }) : super(key: key);
 
-  final DocumentReference testedTestRef;
-  final String labRefNum;
-  final DocumentReference testId;
+  final DocumentReference? testedTestRef;
+  final String? labRefNum;
+  final DocumentReference? testId;
 
   @override
   _SubmitTestResultsWidgetState createState() =>
@@ -32,12 +32,12 @@ class SubmitTestResultsWidget extends StatefulWidget {
 
 class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
     with TickerProviderStateMixin {
-  TextEditingController testNoteController;
+  TextEditingController? testNoteController;
 
-  TextEditingController testResultController;
+  TextEditingController? testResultController;
 
-  String testMachineValue;
-  bool checkboxListTileValue;
+  String? testMachineValue;
+  bool? checkboxListTileValue;
   String uploadedFileUrl = '';
   final formKey = GlobalKey<FormState>();
   final animationsMap = {
@@ -107,7 +107,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
       key: formKey,
       autovalidateMode: AutovalidateMode.disabled,
       child: StreamBuilder<TestedTestsRecord>(
-        stream: TestedTestsRecord.getDocument(widget.testedTestRef),
+        stream: TestedTestsRecord.getDocument(widget.testedTestRef!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -122,7 +122,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
               ),
             );
           }
-          final submitResultsTestedTestsRecord = snapshot.data;
+          final submitResultsTestedTestsRecord = snapshot.data!;
           return Container(
             decoration: BoxDecoration(),
             child: Column(
@@ -227,7 +227,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                           child: FutureBuilder<TestsRecord>(
                                             future: TestsRecord.getDocumentOnce(
                                                 submitResultsTestedTestsRecord
-                                                    .testRef),
+                                                    .testRef!),
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
                                               if (!snapshot.hasData) {
@@ -246,10 +246,10 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                                 );
                                               }
                                               final textTestsRecord =
-                                                  snapshot.data;
+                                                  snapshot.data!;
                                               return Text(
                                                 submitResultsTestedTestsRecord
-                                                    .labRefNum,
+                                                    .labRefNum!,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .subtitle1,
@@ -287,7 +287,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                         FutureBuilder<TestsRecord>(
                                           future: TestsRecord.getDocumentOnce(
                                               submitResultsTestedTestsRecord
-                                                  .testRef),
+                                                  .testRef!),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.
                                             if (!snapshot.hasData) {
@@ -305,9 +305,9 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                               );
                                             }
                                             final textTestsRecord =
-                                                snapshot.data;
+                                                snapshot.data!;
                                             return Text(
-                                              textTestsRecord.name,
+                                              textTestsRecord.name!,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle1,
@@ -355,8 +355,9 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                               margin: EdgeInsetsDirectional.fromSTEB(
                                   20, 20, 12, 20),
                               hidesUnderline: true,
-                            ).animated(
-                                [animationsMap['dropDownOnPageLoadAnimation']]),
+                            ).animated([
+                              animationsMap['dropDownOnPageLoadAnimation']!
+                            ]),
                           ),
                           Padding(
                             padding:
@@ -374,7 +375,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                 child: CheckboxListTile(
                                   value: checkboxListTileValue ??= false,
                                   onChanged: (newValue) => setState(
-                                      () => checkboxListTileValue = newValue),
+                                      () => checkboxListTileValue = newValue!),
                                   title: Text(
                                     'Diagnosis',
                                     style:
@@ -476,7 +477,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                   return null;
                                 },
                               ).animated([
-                                animationsMap['textFieldOnPageLoadAnimation1']
+                                animationsMap['textFieldOnPageLoadAnimation1']!
                               ]),
                             ),
                           ),
@@ -523,12 +524,12 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                                         m.storagePath,
                                                         m.bytes))))
                                             .where((u) => u != null)
+                                            .map((u) => u!)
                                             .toList();
                                         ScaffoldMessenger.of(context)
                                             .hideCurrentSnackBar();
-                                        if (downloadUrls != null &&
-                                            downloadUrls.length ==
-                                                selectedMedia.length) {
+                                        if (downloadUrls.length ==
+                                            selectedMedia.length) {
                                           setState(() => uploadedFileUrl =
                                               downloadUrls.first);
                                           showUploadMessage(
@@ -652,7 +653,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                 maxLines: 4,
                                 keyboardType: TextInputType.multiline,
                               ).animated([
-                                animationsMap['textFieldOnPageLoadAnimation2']
+                                animationsMap['textFieldOnPageLoadAnimation2']!
                               ]),
                             ),
                           ),
@@ -672,7 +673,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                         children: [
                           StreamBuilder<BookedTestsRecord>(
                             stream: BookedTestsRecord.getDocument(
-                                submitResultsTestedTestsRecord.bookedTestRef),
+                                submitResultsTestedTestsRecord.bookedTestRef!),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -688,22 +689,22 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                   ),
                                 );
                               }
-                              final buttonBookedTestsRecord = snapshot.data;
+                              final buttonBookedTestsRecord = snapshot.data!;
                               return FFButtonWidget(
                                 onPressed: () async {
                                   final testedTestsUpdateData = {
                                     ...createTestedTestsRecordData(
                                       isVerified: false,
                                       dateConducted: getCurrentTimestamp,
-                                      testNote: testNoteController.text,
-                                      testResult: testResultController.text,
+                                      testNote: testNoteController!.text,
+                                      testResult: testResultController!.text,
                                       resultsPositive: checkboxListTileValue,
                                       resultPosted: true,
                                     ),
                                     'results_attachment': FieldValue.arrayUnion(
                                         [uploadedFileUrl]),
                                   };
-                                  await widget.testedTestRef
+                                  await widget.testedTestRef!
                                       .update(testedTestsUpdateData);
 
                                   final bookedTestsUpdateData =

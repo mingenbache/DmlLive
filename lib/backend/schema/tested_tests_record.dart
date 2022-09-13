@@ -11,101 +11,77 @@ abstract class TestedTestsRecord
   static Serializer<TestedTestsRecord> get serializer =>
       _$testedTestsRecordSerializer;
 
-  @nullable
   @BuiltValueField(wireName: 'test_ref')
-  DocumentReference get testRef;
+  DocumentReference? get testRef;
 
-  @nullable
   @BuiltValueField(wireName: 'booking_ref')
-  DocumentReference get bookingRef;
+  DocumentReference? get bookingRef;
 
-  @nullable
   @BuiltValueField(wireName: 'is_verified')
-  bool get isVerified;
+  bool? get isVerified;
 
-  @nullable
   @BuiltValueField(wireName: 'is_flagged')
-  bool get isFlagged;
+  bool? get isFlagged;
 
-  @nullable
   @BuiltValueField(wireName: 'pathologist_Ref')
-  DocumentReference get pathologistRef;
+  DocumentReference? get pathologistRef;
 
-  @nullable
   @BuiltValueField(wireName: 'date_conducted')
-  DateTime get dateConducted;
+  DateTime? get dateConducted;
 
-  @nullable
   @BuiltValueField(wireName: 'results_positive')
-  bool get resultsPositive;
+  bool? get resultsPositive;
 
-  @nullable
   @BuiltValueField(wireName: 'results_attachment')
-  BuiltList<String> get resultsAttachment;
+  BuiltList<String>? get resultsAttachment;
 
-  @nullable
   @BuiltValueField(wireName: 'sample_released')
-  bool get sampleReleased;
+  bool? get sampleReleased;
 
-  @nullable
   @BuiltValueField(wireName: 'booked_test_Ref')
-  DocumentReference get bookedTestRef;
+  DocumentReference? get bookedTestRef;
 
-  @nullable
   @BuiltValueField(wireName: 'machine_used')
-  DocumentReference get machineUsed;
+  DocumentReference? get machineUsed;
 
-  @nullable
   @BuiltValueField(wireName: 'flagged_date')
-  DateTime get flaggedDate;
+  DateTime? get flaggedDate;
 
-  @nullable
   @BuiltValueField(wireName: 'date_sample_collected')
-  DateTime get dateSampleCollected;
+  DateTime? get dateSampleCollected;
 
-  @nullable
-  String get labRefNum;
+  String? get labRefNum;
 
-  @nullable
   @BuiltValueField(wireName: 'test_note')
-  String get testNote;
+  String? get testNote;
 
-  @nullable
   @BuiltValueField(wireName: 'pathologist_note')
-  String get pathologistNote;
+  String? get pathologistNote;
 
-  @nullable
   @BuiltValueField(wireName: 'test_result')
-  String get testResult;
+  String? get testResult;
 
-  @nullable
   @BuiltValueField(wireName: 'flag_notes')
-  String get flagNotes;
+  String? get flagNotes;
 
-  @nullable
-  bool get resultPosted;
+  bool? get resultPosted;
 
-  @nullable
   @BuiltValueField(wireName: 'staff_Reference')
-  DocumentReference get staffReference;
+  DocumentReference? get staffReference;
 
-  @nullable
   @BuiltValueField(wireName: 'verified_Date')
-  DateTime get verifiedDate;
+  DateTime? get verifiedDate;
 
-  @nullable
-  String get batchNum;
+  String? get batchNum;
 
-  @nullable
   @BuiltValueField(wireName: 'has_test_pack')
-  bool get hasTestPack;
+  bool? get hasTestPack;
 
-  @nullable
-  DocumentReference get testPackRef;
+  DocumentReference? get testPackRef;
 
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(TestedTestsRecordBuilder builder) => builder
     ..isVerified = false
@@ -127,11 +103,11 @@ abstract class TestedTestsRecord
 
   static Stream<TestedTestsRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   static Future<TestedTestsRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   TestedTestsRecord._();
   factory TestedTestsRecord([void Function(TestedTestsRecordBuilder) updates]) =
@@ -140,58 +116,64 @@ abstract class TestedTestsRecord
   static TestedTestsRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
 Map<String, dynamic> createTestedTestsRecordData({
-  DocumentReference testRef,
-  DocumentReference bookingRef,
-  bool isVerified,
-  bool isFlagged,
-  DocumentReference pathologistRef,
-  DateTime dateConducted,
-  bool resultsPositive,
-  bool sampleReleased,
-  DocumentReference bookedTestRef,
-  DocumentReference machineUsed,
-  DateTime flaggedDate,
-  DateTime dateSampleCollected,
-  String labRefNum,
-  String testNote,
-  String pathologistNote,
-  String testResult,
-  String flagNotes,
-  bool resultPosted,
-  DocumentReference staffReference,
-  DateTime verifiedDate,
-  String batchNum,
-  bool hasTestPack,
-  DocumentReference testPackRef,
-}) =>
-    serializers.toFirestore(
-        TestedTestsRecord.serializer,
-        TestedTestsRecord((t) => t
-          ..testRef = testRef
-          ..bookingRef = bookingRef
-          ..isVerified = isVerified
-          ..isFlagged = isFlagged
-          ..pathologistRef = pathologistRef
-          ..dateConducted = dateConducted
-          ..resultsPositive = resultsPositive
-          ..resultsAttachment = null
-          ..sampleReleased = sampleReleased
-          ..bookedTestRef = bookedTestRef
-          ..machineUsed = machineUsed
-          ..flaggedDate = flaggedDate
-          ..dateSampleCollected = dateSampleCollected
-          ..labRefNum = labRefNum
-          ..testNote = testNote
-          ..pathologistNote = pathologistNote
-          ..testResult = testResult
-          ..flagNotes = flagNotes
-          ..resultPosted = resultPosted
-          ..staffReference = staffReference
-          ..verifiedDate = verifiedDate
-          ..batchNum = batchNum
-          ..hasTestPack = hasTestPack
-          ..testPackRef = testPackRef));
+  DocumentReference? testRef,
+  DocumentReference? bookingRef,
+  bool? isVerified,
+  bool? isFlagged,
+  DocumentReference? pathologistRef,
+  DateTime? dateConducted,
+  bool? resultsPositive,
+  bool? sampleReleased,
+  DocumentReference? bookedTestRef,
+  DocumentReference? machineUsed,
+  DateTime? flaggedDate,
+  DateTime? dateSampleCollected,
+  String? labRefNum,
+  String? testNote,
+  String? pathologistNote,
+  String? testResult,
+  String? flagNotes,
+  bool? resultPosted,
+  DocumentReference? staffReference,
+  DateTime? verifiedDate,
+  String? batchNum,
+  bool? hasTestPack,
+  DocumentReference? testPackRef,
+}) {
+  final firestoreData = serializers.toFirestore(
+    TestedTestsRecord.serializer,
+    TestedTestsRecord(
+      (t) => t
+        ..testRef = testRef
+        ..bookingRef = bookingRef
+        ..isVerified = isVerified
+        ..isFlagged = isFlagged
+        ..pathologistRef = pathologistRef
+        ..dateConducted = dateConducted
+        ..resultsPositive = resultsPositive
+        ..resultsAttachment = null
+        ..sampleReleased = sampleReleased
+        ..bookedTestRef = bookedTestRef
+        ..machineUsed = machineUsed
+        ..flaggedDate = flaggedDate
+        ..dateSampleCollected = dateSampleCollected
+        ..labRefNum = labRefNum
+        ..testNote = testNote
+        ..pathologistNote = pathologistNote
+        ..testResult = testResult
+        ..flagNotes = flagNotes
+        ..resultPosted = resultPosted
+        ..staffReference = staffReference
+        ..verifiedDate = verifiedDate
+        ..batchNum = batchNum
+        ..hasTestPack = hasTestPack
+        ..testPackRef = testPackRef,
+    ),
+  );
+
+  return firestoreData;
+}

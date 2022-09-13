@@ -17,7 +17,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeWidget extends StatefulWidget {
-  const HomeWidget({Key key}) : super(key: key);
+  const HomeWidget({Key? key}) : super(key: key);
 
   @override
   _HomeWidgetState createState() => _HomeWidgetState();
@@ -70,7 +70,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
         child: StreamBuilder<UsersRecord>(
-          stream: UsersRecord.getDocument(currentUserReference),
+          stream: UsersRecord.getDocument(currentUserReference!),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
@@ -85,15 +85,15 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                 ),
               );
             }
-            final homeUsersRecord = snapshot.data;
+            final homeUsersRecord = snapshot.data!;
             return Scaffold(
               key: scaffoldKey,
               floatingActionButton: Visibility(
-                visible: !homeUsersRecord.isStaff,
+                visible: !homeUsersRecord.isStaff!,
                 child: FloatingActionButton.extended(
                   onPressed: () async {
                     setState(() => FFAppState().lastBookingPage = false);
-                    if (homeUsersRecord.hasCurrentBooking) {
+                    if (homeUsersRecord.hasCurrentBooking!) {
                       context.pushNamed(
                         'NewBooking',
                         queryParams: {
@@ -126,8 +126,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                     'Request a Test',
                     style: FlutterFlowTheme.of(context).bodyText1,
                   ),
-                ).animated(
-                    [animationsMap['floatingActionButtonOnPageLoadAnimation']]),
+                ).animated([
+                  animationsMap['floatingActionButtonOnPageLoadAnimation']!
+                ]),
               ),
               body: Container(
                 width: MediaQuery.of(context).size.width,
@@ -148,11 +149,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 colors: [
-                                  FlutterFlowTheme.of(context).secondaryColor,
-                                  FlutterFlowTheme.of(context)
-                                      .secondaryBackground
+                                  FlutterFlowTheme.of(context).secondaryText,
+                                  FlutterFlowTheme.of(context).secondaryColor
                                 ],
-                                stops: [0.4, 1],
+                                stops: [0.3, 0.6],
                                 begin: AlignmentDirectional(0, -1),
                                 end: AlignmentDirectional(0, 1),
                               ),
@@ -198,7 +198,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                               FlutterFlowTheme.of(context)
                                                   .primaryText
                                             ],
-                                            stops: [0.2, 1],
+                                            stops: [0.2, 0.5],
                                             begin: AlignmentDirectional(0, -1),
                                             end: AlignmentDirectional(0, 1),
                                           ),
@@ -259,7 +259,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                               stream: BookingsRecord
                                                                   .getDocument(
                                                                       homeUsersRecord
-                                                                          .currentBooking),
+                                                                          .currentBooking!),
                                                               builder: (context,
                                                                   snapshot) {
                                                                 // Customize what your widget looks like when it's loading.
@@ -283,12 +283,12 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 }
                                                                 final badgeBookingsRecord =
                                                                     snapshot
-                                                                        .data;
+                                                                        .data!;
                                                                 return Badge(
                                                                   badgeContent:
                                                                       Text(
                                                                     badgeBookingsRecord
-                                                                        .testsIncluded
+                                                                        .testsIncluded!
                                                                         .toList()
                                                                         .length
                                                                         .toString(),
@@ -304,7 +304,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                   ),
                                                                   showBadge:
                                                                       badgeBookingsRecord
-                                                                              .totalTests >
+                                                                              .totalTests! >
                                                                           0,
                                                                   shape:
                                                                       BadgeShape
@@ -427,7 +427,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                     .where(
                                                                         'last_message_time',
                                                                         isGreaterThan:
-                                                                            currentUserDocument?.lastLogin),
+                                                                            currentUserDocument!.lastLogin),
                                                                 singleRecord:
                                                                     true,
                                                               ),
@@ -455,7 +455,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 List<ChatsRecord>
                                                                     badgeChatsRecordList =
                                                                     snapshot
-                                                                        .data;
+                                                                        .data!;
                                                                 final badgeChatsRecord =
                                                                     badgeChatsRecordList
                                                                             .isNotEmpty
@@ -536,10 +536,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                       List<UsersRecord>
                                                                           iconButtonUsersRecordList =
                                                                           snapshot
-                                                                              .data;
+                                                                              .data!;
                                                                       // Return an empty Container when the document does not exist.
                                                                       if (snapshot
-                                                                          .data
+                                                                          .data!
                                                                           .isEmpty) {
                                                                         return Container();
                                                                       }
@@ -604,77 +604,84 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.end,
                                                 children: [
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0, 0),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0, 10, 10, 0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10,
-                                                                        0,
-                                                                        0,
-                                                                        0),
-                                                            child: AutoSizeText(
-                                                              'Welcome,',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .title1
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Montserrat',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                  ),
+                                                  Expanded(
+                                                    child: Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0, 0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(5, 10,
+                                                                    10, 0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          10,
+                                                                          0,
+                                                                          0,
+                                                                          0),
+                                                              child:
+                                                                  AutoSizeText(
+                                                                'Welcome,',
+                                                                maxLines: 1,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .title1
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Montserrat',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                      fontSize:
+                                                                          27,
+                                                                    ),
+                                                              ),
                                                             ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10,
-                                                                        0,
-                                                                        0,
-                                                                        0),
-                                                            child: AutoSizeText(
-                                                              homeUsersRecord
-                                                                  .firstName
-                                                                  .maybeHandleOverflow(
-                                                                      maxChars:
-                                                                          13),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .title2
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Montserrat',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                  ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          10,
+                                                                          0,
+                                                                          0,
+                                                                          0),
+                                                              child:
+                                                                  AutoSizeText(
+                                                                homeUsersRecord
+                                                                    .firstName!
+                                                                    .maybeHandleOverflow(
+                                                                        maxChars:
+                                                                            13),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .title2
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Montserrat',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                              ),
                                                             ),
-                                                          ),
-                                                        ],
+                                                          ],
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -718,7 +725,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                 fontFamily: 'Montserrat',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryText,
+                                                        .secondaryBackground,
                                               ),
                                         ),
                                       ),
@@ -922,6 +929,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Padding(
                                                         padding:
@@ -930,7 +940,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                     8, 0, 8, 0),
                                                         child: Row(
                                                           mainAxisSize:
-                                                              MainAxisSize.max,
+                                                              MainAxisSize.min,
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
                                                                   .start,
@@ -939,11 +949,54 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                   .center,
                                                           children: [
                                                             Container(
-                                                              height: 30,
                                                               decoration:
                                                                   BoxDecoration(),
-                                                              child: Text(
-                                                                'TESTS TODAY',
+                                                              child:
+                                                                  AutoSizeText(
+                                                                'TESTS',
+                                                                maxLines: 1,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .title2
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Montserrat',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                      fontSize:
+                                                                          20,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8, 0, 8, 0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Container(
+                                                              decoration:
+                                                                  BoxDecoration(),
+                                                              child:
+                                                                  AutoSizeText(
+                                                                'TODAY',
+                                                                maxLines: 1,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .title2
@@ -1025,7 +1078,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                     List<BookedTestsRecord>
                                                                         textBookedTestsRecordList =
                                                                         snapshot
-                                                                            .data;
+                                                                            .data!;
                                                                     return AutoSizeText(
                                                                       functions
                                                                           .checkNewTests(
@@ -1086,6 +1139,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                   child: Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Padding(
                                                         padding:
@@ -1095,8 +1151,39 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                         child: Container(
                                                           decoration:
                                                               BoxDecoration(),
-                                                          child: Text(
-                                                            'OUTSTANDING\nINVOICES',
+                                                          child: AutoSizeText(
+                                                            'OUTSTANDING',
+                                                            maxLines: 1,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .title2
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Montserrat',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8, 0, 8, 0),
+                                                        child: Container(
+                                                          decoration:
+                                                              BoxDecoration(),
+                                                          child: AutoSizeText(
+                                                            'INVOICES',
+                                                            textAlign:
+                                                                TextAlign.start,
+                                                            maxLines: 1,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .title2
@@ -1178,7 +1265,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                   List<InvoicesRecord>
                                                                       textInvoicesRecordList =
                                                                       snapshot
-                                                                          .data;
+                                                                          .data!;
                                                                   return Text(
                                                                     functions
                                                                         .returnInvoiceListSize(textInvoicesRecordList

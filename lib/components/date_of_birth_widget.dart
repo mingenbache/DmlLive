@@ -9,7 +9,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DateOfBirthWidget extends StatefulWidget {
-  const DateOfBirthWidget({Key key}) : super(key: key);
+  const DateOfBirthWidget({Key? key}) : super(key: key);
 
   @override
   _DateOfBirthWidgetState createState() => _DateOfBirthWidgetState();
@@ -17,7 +17,7 @@ class DateOfBirthWidget extends StatefulWidget {
 
 class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
     with TickerProviderStateMixin {
-  DateTime datePicked;
+  DateTime? datePicked;
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
       curve: Curves.bounceOut,
@@ -124,7 +124,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                     size: 30,
                                   ),
                                   onPressed: () async {
-                                    if (datePicked < getCurrentTimestamp) {
+                                    if (datePicked! < getCurrentTimestamp) {
                                       context.pop();
                                     }
                                   },
@@ -212,7 +212,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                   ),
                                 ),
                               ).animated([
-                                animationsMap['containerOnPageLoadAnimation']
+                                animationsMap['containerOnPageLoadAnimation']!
                               ]),
                             ],
                           ),
@@ -233,7 +233,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                       children: [
                         FFButtonWidget(
                           onPressed: () async {
-                            if (datePicked < getCurrentTimestamp) {
+                            if (datePicked! < getCurrentTimestamp) {
                               context.pop();
                             }
                           },

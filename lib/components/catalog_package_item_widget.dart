@@ -10,15 +10,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CatalogPackageItemWidget extends StatefulWidget {
   const CatalogPackageItemWidget({
-    Key key,
+    Key? key,
     this.package,
     this.index,
     this.listSize,
   }) : super(key: key);
 
-  final TestPackagesRecord package;
-  final int index;
-  final int listSize;
+  final TestPackagesRecord? package;
+  final int? index;
+  final int? listSize;
 
   @override
   _CatalogPackageItemWidgetState createState() =>
@@ -108,7 +108,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                         child: Text(
                                           functions
                                               .camelCase(
-                                                  widget.package.packageName)
+                                                  widget.package!.packageName)
                                               .maybeHandleOverflow(
                                                   maxChars: 25),
                                           style: TextStyle(
@@ -233,8 +233,8 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                                         6,
                                                                         4),
                                                             child: Text(
-                                                              widget.package
-                                                                  .category,
+                                                              widget.package!
+                                                                  .category!,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyText1
@@ -280,7 +280,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                           size: 20,
                                                         ),
                                                         Text(
-                                                          '${widget.package.durationResults?.toString()} Hrs',
+                                                          '${widget.package!.durationResults?.toString()} Hrs',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyText1
@@ -446,8 +446,9 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                                           0),
                                                               child: Text(
                                                                 formatNumber(
-                                                                  widget.package
-                                                                      .price,
+                                                                  widget
+                                                                      .package!
+                                                                      .price!,
                                                                   formatType:
                                                                       FormatType
                                                                           .decimal,

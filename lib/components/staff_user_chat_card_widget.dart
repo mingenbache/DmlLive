@@ -9,11 +9,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class StaffUserChatCardWidget extends StatefulWidget {
   const StaffUserChatCardWidget({
-    Key key,
+    Key? key,
     this.userRecord,
   }) : super(key: key);
 
-  final UsersRecord userRecord;
+  final UsersRecord? userRecord;
 
   @override
   _StaffUserChatCardWidgetState createState() =>
@@ -102,7 +102,7 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      '${functions.camelCase(widget.userRecord.firstName)} ${functions.camelCase(widget.userRecord.lastName)}',
+                                      '${functions.camelCase(widget.userRecord!.firstName)} ${functions.camelCase(widget.userRecord!.lastName)}',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
@@ -153,7 +153,7 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                           ),
                                         ),
                                         Text(
-                                          widget.userRecord.email,
+                                          widget.userRecord!.email!,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
@@ -217,7 +217,7 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(3, 0, 0, 0),
                                                   child: Text(
-                                                    widget.userRecord.role,
+                                                    widget.userRecord!.role!,
                                                     textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)

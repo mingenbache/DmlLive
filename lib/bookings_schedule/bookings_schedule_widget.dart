@@ -12,14 +12,14 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BookingsScheduleWidget extends StatefulWidget {
-  const BookingsScheduleWidget({Key key}) : super(key: key);
+  const BookingsScheduleWidget({Key? key}) : super(key: key);
 
   @override
   _BookingsScheduleWidgetState createState() => _BookingsScheduleWidgetState();
 }
 
 class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
-  DateTimeRange uICalendarSelectedDay;
+  DateTimeRange? uICalendarSelectedDay;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -52,8 +52,12 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Color(0xAF6CD7B7), Colors.white],
-                  stops: [0, 0.4],
+                  colors: [
+                    Color(0xAF6CD7B7),
+                    FlutterFlowTheme.of(context).secondaryBackground,
+                    FlutterFlowTheme.of(context).primaryText
+                  ],
+                  stops: [0, 0.4, 0.7],
                   begin: AlignmentDirectional(0, -1),
                   end: AlignmentDirectional(0, 1),
                 ),
@@ -187,7 +191,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                     }
                                     List<BookingsRecord>
                                         pastBookingsBookingsRecordList =
-                                        snapshot.data;
+                                        snapshot.data!;
                                     return Container(
                                       width: MediaQuery.of(context).size.width *
                                           0.9,
@@ -292,7 +296,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                 initialDate:
                                                     functions.returntheDay(
                                                         getCurrentTimestamp),
-                                                onChange: (DateTimeRange
+                                                onChange: (DateTimeRange?
                                                     newSelectedDate) {
                                                   setState(() =>
                                                       uICalendarSelectedDay =
@@ -449,7 +453,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                           }
                                           List<BookingsRecord>
                                               calendarBookingsBookingsRecordList =
-                                              snapshot.data;
+                                              snapshot.data!;
                                           return Container(
                                             width: MediaQuery.of(context)
                                                     .size
@@ -544,7 +548,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                     }
                                     List<BookingsRecord>
                                         unconfirmedBookingsBookingsRecordList =
-                                        snapshot.data;
+                                        snapshot.data!;
                                     return Container(
                                       width: MediaQuery.of(context).size.width *
                                           0.9,

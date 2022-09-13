@@ -13,15 +13,15 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TestQueueWidget extends StatefulWidget {
-  const TestQueueWidget({Key key}) : super(key: key);
+  const TestQueueWidget({Key? key}) : super(key: key);
 
   @override
   _TestQueueWidgetState createState() => _TestQueueWidgetState();
 }
 
 class _TestQueueWidgetState extends State<TestQueueWidget> {
-  DateTimeRange calendarSelectedDay;
-  TestedTestsRecord newTestedtest;
+  DateTimeRange? calendarSelectedDay;
+  TestedTestsRecord? newTestedtest;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -87,7 +87,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                 }
                 List<BookedTestsRecord>
                     calendarScheduleContainerBookedTestsRecordList =
-                    snapshot.data;
+                    snapshot.data!;
                 return Container(
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(),
@@ -114,7 +114,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                   FlutterFlowTheme.of(context).primaryColor,
                               weekFormat: true,
                               weekStartsMonday: false,
-                              onChange: (DateTimeRange newSelectedDate) {
+                              onChange: (DateTimeRange? newSelectedDate) {
                                 setState(() =>
                                     calendarSelectedDay = newSelectedDate);
                               },
@@ -229,7 +229,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                               }
                               List<TestedTestsRecord>
                                   scheduledTestsContainerTestedTestsRecordList =
-                                  snapshot.data;
+                                  snapshot.data!;
                               return Container(
                                 width: MediaQuery.of(context).size.width * 0.8,
                                 height:
@@ -286,7 +286,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                     }
                                                     List<TestedTestsRecord>
                                                         testQueueItemTestedTestsRecordList =
-                                                        snapshot.data;
+                                                        snapshot.data!;
                                                     final testQueueItemTestedTestsRecord =
                                                         testQueueItemTestedTestsRecordList
                                                                 .isNotEmpty
@@ -343,7 +343,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                           queryParams: {
                                                             'testedTestRef':
                                                                 serializeParam(
-                                                                    newTestedtest
+                                                                    newTestedtest!
                                                                         .reference,
                                                                     ParamType
                                                                         .DocumentReference),
@@ -379,7 +379,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                             stream: BookingsRecord
                                                                 .getDocument(
                                                                     bookedTestsItem
-                                                                        .bookingRef),
+                                                                        .bookingRef!),
                                                             builder: (context,
                                                                 snapshot) {
                                                               // Customize what your widget looks like when it's loading.
@@ -401,7 +401,8 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                 );
                                                               }
                                                               final columnBookingsRecord =
-                                                                  snapshot.data;
+                                                                  snapshot
+                                                                      .data!;
                                                               return Column(
                                                                 mainAxisSize:
                                                                     MainAxisSize
@@ -418,7 +419,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                         TestsRecord>(
                                                                       stream: TestsRecord.getDocument(
                                                                           bookedTestsItem
-                                                                              .testRef),
+                                                                              .testRef!),
                                                                       builder:
                                                                           (context,
                                                                               snapshot) {
@@ -438,7 +439,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                           );
                                                                         }
                                                                         final containerTestsRecord =
-                                                                            snapshot.data;
+                                                                            snapshot.data!;
                                                                         return Container(
                                                                           height:
                                                                               30,
@@ -456,7 +457,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
                                                                                 Text(
-                                                                                  containerTestsRecord.name,
+                                                                                  containerTestsRecord.name!,
                                                                                   style: FlutterFlowTheme.of(context).subtitle1,
                                                                                 ),
                                                                               ],
@@ -533,7 +534,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                             child: Padding(
                                                                                               padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                                               child: Text(
-                                                                                                columnBookingsRecord.labRefNum,
+                                                                                                columnBookingsRecord.labRefNum!,
                                                                                                 style: FlutterFlowTheme.of(context).bodyText2.override(
                                                                                                       fontFamily: 'Lexend Deca',
                                                                                                       color: Color(0xFF586B06),
@@ -587,7 +588,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                                   borderRadius: BorderRadius.circular(12),
                                                                                                 ),
                                                                                               ),
-                                                                                            if (!bookedTestsItem.sampleCollected)
+                                                                                            if (!bookedTestsItem.sampleCollected!)
                                                                                               FFButtonWidget(
                                                                                                 onPressed: () {
                                                                                                   print('ButtonNotCollected pressed ...');

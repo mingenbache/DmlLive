@@ -13,31 +13,31 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NewTestWidget extends StatefulWidget {
-  const NewTestWidget({Key key}) : super(key: key);
+  const NewTestWidget({Key? key}) : super(key: key);
 
   @override
   _NewTestWidgetState createState() => _NewTestWidgetState();
 }
 
 class _NewTestWidgetState extends State<NewTestWidget> {
-  TextEditingController resultsDurationTextController;
+  TextEditingController? resultsDurationTextController;
 
-  double durationResultsSliderValue;
+  double? durationResultsSliderValue;
 
-  TextEditingController testDescriptionController;
+  TextEditingController? testDescriptionController;
 
-  TextEditingController testNameController;
+  TextEditingController? testNameController;
 
-  String dropDownValue;
-  bool atHomeToggleValue;
+  String? dropDownValue;
+  bool? atHomeToggleValue;
 
-  TextEditingController testDurationTextController;
+  TextEditingController? testDurationTextController;
 
-  double testDurationSliderValue;
+  double? testDurationSliderValue;
 
-  TextEditingController testPriceController;
+  TextEditingController? testPriceController;
 
-  TestsRecord newTestId;
+  TestsRecord? newTestId;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -58,7 +58,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<UsersRecord>(
-      stream: UsersRecord.getDocument(currentUserReference),
+      stream: UsersRecord.getDocument(currentUserReference!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -73,7 +73,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
             ),
           );
         }
-        final newTestUsersRecord = snapshot.data;
+        final newTestUsersRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -226,7 +226,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                               contentPadding:
                                   EdgeInsetsDirectional.fromSTEB(5, 5, 0, 5),
                               suffixIcon:
-                                  testDescriptionController.text.isNotEmpty
+                                  testDescriptionController!.text.isNotEmpty
                                       ? InkWell(
                                           onTap: () async {
                                             testDescriptionController?.clear();
@@ -298,13 +298,13 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                 }
                                 List<CategoriesRecord>
                                     dropDownCategoriesRecordList =
-                                    snapshot.data;
+                                    snapshot.data!;
                                 final dropDownCategoriesRecord =
                                     dropDownCategoriesRecordList.isNotEmpty
                                         ? dropDownCategoriesRecordList.first
                                         : null;
                                 return FlutterFlowDropDown(
-                                  options: dropDownCategoriesRecord.categories
+                                  options: dropDownCategoriesRecord!.categories!
                                       .toList()
                                       .toList(),
                                   onChanged: (val) =>
@@ -656,7 +656,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                   min: 1,
                                   max: 120,
                                   value: durationResultsSliderValue ??=
-                                      testDurationSliderValue,
+                                      testDurationSliderValue!,
                                   label: durationResultsSliderValue.toString(),
                                   divisions: 119,
                                   onChanged: (newValue) {
@@ -793,14 +793,14 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                         child: FFButtonWidget(
                           onPressed: () async {
                             final testsCreateData = createTestsRecordData(
-                              price: int.parse(testPriceController.text),
-                              name: testNameController.text,
+                              price: int.parse(testPriceController!.text),
+                              name: testNameController!.text,
                               homeTest: atHomeToggleValue,
-                              description: testDescriptionController.text,
-                              duration:
-                                  double.parse(testDurationTextController.text),
+                              description: testDescriptionController!.text,
+                              duration: double.parse(
+                                  testDurationTextController!.text),
                               durationResults: double.parse(
-                                  resultsDurationTextController.text),
+                                  resultsDurationTextController!.text),
                               category: dropDownValue,
                               isAvailable: true,
                             );
@@ -813,7 +813,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                             context.pushNamed(
                               'Details',
                               queryParams: {
-                                'testId': serializeParam(newTestId.reference,
+                                'testId': serializeParam(newTestId!.reference,
                                     ParamType.DocumentReference),
                               }.withoutNulls,
                             );

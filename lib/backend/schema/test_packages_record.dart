@@ -11,48 +11,37 @@ abstract class TestPackagesRecord
   static Serializer<TestPackagesRecord> get serializer =>
       _$testPackagesRecordSerializer;
 
-  @nullable
   @BuiltValueField(wireName: 'PackageName')
-  String get packageName;
+  String? get packageName;
 
-  @nullable
   @BuiltValueField(wireName: 'Price')
-  int get price;
+  int? get price;
 
-  @nullable
   @BuiltValueField(wireName: 'TestsIncluded')
-  BuiltList<DocumentReference> get testsIncluded;
+  BuiltList<DocumentReference>? get testsIncluded;
 
-  @nullable
-  String get description;
+  String? get description;
 
-  @nullable
-  double get duration;
+  double? get duration;
 
-  @nullable
   @BuiltValueField(wireName: 'duration_results')
-  double get durationResults;
+  double? get durationResults;
 
-  @nullable
-  String get category;
+  String? get category;
 
-  @nullable
-  bool get atHome;
+  bool? get atHome;
 
-  @nullable
-  bool get isAvailable;
+  bool? get isAvailable;
 
-  @nullable
   @BuiltValueField(wireName: 'create_Staff')
-  DocumentReference get createStaff;
+  DocumentReference? get createStaff;
 
-  @nullable
   @BuiltValueField(wireName: 'create_date')
-  DateTime get createDate;
+  DateTime? get createDate;
 
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(TestPackagesRecordBuilder builder) => builder
     ..packageName = ''
@@ -70,11 +59,11 @@ abstract class TestPackagesRecord
 
   static Stream<TestPackagesRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   static Future<TestPackagesRecord> getDocumentOnce(DocumentReference ref) =>
       ref.get().then(
-          (s) => serializers.deserializeWith(serializer, serializedData(s)));
+          (s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   TestPackagesRecord._();
   factory TestPackagesRecord(
@@ -84,32 +73,38 @@ abstract class TestPackagesRecord
   static TestPackagesRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
 Map<String, dynamic> createTestPackagesRecordData({
-  String packageName,
-  int price,
-  String description,
-  double duration,
-  double durationResults,
-  String category,
-  bool atHome,
-  bool isAvailable,
-  DocumentReference createStaff,
-  DateTime createDate,
-}) =>
-    serializers.toFirestore(
-        TestPackagesRecord.serializer,
-        TestPackagesRecord((t) => t
-          ..packageName = packageName
-          ..price = price
-          ..testsIncluded = null
-          ..description = description
-          ..duration = duration
-          ..durationResults = durationResults
-          ..category = category
-          ..atHome = atHome
-          ..isAvailable = isAvailable
-          ..createStaff = createStaff
-          ..createDate = createDate));
+  String? packageName,
+  int? price,
+  String? description,
+  double? duration,
+  double? durationResults,
+  String? category,
+  bool? atHome,
+  bool? isAvailable,
+  DocumentReference? createStaff,
+  DateTime? createDate,
+}) {
+  final firestoreData = serializers.toFirestore(
+    TestPackagesRecord.serializer,
+    TestPackagesRecord(
+      (t) => t
+        ..packageName = packageName
+        ..price = price
+        ..testsIncluded = null
+        ..description = description
+        ..duration = duration
+        ..durationResults = durationResults
+        ..category = category
+        ..atHome = atHome
+        ..isAvailable = isAvailable
+        ..createStaff = createStaff
+        ..createDate = createDate,
+    ),
+  );
+
+  return firestoreData;
+}

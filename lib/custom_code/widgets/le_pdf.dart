@@ -25,10 +25,10 @@ class LePdf extends StatefulWidget {
     this.dMLInfo,
   }) : super(key: key);
 
-  final double width;
-  final double height;
-  final ReportsRecord report;
-  final DMLInfoRecord dMLInfo;
+  final double/*?*/ width;
+  final double/*?*/ height;
+  final ReportsRecord/*?*/ report;
+  final DMLInfoRecord/*?*/ dMLInfo;
 	//final image = (await rootBundle.load(dMLInfo.dMLLogo)).buffer.asUint8List();
   @override
   _LePdfState createState() => _LePdfState();

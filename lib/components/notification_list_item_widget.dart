@@ -13,11 +13,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class NotificationListItemWidget extends StatefulWidget {
   const NotificationListItemWidget({
-    Key key,
+    Key? key,
     this.notificationRef,
   }) : super(key: key);
 
-  final NotificationsRecord notificationRef;
+  final NotificationsRecord? notificationRef;
 
   @override
   _NotificationListItemWidgetState createState() =>
@@ -32,7 +32,7 @@ class _NotificationListItemWidgetState
       alignment: AlignmentDirectional(0, 0),
       child: StreamBuilder<NotificationsRecord>(
         stream:
-            NotificationsRecord.getDocument(widget.notificationRef.reference),
+            NotificationsRecord.getDocument(widget.notificationRef!.reference),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -47,7 +47,7 @@ class _NotificationListItemWidgetState
               ),
             );
           }
-          final stackNotificationsRecord = snapshot.data;
+          final stackNotificationsRecord = snapshot.data!;
           return Container(
             width: MediaQuery.of(context).size.width * 0.9,
             height: 30,
@@ -73,83 +73,87 @@ class _NotificationListItemWidgetState
                       ),
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).primaryBackground,
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              constraints: BoxConstraints(
-                                maxWidth: 280,
-                              ),
-                              decoration: BoxDecoration(),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                      child: Align(
+                        alignment: AlignmentDirectional(0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                constraints: BoxConstraints(
+                                  maxWidth: 280,
+                                ),
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef!.message!,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Montserrat',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2, 0, 2, 0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30,
-                                    borderWidth: 1,
-                                    buttonSize: 35,
-                                    icon: Icon(
-                                      Icons.highlight_off_sharp,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 17,
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        2, 0, 2, 0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30,
+                                      borderWidth: 1,
+                                      buttonSize: 35,
+                                      icon: Icon(
+                                        Icons.highlight_off_sharp,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 17,
+                                      ),
+                                      onPressed: () async {
+                                        final notificationsUpdateData = {
+                                          'usersSeen': FieldValue.arrayUnion(
+                                              [currentUserReference]),
+                                        };
+                                        await widget.notificationRef!.reference
+                                            .update(notificationsUpdateData);
+                                      },
                                     ),
-                                    onPressed: () async {
-                                      final notificationsUpdateData = {
-                                        'usersSeen': FieldValue.arrayUnion(
-                                            [currentUserReference]),
-                                      };
-                                      await widget.notificationRef.reference
-                                          .update(notificationsUpdateData);
-                                    },
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -174,83 +178,87 @@ class _NotificationListItemWidgetState
                       ),
                       decoration: BoxDecoration(
                         color: Color(0xFFEEEEEE),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              constraints: BoxConstraints(
-                                maxWidth: 280,
-                              ),
-                              decoration: BoxDecoration(),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                      child: Align(
+                        alignment: AlignmentDirectional(0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                constraints: BoxConstraints(
+                                  maxWidth: 280,
+                                ),
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef!.message!,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Montserrat',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2, 0, 2, 0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30,
-                                    borderWidth: 1,
-                                    buttonSize: 35,
-                                    icon: Icon(
-                                      Icons.highlight_off_sharp,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 17,
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        2, 0, 2, 0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30,
+                                      borderWidth: 1,
+                                      buttonSize: 35,
+                                      icon: Icon(
+                                        Icons.highlight_off_sharp,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 17,
+                                      ),
+                                      onPressed: () async {
+                                        final notificationsUpdateData = {
+                                          'usersSeen': FieldValue.arrayUnion(
+                                              [currentUserReference]),
+                                        };
+                                        await widget.notificationRef!.reference
+                                            .update(notificationsUpdateData);
+                                      },
                                     ),
-                                    onPressed: () async {
-                                      final notificationsUpdateData = {
-                                        'usersSeen': FieldValue.arrayUnion(
-                                            [currentUserReference]),
-                                      };
-                                      await widget.notificationRef.reference
-                                          .update(notificationsUpdateData);
-                                    },
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -280,90 +288,94 @@ class _NotificationListItemWidgetState
                       ),
                       decoration: BoxDecoration(
                         color: Color(0xFFEEEEEE),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              constraints: BoxConstraints(
-                                maxWidth: 280,
-                              ),
-                              decoration: BoxDecoration(),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                      child: Align(
+                        alignment: AlignmentDirectional(0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                constraints: BoxConstraints(
+                                  maxWidth: 280,
+                                ),
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef!.message!,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Montserrat',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2, 0, 2, 0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30,
-                                    borderWidth: 1,
-                                    buttonSize: 35,
-                                    icon: Icon(
-                                      Icons.highlight_off_sharp,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 17,
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        2, 0, 2, 0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30,
+                                      borderWidth: 1,
+                                      buttonSize: 35,
+                                      icon: Icon(
+                                        Icons.highlight_off_sharp,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 17,
+                                      ),
+                                      onPressed: () async {
+                                        final notificationsUpdateData = {
+                                          'usersSeen': FieldValue.arrayUnion(
+                                              [currentUserReference]),
+                                        };
+                                        await widget.notificationRef!.reference
+                                            .update(notificationsUpdateData);
+                                      },
                                     ),
-                                    onPressed: () async {
-                                      final notificationsUpdateData = {
-                                        'usersSeen': FieldValue.arrayUnion(
-                                            [currentUserReference]),
-                                      };
-                                      await widget.notificationRef.reference
-                                          .update(notificationsUpdateData);
-                                    },
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 if (stackNotificationsRecord.type == 'newtest')
                   StreamBuilder<TestsRecord>(
                     stream: TestsRecord.getDocument(
-                        stackNotificationsRecord.testref),
+                        stackNotificationsRecord.testref!),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -378,7 +390,7 @@ class _NotificationListItemWidgetState
                           ),
                         );
                       }
-                      final containernewTestTestsRecord = snapshot.data;
+                      final containernewTestTestsRecord = snapshot.data!;
                       return InkWell(
                         onTap: () async {
                           await showModalBottomSheet(
@@ -404,85 +416,93 @@ class _NotificationListItemWidgetState
                           ),
                           decoration: BoxDecoration(
                             color: Color(0xFFEEEEEE),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(12),
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  constraints: BoxConstraints(
-                                    maxWidth: 280,
-                                  ),
-                                  decoration: BoxDecoration(),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5, 0, 0, 0),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5, 5, 5, 5),
-                                            child: Text(
-                                              widget.notificationRef.message,
-                                              maxLines: 1,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Montserrat',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
+                          child: Align(
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    constraints: BoxConstraints(
+                                      maxWidth: 280,
+                                    ),
+                                    decoration: BoxDecoration(),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5, 0, 0, 0),
+                                      child: SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5, 5, 5, 5),
+                                              child: Text(
+                                                widget
+                                                    .notificationRef!.message!,
+                                                maxLines: 1,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          2, 0, 2, 0),
-                                      child: FlutterFlowIconButton(
-                                        borderColor: Colors.transparent,
-                                        borderRadius: 30,
-                                        borderWidth: 1,
-                                        buttonSize: 35,
-                                        icon: Icon(
-                                          Icons.highlight_off_sharp,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 17,
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            2, 0, 2, 0),
+                                        child: FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 30,
+                                          borderWidth: 1,
+                                          buttonSize: 35,
+                                          icon: Icon(
+                                            Icons.highlight_off_sharp,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 17,
+                                          ),
+                                          onPressed: () async {
+                                            final notificationsUpdateData = {
+                                              'usersSeen':
+                                                  FieldValue.arrayUnion(
+                                                      [currentUserReference]),
+                                            };
+                                            await widget
+                                                .notificationRef!.reference
+                                                .update(
+                                                    notificationsUpdateData);
+                                          },
                                         ),
-                                        onPressed: () async {
-                                          final notificationsUpdateData = {
-                                            'usersSeen': FieldValue.arrayUnion(
-                                                [currentUserReference]),
-                                          };
-                                          await widget.notificationRef.reference
-                                              .update(notificationsUpdateData);
-                                        },
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );
@@ -491,7 +511,7 @@ class _NotificationListItemWidgetState
                 if (stackNotificationsRecord.type == 'newtestpackage')
                   StreamBuilder<TestPackagesRecord>(
                     stream: TestPackagesRecord.getDocument(
-                        stackNotificationsRecord.testpackageref),
+                        stackNotificationsRecord.testpackageref!),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -507,7 +527,7 @@ class _NotificationListItemWidgetState
                         );
                       }
                       final containernewTestPackageTestPackagesRecord =
-                          snapshot.data;
+                          snapshot.data!;
                       return InkWell(
                         onTap: () async {
                           await showModalBottomSheet(
@@ -534,85 +554,93 @@ class _NotificationListItemWidgetState
                           ),
                           decoration: BoxDecoration(
                             color: Color(0xFFEEEEEE),
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(12),
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  constraints: BoxConstraints(
-                                    maxWidth: 280,
-                                  ),
-                                  decoration: BoxDecoration(),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5, 0, 0, 0),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5, 5, 5, 5),
-                                            child: Text(
-                                              widget.notificationRef.message,
-                                              maxLines: 1,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Montserrat',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
+                          child: Align(
+                            alignment: AlignmentDirectional(0, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    constraints: BoxConstraints(
+                                      maxWidth: 280,
+                                    ),
+                                    decoration: BoxDecoration(),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5, 0, 0, 0),
+                                      child: SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5, 5, 5, 5),
+                                              child: Text(
+                                                widget
+                                                    .notificationRef!.message!,
+                                                maxLines: 1,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          2, 0, 2, 0),
-                                      child: FlutterFlowIconButton(
-                                        borderColor: Colors.transparent,
-                                        borderRadius: 30,
-                                        borderWidth: 1,
-                                        buttonSize: 35,
-                                        icon: Icon(
-                                          Icons.highlight_off_sharp,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 17,
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            2, 0, 2, 0),
+                                        child: FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 30,
+                                          borderWidth: 1,
+                                          buttonSize: 35,
+                                          icon: Icon(
+                                            Icons.highlight_off_sharp,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 17,
+                                          ),
+                                          onPressed: () async {
+                                            final notificationsUpdateData = {
+                                              'usersSeen':
+                                                  FieldValue.arrayUnion(
+                                                      [currentUserReference]),
+                                            };
+                                            await widget
+                                                .notificationRef!.reference
+                                                .update(
+                                                    notificationsUpdateData);
+                                          },
                                         ),
-                                        onPressed: () async {
-                                          final notificationsUpdateData = {
-                                            'usersSeen': FieldValue.arrayUnion(
-                                                [currentUserReference]),
-                                          };
-                                          await widget.notificationRef.reference
-                                              .update(notificationsUpdateData);
-                                        },
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );
@@ -639,83 +667,87 @@ class _NotificationListItemWidgetState
                       ),
                       decoration: BoxDecoration(
                         color: Color(0xFFEEEEEE),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              constraints: BoxConstraints(
-                                maxWidth: 280,
-                              ),
-                              decoration: BoxDecoration(),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                      child: Align(
+                        alignment: AlignmentDirectional(0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                constraints: BoxConstraints(
+                                  maxWidth: 280,
+                                ),
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef!.message!,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Montserrat',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2, 0, 2, 0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30,
-                                    borderWidth: 1,
-                                    buttonSize: 35,
-                                    icon: Icon(
-                                      Icons.highlight_off_sharp,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 17,
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        2, 0, 2, 0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30,
+                                      borderWidth: 1,
+                                      buttonSize: 35,
+                                      icon: Icon(
+                                        Icons.highlight_off_sharp,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 17,
+                                      ),
+                                      onPressed: () async {
+                                        final notificationsUpdateData = {
+                                          'usersSeen': FieldValue.arrayUnion(
+                                              [currentUserReference]),
+                                        };
+                                        await widget.notificationRef!.reference
+                                            .update(notificationsUpdateData);
+                                      },
                                     ),
-                                    onPressed: () async {
-                                      final notificationsUpdateData = {
-                                        'usersSeen': FieldValue.arrayUnion(
-                                            [currentUserReference]),
-                                      };
-                                      await widget.notificationRef.reference
-                                          .update(notificationsUpdateData);
-                                    },
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -740,83 +772,87 @@ class _NotificationListItemWidgetState
                       ),
                       decoration: BoxDecoration(
                         color: Color(0xFFEEEEEE),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              constraints: BoxConstraints(
-                                maxWidth: 280,
-                              ),
-                              decoration: BoxDecoration(),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                      child: Align(
+                        alignment: AlignmentDirectional(0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                constraints: BoxConstraints(
+                                  maxWidth: 280,
+                                ),
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef!.message!,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Montserrat',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2, 0, 2, 0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30,
-                                    borderWidth: 1,
-                                    buttonSize: 35,
-                                    icon: Icon(
-                                      Icons.highlight_off_sharp,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 17,
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        2, 0, 2, 0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30,
+                                      borderWidth: 1,
+                                      buttonSize: 35,
+                                      icon: Icon(
+                                        Icons.highlight_off_sharp,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 17,
+                                      ),
+                                      onPressed: () async {
+                                        final notificationsUpdateData = {
+                                          'usersSeen': FieldValue.arrayUnion(
+                                              [currentUserReference]),
+                                        };
+                                        await widget.notificationRef!.reference
+                                            .update(notificationsUpdateData);
+                                      },
                                     ),
-                                    onPressed: () async {
-                                      final notificationsUpdateData = {
-                                        'usersSeen': FieldValue.arrayUnion(
-                                            [currentUserReference]),
-                                      };
-                                      await widget.notificationRef.reference
-                                          .update(notificationsUpdateData);
-                                    },
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -841,83 +877,87 @@ class _NotificationListItemWidgetState
                       ),
                       decoration: BoxDecoration(
                         color: Color(0xFFEEEEEE),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              constraints: BoxConstraints(
-                                maxWidth: 280,
-                              ),
-                              decoration: BoxDecoration(),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                      child: Align(
+                        alignment: AlignmentDirectional(0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                constraints: BoxConstraints(
+                                  maxWidth: 280,
+                                ),
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef!.message!,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Montserrat',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2, 0, 2, 0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30,
-                                    borderWidth: 1,
-                                    buttonSize: 35,
-                                    icon: Icon(
-                                      Icons.highlight_off_sharp,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 17,
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        2, 0, 2, 0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30,
+                                      borderWidth: 1,
+                                      buttonSize: 35,
+                                      icon: Icon(
+                                        Icons.highlight_off_sharp,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 17,
+                                      ),
+                                      onPressed: () async {
+                                        final notificationsUpdateData = {
+                                          'usersSeen': FieldValue.arrayUnion(
+                                              [currentUserReference]),
+                                        };
+                                        await widget.notificationRef!.reference
+                                            .update(notificationsUpdateData);
+                                      },
                                     ),
-                                    onPressed: () async {
-                                      final notificationsUpdateData = {
-                                        'usersSeen': FieldValue.arrayUnion(
-                                            [currentUserReference]),
-                                      };
-                                      await widget.notificationRef.reference
-                                          .update(notificationsUpdateData);
-                                    },
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -942,83 +982,87 @@ class _NotificationListItemWidgetState
                       ),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              constraints: BoxConstraints(
-                                maxWidth: 280,
-                              ),
-                              decoration: BoxDecoration(),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                      child: Align(
+                        alignment: AlignmentDirectional(0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                constraints: BoxConstraints(
+                                  maxWidth: 280,
+                                ),
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef!.message!,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Montserrat',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2, 0, 2, 0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30,
-                                    borderWidth: 1,
-                                    buttonSize: 35,
-                                    icon: Icon(
-                                      Icons.highlight_off_sharp,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 17,
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        2, 0, 2, 0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30,
+                                      borderWidth: 1,
+                                      buttonSize: 35,
+                                      icon: Icon(
+                                        Icons.highlight_off_sharp,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 17,
+                                      ),
+                                      onPressed: () async {
+                                        final notificationsUpdateData = {
+                                          'usersSeen': FieldValue.arrayUnion(
+                                              [currentUserReference]),
+                                        };
+                                        await widget.notificationRef!.reference
+                                            .update(notificationsUpdateData);
+                                      },
                                     ),
-                                    onPressed: () async {
-                                      final notificationsUpdateData = {
-                                        'usersSeen': FieldValue.arrayUnion(
-                                            [currentUserReference]),
-                                      };
-                                      await widget.notificationRef.reference
-                                          .update(notificationsUpdateData);
-                                    },
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -1043,83 +1087,87 @@ class _NotificationListItemWidgetState
                       ),
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              constraints: BoxConstraints(
-                                maxWidth: 280,
-                              ),
-                              decoration: BoxDecoration(),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 5, 5, 5),
-                                        child: Text(
-                                          widget.notificationRef.message,
-                                          maxLines: 1,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1
-                                              .override(
-                                                fontFamily: 'Open Sans',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                fontWeight: FontWeight.w600,
-                                              ),
+                      child: Align(
+                        alignment: AlignmentDirectional(0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                constraints: BoxConstraints(
+                                  maxWidth: 280,
+                                ),
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 0, 0),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5, 5, 5, 5),
+                                          child: Text(
+                                            widget.notificationRef!.message!,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Lato',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      2, 0, 2, 0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30,
-                                    borderWidth: 1,
-                                    buttonSize: 35,
-                                    icon: Icon(
-                                      Icons.highlight_off_sharp,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 17,
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        2, 0, 2, 0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30,
+                                      borderWidth: 1,
+                                      buttonSize: 35,
+                                      icon: Icon(
+                                        Icons.highlight_off_sharp,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 17,
+                                      ),
+                                      onPressed: () async {
+                                        final notificationsUpdateData = {
+                                          'usersSeen': FieldValue.arrayUnion(
+                                              [currentUserReference]),
+                                        };
+                                        await widget.notificationRef!.reference
+                                            .update(notificationsUpdateData);
+                                      },
                                     ),
-                                    onPressed: () async {
-                                      final notificationsUpdateData = {
-                                        'usersSeen': FieldValue.arrayUnion(
-                                            [currentUserReference]),
-                                      };
-                                      await widget.notificationRef.reference
-                                          .update(notificationsUpdateData);
-                                    },
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

@@ -16,7 +16,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeAdminWidget extends StatefulWidget {
-  const HomeAdminWidget({Key key}) : super(key: key);
+  const HomeAdminWidget({Key? key}) : super(key: key);
 
   @override
   _HomeAdminWidgetState createState() => _HomeAdminWidgetState();
@@ -57,7 +57,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
               );
             }
             List<TestedTestsRecord> homeAdminTestedTestsRecordList =
-                snapshot.data;
+                snapshot.data!;
             return Scaffold(
               key: scaffoldKey,
               body: Container(
@@ -392,7 +392,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                     }
                                     List<TestedTestsRecord>
                                         containerTestedTestsRecordList =
-                                        snapshot.data;
+                                        snapshot.data!;
                                     return Container(
                                       width: MediaQuery.of(context).size.width,
                                       height: 150,
@@ -555,7 +555,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                     }
                                                     List<BookedTestsRecord>
                                                         textBookedTestsRecordList =
-                                                        snapshot.data;
+                                                        snapshot.data!;
                                                     return Text(
                                                       valueOrDefault<String>(
                                                         functions
@@ -682,7 +682,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                     }
                                                     List<BookedTestsRecord>
                                                         textBookedTestsRecordList =
-                                                        snapshot.data;
+                                                        snapshot.data!;
                                                     return Text(
                                                       valueOrDefault<String>(
                                                         functions
@@ -758,6 +758,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
                                       children: [
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -790,8 +792,26 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   3, 3, 3, 3),
                                           child: AutoSizeText(
-                                            'REPORTS\nDUE',
+                                            'REPORTS',
                                             textAlign: TextAlign.end,
+                                            maxLines: 1,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Montserrat',
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  3, 3, 3, 3),
+                                          child: AutoSizeText(
+                                            'DUE',
+                                            textAlign: TextAlign.end,
+                                            maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
@@ -875,7 +895,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                       }
                                                       List<TestedTestsRecord>
                                                           textTestedTestsRecordList =
-                                                          snapshot.data;
+                                                          snapshot.data!;
                                                       return Text(
                                                         '0',
                                                         style:

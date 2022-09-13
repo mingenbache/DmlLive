@@ -11,13 +11,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ClientUserCard2Widget extends StatefulWidget {
   const ClientUserCard2Widget({
-    Key key,
+    Key? key,
     this.userRecord,
     this.index,
   }) : super(key: key);
 
-  final UsersRecord userRecord;
-  final int index;
+  final UsersRecord? userRecord;
+  final int? index;
 
   @override
   _ClientUserCard2WidgetState createState() => _ClientUserCard2WidgetState();
@@ -56,7 +56,7 @@ class _ClientUserCard2WidgetState extends State<ClientUserCard2Widget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            widget.index
+                            widget.index!
                                 .toString()
                                 .maybeHandleOverflow(maxChars: 2),
                             textAlign: TextAlign.center,
@@ -129,7 +129,7 @@ class _ClientUserCard2WidgetState extends State<ClientUserCard2Widget> {
                       return Padding(
                         padding: MediaQuery.of(context).viewInsets,
                         child: UserActivityWidget(
-                          userRef: widget.userRecord.reference,
+                          userRef: widget.userRecord!.reference,
                         ),
                       );
                     },
@@ -175,7 +175,7 @@ class _ClientUserCard2WidgetState extends State<ClientUserCard2Widget> {
                                 size: 25,
                               ),
                               Text(
-                                '${functions.camelCase(widget.userRecord.firstName)} ${functions.camelCase(widget.userRecord.lastName)}',
+                                '${functions.camelCase(widget.userRecord!.firstName)} ${functions.camelCase(widget.userRecord!.lastName)}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
@@ -251,7 +251,7 @@ class _ClientUserCard2WidgetState extends State<ClientUserCard2Widget> {
                                     ),
                                   ),
                                   Text(
-                                    widget.userRecord.email,
+                                    widget.userRecord!.email!,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
@@ -287,7 +287,7 @@ class _ClientUserCard2WidgetState extends State<ClientUserCard2Widget> {
                                     ),
                                   ),
                                   Text(
-                                    widget.userRecord.phoneNumber,
+                                    widget.userRecord!.phoneNumber!,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
@@ -331,7 +331,7 @@ class _ClientUserCard2WidgetState extends State<ClientUserCard2Widget> {
                                         decoration: BoxDecoration(),
                                         child: Text(
                                           dateTimeFormat('d/M/y',
-                                              widget.userRecord.createdTime),
+                                              widget.userRecord!.createdTime!),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
@@ -368,7 +368,7 @@ class _ClientUserCard2WidgetState extends State<ClientUserCard2Widget> {
                                         decoration: BoxDecoration(),
                                         child: Text(
                                           dateTimeFormat('d/M/y',
-                                              widget.userRecord.lastLogin),
+                                              widget.userRecord!.lastLogin!),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(

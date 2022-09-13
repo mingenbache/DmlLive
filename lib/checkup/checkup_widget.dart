@@ -10,7 +10,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CheckupWidget extends StatefulWidget {
-  const CheckupWidget({Key key}) : super(key: key);
+  const CheckupWidget({Key? key}) : super(key: key);
 
   @override
   _CheckupWidgetState createState() => _CheckupWidgetState();

@@ -7,16 +7,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SettingsWidget extends StatefulWidget {
-  const SettingsWidget({Key key}) : super(key: key);
+  const SettingsWidget({Key? key}) : super(key: key);
 
   @override
   _SettingsWidgetState createState() => _SettingsWidgetState();
 }
 
 class _SettingsWidgetState extends State<SettingsWidget> {
-  bool switchListTileValue1;
-  bool switchListTileValue2;
-  bool switchListTileValue3;
+  bool? switchListTileValue1;
+  bool? switchListTileValue2;
+  bool? switchListTileValue3;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
