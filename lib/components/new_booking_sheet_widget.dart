@@ -1230,6 +1230,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                               .returnDOBLoader(newbookingRef, isPatientValue));
                           setState(() => FFAppState().selectedDate =
                               functions.getNextWeekday());
+                          Navigator.pop(context);
 
                           context.goNamed(
                             'NewBooking',
