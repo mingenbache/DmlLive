@@ -117,7 +117,13 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                             if (filterAdminNotifications
                                                 .isEmpty) {
                                               return Center(
-                                                child: EmptyListWidget(),
+                                                child: Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.4,
+                                                  child: EmptyListWidget(),
+                                                ),
                                               );
                                             }
                                             return ListView.builder(

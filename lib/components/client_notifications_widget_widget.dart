@@ -82,7 +82,11 @@ class _ClientNotificationsWidgetWidgetState
                                   .toList();
                               if (unseenNotifications.isEmpty) {
                                 return Center(
-                                  child: EmptyListWidget(),
+                                  child: Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.5,
+                                    child: EmptyListWidget(),
+                                  ),
                                 );
                               }
                               return ListView.builder(
