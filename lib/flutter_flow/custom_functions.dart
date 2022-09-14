@@ -176,7 +176,7 @@ DateTime getNextWeekday() {
   return nextWeekDate;
 }
 
-DateTime returnDOB(
+DateTime? returnDOB(
   BookingsRecord? booking,
   DateTime? statedateofbirth,
   bool? dobEntered,
@@ -192,8 +192,6 @@ DateTime returnDOB(
     //check if the user is not the patient but has entered the dob
     if (!isPatient && dobEntered!) {
       date = statedateofbirth;
-    } else {
-      date = null;
     }
   }
   return date!;
