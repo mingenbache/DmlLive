@@ -450,9 +450,8 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                                         BoxDecoration(),
                                                                     child:
                                                                         ClientUserCardWidget(
-                                                                      index: functions
-                                                                          .add1(
-                                                                              clientsIndex),
+                                                                      index:
+                                                                          clientsIndex,
                                                                       userRecord:
                                                                           clientsItem,
                                                                     ),
