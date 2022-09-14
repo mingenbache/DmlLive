@@ -144,7 +144,17 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                         );
                                       },
                                     );
+                                  } else {
+                                    context.pushNamed(
+                                      'NewBooking',
+                                      queryParams: {
+                                        'bookingRef': serializeParam(
+                                            rowActionsBookingsRecord!.reference,
+                                            ParamType.DocumentReference),
+                                      }.withoutNulls,
+                                    );
                                   }
+
                                   setState(() =>
                                       FFAppState().lastBookingPage = false);
                                   if (containerUsersRecord.hasCurrentBooking!) {
