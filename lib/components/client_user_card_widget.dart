@@ -356,10 +356,13 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                                 width: 75,
                                                 decoration: BoxDecoration(),
                                                 child: Text(
-                                                  dateTimeFormat(
-                                                      'd/M/y',
-                                                      widget.userRecord!
-                                                          .lastLogin!),
+                                                  valueOrDefault<String>(
+                                                    dateTimeFormat(
+                                                        'd/M/y',
+                                                        widget.userRecord!
+                                                            .lastLogin),
+                                                    'n/a',
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
