@@ -1,5 +1,4 @@
 import '../backend/backend.dart';
-import '../components/booking_update_widget.dart';
 import '../components/date_widget_small_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -63,18 +62,12 @@ class _UnconfirmedBookingWidgetWidgetState
       alignment: AlignmentDirectional(0, 0),
       child: InkWell(
         onTap: () async {
-          await showModalBottomSheet(
-            isScrollControlled: true,
-            backgroundColor: Colors.transparent,
-            context: context,
-            builder: (context) {
-              return Padding(
-                padding: MediaQuery.of(context).viewInsets,
-                child: BookingUpdateWidget(
-                  bookingRef: widget.bookingRef,
-                ),
-              );
-            },
+          context.pushNamed(
+            'BookingConfirmation',
+            queryParams: {
+              'bookingRef': serializeParam(
+                  widget.bookingRef!.reference, ParamType.DocumentReference),
+            }.withoutNulls,
           );
         },
         child: Material(

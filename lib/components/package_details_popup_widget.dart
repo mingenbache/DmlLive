@@ -147,7 +147,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                           size: 30,
                                         ),
                                         onPressed: () async {
-                                          context.pop();
+                                          Navigator.pop(context);
                                         },
                                       ),
                                     ),

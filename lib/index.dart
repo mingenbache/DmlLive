@@ -27,8 +27,6 @@ export 'tested_tests_copy/tested_tests_copy_widget.dart'
 export 'chat/chat_widget.dart' show ChatWidget;
 export 'technologist_test_deck/technologist_test_deck_widget.dart'
     show TechnologistTestDeckWidget;
-export 'booking_invoicing/booking_invoicing_widget.dart'
-    show BookingInvoicingWidget;
 export 'booking_report/booking_report_widget.dart' show BookingReportWidget;
 export 'my_payments/my_payments_widget.dart' show MyPaymentsWidget;
 export 'new_booking/new_booking_widget.dart' show NewBookingWidget;
@@ -43,3 +41,5 @@ export 'booking_confirmation/booking_confirmation_widget.dart'
 export 'messages/messages_widget.dart' show MessagesWidget;
 export 'home_copy/home_copy_widget.dart' show HomeCopyWidget;
 export 'home_admin_copy/home_admin_copy_widget.dart' show HomeAdminCopyWidget;
+export 'booking_invoicing/booking_invoicing_widget.dart'
+    show BookingInvoicingWidget;

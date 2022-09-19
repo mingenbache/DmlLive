@@ -247,14 +247,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'BookingInvoicing',
-              path: 'bookingInvoicing',
-              builder: (context, params) => BookingInvoicingWidget(
-                bookingRef: params.getParam(
-                    'bookingRef', ParamType.DocumentReference, 'bookings'),
-              ),
-            ),
-            FFRoute(
               name: 'BookingReport',
               path: 'bookingReport',
               builder: (context, params) => BookingReportWidget(
@@ -322,6 +314,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'HomeAdminCopy',
               path: 'homeAdminCopy',
               builder: (context, params) => HomeAdminCopyWidget(),
+            ),
+            FFRoute(
+              name: 'BookingInvoicing',
+              path: 'bookingInvoicing',
+              builder: (context, params) => BookingInvoicingWidget(
+                bookingRef: params.getParam(
+                    'bookingRef', ParamType.DocumentReference, 'bookings'),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

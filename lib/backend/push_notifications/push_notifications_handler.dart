@@ -129,9 +129,6 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
         bookedTest: await getDocumentParameter(
             data, 'bookedTest', BookedTestsRecord.serializer),
       ),
-  'BookingInvoicing': (data) async => BookingInvoicingWidget(
-        bookingRef: getParameter(data, 'bookingRef'),
-      ),
   'BookingReport': (data) async => BookingReportWidget(
         reportRef: getParameter(data, 'reportRef'),
       ),
@@ -150,6 +147,9 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'Messages': (data) async => MessagesWidget(),
   'HomeCopy': (data) async => HomeCopyWidget(),
   'HomeAdminCopy': (data) async => HomeAdminCopyWidget(),
+  'BookingInvoicing': (data) async => BookingInvoicingWidget(
+        bookingRef: getParameter(data, 'bookingRef'),
+      ),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>

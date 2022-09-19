@@ -126,7 +126,7 @@
         },
         {
           "fieldPath": "created_date",
-          "order": "ASCENDING"
+          "order": "DESCENDING"
         }
       ]
     },
