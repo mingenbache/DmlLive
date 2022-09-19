@@ -268,7 +268,7 @@ String dobButtonString(
   return dobString;
 }
 
-String scheduleButtonString(
+String? scheduleButtonString(
   DateTime? scheduleDate,
   DateTime? nextWeekday,
 ) {

@@ -75,7 +75,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 0.4,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                    color: FlutterFlowTheme.of(context).secondaryColor,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(16),
                       bottomRight: Radius.circular(16),
@@ -97,7 +97,8 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                               style:
                                   FlutterFlowTheme.of(context).title2.override(
                                         fontFamily: 'Montserrat',
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         fontSize: 32,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -117,6 +118,8 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                   borderColor: Colors.transparent,
                                   borderRadius: 30,
                                   buttonSize: 48,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   icon: Icon(
                                     Icons.close_rounded,
                                     color: FlutterFlowTheme.of(context)
@@ -142,7 +145,8 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                   .bodyText1
                                   .override(
                                     fontFamily: 'Montserrat',
-                                    color: Color(0xFF586B06),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                   ),
                             ),
                           ],
@@ -186,7 +190,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                     ),
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondaryText,
                                       borderRadius: BorderRadius.circular(15),
                                     ),
                                     child: Padding(
@@ -198,7 +202,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                           Icon(
                                             Icons.calendar_today_rounded,
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .secondaryBackground,
                                             size: 16,
                                           ),
                                           Text(
@@ -241,12 +245,12 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                           options: FFButtonOptions(
                             width: 300,
                             height: 70,
-                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            color: FlutterFlowTheme.of(context).secondaryText,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
                                       fontFamily: 'Montserrat',
                                       color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                          .secondaryBackground,
                                     ),
                             elevation: 2,
                             borderSide: BorderSide(

@@ -1729,7 +1729,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                               FFAppState()
                                                                   .selectedDate,
                                                               functions.getNextDay(
-                                                                  getCurrentTimestamp)),
+                                                                  getCurrentTimestamp))!,
                                                       icon: Icon(
                                                         Icons.calendar_today,
                                                         color:

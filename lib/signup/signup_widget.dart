@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/date_of_birth_widget.dart';
 import '../flutter_flow/flutter_flow_choice_chips.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -863,70 +864,88 @@ class _SignupWidgetState extends State<SignupWidget> {
                                   children: [
                                     FFButtonWidget(
                                       onPressed: () async {
-                                        GoRouter.of(context).prepareAuthEvent();
-                                        if (passwordController?.text !=
-                                            confirmPasswordController?.text) {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Passwords don\'t match!',
+                                        if (FFAppState().dobEntered) {
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent();
+                                          if (passwordController?.text !=
+                                              confirmPasswordController?.text) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'Passwords don\'t match!',
+                                                ),
                                               ),
-                                            ),
+                                            );
+                                            return;
+                                          }
+
+                                          final user =
+                                              await createAccountWithEmail(
+                                            context,
+                                            emailAddressController!.text,
+                                            passwordController!.text,
+                                          );
+                                          if (user == null) {
+                                            return;
+                                          }
+
+                                          final usersCreateData =
+                                              createUsersRecordData(
+                                            email: emailAddressController!.text,
+                                            firstName:
+                                                firstNameController!.text,
+                                            lastName: lastNameController!.text,
+                                            phoneNumber:
+                                                phoneNumberController!.text,
+                                            sex: sexChoiceChipsValue,
+                                            password: passwordController!.text,
+                                            dOB: datePicked,
+                                            createdTime: getCurrentTimestamp,
+                                            role: 'client',
+                                            hasInitAccount: false,
+                                            displayName:
+                                                '${firstNameController!.text} ${lastNameController!.text}',
+                                          );
+                                          await UsersRecord.collection
+                                              .doc(user.uid)
+                                              .update(usersCreateData);
+
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('Alert'),
+                                                content:
+                                                    Text('New User created!'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
                                           );
                                           return;
-                                        }
-
-                                        final user =
-                                            await createAccountWithEmail(
-                                          context,
-                                          emailAddressController!.text,
-                                          passwordController!.text,
-                                        );
-                                        if (user == null) {
+                                        } else {
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            context: context,
+                                            builder: (context) {
+                                              return Padding(
+                                                padding: MediaQuery.of(context)
+                                                    .viewInsets,
+                                                child: DateOfBirthWidget(),
+                                              );
+                                            },
+                                          );
+                                          Navigator.pop(context);
                                           return;
                                         }
-
-                                        final usersCreateData =
-                                            createUsersRecordData(
-                                          email: emailAddressController!.text,
-                                          firstName: firstNameController!.text,
-                                          lastName: lastNameController!.text,
-                                          phoneNumber:
-                                              phoneNumberController!.text,
-                                          sex: sexChoiceChipsValue,
-                                          password: passwordController!.text,
-                                          dOB: datePicked,
-                                          createdTime: getCurrentTimestamp,
-                                          role: 'client',
-                                          hasInitAccount: false,
-                                          displayName:
-                                              '${firstNameController!.text} ${lastNameController!.text}',
-                                        );
-                                        await UsersRecord.collection
-                                            .doc(user.uid)
-                                            .update(usersCreateData);
-
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('Alert'),
-                                              content:
-                                                  Text('New User created!'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-
-                                        context.goNamedAuth('checkup', mounted);
                                       },
                                       text: 'Create Account',
                                       options: FFButtonOptions(

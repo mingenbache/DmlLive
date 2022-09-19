@@ -589,7 +589,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                         bookingConfirmationBookingsRecord
                                                             .scheduledDate,
                                                         functions
-                                                            .getNextWeekday()),
+                                                            .getNextWeekday())!,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyText1

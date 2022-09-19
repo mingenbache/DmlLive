@@ -1722,7 +1722,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                         FFAppState()
                                                             .selectedDate,
                                                         functions.getNextDay(
-                                                            getCurrentTimestamp)),
+                                                            getCurrentTimestamp))!,
                                                 icon: Icon(
                                                   Icons.calendar_today,
                                                   color: FlutterFlowTheme.of(

@@ -105,9 +105,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
   @override
   Widget build(BuildContext context) {
     return AuthUserStreamWidget(
-      child: StreamBuilder<BookingsRecord>(
-        stream:
-            BookingsRecord.getDocument(currentUserDocument!.currentBooking!),
+      child: FutureBuilder<BookingsRecord>(
+        future: BookingsRecord.getDocumentOnce(
+            currentUserDocument!.currentBooking!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -260,7 +260,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                             text:
                                                 functions.scheduleButtonString(
                                                     FFAppState().selectedDate,
-                                                    functions.getNextWeekday()),
+                                                    functions
+                                                        .getNextWeekday())!,
                                             icon: Icon(
                                               Icons.calendar_today,
                                               color:

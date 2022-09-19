@@ -348,16 +348,37 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                     ),
                                                                     onPressed:
                                                                         () async {
-                                                                      context
-                                                                          .pushNamed(
-                                                                        'NewBooking',
-                                                                        queryParams:
-                                                                            {
-                                                                          'bookingRef': serializeParam(
-                                                                              homeUsersRecord.currentBooking,
-                                                                              ParamType.DocumentReference),
-                                                                        }.withoutNulls,
-                                                                      );
+                                                                      if (homeUsersRecord
+                                                                          .hasCurrentBooking!) {
+                                                                        context
+                                                                            .pushNamed(
+                                                                          'NewBooking',
+                                                                          queryParams:
+                                                                              {
+                                                                            'bookingRef':
+                                                                                serializeParam(homeUsersRecord.currentBooking, ParamType.DocumentReference),
+                                                                          }.withoutNulls,
+                                                                        );
+
+                                                                        return;
+                                                                      } else {
+                                                                        await showModalBottomSheet(
+                                                                          isScrollControlled:
+                                                                              true,
+                                                                          backgroundColor:
+                                                                              Colors.transparent,
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (context) {
+                                                                            return Padding(
+                                                                              padding: MediaQuery.of(context).viewInsets,
+                                                                              child: NewBookingSheetWidget(),
+                                                                            );
+                                                                          },
+                                                                        );
+                                                                        return;
+                                                                      }
                                                                     },
                                                                   ),
                                                                 );
