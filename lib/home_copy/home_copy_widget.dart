@@ -115,7 +115,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                             child: NewBookingSheetWidget(),
                           );
                         },
-                      );
+                      ).then((value) => setState(() {}));
                     }
                   },
                   backgroundColor: FlutterFlowTheme.of(context).secondaryColor,

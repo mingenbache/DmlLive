@@ -24,24 +24,16 @@ class ModifyTestWidget extends StatefulWidget {
 }
 
 class _ModifyTestWidgetState extends State<ModifyTestWidget> {
-  TextEditingController? resultsDurationTextController;
-
-  double? durationResultsSliderValue;
-
-  TextEditingController? testDescriptionController;
-
-  TextEditingController? testNameController;
-
-  bool? switchListTileValue;
   String? dropDownValue;
+  TextEditingController? testDescriptionController;
+  TextEditingController? testNameController;
+  bool? switchListTileValue;
   bool? atHomeToggleValue;
-
   TextEditingController? testDurationTextController;
-
   double? testDurationSliderValue;
-
+  TextEditingController? resultsDurationTextController;
+  double? durationResultsSliderValue;
   TextEditingController? testPriceController;
-
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -50,6 +42,16 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    resultsDurationTextController?.dispose();
+    testDescriptionController?.dispose();
+    testNameController?.dispose();
+    testDurationTextController?.dispose();
+    testPriceController?.dispose();
+    super.dispose();
   }
 
   @override

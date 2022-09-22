@@ -397,7 +397,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                         ),
                                       );
                                     },
-                                  );
+                                  ).then((value) => setState(() {}));
                                 },
                                 child: Container(
                                   width:

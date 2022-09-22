@@ -30,9 +30,7 @@ class TestListBookingSheetWidget extends StatefulWidget {
 class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
     with TickerProviderStateMixin {
   TextEditingController? textController1;
-
   TextEditingController? textController2;
-
   final animationsMap = {
     'buttonOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
@@ -59,6 +57,13 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
 
     textController1 = TextEditingController();
     textController2 = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    textController1?.dispose();
+    textController2?.dispose();
+    super.dispose();
   }
 
   @override

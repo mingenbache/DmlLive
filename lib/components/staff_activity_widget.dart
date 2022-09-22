@@ -1674,7 +1674,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                     ),
                                                                                   );
                                                                                 },
-                                                                              );
+                                                                              ).then((value) => setState(() {}));
                                                                             },
                                                                             child:
                                                                                 Material(
@@ -1854,7 +1854,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                 ),
                               );
                             },
-                          );
+                          ).then((value) => setState(() {}));
                         },
                         text: 'Edit Role',
                         options: FFButtonOptions(

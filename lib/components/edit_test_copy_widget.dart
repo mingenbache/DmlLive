@@ -31,30 +31,20 @@ class EditTestCopyWidget extends StatefulWidget {
 
 class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
     with TickerProviderStateMixin {
-  TextEditingController? testPriceController;
-
-  TextEditingController? textController1;
-
+  PageController? testFormPageViewController;
   String? dropDownValue;
+  TextEditingController? textController1;
   bool? atHomeToggleValue;
   double? testDurationSliderValue;
   double? resultsDurationSliderValue;
-  PageController? testFormPageViewController;
-
+  TextEditingController? testPriceController;
   TextEditingController? textController3;
-
   TextEditingController? textController4;
-
   TextEditingController? textController5;
-
   TextEditingController? textController6;
-
   TextEditingController? varianceUnitsFemaleController;
-
   TextEditingController? textController8;
-
   TextEditingController? textController9;
-
   final formKey = GlobalKey<FormState>();
   final animationsMap = {
     'pageViewOnPageLoadAnimation': AnimationInfo(
@@ -86,6 +76,20 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
     );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    testPriceController?.dispose();
+    textController1?.dispose();
+    textController3?.dispose();
+    textController4?.dispose();
+    textController5?.dispose();
+    textController6?.dispose();
+    varianceUnitsFemaleController?.dispose();
+    textController8?.dispose();
+    textController9?.dispose();
+    super.dispose();
   }
 
   @override

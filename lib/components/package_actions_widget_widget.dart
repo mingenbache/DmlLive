@@ -208,7 +208,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                                   ),
                                 );
                               },
-                            );
+                            ).then((value) => setState(() {}));
                           } else {
                             if (!containerBookingsRecord.testPackages!
                                 .toList()

@@ -106,7 +106,7 @@ class _TechnologistActionsWidgetState extends State<TechnologistActionsWidget> {
                               ),
                             );
                           },
-                        );
+                        ).then((value) => setState(() {}));
                       },
                       child: Container(
                         width: 110,

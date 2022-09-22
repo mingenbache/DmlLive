@@ -18,11 +18,9 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
   TextEditingController? emailaddressController;
-
   TextEditingController? passwordController;
 
   late bool passwordVisibility;
-
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -31,6 +29,13 @@ class _LoginWidgetState extends State<LoginWidget> {
     emailaddressController = TextEditingController();
     passwordController = TextEditingController();
     passwordVisibility = false;
+  }
+
+  @override
+  void dispose() {
+    emailaddressController?.dispose();
+    passwordController?.dispose();
+    super.dispose();
   }
 
   @override

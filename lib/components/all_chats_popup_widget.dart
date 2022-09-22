@@ -339,7 +339,8 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                               ),
                                                             );
                                                           },
-                                                        );
+                                                        ).then((value) =>
+                                                            setState(() {}));
                                                       },
                                                       child: Material(
                                                         color:

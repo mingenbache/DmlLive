@@ -70,7 +70,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                             ),
                           );
                         },
-                      );
+                      ).then((value) => setState(() {}));
                     },
                     child: Container(
                       height: 100,

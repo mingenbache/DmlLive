@@ -1506,3 +1506,47 @@ int returnBookingsTab(String? testVar) {
   }
   return 0;
 }
+
+List<String>? updateSpecialTestsList(
+  List<String>? list,
+  String? stringItem,
+) {
+  if (list != null) {
+    //list.add(stringItem ?? ' ');
+    list.remove(stringItem);
+  } /*else {
+    list!.add(stringItem ?? ' ');
+  } */
+  return list;
+}
+
+List<String>? updateSpecialTestsListItem(
+  List<String>? list,
+  String? stringItem,
+  int index,
+) {
+  if (list != null) {
+    list.add(stringItem ?? ' ');
+  } else {
+    list!.add(stringItem ?? ' ');
+  }
+  return list;
+}
+
+List<String>? returnSpecialTests(List<String>? specialTests) {
+  if (specialTests != null) {
+    return specialTests;
+  } else {
+    specialTests!.add(specialTests[0] ?? ' ');
+  }
+}
+
+List<String>? removeSpecialTestsitem(
+  List<String>? specialTests,
+  int? index,
+) {
+  if (specialTests != null && index != null) {
+    specialTests.removeAt(index);
+    return specialTests;
+  }
+}

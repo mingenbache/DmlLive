@@ -1883,7 +1883,7 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                         ),
                                       );
                                     },
-                                  );
+                                  ).then((value) => setState(() {}));
                                 },
                                 text: 'Add Payment',
                                 options: FFButtonOptions(

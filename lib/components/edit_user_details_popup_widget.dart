@@ -28,16 +28,21 @@ class EditUserDetailsPopupWidget extends StatefulWidget {
 
 class _EditUserDetailsPopupWidgetState
     extends State<EditUserDetailsPopupWidget> {
+  DateTime? datePicked;
+  String? sexChoiceChipsValue;
   TextEditingController? emailAddressController;
-
   TextEditingController? firstNameController;
-
   TextEditingController? lastNameController;
-
   TextEditingController? phoneNumberController;
 
-  String? sexChoiceChipsValue;
-  DateTime? datePicked;
+  @override
+  void dispose() {
+    emailAddressController?.dispose();
+    firstNameController?.dispose();
+    lastNameController?.dispose();
+    phoneNumberController?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -251,7 +251,10 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                   ),
                                                                 );
                                                               },
-                                                            );
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
+
                                                             return;
                                                           }
                                                         },
@@ -476,7 +479,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                                   ),
                                                                                                                 );
                                                                                                               },
-                                                                                                            );
+                                                                                                            ).then((value) => setState(() {}));
                                                                                                           },
                                                                                                           child: Material(
                                                                                                             color: Colors.transparent,
@@ -813,7 +816,8 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                           ),
                                                         );
                                                       },
-                                                    );
+                                                    ).then((value) =>
+                                                        setState(() {}));
                                                   },
                                                   child: Material(
                                                     color: Colors.transparent,
@@ -1157,7 +1161,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                           ),
                                                                                                         );
                                                                                                       },
-                                                                                                    );
+                                                                                                    ).then((value) => setState(() {}));
                                                                                                   },
                                                                                                   child: Container(
                                                                                                     height: MediaQuery.of(context).size.height * 0.04,
@@ -1315,7 +1319,8 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                 ),
                                                               );
                                                             },
-                                                          );
+                                                          ).then((value) =>
+                                                              setState(() {}));
                                                         },
                                                         child: Material(
                                                           color: Colors
@@ -1663,7 +1668,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                                     ),
                                                                                                                   );
                                                                                                                 },
-                                                                                                              );
+                                                                                                              ).then((value) => setState(() {}));
                                                                                                             },
                                                                                                             child: Container(
                                                                                                               height: MediaQuery.of(context).size.height * 0.04,

@@ -16,13 +16,18 @@ class MessagesWidget extends StatefulWidget {
 
 class _MessagesWidgetState extends State<MessagesWidget> {
   TextEditingController? textController;
-
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
     textController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    textController?.dispose();
+    super.dispose();
   }
 
   @override

@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -13,21 +14,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AddNewTestWidget extends StatefulWidget {
-  const AddNewTestWidget({
+class AddSpecialTestWidget extends StatefulWidget {
+  const AddSpecialTestWidget({
     Key? key,
     this.userRef,
+    this.scheduledDate,
   }) : super(key: key);
 
   final DocumentReference? userRef;
+  final DateTime? scheduledDate;
 
   @override
-  _AddNewTestWidgetState createState() => _AddNewTestWidgetState();
+  _AddSpecialTestWidgetState createState() => _AddSpecialTestWidgetState();
 }
 
-class _AddNewTestWidgetState extends State<AddNewTestWidget> {
+class _AddSpecialTestWidgetState extends State<AddSpecialTestWidget>
+    with TickerProviderStateMixin {
+  String? technologistValue;
   String? testCategoryValue;
   TextEditingController? textController1;
+  TextEditingController? textController2;
+  TextEditingController? textController3;
   bool? atHomeToggleValue;
   TextEditingController? testDescriptionController;
   double? testDurationSliderValue;
@@ -35,12 +42,37 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
   TextEditingController? testPriceController;
   TestsRecord? newTestId;
   final formKey = GlobalKey<FormState>();
+  final animationsMap = {
+    'dropDownOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      delay: 200,
+      hideBeforeAnimating: false,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 100),
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        opacity: 1,
+      ),
+    ),
+  };
 
   @override
   void initState() {
     super.initState();
+    startPageLoadAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
+
     testDescriptionController = TextEditingController();
     textController1 = TextEditingController();
+    textController2 = TextEditingController();
+    textController3 = TextEditingController();
     testPriceController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -49,6 +81,8 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
   void dispose() {
     testDescriptionController?.dispose();
     textController1?.dispose();
+    textController2?.dispose();
+    textController3?.dispose();
     testPriceController?.dispose();
     super.dispose();
   }
@@ -158,7 +192,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        'ADD NEW TEST',
+                                        'ADD SPECIAL\nTEST',
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
@@ -203,7 +237,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 10, 16, 16),
+                                        16, 10, 16, 5),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -226,16 +260,16 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText: 'Test Name',
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily:
-                                                              'Montserrat',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                        ),
+                                                labelStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
                                                 hintText: 'Enter Test Name',
                                                 hintStyle: FlutterFlowTheme.of(
                                                         context)
@@ -287,7 +321,9 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                       BorderRadius.circular(12),
                                                 ),
                                                 filled: true,
-                                                fillColor: Color(0x65FFFFFF),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
                                                 contentPadding:
                                                     EdgeInsetsDirectional
                                                         .fromSTEB(
@@ -330,26 +366,114 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 10),
+                                        16, 5, 16, 5),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
+                                          MainAxisAlignment.center,
                                       children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Container(
-                                              width: 20,
-                                              decoration: BoxDecoration(),
-                                              child: Icon(
-                                                Icons.category_outlined,
-                                                color: Colors.white,
-                                                size: 20,
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    3, 3, 3, 3),
+                                            child: TextFormField(
+                                              controller: textController2,
+                                              onChanged: (_) =>
+                                                  EasyDebounce.debounce(
+                                                'textController2',
+                                                Duration(milliseconds: 2000),
+                                                () => setState(() {}),
                                               ),
-                                            ),
-                                            Text(
-                                              'Test Category',
+                                              autofocus: true,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                labelText: 'Vendor Name',
+                                                labelStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                                hintText: 'Enter Vendor Name',
+                                                hintStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                                filled: true,
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                contentPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            15, 15, 15, 15),
+                                                suffixIcon: textController2!
+                                                        .text.isNotEmpty
+                                                    ? InkWell(
+                                                        onTap: () async {
+                                                          textController2
+                                                              ?.clear();
+                                                          setState(() {});
+                                                        },
+                                                        child: Icon(
+                                                          Icons.clear,
+                                                          color:
+                                                              Color(0xFF757575),
+                                                          size: 22,
+                                                        ),
+                                                      )
+                                                    : null,
+                                              ),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyText1
@@ -358,91 +482,262 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText,
+                                                    fontSize: 16,
                                                     fontWeight: FontWeight.w500,
+                                                    lineHeight: 1.4,
                                                   ),
+                                              maxLines: 1,
                                             ),
-                                          ],
+                                          ),
                                         ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            StreamBuilder<
-                                                List<CategoriesRecord>>(
-                                              stream: queryCategoriesRecord(
-                                                queryBuilder:
-                                                    (categoriesRecord) =>
-                                                        categoriesRecord
-                                                            .orderBy('name'),
-                                                singleRecord: true,
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16, 5, 16, 5),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    3, 3, 3, 3),
+                                            child: TextFormField(
+                                              controller: textController3,
+                                              onChanged: (_) =>
+                                                  EasyDebounce.debounce(
+                                                'textController3',
+                                                Duration(milliseconds: 2000),
+                                                () => setState(() {}),
                                               ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 50,
-                                                      height: 50,
-                                                      child: SpinKitRipple(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryColor,
-                                                        size: 50,
-                                                      ),
+                                              autofocus: true,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                labelText: 'Vendor Contacts',
+                                                labelStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                     ),
-                                                  );
-                                                }
-                                                List<CategoriesRecord>
-                                                    testCategoryCategoriesRecordList =
-                                                    snapshot.data!;
-                                                final testCategoryCategoriesRecord =
-                                                    testCategoryCategoriesRecordList
-                                                            .isNotEmpty
-                                                        ? testCategoryCategoriesRecordList
-                                                            .first
-                                                        : null;
-                                                return FlutterFlowDropDown(
-                                                  options:
-                                                      testCategoryCategoriesRecord!
-                                                          .categories!
-                                                          .toList()
-                                                          .toList(),
-                                                  onChanged: (val) => setState(
-                                                      () => testCategoryValue =
-                                                          val),
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.4,
-                                                  height: 40,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
+                                                hintText:
+                                                    'Please provide Vendor Contact Details',
+                                                hintStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 2,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                                filled: true,
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                contentPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            15, 15, 15, 15),
+                                                suffixIcon: textController3!
+                                                        .text.isNotEmpty
+                                                    ? InkWell(
+                                                        onTap: () async {
+                                                          textController3
+                                                              ?.clear();
+                                                          setState(() {});
+                                                        },
+                                                        child: Icon(
+                                                          Icons.clear,
+                                                          color:
+                                                              Color(0xFF757575),
+                                                          size: 22,
+                                                        ),
+                                                      )
+                                                    : null,
+                                              ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyText1
+                                                  .override(
+                                                    fontFamily: 'Montserrat',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w500,
+                                                    lineHeight: 1.4,
+                                                  ),
+                                              maxLines: 1,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 10),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        StreamBuilder<List<CategoriesRecord>>(
+                                          stream: queryCategoriesRecord(
+                                            queryBuilder: (categoriesRecord) =>
+                                                categoriesRecord
+                                                    .orderBy('name'),
+                                            singleRecord: true,
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50,
+                                                  height: 50,
+                                                  child: SpinKitRipple(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryColor,
+                                                    size: 50,
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            List<CategoriesRecord>
+                                                testCategoryCategoriesRecordList =
+                                                snapshot.data!;
+                                            final testCategoryCategoriesRecord =
+                                                testCategoryCategoriesRecordList
+                                                        .isNotEmpty
+                                                    ? testCategoryCategoriesRecordList
+                                                        .first
+                                                    : null;
+                                            return FlutterFlowDropDown(
+                                              initialOption:
+                                                  testCategoryValue ??=
+                                                      'Uncategorized',
+                                              options:
+                                                  testCategoryCategoriesRecord!
+                                                      .categories!
+                                                      .toList()
+                                                      .toList(),
+                                              onChanged: (val) => setState(() =>
+                                                  testCategoryValue = val),
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.4,
+                                              height: 40,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Roboto',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
                                                       ),
-                                                  fillColor: Color(0x5CFFFFFF),
-                                                  elevation: 2,
-                                                  borderColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText,
-                                                  borderWidth: 2,
-                                                  borderRadius: 10,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(8, 4, 8, 4),
-                                                );
-                                              },
-                                            ),
-                                          ],
+                                              hintText: 'Choose Category',
+                                              icon: Icon(
+                                                Icons.keyboard_arrow_down,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                size: 15,
+                                              ),
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              elevation: 2,
+                                              borderColor: Color(0x00000000),
+                                              borderWidth: 0,
+                                              borderRadius: 10,
+                                              margin: EdgeInsetsDirectional
+                                                  .fromSTEB(8, 4, 8, 4),
+                                              hidesUnderline: true,
+                                            );
+                                          },
                                         ),
                                       ],
                                     ),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Container(
+                                        width: 20,
+                                        decoration: BoxDecoration(),
+                                        child: Icon(
+                                          Icons.category_outlined,
+                                          color: Colors.white,
+                                          size: 20,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Test Category',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                      ),
+                                    ],
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
@@ -588,6 +883,119 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                           maxLines: 99,
                                           keyboardType: TextInputType.multiline,
                                         ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                    height: 100,
+                                    constraints: BoxConstraints(
+                                      maxWidth: 340,
+                                    ),
+                                    decoration: BoxDecoration(),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 5, 0, 0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 16, 0, 10),
+                                            child: StreamBuilder<
+                                                List<StaffRecord>>(
+                                              stream: queryStaffRecord(
+                                                queryBuilder: (staffRecord) =>
+                                                    staffRecord.where('role',
+                                                        isEqualTo:
+                                                            'technologist'),
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50,
+                                                      height: 50,
+                                                      child: SpinKitRipple(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryColor,
+                                                        size: 50,
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                List<StaffRecord>
+                                                    technologistStaffRecordList =
+                                                    snapshot.data!;
+                                                return FlutterFlowDropDown(
+                                                  initialOption:
+                                                      technologistValue ??=
+                                                          'No Technologist Assigned',
+                                                  options:
+                                                      technologistStaffRecordList
+                                                          .map((e) =>
+                                                              e.displayName!)
+                                                          .toList()
+                                                          .toList(),
+                                                  onChanged: (val) => setState(
+                                                      () => technologistValue =
+                                                          val),
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.8,
+                                                  height: 60,
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily:
+                                                            'Lexend Deca',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                  hintText:
+                                                      'Choose Technologist',
+                                                  icon: Icon(
+                                                    Icons
+                                                        .keyboard_arrow_down_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    size: 15,
+                                                  ),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  elevation: 2,
+                                                  borderColor:
+                                                      Color(0x00FFFFFF),
+                                                  borderWidth: 2,
+                                                  borderRadius: 8,
+                                                  margin: EdgeInsetsDirectional
+                                                      .fromSTEB(20, 20, 12, 20),
+                                                  hidesUnderline: true,
+                                                ).animated([
+                                                  animationsMap[
+                                                      'dropDownOnPageLoadAnimation']!
+                                                ]);
+                                              },
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -941,10 +1349,11 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                       .override(
                                                         fontFamily:
                                                             'Montserrat',
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        fontSize: 18,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
@@ -952,29 +1361,26 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                               ],
                                             ),
                                           ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Container(
-                                                width: 100,
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.04,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0x5DEEEEEE),
-                                                  borderRadius:
-                                                      BorderRadius.circular(12),
-                                                  border: Border.all(
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0, 0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Container(
+                                                  width: 100,
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      0.04,
+                                                  decoration: BoxDecoration(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryText,
-                                                    width: 2,
+                                                        .secondaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12),
                                                   ),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(20, 0, 20, 0),
                                                   child: TextFormField(
                                                     controller:
                                                         testPriceController,
@@ -1065,13 +1471,14 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                       fontWeight:
                                                           FontWeight.normal,
                                                     ),
+                                                    textAlign: TextAlign.center,
                                                     maxLines: 1,
                                                     keyboardType:
                                                         TextInputType.number,
                                                   ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),

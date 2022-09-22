@@ -219,7 +219,8 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                             ),
                                                           );
                                                         },
-                                                      );
+                                                      ).then((value) =>
+                                                          setState(() {}));
                                                     },
                                                     child: Container(
                                                       width:

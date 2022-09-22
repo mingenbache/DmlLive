@@ -53,7 +53,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                         ),
                       );
                     },
-                  );
+                  ).then((value) => setState(() {}));
                 },
                 child: Container(
                   height: 100,

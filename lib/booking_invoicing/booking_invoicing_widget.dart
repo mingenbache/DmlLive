@@ -26,12 +26,17 @@ class BookingInvoicingWidget extends StatefulWidget {
 }
 
 class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
-  TextEditingController? invoiceAmountController;
-
   DateTime? datePicked;
+  TextEditingController? invoiceAmountController;
   InvoicesRecord? newInvoice;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void dispose() {
+    invoiceAmountController?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

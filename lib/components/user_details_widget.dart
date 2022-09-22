@@ -643,7 +643,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                         ),
                                       );
                                     },
-                                  );
+                                  ).then((value) => setState(() {}));
                                 },
                                 text: 'Edit Role',
                                 options: FFButtonOptions(

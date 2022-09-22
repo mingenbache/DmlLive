@@ -143,7 +143,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                           child: NewBookingSheetWidget(),
                                         );
                                       },
-                                    );
+                                    ).then((value) => setState(() {}));
                                   } else {
                                     context.pushNamed(
                                       'NewBooking',

@@ -26,20 +26,14 @@ class EditTestWidget extends StatefulWidget {
 }
 
 class _EditTestWidgetState extends State<EditTestWidget> {
-  TextEditingController? resultsDurationTextController;
-
-  double? durationResultsSliderValue;
-
-  TextEditingController? testDescriptionController;
-
-  TextEditingController? textController1;
-
   String? dropDownValue;
+  TextEditingController? textController1;
+  TextEditingController? testDescriptionController;
   bool? atHomeToggleValue;
   double? testDurationSliderValue;
-
+  TextEditingController? resultsDurationTextController;
+  double? durationResultsSliderValue;
   TextEditingController? testPriceController;
-
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -53,6 +47,15 @@ class _EditTestWidgetState extends State<EditTestWidget> {
       locale: '',
     ));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    resultsDurationTextController?.dispose();
+    testDescriptionController?.dispose();
+    textController1?.dispose();
+    testPriceController?.dispose();
+    super.dispose();
   }
 
   @override

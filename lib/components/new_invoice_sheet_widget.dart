@@ -27,11 +27,16 @@ class NewInvoiceSheetWidget extends StatefulWidget {
 }
 
 class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
-  TextEditingController? invoiceAmountController;
-
   DateTime? datePicked;
+  TextEditingController? invoiceAmountController;
   InvoicesRecord? newInvoice;
   final formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    invoiceAmountController?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

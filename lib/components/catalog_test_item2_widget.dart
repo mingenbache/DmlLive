@@ -46,7 +46,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                     ),
                   );
                 },
-              );
+              ).then((value) => setState(() {}));
             },
             child: Container(
               width: 290,

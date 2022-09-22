@@ -288,7 +288,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                           ),
                                         );
                                       },
-                                    );
+                                    ).then((value) => setState(() {}));
+
                                     return;
                                   }
                                 } else {
@@ -384,7 +385,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                         ),
                                       );
                                     },
-                                  );
+                                  ).then((value) => setState(() {}));
                                 },
                                 child: Container(
                                   width:

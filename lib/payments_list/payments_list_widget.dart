@@ -243,7 +243,9 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                     ),
                                                                   );
                                                                 },
-                                                              );
+                                                              ).then((value) =>
+                                                                  setState(
+                                                                      () {}));
                                                             },
                                                             child: Container(
                                                               height: 210,
@@ -792,7 +794,9 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                   ),
                                                                 );
                                                               },
-                                                            );
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
                                                           },
                                                           child: Container(
                                                             width: MediaQuery.of(

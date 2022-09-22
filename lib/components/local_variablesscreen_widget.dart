@@ -23,7 +23,6 @@ class LocalVariablesscreenWidget extends StatefulWidget {
 class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
     with TickerProviderStateMixin {
   TextEditingController? localStateDataController;
-
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -54,6 +53,12 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
     localStateDataController = TextEditingController(
         text:
             'Num Tests: ${FFAppState().numTests.toString()}num tests done: ${FFAppState().numTestDone.toString()}');
+  }
+
+  @override
+  void dispose() {
+    localStateDataController?.dispose();
+    super.dispose();
   }
 
   @override

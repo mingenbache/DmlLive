@@ -1832,7 +1832,9 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                             ),
                                                                           );
                                                                         },
-                                                                      );
+                                                                      ).then((value) =>
+                                                                          setState(
+                                                                              () {}));
                                                                     },
                                                                     child:
                                                                         Material(
@@ -2277,7 +2279,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                   ),
                                 );
                               },
-                            );
+                            ).then((value) => setState(() {}));
                           },
                           text: 'Edit Role',
                           options: FFButtonOptions(

@@ -32,13 +32,11 @@ class SubmitTestResultsWidget extends StatefulWidget {
 
 class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
     with TickerProviderStateMixin {
-  TextEditingController? testNoteController;
-
-  TextEditingController? testResultController;
-
+  String uploadedFileUrl = '';
   String? testMachineValue;
   bool? checkboxListTileValue;
-  String uploadedFileUrl = '';
+  TextEditingController? testResultController;
+  TextEditingController? testNoteController;
   final formKey = GlobalKey<FormState>();
   final animationsMap = {
     'dropDownOnPageLoadAnimation': AnimationInfo(
@@ -99,6 +97,13 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
 
     testNoteController = TextEditingController();
     testResultController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    testNoteController?.dispose();
+    testResultController?.dispose();
+    super.dispose();
   }
 
   @override

@@ -23,6 +23,7 @@ import 'schema/notifications_record.dart';
 import 'schema/reports_record.dart';
 import 'schema/d_m_l_info_record.dart';
 import 'schema/test_packages_record.dart';
+import 'schema/special_tests_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -49,6 +50,7 @@ export 'schema/notifications_record.dart';
 export 'schema/reports_record.dart';
 export 'schema/d_m_l_info_record.dart';
 export 'schema/test_packages_record.dart';
+export 'schema/special_tests_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Stream<List<UsersRecord>> queryUsersRecord({
@@ -843,6 +845,48 @@ Future<FFFirestorePage<TestPackagesRecord>> queryTestPackagesRecordPage({
     queryCollectionPage(
       TestPackagesRecord.collection,
       TestPackagesRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query SpecialTestsRecords (as a Stream and as a Future).
+Stream<List<SpecialTestsRecord>> querySpecialTestsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      SpecialTestsRecord.collection,
+      SpecialTestsRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<SpecialTestsRecord>> querySpecialTestsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      SpecialTestsRecord.collection,
+      SpecialTestsRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<SpecialTestsRecord>> querySpecialTestsRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      SpecialTestsRecord.collection,
+      SpecialTestsRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

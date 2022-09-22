@@ -90,7 +90,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                         ),
                       );
                     },
-                  );
+                  ).then((value) => setState(() {}));
                 },
                 child: Container(
                   width: 60,
@@ -265,7 +265,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                                 ),
                               );
                             },
-                          );
+                          ).then((value) => setState(() {}));
                         },
                         child: Container(
                           width: 60,

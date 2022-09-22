@@ -20,23 +20,15 @@ class NewTestWidget extends StatefulWidget {
 }
 
 class _NewTestWidgetState extends State<NewTestWidget> {
-  TextEditingController? resultsDurationTextController;
-
-  double? durationResultsSliderValue;
-
-  TextEditingController? testDescriptionController;
-
-  TextEditingController? testNameController;
-
   String? dropDownValue;
+  TextEditingController? testDescriptionController;
+  TextEditingController? testNameController;
   bool? atHomeToggleValue;
-
   TextEditingController? testDurationTextController;
-
   double? testDurationSliderValue;
-
+  TextEditingController? resultsDurationTextController;
+  double? durationResultsSliderValue;
   TextEditingController? testPriceController;
-
   TestsRecord? newTestId;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -53,6 +45,16 @@ class _NewTestWidgetState extends State<NewTestWidget> {
         text: functions.doubletoInt(testDurationSliderValue, 60.0).toString());
     testPriceController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    resultsDurationTextController?.dispose();
+    testDescriptionController?.dispose();
+    testNameController?.dispose();
+    testDurationTextController?.dispose();
+    testPriceController?.dispose();
+    super.dispose();
   }
 
   @override

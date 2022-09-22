@@ -66,7 +66,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                     ),
                   );
                 },
-              );
+              ).then((value) => setState(() {}));
             },
             child: Container(
               width: MediaQuery.of(context).size.width * 0.8,

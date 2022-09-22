@@ -30,25 +30,16 @@ class AddNewTestPackageWidget extends StatefulWidget {
 
 class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
     with TickerProviderStateMixin {
-  TextEditingController? packageDescriptionController;
-
-  String? packageCategoryDropDownValue;
-  bool? atHomeToggleValue;
-
-  TextEditingController? testDurationTextController;
-
-  double? testDurationSliderValue;
-
-  TextEditingController? resultsDurationTextController;
-
-  double? durationResultsSliderValue;
-
-  TextEditingController? testPriceController;
-
   PageController? pageViewController;
-
+  String? packageCategoryDropDownValue;
+  TextEditingController? packageDescriptionController;
+  bool? atHomeToggleValue;
+  TextEditingController? testDurationTextController;
+  double? testDurationSliderValue;
+  TextEditingController? resultsDurationTextController;
+  double? durationResultsSliderValue;
+  TextEditingController? testPriceController;
   TextEditingController? testPackageNameController;
-
   TestPackagesRecord? newTestPackId;
   final formKey = GlobalKey<FormState>();
   final animationsMap = {
@@ -88,6 +79,16 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
     testPriceController = TextEditingController();
     testPackageNameController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    packageDescriptionController?.dispose();
+    testDurationTextController?.dispose();
+    resultsDurationTextController?.dispose();
+    testPriceController?.dispose();
+    testPackageNameController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -1737,7 +1738,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                       PackageTestListWidget(),
                                                                 );
                                                               },
-                                                            );
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
                                                           },
                                                           text: 'Add Test',
                                                           icon: Icon(

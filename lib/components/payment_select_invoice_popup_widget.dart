@@ -358,7 +358,8 @@ class _PaymentSelectInvoicePopupWidgetState
                                                             ),
                                                           );
                                                         },
-                                                      );
+                                                      ).then((value) =>
+                                                          setState(() {}));
                                                     },
                                                     child:
                                                         InvoiceListItemWidgetWidget(

@@ -237,7 +237,8 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                                 AllChatsPopupWidget(),
                                                           );
                                                         },
-                                                      );
+                                                      ).then((value) =>
+                                                          setState(() {}));
                                                     },
                                                     child: Icon(
                                                       Icons.message,

@@ -25,16 +25,21 @@ class BeginTestWidget extends StatefulWidget {
 }
 
 class _BeginTestWidgetState extends State<BeginTestWidget> {
-  TextEditingController? batchNumController;
-
-  TestedTestsRecord? newTestedTestRef;
   PageController? pageViewController;
+  TestedTestsRecord? newTestedTestRef;
+  TextEditingController? batchNumController;
   final formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
     batchNumController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    batchNumController?.dispose();
+    super.dispose();
   }
 
   @override

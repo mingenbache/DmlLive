@@ -133,7 +133,7 @@ class _ClientUserCard2WidgetState extends State<ClientUserCard2Widget> {
                         ),
                       );
                     },
-                  );
+                  ).then((value) => setState(() {}));
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.75,

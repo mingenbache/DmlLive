@@ -45,7 +45,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                     ),
                   );
                 },
-              );
+              ).then((value) => setState(() {}));
             },
             child: Material(
               color: Colors.transparent,

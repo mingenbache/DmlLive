@@ -474,7 +474,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                                   ),
                                                 );
                                               },
-                                            );
+                                            ).then((value) => setState(() {}));
                                           }
                                         },
                                         child: Container(
@@ -559,7 +559,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                               ),
                                             );
                                           },
-                                        );
+                                        ).then((value) => setState(() {}));
                                       },
                                       child: Container(
                                         width:

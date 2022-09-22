@@ -70,7 +70,7 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                               ),
                             );
                           },
-                        );
+                        ).then((value) => setState(() {}));
                       },
                       child: Material(
                         color: Colors.transparent,

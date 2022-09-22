@@ -56,7 +56,7 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                             child: AddNewTestWidget(),
                           );
                         },
-                      );
+                      ).then((value) => setState(() {}));
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.5,
@@ -117,7 +117,7 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                             child: AddNewTestPackageWidget(),
                           );
                         },
-                      );
+                      ).then((value) => setState(() {}));
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.5,

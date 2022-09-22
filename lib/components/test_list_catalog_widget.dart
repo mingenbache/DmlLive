@@ -24,9 +24,7 @@ class TestListCatalogWidget extends StatefulWidget {
 class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
     with TickerProviderStateMixin {
   TextEditingController? textController1;
-
   TextEditingController? textController2;
-
   final animationsMap = {
     'stackOnActionTriggerAnimation1': AnimationInfo(
       curve: Curves.bounceOut,
@@ -73,6 +71,13 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
 
     textController1 = TextEditingController();
     textController2 = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    textController1?.dispose();
+    textController2?.dispose();
+    super.dispose();
   }
 
   @override

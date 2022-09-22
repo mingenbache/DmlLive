@@ -255,7 +255,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                                   AllChatsPopupWidget(),
                                                             );
                                                           },
-                                                        );
+                                                        ).then((value) =>
+                                                            setState(() {}));
                                                       },
                                                       child: Icon(
                                                         Icons.message,

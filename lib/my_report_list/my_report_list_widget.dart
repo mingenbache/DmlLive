@@ -600,7 +600,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                                                   ),
                                                                                                 );
                                                                                               },
-                                                                                            );
+                                                                                            ).then((value) => setState(() {}));
                                                                                           },
                                                                                           child: Container(
                                                                                             height: MediaQuery.of(context).size.height * 0.04,

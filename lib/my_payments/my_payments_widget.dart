@@ -49,7 +49,7 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
                 child: AddPaymentWIdgetWidget(),
               );
             },
-          );
+          ).then((value) => setState(() {}));
         },
         backgroundColor: FlutterFlowTheme.of(context).secondaryText,
         icon: Icon(
@@ -270,7 +270,9 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
                                                                   ),
                                                                 );
                                                               },
-                                                            );
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
                                                           },
                                                           child: Container(
                                                             width: MediaQuery.of(
@@ -778,7 +780,9 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
                                                                     ),
                                                                   );
                                                                 },
-                                                              );
+                                                              ).then((value) =>
+                                                                  setState(
+                                                                      () {}));
                                                             },
                                                             child: Container(
                                                               height: 140,

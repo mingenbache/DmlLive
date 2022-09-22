@@ -24,16 +24,13 @@ class NewBookingSheetWidget extends StatefulWidget {
 
 class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
     with TickerProviderStateMixin {
-  TextEditingController? docemailAddressController;
-
-  TextEditingController? doctorNamesController;
-
-  TextEditingController? docphoneNumberController;
-
+  BookingsRecord? newbookingRef;
+  List<String> uploadedFileUrls = [];
   PageController? pageViewController;
   bool? isPatientValue;
-  List<String> uploadedFileUrls = [];
-  BookingsRecord? newbookingRef;
+  TextEditingController? docemailAddressController;
+  TextEditingController? doctorNamesController;
+  TextEditingController? docphoneNumberController;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -81,6 +78,14 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
     docemailAddressController = TextEditingController();
     doctorNamesController = TextEditingController();
     docphoneNumberController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    docemailAddressController?.dispose();
+    doctorNamesController?.dispose();
+    docphoneNumberController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -234,7 +239,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                   context)
                                               .subtitle2
                                               .override(
-                                                fontFamily: 'Montserrat',
+                                                fontFamily: 'Roboto',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
@@ -406,10 +411,11 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                     context)
                                                 .subtitle2
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryText,
+                                                  fontSize: 14,
                                                   fontWeight: FontWeight.normal,
                                                 ),
                                             borderSide: BorderSide(
@@ -464,7 +470,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryText,
+                                                                .primaryText,
                                                       ),
                                                 ),
                                               ),
@@ -633,6 +639,18 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelText: 'Email Address',
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
                                                     hintText:
                                                         'Enter the doctor\'s email here...',
                                                     hintStyle: FlutterFlowTheme
@@ -882,12 +900,12 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                           .of(context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Roboto',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -1249,6 +1267,8 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                               );
                               await newbookingRef!.reference
                                   .update(bookingsUpdateData);
+                            } else {
+                              setState(() => FFAppState().dobEntered = false);
                             }
 
                             final usersUpdateData = createUsersRecordData(
@@ -1256,9 +1276,6 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                               hasCurrentBooking: true,
                             );
                             await currentUserReference!.update(usersUpdateData);
-                            if (!isPatientValue!) {
-                              setState(() => FFAppState().dobEntered = false);
-                            }
                             setState(() => FFAppState().dob =
                                 functions.returnDOBLoader(
                                     newbookingRef, isPatientValue));

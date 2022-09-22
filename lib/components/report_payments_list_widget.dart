@@ -89,7 +89,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                   ),
                                 );
                               },
-                            );
+                            ).then((value) => setState(() {}));
                           },
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.9,

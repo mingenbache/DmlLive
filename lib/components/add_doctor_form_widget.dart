@@ -29,11 +29,8 @@ class AddDoctorFormWidget extends StatefulWidget {
 class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
     with TickerProviderStateMixin {
   TextEditingController? doctorNamesController;
-
   TextEditingController? emailAddressController;
-
   TextEditingController? phoneNumberController;
-
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -64,6 +61,14 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
     doctorNamesController = TextEditingController(text: widget.docNames);
     emailAddressController = TextEditingController(text: widget.docEmail);
     phoneNumberController = TextEditingController(text: widget.docPhone);
+  }
+
+  @override
+  void dispose() {
+    doctorNamesController?.dispose();
+    emailAddressController?.dispose();
+    phoneNumberController?.dispose();
+    super.dispose();
   }
 
   @override

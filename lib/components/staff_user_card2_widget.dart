@@ -99,7 +99,7 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                         ),
                       );
                     },
-                  );
+                  ).then((value) => setState(() {}));
                 },
                 child: Material(
                   color: Colors.transparent,

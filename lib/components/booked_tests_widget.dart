@@ -113,7 +113,7 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                         ),
                                       );
                                     },
-                                  );
+                                  ).then((value) => setState(() {}));
                                 } else {
                                   return;
                                 }

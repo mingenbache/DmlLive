@@ -109,7 +109,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                   ),
                                                 );
                                               },
-                                            );
+                                            ).then((value) => setState(() {}));
                                           }
                                         },
                                         child: Container(
@@ -320,7 +320,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                 ),
                                               );
                                             },
-                                          );
+                                          ).then((value) => setState(() {}));
                                         },
                                         child: Container(
                                           width: MediaQuery.of(context)
@@ -469,7 +469,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                 ),
                                               );
                                             },
-                                          );
+                                          ).then((value) => setState(() {}));
 
                                           context.goNamed(
                                             'TestDeck',

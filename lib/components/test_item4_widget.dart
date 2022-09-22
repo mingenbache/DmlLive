@@ -341,7 +341,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                     ),
                                   );
                                 },
-                              );
+                              ).then((value) => setState(() {}));
                             },
                             child: Material(
                               color: Colors.transparent,

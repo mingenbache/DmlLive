@@ -277,7 +277,7 @@ class _NotificationListItemWidgetState
                             ),
                           );
                         },
-                      );
+                      ).then((value) => setState(() {}));
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.9,
@@ -405,7 +405,7 @@ class _NotificationListItemWidgetState
                                 ),
                               );
                             },
-                          );
+                          ).then((value) => setState(() {}));
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.9,
@@ -543,7 +543,7 @@ class _NotificationListItemWidgetState
                                 ),
                               );
                             },
-                          );
+                          ).then((value) => setState(() {}));
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.9,

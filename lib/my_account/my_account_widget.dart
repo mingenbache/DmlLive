@@ -139,7 +139,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                 ),
                                               );
                                             },
-                                          );
+                                          ).then((value) => setState(() {}));
                                         },
                                         text: 'Edit',
                                         icon: Icon(

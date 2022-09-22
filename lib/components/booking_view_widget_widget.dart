@@ -77,7 +77,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                 ),
               );
             },
-          );
+          ).then((value) => setState(() {}));
         },
         child: Material(
           color: Colors.transparent,
@@ -289,7 +289,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                   ),
                                                 );
                                               },
-                                            );
+                                            ).then((value) => setState(() {}));
                                           } else {
                                             await showModalBottomSheet(
                                               isScrollControlled: true,
@@ -309,7 +309,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                   ),
                                                 );
                                               },
-                                            );
+                                            ).then((value) => setState(() {}));
                                           }
                                         },
                                         child: Container(

@@ -31,10 +31,9 @@ class ConfirmTestsWidget extends StatefulWidget {
 
 class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
     with TickerProviderStateMixin {
-  TextEditingController? labReferenceController;
-
-  String? pathologistValue;
   BookedTestsRecord? newBookedTest;
+  String? pathologistValue;
+  TextEditingController? labReferenceController;
   BookedTestsRecord? newTestPackBookedTest;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
@@ -79,6 +78,12 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
     );
 
     labReferenceController = TextEditingController(text: widget.labRefNum);
+  }
+
+  @override
+  void dispose() {
+    labReferenceController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -435,7 +440,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                   ),
                                                   child: Column(
                                                     mainAxisSize:
-                                                        MainAxisSize.max,
+                                                        MainAxisSize.min,
                                                     children: [
                                                       Padding(
                                                         padding:
@@ -670,7 +675,9 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                 ),
                                                                               );
                                                                             },
-                                                                          );
+                                                                          ).then((value) =>
+                                                                              setState(() {}));
+
                                                                           if (_shouldSetState)
                                                                             setState(() {});
                                                                         },
@@ -715,7 +722,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                         Text(
                                                                                           containerTestsRecord.name!,
                                                                                           style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Roboto',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                               ),
                                                                                         ),
@@ -912,7 +919,9 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                         ),
                                                       );
                                                     },
-                                                  );
+                                                  ).then((value) =>
+                                                      setState(() {}));
+
                                                   if (_shouldSetState)
                                                     setState(() {});
                                                 },
@@ -958,7 +967,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                     .subtitle2
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Montserrat',
+                                                                          'Roboto',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryText,
@@ -1062,6 +1071,125 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                 ),
                                               );
                                             },
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final specialTestsList =
+                                        confirmTestsSheetBookingsRecord
+                                            .specialTests!
+                                            .toList()
+                                            .map((e) => e)
+                                            .toList();
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: specialTestsList.length,
+                                      itemBuilder:
+                                          (context, specialTestsListIndex) {
+                                        final specialTestsListItem =
+                                            specialTestsList[
+                                                specialTestsListIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 0, 0, 4),
+                                          child: Container(
+                                            width: 100,
+                                            height: 45,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFECECEC),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 0, 10, 0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    width: 280,
+                                                    constraints: BoxConstraints(
+                                                      maxWidth: 280,
+                                                    ),
+                                                    decoration: BoxDecoration(),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Text(
+                                                          'Test Name',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Roboto',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                fontSize: 18,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Container(
+                                                        width: 30,
+                                                        height: 30,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0xFFEEEEEE),
+                                                        ),
+                                                        child: Stack(
+                                                          children: [
+                                                            Icon(
+                                                              Icons
+                                                                  .check_box_outline_blank_sharp,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryColor,
+                                                              size: 30,
+                                                            ),
+                                                            Icon(
+                                                              Icons
+                                                                  .check_box_outlined,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
+                                                              size: 30,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
                                           ),
                                         );
                                       },

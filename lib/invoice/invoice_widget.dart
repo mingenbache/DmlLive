@@ -1826,7 +1826,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                 ),
                               );
                             },
-                          );
+                          ).then((value) => setState(() {}));
                         },
                         text: 'Add Payment',
                         options: FFButtonOptions(

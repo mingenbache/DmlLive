@@ -20,15 +20,20 @@ class AllTestsWidget extends StatefulWidget {
 }
 
 class _AllTestsWidgetState extends State<AllTestsWidget> {
-  TextEditingController? textController;
-
   List<TestsRecord>? algoliaSearchResults = [];
+  TextEditingController? textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
     textController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    textController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -509,7 +514,9 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                         ),
                                                                       );
                                                                     },
-                                                                  );
+                                                                  ).then((value) =>
+                                                                      setState(
+                                                                          () {}));
                                                                 },
                                                                 child:
                                                                     Container(

@@ -1572,7 +1572,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                     ),
                                                                                   );
                                                                                 },
-                                                                              );
+                                                                              ).then((value) => setState(() {}));
                                                                             },
                                                                             child:
                                                                                 Container(

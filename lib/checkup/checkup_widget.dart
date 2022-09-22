@@ -36,7 +36,8 @@ class _CheckupWidgetState extends State<CheckupWidget> {
                 child: OnboardingWidget(),
               );
             },
-          );
+          ).then((value) => setState(() {}));
+
           return;
         } else {
           if (valueOrDefault<bool>(currentUserDocument?.isStaff, false) ==

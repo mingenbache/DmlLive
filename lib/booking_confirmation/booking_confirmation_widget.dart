@@ -37,9 +37,8 @@ class BookingConfirmationWidget extends StatefulWidget {
 
 class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
     with TickerProviderStateMixin {
-  TextEditingController? labRefNumController;
-
   DateTime? datePicked;
+  TextEditingController? labRefNumController;
   String? refDoctorValue;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -73,6 +72,12 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
     );
 
     labRefNumController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    labRefNumController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -133,6 +138,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                           transitionOnUserGestures: true,
                           child: Image.asset(
                             'assets/images/cdc-_N7I1JyPYJw-unsplash_bw.jpg',
+                            width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.height * 1,
                             fit: BoxFit.cover,
                           ),
@@ -408,10 +414,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
+                                                      color: Color(0x00000000),
                                                       width: 2,
                                                     ),
                                                     borderRadius:
@@ -421,10 +424,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                   focusedBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
+                                                      color: Color(0x00000000),
                                                       width: 2,
                                                     ),
                                                     borderRadius:
@@ -434,7 +434,10 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                   errorBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color: Color(0x00000000),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .customColor3,
                                                       width: 2,
                                                     ),
                                                     borderRadius:
@@ -444,7 +447,10 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                   focusedErrorBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color: Color(0x00000000),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .customColor3,
                                                       width: 2,
                                                     ),
                                                     borderRadius:
@@ -452,7 +458,10 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                             12),
                                                   ),
                                                   filled: true,
-                                                  fillColor: Color(0x66FFFFFF),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
                                                   contentPadding:
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(
@@ -592,7 +601,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryBackground,
+                                                      .secondaryText,
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                 ),
@@ -602,23 +611,32 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
                                                   children: [
-                                                    Text(
-                                                      functions.scheduleButtonString(
-                                                          bookingConfirmationBookingsRecord
-                                                              .scheduledDate,
-                                                          functions
-                                                              .getNextWeekday())!,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Montserrat',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                              ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  3, 0, 3, 0),
+                                                      child: Text(
+                                                        functions.scheduleButtonString(
+                                                            bookingConfirmationBookingsRecord
+                                                                .scheduledDate,
+                                                            functions
+                                                                .getNextWeekday())!,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        maxLines: 1,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                ),
+                                                      ),
                                                     ),
                                                   ],
                                                 ),
@@ -709,7 +727,9 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                         .height *
                                                     0.04,
                                                 decoration: BoxDecoration(
-                                                  color: Color(0x2CEEEEEE),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                 ),
@@ -721,10 +741,12 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  6, 6, 3, 3),
+                                                                  3, 0, 3, 0),
                                                       child: AutoSizeText(
                                                         bookingConfirmationBookingsRecord
                                                             .docNameAddress!,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -771,7 +793,8 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                           ),
                                                         );
                                                       },
-                                                    );
+                                                    ).then((value) =>
+                                                        setState(() {}));
                                                   },
                                                   child: Container(
                                                     width: 100,
@@ -799,7 +822,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Roboto',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -920,6 +943,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                   borderRadius: 10,
                                                   margin: EdgeInsetsDirectional
                                                       .fromSTEB(8, 4, 8, 4),
+                                                  hidesUnderline: true,
                                                 );
                                               },
                                             ),
@@ -2001,7 +2025,8 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                 ),
                                                                               );
                                                                             },
-                                                                          );
+                                                                          ).then((value) =>
+                                                                              setState(() {}));
                                                                         },
                                                                         child:
                                                                             Material(
@@ -2039,7 +2064,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                         Text(
                                                                                           bookingTestPackageItemTestPackagesRecord.packageName!,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Roboto',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -2238,7 +2263,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                     Text(
                                                                                       bookingTestItemTestsRecord.name!,
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Roboto',
                                                                                             color: FlutterFlowTheme.of(context).primaryText,
                                                                                             fontWeight: FontWeight.w500,
                                                                                           ),
@@ -2351,7 +2376,8 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                           ),
                                                         );
                                                       },
-                                                    );
+                                                    ).then((value) =>
+                                                        setState(() {}));
                                                   },
                                                   text: 'Add Test',
                                                   icon: Icon(
@@ -2418,7 +2444,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                           Icon(
                                             Icons.payments,
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondaryBackground,
                                             size: 18,
                                           ),
                                           Padding(
@@ -2581,7 +2607,8 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                     ),
                                                   );
                                                 },
-                                              );
+                                              ).then(
+                                                  (value) => setState(() {}));
 
                                               final bookingsUpdateData =
                                                   createBookingsRecordData(

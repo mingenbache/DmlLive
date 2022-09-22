@@ -20,24 +20,18 @@ class EditUserDetailsWidget extends StatefulWidget {
 }
 
 class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
-  TextEditingController? confirmPasswordController;
-
-  late bool confirmPasswordVisibility;
-
-  TextEditingController? emailAddressController;
-
-  TextEditingController? firstNameController;
-
-  TextEditingController? lastNameController;
-
-  TextEditingController? phoneNumberController;
-
   DateTime? datePicked;
   String? sexChoiceChipsValue;
-
+  TextEditingController? emailAddressController;
+  TextEditingController? firstNameController;
+  TextEditingController? lastNameController;
+  TextEditingController? phoneNumberController;
   TextEditingController? passwordController;
 
   late bool passwordVisibility;
+  TextEditingController? confirmPasswordController;
+
+  late bool confirmPasswordVisibility;
 
   @override
   void initState() {
@@ -46,6 +40,17 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
     confirmPasswordVisibility = false;
     passwordController = TextEditingController();
     passwordVisibility = false;
+  }
+
+  @override
+  void dispose() {
+    confirmPasswordController?.dispose();
+    emailAddressController?.dispose();
+    firstNameController?.dispose();
+    lastNameController?.dispose();
+    phoneNumberController?.dispose();
+    passwordController?.dispose();
+    super.dispose();
   }
 
   @override

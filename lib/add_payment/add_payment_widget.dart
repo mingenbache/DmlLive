@@ -25,19 +25,13 @@ class AddPaymentWidget extends StatefulWidget {
 
 class _AddPaymentWidgetState extends State<AddPaymentWidget>
     with TickerProviderStateMixin {
-  TextEditingController? firstNameController;
-
-  TextEditingController? lastNameController;
-
-  TextEditingController? textController1;
-
-  TextEditingController? transactionReferenceController;
-
-  String? paymentMethodValue;
-
-  TextEditingController? paymentNotesController;
-
   PaymentsRecord? paymentRef;
+  String? paymentMethodValue;
+  TextEditingController? firstNameController;
+  TextEditingController? lastNameController;
+  TextEditingController? textController1;
+  TextEditingController? transactionReferenceController;
+  TextEditingController? paymentNotesController;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
@@ -116,6 +110,16 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
     textController1 = TextEditingController();
     transactionReferenceController = TextEditingController();
     paymentNotesController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    firstNameController?.dispose();
+    lastNameController?.dispose();
+    textController1?.dispose();
+    transactionReferenceController?.dispose();
+    paymentNotesController?.dispose();
+    super.dispose();
   }
 
   @override

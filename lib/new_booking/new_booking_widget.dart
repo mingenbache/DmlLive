@@ -2,6 +2,7 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/push_notifications/push_notifications_util.dart';
 import '../components/package_details_popup_widget.dart';
+import '../components/special_test_list_item_widget.dart';
 import '../components/test_list_booking_sheet_widget.dart';
 import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
@@ -35,24 +36,15 @@ class NewBookingWidget extends StatefulWidget {
 
 class _NewBookingWidgetState extends State<NewBookingWidget>
     with TickerProviderStateMixin {
-  TextEditingController? diagnosisController;
-
-  TextEditingController? emailAddressController;
-
-  TextEditingController? firstNameController;
-
-  TextEditingController? lastNameController;
-
-  TextEditingController? phoneNumberController;
-
-  String? choiceChipsValue;
-  DateTime? datePicked2;
   DateTime? datePicked1;
-
+  DateTime? datePicked2;
+  String? choiceChipsValue;
+  TextEditingController? emailAddressController;
+  TextEditingController? firstNameController;
+  TextEditingController? lastNameController;
+  TextEditingController? phoneNumberController;
+  TextEditingController? diagnosisController;
   TextEditingController? refDoctorController;
-
-  TextEditingController? textController7;
-
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
@@ -100,6 +92,17 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
           .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
       this,
     );
+  }
+
+  @override
+  void dispose() {
+    diagnosisController?.dispose();
+    emailAddressController?.dispose();
+    firstNameController?.dispose();
+    lastNameController?.dispose();
+    phoneNumberController?.dispose();
+    refDoctorController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -270,23 +273,24 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 Icons.calendar_today,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryText,
+                                                        .secondaryBackground,
                                                 size: 12,
                                               ),
                                               options: FFButtonOptions(
                                                 width: 130,
                                                 height: 30,
-                                                color: Colors.white,
-                                                textStyle: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyText1
-                                                    .override(
-                                                      fontFamily: 'Montserrat',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                    ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
                                                 borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1,
@@ -1320,7 +1324,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Roboto',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryBtnText,
@@ -1835,7 +1839,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                       ),
                                                                     );
                                                                   },
-                                                                );
+                                                                ).then((value) =>
+                                                                    setState(
+                                                                        () {}));
                                                               },
                                                               child: Material(
                                                                 color: Colors
@@ -1892,7 +1898,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                               Text(
                                                                                 bookingTestPackageItemTestPackagesRecord.packageName!,
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Roboto',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -2100,7 +2106,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                             Text(
                                                                               bookingTestItemTestsRecord.name!,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Montserrat',
+                                                                                    fontFamily: 'Roboto',
                                                                                     color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
@@ -2208,6 +2214,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                   final specialtestsList =
                                                       FFAppState()
                                                           .specialtests
+                                                          .map((e) => e)
                                                           .toList();
                                                   return ListView.builder(
                                                     padding: EdgeInsets.zero,
@@ -2220,187 +2227,11 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                       final specialtestsListItem =
                                                           specialtestsList[
                                                               specialtestsListIndex];
-                                                      return Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(10, 5,
-                                                                    10, 0),
-                                                        child: Material(
-                                                          color: Colors
-                                                              .transparent,
-                                                          elevation: 2,
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8),
-                                                          ),
-                                                          child: Container(
-                                                            height: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .height *
-                                                                0.03,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color:
-                                                                  Colors.white,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10,
-                                                                          0,
-                                                                          10,
-                                                                          0),
-                                                              child:
-                                                                  SingleChildScrollView(
-                                                                scrollDirection:
-                                                                    Axis.horizontal,
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .spaceBetween,
-                                                                  children: [
-                                                                    Container(
-                                                                      width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width *
-                                                                          0.75,
-                                                                      decoration:
-                                                                          BoxDecoration(),
-                                                                      child:
-                                                                          Row(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        children: [
-                                                                          Expanded(
-                                                                            child:
-                                                                                TextFormField(
-                                                                              controller: textController7 ??= TextEditingController(
-                                                                                text: specialtestsListItem,
-                                                                              ),
-                                                                              onChanged: (_) => EasyDebounce.debounce(
-                                                                                'textController7',
-                                                                                Duration(milliseconds: 2000),
-                                                                                () => setState(() {}),
-                                                                              ),
-                                                                              autofocus: true,
-                                                                              obscureText: false,
-                                                                              decoration: InputDecoration(
-                                                                                hintText: 'enter test name',
-                                                                                hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                                                                                enabledBorder: UnderlineInputBorder(
-                                                                                  borderSide: BorderSide(
-                                                                                    color: Color(0x00000000),
-                                                                                    width: 1,
-                                                                                  ),
-                                                                                  borderRadius: const BorderRadius.only(
-                                                                                    topLeft: Radius.circular(4.0),
-                                                                                    topRight: Radius.circular(4.0),
-                                                                                  ),
-                                                                                ),
-                                                                                focusedBorder: UnderlineInputBorder(
-                                                                                  borderSide: BorderSide(
-                                                                                    color: Color(0x00000000),
-                                                                                    width: 1,
-                                                                                  ),
-                                                                                  borderRadius: const BorderRadius.only(
-                                                                                    topLeft: Radius.circular(4.0),
-                                                                                    topRight: Radius.circular(4.0),
-                                                                                  ),
-                                                                                ),
-                                                                                errorBorder: UnderlineInputBorder(
-                                                                                  borderSide: BorderSide(
-                                                                                    color: Color(0x00000000),
-                                                                                    width: 1,
-                                                                                  ),
-                                                                                  borderRadius: const BorderRadius.only(
-                                                                                    topLeft: Radius.circular(4.0),
-                                                                                    topRight: Radius.circular(4.0),
-                                                                                  ),
-                                                                                ),
-                                                                                focusedErrorBorder: UnderlineInputBorder(
-                                                                                  borderSide: BorderSide(
-                                                                                    color: Color(0x00000000),
-                                                                                    width: 1,
-                                                                                  ),
-                                                                                  borderRadius: const BorderRadius.only(
-                                                                                    topLeft: Radius.circular(4.0),
-                                                                                    topRight: Radius.circular(4.0),
-                                                                                  ),
-                                                                                ),
-                                                                                suffixIcon: textController7!.text.isNotEmpty
-                                                                                    ? InkWell(
-                                                                                        onTap: () async {
-                                                                                          textController7?.clear();
-                                                                                          setState(() {});
-                                                                                        },
-                                                                                        child: Icon(
-                                                                                          Icons.clear,
-                                                                                          color: Color(0xFF757575),
-                                                                                          size: 22,
-                                                                                        ),
-                                                                                      )
-                                                                                    : null,
-                                                                              ),
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Montserrat',
-                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                    fontWeight: FontWeight.w600,
-                                                                                  ),
-                                                                            ),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    ),
-                                                                    Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        InkWell(
-                                                                          onTap:
-                                                                              () async {
-                                                                            setState(() =>
-                                                                                FFAppState().specialtests.remove(specialtestsListItem));
-                                                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                                              SnackBar(
-                                                                                content: Text(
-                                                                                  'Test Removed',
-                                                                                  style: TextStyle(),
-                                                                                ),
-                                                                                duration: Duration(milliseconds: 4000),
-                                                                                backgroundColor: Color(0x00000000),
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                          child:
-                                                                              Icon(
-                                                                            Icons.highlight_off,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryText,
-                                                                            size:
-                                                                                18,
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
+                                                      return SpecialTestListItemWidget(
+                                                        index:
+                                                            specialtestsListIndex,
+                                                        name:
+                                                            specialtestsListItem,
                                                       );
                                                     },
                                                   );
@@ -2424,7 +2255,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 onPressed: () async {
                                                   setState(() => FFAppState()
                                                       .specialtests
-                                                      .add(''));
+                                                      .add(' '));
                                                 },
                                                 text: 'Special Test',
                                                 icon: Icon(
@@ -2437,15 +2268,13 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryColor,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyText1
-                                                          .override(
-                                                            fontFamily:
-                                                                'Montserrat',
-                                                            color: Colors.white,
-                                                          ),
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color: Colors.white,
+                                                      ),
                                                   elevation: 1,
                                                   borderSide: BorderSide(
                                                     color: Colors.transparent,
@@ -2496,7 +2325,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         ),
                                                       );
                                                     },
-                                                  );
+                                                  ).then((value) =>
+                                                      setState(() {}));
                                                 },
                                                 text: 'Add Test',
                                                 icon: Icon(
@@ -2513,8 +2343,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           .of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Roboto',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)

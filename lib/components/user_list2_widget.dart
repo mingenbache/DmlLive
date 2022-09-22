@@ -29,6 +29,12 @@ class _UserList2WidgetState extends State<UserList2Widget> {
   }
 
   @override
+  void dispose() {
+    textController?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(

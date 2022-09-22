@@ -112,7 +112,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                             child: NewBookingSheetWidget(),
                           );
                         },
-                      );
+                      ).then((value) => setState(() {}));
                     }
                   },
                   backgroundColor: FlutterFlowTheme.of(context).primaryColor,
@@ -376,7 +376,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                               child: NewBookingSheetWidget(),
                                                                             );
                                                                           },
-                                                                        );
+                                                                        ).then((value) =>
+                                                                            setState(() {}));
+
                                                                         return;
                                                                       }
                                                                     },

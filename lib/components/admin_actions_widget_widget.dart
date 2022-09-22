@@ -63,7 +63,7 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                               child: UserList2Widget(),
                             );
                           },
-                        );
+                        ).then((value) => setState(() {}));
                       },
                       child: Material(
                         color: Colors.transparent,
@@ -232,7 +232,7 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                               child: TestListCatalogWidget(),
                             );
                           },
-                        );
+                        ).then((value) => setState(() {}));
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.2,
