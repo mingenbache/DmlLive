@@ -2401,7 +2401,6 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Container(
-                                          width: 100,
                                           height: MediaQuery.of(context)
                                                   .size
                                                   .height *
