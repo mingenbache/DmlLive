@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/test_procedure_item_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -44,7 +45,6 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
   TextEditingController? textController6;
   TextEditingController? varianceUnitsFemaleController;
   TextEditingController? textController8;
-  TextEditingController? textController9;
   final formKey = GlobalKey<FormState>();
   final animationsMap = {
     'pageViewOnPageLoadAnimation': AnimationInfo(
@@ -88,7 +88,6 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
     textController6?.dispose();
     varianceUnitsFemaleController?.dispose();
     textController8?.dispose();
-    textController9?.dispose();
     super.dispose();
   }
 
@@ -1327,7 +1326,9 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                         fontFamily:
                                                             'Montserrat',
                                                         color:
-                                                            Color(0xFF586B06),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                         fontSize: 18,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -1479,8 +1480,9 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 .override(
                                                                   fontFamily:
                                                                       'Montserrat',
-                                                                  color: Color(
-                                                                      0xFF586B06),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
                                                                 ),
                                                       ),
                                                     ],
@@ -1522,23 +1524,9 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                             ),
                                                             decoration:
                                                                 BoxDecoration(
-                                                              gradient:
-                                                                  LinearGradient(
-                                                                colors: [
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryColor,
-                                                                  Color(
-                                                                      0xFF77A54A)
-                                                                ],
-                                                                stops: [0, 1],
-                                                                begin:
-                                                                    AlignmentDirectional(
-                                                                        0, -1),
-                                                                end:
-                                                                    AlignmentDirectional(
-                                                                        0, 1),
-                                                              ),
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .only(
@@ -1588,22 +1576,9 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                             ),
                                                             decoration:
                                                                 BoxDecoration(
-                                                              gradient:
-                                                                  LinearGradient(
-                                                                colors: [
-                                                                  Color(
-                                                                      0x4CFFFFFF),
-                                                                  Color(
-                                                                      0xFF77A54A)
-                                                                ],
-                                                                stops: [0, 1],
-                                                                begin:
-                                                                    AlignmentDirectional(
-                                                                        1, 0),
-                                                                end:
-                                                                    AlignmentDirectional(
-                                                                        -1, 0),
-                                                              ),
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
                                                             ),
                                                             child: Row(
                                                               mainAxisSize:
@@ -1650,7 +1625,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                             .bodyText1
                                                                             .override(
                                                                               fontFamily: 'Montserrat',
-                                                                              color: FlutterFlowTheme.of(context).alternate,
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                               fontSize: 16,
                                                                             ),
                                                                         hintText:
@@ -1668,7 +1643,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           borderSide:
                                                                               BorderSide(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                Color(0x00000000),
                                                                             width:
                                                                                 1,
                                                                           ),
@@ -1680,7 +1655,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           borderSide:
                                                                               BorderSide(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                Color(0x00000000),
                                                                             width:
                                                                                 1,
                                                                           ),
@@ -1714,7 +1689,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         filled:
                                                                             true,
                                                                         fillColor:
-                                                                            Colors.white,
+                                                                            Color(0x9BFFFFFF),
                                                                         suffixIcon: textController4!.text.isNotEmpty
                                                                             ? InkWell(
                                                                                 onTap: () async {
@@ -1736,7 +1711,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                             fontFamily:
                                                                                 'Montserrat',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                           ),
                                                                       textAlign:
                                                                           TextAlign
@@ -1760,8 +1735,9 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                             ),
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: Color(
-                                                                  0x4CFFFFFF),
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .only(
@@ -1815,7 +1791,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                             .bodyText1
                                                                             .override(
                                                                               fontFamily: 'Montserrat',
-                                                                              color: FlutterFlowTheme.of(context).alternate,
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                             ),
                                                                         hintText:
                                                                             'gm/dl',
@@ -1823,14 +1799,14 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                             .bodyText1
                                                                             .override(
                                                                               fontFamily: 'Montserrat',
-                                                                              color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                             ),
                                                                         enabledBorder:
                                                                             OutlineInputBorder(
                                                                           borderSide:
                                                                               BorderSide(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                Color(0x00000000),
                                                                             width:
                                                                                 1,
                                                                           ),
@@ -1842,7 +1818,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           borderSide:
                                                                               BorderSide(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                Color(0x00000000),
                                                                             width:
                                                                                 1,
                                                                           ),
@@ -1876,7 +1852,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         filled:
                                                                             true,
                                                                         fillColor:
-                                                                            Colors.white,
+                                                                            Color(0x99FFFFFF),
                                                                       ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -1885,7 +1861,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                             fontFamily:
                                                                                 'Montserrat',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                           ),
                                                                       textAlign:
                                                                           TextAlign
@@ -1927,23 +1903,9 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                           ),
                                                           decoration:
                                                               BoxDecoration(
-                                                            gradient:
-                                                                LinearGradient(
-                                                              colors: [
-                                                                Color(
-                                                                    0xFF77A54A),
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryColor
-                                                              ],
-                                                              stops: [0, 1],
-                                                              begin:
-                                                                  AlignmentDirectional(
-                                                                      0, -1),
-                                                              end:
-                                                                  AlignmentDirectional(
-                                                                      0, 1),
-                                                            ),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .only(
@@ -1990,22 +1952,9 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                           ),
                                                           decoration:
                                                               BoxDecoration(
-                                                            gradient:
-                                                                LinearGradient(
-                                                              colors: [
-                                                                Color(
-                                                                    0x4CFFFFFF),
-                                                                Color(
-                                                                    0xFF77A54A)
-                                                              ],
-                                                              stops: [0, 1],
-                                                              begin:
-                                                                  AlignmentDirectional(
-                                                                      1, 0),
-                                                              end:
-                                                                  AlignmentDirectional(
-                                                                      -1, 0),
-                                                            ),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
                                                           ),
                                                           child: Row(
                                                             mainAxisSize:
@@ -2054,7 +2003,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                             fontFamily:
                                                                                 'Montserrat',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             fontSize:
                                                                                 16,
                                                                           ),
@@ -2074,7 +2023,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         borderSide:
                                                                             BorderSide(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                              Color(0x00000000),
                                                                           width:
                                                                               1,
                                                                         ),
@@ -2086,7 +2035,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         borderSide:
                                                                             BorderSide(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                              Color(0x00000000),
                                                                           width:
                                                                               1,
                                                                         ),
@@ -2120,8 +2069,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                       filled:
                                                                           true,
                                                                       fillColor:
-                                                                          Colors
-                                                                              .white,
+                                                                          Color(
+                                                                              0x9AFFFFFF),
                                                                       suffixIcon: textController6!
                                                                               .text
                                                                               .isNotEmpty
@@ -2145,7 +2094,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           fontFamily:
                                                                               'Montserrat',
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                         ),
                                                                     textAlign:
                                                                         TextAlign
@@ -2170,8 +2119,9 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                           ),
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: Color(
-                                                                0x4CFFFFFF),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .only(
@@ -2224,7 +2174,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                             fontFamily:
                                                                                 'Montserrat',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             fontSize:
                                                                                 16,
                                                                           ),
@@ -2244,7 +2194,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         borderSide:
                                                                             BorderSide(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                              Color(0x00000000),
                                                                           width:
                                                                               1,
                                                                         ),
@@ -2256,7 +2206,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         borderSide:
                                                                             BorderSide(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                              Color(0x00000000),
                                                                           width:
                                                                               1,
                                                                         ),
@@ -2290,8 +2240,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                       filled:
                                                                           true,
                                                                       fillColor:
-                                                                          Colors
-                                                                              .white,
+                                                                          Color(
+                                                                              0x99FFFFFF),
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
@@ -2300,7 +2250,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           fontFamily:
                                                                               'Montserrat',
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                         ),
                                                                     textAlign:
                                                                         TextAlign
@@ -2347,8 +2297,9 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Montserrat',
-                                                                color: Color(
-                                                                    0xFF586B06),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                               ),
                                                         ),
                                                       ],
@@ -2515,7 +2466,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         'Montserrat',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .secondaryColor,
+                                                                        .primaryText,
                                                                   ),
                                                               maxLines: 25,
                                                             ),
@@ -2566,7 +2517,9 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                         fontFamily:
                                                             'Montserrat',
                                                         color:
-                                                            Color(0xFF586B06),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                         fontSize: 18,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -2594,13 +2547,10 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 .width *
                                                             0.8,
                                                     decoration: BoxDecoration(
-                                                      color: Color(0x60EEEEEE),
-                                                      border: Border.all(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .alternate,
-                                                      ),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                     ),
                                                     child: Builder(
                                                       builder: (context) {
@@ -2622,180 +2572,13 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                             final testProcedureItem =
                                                                 testProcedure[
                                                                     testProcedureIndex];
-                                                            return Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          2,
-                                                                          2,
-                                                                          2,
-                                                                          2),
-                                                              child: Container(
-                                                                height: 35,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  border: Border
-                                                                      .all(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .alternate,
-                                                                  ),
-                                                                ),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .spaceBetween,
-                                                                  children: [
-                                                                    Container(
-                                                                      width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width *
-                                                                          0.7,
-                                                                      height:
-                                                                          100,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Color(
-                                                                            0xFFEEEEEE),
-                                                                        border:
-                                                                            Border.all(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).alternate,
-                                                                        ),
-                                                                      ),
-                                                                      child:
-                                                                          TextFormField(
-                                                                        controller:
-                                                                            textController9 ??=
-                                                                                TextEditingController(
-                                                                          text:
-                                                                              testProcedureItem,
-                                                                        ),
-                                                                        onChanged:
-                                                                            (_) =>
-                                                                                EasyDebounce.debounce(
-                                                                          'textController9',
-                                                                          Duration(
-                                                                              milliseconds: 400),
-                                                                          () =>
-                                                                              setState(() {}),
-                                                                        ),
-                                                                        obscureText:
-                                                                            false,
-                                                                        decoration:
-                                                                            InputDecoration(
-                                                                          hintText:
-                                                                              'Enter step details',
-                                                                          enabledBorder:
-                                                                              UnderlineInputBorder(
-                                                                            borderSide:
-                                                                                BorderSide(
-                                                                              color: Color(0x00000000),
-                                                                              width: 1,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                const BorderRadius.only(
-                                                                              topLeft: Radius.circular(4.0),
-                                                                              topRight: Radius.circular(4.0),
-                                                                            ),
-                                                                          ),
-                                                                          focusedBorder:
-                                                                              UnderlineInputBorder(
-                                                                            borderSide:
-                                                                                BorderSide(
-                                                                              color: Color(0x00000000),
-                                                                              width: 1,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                const BorderRadius.only(
-                                                                              topLeft: Radius.circular(4.0),
-                                                                              topRight: Radius.circular(4.0),
-                                                                            ),
-                                                                          ),
-                                                                          errorBorder:
-                                                                              UnderlineInputBorder(
-                                                                            borderSide:
-                                                                                BorderSide(
-                                                                              color: Color(0x00000000),
-                                                                              width: 1,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                const BorderRadius.only(
-                                                                              topLeft: Radius.circular(4.0),
-                                                                              topRight: Radius.circular(4.0),
-                                                                            ),
-                                                                          ),
-                                                                          focusedErrorBorder:
-                                                                              UnderlineInputBorder(
-                                                                            borderSide:
-                                                                                BorderSide(
-                                                                              color: Color(0x00000000),
-                                                                              width: 1,
-                                                                            ),
-                                                                            borderRadius:
-                                                                                const BorderRadius.only(
-                                                                              topLeft: Radius.circular(4.0),
-                                                                              topRight: Radius.circular(4.0),
-                                                                            ),
-                                                                          ),
-                                                                          contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                                                              2,
-                                                                              3,
-                                                                              2,
-                                                                              0),
-                                                                          suffixIcon: textController9!.text.isNotEmpty
-                                                                              ? InkWell(
-                                                                                  onTap: () async {
-                                                                                    textController9?.clear();
-                                                                                    setState(() {});
-                                                                                  },
-                                                                                  child: Icon(
-                                                                                    Icons.clear,
-                                                                                    color: Color(0xFF757575),
-                                                                                    size: 22,
-                                                                                  ),
-                                                                                )
-                                                                              : null,
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
-                                                                            .override(
-                                                                              fontFamily: 'Montserrat',
-                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                              fontSize: 16,
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                    InkWell(
-                                                                      onTap:
-                                                                          () async {
-                                                                        final testsUpdateData =
-                                                                            {
-                                                                          'procedure':
-                                                                              FieldValue.arrayRemove([
-                                                                            testProcedureItem
-                                                                          ]),
-                                                                        };
-                                                                        await widget
-                                                                            .testRef!
-                                                                            .update(testsUpdateData);
-                                                                      },
-                                                                      child:
-                                                                          Icon(
-                                                                        Icons
-                                                                            .delete_forever,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
-                                                                        size:
-                                                                            24,
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
+                                                            return TestProcedureItemWidget(
+                                                              index:
+                                                                  testProcedureIndex,
+                                                              procedureString:
+                                                                  testProcedureItem,
+                                                              testRef:
+                                                                  columnTestsRecord,
                                                             );
                                                           },
                                                         );
@@ -2846,7 +2629,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                               height: 30,
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .secondaryColor,
+                                                                  .secondaryText,
                                                               textStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -2855,7 +2638,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         fontFamily:
                                                                             'Montserrat',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .tertiaryColor,
+                                                                            .secondaryBackground,
                                                                       ),
                                                               borderSide:
                                                                   BorderSide(
@@ -2902,7 +2685,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                       dotWidth: 16,
                                       dotHeight: 16,
                                       dotColor: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                          .primaryText,
                                       activeDotColor: Colors.white,
                                       paintStyle: PaintingStyle.fill,
                                     ),
@@ -2931,30 +2714,25 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                           alignment: AlignmentDirectional(0, 0.05),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              final testsUpdateData = {
-                                ...createTestsRecordData(
-                                  price: int.parse(
-                                      testPriceController?.text ?? ''),
-                                  name: textController1?.text ?? '',
-                                  homeTest: atHomeToggleValue,
-                                  duration: testDurationSliderValue,
-                                  durationResults: resultsDurationSliderValue,
-                                  category: dropDownValue,
-                                  updateDate: getCurrentTimestamp,
-                                  updateRole: valueOrDefault(
-                                      currentUserDocument?.role, ''),
-                                  description: textController3?.text ?? '',
-                                  varianceMale: textController4?.text ?? '',
-                                  varianceFemale: textController6?.text ?? '',
-                                  varianceUnitsMale:
-                                      textController5?.text ?? '',
-                                  varianceUnitsFemale:
-                                      varianceUnitsFemaleController?.text ?? '',
-                                  equipmentInfo: textController8?.text ?? '',
-                                ),
-                                'procedure': FieldValue.arrayUnion(
-                                    [textController9?.text ?? '']),
-                              };
+                              final testsUpdateData = createTestsRecordData(
+                                price:
+                                    int.parse(testPriceController?.text ?? ''),
+                                name: textController1?.text ?? '',
+                                homeTest: atHomeToggleValue,
+                                duration: testDurationSliderValue,
+                                durationResults: resultsDurationSliderValue,
+                                category: dropDownValue,
+                                updateDate: getCurrentTimestamp,
+                                updateRole: valueOrDefault(
+                                    currentUserDocument?.role, ''),
+                                description: textController3?.text ?? '',
+                                varianceMale: textController4?.text ?? '',
+                                varianceFemale: textController6?.text ?? '',
+                                varianceUnitsMale: textController5?.text ?? '',
+                                varianceUnitsFemale:
+                                    varianceUnitsFemaleController?.text ?? '',
+                                equipmentInfo: textController8?.text ?? '',
+                              );
                               await columnTestsRecord.reference
                                   .update(testsUpdateData);
                               context.pop();

@@ -77,7 +77,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
             maxHeight: 600,
           ),
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).tertiaryColor,
+            color: FlutterFlowTheme.of(context).secondaryColor,
           ),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
@@ -707,13 +707,14 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                     context: context,
                                     builder: (alertDialogContext) {
                                       return AlertDialog(
-                                        title: Text('Alert'),
-                                        content: Text('Details Updated!!'),
+                                        title: Text('Success'),
+                                        content:
+                                            Text('Record updated successfully'),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
                                                 alertDialogContext),
-                                            child: Text('Ok'),
+                                            child: Text('Okay'),
                                           ),
                                         ],
                                       );

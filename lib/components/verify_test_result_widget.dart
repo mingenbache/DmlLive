@@ -344,7 +344,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                           );
                                           await widget.testedTestRef!
                                               .update(testedTestsUpdateData);
-                                          if (rowBookingsRecord.verifiedTests!
+                                          if (!rowBookingsRecord.verifiedTests!
                                               .toList()
                                               .contains(widget.testedTestRef)) {
                                             final bookingsUpdateData = {
@@ -361,16 +361,15 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                               context: context,
                                               builder: (alertDialogContext) {
                                                 return AlertDialog(
-                                                  title: Text(
-                                                      'Test Already Verified!'),
+                                                  title: Text('Error'),
                                                   content: Text(
-                                                      'You cannot verify a test twice.'),
+                                                      'Test already verified.'),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: Text('Ok'),
+                                                      child: Text('Okay'),
                                                     ),
                                                   ],
                                                 );
@@ -378,25 +377,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                             );
                                           }
 
-                                          context.pop();
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('Test Verified'),
-                                                content: Text(
-                                                    'The test report can now be shared with the client.'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
+                                          Navigator.pop(context);
                                         },
                                         text: 'Verify Test',
                                         options: FFButtonOptions(

@@ -1546,7 +1546,7 @@ List<String>? removeSpecialTestsitem(
   int? index,
 ) {
   if (specialTests != null && index != null) {
-    specialTests.remove(index);
+    specialTests.removeAt(index);
     return specialTests;
   }
 }

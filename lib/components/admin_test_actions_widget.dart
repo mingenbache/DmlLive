@@ -167,23 +167,21 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                         title: Text(
                                                             'Suspend Test?'),
                                                         content: Text(
-                                                            'Suspending the test will disable client bookings for this test.'),
+                                                            'Are you sure you want to suspend the Test? It will no longer be available for booking.'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext,
                                                                     false),
-                                                            child:
-                                                                Text('Cancel'),
+                                                            child: Text('No'),
                                                           ),
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext,
                                                                     true),
-                                                            child:
-                                                                Text('Confirm'),
+                                                            child: Text('Yes'),
                                                           ),
                                                         ],
                                                       );
@@ -197,6 +195,10 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                             );
                                             await widget.testRef!
                                                 .update(testsUpdateData);
+                                            Navigator.pop(context);
+                                          } else {
+                                            Navigator.pop(context);
+                                            return;
                                           }
                                         },
                                         child: Container(
@@ -271,23 +273,21 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                         title: Text(
                                                             'Unsuspend Test?'),
                                                         content: Text(
-                                                            'Unsuspending will allow client bookings for this test.'),
+                                                            'Are you sure you want to unsuspent the Test? It will be available for booking'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext,
                                                                     false),
-                                                            child:
-                                                                Text('Cancel'),
+                                                            child: Text('No'),
                                                           ),
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext,
                                                                     true),
-                                                            child:
-                                                                Text('Confirm'),
+                                                            child: Text('Yes'),
                                                           ),
                                                         ],
                                                       );
@@ -301,24 +301,29 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                             );
                                             await widget.testRef!
                                                 .update(testsUpdateData);
+                                          } else {
+                                            return;
                                           }
+
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
-                                                title:
-                                                    Text('Test Unsuspended!'),
+                                                title: Text('Success'),
+                                                content:
+                                                    Text('Test  Unsuspended.'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: Text('Ok'),
+                                                    child: Text('Okay'),
                                                   ),
                                                 ],
                                               );
                                             },
                                           );
+                                          Navigator.pop(context);
                                         },
                                         child: Container(
                                           width: MediaQuery.of(context)

@@ -216,9 +216,9 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                               (alertDialogContext) {
                                                             return AlertDialog(
                                                               title: Text(
-                                                                  'Unsuspend Test?'),
+                                                                  'Suspend Test?'),
                                                               content: Text(
-                                                                  'Unsuspending will allow client bookings for this test.'),
+                                                                  'Are you sure you want to suspend the test? The test will not be availooking.'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -226,7 +226,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'Cancel'),
+                                                                      'No'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -234,7 +234,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                           alertDialogContext,
                                                                           true),
                                                                   child: Text(
-                                                                      'Confirm'),
+                                                                      'Yes, Proceed'),
                                                                 ),
                                                               ],
                                                             );
@@ -254,14 +254,15 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                   builder:
                                                       (alertDialogContext) {
                                                     return AlertDialog(
-                                                      title: Text(
-                                                          'Test Unsuspended!'),
+                                                      title: Text('Success'),
+                                                      content: Text(
+                                                          'Test Suspended'),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
                                                               Navigator.pop(
                                                                   alertDialogContext),
-                                                          child: Text('Ok'),
+                                                          child: Text('Okay'),
                                                         ),
                                                       ],
                                                     );

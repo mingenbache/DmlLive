@@ -480,9 +480,9 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                               (alertDialogContext) {
                                                             return AlertDialog(
                                                               title: Text(
-                                                                  'Remove Flag?'),
+                                                                  'Flag Test?'),
                                                               content: Text(
-                                                                  'Are you sure you want to remove the flag on this test? The results can be published aftehr this.'),
+                                                                  'Are you sure you want to flag this test? doing so will prevent test reports being created.'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -490,7 +490,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'Cancel'),
+                                                                      'No'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -498,7 +498,7 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                           alertDialogContext,
                                                                           true),
                                                                   child: Text(
-                                                                      'Confirm'),
+                                                                      'Yes, Proceed'),
                                                                 ),
                                                               ],
                                                             );
@@ -514,6 +514,10 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                       .reference
                                                       .update(
                                                           testedTestsUpdateData);
+                                                  Navigator.pop(context);
+                                                } else {
+                                                  Navigator.pop(context);
+                                                  return;
                                                 }
                                               },
                                               child: Container(

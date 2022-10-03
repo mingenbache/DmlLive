@@ -65,7 +65,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                     maxHeight: 80,
                   ),
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryColor,
+                    color: FlutterFlowTheme.of(context).secondaryText,
                     borderRadius: BorderRadius.circular(28),
                   ),
                   child: Column(
@@ -138,7 +138,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                   Icons.receipt_long,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .tertiaryColor,
+                                                      .secondaryBackground,
                                                   size: 18,
                                                 ),
                                                 Row(
@@ -216,17 +216,20 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                       'Submit\nResult',
                                                       textAlign:
                                                           TextAlign.center,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyText1
-                                                          .override(
-                                                            fontFamily:
-                                                                'Montserrat',
-                                                            color: Color(
-                                                                0x34FFFFFF),
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Montserrat',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
                                                     ),
                                                   ),
                                                 ],
@@ -348,7 +351,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                   Icons.verified_user,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .tertiaryColor,
+                                                      .secondaryBackground,
                                                   size: 18,
                                                 ),
                                                 Row(
@@ -373,7 +376,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                                       'Montserrat',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiaryColor,
+                                                                      .secondaryBackground,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
@@ -502,7 +505,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                 Icons.flag_sharp,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
+                                                        .secondaryBackground,
                                                 size: 18,
                                               ),
                                               Row(
@@ -525,7 +528,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                                     'Montserrat',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .tertiaryColor,
+                                                                    .secondaryBackground,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,

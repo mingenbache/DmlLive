@@ -896,13 +896,14 @@ class _EditUserDetailsPopupWidgetState
                                     context: context,
                                     builder: (alertDialogContext) {
                                       return AlertDialog(
-                                        title: Text('Alert'),
-                                        content: Text('Details Updated!!'),
+                                        title: Text('Success'),
+                                        content:
+                                            Text('Record Edited Successfully'),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
                                                 alertDialogContext),
-                                            child: Text('Ok'),
+                                            child: Text('Okay'),
                                           ),
                                         ],
                                       );

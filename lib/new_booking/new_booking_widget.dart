@@ -2536,15 +2536,14 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           title: Text(
                                                               'Confirm Submission'),
                                                           content: Text(
-                                                              'Are you sure you would like to submit this booking?'),
+                                                              'Are you sure you want to submit your request?'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext,
                                                                       false),
-                                                              child: Text(
-                                                                  'Cancel'),
+                                                              child: Text('No'),
                                                             ),
                                                             TextButton(
                                                               onPressed: () =>
@@ -2552,7 +2551,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                       alertDialogContext,
                                                                       true),
                                                               child: Text(
-                                                                  'Confirm'),
+                                                                  'Yes, Proceed'),
                                                             ),
                                                           ],
                                                         );

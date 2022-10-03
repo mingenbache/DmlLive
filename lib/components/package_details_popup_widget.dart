@@ -100,11 +100,10 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              Color(0x00FFFFFF),
-                              Color(0x92BACA68),
-                              FlutterFlowTheme.of(context).tertiaryColor
+                              Color(0x646CD7B7),
+                              FlutterFlowTheme.of(context).secondaryColor
                             ],
-                            stops: [0, 0.3, 0.4],
+                            stops: [0.3, 0.4],
                             begin: AlignmentDirectional(0, -1),
                             end: AlignmentDirectional(0, 1),
                           ),
@@ -221,9 +220,9 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                 (alertDialogContext) {
                                                               return AlertDialog(
                                                                 title: Text(
-                                                                    'Unsuspend Package?'),
+                                                                    'Unsuspend Test Package?'),
                                                                 content: Text(
-                                                                    'Unsuspending will allow client bookings for this package of tests'),
+                                                                    'Are you sure you want to unsuspend this package? It will be available for booking. '),
                                                                 actions: [
                                                                   TextButton(
                                                                     onPressed: () =>
@@ -231,7 +230,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                             alertDialogContext,
                                                                             false),
                                                                     child: Text(
-                                                                        'Cancel'),
+                                                                        'No'),
                                                                   ),
                                                                   TextButton(
                                                                     onPressed: () =>
@@ -239,7 +238,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                             alertDialogContext,
                                                                             true),
                                                                     child: Text(
-                                                                        'Confirm'),
+                                                                        'Yes'),
                                                                   ),
                                                                 ],
                                                               );
@@ -264,19 +263,21 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                     builder:
                                                         (alertDialogContext) {
                                                       return AlertDialog(
-                                                        title: Text(
-                                                            'Test Package Unsuspended!'),
+                                                        title: Text('Success'),
+                                                        content: Text(
+                                                            'Test Package Unsuspended'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: Text('Ok'),
+                                                            child: Text('Okay'),
                                                           ),
                                                         ],
                                                       );
                                                     },
                                                   );
+                                                  Navigator.pop(context);
                                                 },
                                                 child: Container(
                                                   width: 130,
@@ -357,7 +358,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                               0.47,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .secondaryColor,
                                             borderRadius: BorderRadius.only(
                                               bottomLeft: Radius.circular(0),
                                               bottomRight: Radius.circular(0),
@@ -372,11 +373,14 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                               children: [
                                                 TabBar(
                                                   isScrollable: true,
-                                                  labelColor: Color(0xFF586B06),
+                                                  labelColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
                                                   unselectedLabelColor:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .primaryColor,
+                                                          .primaryText,
                                                   labelStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -459,7 +463,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                           fontFamily:
                                                                               'Roboto',
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               14,
                                                                           fontWeight:
@@ -473,7 +477,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                   endIndent: 10,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .alternate,
+                                                                      .primaryText,
                                                                 ),
                                                                 Container(
                                                                   width: MediaQuery.of(
@@ -502,7 +506,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                               .subtitle2
                                                                               .override(
                                                                                 fontFamily: 'Montserrat',
-                                                                                color: FlutterFlowTheme.of(context).alternate,
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                               ),
                                                                         ),
                                                                       ],

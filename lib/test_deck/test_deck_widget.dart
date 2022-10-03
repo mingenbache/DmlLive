@@ -32,7 +32,6 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryColor,
       body: StreamBuilder<TestedTestsRecord>(
         stream: TestedTestsRecord.getDocument(widget.testedTestRef!),
         builder: (context, snapshot) {
@@ -78,12 +77,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                         color: Colors.transparent,
                         elevation: 3,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(16),
-                            bottomRight: Radius.circular(16),
-                            topLeft: Radius.circular(0),
-                            topRight: Radius.circular(0),
-                          ),
+                          borderRadius: BorderRadius.circular(32),
                         ),
                         child: Container(
                           width: MediaQuery.of(context).size.width,
@@ -91,13 +85,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                             maxHeight: 710,
                           ),
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).tertiaryColor,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(16),
-                              bottomRight: Radius.circular(16),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
-                            ),
+                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            borderRadius: BorderRadius.circular(32),
                           ),
                           child: Padding(
                             padding:
@@ -116,7 +105,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                           .title1
                                           .override(
                                             fontFamily: 'Montserrat',
-                                            color: Color(0xFF586B06),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                           ),
                                     ),
                                     InkWell(
@@ -136,10 +126,13 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                           borderColor: Colors.transparent,
                                           borderRadius: 30,
                                           buttonSize: 48,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryText,
                                           icon: Icon(
                                             Icons.close_rounded,
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .secondaryBackground,
                                             size: 30,
                                           ),
                                           onPressed: () async {
@@ -412,26 +405,24 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                     builder:
                                                         (alertDialogContext) {
                                                       return AlertDialog(
-                                                        title: Text(
-                                                            'Remove Flag?'),
+                                                        title: Text('Confirm'),
                                                         content: Text(
-                                                            'Are you sure you want to remove the flag on this test? The results can be published aftehr this.'),
+                                                            'Are you sure you want to proceed with freezing this Test?'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext,
                                                                     false),
-                                                            child:
-                                                                Text('Cancel'),
+                                                            child: Text('No'),
                                                           ),
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext,
                                                                     true),
-                                                            child:
-                                                                Text('Confirm'),
+                                                            child: Text(
+                                                                'Yes, Proceed'),
                                                           ),
                                                         ],
                                                       );
@@ -535,7 +526,12 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                           children: [
                                             TabBar(
                                               isScrollable: true,
-                                              labelColor: Color(0xFF586B06),
+                                              labelColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              unselectedLabelColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle2,
@@ -612,9 +608,9 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         FontAwesomeIcons
                                                                             .server,
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .secondaryBackground,
                                                                         size:
-                                                                            24,
+                                                                            18,
                                                                       ),
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -629,7 +625,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               .bodyText1
                                                                               .override(
                                                                                 fontFamily: 'Montserrat',
-                                                                                color: Color(0xFF586B06),
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
                                                                         ),
@@ -729,7 +725,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                           Icon(
                                                                             Icons.person,
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             size:
                                                                                 24,
                                                                           ),
@@ -744,7 +740,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               'Patient',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Montserrat',
-                                                                                    color: Color(0xFF586B06),
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
                                                                             ),
@@ -830,7 +826,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         Icons
                                                                             .calendar_today,
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .secondaryBackground,
                                                                         size:
                                                                             24,
                                                                       ),
@@ -847,7 +843,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               .bodyText1
                                                                               .override(
                                                                                 fontFamily: 'Montserrat',
-                                                                                color: Color(0xFF586B06),
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
                                                                         ),
@@ -942,7 +938,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         Icons
                                                                             .calendar_today,
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .secondaryBackground,
                                                                         size:
                                                                             24,
                                                                       ),
@@ -959,7 +955,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               .bodyText1
                                                                               .override(
                                                                                 fontFamily: 'Montserrat',
-                                                                                color: Color(0xFF586B06),
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
                                                                         ),
@@ -1056,7 +1052,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             .bodyText1
                                                                             .override(
                                                                               fontFamily: 'Montserrat',
-                                                                              color: Color(0xFF586B06),
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
@@ -1156,7 +1152,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             'Technologist',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
-                                                                                  color: Color(0xFF586B06),
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -1236,9 +1232,6 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                 0.8,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryColor,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .only(
@@ -1292,7 +1285,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               FaIcon(
                                                                             FontAwesomeIcons.flask,
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             size:
                                                                                 18,
                                                                           ),
@@ -1308,9 +1301,9 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             'Test Diagnosis',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
-                                                                                  color: Colors.white,
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontSize: 15,
-                                                                                  fontWeight: FontWeight.normal,
+                                                                                  fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -1337,7 +1330,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             boxShadow: [
                                                                               BoxShadow(
                                                                                 blurRadius: 4,
@@ -1490,7 +1483,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             .bodyText1
                                                                             .override(
                                                                               fontFamily: 'Montserrat',
-                                                                              color: Color(0xFF586B06),
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
@@ -1505,8 +1498,9 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                   height: 100,
                                                                   decoration:
                                                                       BoxDecoration(
-                                                                    color: Color(
-                                                                        0x33FFFFFF),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
                                                                     borderRadius:
                                                                         BorderRadius
                                                                             .circular(8),
@@ -1533,7 +1527,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             viewResultsTestedTestsRecord.testResult!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
-                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -1585,7 +1579,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             .bodyText1
                                                                             .override(
                                                                               fontFamily: 'Montserrat',
-                                                                              color: Color(0xFF586B06),
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
@@ -1600,8 +1594,9 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                   height: 100,
                                                                   decoration:
                                                                       BoxDecoration(
-                                                                    color: Color(
-                                                                        0x33FFFFFF),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
                                                                     borderRadius:
                                                                         BorderRadius
                                                                             .circular(8),
@@ -1634,7 +1629,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               viewResultsTestedTestsRecord.testNote!,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Montserrat',
-                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
                                                                             ),
@@ -1683,7 +1678,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                           fontFamily:
                                                                               'Montserrat',
                                                                           color:
-                                                                              Color(0xFF586B06),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                         ),
                                                                   ),
                                                                 ],
@@ -1756,7 +1751,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                         ),
                                                                         child:
                                                                             Row(
@@ -1771,7 +1766,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 '12.0 - 18.0',
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                       fontFamily: 'Montserrat',
-                                                                                      color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -1779,14 +1774,12 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         ),
                                                                       ),
                                                                       Container(
-                                                                        width:
-                                                                            100,
                                                                         height:
                                                                             100,
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           borderRadius:
                                                                               BorderRadius.only(
                                                                             bottomLeft:
@@ -1807,12 +1800,12 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               MainAxisAlignment.center,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
                                                                               child: Text(
                                                                                 'gm/dl',
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                       fontFamily: 'Montserrat',
-                                                                                      color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -1881,7 +1874,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .primaryText,
                                                                       ),
                                                                       child:
                                                                           Row(
@@ -1901,7 +1894,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               '11.5 - 16.5',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Montserrat',
-                                                                                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -1909,14 +1902,12 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                       ),
                                                                     ),
                                                                     Container(
-                                                                      width:
-                                                                          100,
                                                                       height:
                                                                           100,
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .primaryText,
                                                                         borderRadius:
                                                                             BorderRadius.only(
                                                                           bottomLeft:
@@ -1940,14 +1931,14 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 5,
                                                                                 0,
-                                                                                0,
+                                                                                5,
                                                                                 0),
                                                                             child:
                                                                                 Text(
                                                                               'gm/dl',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Montserrat',
-                                                                                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -2000,7 +1991,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             fontFamily:
                                                                                 'Montserrat',
                                                                             color:
-                                                                                Color(0xFF586B06),
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                           ),
                                                                     ),
                                                                   ],
@@ -2014,47 +2005,59 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             5,
                                                                             0,
                                                                             0),
-                                                                child:
-                                                                    Container(
-                                                                  width: MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .width,
-                                                                  height: 190,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: Color(
-                                                                        0x32FFFFFF),
+                                                                child: Material(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  elevation: 1,
+                                                                  shape:
+                                                                      RoundedRectangleBorder(
                                                                     borderRadius:
                                                                         BorderRadius
                                                                             .circular(8),
                                                                   ),
                                                                   child:
-                                                                      Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8,
-                                                                            8,
-                                                                            8,
-                                                                            4),
+                                                                      Container(
+                                                                    width: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .width,
+                                                                    height: 190,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8),
+                                                                    ),
                                                                     child:
-                                                                        SingleChildScrollView(
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              8,
+                                                                              8,
+                                                                              8,
+                                                                              4),
                                                                       child:
-                                                                          Column(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        crossAxisAlignment:
-                                                                            CrossAxisAlignment.start,
-                                                                        children: [
-                                                                          Text(
-                                                                            'Maecenas orci turpis, pharetra quis mi ac, condimentum sodales libero. Maecenas eget dui et risus ullamcorper interdum eu non libero. Etiam eu ipsum at enim imperdiet bibendum non non magna. Aliquam eleifend dolor non lorem dignissim scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dictum nibh et massa pulvinar facilisis. Phasellus elit elit, fermentum vitae imperdiet sit amet, elementum id erat. Vivamus pellentesque facilisis erat non dictum. Nulla justo urna, luctus eget justo quis, venenatis mattis metus. Morbi velit ex, vestibulum eget dignissim a, porta eget orci. Aenean ac risus et lorem porttitor porttitor in non nunc. Ut bibendum dui ac nulla accumsan maximus. Etiam scelerisque odio nec lacus cursus porttitor.',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
-                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                  fontWeight: FontWeight.w500,
-                                                                                ),
-                                                                          ),
-                                                                        ],
+                                                                          SingleChildScrollView(
+                                                                        child:
+                                                                            Column(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          crossAxisAlignment:
+                                                                              CrossAxisAlignment.start,
+                                                                          children: [
+                                                                            Text(
+                                                                              'Maecenas orci turpis, pharetra quis mi ac, condimentum sodales libero. Maecenas eget dui et risus ullamcorper interdum eu non libero. Etiam eu ipsum at enim imperdiet bibendum non non magna. Aliquam eleifend dolor non lorem dignissim scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dictum nibh et massa pulvinar facilisis. Phasellus elit elit, fermentum vitae imperdiet sit amet, elementum id erat. Vivamus pellentesque facilisis erat non dictum. Nulla justo urna, luctus eget justo quis, venenatis mattis metus. Morbi velit ex, vestibulum eget dignissim a, porta eget orci. Aenean ac risus et lorem porttitor porttitor in non nunc. Ut bibendum dui ac nulla accumsan maximus. Etiam scelerisque odio nec lacus cursus porttitor.',
+                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    fontFamily: 'Montserrat',
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
+                                                                                    fontWeight: FontWeight.w500,
+                                                                                  ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),

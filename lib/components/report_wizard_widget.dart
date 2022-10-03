@@ -2679,9 +2679,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                   context: context,
                                   builder: (alertDialogContext) {
                                     return AlertDialog(
-                                      title: Text('Report Creation Failed'),
-                                      content: Text(
-                                          'Please review Test Status before proceeding'),
+                                      title: Text('Error'),
+                                      content: Text('Report not Created'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
@@ -2692,6 +2691,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                     );
                                   },
                                 );
+                                Navigator.pop(context);
                                 if (_shouldSetState) setState(() {});
                                 return;
                               }

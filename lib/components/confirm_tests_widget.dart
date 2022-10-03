@@ -1342,13 +1342,13 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                               return AlertDialog(
                                                 title: Text('Error'),
                                                 content: Text(
-                                                    'Please confirm all tests before proceeding'),
+                                                    'Unconfirmed tests. Please confirm all tests before proceeding.'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: Text('Ok'),
+                                                    child: Text('Okay'),
                                                   ),
                                                 ],
                                               );

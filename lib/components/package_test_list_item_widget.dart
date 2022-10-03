@@ -121,7 +121,7 @@ class _PackageTestListItemWidgetState extends State<PackageTestListItemWidget> {
                       functions.upperCase(containerTestsRecord.name),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Montserrat',
-                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            color: FlutterFlowTheme.of(context).primaryText,
                             fontWeight: FontWeight.w500,
                           ),
                     ),

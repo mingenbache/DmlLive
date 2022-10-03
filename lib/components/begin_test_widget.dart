@@ -138,6 +138,8 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                       children: [
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
                                             Container(
                                               width: 300,
@@ -512,6 +514,8 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                         snapshot.data!;
                                                     return FFButtonWidget(
                                                       onPressed: () async {
+                                                        var _shouldSetState =
+                                                            false;
                                                         if (valueOrDefault<
                                                                 bool>(
                                                             currentUserDocument
@@ -554,7 +558,16 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                   .getDocumentFromData(
                                                                       testedTestsCreateData,
                                                                       testedTestsRecordReference);
+                                                          _shouldSetState =
+                                                              true;
+                                                        } else {
+                                                          Navigator.pop(
+                                                              context);
+                                                          if (_shouldSetState)
+                                                            setState(() {});
+                                                          return;
                                                         }
+
                                                         await showDialog(
                                                           context: context,
                                                           builder:
@@ -563,14 +576,14 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                               title: Text(
                                                                   'Success'),
                                                               content: Text(
-                                                                  'Test File created'),
+                                                                  'Record Created'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
                                                                       Navigator.pop(
                                                                           alertDialogContext),
                                                                   child: Text(
-                                                                      'Ok'),
+                                                                      'Okay'),
                                                                 ),
                                                               ],
                                                             );
@@ -586,8 +599,8 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                             .update(
                                                                 bookedTestsUpdateData);
                                                         context.pop();
-
-                                                        setState(() {});
+                                                        if (_shouldSetState)
+                                                          setState(() {});
                                                       },
                                                       text: 'Yes, Continue',
                                                       options: FFButtonOptions(

@@ -1846,18 +1846,18 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                     return AlertDialog(
                                       title: Text('Success'),
                                       content:
-                                          Text('Invoice created successfully'),
+                                          Text('Invoice Created Successfully.'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
+                                          child: Text('Okay'),
                                         ),
                                       ],
                                     );
                                   },
                                 );
-                                context.pop();
+                                Navigator.pop(context);
 
                                 setState(() {});
                               },

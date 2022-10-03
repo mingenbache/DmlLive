@@ -2563,16 +2563,15 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                 context: context,
                                                 builder: (alertDialogContext) {
                                                   return AlertDialog(
-                                                    title: Text(
-                                                        'Invalid Lab Reference Number'),
+                                                    title: Text('Error'),
                                                     content: Text(
-                                                        'Please enter a valid lab reference number for this Booking.'),
+                                                        'Please enter a valid Lab Reference Number before proceeding.'),
                                                     actions: [
                                                       TextButton(
                                                         onPressed: () =>
                                                             Navigator.pop(
                                                                 alertDialogContext),
-                                                        child: Text('Ok'),
+                                                        child: Text('Okay'),
                                                       ),
                                                     ],
                                                   );
@@ -2642,6 +2641,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                       .length);
                                               setState(() =>
                                                   FFAppState().numTestDone = 0);
+                                              return;
                                             }
                                           },
                                           text: 'Confirm and Proceed',

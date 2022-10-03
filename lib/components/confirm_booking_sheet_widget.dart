@@ -162,12 +162,13 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                                 context: context,
                                 builder: (alertDialogContext) {
                                   return AlertDialog(
-                                    title: Text('booking  created'),
+                                    title: Text('Success'),
+                                    content: Text('Booking  Confirmed'),
                                     actions: [
                                       TextButton(
                                         onPressed: () =>
                                             Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
+                                        child: Text('Okay'),
                                       ),
                                     ],
                                   );
@@ -179,7 +180,7 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
 
                             await Future.delayed(
                                 const Duration(milliseconds: 300));
-                            context.pop();
+                            Navigator.pop(context);
                           },
                           text: 'Yes, Continue',
                           options: FFButtonOptions(

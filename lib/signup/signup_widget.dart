@@ -919,15 +919,15 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
-                                                title: Text('Alert'),
-                                                content:
-                                                    Text('New User created!'),
+                                                title: Text('Success!'),
+                                                content: Text(
+                                                    'Account successfully created!'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: Text('Ok'),
+                                                    child: Text('Proceed'),
                                                   ),
                                                 ],
                                               );

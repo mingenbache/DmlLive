@@ -424,25 +424,23 @@ class _TechnologistTestDeckWidgetState
                                                         (alertDialogContext) {
                                                       return AlertDialog(
                                                         title: Text(
-                                                            'Remove Flag?'),
+                                                            'Unflag Test?'),
                                                         content: Text(
-                                                            'Are you sure you want to remove the flag on this test? The results can be published aftehr this.'),
+                                                            'Are you sure you want to unflag Unflag this test? '),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext,
                                                                     false),
-                                                            child:
-                                                                Text('Cancel'),
+                                                            child: Text('No'),
                                                           ),
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext,
                                                                     true),
-                                                            child:
-                                                                Text('Confirm'),
+                                                            child: Text('Yes'),
                                                           ),
                                                         ],
                                                       );
@@ -457,6 +455,11 @@ class _TechnologistTestDeckWidgetState
                                             await viewResultsTestedTestsRecord!
                                                 .reference
                                                 .update(testedTestsUpdateData);
+                                            Navigator.pop(context);
+                                            return;
+                                          } else {
+                                            Navigator.pop(context);
+                                            return;
                                           }
                                         },
                                         child: Container(

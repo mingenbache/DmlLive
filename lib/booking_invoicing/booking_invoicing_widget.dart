@@ -59,7 +59,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
         final bookingInvoicingBookingsRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+          backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
           body: SafeArea(
             child: Stack(
               children: [
@@ -84,9 +84,9 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Color(0x22FFFFFF),
-                        FlutterFlowTheme.of(context).tertiaryColor,
-                        FlutterFlowTheme.of(context).primaryColor
+                        Color(0x446CD7B7),
+                        FlutterFlowTheme.of(context).secondaryBackground,
+                        FlutterFlowTheme.of(context).secondaryColor
                       ],
                       stops: [0, 0.4, 1],
                       begin: AlignmentDirectional(0, -1),
@@ -205,8 +205,9 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Montserrat',
-                                                                  color: Color(
-                                                                      0xFF586B06),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
@@ -250,7 +251,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                         decoration:
                                                             BoxDecoration(
                                                           color:
-                                                              Color(0x2BFFFFFF),
+                                                              Color(0x60FFFFFF),
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(10),
@@ -273,10 +274,10 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                       'Montserrat',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryColor,
+                                                                      .primaryText,
                                                                   fontWeight:
                                                                       FontWeight
-                                                                          .w500,
+                                                                          .normal,
                                                                 ),
                                                           ),
                                                         ),
@@ -334,17 +335,20 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                 6, 8, 0, 0),
                                                     child: Text(
                                                       'Lab Reference',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyText1
-                                                          .override(
-                                                            fontFamily:
-                                                                'Montserrat',
-                                                            color: Color(
-                                                                0xFF586B06),
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Montserrat',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
                                                     ),
                                                   ),
                                                 ),
@@ -361,7 +365,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                     maxWidth: 110,
                                                   ),
                                                   decoration: BoxDecoration(
-                                                    color: Color(0x33FFFFFF),
+                                                    color: Color(0x61FFFFFF),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10),
@@ -384,10 +388,10 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                     'Montserrat',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryColor,
+                                                                    .primaryText,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .w500,
+                                                                        .normal,
                                                               ),
                                                     ),
                                                   ),
@@ -424,17 +428,20 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                     decoration: BoxDecoration(),
                                                     child: Text(
                                                       'Test Date',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyText1
-                                                          .override(
-                                                            fontFamily:
-                                                                'Montserrat',
-                                                            color: Color(
-                                                                0xFF586B06),
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Montserrat',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
                                                     ),
                                                   ),
                                                 ],
@@ -474,7 +481,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                         decoration:
                                                             BoxDecoration(
                                                           color:
-                                                              Color(0x33FFFFFF),
+                                                              Color(0x64FFFFFF),
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(10),
@@ -489,8 +496,8 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                 'd/M/y',
                                                                 bookingInvoicingBookingsRecord
                                                                     .scheduledDate!),
-                                                            textAlign:
-                                                                TextAlign.end,
+                                                            textAlign: TextAlign
+                                                                .center,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyText1
@@ -499,11 +506,11 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                       'Montserrat',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryColor,
-                                                                  fontSize: 16,
+                                                                      .primaryText,
+                                                                  fontSize: 14,
                                                                   fontWeight:
                                                                       FontWeight
-                                                                          .w500,
+                                                                          .normal,
                                                                 ),
                                                           ),
                                                         ),
@@ -542,17 +549,20 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                     decoration: BoxDecoration(),
                                                     child: Text(
                                                       'Referring Doctor',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyText1
-                                                          .override(
-                                                            fontFamily:
-                                                                'Montserrat',
-                                                            color: Color(
-                                                                0xFF586B06),
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Montserrat',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
                                                     ),
                                                   ),
                                                 ],
@@ -576,7 +586,9 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                 .height *
                                                             0.035,
                                                     decoration: BoxDecoration(
-                                                      color: Color(0x32FFFFFF),
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8),
@@ -600,7 +612,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                       'Montserrat',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryColor,
+                                                                      .primaryText,
                                                                 ),
                                                       ),
                                                     ),
@@ -619,143 +631,154 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                   .size
                                                   .width *
                                               0.9,
-                                          decoration: BoxDecoration(),
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                          ),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Expanded(
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  color: Color(0x00000000),
-                                                  child: ExpandableNotifier(
-                                                    initialExpanded: false,
-                                                    child: ExpandablePanel(
-                                                      header: Text(
-                                                        'Patient Details',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 0, 0, 15),
+                                                  child: Container(
+                                                    width: double.infinity,
+                                                    color: Color(0x00000000),
+                                                    child: ExpandableNotifier(
+                                                      initialExpanded: false,
+                                                      child: ExpandablePanel(
+                                                        header: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(10,
+                                                                      0, 0, 0),
+                                                          child: Text(
+                                                            'Patient Details',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
                                                                       'Montserrat',
-                                                                  color: Color(
-                                                                      0xFF586B06),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
                                                                 ),
-                                                      ),
-                                                      collapsed: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0, 5, 0, 0),
-                                                        child: Container(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.9,
-                                                          decoration:
-                                                              BoxDecoration(),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              Container(
-                                                                width: MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .width *
-                                                                    0.15,
-                                                                height: MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .height *
-                                                                    0.04,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              12),
-                                                                ),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          6,
-                                                                          6,
-                                                                          3,
-                                                                          3),
-                                                                  child: Text(
-                                                                    'Name',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Montserrat',
-                                                                          color:
-                                                                              Color(0xFF586B06),
-                                                                          fontWeight:
-                                                                              FontWeight.w500,
-                                                                        ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Container(
-                                                                width: MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .width *
-                                                                    0.65,
-                                                                height: MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .height *
-                                                                    0.04,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: Color(
-                                                                      0x32FFFFFF),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8),
-                                                                ),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          6,
-                                                                          6,
-                                                                          3,
-                                                                          3),
-                                                                  child: Text(
-                                                                    '${bookingInvoicingBookingsRecord.firstname}    ${bookingInvoicingBookingsRecord.lastname}',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Montserrat',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
-                                                                        ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ],
                                                           ),
                                                         ),
-                                                      ),
-                                                      expanded: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(14, 0,
-                                                                    0, 0),
-                                                        child: Column(
+                                                        collapsed: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(0,
+                                                                      5, 0, 0),
+                                                          child: Container(
+                                                            width: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width *
+                                                                0.9,
+                                                            decoration:
+                                                                BoxDecoration(),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Container(
+                                                                  width: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width *
+                                                                      0.15,
+                                                                  height: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .height *
+                                                                      0.04,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            12),
+                                                                  ),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            6,
+                                                                            6,
+                                                                            3,
+                                                                            3),
+                                                                    child: Text(
+                                                                      'Name',
+                                                                      maxLines:
+                                                                          1,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Montserrat',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Container(
+                                                                  width: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width *
+                                                                      0.65,
+                                                                  height: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .height *
+                                                                      0.04,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: Color(
+                                                                        0x32FFFFFF),
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .circular(8),
+                                                                  ),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            6,
+                                                                            6,
+                                                                            3,
+                                                                            3),
+                                                                    child: Text(
+                                                                      '${bookingInvoicingBookingsRecord.firstname}    ${bookingInvoicingBookingsRecord.lastname}',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Montserrat',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        expanded: Column(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
                                                           mainAxisAlignment:
@@ -787,10 +810,6 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                           .center,
                                                                   children: [
                                                                     Container(
-                                                                      width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width *
-                                                                          0.15,
                                                                       height: MediaQuery.of(context)
                                                                               .size
                                                                               .height *
@@ -814,44 +833,39 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                               .bodyText1
                                                                               .override(
                                                                                 fontFamily: 'Montserrat',
-                                                                                color: Color(0xFF586B06),
+                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                    Container(
-                                                                      width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width *
-                                                                          0.65,
-                                                                      height: MediaQuery.of(context)
-                                                                              .size
-                                                                              .height *
-                                                                          0.04,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Color(
-                                                                            0x33FFFFFF),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(8),
-                                                                      ),
+                                                                    Expanded(
                                                                       child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            6,
-                                                                            6,
-                                                                            3,
-                                                                            3),
+                                                                          Container(
+                                                                        height: MediaQuery.of(context).size.height *
+                                                                            0.04,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8),
+                                                                        ),
                                                                         child:
-                                                                            Text(
-                                                                          '${bookingInvoicingBookingsRecord.firstname}     ${bookingInvoicingBookingsRecord.lastname}',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Montserrat',
-                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                              ),
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              6,
+                                                                              6,
+                                                                              3,
+                                                                              3),
+                                                                          child:
+                                                                              Text(
+                                                                            '${bookingInvoicingBookingsRecord.firstname}     ${bookingInvoicingBookingsRecord.lastname}',
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Montserrat',
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                ),
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -884,10 +898,6 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                           .center,
                                                                   children: [
                                                                     Container(
-                                                                      width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width *
-                                                                          0.15,
                                                                       height: MediaQuery.of(context)
                                                                               .size
                                                                               .height *
@@ -911,45 +921,39 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                               .bodyText1
                                                                               .override(
                                                                                 fontFamily: 'Montserrat',
-                                                                                color: Color(0xFF586B06),
+                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                    Container(
-                                                                      width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width *
-                                                                          0.65,
-                                                                      height: MediaQuery.of(context)
-                                                                              .size
-                                                                              .height *
-                                                                          0.04,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Color(
-                                                                            0x32FFFFFF),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(8),
-                                                                      ),
+                                                                    Expanded(
                                                                       child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            6,
-                                                                            6,
-                                                                            3,
-                                                                            3),
+                                                                          Container(
+                                                                        height: MediaQuery.of(context).size.height *
+                                                                            0.04,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8),
+                                                                        ),
                                                                         child:
-                                                                            Text(
-                                                                          bookingInvoicingBookingsRecord
-                                                                              .emailaddress!,
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Montserrat',
-                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                              ),
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              6,
+                                                                              6,
+                                                                              3,
+                                                                              3),
+                                                                          child:
+                                                                              Text(
+                                                                            bookingInvoicingBookingsRecord.emailaddress!,
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Montserrat',
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                ),
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -990,8 +994,6 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                               .start,
                                                                       children: [
                                                                         Container(
-                                                                          width:
-                                                                              MediaQuery.of(context).size.width * 0.15,
                                                                           height:
                                                                               MediaQuery.of(context).size.height * 0.04,
                                                                           decoration:
@@ -1011,7 +1013,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                               'Phone',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Montserrat',
-                                                                                    color: Color(0xFF586B06),
+                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
                                                                             ),
@@ -1019,39 +1021,33 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                         ),
                                                                       ],
                                                                     ),
-                                                                    Container(
-                                                                      width: MediaQuery.of(context)
-                                                                              .size
-                                                                              .width *
-                                                                          0.65,
-                                                                      height: MediaQuery.of(context)
-                                                                              .size
-                                                                              .height *
-                                                                          0.04,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Color(
-                                                                            0x33FDFDFD),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(8),
-                                                                      ),
+                                                                    Expanded(
                                                                       child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            6,
-                                                                            6,
-                                                                            3,
-                                                                            3),
+                                                                          Container(
+                                                                        height: MediaQuery.of(context).size.height *
+                                                                            0.04,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8),
+                                                                        ),
                                                                         child:
-                                                                            Text(
-                                                                          bookingInvoicingBookingsRecord
-                                                                              .phonenumber!,
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
-                                                                              .override(
-                                                                                fontFamily: 'Montserrat',
-                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                              ),
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              6,
+                                                                              6,
+                                                                              3,
+                                                                              3),
+                                                                          child:
+                                                                              Text(
+                                                                            bookingInvoicingBookingsRecord.phonenumber!,
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Montserrat',
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                ),
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1088,9 +1084,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                       child:
                                                                           Container(
                                                                         width: MediaQuery.of(context).size.width *
-                                                                            0.22,
-                                                                        height: MediaQuery.of(context).size.height *
-                                                                            0.04,
+                                                                            0.2,
                                                                         decoration:
                                                                             BoxDecoration(),
                                                                         child:
@@ -1103,9 +1097,11 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                           child:
                                                                               Text(
                                                                             'Date of Birth',
+                                                                            textAlign:
+                                                                                TextAlign.start,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
-                                                                                  color: Color(0xFF586B06),
+                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -1128,7 +1124,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              Color(0x33FFFFFF),
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
                                                                           borderRadius:
                                                                               BorderRadius.circular(8),
                                                                         ),
@@ -1145,7 +1141,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                                 bookingInvoicingBookingsRecord.dOB!),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
-                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -1178,7 +1174,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                             'Sex',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
-                                                                                  color: Color(0xFF586B06),
+                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -1201,7 +1197,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              Color(0x2BFFFFFF),
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
                                                                           borderRadius:
                                                                               BorderRadius.circular(7),
                                                                         ),
@@ -1217,7 +1213,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                             bookingInvoicingBookingsRecord.sex!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Montserrat',
-                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.normal,
                                                                                 ),
                                                                           ),
@@ -1230,24 +1226,26 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                             ),
                                                           ],
                                                         ),
-                                                      ),
-                                                      theme:
-                                                          ExpandableThemeData(
-                                                        tapHeaderToExpand: true,
-                                                        tapBodyToExpand: true,
-                                                        tapBodyToCollapse: true,
-                                                        headerAlignment:
-                                                            ExpandablePanelHeaderAlignment
-                                                                .center,
-                                                        hasIcon: true,
-                                                        expandIcon: Icons
-                                                            .keyboard_arrow_down,
-                                                        collapseIcon: Icons
-                                                            .keyboard_arrow_up,
-                                                        iconColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryColor,
+                                                        theme:
+                                                            ExpandableThemeData(
+                                                          tapHeaderToExpand:
+                                                              true,
+                                                          tapBodyToExpand: true,
+                                                          tapBodyToCollapse:
+                                                              true,
+                                                          headerAlignment:
+                                                              ExpandablePanelHeaderAlignment
+                                                                  .center,
+                                                          hasIcon: true,
+                                                          expandIcon: Icons
+                                                              .keyboard_arrow_down,
+                                                          collapseIcon: Icons
+                                                              .keyboard_arrow_up,
+                                                          iconColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .secondaryColor,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -1260,41 +1258,46 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 0, 20, 20),
-                                        child: Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.8,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.15,
-                                          decoration: BoxDecoration(
-                                            color: Color(0x33FFFFFF),
+                                        child: Material(
+                                          color: Colors.transparent,
+                                          elevation: 1,
+                                          shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(8),
-                                            border: Border.all(
+                                          ),
+                                          child: Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.8,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.15,
+                                            decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .tertiaryColor,
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
                                             ),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8, 8, 4, 4),
-                                            child: Text(
-                                              bookingInvoicingBookingsRecord
-                                                  .diagnosis!,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Montserrat',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryColor,
-                                                  ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(8, 8, 4, 4),
+                                              child: Text(
+                                                bookingInvoicingBookingsRecord
+                                                    .diagnosis!,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Montserrat',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -1319,7 +1322,10 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                     .subtitle2
                                                     .override(
                                                       fontFamily: 'Montserrat',
-                                                      color: Color(0xFF586B06),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                     ),
                                               ),
                                               Padding(
@@ -1365,7 +1371,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .tertiaryColor,
+                                                                .primaryText,
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(20),
@@ -1461,7 +1467,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                                 containerTestsRecord.name!,
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                       fontFamily: 'Montserrat',
-                                                                                      color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
                                                                               ),
@@ -1474,7 +1480,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                                       'Ksh',
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                             fontFamily: 'Montserrat',
-                                                                                            color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                            color: FlutterFlowTheme.of(context).primaryText,
                                                                                             fontWeight: FontWeight.w600,
                                                                                           ),
                                                                                     ),
@@ -1483,7 +1489,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                                     containerTestsRecord.price!.toString(),
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                           fontFamily: 'Montserrat',
-                                                                                          color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                          color: FlutterFlowTheme.of(context).primaryText,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
                                                                                   ),
@@ -1514,7 +1520,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                         indent: 35,
                                         endIndent: 35,
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .primaryText,
                                       ),
                                       Container(
                                         width:
@@ -1538,7 +1544,9 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                         fontFamily:
                                                             'Montserrat',
                                                         color:
-                                                            Color(0xFF586B06),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
@@ -1642,8 +1650,9 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Montserrat',
-                                                                color: Color(
-                                                                    0xFF586B06),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                               ),
                                                       keyboardType:
                                                           TextInputType.number,
@@ -1692,8 +1701,9 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Montserrat',
-                                                          color:
-                                                              Color(0xFF586B06),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -1737,10 +1747,9 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                   getCurrentTimestamp))!,
                                                       icon: Icon(
                                                         Icons.calendar_today,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .tertiaryColor,
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
                                                         size: 12,
                                                       ),
                                                       options: FFButtonOptions(
@@ -1749,7 +1758,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
+                                                                .secondaryText,
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1843,12 +1852,12 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                       return AlertDialog(
                                         title: Text('Success'),
                                         content: Text(
-                                            'Invoice created successfully'),
+                                            'Invoice successfully created!'),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
                                                 alertDialogContext),
-                                            child: Text('Ok'),
+                                            child: Text('Okay'),
                                           ),
                                         ],
                                       );
@@ -1868,16 +1877,16 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                 },
                                 text: 'Generate Invoice',
                                 options: FFButtonOptions(
-                                  width: 340,
+                                  width: 330,
                                   height: 60,
                                   color: FlutterFlowTheme.of(context)
-                                      .secondaryColor,
+                                      .secondaryText,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
                                         fontFamily: 'Roboto',
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .secondaryBackground,
                                         fontSize: 16,
                                         fontWeight: FontWeight.normal,
                                       ),

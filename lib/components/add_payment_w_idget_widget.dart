@@ -854,13 +854,12 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                           builder: (alertDialogContext) {
                             return AlertDialog(
                               title: Text('Success'),
-                              content:
-                                  Text('Payment added. Awaiting verification'),
+                              content: Text('Payment added! '),
                               actions: [
                                 TextButton(
                                   onPressed: () =>
                                       Navigator.pop(alertDialogContext),
-                                  child: Text('Ok'),
+                                  child: Text('Okay'),
                                 ),
                               ],
                             );
