@@ -5,10 +5,11 @@ import '../flutter_flow/flutter_flow_calendar.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'
+    as smooth_page_indicator;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class InvoiceListWidget extends StatefulWidget {
   const InvoiceListWidget({Key? key}) : super(key: key);
@@ -1151,8 +1152,8 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                 alignment:
                                                                     AlignmentDirectional(
                                                                         0, 1),
-                                                                child:
-                                                                    SmoothPageIndicator(
+                                                                child: smooth_page_indicator
+                                                                    .SmoothPageIndicator(
                                                                   controller: pageViewController1 ??=
                                                                       PageController(
                                                                           initialPage:
@@ -1172,8 +1173,8 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                           .ease,
                                                                     );
                                                                   },
-                                                                  effect:
-                                                                      ExpandingDotsEffect(
+                                                                  effect: smooth_page_indicator
+                                                                      .ExpandingDotsEffect(
                                                                     expansionFactor:
                                                                         2,
                                                                     spacing: 8,
@@ -2244,8 +2245,8 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                 alignment:
                                                                     AlignmentDirectional(
                                                                         0, 1),
-                                                                child:
-                                                                    SmoothPageIndicator(
+                                                                child: smooth_page_indicator
+                                                                    .SmoothPageIndicator(
                                                                   controller: pageViewController2 ??=
                                                                       PageController(
                                                                           initialPage:
@@ -2265,8 +2266,8 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                           .ease,
                                                                     );
                                                                   },
-                                                                  effect:
-                                                                      ExpandingDotsEffect(
+                                                                  effect: smooth_page_indicator
+                                                                      .ExpandingDotsEffect(
                                                                     expansionFactor:
                                                                         2,
                                                                     spacing: 8,
@@ -3353,8 +3354,8 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                         AlignmentDirectional(
                                                                             0,
                                                                             1),
-                                                                    child:
-                                                                        SmoothPageIndicator(
+                                                                    child: smooth_page_indicator
+                                                                        .SmoothPageIndicator(
                                                                       controller:
                                                                           pageViewController3 ??=
                                                                               PageController(initialPage: 0),
@@ -3372,8 +3373,8 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                               Curves.ease,
                                                                         );
                                                                       },
-                                                                      effect:
-                                                                          ExpandingDotsEffect(
+                                                                      effect: smooth_page_indicator
+                                                                          .ExpandingDotsEffect(
                                                                         expansionFactor:
                                                                             2,
                                                                         spacing:

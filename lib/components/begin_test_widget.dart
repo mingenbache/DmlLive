@@ -4,11 +4,12 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'
+    as smooth_page_indicator;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BeginTestWidget extends StatefulWidget {
   const BeginTestWidget({
@@ -651,7 +652,8 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 0, 10),
-                                  child: SmoothPageIndicator(
+                                  child:
+                                      smooth_page_indicator.SmoothPageIndicator(
                                     controller: pageViewController ??=
                                         PageController(initialPage: 0),
                                     count: 2,
@@ -663,7 +665,8 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                         curve: Curves.ease,
                                       );
                                     },
-                                    effect: ExpandingDotsEffect(
+                                    effect: smooth_page_indicator
+                                        .ExpandingDotsEffect(
                                       expansionFactor: 2,
                                       spacing: 8,
                                       radius: 16,

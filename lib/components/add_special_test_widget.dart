@@ -11,6 +11,8 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -42,33 +44,10 @@ class _AddSpecialTestWidgetState extends State<AddSpecialTestWidget>
   TextEditingController? testPriceController;
   TestsRecord? newTestId;
   final formKey = GlobalKey<FormState>();
-  final animationsMap = {
-    'dropDownOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 200,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 100),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-  };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-
     testDescriptionController = TextEditingController();
     textController1 = TextEditingController();
     textController2 = TextEditingController();
@@ -988,10 +967,7 @@ class _AddSpecialTestWidgetState extends State<AddSpecialTestWidget>
                                                   margin: EdgeInsetsDirectional
                                                       .fromSTEB(20, 20, 12, 20),
                                                   hidesUnderline: true,
-                                                ).animated([
-                                                  animationsMap[
-                                                      'dropDownOnPageLoadAnimation']!
-                                                ]);
+                                                );
                                               },
                                             ),
                                           ),
@@ -1525,8 +1501,10 @@ class _AddSpecialTestWidgetState extends State<AddSpecialTestWidget>
                             context.pushNamed(
                               'Details',
                               queryParams: {
-                                'testId': serializeParam(newTestId!.reference,
-                                    ParamType.DocumentReference),
+                                'testId': serializeParam(
+                                  newTestId!.reference,
+                                  ParamType.DocumentReference,
+                                ),
                               }.withoutNulls,
                             );
 

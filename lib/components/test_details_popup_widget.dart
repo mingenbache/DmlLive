@@ -248,7 +248,10 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                   );
                                                   await widget.test!.reference
                                                       .update(testsUpdateData);
+                                                } else {
+                                                  return;
                                                 }
+
                                                 await showDialog(
                                                   context: context,
                                                   builder:
@@ -1485,7 +1488,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                     'Montserrat',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryColor,
+                                                                    .primaryText,
                                                               ),
                                                         ),
                                                       ),

@@ -8,6 +8,8 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -32,108 +34,6 @@ class BookingPackageItemWidget extends StatefulWidget {
 
 class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
     with TickerProviderStateMixin {
-  final animationsMap = {
-    'stackOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.bounceOut,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 1300,
-      delay: 280,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(-92, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'containerOnActionTriggerAnimation1': AnimationInfo(
-      curve: Curves.bounceOut,
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(63, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'containerOnActionTriggerAnimation2': AnimationInfo(
-      curve: Curves.bounceOut,
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 950,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(-58, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'containerOnPageLoadAnimation1': AnimationInfo(
-      curve: Curves.bounceOut,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, -73),
-        scale: 1,
-        opacity: 1,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'containerOnPageLoadAnimation2': AnimationInfo(
-      curve: Curves.bounceOut,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(-96, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-  };
-
-  @override
-  void initState() {
-    super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
-      this,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -242,10 +142,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                   ),
                                 ),
                               ),
-                            ).animated([
-                              animationsMap[
-                                  'containerOnActionTriggerAnimation1']!
-                            ]),
+                            ),
                           if (!widget.booking!.testPackages!
                               .toList()
                               .contains(widget.package!.reference))
@@ -354,12 +251,9 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                   ),
                                 ),
                               ),
-                            ).animated([
-                              animationsMap[
-                                  'containerOnActionTriggerAnimation2']!
-                            ]),
+                            ),
                         ],
-                      ).animated([animationsMap['stackOnPageLoadAnimation']!]),
+                      ),
                     ],
                   ),
                 ],
@@ -476,9 +370,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                     ),
                                   ),
                                 ),
-                              ).animated([
-                                animationsMap['containerOnPageLoadAnimation1']!
-                              ]),
+                              ),
                               Align(
                                 alignment: AlignmentDirectional(0, 1),
                                 child: Material(
@@ -884,10 +776,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                       ),
                                     ),
                                   ),
-                                ).animated([
-                                  animationsMap[
-                                      'containerOnPageLoadAnimation2']!
-                                ]),
+                                ),
                               ),
                             ],
                           ),

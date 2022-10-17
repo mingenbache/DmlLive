@@ -218,11 +218,13 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                     context.pushNamed(
                                                       'Chat',
                                                       queryParams: {
-                                                        'chatRef': serializeParam(
-                                                            columnChatsRecord
-                                                                .reference,
-                                                            ParamType
-                                                                .DocumentReference),
+                                                        'chatRef':
+                                                            serializeParam(
+                                                          columnChatsRecord
+                                                              .reference,
+                                                          ParamType
+                                                              .DocumentReference,
+                                                        ),
                                                       }.withoutNulls,
                                                     );
                                                   },

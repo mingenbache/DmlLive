@@ -9,6 +9,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -38,33 +40,6 @@ class ChooseTechnologistWidget extends StatefulWidget {
 class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
     with TickerProviderStateMixin {
   String? technologistValue;
-  final animationsMap = {
-    'dropDownOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 200,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 100),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-  };
-
-  @override
-  void initState() {
-    super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -292,10 +267,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   20, 20, 12, 20),
                                           hidesUnderline: true,
-                                        ).animated([
-                                          animationsMap[
-                                              'dropDownOnPageLoadAnimation']!
-                                        ]);
+                                        );
                                       },
                                     ),
                                   ),

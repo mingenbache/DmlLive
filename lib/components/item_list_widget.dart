@@ -51,8 +51,10 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                         context.pushNamed(
                           'Details',
                           queryParams: {
-                            'testId': serializeParam(duplicatetestsListItem,
-                                ParamType.DocumentReference),
+                            'testId': serializeParam(
+                              duplicatetestsListItem,
+                              ParamType.DocumentReference,
+                            ),
                           }.withoutNulls,
                         );
                       },

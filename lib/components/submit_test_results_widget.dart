@@ -10,6 +10,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -32,69 +34,18 @@ class SubmitTestResultsWidget extends StatefulWidget {
 
 class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
     with TickerProviderStateMixin {
+  bool isMediaUploading = false;
   String uploadedFileUrl = '';
+
   String? testMachineValue;
   bool? checkboxListTileValue;
   TextEditingController? testResultController;
   TextEditingController? testNoteController;
   final formKey = GlobalKey<FormState>();
-  final animationsMap = {
-    'dropDownOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 200,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 100),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-    'textFieldOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 230,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 120),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-    'textFieldOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 230,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 120),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-  };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-
     testNoteController = TextEditingController();
     testResultController = TextEditingController();
   }
@@ -360,9 +311,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                               margin: EdgeInsetsDirectional.fromSTEB(
                                   20, 20, 12, 20),
                               hidesUnderline: true,
-                            ).animated([
-                              animationsMap['dropDownOnPageLoadAnimation']!
-                            ]),
+                            ),
                           ),
                           Padding(
                             padding:
@@ -481,9 +430,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
 
                                   return null;
                                 },
-                              ).animated([
-                                animationsMap['textFieldOnPageLoadAnimation1']!
-                              ]),
+                              ),
                             ),
                           ),
                           Padding(
@@ -518,34 +465,38 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                           selectedMedia.every((m) =>
                                               validateFileFormat(
                                                   m.storagePath, context))) {
-                                        showUploadMessage(
-                                          context,
-                                          'Uploading file...',
-                                          showLoading: true,
-                                        );
-                                        final downloadUrls = (await Future.wait(
-                                                selectedMedia.map((m) async =>
-                                                    await uploadData(
-                                                        m.storagePath,
-                                                        m.bytes))))
-                                            .where((u) => u != null)
-                                            .map((u) => u!)
-                                            .toList();
-                                        ScaffoldMessenger.of(context)
-                                            .hideCurrentSnackBar();
+                                        setState(() => isMediaUploading = true);
+                                        var downloadUrls = <String>[];
+                                        try {
+                                          showUploadMessage(
+                                            context,
+                                            'Uploading file...',
+                                            showLoading: true,
+                                          );
+                                          downloadUrls = (await Future.wait(
+                                            selectedMedia.map(
+                                              (m) async => await uploadData(
+                                                  m.storagePath, m.bytes),
+                                            ),
+                                          ))
+                                              .where((u) => u != null)
+                                              .map((u) => u!)
+                                              .toList();
+                                        } finally {
+                                          ScaffoldMessenger.of(context)
+                                              .hideCurrentSnackBar();
+                                          isMediaUploading = false;
+                                        }
                                         if (downloadUrls.length ==
                                             selectedMedia.length) {
                                           setState(() => uploadedFileUrl =
                                               downloadUrls.first);
                                           showUploadMessage(
-                                            context,
-                                            'Success!',
-                                          );
+                                              context, 'Success!');
                                         } else {
-                                          showUploadMessage(
-                                            context,
-                                            'Failed to upload media',
-                                          );
+                                          setState(() {});
+                                          showUploadMessage(context,
+                                              'Failed to upload media');
                                           return;
                                         }
                                       }
@@ -657,9 +608,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                 textAlign: TextAlign.start,
                                 maxLines: 4,
                                 keyboardType: TextInputType.multiline,
-                              ).animated([
-                                animationsMap['textFieldOnPageLoadAnimation2']!
-                              ]),
+                              ),
                             ),
                           ),
                         ],

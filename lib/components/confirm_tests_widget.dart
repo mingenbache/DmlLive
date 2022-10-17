@@ -11,6 +11,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,48 +37,10 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
   String? pathologistValue;
   TextEditingController? labReferenceController;
   BookedTestsRecord? newTestPackBookedTest;
-  final animationsMap = {
-    'textFieldOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 170,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 80),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-    'dropDownOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 200,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 100),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-  };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-
     labReferenceController = TextEditingController(text: widget.labRefNum);
   }
 
@@ -277,9 +241,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                     fontWeight: FontWeight.w500,
                                     fontSize: 16,
                                   ),
-                                ).animated([
-                                  animationsMap['textFieldOnPageLoadAnimation']!
-                                ]),
+                                ),
                               ),
                             ),
                             Container(
@@ -339,9 +301,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                 margin: EdgeInsetsDirectional.fromSTEB(
                                     20, 20, 12, 20),
                                 hidesUnderline: true,
-                              ).animated([
-                                animationsMap['dropDownOnPageLoadAnimation']!
-                              ]),
+                              ),
                             ),
                             Divider(
                               thickness: 1,
@@ -1336,24 +1296,6 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
 
                                           return;
                                         } else {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('Error'),
-                                                content: Text(
-                                                    'Unconfirmed tests. Please confirm all tests before proceeding.'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Okay'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
                                           return;
                                         }
                                       } else {

@@ -3,6 +3,8 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,67 +19,6 @@ class DashboardMenuWidgetLightWidget extends StatefulWidget {
 class _DashboardMenuWidgetLightWidgetState
     extends State<DashboardMenuWidgetLightWidget>
     with TickerProviderStateMixin {
-  final animationsMap = {
-    'containerOnActionTriggerAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 500,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 0.4,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'containerOnActionTriggerAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 500,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 0.4,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'containerOnActionTriggerAnimation3': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 500,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 0.4,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-  };
-
-  @override
-  void initState() {
-    super.initState();
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
-      this,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -167,8 +108,7 @@ class _DashboardMenuWidgetLightWidgetState
                       ),
                     ),
                   ),
-                ).animated(
-                    [animationsMap['containerOnActionTriggerAnimation1']!]),
+                ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
@@ -237,8 +177,7 @@ class _DashboardMenuWidgetLightWidgetState
                       ),
                     ),
                   ),
-                ).animated(
-                    [animationsMap['containerOnActionTriggerAnimation2']!]),
+                ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
@@ -291,8 +230,7 @@ class _DashboardMenuWidgetLightWidgetState
                       ),
                     ),
                   ),
-                ).animated(
-                    [animationsMap['containerOnActionTriggerAnimation3']!]),
+                ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),

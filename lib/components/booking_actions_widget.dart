@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,35 +25,6 @@ class BookingActionsWidget extends StatefulWidget {
 
 class _BookingActionsWidgetState extends State<BookingActionsWidget>
     with TickerProviderStateMixin {
-  final animationsMap = {
-    'containerOnActionTriggerAnimation': AnimationInfo(
-      curve: Curves.bounceOut,
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 1020,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 0.9,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-  };
-
-  @override
-  void initState() {
-    super.initState();
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
-      this,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -137,7 +110,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                     ],
                   ),
                 ),
-              ).animated([animationsMap['containerOnActionTriggerAnimation']!]),
+              ),
             ),
             Expanded(
               child: Container(
@@ -198,8 +171,9 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                             'BookingReport',
                             queryParams: {
                               'reportRef': serializeParam(
-                                  widget.bookingRef!.reportRef,
-                                  ParamType.DocumentReference),
+                                widget.bookingRef!.reportRef,
+                                ParamType.DocumentReference,
+                              ),
                             }.withoutNulls,
                           );
                         },

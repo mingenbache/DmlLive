@@ -11,6 +11,8 @@ import 'dart:ui';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,50 +27,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
     with TickerProviderStateMixin {
   TextEditingController? textController1;
   TextEditingController? textController2;
-  final animationsMap = {
-    'stackOnActionTriggerAnimation1': AnimationInfo(
-      curve: Curves.bounceOut,
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1.5,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'stackOnActionTriggerAnimation2': AnimationInfo(
-      curve: Curves.bounceOut,
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1.5,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-  };
 
   @override
   void initState() {
     super.initState();
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
-      this,
-    );
-
     textController1 = TextEditingController();
     textController2 = TextEditingController();
   }
@@ -745,10 +707,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       ),
                                                                     ),
                                                                   ],
-                                                                ).animated([
-                                                                  animationsMap[
-                                                                      'stackOnActionTriggerAnimation1']!
-                                                                ]);
+                                                                );
                                                               },
                                                             );
                                                           },
@@ -1448,10 +1407,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                         ),
                                                                       ),
                                                                   ],
-                                                                ).animated([
-                                                                  animationsMap[
-                                                                      'stackOnActionTriggerAnimation2']!
-                                                                ]);
+                                                                );
                                                               },
                                                             );
                                                           },

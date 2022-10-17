@@ -158,29 +158,10 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                             setState(() => FFAppState().isSubmitted = true);
                             setState(() => FFAppState().lastBookingPage = true);
                             if (FFAppState().isSubmitted) {
-                              await showDialog(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('Success'),
-                                    content: Text('Booking  Confirmed'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: Text('Okay'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
+                              Navigator.pop(context);
                             } else {
                               return;
                             }
-
-                            await Future.delayed(
-                                const Duration(milliseconds: 300));
-                            Navigator.pop(context);
                           },
                           text: 'Yes, Continue',
                           options: FFButtonOptions(

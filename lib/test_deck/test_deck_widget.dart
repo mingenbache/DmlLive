@@ -437,6 +437,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                             await viewResultsTestedTestsRecord
                                                 .reference
                                                 .update(testedTestsUpdateData);
+                                          } else {
+                                            return;
                                           }
                                         },
                                         child: Container(

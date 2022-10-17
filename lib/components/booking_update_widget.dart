@@ -8,10 +8,11 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'
+    as smooth_page_indicator;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BookingUpdateWidget extends StatefulWidget {
   const BookingUpdateWidget({
@@ -1880,7 +1881,8 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0, 0, 0, 10),
-                                            child: SmoothPageIndicator(
+                                            child: smooth_page_indicator
+                                                .SmoothPageIndicator(
                                               controller: pageViewController ??=
                                                   PageController(
                                                       initialPage: 0),
@@ -1895,7 +1897,8 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                   curve: Curves.ease,
                                                 );
                                               },
-                                              effect: ExpandingDotsEffect(
+                                              effect: smooth_page_indicator
+                                                  .ExpandingDotsEffect(
                                                 expansionFactor: 2,
                                                 spacing: 8,
                                                 radius: 16,

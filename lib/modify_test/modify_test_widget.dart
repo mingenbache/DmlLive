@@ -875,8 +875,9 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                               'Details',
                               queryParams: {
                                 'testId': serializeParam(
-                                    modifyTestTestsRecord.reference,
-                                    ParamType.DocumentReference),
+                                  modifyTestTestsRecord.reference,
+                                  ParamType.DocumentReference,
+                                ),
                               }.withoutNulls,
                             );
                           },

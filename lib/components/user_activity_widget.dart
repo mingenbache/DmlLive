@@ -2068,9 +2068,11 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                         'Chat',
                                                                         queryParams:
                                                                             {
-                                                                          'chatRef': serializeParam(
-                                                                              columnChatsRecord.reference,
-                                                                              ParamType.DocumentReference),
+                                                                          'chatRef':
+                                                                              serializeParam(
+                                                                            columnChatsRecord.reference,
+                                                                            ParamType.DocumentReference,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                       );
                                                                     },

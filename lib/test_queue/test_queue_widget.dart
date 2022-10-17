@@ -343,10 +343,11 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                           queryParams: {
                                                             'testedTestRef':
                                                                 serializeParam(
-                                                                    newTestedtest!
-                                                                        .reference,
-                                                                    ParamType
-                                                                        .DocumentReference),
+                                                              newTestedtest!
+                                                                  .reference,
+                                                              ParamType
+                                                                  .DocumentReference,
+                                                            ),
                                                           }.withoutNulls,
                                                         );
 

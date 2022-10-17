@@ -670,16 +670,10 @@ class _EditUserDetailsPopupWidgetState
                                                   ),
                                                   decoration: BoxDecoration(),
                                                   child: FlutterFlowChoiceChips(
-                                                    initiallySelected:
-                                                        sexChoiceChipsValue !=
-                                                                null
-                                                            ? [
-                                                                sexChoiceChipsValue!
-                                                              ]
-                                                            : [
-                                                                editUserContainerUsersRecord
-                                                                    .sex!
-                                                              ],
+                                                    initiallySelected: [
+                                                      editUserContainerUsersRecord
+                                                          .sex!
+                                                    ],
                                                     options: [
                                                       ChipData(
                                                           'Female',

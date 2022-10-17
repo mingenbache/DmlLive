@@ -566,10 +566,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     ),
                                     Expanded(
                                       child: FlutterFlowChoiceChips(
-                                        initiallySelected:
-                                            sexChoiceChipsValue != null
-                                                ? [sexChoiceChipsValue!]
-                                                : ['Female'],
+                                        initiallySelected: ['Female'],
                                         options: [
                                           ChipData('Female',
                                               FontAwesomeIcons.female),

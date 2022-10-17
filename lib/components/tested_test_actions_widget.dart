@@ -478,8 +478,9 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                             'TestDeck',
                                             queryParams: {
                                               'testedTestRef': serializeParam(
-                                                  widget.testedTestRef,
-                                                  ParamType.DocumentReference),
+                                                widget.testedTestRef,
+                                                ParamType.DocumentReference,
+                                              ),
                                             }.withoutNulls,
                                           );
                                         },

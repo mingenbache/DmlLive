@@ -270,8 +270,9 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                   'Chat',
                                                   queryParams: {
                                                     'chatUser': serializeParam(
-                                                        columnUsersRecord,
-                                                        ParamType.Document),
+                                                      columnUsersRecord,
+                                                      ParamType.Document,
+                                                    ),
                                                   }.withoutNulls,
                                                   extra: <String, dynamic>{
                                                     'chatUser':

@@ -60,8 +60,9 @@ class _NotificationListItemWidgetState
                         'BookingConfirmation',
                         queryParams: {
                           'bookingRef': serializeParam(
-                              stackNotificationsRecord.bookingRef,
-                              ParamType.DocumentReference),
+                            stackNotificationsRecord.bookingRef,
+                            ParamType.DocumentReference,
+                          ),
                         }.withoutNulls,
                       );
                     },
@@ -164,8 +165,9 @@ class _NotificationListItemWidgetState
                         'BookingUpdates',
                         queryParams: {
                           'bookingRef': serializeParam(
-                              stackNotificationsRecord.bookingRef,
-                              ParamType.DocumentReference),
+                            stackNotificationsRecord.bookingRef,
+                            ParamType.DocumentReference,
+                          ),
                         }.withoutNulls,
                       );
                     },
@@ -653,8 +655,9 @@ class _NotificationListItemWidgetState
                         'TestDeck',
                         queryParams: {
                           'testedTestRef': serializeParam(
-                              stackNotificationsRecord.testedtestref,
-                              ParamType.DocumentReference),
+                            stackNotificationsRecord.testedtestref,
+                            ParamType.DocumentReference,
+                          ),
                         }.withoutNulls,
                       );
                     },
@@ -758,8 +761,9 @@ class _NotificationListItemWidgetState
                         'TestDeck',
                         queryParams: {
                           'testedTestRef': serializeParam(
-                              stackNotificationsRecord.testedtestref,
-                              ParamType.DocumentReference),
+                            stackNotificationsRecord.testedtestref,
+                            ParamType.DocumentReference,
+                          ),
                         }.withoutNulls,
                       );
                     },
@@ -863,8 +867,9 @@ class _NotificationListItemWidgetState
                         'TestDeck',
                         queryParams: {
                           'testedTestRef': serializeParam(
-                              stackNotificationsRecord.testedtestref,
-                              ParamType.DocumentReference),
+                            stackNotificationsRecord.testedtestref,
+                            ParamType.DocumentReference,
+                          ),
                         }.withoutNulls,
                       );
                     },
@@ -968,8 +973,9 @@ class _NotificationListItemWidgetState
                         'TestDeck',
                         queryParams: {
                           'testedTestRef': serializeParam(
-                              stackNotificationsRecord.testedtestref,
-                              ParamType.DocumentReference),
+                            stackNotificationsRecord.testedtestref,
+                            ParamType.DocumentReference,
+                          ),
                         }.withoutNulls,
                       );
                     },
@@ -1073,8 +1079,9 @@ class _NotificationListItemWidgetState
                         'BookingReport',
                         queryParams: {
                           'reportRef': serializeParam(
-                              stackNotificationsRecord.reportref,
-                              ParamType.DocumentReference),
+                            stackNotificationsRecord.reportref,
+                            ParamType.DocumentReference,
+                          ),
                         }.withoutNulls,
                       );
                     },

@@ -6,12 +6,15 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '../flutter_flow/random_data_util.dart' as random_data;
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'
+    as smooth_page_indicator;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingWidget extends StatefulWidget {
   const OnboardingWidget({
@@ -30,29 +33,6 @@ class OnboardingWidget extends StatefulWidget {
 class _OnboardingWidgetState extends State<OnboardingWidget>
     with TickerProviderStateMixin {
   PageController? pageViewController;
-  final animationsMap = {
-    'buttonOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        opacity: 1,
-      ),
-    ),
-  };
-
-  @override
-  void initState() {
-    super.initState();
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
-      this,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -493,8 +473,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                           alignment:
                                                               AlignmentDirectional(
                                                                   0, 1),
-                                                          child:
-                                                              SmoothPageIndicator(
+                                                          child: smooth_page_indicator
+                                                              .SmoothPageIndicator(
                                                             controller:
                                                                 pageViewController ??=
                                                                     PageController(
@@ -514,8 +494,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                                     Curves.ease,
                                                               );
                                                             },
-                                                            effect:
-                                                                ExpandingDotsEffect(
+                                                            effect: smooth_page_indicator
+                                                                .ExpandingDotsEffect(
                                                               expansionFactor:
                                                                   2,
                                                               spacing: 8,
@@ -684,10 +664,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                         ),
                                         borderRadius: BorderRadius.circular(30),
                                       ),
-                                    ).animated([
-                                      animationsMap[
-                                          'buttonOnActionTriggerAnimation']!
-                                    ]),
+                                    ),
                                   ],
                                 ),
                               ),

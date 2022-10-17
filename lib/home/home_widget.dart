@@ -12,6 +12,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -23,21 +24,6 @@ class HomeWidget extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
-  final animationsMap = {
-    'floatingActionButtonOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.bounceOut,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 1730,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        opacity: 1,
-      ),
-    ),
-  };
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -54,12 +40,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
         return;
       }
     });
-
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
   }
 
   @override
@@ -97,8 +77,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                         'NewBooking',
                         queryParams: {
                           'bookingRef': serializeParam(
-                              homeUsersRecord.currentBooking,
-                              ParamType.DocumentReference),
+                            homeUsersRecord.currentBooking,
+                            ParamType.DocumentReference,
+                          ),
                         }.withoutNulls,
                       );
                     } else {
@@ -125,9 +106,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                     'Request a Test',
                     style: FlutterFlowTheme.of(context).bodyText1,
                   ),
-                ).animated([
-                  animationsMap['floatingActionButtonOnPageLoadAnimation']!
-                ]),
+                ),
               ),
               body: Container(
                 width: MediaQuery.of(context).size.width,
@@ -356,7 +335,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                           queryParams:
                                                                               {
                                                                             'bookingRef':
-                                                                                serializeParam(homeUsersRecord.currentBooking, ParamType.DocumentReference),
+                                                                                serializeParam(
+                                                                              homeUsersRecord.currentBooking,
+                                                                              ParamType.DocumentReference,
+                                                                            ),
                                                                           }.withoutNulls,
                                                                         );
 
@@ -597,7 +579,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                             'Chat',
                                                                             queryParams:
                                                                                 {
-                                                                              'chatUser': serializeParam(iconButtonUsersRecord, ParamType.Document),
+                                                                              'chatUser': serializeParam(
+                                                                                iconButtonUsersRecord,
+                                                                                ParamType.Document,
+                                                                              ),
                                                                             }.withoutNulls,
                                                                             extra: <String,
                                                                                 dynamic>{

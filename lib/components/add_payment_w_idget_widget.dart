@@ -9,6 +9,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,77 +38,10 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
   TextEditingController? paymentNoteController;
   PaymentsRecord? paymentRef;
   final formKey = GlobalKey<FormState>();
-  final animationsMap = {
-    'textFieldOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 40),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-    'textFieldOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 170,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 80),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-    'dropDownOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 200,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 100),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-    'textFieldOnPageLoadAnimation3': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 230,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 120),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-  };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-
     firstNameController = TextEditingController();
     lastNameController = TextEditingController();
     paymentAmountController = TextEditingController();
@@ -335,9 +270,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                 textAlign: TextAlign.center,
                                 maxLines: 1,
                                 keyboardType: TextInputType.number,
-                              ).animated([
-                                animationsMap['textFieldOnPageLoadAnimation1']!
-                              ]),
+                              ),
                             ),
                             Padding(
                               padding:
@@ -416,10 +349,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                     fontSize: 16,
                                   ),
                                   maxLines: 1,
-                                ).animated([
-                                  animationsMap[
-                                      'textFieldOnPageLoadAnimation2']!
-                                ]),
+                                ),
                               ),
                             ),
                             Padding(
@@ -461,9 +391,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                 margin: EdgeInsetsDirectional.fromSTEB(
                                     20, 20, 12, 20),
                                 hidesUnderline: true,
-                              ).animated([
-                                animationsMap['dropDownOnPageLoadAnimation']!
-                              ]),
+                              ),
                             ),
                             Padding(
                               padding:
@@ -808,10 +736,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                       ),
                                   textAlign: TextAlign.start,
                                   maxLines: 4,
-                                ).animated([
-                                  animationsMap[
-                                      'textFieldOnPageLoadAnimation3']!
-                                ]),
+                                ),
                               ),
                             ),
                           ],

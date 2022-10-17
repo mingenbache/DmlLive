@@ -1307,8 +1307,10 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                               context.pushNamed(
                                 'Details',
                                 queryParams: {
-                                  'testId': serializeParam(widget.testRef,
-                                      ParamType.DocumentReference),
+                                  'testId': serializeParam(
+                                    widget.testRef,
+                                    ParamType.DocumentReference,
+                                  ),
                                 }.withoutNulls,
                               );
 

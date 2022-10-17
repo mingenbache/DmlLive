@@ -183,9 +183,10 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                         'Invoice',
                                         queryParams: {
                                           'invoiceRef': serializeParam(
-                                              invoiceListItemInvoicesRecord
-                                                  .reference,
-                                              ParamType.DocumentReference),
+                                            invoiceListItemInvoicesRecord
+                                                .reference,
+                                            ParamType.DocumentReference,
+                                          ),
                                         }.withoutNulls,
                                       );
                                     },
@@ -227,11 +228,13 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                 context.pushNamed(
                                                   'Invoice',
                                                   queryParams: {
-                                                    'invoiceRef': serializeParam(
-                                                        invoiceListItemInvoicesRecord
-                                                            .reference,
-                                                        ParamType
-                                                            .DocumentReference),
+                                                    'invoiceRef':
+                                                        serializeParam(
+                                                      invoiceListItemInvoicesRecord
+                                                          .reference,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
                                                   }.withoutNulls,
                                                 );
                                               },

@@ -386,12 +386,13 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                       child: Builder(
                                                         builder: (context) {
                                                           final clients = functions
-                                                              .returnUserList(
-                                                                  textController!
-                                                                      .text,
-                                                                  clientUserContainerUsersRecordList
-                                                                      .toList())!
-                                                              .toList();
+                                                                  .returnUserList(
+                                                                      textController!
+                                                                          .text,
+                                                                      clientUserContainerUsersRecordList
+                                                                          .toList())
+                                                                  ?.toList() ??
+                                                              [];
                                                           return ListView
                                                               .builder(
                                                             padding:
@@ -426,9 +427,11 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                                         'Chat',
                                                                         queryParams:
                                                                             {
-                                                                          'chatUser': serializeParam(
-                                                                              clientsItem,
-                                                                              ParamType.Document),
+                                                                          'chatUser':
+                                                                              serializeParam(
+                                                                            clientsItem,
+                                                                            ParamType.Document,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                         extra: <
                                                                             String,
@@ -498,12 +501,13 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                     child: Builder(
                                                       builder: (context) {
                                                         final staff = functions
-                                                            .returnUserList(
-                                                                textController!
-                                                                    .text,
-                                                                staffUserContainerUsersRecordList
-                                                                    .toList())!
-                                                            .toList();
+                                                                .returnUserList(
+                                                                    textController!
+                                                                        .text,
+                                                                    staffUserContainerUsersRecordList
+                                                                        .toList())
+                                                                ?.toList() ??
+                                                            [];
                                                         return ListView.builder(
                                                           padding:
                                                               EdgeInsets.zero,
@@ -541,9 +545,11 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                                         'Chat',
                                                                         queryParams:
                                                                             {
-                                                                          'chatUser': serializeParam(
-                                                                              staffItem,
-                                                                              ParamType.Document),
+                                                                          'chatUser':
+                                                                              serializeParam(
+                                                                            staffItem,
+                                                                            ParamType.Document,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                         extra: <
                                                                             String,

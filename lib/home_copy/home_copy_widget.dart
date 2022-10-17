@@ -13,6 +13,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,21 +27,6 @@ class HomeCopyWidget extends StatefulWidget {
 
 class _HomeCopyWidgetState extends State<HomeCopyWidget>
     with TickerProviderStateMixin {
-  final animationsMap = {
-    'floatingActionButtonOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.bounceOut,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 1730,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        opacity: 1,
-      ),
-    ),
-  };
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -57,12 +43,6 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
         return;
       }
     });
-
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
   }
 
   @override
@@ -100,8 +80,9 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                         'NewBooking',
                         queryParams: {
                           'bookingRef': serializeParam(
-                              homeCopyUsersRecord.currentBooking,
-                              ParamType.DocumentReference),
+                            homeCopyUsersRecord.currentBooking,
+                            ParamType.DocumentReference,
+                          ),
                         }.withoutNulls,
                       );
                     } else {
@@ -128,9 +109,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                     'Request a Test',
                     style: FlutterFlowTheme.of(context).bodyText1,
                   ),
-                ).animated([
-                  animationsMap['floatingActionButtonOnPageLoadAnimation']!
-                ]),
+                ),
               ),
               body: Container(
                 width: MediaQuery.of(context).size.width,
@@ -375,9 +354,11 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                         'NewBooking',
                                                                         queryParams:
                                                                             {
-                                                                          'bookingRef': serializeParam(
-                                                                              homeCopyUsersRecord.currentBooking,
-                                                                              ParamType.DocumentReference),
+                                                                          'bookingRef':
+                                                                              serializeParam(
+                                                                            homeCopyUsersRecord.currentBooking,
+                                                                            ParamType.DocumentReference,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                       );
                                                                     },
@@ -596,7 +577,10 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                             'Chat',
                                                                             queryParams:
                                                                                 {
-                                                                              'chatUser': serializeParam(iconButtonUsersRecord, ParamType.Document),
+                                                                              'chatUser': serializeParam(
+                                                                                iconButtonUsersRecord,
+                                                                                ParamType.Document,
+                                                                              ),
                                                                             }.withoutNulls,
                                                                             extra: <String,
                                                                                 dynamic>{

@@ -11,13 +11,16 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'
+    as smooth_page_indicator;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ReportWizardWidget extends StatefulWidget {
   const ReportWizardWidget({
@@ -46,74 +49,6 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
   bool? checkboxListTileValue4;
   ReportsRecord? reportRef;
   final formKey = GlobalKey<FormState>();
-  final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.elasticOut,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 1300,
-      delay: 300,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(100, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'buttonOnActionTriggerAnimation': AnimationInfo(
-      curve: Curves.linear,
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(-93, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'buttonOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.bounceOut,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 900,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 92),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-  };
-
-  @override
-  void initState() {
-    super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
-      this,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -442,16 +377,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                       .circular(
                                                                           40),
                                                             ),
-                                                          ).animated([
-                                                            animationsMap[
-                                                                'buttonOnActionTriggerAnimation']!
-                                                          ]),
+                                                          ),
                                                         ),
                                                       ],
-                                                    ).animated([
-                                                      animationsMap[
-                                                          'columnOnPageLoadAnimation']!
-                                                    ]),
+                                                    ),
                                                   ),
                                                 ],
                                               ),
@@ -2568,7 +2497,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 0, 0, 10),
-                                        child: SmoothPageIndicator(
+                                        child: smooth_page_indicator
+                                            .SmoothPageIndicator(
                                           controller: pageViewController ??=
                                               PageController(initialPage: 0),
                                           count: 7,
@@ -2581,7 +2511,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                               curve: Curves.ease,
                                             );
                                           },
-                                          effect: ExpandingDotsEffect(
+                                          effect: smooth_page_indicator
+                                              .ExpandingDotsEffect(
                                             expansionFactor: 2,
                                             spacing: 8,
                                             radius: 16,
@@ -2719,8 +2650,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                               ),
                               borderRadius: BorderRadius.circular(25),
                             ),
-                          ).animated(
-                              [animationsMap['buttonOnPageLoadAnimation']!]),
+                          ),
                         ),
                       ),
                     ),

@@ -16,6 +16,8 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -42,35 +44,10 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
   String? refDoctorValue;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final animationsMap = {
-    'textFieldOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 1190,
-      delay: 520,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 3,
-        opacity: 0.235,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-  };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-
     labRefNumController = TextEditingController();
   }
 
@@ -382,6 +359,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                   .fromSTEB(3, 0, 0, 0),
                                               child: TextFormField(
                                                 controller: labRefNumController,
+                                                autofocus: true,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   labelStyle: FlutterFlowTheme
@@ -485,7 +463,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                 validator: (val) {
                                                   if (val == null ||
                                                       val.isEmpty) {
-                                                    return 'Field is required';
+                                                    return 'Invalid lab reference number';
                                                   }
 
                                                   if (val.length < 4) {
@@ -494,10 +472,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
 
                                                   return null;
                                                 },
-                                              ).animated([
-                                                animationsMap[
-                                                    'textFieldOnPageLoadAnimation']!
-                                              ]),
+                                              ),
                                             ),
                                           ),
                                         ],
@@ -2212,9 +2187,11 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                         'Details',
                                                                         queryParams:
                                                                             {
-                                                                          'testId': serializeParam(
-                                                                              testsListItem,
-                                                                              ParamType.DocumentReference),
+                                                                          'testId':
+                                                                              serializeParam(
+                                                                            testsListItem,
+                                                                            ParamType.DocumentReference,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                       );
                                                                     },
@@ -2557,92 +2534,64 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                 : null;
                                         return FFButtonWidget(
                                           onPressed: () async {
-                                            if (functions.checkStringNull(
-                                                labRefNumController!.text)) {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text('Error'),
-                                                    content: Text(
-                                                        'Please enter a valid Lab Reference Number before proceeding.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Okay'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                              return;
-                                            } else {
-                                              if (formKey.currentState ==
-                                                      null ||
-                                                  !formKey.currentState!
-                                                      .validate()) {
-                                                return;
-                                              }
-
-                                              await showModalBottomSheet(
-                                                isScrollControlled: true,
-                                                backgroundColor:
-                                                    Color(0x00FFFFFF),
-                                                context: context,
-                                                builder: (context) {
-                                                  return Padding(
-                                                    padding:
-                                                        MediaQuery.of(context)
-                                                            .viewInsets,
-                                                    child: ConfirmTestsWidget(
-                                                      booking:
-                                                          bookingConfirmationBookingsRecord
-                                                              .reference,
-                                                      labRefNum:
-                                                          labRefNumController!
-                                                              .text,
-                                                    ),
-                                                  );
-                                                },
-                                              ).then(
-                                                  (value) => setState(() {}));
-
-                                              final bookingsUpdateData =
-                                                  createBookingsRecordData(
-                                                labRefNum:
-                                                    labRefNumController!.text,
-                                                docNameAddress: refDoctorValue,
-                                                paymentBalance:
-                                                    bookingConfirmationBookingsRecord
-                                                        .totalPrice
-                                                        ?.toDouble(),
-                                                confirmationBegan: true,
-                                                docRef: buttonDoctorsRecord!
-                                                    .reference,
-                                              );
-                                              await bookingConfirmationBookingsRecord
-                                                  .reference
-                                                  .update(bookingsUpdateData);
-                                              setState(() => FFAppState()
-                                                      .labRef =
-                                                  labRefNumController!.text);
-                                              setState(() => FFAppState()
-                                                  .pathologistassigned = false);
-                                              setState(() => FFAppState()
-                                                      .technologistassigned =
-                                                  false);
-                                              setState(() => FFAppState()
-                                                      .numTests =
-                                                  bookingConfirmationBookingsRecord
-                                                      .testsIncluded!
-                                                      .toList()
-                                                      .length);
-                                              setState(() =>
-                                                  FFAppState().numTestDone = 0);
+                                            if (formKey.currentState == null ||
+                                                !formKey.currentState!
+                                                    .validate()) {
                                               return;
                                             }
+
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Color(0x00FFFFFF),
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding:
+                                                      MediaQuery.of(context)
+                                                          .viewInsets,
+                                                  child: ConfirmTestsWidget(
+                                                    booking:
+                                                        bookingConfirmationBookingsRecord
+                                                            .reference,
+                                                    labRefNum:
+                                                        labRefNumController!
+                                                            .text,
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+
+                                            final bookingsUpdateData =
+                                                createBookingsRecordData(
+                                              labRefNum:
+                                                  labRefNumController!.text,
+                                              docNameAddress: refDoctorValue,
+                                              paymentBalance:
+                                                  bookingConfirmationBookingsRecord
+                                                      .totalPrice
+                                                      ?.toDouble(),
+                                              confirmationBegan: true,
+                                              docRef: buttonDoctorsRecord!
+                                                  .reference,
+                                            );
+                                            await bookingConfirmationBookingsRecord
+                                                .reference
+                                                .update(bookingsUpdateData);
+                                            setState(() => FFAppState().labRef =
+                                                labRefNumController!.text);
+                                            setState(() => FFAppState()
+                                                .pathologistassigned = false);
+                                            setState(() => FFAppState()
+                                                .technologistassigned = false);
+                                            setState(() => FFAppState()
+                                                    .numTests =
+                                                bookingConfirmationBookingsRecord
+                                                    .testsIncluded!
+                                                    .toList()
+                                                    .length);
+                                            setState(() =>
+                                                FFAppState().numTestDone = 0);
                                           },
                                           text: 'Confirm and Proceed',
                                           options: FFButtonOptions(

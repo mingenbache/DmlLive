@@ -11,6 +11,8 @@ import '../flutter_flow/upload_media.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
@@ -24,57 +26,19 @@ class NewBookingSheetWidget extends StatefulWidget {
 
 class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
     with TickerProviderStateMixin {
-  BookingsRecord? newbookingRef;
+  bool isMediaUploading = false;
   List<String> uploadedFileUrls = [];
+
   PageController? pageViewController;
   bool? isPatientValue;
   TextEditingController? docemailAddressController;
   TextEditingController? doctorNamesController;
   TextEditingController? docphoneNumberController;
-  final animationsMap = {
-    'textFieldOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 230,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 120),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-    'columnOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.linear,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 71),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-  };
+  BookingsRecord? newbookingRef;
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-
     docemailAddressController = TextEditingController();
     doctorNamesController = TextEditingController();
     docphoneNumberController = TextEditingController();
@@ -617,10 +581,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                   ),
                                               textAlign: TextAlign.start,
                                               maxLines: 1,
-                                            ).animated([
-                                              animationsMap[
-                                                  'textFieldOnPageLoadAnimation']!
-                                            ]),
+                                            ),
                                           ),
                                         ),
                                         Padding(
@@ -1043,23 +1004,37 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                             validateFileFormat(
                                                                 m.storagePath,
                                                                 context))) {
-                                                      showUploadMessage(
-                                                        context,
-                                                        'Uploading file...',
-                                                        showLoading: true,
-                                                      );
-                                                      final downloadUrls = (await Future
-                                                              .wait(selectedMedia
-                                                                  .map((m) async =>
-                                                                      await uploadData(
-                                                                          m.storagePath,
-                                                                          m.bytes))))
-                                                          .where((u) => u != null)
-                                                          .map((u) => u!)
-                                                          .toList();
-                                                      ScaffoldMessenger.of(
-                                                              context)
-                                                          .hideCurrentSnackBar();
+                                                      setState(() =>
+                                                          isMediaUploading =
+                                                              true);
+                                                      var downloadUrls =
+                                                          <String>[];
+                                                      try {
+                                                        showUploadMessage(
+                                                          context,
+                                                          'Uploading file...',
+                                                          showLoading: true,
+                                                        );
+                                                        downloadUrls =
+                                                            (await Future.wait(
+                                                          selectedMedia.map(
+                                                            (m) async =>
+                                                                await uploadData(
+                                                                    m.storagePath,
+                                                                    m.bytes),
+                                                          ),
+                                                        ))
+                                                                .where((u) =>
+                                                                    u != null)
+                                                                .map((u) => u!)
+                                                                .toList();
+                                                      } finally {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .hideCurrentSnackBar();
+                                                        isMediaUploading =
+                                                            false;
+                                                      }
                                                       if (downloadUrls.length ==
                                                           selectedMedia
                                                               .length) {
@@ -1067,14 +1042,13 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                             uploadedFileUrls =
                                                                 downloadUrls);
                                                         showUploadMessage(
-                                                          context,
-                                                          'Success!',
-                                                        );
+                                                            context,
+                                                            'Success!');
                                                       } else {
+                                                        setState(() {});
                                                         showUploadMessage(
-                                                          context,
-                                                          'Failed to upload media',
-                                                        );
+                                                            context,
+                                                            'Failed to upload media');
                                                         return;
                                                       }
                                                     }
@@ -1299,8 +1273,9 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                               'NewBooking',
                               queryParams: {
                                 'bookingRef': serializeParam(
-                                    newbookingRef!.reference,
-                                    ParamType.DocumentReference),
+                                  newbookingRef!.reference,
+                                  ParamType.DocumentReference,
+                                ),
                               }.withoutNulls,
                             );
 
@@ -1336,7 +1311,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                           ),
                     ),
                   ],
-                ).animated([animationsMap['columnOnPageLoadAnimation']!]),
+                ),
               ),
             ),
           ],

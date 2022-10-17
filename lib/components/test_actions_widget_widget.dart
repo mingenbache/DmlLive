@@ -7,6 +7,8 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,41 +30,6 @@ class TestActionsWidgetWidget extends StatefulWidget {
 
 class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
     with TickerProviderStateMixin {
-  final animationsMap = {
-    'buttonOnActionTriggerAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        opacity: 1,
-      ),
-    ),
-    'buttonOnActionTriggerAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        opacity: 1,
-      ),
-    ),
-  };
-
-  @override
-  void initState() {
-    super.initState();
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
-      this,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -137,7 +104,9 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                                 'Chat',
                                 queryParams: {
                                   'chatUser': serializeParam(
-                                      buttonUsersRecord, ParamType.Document),
+                                    buttonUsersRecord,
+                                    ParamType.Document,
+                                  ),
                                 }.withoutNulls,
                                 extra: <String, dynamic>{
                                   'chatUser': buttonUsersRecord,
@@ -167,9 +136,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                               ),
                               borderRadius: BorderRadius.circular(30),
                             ),
-                          ).animated([
-                            animationsMap['buttonOnActionTriggerAnimation1']!
-                          ]);
+                          );
                         },
                       ),
                       FFButtonWidget(
@@ -234,8 +201,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                           ),
                           borderRadius: BorderRadius.circular(30),
                         ),
-                      ).animated(
-                          [animationsMap['buttonOnActionTriggerAnimation2']!]),
+                      ),
                     ],
                   ),
                 ),

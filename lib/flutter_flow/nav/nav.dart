@@ -12,6 +12,8 @@ import '../../backend/push_notifications/push_notifications_handler.dart'
 
 import '../../index.dart';
 import '../../main.dart';
+import '../lat_lng.dart';
+import '../place.dart';
 import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -87,7 +89,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'details',
               builder: (context, params) => DetailsWidget(
                 testId: params.getParam(
-                    'testId', ParamType.DocumentReference, 'tests'),
+                    'testId', ParamType.DocumentReference, false, 'tests'),
               ),
             ),
             FFRoute(
@@ -114,39 +116,39 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'modifyTest',
               builder: (context, params) => ModifyTestWidget(
                 testId: params.getParam(
-                    'testId', ParamType.DocumentReference, 'tests'),
+                    'testId', ParamType.DocumentReference, false, 'tests'),
               ),
             ),
             FFRoute(
               name: 'BookingUpdates',
               path: 'bookingUpdates',
               builder: (context, params) => BookingUpdatesWidget(
-                bookingRef: params.getParam(
-                    'bookingRef', ParamType.DocumentReference, 'bookings'),
+                bookingRef: params.getParam('bookingRef',
+                    ParamType.DocumentReference, false, 'bookings'),
               ),
             ),
             FFRoute(
               name: 'Invoice',
               path: 'invoice',
               builder: (context, params) => InvoiceWidget(
-                invoiceRef: params.getParam(
-                    'invoiceRef', ParamType.DocumentReference, 'Invoices'),
+                invoiceRef: params.getParam('invoiceRef',
+                    ParamType.DocumentReference, false, 'Invoices'),
               ),
             ),
             FFRoute(
               name: 'LabReport',
               path: 'labReport',
               builder: (context, params) => LabReportWidget(
-                bookingRef: params.getParam(
-                    'bookingRef', ParamType.DocumentReference, 'bookings'),
+                bookingRef: params.getParam('bookingRef',
+                    ParamType.DocumentReference, false, 'bookings'),
               ),
             ),
             FFRoute(
               name: 'AddPayment',
               path: 'addPayment',
               builder: (context, params) => AddPaymentWidget(
-                invoiceRef: params.getParam(
-                    'invoiceRef', ParamType.DocumentReference, 'Invoices'),
+                invoiceRef: params.getParam('invoiceRef',
+                    ParamType.DocumentReference, false, 'Invoices'),
               ),
             ),
             FFRoute(
@@ -159,7 +161,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'testDeck',
               builder: (context, params) => TestDeckWidget(
                 testedTestRef: params.getParam('testedTestRef',
-                    ParamType.DocumentReference, 'tested_tests'),
+                    ParamType.DocumentReference, false, 'tested_tests'),
               ),
             ),
             FFRoute(
@@ -232,7 +234,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ChatWidget(
                 chatUser: params.getParam('chatUser', ParamType.Document),
                 chatRef: params.getParam(
-                    'chatRef', ParamType.DocumentReference, 'chats'),
+                    'chatRef', ParamType.DocumentReference, false, 'chats'),
               ),
             ),
             FFRoute(
@@ -251,7 +253,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'bookingReport',
               builder: (context, params) => BookingReportWidget(
                 reportRef: params.getParam(
-                    'reportRef', ParamType.DocumentReference, 'reports'),
+                    'reportRef', ParamType.DocumentReference, false, 'reports'),
               ),
             ),
             FFRoute(
@@ -263,8 +265,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'NewBooking',
               path: 'newBooking',
               builder: (context, params) => NewBookingWidget(
-                bookingRef: params.getParam(
-                    'bookingRef', ParamType.DocumentReference, 'bookings'),
+                bookingRef: params.getParam('bookingRef',
+                    ParamType.DocumentReference, false, 'bookings'),
               ),
             ),
             FFRoute(
@@ -296,8 +298,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'BookingConfirmation',
               path: 'bookingConfirmation',
               builder: (context, params) => BookingConfirmationWidget(
-                bookingRef: params.getParam(
-                    'bookingRef', ParamType.DocumentReference, 'bookings'),
+                bookingRef: params.getParam('bookingRef',
+                    ParamType.DocumentReference, false, 'bookings'),
               ),
             ),
             FFRoute(
@@ -319,8 +321,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'BookingInvoicing',
               path: 'bookingInvoicing',
               builder: (context, params) => BookingInvoicingWidget(
-                bookingRef: params.getParam(
-                    'bookingRef', ParamType.DocumentReference, 'bookings'),
+                bookingRef: params.getParam('bookingRef',
+                    ParamType.DocumentReference, false, 'bookings'),
               ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
@@ -430,9 +432,10 @@ class FFParameters {
         ),
       ).onError((_, __) => [false]).then((v) => v.every((e) => e));
 
-  dynamic getParam(
+  dynamic getParam<T>(
     String paramName,
     ParamType type, [
+    bool isList = false,
     String? collectionName,
   ]) {
     if (futureParamValues.containsKey(paramName)) {
@@ -447,7 +450,7 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam(param, type, collectionName);
+    return deserializeParam<T>(param, type, isList, collectionName);
   }
 }
 

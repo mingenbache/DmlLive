@@ -380,20 +380,25 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                                         .pushNamed(
                                                                   'Chat',
                                                                   queryParams: {
-                                                                    'chatUser': serializeParam(
-                                                                        chatInfo.otherUsers.length ==
-                                                                                1
-                                                                            ? chatInfo
-                                                                                .otherUsersList.first
-                                                                            : null,
-                                                                        ParamType
-                                                                            .Document),
-                                                                    'chatRef': serializeParam(
-                                                                        chatInfo
-                                                                            .chatRecord
-                                                                            .reference,
-                                                                        ParamType
-                                                                            .DocumentReference),
+                                                                    'chatUser':
+                                                                        serializeParam(
+                                                                      chatInfo.otherUsers.length ==
+                                                                              1
+                                                                          ? chatInfo
+                                                                              .otherUsersList
+                                                                              .first
+                                                                          : null,
+                                                                      ParamType
+                                                                          .Document,
+                                                                    ),
+                                                                    'chatRef':
+                                                                        serializeParam(
+                                                                      chatInfo
+                                                                          .chatRecord
+                                                                          .reference,
+                                                                      ParamType
+                                                                          .DocumentReference,
+                                                                    ),
                                                                   }.withoutNulls,
                                                                   extra: <
                                                                       String,

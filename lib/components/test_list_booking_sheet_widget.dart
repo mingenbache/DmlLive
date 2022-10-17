@@ -11,6 +11,8 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -31,30 +33,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
     with TickerProviderStateMixin {
   TextEditingController? textController1;
   TextEditingController? textController2;
-  final animationsMap = {
-    'buttonOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        opacity: 1,
-      ),
-    ),
-  };
 
   @override
   void initState() {
     super.initState();
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
-      this,
-    );
-
     textController1 = TextEditingController();
     textController2 = TextEditingController();
   }
@@ -1632,8 +1614,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                             ),
                             borderRadius: BorderRadius.circular(25),
                           ),
-                        ).animated(
-                            [animationsMap['buttonOnActionTriggerAnimation']!]),
+                        ),
                       ],
                     ),
                   ],

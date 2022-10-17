@@ -7,6 +7,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,33 +27,10 @@ class FlagTestWidget extends StatefulWidget {
 class _FlagTestWidgetState extends State<FlagTestWidget>
     with TickerProviderStateMixin {
   TextEditingController? flagNotesController;
-  final animationsMap = {
-    'textFieldOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 230,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 120),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-  };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-
     flagNotesController = TextEditingController();
   }
 
@@ -204,8 +183,7 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                                   ),
                           textAlign: TextAlign.start,
                           maxLines: 6,
-                        ).animated(
-                            [animationsMap['textFieldOnPageLoadAnimation']!]),
+                        ),
                       ),
                     ),
                   ],
@@ -239,8 +217,9 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                           'TestDeck',
                           queryParams: {
                             'testedTestRef': serializeParam(
-                                widget.testedTestRef,
-                                ParamType.DocumentReference),
+                              widget.testedTestRef,
+                              ParamType.DocumentReference,
+                            ),
                           }.withoutNulls,
                         );
                       },

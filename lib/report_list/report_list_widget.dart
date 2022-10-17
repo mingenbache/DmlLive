@@ -166,8 +166,9 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                           'LabReport',
                                           queryParams: {
                                             'bookingRef': serializeParam(
-                                                bookingsItem.reference,
-                                                ParamType.DocumentReference),
+                                              bookingsItem.reference,
+                                              ParamType.DocumentReference,
+                                            ),
                                           }.withoutNulls,
                                         );
                                       }
@@ -454,7 +455,10 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                                             context.pushNamed(
                                                                                               'TestDeck',
                                                                                               queryParams: {
-                                                                                                'testedTestRef': serializeParam(testsItem.reference, ParamType.DocumentReference),
+                                                                                                'testedTestRef': serializeParam(
+                                                                                                  testsItem.reference,
+                                                                                                  ParamType.DocumentReference,
+                                                                                                ),
                                                                                               }.withoutNulls,
                                                                                             );
                                                                                           },

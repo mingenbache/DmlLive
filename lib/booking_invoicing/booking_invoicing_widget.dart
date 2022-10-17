@@ -1868,8 +1868,9 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                     'Invoice',
                                     queryParams: {
                                       'invoiceRef': serializeParam(
-                                          newInvoice!.reference,
-                                          ParamType.DocumentReference),
+                                        newInvoice!.reference,
+                                        ParamType.DocumentReference,
+                                      ),
                                     }.withoutNulls,
                                   );
 

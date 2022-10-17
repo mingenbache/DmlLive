@@ -8,12 +8,15 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'
+    as smooth_page_indicator;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class AddNewTestPackageWidget extends StatefulWidget {
   const AddNewTestPackageWidget({
@@ -42,34 +45,10 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
   TextEditingController? testPackageNameController;
   TestPackagesRecord? newTestPackId;
   final formKey = GlobalKey<FormState>();
-  final animationsMap = {
-    'buttonOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.bounceOut,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(0, 82),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-  };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-
     packageDescriptionController = TextEditingController();
     testDurationTextController = TextEditingController(
         text: functions.doubletoInt(testDurationSliderValue, 60.0).toString());
@@ -1791,7 +1770,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 10),
-                                      child: SmoothPageIndicator(
+                                      child: smooth_page_indicator
+                                          .SmoothPageIndicator(
                                         controller: pageViewController ??=
                                             PageController(initialPage: 0),
                                         count: 2,
@@ -1804,7 +1784,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                             curve: Curves.ease,
                                           );
                                         },
-                                        effect: ExpandingDotsEffect(
+                                        effect: smooth_page_indicator
+                                            .ExpandingDotsEffect(
                                           expansionFactor: 2,
                                           spacing: 8,
                                           radius: 16,
@@ -1897,9 +1878,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                   ),
                                   borderRadius: BorderRadius.circular(25),
                                 ),
-                              ).animated([
-                                animationsMap['buttonOnPageLoadAnimation']!
-                              ]),
+                              ),
                             ),
                           ),
                         ],

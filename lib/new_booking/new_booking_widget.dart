@@ -16,6 +16,8 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -47,52 +49,6 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
   TextEditingController? refDoctorController;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final animationsMap = {
-    'rowOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.elasticOut,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 1220,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, -97),
-        scale: 3,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'buttonOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 1100,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        opacity: 1,
-      ),
-    ),
-  };
-
-  @override
-  void initState() {
-    super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
-      this,
-    );
-  }
 
   @override
   void dispose() {
@@ -303,9 +259,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                         ],
                                       ),
                                     ],
-                                  ).animated([
-                                    animationsMap['rowOnPageLoadAnimation']!
-                                  ]),
+                                  ),
                                 ),
                               ),
                               Padding(
@@ -465,8 +419,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                 .circular(8),
                                                       ),
                                                       filled: true,
-                                                      fillColor:
-                                                          Color(0x2BFFFFFF),
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
                                                       contentPadding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(16, 24,
@@ -599,8 +554,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                 .circular(8),
                                                       ),
                                                       filled: true,
-                                                      fillColor:
-                                                          Color(0x2BFFFFFF),
+                                                      fillColor: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
                                                       contentPadding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(16, 24,
@@ -746,8 +702,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                               8),
                                                     ),
                                                     filled: true,
-                                                    fillColor:
-                                                        Color(0x2BFFFFFF),
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
                                                     contentPadding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
@@ -891,8 +848,9 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                               8),
                                                     ),
                                                     filled: true,
-                                                    fillColor:
-                                                        Color(0x2BFFFFFF),
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
                                                     contentPadding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
@@ -978,18 +936,12 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                     if (!newBookingBookingsRecord
                                                         .userPatient!)
                                                       FlutterFlowChoiceChips(
-                                                        initiallySelected:
-                                                            choiceChipsValue !=
-                                                                    null
-                                                                ? [
-                                                                    choiceChipsValue!
-                                                                  ]
-                                                                : [
-                                                                    valueOrDefault(
-                                                                        currentUserDocument
-                                                                            ?.sex,
-                                                                        '')
-                                                                  ],
+                                                        initiallySelected: [
+                                                          valueOrDefault(
+                                                              currentUserDocument
+                                                                  ?.sex,
+                                                              '')
+                                                        ],
                                                         options: functions
                                                             .returnSexOptions()
                                                             .map((label) =>
@@ -1916,7 +1868,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                 'Ksh',
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                       fontFamily: 'Montserrat',
-                                                                                      color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontWeight: FontWeight.w600,
                                                                                     ),
                                                                               ),
@@ -2045,10 +1997,12 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                               context.pushNamed(
                                                                 'Details',
                                                                 queryParams: {
-                                                                  'testId': serializeParam(
-                                                                      testsListItem,
-                                                                      ParamType
-                                                                          .DocumentReference),
+                                                                  'testId':
+                                                                      serializeParam(
+                                                                    testsListItem,
+                                                                    ParamType
+                                                                        .DocumentReference,
+                                                                  ),
                                                                 }.withoutNulls,
                                                               );
                                                             },
@@ -2129,7 +2083,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                               'Ksh',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Montserrat',
-                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontWeight: FontWeight.w600,
                                                                                   ),
                                                                             ),
@@ -2678,10 +2632,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 BorderRadius.circular(25),
                                           ),
                                         ),
-                                      ).animated([
-                                        animationsMap[
-                                            'buttonOnActionTriggerAnimation']!
-                                      ]);
+                                      );
                                     },
                                   ),
                                 ),

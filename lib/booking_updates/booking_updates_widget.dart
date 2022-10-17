@@ -1374,9 +1374,11 @@ class _BookingUpdatesWidgetState extends State<BookingUpdatesWidget> {
                                                                         'TestDeck',
                                                                         queryParams:
                                                                             {
-                                                                          'testedTestRef': serializeParam(
-                                                                              containerTestedTestsRecord!.reference,
-                                                                              ParamType.DocumentReference),
+                                                                          'testedTestRef':
+                                                                              serializeParam(
+                                                                            containerTestedTestsRecord!.reference,
+                                                                            ParamType.DocumentReference,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                       );
                                                                     }

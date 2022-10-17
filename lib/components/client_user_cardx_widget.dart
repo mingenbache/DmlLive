@@ -31,8 +31,10 @@ class _ClientUserCardxWidgetState extends State<ClientUserCardxWidget> {
             context.pushNamed(
               'Chat',
               queryParams: {
-                'chatUser':
-                    serializeParam(widget.userRecord, ParamType.Document),
+                'chatUser': serializeParam(
+                  widget.userRecord,
+                  ParamType.Document,
+                ),
               }.withoutNulls,
               extra: <String, dynamic>{
                 'chatUser': widget.userRecord,

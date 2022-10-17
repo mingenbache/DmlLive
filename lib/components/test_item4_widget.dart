@@ -8,6 +8,8 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -31,73 +33,6 @@ class TestItem4Widget extends StatefulWidget {
 
 class _TestItem4WidgetState extends State<TestItem4Widget>
     with TickerProviderStateMixin {
-  final animationsMap = {
-    'stackOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.bounceOut,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(-69, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'containerOnActionTriggerAnimation1': AnimationInfo(
-      curve: Curves.bounceOut,
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(63, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'containerOnActionTriggerAnimation2': AnimationInfo(
-      curve: Curves.bounceOut,
-      trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(-58, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-  };
-
-  @override
-  void initState() {
-    super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
-      this,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -209,10 +144,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                     ),
                                   ),
                                 ),
-                              ).animated([
-                                animationsMap[
-                                    'containerOnActionTriggerAnimation1']!
-                              ]),
+                              ),
                             if (!widget.booking!.testsIncluded!
                                 .toList()
                                 .contains(widget.test))
@@ -288,13 +220,9 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                     ),
                                   ),
                                 ),
-                              ).animated([
-                                animationsMap[
-                                    'containerOnActionTriggerAnimation2']!
-                              ]),
+                              ),
                           ],
-                        ).animated(
-                            [animationsMap['stackOnPageLoadAnimation']!]),
+                        ),
                       ],
                     ),
                   ],

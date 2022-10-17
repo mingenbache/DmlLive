@@ -815,8 +815,10 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                             context.pushNamed(
                               'Details',
                               queryParams: {
-                                'testId': serializeParam(newTestId!.reference,
-                                    ParamType.DocumentReference),
+                                'testId': serializeParam(
+                                  newTestId!.reference,
+                                  ParamType.DocumentReference,
+                                ),
                               }.withoutNulls,
                             );
 

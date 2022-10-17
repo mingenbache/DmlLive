@@ -692,7 +692,10 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                               context.pushNamed(
                                                                                 'TestDeck',
                                                                                 queryParams: {
-                                                                                  'testedTestRef': serializeParam(listViewTestedTestsRecord.reference, ParamType.DocumentReference),
+                                                                                  'testedTestRef': serializeParam(
+                                                                                    listViewTestedTestsRecord.reference,
+                                                                                    ParamType.DocumentReference,
+                                                                                  ),
                                                                                 }.withoutNulls,
                                                                               );
                                                                             },

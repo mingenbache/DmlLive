@@ -149,8 +149,9 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                       'NewBooking',
                                       queryParams: {
                                         'bookingRef': serializeParam(
-                                            rowActionsBookingsRecord!.reference,
-                                            ParamType.DocumentReference),
+                                          rowActionsBookingsRecord!.reference,
+                                          ParamType.DocumentReference,
+                                        ),
                                       }.withoutNulls,
                                     );
                                   }
@@ -162,8 +163,9 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                       'NewBooking',
                                       queryParams: {
                                         'bookingRef': serializeParam(
-                                            currentUserDocument!.currentBooking,
-                                            ParamType.DocumentReference),
+                                          currentUserDocument!.currentBooking,
+                                          ParamType.DocumentReference,
+                                        ),
                                       }.withoutNulls,
                                     );
                                   }
