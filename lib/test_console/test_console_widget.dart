@@ -148,11 +148,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                               .where(
                                                                   'is_verified',
                                                                   isEqualTo:
-                                                                      false)
-                                                              .orderBy(
-                                                                  'date_sample_collected',
-                                                                  descending:
-                                                                      true),
+                                                                      false),
                                                 ),
                                                 builder: (context, snapshot) {
                                                   // Customize what your widget looks like when it's loading.

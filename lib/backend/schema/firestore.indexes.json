@@ -233,10 +233,6 @@
         {
           "fieldPath": "resultPosted",
           "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "date_sample_collected",
-          "order": "DESCENDING"
         }
       ]
     },
