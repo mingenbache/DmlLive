@@ -22,8 +22,7 @@ export 'my_invoice_list/my_invoice_list_widget.dart' show MyInvoiceListWidget;
 export 'my_report_list/my_report_list_widget.dart' show MyReportListWidget;
 export 'settings/settings_widget.dart' show SettingsWidget;
 export 'test_queue/test_queue_widget.dart' show TestQueueWidget;
-export 'tested_tests_copy/tested_tests_copy_widget.dart'
-    show TestedTestsCopyWidget;
+export 'test_console/test_console_widget.dart' show TestConsoleWidget;
 export 'chat/chat_widget.dart' show ChatWidget;
 export 'technologist_test_deck/technologist_test_deck_widget.dart'
     show TechnologistTestDeckWidget;

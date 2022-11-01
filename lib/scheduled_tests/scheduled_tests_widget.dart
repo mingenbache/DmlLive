@@ -36,7 +36,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
       backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-          context.pushNamed('TestedTestsCopy');
+          context.pushNamed('TestConsole');
         },
         backgroundColor: FlutterFlowTheme.of(context).secondaryText,
         icon: Icon(

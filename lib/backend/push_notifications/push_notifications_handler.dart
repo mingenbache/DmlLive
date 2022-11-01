@@ -130,7 +130,7 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'myReportList': (data) async => MyReportListWidget(),
   'Settings': (data) async => SettingsWidget(),
   'TestQueue': (data) async => TestQueueWidget(),
-  'TestedTestsCopy': (data) async => TestedTestsCopyWidget(),
+  'TestConsole': (data) async => TestConsoleWidget(),
   'Chat': (data) async => ChatWidget(
         chatUser: await getDocumentParameter(
             data, 'chatUser', UsersRecord.serializer),

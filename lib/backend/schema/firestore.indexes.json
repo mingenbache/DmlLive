@@ -223,6 +223,38 @@
       ]
     },
     {
+      "collectionGroup": "tested_tests",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "is_verified",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "resultPosted",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "date_sample_collected",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "tested_tests",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "resultPosted",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "date_sample_collected",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "chat_messages",
       "queryScope": "COLLECTION",
       "fields": [

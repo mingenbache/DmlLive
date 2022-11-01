@@ -221,9 +221,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => TestQueueWidget(),
             ),
             FFRoute(
-              name: 'TestedTestsCopy',
-              path: 'testedTestsCopy',
-              builder: (context, params) => TestedTestsCopyWidget(),
+              name: 'TestConsole',
+              path: 'testConsole',
+              builder: (context, params) => TestConsoleWidget(),
             ),
             FFRoute(
               name: 'Chat',
