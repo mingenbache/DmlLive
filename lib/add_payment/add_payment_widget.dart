@@ -197,7 +197,6 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                             color: FlutterFlowTheme.of(context).primaryText,
                           ),
                           textAlign: TextAlign.center,
-                          maxLines: 1,
                           keyboardType: TextInputType.number,
                           validator: (val) {
                             if (val == null || val.isEmpty) {
@@ -287,6 +286,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
+                                  maxLines: null,
                                   keyboardType: TextInputType.name,
                                 ),
                               ),
@@ -364,6 +364,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
+                                  maxLines: null,
                                 ),
                               ),
                             ),
@@ -439,6 +440,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
                             ),
+                            maxLines: null,
                           ),
                         ),
                       ),

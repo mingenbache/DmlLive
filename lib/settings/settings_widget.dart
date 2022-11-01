@@ -198,8 +198,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     ),
                     child: SwitchListTile.adaptive(
                       value: switchListTileValue1 ??= true,
-                      onChanged: (newValue) =>
-                          setState(() => switchListTileValue1 = newValue),
+                      onChanged: (newValue) async {
+                        setState(() => switchListTileValue1 = newValue!);
+                      },
                       title: Text(
                         'Push Notifications',
                         style: FlutterFlowTheme.of(context).title3.override(
@@ -241,40 +242,38 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       color: FlutterFlowTheme.of(context).primaryText,
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(0),
-                      child: SwitchListTile.adaptive(
-                        value: switchListTileValue2 ??= true,
-                        onChanged: (newValue) =>
-                            setState(() => switchListTileValue2 = newValue),
-                        title: Text(
-                          'Email Notifications',
-                          style:
-                              FlutterFlowTheme.of(context).subtitle1.override(
-                                    fontFamily: 'Montserrat',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                        ),
-                        subtitle: Text(
-                          'Receive email notifications from our marketing team about new features.',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Roboto',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                        ),
-                        activeColor:
-                            FlutterFlowTheme.of(context).secondaryColor,
-                        activeTrackColor:
-                            FlutterFlowTheme.of(context).secondaryColor,
-                        dense: false,
-                        controlAffinity: ListTileControlAffinity.trailing,
-                        contentPadding:
-                            EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                    child: SwitchListTile.adaptive(
+                      value: switchListTileValue2 ??= true,
+                      onChanged: (newValue) async {
+                        setState(() => switchListTileValue2 = newValue!);
+                      },
+                      title: Text(
+                        'Email Notifications',
+                        style: FlutterFlowTheme.of(context).subtitle1.override(
+                              fontFamily: 'Montserrat',
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                      ),
+                      subtitle: Text(
+                        'Receive email notifications from our marketing team about new features.',
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily: 'Roboto',
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              fontSize: 14,
+                              fontWeight: FontWeight.normal,
+                            ),
+                      ),
+                      activeColor: FlutterFlowTheme.of(context).secondaryColor,
+                      activeTrackColor:
+                          FlutterFlowTheme.of(context).secondaryColor,
+                      dense: false,
+                      controlAffinity: ListTileControlAffinity.trailing,
+                      contentPadding:
+                          EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
                       ),
                     ),
                   ),
@@ -297,8 +296,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     ),
                     child: SwitchListTile.adaptive(
                       value: switchListTileValue3 ??= true,
-                      onChanged: (newValue) =>
-                          setState(() => switchListTileValue3 = newValue),
+                      onChanged: (newValue) async {
+                        setState(() => switchListTileValue3 = newValue!);
+                      },
                       title: Text(
                         'Location Services',
                         style: FlutterFlowTheme.of(context).subtitle1.override(

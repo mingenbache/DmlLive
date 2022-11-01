@@ -143,6 +143,8 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                       .fromSTEB(0, 0, 0, 5),
                                                   child:
                                                       NotificationListItemWidget(
+                                                    key: Key(
+                                                        'notificationListItem_${filterAdminNotificationsIndex}'),
                                                     notificationRef:
                                                         filterAdminNotificationsItem,
                                                   ),

@@ -1400,6 +1400,8 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
                                                             final invoicePaymentBookingsRecord =
                                                                 snapshot.data!;
                                                             return InvoicePaymentWidget(
+                                                              key: Key(
+                                                                  'InvoicePayment_${listViewIndex}'),
                                                               invoice:
                                                                   listViewInvoicesRecord
                                                                       .reference,

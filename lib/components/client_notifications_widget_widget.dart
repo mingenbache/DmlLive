@@ -103,6 +103,8 @@ class _ClientNotificationsWidgetWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 0, 0, 5),
                                     child: NotificationListItemWidget(
+                                      key: Key(
+                                          'notificationListItem_${unseenNotificationsIndex}'),
                                       notificationRef: unseenNotificationsItem,
                                     ),
                                   );

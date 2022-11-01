@@ -1696,6 +1696,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                           10),
                                                               child:
                                                                   InvoicePaymentWidget(
+                                                                key: Key(
+                                                                    'InvoicePayment_${invoicesIndex}'),
                                                                 invoice:
                                                                     invoicesItem,
                                                                 booking: widget
@@ -1946,7 +1948,9 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                             child:
                                                                                 CheckboxListTile(
                                                                               value: checkboxListTileValueMap1[reportVerifiedTestsItem] ??= false,
-                                                                              onChanged: (newValue) => setState(() => checkboxListTileValueMap1[reportVerifiedTestsItem] = newValue!),
+                                                                              onChanged: (newValue) async {
+                                                                                setState(() => checkboxListTileValueMap1[reportVerifiedTestsItem] = newValue!);
+                                                                              },
                                                                               title: Text(
                                                                                 functions.checkNullString(checkboxListTileTestsRecord.name),
                                                                                 style: FlutterFlowTheme.of(context).title3.override(
@@ -2152,10 +2156,12 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                   value:
                                                                       checkboxListTileValue2 ??=
                                                                           true,
-                                                                  onChanged: (newValue) =>
-                                                                      setState(() =>
-                                                                          checkboxListTileValue2 =
-                                                                              newValue!),
+                                                                  onChanged:
+                                                                      (newValue) async {
+                                                                    setState(() =>
+                                                                        checkboxListTileValue2 =
+                                                                            newValue!);
+                                                                  },
                                                                   title: Text(
                                                                     'Patient',
                                                                     style: FlutterFlowTheme.of(
@@ -2267,8 +2273,11 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                           .contains(
                                                                               checkboxListTileUsersRecord.email),
                                                                       onChanged:
-                                                                          (newValue) =>
-                                                                              setState(() => checkboxListTileValue3 = newValue!),
+                                                                          (newValue) async {
+                                                                        setState(() =>
+                                                                            checkboxListTileValue3 =
+                                                                                newValue!);
+                                                                      },
                                                                       title:
                                                                           Text(
                                                                         'Registered User',
@@ -2374,8 +2383,11 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                               .booking!
                                                                               .doctorEmail),
                                                                       onChanged:
-                                                                          (newValue) =>
-                                                                              setState(() => checkboxListTileValue4 = newValue!),
+                                                                          (newValue) async {
+                                                                        setState(() =>
+                                                                            checkboxListTileValue4 =
+                                                                                newValue!);
+                                                                      },
                                                                       title:
                                                                           Text(
                                                                         'Patient\'s Doctor',

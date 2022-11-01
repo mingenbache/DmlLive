@@ -256,6 +256,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                             fontWeight: FontWeight.w500,
                                           ),
                                       textAlign: TextAlign.start,
+                                      maxLines: null,
                                     ),
                                   ),
                                 ),

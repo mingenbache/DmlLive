@@ -304,9 +304,10 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                         child: SwitchListTile.adaptive(
                                           value: switchListTileValue ??=
                                               submitRoleUsersRecord.isStaff!,
-                                          onChanged: (newValue) => setState(
-                                              () => switchListTileValue =
-                                                  newValue),
+                                          onChanged: (newValue) async {
+                                            setState(() => switchListTileValue =
+                                                newValue!);
+                                          },
                                           title: Text(
                                             'Is Staff?',
                                             style: FlutterFlowTheme.of(context)

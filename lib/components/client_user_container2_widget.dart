@@ -67,6 +67,7 @@ class _ClientUserContainer2WidgetState
                 itemBuilder: (context, clientsIndex) {
                   final clientsItem = clients[clientsIndex];
                   return ClientUserCardxWidget(
+                    key: Key('clientUserCardx_${clientsIndex}'),
                     userRecord: clientsItem,
                   );
                 },

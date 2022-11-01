@@ -321,7 +321,6 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                     fontWeight: FontWeight.w500,
                                                     lineHeight: 1.4,
                                                   ),
-                                              maxLines: 1,
                                             ),
                                           ),
                                         ),
@@ -468,48 +467,49 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0, 10, 0, 0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              child: SwitchListTile(
-                                                value: atHomeToggleValue ??=
-                                                    false,
-                                                onChanged: (newValue) =>
-                                                    setState(() =>
-                                                        atHomeToggleValue =
-                                                            newValue),
-                                                title: Text(
-                                                  'Test @ Home ',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily:
-                                                            'Montserrat',
-                                                        color: Colors.white,
-                                                      ),
-                                                ),
-                                                subtitle: Text(
-                                                  'Can the test be done at home?',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .subtitle2
-                                                      .override(
-                                                        fontFamily:
-                                                            'Montserrat',
-                                                        color: Colors.white,
-                                                      ),
-                                                ),
-                                                activeColor:
+                                            child: SwitchListTile(
+                                              value: atHomeToggleValue ??=
+                                                  false,
+                                              onChanged: (newValue) async {
+                                                setState(() =>
+                                                    atHomeToggleValue =
+                                                        newValue!);
+                                              },
+                                              title: Text(
+                                                'Test @ Home ',
+                                                style:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryColor,
-                                                activeTrackColor:
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily:
+                                                              'Montserrat',
+                                                          color: Colors.white,
+                                                        ),
+                                              ),
+                                              subtitle: Text(
+                                                'Can the test be done at home?',
+                                                style:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                dense: false,
-                                                controlAffinity:
-                                                    ListTileControlAffinity
-                                                        .trailing,
+                                                        .subtitle2
+                                                        .override(
+                                                          fontFamily:
+                                                              'Montserrat',
+                                                          color: Colors.white,
+                                                        ),
+                                              ),
+                                              activeColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
+                                              activeTrackColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryColor,
+                                              dense: false,
+                                              controlAffinity:
+                                                  ListTileControlAffinity
+                                                      .trailing,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
                                               ),
                                             ),
                                           ),
@@ -1065,7 +1065,6 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                       fontWeight:
                                                           FontWeight.normal,
                                                     ),
-                                                    maxLines: 1,
                                                     keyboardType:
                                                         TextInputType.number,
                                                   ),

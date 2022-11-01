@@ -335,6 +335,8 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                               final bookedTestsItem =
                                                   bookedTests[bookedTestsIndex];
                                               return TestItemWidgetWidget(
+                                                key: Key(
+                                                    'TestItemWidget_${bookedTestsIndex}'),
                                                 index: bookedTestsIndex,
                                                 bookedTest: bookedTestsItem,
                                               );

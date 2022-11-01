@@ -141,6 +141,7 @@ class _SpecialTestListItemWidgetState extends State<SpecialTestListItemWidget> {
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 fontWeight: FontWeight.w500,
                               ),
+                          maxLines: null,
                         ),
                       ),
                     ),

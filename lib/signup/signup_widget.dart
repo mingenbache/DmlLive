@@ -216,6 +216,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                               ),
+                                          maxLines: null,
                                           keyboardType: TextInputType.name,
                                           validator: (val) {
                                             if (val == null || val.isEmpty) {
@@ -302,6 +303,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                               ),
+                                          maxLines: null,
                                           validator: (val) {
                                             if (val == null || val.isEmpty) {
                                               return 'Field is required';
@@ -398,6 +400,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),
+                                        maxLines: null,
                                       ),
                                     ),
                                   ],
@@ -483,6 +486,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),
+                                        maxLines: null,
                                         keyboardType: TextInputType.number,
                                         validator: (val) {
                                           if (val == null || val.isEmpty) {
@@ -732,6 +736,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),
+                                        maxLines: null,
                                         validator: (val) {
                                           if (val == null || val.isEmpty) {
                                             return 'Field is required';
@@ -840,6 +845,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),
+                                        maxLines: null,
                                         validator: (val) {
                                           if (val == null || val.isEmpty) {
                                             return 'Field is required';

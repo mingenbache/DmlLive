@@ -450,6 +450,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                 textAlign:
                                                                     TextAlign
                                                                         .start,
+                                                                maxLines: null,
                                                               ),
                                                             ),
                                                           ),
@@ -1141,6 +1142,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                   textAlign:
                                                                       TextAlign
                                                                           .start,
+                                                                  maxLines:
+                                                                      null,
                                                                 ),
                                                               ),
                                                             ),

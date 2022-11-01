@@ -540,6 +540,8 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                           final packageTestsItem =
                                                                               packageTests[packageTestsIndex];
                                                                           return PackageTestListItemWidget(
+                                                                            key:
+                                                                                Key('packageTestListItem_${packageTestsIndex}'),
                                                                             isAdmin:
                                                                                 columnUsersRecord.isStaff,
                                                                             testRef:

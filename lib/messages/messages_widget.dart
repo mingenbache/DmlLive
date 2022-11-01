@@ -196,7 +196,6 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                 fontWeight: FontWeight.normal,
                                               ),
                                           textAlign: TextAlign.start,
-                                          maxLines: 1,
                                         ),
                                       ),
                                     ),

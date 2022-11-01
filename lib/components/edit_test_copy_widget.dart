@@ -363,7 +363,6 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                   lineHeight:
                                                                       1.4,
                                                                 ),
-                                                            maxLines: 1,
                                                           ),
                                                         ),
                                                       ),
@@ -553,49 +552,51 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                       10,
                                                                       10,
                                                                       0),
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8),
-                                                            child:
-                                                                SwitchListTile(
-                                                              value: atHomeToggleValue ??=
-                                                                  columnTestsRecord
-                                                                      .homeTest!,
-                                                              onChanged: (newValue) =>
-                                                                  setState(() =>
-                                                                      atHomeToggleValue =
-                                                                          newValue),
-                                                              title: Text(
-                                                                'Test @ Home ',
-                                                                style: FlutterFlowTheme.of(
+                                                          child: SwitchListTile(
+                                                            value: atHomeToggleValue ??=
+                                                                columnTestsRecord
+                                                                    .homeTest!,
+                                                            onChanged:
+                                                                (newValue) async {
+                                                              setState(() =>
+                                                                  atHomeToggleValue =
+                                                                      newValue!);
+                                                            },
+                                                            title: Text(
+                                                              'Test @ Home ',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText1
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Montserrat',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryColor,
+                                                                  ),
+                                                            ),
+                                                            subtitle: Text(
+                                                              'Can the test be done at home?',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .subtitle2,
+                                                            ),
+                                                            activeColor:
+                                                                FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Montserrat',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryColor,
-                                                                    ),
-                                                              ),
-                                                              subtitle: Text(
-                                                                'Can the test be done at home?',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .subtitle2,
-                                                              ),
-                                                              activeColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryColor,
-                                                              activeTrackColor:
-                                                                  Colors.white,
-                                                              dense: false,
-                                                              controlAffinity:
-                                                                  ListTileControlAffinity
-                                                                      .trailing,
+                                                                    .secondaryColor,
+                                                            activeTrackColor:
+                                                                Colors.white,
+                                                            dense: false,
+                                                            controlAffinity:
+                                                                ListTileControlAffinity
+                                                                    .trailing,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8),
                                                             ),
                                                           ),
                                                         ),
@@ -1193,7 +1194,6 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 textAlign:
                                                                     TextAlign
                                                                         .end,
-                                                                maxLines: 1,
                                                                 keyboardType:
                                                                     TextInputType
                                                                         .number,
@@ -1695,6 +1695,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                       textAlign:
                                                                           TextAlign
                                                                               .center,
+                                                                      maxLines:
+                                                                          null,
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1845,6 +1847,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                       textAlign:
                                                                           TextAlign
                                                                               .center,
+                                                                      maxLines:
+                                                                          null,
                                                                     ),
                                                                   ),
                                                                 ),
@@ -2078,7 +2082,6 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                     textAlign:
                                                                         TextAlign
                                                                             .center,
-                                                                    maxLines: 1,
                                                                   ),
                                                                 ),
                                                               ),
@@ -2234,6 +2237,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                     textAlign:
                                                                         TextAlign
                                                                             .center,
+                                                                    maxLines:
+                                                                        null,
                                                                   ),
                                                                 ),
                                                               ),
@@ -2552,6 +2557,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 testProcedure[
                                                                     testProcedureIndex];
                                                             return TestProcedureItemWidget(
+                                                              key: Key(
+                                                                  'testProcedureItem_${testProcedureIndex}'),
                                                               index:
                                                                   testProcedureIndex,
                                                               procedureString:

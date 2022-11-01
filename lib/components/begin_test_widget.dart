@@ -459,6 +459,8 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                         fontWeight:
                                                                             FontWeight.w500,
                                                                       ),
+                                                                  maxLines:
+                                                                      null,
                                                                   validator:
                                                                       (val) {
                                                                     if (val ==

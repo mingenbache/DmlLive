@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'auth_util.dart';
-
 class DmlLiveFirebaseUser {
   DmlLiveFirebaseUser(this.user);
   User? user;
@@ -19,7 +17,6 @@ Stream<DmlLiveFirebaseUser> dmlLiveFirebaseUserStream() => FirebaseAuth.instance
         .map<DmlLiveFirebaseUser>(
       (user) {
         currentUser = DmlLiveFirebaseUser(user);
-        updateUserJwtTimer(user);
         return currentUser!;
       },
     );

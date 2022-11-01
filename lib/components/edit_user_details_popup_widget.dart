@@ -314,6 +314,7 @@ class _EditUserDetailsPopupWidgetState
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
+                                                    maxLines: null,
                                                     keyboardType:
                                                         TextInputType.name,
                                                   ),
@@ -402,6 +403,7 @@ class _EditUserDetailsPopupWidgetState
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
+                                                    maxLines: null,
                                                   ),
                                                 ),
                                               ),
@@ -522,6 +524,7 @@ class _EditUserDetailsPopupWidgetState
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
+                                                  maxLines: null,
                                                 ),
                                               ),
                                             ],
@@ -628,6 +631,7 @@ class _EditUserDetailsPopupWidgetState
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
+                                                  maxLines: null,
                                                   keyboardType:
                                                       TextInputType.number,
                                                 ),

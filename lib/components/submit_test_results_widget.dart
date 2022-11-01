@@ -328,8 +328,10 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                 ),
                                 child: CheckboxListTile(
                                   value: checkboxListTileValue ??= false,
-                                  onChanged: (newValue) => setState(
-                                      () => checkboxListTileValue = newValue!),
+                                  onChanged: (newValue) async {
+                                    setState(() =>
+                                        checkboxListTileValue = newValue!);
+                                  },
                                   title: Text(
                                     'Diagnosis',
                                     style:

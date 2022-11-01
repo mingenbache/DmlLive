@@ -1654,6 +1654,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                         context)
                                                                     .primaryText,
                                                               ),
+                                                      maxLines: null,
                                                       keyboardType:
                                                           TextInputType.number,
                                                       validator: (val) {

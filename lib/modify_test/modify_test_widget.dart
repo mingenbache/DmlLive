@@ -125,8 +125,10 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                               child: SwitchListTile(
                                 value: switchListTileValue ??=
                                     modifyTestTestsRecord.isAvailable!,
-                                onChanged: (newValue) => setState(
-                                    () => switchListTileValue = newValue),
+                                onChanged: (newValue) async {
+                                  setState(
+                                      () => switchListTileValue = newValue!);
+                                },
                                 title: Text(
                                   'Active',
                                   style: FlutterFlowTheme.of(context)
@@ -242,6 +244,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                         fontSize: 16,
                                         fontWeight: FontWeight.normal,
                                       ),
+                                  maxLines: null,
                                 ),
                               ),
                             ),
@@ -425,35 +428,35 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                           child: Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: SwitchListTile(
-                                value: atHomeToggleValue ??=
-                                    modifyTestTestsRecord.homeTest!,
-                                onChanged: (newValue) => setState(
-                                    () => atHomeToggleValue = newValue),
-                                title: Text(
-                                  'Test @ Home ',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Montserrat',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryColor,
-                                      ),
-                                ),
-                                subtitle: Text(
-                                  'Can the test be done at home?',
-                                  style: FlutterFlowTheme.of(context).subtitle2,
-                                ),
-                                tileColor:
-                                    FlutterFlowTheme.of(context).primaryColor,
-                                activeColor:
-                                    FlutterFlowTheme.of(context).secondaryColor,
-                                activeTrackColor: Color(0x68BACA68),
-                                dense: false,
-                                controlAffinity:
-                                    ListTileControlAffinity.trailing,
+                            child: SwitchListTile(
+                              value: atHomeToggleValue ??=
+                                  modifyTestTestsRecord.homeTest!,
+                              onChanged: (newValue) async {
+                                setState(() => atHomeToggleValue = newValue!);
+                              },
+                              title: Text(
+                                'Test @ Home ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Montserrat',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryColor,
+                                    ),
+                              ),
+                              subtitle: Text(
+                                'Can the test be done at home?',
+                                style: FlutterFlowTheme.of(context).subtitle2,
+                              ),
+                              tileColor:
+                                  FlutterFlowTheme.of(context).primaryColor,
+                              activeColor:
+                                  FlutterFlowTheme.of(context).secondaryColor,
+                              activeTrackColor: Color(0x68BACA68),
+                              dense: false,
+                              controlAffinity: ListTileControlAffinity.trailing,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
                               ),
                             ),
                           ),
@@ -583,6 +586,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                                 .secondaryColor,
                                             fontSize: 18,
                                           ),
+                                      maxLines: null,
                                       keyboardType: TextInputType.number,
                                     ),
                                   ),
@@ -730,6 +734,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                                 .secondaryColor,
                                             fontSize: 18,
                                           ),
+                                      maxLines: null,
                                       keyboardType: TextInputType.number,
                                     ),
                                   ),
@@ -825,7 +830,6 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                     fontWeight: FontWeight.normal,
                                   ),
                                   textAlign: TextAlign.end,
-                                  maxLines: 1,
                                   keyboardType: TextInputType.number,
                                   validator: (val) {
                                     if (val == null || val.isEmpty) {

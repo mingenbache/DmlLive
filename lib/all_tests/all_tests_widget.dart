@@ -203,6 +203,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                             fontWeight: FontWeight.w500,
                                           ),
                                       textAlign: TextAlign.start,
+                                      maxLines: null,
                                     ),
                                   ),
                                 ),

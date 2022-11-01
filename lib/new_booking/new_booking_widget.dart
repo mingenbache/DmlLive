@@ -439,6 +439,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
+                                                    maxLines: null,
                                                     validator: (val) {
                                                       if (val == null ||
                                                           val.isEmpty) {
@@ -574,6 +575,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
+                                                    maxLines: null,
                                                     validator: (val) {
                                                       if (val == null ||
                                                           val.isEmpty) {
@@ -723,6 +725,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
+                                                  maxLines: null,
                                                   keyboardType: TextInputType
                                                       .emailAddress,
                                                   validator: (val) {
@@ -869,6 +872,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
+                                                  maxLines: null,
                                                   keyboardType:
                                                       TextInputType.phone,
                                                   validator: (val) {
@@ -1668,6 +1672,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                               ),
+                                          maxLines: null,
                                           keyboardType: TextInputType.multiline,
                                         ),
                                       ),
@@ -2182,6 +2187,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           specialtestsList[
                                                               specialtestsListIndex];
                                                       return SpecialTestListItemWidget(
+                                                        key: Key(
+                                                            'specialTestListItem_${specialtestsListIndex}'),
                                                         index:
                                                             specialtestsListIndex,
                                                         name:

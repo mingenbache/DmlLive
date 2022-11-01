@@ -335,7 +335,6 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                         .w500,
                                                                 lineHeight: 1.4,
                                                               ),
-                                                      maxLines: 1,
                                                       validator: (val) {
                                                         if (val == null ||
                                                             val.isEmpty) {
@@ -626,48 +625,53 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 0, 10, 0, 0),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8),
-                                                      child: SwitchListTile(
-                                                        value:
-                                                            atHomeToggleValue ??=
-                                                                columnTestsRecord
-                                                                    .homeTest!,
-                                                        onChanged: (newValue) =>
-                                                            setState(() =>
-                                                                atHomeToggleValue =
-                                                                    newValue),
-                                                        title: Text(
-                                                          'Test @ Home ',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Montserrat',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .tertiaryColor,
-                                                              ),
-                                                        ),
-                                                        subtitle: Text(
-                                                          'Can the test be done at home?',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .subtitle2,
-                                                        ),
-                                                        activeColor:
+                                                    child: SwitchListTile(
+                                                      value:
+                                                          atHomeToggleValue ??=
+                                                              columnTestsRecord
+                                                                  .homeTest!,
+                                                      onChanged:
+                                                          (newValue) async {
+                                                        setState(() =>
+                                                            atHomeToggleValue =
+                                                                newValue!);
+                                                      },
+                                                      title: Text(
+                                                        'Test @ Home ',
+                                                        style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
-                                                        activeTrackColor:
-                                                            Colors.white,
-                                                        dense: false,
-                                                        controlAffinity:
-                                                            ListTileControlAffinity
-                                                                .trailing,
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Montserrat',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .tertiaryColor,
+                                                                ),
+                                                      ),
+                                                      subtitle: Text(
+                                                        'Can the test be done at home?',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .subtitle2,
+                                                      ),
+                                                      activeColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryColor,
+                                                      activeTrackColor:
+                                                          Colors.white,
+                                                      dense: false,
+                                                      controlAffinity:
+                                                          ListTileControlAffinity
+                                                              .trailing,
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8),
                                                       ),
                                                     ),
                                                   ),
@@ -1052,6 +1056,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                       0xFF586B06),
                                                                   fontSize: 18,
                                                                 ),
+                                                            maxLines: null,
                                                             keyboardType:
                                                                 TextInputType
                                                                     .number,
@@ -1235,7 +1240,6 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                   FontWeight
                                                                       .normal,
                                                             ),
-                                                            maxLines: 1,
                                                             keyboardType:
                                                                 TextInputType
                                                                     .number,

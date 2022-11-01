@@ -321,10 +321,12 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                           value:
                                                               isPatientValue ??=
                                                                   true,
-                                                          onChanged: (newValue) =>
-                                                              setState(() =>
-                                                                  isPatientValue =
-                                                                      newValue!),
+                                                          onChanged:
+                                                              (newValue) async {
+                                                            setState(() =>
+                                                                isPatientValue =
+                                                                    newValue!);
+                                                          },
                                                           tileColor:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -580,7 +582,6 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                         FontWeight.normal,
                                                   ),
                                               textAlign: TextAlign.start,
-                                              maxLines: 1,
                                             ),
                                           ),
                                         ),
@@ -700,6 +701,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
+                                                  maxLines: null,
                                                 ),
                                               ),
                                             ],
@@ -822,6 +824,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
+                                                  maxLines: null,
                                                   keyboardType:
                                                       TextInputType.number,
                                                 ),

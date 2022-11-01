@@ -293,6 +293,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                               FontWeight.normal,
                                                         ),
                                                     textAlign: TextAlign.start,
+                                                    maxLines: null,
                                                   ),
                                                 ),
                                               ),

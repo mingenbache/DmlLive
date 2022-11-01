@@ -268,6 +268,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                               fontWeight: FontWeight.w500,
                                             ),
                                         textAlign: TextAlign.start,
+                                        maxLines: null,
                                       ),
                                     ),
                                   ),

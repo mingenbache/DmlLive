@@ -241,6 +241,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                     fontWeight: FontWeight.w500,
                                     fontSize: 16,
                                   ),
+                                  maxLines: null,
                                 ),
                               ),
                             ),

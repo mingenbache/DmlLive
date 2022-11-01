@@ -1644,6 +1644,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                       fontWeight:
                                                           FontWeight.w500,
                                                     ),
+                                                maxLines: null,
                                                 keyboardType:
                                                     TextInputType.number,
                                                 validator: (val) {

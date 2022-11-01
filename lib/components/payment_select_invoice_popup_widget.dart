@@ -363,6 +363,8 @@ class _PaymentSelectInvoicePopupWidgetState
                                                     },
                                                     child:
                                                         InvoiceListItemWidgetWidget(
+                                                      key: Key(
+                                                          'invoiceListItemWidget_${listViewIndex}'),
                                                       invoice:
                                                           listViewInvoicesRecord,
                                                     ),

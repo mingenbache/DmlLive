@@ -185,6 +185,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                         fontSize: 16,
                                         fontWeight: FontWeight.normal,
                                       ),
+                                  maxLines: null,
                                 ),
                               ),
                             ),
@@ -352,34 +353,34 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                             child: Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: SwitchListTile(
-                                  value: atHomeToggleValue ??= false,
-                                  onChanged: (newValue) => setState(
-                                      () => atHomeToggleValue = newValue),
-                                  title: Text(
-                                    'Test @ Home ',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Montserrat',
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
-                                        ),
-                                  ),
-                                  subtitle: Text(
-                                    'Can the test be done at home?',
-                                    style:
-                                        FlutterFlowTheme.of(context).subtitle2,
-                                  ),
-                                  activeColor:
-                                      FlutterFlowTheme.of(context).primaryColor,
-                                  activeTrackColor: FlutterFlowTheme.of(context)
-                                      .secondaryColor,
-                                  dense: false,
-                                  controlAffinity:
-                                      ListTileControlAffinity.trailing,
+                              child: SwitchListTile(
+                                value: atHomeToggleValue ??= false,
+                                onChanged: (newValue) async {
+                                  setState(() => atHomeToggleValue = newValue!);
+                                },
+                                title: Text(
+                                  'Test @ Home ',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Montserrat',
+                                        color: FlutterFlowTheme.of(context)
+                                            .tertiaryColor,
+                                      ),
+                                ),
+                                subtitle: Text(
+                                  'Can the test be done at home?',
+                                  style: FlutterFlowTheme.of(context).subtitle2,
+                                ),
+                                activeColor:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                activeTrackColor:
+                                    FlutterFlowTheme.of(context).secondaryColor,
+                                dense: false,
+                                controlAffinity:
+                                    ListTileControlAffinity.trailing,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
                               ),
                             ),
@@ -504,6 +505,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                             color: Color(0xFF586B06),
                                             fontSize: 18,
                                           ),
+                                      maxLines: null,
                                       keyboardType: TextInputType.number,
                                     ),
                                   ),
@@ -643,6 +645,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                             color: Color(0xFF586B06),
                                             fontSize: 18,
                                           ),
+                                      maxLines: null,
                                       keyboardType: TextInputType.number,
                                     ),
                                   ),
@@ -768,7 +771,6 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                     color: Color(0xFF586B06),
                                     fontWeight: FontWeight.normal,
                                   ),
-                                  maxLines: 1,
                                   keyboardType: TextInputType.number,
                                   validator: (val) {
                                     if (val == null || val.isEmpty) {

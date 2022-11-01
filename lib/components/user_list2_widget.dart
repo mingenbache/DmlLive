@@ -290,6 +290,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                                 fontWeight: FontWeight.w500,
                                               ),
                                           textAlign: TextAlign.start,
+                                          maxLines: null,
                                         ),
                                       ),
                                     ),

@@ -395,6 +395,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                 ),
                                                         textAlign:
                                                             TextAlign.start,
+                                                        maxLines: null,
                                                       ),
                                                     ),
                                                   ),
@@ -1095,6 +1096,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                 ),
                                                         textAlign:
                                                             TextAlign.start,
+                                                        maxLines: null,
                                                       ),
                                                     ),
                                                   ),
@@ -1548,6 +1550,8 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                               10),
                                                                       child:
                                                                           CatalogPackageItemWidget(
+                                                                        key: Key(
+                                                                            'CatalogPackageItem_${packagesIndex}'),
                                                                         index:
                                                                             packagesIndex,
                                                                         listSize:

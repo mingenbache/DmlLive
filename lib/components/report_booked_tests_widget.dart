@@ -126,10 +126,12 @@ class _ReportBookedTestsWidgetState extends State<ReportBookedTestsWidget> {
                                           child: CheckboxListTile(
                                             value: checkboxListTileValueMap[
                                                 bookedTestsItem] ??= true,
-                                            onChanged: (newValue) => setState(
-                                                () => checkboxListTileValueMap[
-                                                        bookedTestsItem] =
-                                                    newValue!),
+                                            onChanged: (newValue) async {
+                                              setState(() =>
+                                                  checkboxListTileValueMap[
+                                                          bookedTestsItem] =
+                                                      newValue!);
+                                            },
                                             title: Text(
                                               'Title',
                                               style:

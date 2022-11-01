@@ -459,7 +459,6 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                           FontWeight.w500,
                                                     ),
                                                 textAlign: TextAlign.end,
-                                                maxLines: 1,
                                                 validator: (val) {
                                                   if (val == null ||
                                                       val.isEmpty) {

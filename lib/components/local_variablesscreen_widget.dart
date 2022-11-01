@@ -182,7 +182,6 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
                                     fontWeight: FontWeight.normal,
                                   ),
                           textAlign: TextAlign.start,
-                          maxLines: 1,
                         ),
                       ),
                     ),
