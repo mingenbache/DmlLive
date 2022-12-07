@@ -33,6 +33,20 @@ class AddNewTestPackageWidget extends StatefulWidget {
 
 class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'buttonOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, 82),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+  };
   PageController? pageViewController;
   String? packageCategoryDropDownValue;
   TextEditingController? packageDescriptionController;
@@ -49,6 +63,13 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
   @override
   void initState() {
     super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     packageDescriptionController = TextEditingController();
     testDurationTextController = TextEditingController(
         text: functions.doubletoInt(testDurationSliderValue, 60.0).toString());
@@ -147,7 +168,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFF586B06),
                                     ),
                               ),
@@ -204,14 +225,14 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color: Color(0xFF586B06),
                                             ),
                                         hintText: 'Enter Name',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color: Color(0xFF586B06),
                                             ),
                                         enabledBorder: OutlineInputBorder(
@@ -270,7 +291,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
                                             fontSize: 16,
@@ -343,7 +364,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: Color(
                                                                     0xFF586B06),
                                                                 fontWeight:
@@ -400,7 +421,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     ? packageCategoryDropDownCategoriesRecordList
                                                                         .first
                                                                     : null;
-                                                            return FlutterFlowDropDown(
+                                                            return FlutterFlowDropDown<
+                                                                String>(
                                                               options:
                                                                   packageCategoryDropDownCategoriesRecord!
                                                                       .categories!
@@ -422,7 +444,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Montserrat',
+                                                                            'Open Sans',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryColor,
                                                                       ),
@@ -643,7 +665,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .tertiaryColor,
@@ -723,7 +745,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: Color(
                                                                     0xFF586B06),
                                                                 fontWeight:
@@ -738,7 +760,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,
@@ -899,7 +921,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Montserrat',
+                                                                          'Open Sans',
                                                                       color: Color(
                                                                           0xFF586B06),
                                                                       fontSize:
@@ -986,7 +1008,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: Color(
                                                                     0xFF586B06),
                                                                 fontWeight:
@@ -1001,7 +1023,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,
@@ -1161,13 +1183,12 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Montserrat',
+                                                                          'Open Sans',
                                                                       color: Color(
                                                                           0xFF586B06),
                                                                       fontSize:
                                                                           18,
                                                                     ),
-                                                                maxLines: null,
                                                                 keyboardType:
                                                                     TextInputType
                                                                         .number,
@@ -1275,7 +1296,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: Color(
                                                                       0xFF586B06),
                                                                   fontSize: 18,
@@ -1442,7 +1463,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .tertiaryColor,
@@ -1488,8 +1509,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                           context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             Color(0xFF586B06),
                                                       ),
@@ -1610,7 +1630,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                                     Text(
                                                                                       testPackTestItemTestsRecord.name!,
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontWeight: FontWeight.w500,
                                                                                           ),
@@ -1626,7 +1646,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                                     child: Text(
                                                                                       'Ksh',
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).primaryColor,
                                                                                             fontWeight: FontWeight.w600,
                                                                                           ),
@@ -1635,7 +1655,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                                   Text(
                                                                                     testPackTestItemTestsRecord.price!.toString(),
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).primaryColor,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -1741,7 +1761,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Montserrat',
+                                                                          'Open Sans',
                                                                       color: Colors
                                                                           .white,
                                                                     ),
@@ -1880,7 +1900,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                   ),
                                   borderRadius: BorderRadius.circular(25),
                                 ),
-                              ),
+                              ).animateOnPageLoad(
+                                  animationsMap['buttonOnPageLoadAnimation']!),
                             ),
                           ),
                         ],

@@ -106,7 +106,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title2
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: Color(0xFF586B06),
                                         fontSize: 32,
                                         fontWeight: FontWeight.bold,
@@ -150,7 +150,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
                                       fontSize: 15,
@@ -166,7 +166,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
                                     ),
@@ -260,7 +260,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Montserrat',
+                                                                          'Open Sans',
                                                                       color: Colors
                                                                           .white,
                                                                       fontWeight:
@@ -444,7 +444,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Montserrat',
+                                                                                'Open Sans',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).secondaryColor,
                                                                           ),
@@ -496,7 +496,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                             color: FlutterFlowTheme.of(context).secondaryColor,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .tertiaryColor,
                                     ),

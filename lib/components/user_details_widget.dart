@@ -26,6 +26,32 @@ class UserDetailsWidget extends StatefulWidget {
 
 class _UserDetailsWidgetState extends State<UserDetailsWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'containerOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 0.ms,
+          duration: 1080.ms,
+          begin: Offset(0, -87),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -95,7 +121,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .title2
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
                                           fontSize: 32,
                                           fontWeight: FontWeight.bold,
@@ -177,7 +203,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                         context)
                                                     .subtitle2
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color: Color(0xFF586B06),
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -242,7 +268,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                         context)
                                                     .subtitle2
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color: Color(0xFF586B06),
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -308,7 +334,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                         context)
                                                     .subtitle2
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color: Color(0xFF586B06),
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -370,7 +396,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                         context)
                                                     .subtitle2
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color: Color(0xFF586B06),
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -410,7 +436,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryColor,
@@ -463,7 +489,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                         .subtitle2
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color:
                                                               Color(0xFF586B06),
                                                           fontWeight:
@@ -497,8 +523,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -541,8 +566,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                           context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             Color(0xFF586B06),
                                                         fontWeight:
@@ -590,7 +614,8 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                           ],
                         ),
                       ),
-                    ),
+                    ).animateOnPageLoad(
+                        animationsMap['containerOnPageLoadAnimation']!),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                       child: Row(
@@ -626,7 +651,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiaryColor,
                                       ),

@@ -39,7 +39,46 @@ class ChooseTechnologistWidget extends StatefulWidget {
 
 class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'dropDownOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: Offset(0, 100),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
   String? technologistValue;
+
+  @override
+  void initState() {
+    super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +159,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .title2
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
@@ -179,7 +218,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
                                             fontSize: 15,
@@ -224,7 +263,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                         List<StaffRecord>
                                             technologistStaffRecordList =
                                             snapshot.data!;
-                                        return FlutterFlowDropDown(
+                                        return FlutterFlowDropDown<String>(
                                           initialOption: technologistValue ??=
                                               'No Technologist Assigned',
                                           options: technologistStaffRecordList
@@ -267,7 +306,8 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   20, 20, 12, 20),
                                           hidesUnderline: true,
-                                        );
+                                        ).animateOnPageLoad(animationsMap[
+                                            'dropDownOnPageLoadAnimation']!);
                                       },
                                     ),
                                   ),
@@ -402,7 +442,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                         textStyle: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,

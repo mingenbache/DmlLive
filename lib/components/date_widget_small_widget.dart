@@ -51,7 +51,7 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
                   child: Text(
                     functions.dateDay(widget.date),
                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Montserrat',
+                          fontFamily: 'Open Sans',
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           fontSize: 20,
@@ -72,7 +72,7 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
                       child: Text(
                         functions.dateMonth(widget.date),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Montserrat',
+                              fontFamily: 'Open Sans',
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                               fontSize: 12,
@@ -88,7 +88,7 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
                       child: Text(
                         functions.dateYear(widget.date),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Montserrat',
+                              fontFamily: 'Open Sans',
                               color:
                                   FlutterFlowTheme.of(context).secondaryColor,
                               fontSize: 11,

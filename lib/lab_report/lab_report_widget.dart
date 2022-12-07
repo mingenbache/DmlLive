@@ -173,7 +173,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title1
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: Color(0xFF586B06),
                                       ),
                                 ),
@@ -212,7 +212,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Montserrat',
+                                                    fontFamily: 'Open Sans',
                                                     color: Color(0xFF586B06),
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -263,8 +263,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color: Colors.white,
                                                       ),
                                                 ),
@@ -316,7 +315,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: Color(0xFF586B06),
                                                   fontWeight: FontWeight.w500,
                                                 ),
@@ -350,7 +349,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryColor,
@@ -391,7 +390,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Montserrat',
+                                                fontFamily: 'Open Sans',
                                                 color: Color(0xFF586B06),
                                                 fontWeight: FontWeight.w500,
                                               ),
@@ -431,7 +430,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                         context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -478,7 +477,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Montserrat',
+                                                    fontFamily: 'Open Sans',
                                                     color: Color(0xFF586B06),
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -522,7 +521,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,
@@ -569,7 +568,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Montserrat',
+                                                    fontFamily: 'Open Sans',
                                                     color: Color(0xFF586B06),
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -604,7 +603,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                         context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -656,8 +655,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                           context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color: Colors.white,
                                                       ),
                                                 ),
@@ -707,7 +705,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: Colors
                                                                       .white,
                                                                   fontWeight:
@@ -746,7 +744,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .tertiaryColor,
@@ -837,7 +835,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).tertiaryColor,
                                                                           fontWeight:
@@ -878,7 +876,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -942,7 +940,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).tertiaryColor,
                                                                           fontWeight:
@@ -984,7 +982,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -1048,7 +1046,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).tertiaryColor,
                                                                           fontWeight:
@@ -1090,7 +1088,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -1159,7 +1157,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Montserrat',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: FlutterFlowTheme.of(context).tertiaryColor,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -1217,7 +1215,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Montserrat',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: Colors.white,
                                                                               ),
                                                                         ),
@@ -1269,7 +1267,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText2
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               Colors.white,
                                                                           fontWeight:
@@ -1345,7 +1343,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: Color(0xFF586B06),
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -1378,8 +1376,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1412,7 +1409,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .subtitle2
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: Color(0xFF586B06),
                                           ),
                                     ),
@@ -1582,7 +1579,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -1613,7 +1610,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                         context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)

@@ -64,7 +64,7 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .title2
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       fontSize: 32,
@@ -130,7 +130,7 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                       ),
@@ -170,7 +170,7 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                             color: FlutterFlowTheme.of(context).secondaryText,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                     ),

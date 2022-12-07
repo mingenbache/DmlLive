@@ -107,7 +107,7 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -130,7 +130,7 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryColor,
                                           fontWeight: FontWeight.normal,
@@ -157,7 +157,7 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: Colors.white,
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -185,7 +185,7 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
                                           fontWeight: FontWeight.w500,
                                         ),

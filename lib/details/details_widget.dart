@@ -29,6 +29,47 @@ class DetailsWidget extends StatefulWidget {
 class _DetailsWidgetState extends State<DetailsWidget>
     with TickerProviderStateMixin {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  var hasButtonTriggered1 = false;
+  var hasButtonTriggered2 = false;
+  final animationsMap = {
+    'buttonOnActionTriggerAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+    'buttonOnActionTriggerAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +153,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color: Color(0xFF586B06),
                                             ),
                                       ),
@@ -150,7 +191,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                   context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Montserrat',
+                                                fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .tertiaryColor,
@@ -190,7 +231,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               fontSize: 16,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -703,8 +744,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         fontSize: 32,
                                                       ),
                                             ),
@@ -777,7 +817,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                         context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -857,7 +897,10 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                       ),
                                       borderRadius: BorderRadius.circular(30),
                                     ),
-                                  ),
+                                  ).animateOnActionTrigger(
+                                      animationsMap[
+                                          'buttonOnActionTriggerAnimation1']!,
+                                      hasBeenTriggered: hasButtonTriggered1),
                                   FFButtonWidget(
                                     onPressed: () async {
                                       if (!containerBookingsRecord
@@ -924,7 +967,10 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                       ),
                                       borderRadius: BorderRadius.circular(30),
                                     ),
-                                  ),
+                                  ).animateOnActionTrigger(
+                                      animationsMap[
+                                          'buttonOnActionTriggerAnimation2']!,
+                                      hasBeenTriggered: hasButtonTriggered2),
                                 ],
                               ),
                             ),

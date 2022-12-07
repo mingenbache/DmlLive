@@ -123,7 +123,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .title1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: Colors.white,
                                           ),
                                     ),
@@ -193,16 +193,17 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                             child: Text(
                                               '${functions.camelCase(columnUsersRecord.firstName)} ${functions.camelCase(columnUsersRecord.lastName)}',
                                               textAlign: TextAlign.start,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .subtitle1
-                                                  .override(
-                                                    fontFamily: 'Montserrat',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    fontSize: 17,
-                                                  ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle1
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        fontSize: 17,
+                                                      ),
                                             ),
                                           ),
                                         ),
@@ -419,7 +420,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                               child: Text(
                                                                                 'Total Tests',
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -482,7 +483,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                             maxLines:
                                                                                 1,
                                                                             style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                 ),
                                                                           );
@@ -552,7 +553,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                             textAlign:
                                                                                 TextAlign.start,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -611,7 +612,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                 textTestedTestsRecordList.length.toString(),
                                                                                 maxLines: 1,
                                                                                 style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                     ),
                                                                               );
@@ -692,7 +693,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).primaryText,
                                                                           fontWeight:
@@ -762,7 +763,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle1
                                                                               .override(
-                                                                                fontFamily: 'Montserrat',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -841,7 +842,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).primaryText,
                                                                           fontWeight:
@@ -911,7 +912,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle1
                                                                               .override(
-                                                                                fontFamily: 'Montserrat',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -990,7 +991,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).primaryText,
                                                                           fontWeight:
@@ -1134,7 +1135,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .subtitle2
                                                                             .override(
-                                                                              fontFamily: 'Montserrat',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: Colors.white,
                                                                             ),
                                                                       ),
@@ -1188,7 +1189,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                               Text(
                                                                             'Display\nName',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: Colors.white,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1226,7 +1227,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                 columnUsersRecord.displayName!,
                                                                                 textAlign: TextAlign.start,
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -1287,7 +1288,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                             maxLines:
                                                                                 1,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: Colors.white,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1321,7 +1322,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                               Text(
                                                                                 columnUsersRecord.email!,
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -1391,7 +1392,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                             maxLines:
                                                                                 1,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: Colors.white,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1425,7 +1426,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                               Text(
                                                                                 columnUsersRecord.phoneNumber!,
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -1492,7 +1493,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                 Text(
                                                                                   'Date of\nBirth',
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: Colors.white,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -1527,7 +1528,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                   Text(
                                                                                     dateTimeFormat('d/M/y', columnUsersRecord.dOB!),
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).primaryText,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -1552,7 +1553,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                               Text(
                                                                                 'Sex',
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: Colors.white,
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -1586,7 +1587,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                 Text(
                                                                                   columnUsersRecord.sex!,
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -1888,7 +1889,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                   textAlign: TextAlign.start,
                                                                                   maxLines: 1,
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -1908,7 +1909,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                   containerPaymentsRecord.transactionCode!.maybeHandleOverflow(maxChars: 8),
                                                                                   maxLines: 1,
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -1931,7 +1932,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                   containerPaymentsRecord.type!,
                                                                                   maxLines: 1,
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: Colors.white,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -1957,7 +1958,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                   textAlign: TextAlign.start,
                                                                                   maxLines: 1,
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -2155,7 +2156,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                                       textAlign: TextAlign.center,
                                                                                                       maxLines: 1,
                                                                                                       style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                                            fontFamily: 'Montserrat',
+                                                                                                            fontFamily: 'Open Sans',
                                                                                                             color: FlutterFlowTheme.of(context).primaryText,
                                                                                                             fontSize: 11,
                                                                                                             fontWeight: FontWeight.normal,
@@ -2290,7 +2291,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                             color: FlutterFlowTheme.of(context).secondaryText,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                     ),

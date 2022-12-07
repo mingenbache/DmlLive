@@ -78,7 +78,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 textStyle: FlutterFlowTheme.of(context)
                                     .subtitle2
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: Colors.white,
                                     ),
                                 borderSide: BorderSide(
@@ -155,7 +155,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     'SETTINGS',
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).title1.override(
-                          fontFamily: 'Montserrat',
+                          fontFamily: 'Open Sans',
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
@@ -204,7 +204,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       title: Text(
                         'Push Notifications',
                         style: FlutterFlowTheme.of(context).title3.override(
-                              fontFamily: 'Montserrat',
+                              fontFamily: 'Open Sans',
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                             ),
@@ -212,7 +212,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       subtitle: Text(
                         'Receive Push notifications from our application on a semi regular basis.',
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Montserrat',
+                              fontFamily: 'Open Sans',
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                               fontWeight: FontWeight.normal,
@@ -250,7 +250,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       title: Text(
                         'Email Notifications',
                         style: FlutterFlowTheme.of(context).subtitle1.override(
-                              fontFamily: 'Montserrat',
+                              fontFamily: 'Open Sans',
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                             ),
@@ -302,7 +302,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       title: Text(
                         'Location Services',
                         style: FlutterFlowTheme.of(context).subtitle1.override(
-                              fontFamily: 'Montserrat',
+                              fontFamily: 'Open Sans',
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                             ),
@@ -310,7 +310,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       subtitle: Text(
                         'Allow us to track your location, this helps keep track of spending and keeps you safe.',
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Montserrat',
+                              fontFamily: 'Open Sans',
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                               fontWeight: FontWeight.normal,

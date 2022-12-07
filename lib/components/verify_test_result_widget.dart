@@ -26,11 +26,46 @@ class VerifyTestResultWidget extends StatefulWidget {
 
 class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'textFieldOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: Offset(0, 120),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
   TextEditingController? pathologistNotesController;
 
   @override
   void initState() {
     super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     pathologistNotesController = TextEditingController();
   }
 
@@ -101,7 +136,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                               'VERIFY TEST',
                               style:
                                   FlutterFlowTheme.of(context).title2.override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                         fontSize: 32,
@@ -216,7 +251,8 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                   ),
                               textAlign: TextAlign.start,
                               maxLines: 6,
-                            ),
+                            ).animateOnPageLoad(
+                                animationsMap['textFieldOnPageLoadAnimation']!),
                           ),
                         ),
                       ],
@@ -340,7 +376,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                                 return AlertDialog(
                                                   title: Text('Error'),
                                                   content: Text(
-                                                      'Test already verified.'),
+                                                      'Test Already in List'),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
@@ -366,7 +402,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                                   context)
                                               .subtitle2
                                               .override(
-                                                fontFamily: 'Montserrat',
+                                                fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,

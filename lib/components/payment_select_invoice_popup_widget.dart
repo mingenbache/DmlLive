@@ -77,7 +77,7 @@ class _PaymentSelectInvoicePopupWidgetState
                                 style: FlutterFlowTheme.of(context)
                                     .title2
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       fontSize: 30,
@@ -141,7 +141,7 @@ class _PaymentSelectInvoicePopupWidgetState
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
@@ -168,7 +168,7 @@ class _PaymentSelectInvoicePopupWidgetState
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,

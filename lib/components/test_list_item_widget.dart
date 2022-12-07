@@ -34,6 +34,105 @@ class TestListItemWidget extends StatefulWidget {
 
 class _TestListItemWidgetState extends State<TestListItemWidget>
     with TickerProviderStateMixin {
+  var hasContainerTriggered1 = false;
+  var hasContainerTriggered2 = false;
+  final animationsMap = {
+    'stackOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 280.ms,
+          duration: 1300.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 280.ms,
+          duration: 1300.ms,
+          begin: Offset(-92, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+    'containerOnActionTriggerAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(63, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+    'containerOnActionTriggerAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 950.ms,
+          begin: Offset(-58, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+    'containerOnPageLoadAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, -73),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+    'containerOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(-96, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -137,7 +236,10 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                   ),
                                 ),
                               ),
-                            ),
+                            ).animateOnActionTrigger(
+                                animationsMap[
+                                    'containerOnActionTriggerAnimation1']!,
+                                hasBeenTriggered: hasContainerTriggered1),
                           if (!widget.booking!.testsIncluded!
                               .toList()
                               .contains(widget.test!.reference))
@@ -238,9 +340,13 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                   ),
                                 ),
                               ),
-                            ),
+                            ).animateOnActionTrigger(
+                                animationsMap[
+                                    'containerOnActionTriggerAnimation2']!,
+                                hasBeenTriggered: hasContainerTriggered2),
                         ],
-                      ),
+                      ).animateOnPageLoad(
+                          animationsMap['stackOnPageLoadAnimation']!),
                     ],
                   ),
                 ],
@@ -320,8 +426,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -357,7 +462,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                     ),
                                   ),
                                 ),
-                              ),
+                              ).animateOnPageLoad(animationsMap[
+                                  'containerOnPageLoadAnimation1']!),
                               Align(
                                 alignment: AlignmentDirectional(0, 1),
                                 child: Material(
@@ -684,7 +790,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                       ),
                                     ),
                                   ),
-                                ),
+                                ).animateOnPageLoad(animationsMap[
+                                    'containerOnPageLoadAnimation2']!),
                               ),
                             ],
                           ),

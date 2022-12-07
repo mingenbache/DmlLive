@@ -80,7 +80,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                           Text(
                             'BEGIN TEST?',
                             style: FlutterFlowTheme.of(context).title2.override(
-                                  fontFamily: 'Montserrat',
+                                  fontFamily: 'Open Sans',
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                   fontSize: 32,
@@ -158,8 +158,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                           context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -196,7 +195,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                         .subtitle2
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryBackground,
@@ -304,7 +303,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Montserrat',
+                                                                          'Open Sans',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .secondaryBackground,
@@ -453,14 +452,12 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Montserrat',
+                                                                            'Open Sans',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryText,
                                                                         fontWeight:
                                                                             FontWeight.w500,
                                                                       ),
-                                                                  maxLines:
-                                                                      null,
                                                                   validator:
                                                                       (val) {
                                                                     if (val ==
@@ -579,7 +576,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                               title: Text(
                                                                   'Success'),
                                                               content: Text(
-                                                                  'Record Created'),
+                                                                  'Test entry created'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -619,7 +616,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,

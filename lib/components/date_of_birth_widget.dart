@@ -19,7 +19,39 @@ class DateOfBirthWidget extends StatefulWidget {
 
 class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'containerOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 10.ms,
+          duration: 1990.ms,
+          begin: 0,
+          end: 1,
+        ),
+        ScaleEffect(
+          curve: Curves.bounceOut,
+          delay: 10.ms,
+          duration: 1990.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
   DateTime? datePicked;
+
+  @override
+  void initState() {
+    super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +104,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                               'Date of Birth',
                               style:
                                   FlutterFlowTheme.of(context).title2.override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                         fontSize: 32,
@@ -120,7 +152,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Montserrat',
+                                    fontFamily: 'Open Sans',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                   ),
@@ -191,7 +223,8 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                     ),
                                   ),
                                 ),
-                              ),
+                              ).animateOnPageLoad(animationsMap[
+                                  'containerOnPageLoadAnimation']!),
                             ],
                           ),
                         ),
@@ -222,7 +255,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                             color: FlutterFlowTheme.of(context).secondaryText,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                     ),

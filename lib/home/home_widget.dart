@@ -24,6 +24,27 @@ class HomeWidget extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
+  final animationsMap = {
+    'floatingActionButtonOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 1730.ms,
+          begin: 0,
+          end: 1,
+        ),
+        ScaleEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 1730.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -40,6 +61,13 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
         return;
       }
     });
+
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
   }
 
   @override
@@ -106,7 +134,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                     'Request a Test',
                     style: FlutterFlowTheme.of(context).bodyText1,
                   ),
-                ),
+                ).animateOnPageLoad(
+                    animationsMap['floatingActionButtonOnPageLoadAnimation']!),
               ),
               body: Container(
                 width: MediaQuery.of(context).size.width,
@@ -276,7 +305,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -475,7 +504,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -648,7 +677,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                     .title1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Montserrat',
+                                                                          'Open Sans',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .secondaryBackground,
@@ -729,7 +758,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                           style: FlutterFlowTheme.of(context)
                                               .title3
                                               .override(
-                                                fontFamily: 'Montserrat',
+                                                fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
@@ -818,7 +847,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 .title2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryColor,
@@ -846,7 +875,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -969,7 +998,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                       .title2
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Montserrat',
+                                                                            'Open Sans',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryText,
                                                                         fontSize:
@@ -1010,7 +1039,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                       .title2
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Montserrat',
+                                                                            'Open Sans',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryText,
                                                                         fontSize:
@@ -1085,7 +1114,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Montserrat',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                 fontSize: 40,
                                                                               ),
@@ -1155,7 +1184,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 .title2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .alternate,
@@ -1185,7 +1214,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                 .title2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .alternate,
@@ -1274,7 +1303,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryBackground,
                                                                           fontSize:

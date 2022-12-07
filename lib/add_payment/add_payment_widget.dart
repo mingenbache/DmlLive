@@ -27,6 +27,112 @@ class AddPaymentWidget extends StatefulWidget {
 
 class _AddPaymentWidgetState extends State<AddPaymentWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'textFieldOnPageLoadAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, 40),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+    'textFieldOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 170.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 170.ms,
+          duration: 600.ms,
+          begin: Offset(0, 80),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 170.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+    'dropDownOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: Offset(0, 100),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+    'textFieldOnPageLoadAnimation3': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: Offset(0, 120),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
   PaymentsRecord? paymentRef;
   String? paymentMethodValue;
   TextEditingController? firstNameController;
@@ -40,6 +146,13 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
   @override
   void initState() {
     super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     firstNameController = TextEditingController();
     lastNameController = TextEditingController();
     textController1 = TextEditingController();
@@ -95,7 +208,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                               'ADD PAYMENT',
                               style:
                                   FlutterFlowTheme.of(context).title1.override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                       ),
@@ -205,7 +318,8 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
 
                             return null;
                           },
-                        ),
+                        ).animateOnPageLoad(
+                            animationsMap['textFieldOnPageLoadAnimation1']!),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
@@ -286,7 +400,6 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
-                                  maxLines: null,
                                   keyboardType: TextInputType.name,
                                 ),
                               ),
@@ -364,7 +477,6 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
-                                  maxLines: null,
                                 ),
                               ),
                             ),
@@ -440,13 +552,13 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
                             ),
-                            maxLines: null,
-                          ),
+                          ).animateOnPageLoad(
+                              animationsMap['textFieldOnPageLoadAnimation2']!),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                        child: FlutterFlowDropDown(
+                        child: FlutterFlowDropDown<String>(
                           options: ['MPESA', 'Bank Transfer', 'Online Payment'],
                           onChanged: (val) =>
                               setState(() => paymentMethodValue = val),
@@ -475,7 +587,8 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                           margin:
                               EdgeInsetsDirectional.fromSTEB(20, 20, 12, 20),
                           hidesUnderline: true,
-                        ),
+                        ).animateOnPageLoad(
+                            animationsMap['dropDownOnPageLoadAnimation']!),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
@@ -552,7 +665,8 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                                 ),
                             textAlign: TextAlign.start,
                             maxLines: 4,
-                          ),
+                          ).animateOnPageLoad(
+                              animationsMap['textFieldOnPageLoadAnimation3']!),
                         ),
                       ),
                     ],
@@ -599,7 +713,7 @@ class _AddPaymentWidgetState extends State<AddPaymentWidget>
                           color: FlutterFlowTheme.of(context).secondaryText,
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Montserrat',
+                                    fontFamily: 'Open Sans',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                   ),

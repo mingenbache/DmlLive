@@ -101,7 +101,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: Colors.white,
                                     ),
                               ),
@@ -268,7 +268,6 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                               fontWeight: FontWeight.w500,
                                             ),
                                         textAlign: TextAlign.start,
-                                        maxLines: null,
                                       ),
                                     ),
                                   ),

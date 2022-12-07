@@ -93,8 +93,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                           context)
                                                       .title1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -134,7 +133,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                 .secondaryBackground,
                             labelStyle:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -351,7 +350,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                   Text(
                                                                                     pastbookingsItem.labRefNum!,
                                                                                     style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: Colors.white,
                                                                                         ),
                                                                                   ),
@@ -530,7 +529,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                                                   replacement: '…',
                                                                                                                                 ),
                                                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                                                  fontFamily: 'Montserrat',
+                                                                                                                                  fontFamily: 'Open Sans',
                                                                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                                                                   fontWeight: FontWeight.w500,
                                                                                                                                 ),
@@ -905,7 +904,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                             Text(
                                                                               upcomingBookingsColumnBookingsRecord.labRefNum!,
                                                                               style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                    fontFamily: 'Montserrat',
+                                                                                    fontFamily: 'Open Sans',
                                                                                     color: Colors.white,
                                                                                   ),
                                                                             ),
@@ -1069,7 +1068,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                         Text(
                                                                                                           'On Hold',
                                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                                fontFamily: 'Montserrat',
+                                                                                                                fontFamily: 'Open Sans',
                                                                                                                 color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                               ),
                                                                                                         ),
@@ -1182,7 +1181,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                                         replacement: '…',
                                                                                                                       ),
                                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                                        fontFamily: 'Montserrat',
+                                                                                                                        fontFamily: 'Open Sans',
                                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                                                         fontWeight: FontWeight.normal,
                                                                                                                       ),
@@ -1403,7 +1402,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                   Text(
                                                                                     inactivebookingsItem.labRefNum!,
                                                                                     style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: Colors.white,
                                                                                         ),
                                                                                   ),
@@ -1556,7 +1555,7 @@ class _MyBookingsWidgetState extends State<MyBookingsWidget> {
                                                                                                             Text(
                                                                                                               'On Hold',
                                                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                                    fontFamily: 'Montserrat',
+                                                                                                                    fontFamily: 'Open Sans',
                                                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                                   ),
                                                                                                             ),

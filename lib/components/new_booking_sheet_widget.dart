@@ -26,6 +26,53 @@ class NewBookingSheetWidget extends StatefulWidget {
 
 class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'textFieldOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: Offset(0, 120),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.linear,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.linear,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, 71),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+  };
   bool isMediaUploading = false;
   List<String> uploadedFileUrls = [];
 
@@ -39,6 +86,13 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
   @override
   void initState() {
     super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     docemailAddressController = TextEditingController();
     doctorNamesController = TextEditingController();
     docphoneNumberController = TextEditingController();
@@ -98,7 +152,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .title2
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       fontSize: 30,
@@ -172,7 +226,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
@@ -263,7 +317,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                         .title3
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: Colors.white,
                                                         ),
                                                   ),
@@ -431,8 +485,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                           context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -472,8 +525,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color: Colors.white,
                                                       ),
                                                 ),
@@ -582,7 +634,8 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                         FontWeight.normal,
                                                   ),
                                               textAlign: TextAlign.start,
-                                            ),
+                                            ).animateOnPageLoad(animationsMap[
+                                                'textFieldOnPageLoadAnimation']!),
                                           ),
                                         ),
                                         Padding(
@@ -701,7 +754,6 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
-                                                  maxLines: null,
                                                 ),
                                               ),
                                             ],
@@ -824,7 +876,6 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
-                                                  maxLines: null,
                                                   keyboardType:
                                                       TextInputType.number,
                                                 ),
@@ -923,8 +974,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                           context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -956,8 +1006,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color: Colors.white,
                                                       ),
                                                 ),
@@ -1291,7 +1340,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                             color: FlutterFlowTheme.of(context).primaryColor,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: Colors.white,
                                     ),
                             elevation: 2,
@@ -1314,7 +1363,8 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                           ),
                     ),
                   ],
-                ),
+                ).animateOnPageLoad(
+                    animationsMap['columnOnPageLoadAnimation']!),
               ),
             ),
           ],

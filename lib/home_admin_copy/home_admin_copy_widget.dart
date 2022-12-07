@@ -288,7 +288,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                         .title2
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryColor,
@@ -537,8 +537,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         fontSize: 64,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -563,7 +562,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                         context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color: Color(0xFFFEFEFE),
                                                       fontSize: 19,
                                                       fontWeight:
@@ -610,7 +609,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                         context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -633,7 +632,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.w500,
                                                 ),
@@ -721,7 +720,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .tertiaryColor,
@@ -748,8 +747,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -806,7 +804,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                         context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -838,7 +836,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Montserrat',
+                                                    fontFamily: 'Open Sans',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryColor,
@@ -882,7 +880,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiaryColor,
                                           ),

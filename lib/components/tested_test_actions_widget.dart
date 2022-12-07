@@ -160,7 +160,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .tertiaryColor,
@@ -222,7 +222,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryBackground,
@@ -290,7 +290,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                           .bodyText1
                                                           .override(
                                                             fontFamily:
-                                                                'Montserrat',
+                                                                'Open Sans',
                                                             color: Color(
                                                                 0x33FFFFFF),
                                                             fontWeight:
@@ -373,7 +373,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -442,7 +442,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .tertiaryColor,
@@ -526,7 +526,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryBackground,

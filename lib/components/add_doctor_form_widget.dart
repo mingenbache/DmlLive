@@ -30,6 +30,34 @@ class AddDoctorFormWidget extends StatefulWidget {
 
 class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'textFieldOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: Offset(0, 120),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
   TextEditingController? doctorNamesController;
   TextEditingController? emailAddressController;
   TextEditingController? phoneNumberController;
@@ -37,6 +65,13 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
   @override
   void initState() {
     super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     doctorNamesController = TextEditingController(text: widget.docNames);
     emailAddressController = TextEditingController(text: widget.docEmail);
     phoneNumberController = TextEditingController(text: widget.docPhone);
@@ -93,7 +128,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                         Text(
                           'ADD DOCTOR',
                           style: FlutterFlowTheme.of(context).title2.override(
-                                fontFamily: 'Montserrat',
+                                fontFamily: 'Open Sans',
                                 color: Color(0xFF586B06),
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold,
@@ -196,7 +231,8 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                                     fontWeight: FontWeight.normal,
                                   ),
                           textAlign: TextAlign.start,
-                        ),
+                        ).animateOnPageLoad(
+                            animationsMap['textFieldOnPageLoadAnimation']!),
                       ),
                     ),
                     Padding(
@@ -266,7 +302,6 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                   ),
-                              maxLines: null,
                             ),
                           ),
                         ],
@@ -337,7 +372,6 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                   ),
-                              maxLines: null,
                               keyboardType: TextInputType.number,
                             ),
                           ),
@@ -371,7 +405,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                     height: 70,
                     color: FlutterFlowTheme.of(context).secondaryColor,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Montserrat',
+                          fontFamily: 'Open Sans',
                           color: FlutterFlowTheme.of(context).tertiaryColor,
                         ),
                     elevation: 2,

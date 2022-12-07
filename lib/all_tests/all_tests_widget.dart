@@ -74,7 +74,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
               label: Text(
                 'ADD NEW TEST',
                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                      fontFamily: 'Montserrat',
+                      fontFamily: 'Open Sans',
                       color: FlutterFlowTheme.of(context).tertiaryColor,
                     ),
               ),
@@ -114,7 +114,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                             'TEST CATALOG',
                             textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context).title1.override(
-                                  fontFamily: 'Montserrat',
+                                  fontFamily: 'Open Sans',
                                   color: Color(0xFF586B06),
                                 ),
                           ),
@@ -203,7 +203,6 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                             fontWeight: FontWeight.w500,
                                           ),
                                       textAlign: TextAlign.start,
-                                      maxLines: null,
                                     ),
                                   ),
                                 ),
@@ -263,7 +262,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
                                             fontWeight: FontWeight.w500,
@@ -351,7 +350,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 fontSize: 16,
                                                               ),
                                                     ),

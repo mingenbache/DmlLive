@@ -120,8 +120,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .title1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color: Colors.white,
                                                       ),
                                             ),
@@ -293,7 +292,6 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                               FontWeight.normal,
                                                         ),
                                                     textAlign: TextAlign.start,
-                                                    maxLines: null,
                                                   ),
                                                 ),
                                               ),

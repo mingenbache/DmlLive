@@ -167,7 +167,7 @@ class _EditUserDetailsPopupWidgetState
                                           style: FlutterFlowTheme.of(context)
                                               .title2
                                               .override(
-                                                fontFamily: 'Montserrat',
+                                                fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryBtnText,
@@ -314,7 +314,6 @@ class _EditUserDetailsPopupWidgetState
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
-                                                    maxLines: null,
                                                     keyboardType:
                                                         TextInputType.name,
                                                   ),
@@ -403,7 +402,6 @@ class _EditUserDetailsPopupWidgetState
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
-                                                    maxLines: null,
                                                   ),
                                                 ),
                                               ),
@@ -524,7 +522,6 @@ class _EditUserDetailsPopupWidgetState
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
-                                                  maxLines: null,
                                                 ),
                                               ),
                                             ],
@@ -631,7 +628,6 @@ class _EditUserDetailsPopupWidgetState
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
-                                                  maxLines: null,
                                                   keyboardType:
                                                       TextInputType.number,
                                                 ),
@@ -702,7 +698,7 @@ class _EditUserDetailsPopupWidgetState
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
@@ -733,7 +729,7 @@ class _EditUserDetailsPopupWidgetState
                                                               .bodyText2
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryBackground,
@@ -895,8 +891,7 @@ class _EditUserDetailsPopupWidgetState
                                     builder: (alertDialogContext) {
                                       return AlertDialog(
                                         title: Text('Success'),
-                                        content:
-                                            Text('Record Edited Successfully'),
+                                        content: Text('Record Updated'),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(

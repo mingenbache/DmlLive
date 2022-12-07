@@ -169,7 +169,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                               color: FlutterFlowTheme.of(context).primaryText,
                               fontWeight: FontWeight.normal,
                             ),
-                            maxLines: null,
                           ),
                         ),
                       ),
@@ -256,7 +255,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                               color: Colors.white,
                               fontWeight: FontWeight.normal,
                             ),
-                            maxLines: null,
                           ),
                         ),
                       ),
@@ -326,7 +324,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                       ),

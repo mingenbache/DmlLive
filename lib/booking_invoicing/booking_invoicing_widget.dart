@@ -153,7 +153,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .title1
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: Colors.white,
                                                 ),
                                           ),
@@ -204,7 +204,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
@@ -271,7 +271,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
@@ -341,7 +341,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
@@ -385,7 +385,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
@@ -434,7 +434,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
@@ -503,7 +503,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
@@ -555,7 +555,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
@@ -609,7 +609,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
@@ -662,7 +662,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -724,7 +724,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Montserrat',
+                                                                                'Open Sans',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).secondaryBackground,
                                                                             fontWeight:
@@ -767,7 +767,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Montserrat',
+                                                                                'Open Sans',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).secondaryColor,
                                                                           ),
@@ -832,7 +832,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Montserrat',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -862,7 +862,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                               Text(
                                                                             '${bookingInvoicingBookingsRecord.firstname}     ${bookingInvoicingBookingsRecord.lastname}',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                 ),
                                                                           ),
@@ -920,7 +920,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Montserrat',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -950,7 +950,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                               Text(
                                                                             bookingInvoicingBookingsRecord.emailaddress!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                 ),
                                                                           ),
@@ -1012,7 +1012,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                                 Text(
                                                                               'Phone',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Montserrat',
+                                                                                    fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
@@ -1044,7 +1044,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                               Text(
                                                                             bookingInvoicingBookingsRecord.phonenumber!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                 ),
                                                                           ),
@@ -1100,7 +1100,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                             textAlign:
                                                                                 TextAlign.start,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1140,7 +1140,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                             dateTimeFormat('d/M/y',
                                                                                 bookingInvoicingBookingsRecord.dOB!),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                 ),
                                                                           ),
@@ -1173,7 +1173,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                               Text(
                                                                             'Sex',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1212,7 +1212,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                               Text(
                                                                             bookingInvoicingBookingsRecord.sex!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.normal,
                                                                                 ),
@@ -1291,7 +1291,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                         context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1321,7 +1321,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                         context)
                                                     .subtitle2
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1466,7 +1466,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                               Text(
                                                                                 containerTestsRecord.name!,
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -1479,7 +1479,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                                     child: Text(
                                                                                       'Ksh',
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).primaryText,
                                                                                             fontWeight: FontWeight.w600,
                                                                                           ),
@@ -1488,7 +1488,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                                                   Text(
                                                                                     containerTestsRecord.price!.toString(),
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).primaryText,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -1541,8 +1541,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1649,12 +1648,11 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
                                                               ),
-                                                      maxLines: null,
                                                       keyboardType:
                                                           TextInputType.number,
                                                       validator: (val) {
@@ -1701,7 +1699,7 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
@@ -1851,14 +1849,14 @@ class _BookingInvoicingWidgetState extends State<BookingInvoicingWidget> {
                                     context: context,
                                     builder: (alertDialogContext) {
                                       return AlertDialog(
-                                        title: Text('Success'),
+                                        title: Text('Generate Invoice'),
                                         content: Text(
-                                            'Invoice successfully created!'),
+                                            'Are you sure you want to generate this Invoice?'),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
                                                 alertDialogContext),
-                                            child: Text('Okay'),
+                                            child: Text('Cancel'),
                                           ),
                                         ],
                                       );

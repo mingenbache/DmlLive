@@ -216,7 +216,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                               ),
-                                          maxLines: null,
                                           keyboardType: TextInputType.name,
                                           validator: (val) {
                                             if (val == null || val.isEmpty) {
@@ -303,7 +302,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                               ),
-                                          maxLines: null,
                                           validator: (val) {
                                             if (val == null || val.isEmpty) {
                                               return 'Field is required';
@@ -400,7 +398,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),
-                                        maxLines: null,
                                       ),
                                     ),
                                   ],
@@ -486,7 +483,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),
-                                        maxLines: null,
                                         keyboardType: TextInputType.number,
                                         validator: (val) {
                                           if (val == null || val.isEmpty) {
@@ -559,7 +555,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: Colors.white,
                                                         ),
                                               ),
@@ -587,7 +583,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                   context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Montserrat',
+                                                fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
@@ -608,7 +604,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                   context)
                                               .bodyText2
                                               .override(
-                                                fontFamily: 'Montserrat',
+                                                fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
@@ -736,7 +732,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),
-                                        maxLines: null,
                                         validator: (val) {
                                           if (val == null || val.isEmpty) {
                                             return 'Field is required';
@@ -845,7 +840,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),
-                                        maxLines: null,
                                         validator: (val) {
                                           if (val == null || val.isEmpty) {
                                             return 'Field is required';
@@ -922,9 +916,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
-                                                title: Text('Success!'),
-                                                content: Text(
-                                                    'Account successfully created!'),
+                                                title: Text('Success'),
+                                                content:
+                                                    Text('Account Created'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>

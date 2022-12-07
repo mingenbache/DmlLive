@@ -285,7 +285,7 @@ class _ReportBookedTestsWidgetState extends State<ReportBookedTestsWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Montserrat',
+                                                    fontFamily: 'Open Sans',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText,

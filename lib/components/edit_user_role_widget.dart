@@ -27,8 +27,47 @@ class EditUserRoleWidget extends StatefulWidget {
 
 class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'dropDownOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: Offset(0, 100),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
   String? userRolesValue;
   bool? switchListTileValue;
+
+  @override
+  void initState() {
+    super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +140,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .title2
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
                                           fontSize: 32,
                                           fontWeight: FontWeight.bold,
@@ -169,7 +208,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: Color(0xFF586B06),
                                                   fontWeight: FontWeight.w500,
                                                 ),
@@ -234,7 +273,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: Color(0xFF586B06),
                                                 ),
                                           ),
@@ -267,7 +306,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryColor,
@@ -313,7 +352,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle1
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: Color(0xFF586B06),
                                                 ),
                                           ),
@@ -322,7 +361,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryColor,
@@ -356,7 +395,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 16, 0, 0),
-                                    child: FlutterFlowDropDown(
+                                    child: FlutterFlowDropDown<String>(
                                       initialOption: userRolesValue ??=
                                           submitRoleUsersRecord.role,
                                       options: [
@@ -395,7 +434,8 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                       margin: EdgeInsetsDirectional.fromSTEB(
                                           20, 20, 12, 20),
                                       hidesUnderline: true,
-                                    ),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'dropDownOnPageLoadAnimation']!),
                                   ),
                                 ),
                             ],
@@ -446,7 +486,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiaryColor,
                                       ),

@@ -48,7 +48,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
         label: Text(
           'New Message',
           style: FlutterFlowTheme.of(context).bodyText1.override(
-                fontFamily: 'Montserrat',
+                fontFamily: 'Open Sans',
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
         ),
@@ -96,7 +96,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title1
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                       ),

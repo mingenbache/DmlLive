@@ -29,6 +29,112 @@ class AddPaymentWIdgetWidget extends StatefulWidget {
 
 class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'textFieldOnPageLoadAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, 40),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+    'textFieldOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 170.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 170.ms,
+          duration: 600.ms,
+          begin: Offset(0, 80),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 170.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+    'dropDownOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: Offset(0, 100),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+    'textFieldOnPageLoadAnimation3': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: Offset(0, 120),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
   DateTime? datePicked;
   String? paymentMethodValue;
   TextEditingController? paymentAmountController;
@@ -42,6 +148,13 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
   @override
   void initState() {
     super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     firstNameController = TextEditingController();
     lastNameController = TextEditingController();
     paymentAmountController = TextEditingController();
@@ -160,7 +273,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .title2
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                         fontSize: 32,
@@ -269,7 +382,8 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                 ),
                                 textAlign: TextAlign.center,
                                 keyboardType: TextInputType.number,
-                              ),
+                              ).animateOnPageLoad(animationsMap[
+                                  'textFieldOnPageLoadAnimation1']!),
                             ),
                             Padding(
                               padding:
@@ -347,13 +461,14 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                     fontWeight: FontWeight.w300,
                                     fontSize: 16,
                                   ),
-                                ),
+                                ).animateOnPageLoad(animationsMap[
+                                    'textFieldOnPageLoadAnimation2']!),
                               ),
                             ),
                             Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                              child: FlutterFlowDropDown(
+                              child: FlutterFlowDropDown<String>(
                                 options: [
                                   'MPESA',
                                   'Bank Transfer',
@@ -389,7 +504,8 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                 margin: EdgeInsetsDirectional.fromSTEB(
                                     20, 20, 12, 20),
                                 hidesUnderline: true,
-                              ),
+                              ).animateOnPageLoad(animationsMap[
+                                  'dropDownOnPageLoadAnimation']!),
                             ),
                             Padding(
                               padding:
@@ -414,7 +530,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
@@ -559,7 +675,6 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),
-                                        maxLines: null,
                                         keyboardType: TextInputType.name,
                                       ),
                                     ),
@@ -651,7 +766,6 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                               fontSize: 14,
                                               fontWeight: FontWeight.normal,
                                             ),
-                                        maxLines: null,
                                       ),
                                     ),
                                   ),
@@ -736,7 +850,8 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                       ),
                                   textAlign: TextAlign.start,
                                   maxLines: 4,
-                                ),
+                                ).animateOnPageLoad(animationsMap[
+                                    'textFieldOnPageLoadAnimation3']!),
                               ),
                             ),
                           ],
@@ -778,13 +893,14 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                           context: context,
                           builder: (alertDialogContext) {
                             return AlertDialog(
-                              title: Text('Success'),
-                              content: Text('Payment added! '),
+                              title: Text('Submit Payment?'),
+                              content: Text(
+                                  'Are you sure you want to submit this payment for validation?'),
                               actions: [
                                 TextButton(
                                   onPressed: () =>
                                       Navigator.pop(alertDialogContext),
-                                  child: Text('Okay'),
+                                  child: Text('No'),
                                 ),
                               ],
                             );
@@ -810,7 +926,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                         color: FlutterFlowTheme.of(context).secondaryText,
                         textStyle:
                             FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Montserrat',
+                                  fontFamily: 'Open Sans',
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                 ),

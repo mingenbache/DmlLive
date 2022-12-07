@@ -318,7 +318,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                                     '${textUsersRecord.firstName} ${textUsersRecord.lastName}',
                                                                                     textAlign: TextAlign.center,
                                                                                     style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           fontSize: 11,
                                                                                           fontWeight: FontWeight.normal,
                                                                                         ),

@@ -34,6 +34,86 @@ class SubmitTestResultsWidget extends StatefulWidget {
 
 class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'dropDownOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: Offset(0, 100),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+    'textFieldOnPageLoadAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: Offset(0, 120),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+    'textFieldOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: Offset(0, 120),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
   bool isMediaUploading = false;
   String uploadedFileUrl = '';
 
@@ -46,6 +126,13 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
   @override
   void initState() {
     super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     testNoteController = TextEditingController();
     testResultController = TextEditingController();
   }
@@ -121,7 +208,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFF586B06),
                                     ),
                               ),
@@ -280,7 +367,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                           Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                            child: FlutterFlowDropDown(
+                            child: FlutterFlowDropDown<String>(
                               options: ['Machine 1', 'Machine 2', 'Machine 3'],
                               onChanged: (val) =>
                                   setState(() => testMachineValue = val),
@@ -311,7 +398,8 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                               margin: EdgeInsetsDirectional.fromSTEB(
                                   20, 20, 12, 20),
                               hidesUnderline: true,
-                            ),
+                            ).animateOnPageLoad(
+                                animationsMap['dropDownOnPageLoadAnimation']!),
                           ),
                           Padding(
                             padding:
@@ -432,7 +520,8 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
 
                                   return null;
                                 },
-                              ),
+                              ).animateOnPageLoad(animationsMap[
+                                  'textFieldOnPageLoadAnimation1']!),
                             ),
                           ),
                           Padding(
@@ -610,7 +699,8 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                 textAlign: TextAlign.start,
                                 maxLines: 4,
                                 keyboardType: TextInputType.multiline,
-                              ),
+                              ).animateOnPageLoad(animationsMap[
+                                  'textFieldOnPageLoadAnimation2']!),
                             ),
                           ),
                         ],
@@ -680,7 +770,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiaryColor,
                                       ),

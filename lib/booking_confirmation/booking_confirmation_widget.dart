@@ -39,6 +39,27 @@ class BookingConfirmationWidget extends StatefulWidget {
 
 class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'textFieldOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 520.ms,
+          duration: 1190.ms,
+          begin: 0.235,
+          end: 1,
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 520.ms,
+          duration: 1190.ms,
+          begin: 3,
+          end: 1,
+        ),
+      ],
+    ),
+  };
   DateTime? datePicked;
   TextEditingController? labRefNumController;
   String? refDoctorValue;
@@ -48,6 +69,13 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
   @override
   void initState() {
     super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     labRefNumController = TextEditingController();
   }
 
@@ -186,7 +214,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .title1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: Colors.white,
                                           ),
                                     ),
@@ -329,7 +357,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
@@ -366,8 +394,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                           .of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -380,8 +407,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                           .of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -449,7 +475,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                         context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -471,7 +497,8 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
 
                                                   return null;
                                                 },
-                                              ),
+                                              ).animateOnPageLoad(animationsMap[
+                                                  'textFieldOnPageLoadAnimation']!),
                                             ),
                                           ),
                                         ],
@@ -518,8 +545,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -674,7 +700,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
@@ -727,7 +753,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
@@ -846,7 +872,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                         context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -883,7 +909,8 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                 List<DoctorsRecord>
                                                     refDoctorDoctorsRecordList =
                                                     snapshot.data!;
-                                                return FlutterFlowDropDown(
+                                                return FlutterFlowDropDown<
+                                                    String>(
                                                   options:
                                                       refDoctorDoctorsRecordList
                                                           .map((e) => e.name!)
@@ -897,15 +924,13 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                           .width *
                                                       0.5,
                                                   height: 40,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyText1
-                                                          .override(
-                                                            fontFamily:
-                                                                'Montserrat',
-                                                            color: Colors.white,
-                                                          ),
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        color: Colors.white,
+                                                      ),
                                                   fillColor:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -1004,7 +1029,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -1059,7 +1084,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryColor,
@@ -1101,7 +1126,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -1158,7 +1183,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryColor,
@@ -1201,7 +1226,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -1265,7 +1290,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryColor,
@@ -1308,7 +1333,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -1371,7 +1396,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Montserrat',
+                                                                            'Open Sans',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryColor,
                                                                         fontWeight:
@@ -1432,7 +1457,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryBackground,
                                                                         ),
@@ -1478,7 +1503,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Montserrat',
+                                                                            'Open Sans',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryColor,
                                                                         fontWeight:
@@ -1543,7 +1568,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryBackground,
                                                                           fontWeight:
@@ -1601,7 +1626,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                         context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1749,7 +1774,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                         context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1820,7 +1845,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
@@ -1863,15 +1888,16 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                             ),
                                             Text(
                                               ' Requested Tests',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .subtitle2
-                                                  .override(
-                                                    fontFamily: 'Montserrat',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                  ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle2
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
                                             ),
                                           ],
                                         ),
@@ -2054,7 +2080,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                         child: Text(
                                                                                           'Ksh',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                 fontWeight: FontWeight.w600,
                                                                                               ),
@@ -2063,7 +2089,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                       Text(
                                                                                         bookingTestPackageItemTestPackagesRecord.price!.toString(),
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Montserrat',
+                                                                                              fontFamily: 'Open Sans',
                                                                                               color: FlutterFlowTheme.of(context).primaryText,
                                                                                               fontWeight: FontWeight.w500,
                                                                                             ),
@@ -2255,7 +2281,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                     child: Text(
                                                                                       'Ksh',
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontWeight: FontWeight.w600,
                                                                                           ),
@@ -2264,7 +2290,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                   Text(
                                                                                     bookingTestItemTestsRecord.price!.toString(),
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).primaryText,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -2372,7 +2398,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                             .bodyText1
                                                             .override(
                                                               fontFamily:
-                                                                  'Montserrat',
+                                                                  'Open Sans',
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .primaryText,
@@ -2433,8 +2459,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color: Colors.white,
                                                       ),
                                             ),
@@ -2476,7 +2501,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,

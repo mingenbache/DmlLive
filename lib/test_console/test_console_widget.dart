@@ -69,7 +69,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                             'TEST DASHBOARD',
                             textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context).title1.override(
-                                  fontFamily: 'Montserrat',
+                                  fontFamily: 'Open Sans',
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                 ),
@@ -609,7 +609,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                     child: Text(
                                                                                       'OCT',
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).primaryColor,
                                                                                             fontSize: 12,
                                                                                             fontWeight: FontWeight.w500,
@@ -621,7 +621,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                     child: Text(
                                                                                       '21',
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontSize: 24,
                                                                                             fontWeight: FontWeight.w600,
@@ -633,7 +633,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                     child: Text(
                                                                                       '2021',
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontSize: 12,
                                                                                             fontWeight: FontWeight.w500,
@@ -755,7 +755,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                         child: Text(
                                                                                           'Note',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                 fontWeight: FontWeight.normal,
                                                                                               ),
@@ -772,7 +772,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                           Text(
                                                                                             'Freeze reason',
                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                  fontFamily: 'Montserrat',
+                                                                                                  fontFamily: 'Open Sans',
                                                                                                   color: Color(0xFF586B06),
                                                                                                   fontWeight: FontWeight.w500,
                                                                                                 ),
@@ -809,7 +809,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                           child: Text(
                                                                                             'Submitted by',
                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                  fontFamily: 'Montserrat',
+                                                                                                  fontFamily: 'Open Sans',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                   fontWeight: FontWeight.normal,
                                                                                                 ),
@@ -827,7 +827,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                           Text(
                                                                                             'Staff Name',
                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                  fontFamily: 'Montserrat',
+                                                                                                  fontFamily: 'Open Sans',
                                                                                                   color: Color(0xFF586B06),
                                                                                                   fontWeight: FontWeight.w500,
                                                                                                 ),

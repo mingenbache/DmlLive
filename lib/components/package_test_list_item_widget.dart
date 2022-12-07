@@ -120,7 +120,7 @@ class _PackageTestListItemWidgetState extends State<PackageTestListItemWidget> {
                     child: Text(
                       functions.upperCase(containerTestsRecord.name),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Montserrat',
+                            fontFamily: 'Open Sans',
                             color: FlutterFlowTheme.of(context).primaryText,
                             fontWeight: FontWeight.w500,
                           ),

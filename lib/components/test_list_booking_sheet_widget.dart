@@ -33,10 +33,40 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
     with TickerProviderStateMixin {
   TextEditingController? textController1;
   TextEditingController? textController2;
+  var hasButtonTriggered = false;
+  final animationsMap = {
+    'buttonOnActionTriggerAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
     super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     textController1 = TextEditingController();
     textController2 = TextEditingController();
   }
@@ -149,7 +179,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .title1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: Colors.white,
                                           ),
                                     ),
@@ -450,7 +480,6 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                 textAlign:
                                                                     TextAlign
                                                                         .start,
-                                                                maxLines: null,
                                                               ),
                                                             ),
                                                           ),
@@ -521,7 +550,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Montserrat',
+                                                                                'Open Sans',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryText,
                                                                             fontWeight:
@@ -576,7 +605,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Montserrat',
+                                                                                'Open Sans',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).secondaryBackground,
                                                                             fontWeight:
@@ -699,7 +728,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                     child: Text(
                                                                                       testCategoriesItem,
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontSize: 16,
                                                                                           ),
@@ -730,7 +759,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                       child: Text(
                                                                                         testCategoriesItem,
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Montserrat',
+                                                                                              fontFamily: 'Open Sans',
                                                                                               color: FlutterFlowTheme.of(context).primaryText,
                                                                                               fontSize: 16,
                                                                                             ),
@@ -1142,8 +1171,6 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                   textAlign:
                                                                       TextAlign
                                                                           .start,
-                                                                  maxLines:
-                                                                      null,
                                                                 ),
                                                               ),
                                                             ),
@@ -1214,7 +1241,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Montserrat',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -1264,7 +1291,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Montserrat',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).primaryText,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -1384,7 +1411,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                       child: Text(
                                                                                         packageCategoriesItem,
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Montserrat',
+                                                                                              fontFamily: 'Open Sans',
                                                                                               color: FlutterFlowTheme.of(context).primaryText,
                                                                                               fontSize: 16,
                                                                                             ),
@@ -1415,7 +1442,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                         child: Text(
                                                                                           packageCategoriesItem,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontSize: 16,
                                                                                               ),
@@ -1606,7 +1633,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                             color: FlutterFlowTheme.of(context).secondaryText,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                     ),
@@ -1617,7 +1644,9 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                             ),
                             borderRadius: BorderRadius.circular(25),
                           ),
-                        ),
+                        ).animateOnActionTrigger(
+                            animationsMap['buttonOnActionTriggerAnimation']!,
+                            hasBeenTriggered: hasButtonTriggered),
                       ],
                     ),
                   ],

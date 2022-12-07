@@ -594,7 +594,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   fontSize: 64,
                                                                   fontWeight:
                                                                       FontWeight
@@ -621,7 +621,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                           .bodyText1
                                                           .override(
                                                             fontFamily:
-                                                                'Montserrat',
+                                                                'Open Sans',
                                                             color: Color(
                                                                 0xFFFEFEFE),
                                                             fontSize: 19,
@@ -726,7 +726,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   fontSize: 64,
                                                                   fontWeight:
                                                                       FontWeight
@@ -753,7 +753,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                           .bodyText1
                                                           .override(
                                                             fontFamily:
-                                                                'Montserrat',
+                                                                'Open Sans',
                                                             color: Color(
                                                                 0xFFFEFEFE),
                                                             fontSize: 19,
@@ -805,8 +805,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -827,14 +826,15 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                               'REPORTS',
                                               textAlign: TextAlign.end,
                                               maxLines: 1,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Montserrat',
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
                                             ),
                                           ),
                                           Padding(
@@ -845,14 +845,15 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                               'DUE',
                                               textAlign: TextAlign.end,
                                               maxLines: 1,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Montserrat',
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
                                             ),
                                           ),
                                         ],
@@ -940,7 +941,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryBackground,
@@ -968,7 +969,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryColor,
@@ -1026,8 +1027,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                           context)
                                                       .title3
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1059,7 +1059,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryBackground,
@@ -1106,7 +1106,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,

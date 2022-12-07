@@ -86,51 +86,51 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get title1Family => 'Montserrat';
+  String get title1Family => 'Open Sans';
   TextStyle get title1 => GoogleFonts.getFont(
-        'Montserrat',
+        'Open Sans',
         color: Colors.white,
         fontWeight: FontWeight.bold,
         fontSize: 32,
       );
-  String get title2Family => 'Montserrat';
+  String get title2Family => 'Open Sans';
   TextStyle get title2 => GoogleFonts.getFont(
-        'Montserrat',
+        'Open Sans',
         color: Colors.white,
         fontWeight: FontWeight.bold,
         fontSize: 28,
       );
-  String get title3Family => 'Montserrat';
+  String get title3Family => 'Open Sans';
   TextStyle get title3 => GoogleFonts.getFont(
-        'Montserrat',
+        'Open Sans',
         color: theme.secondaryColor,
         fontWeight: FontWeight.w600,
         fontSize: 24,
       );
-  String get subtitle1Family => 'Montserrat';
+  String get subtitle1Family => 'Open Sans';
   TextStyle get subtitle1 => GoogleFonts.getFont(
-        'Montserrat',
+        'Open Sans',
         color: Color(0xFF424242),
         fontWeight: FontWeight.bold,
         fontSize: 20,
       );
-  String get subtitle2Family => 'Montserrat';
+  String get subtitle2Family => 'Open Sans';
   TextStyle get subtitle2 => GoogleFonts.getFont(
-        'Montserrat',
+        'Open Sans',
         color: Colors.white,
         fontWeight: FontWeight.w500,
         fontSize: 18,
       );
-  String get bodyText1Family => 'Montserrat';
+  String get bodyText1Family => 'Open Sans';
   TextStyle get bodyText1 => GoogleFonts.getFont(
-        'Montserrat',
+        'Open Sans',
         color: Colors.white,
         fontWeight: FontWeight.normal,
         fontSize: 14,
       );
-  String get bodyText2Family => 'Montserrat';
+  String get bodyText2Family => 'Open Sans';
   TextStyle get bodyText2 => GoogleFonts.getFont(
-        'Montserrat',
+        'Open Sans',
         color: Color(0xFF424242),
         fontWeight: FontWeight.w300,
         fontSize: 14,

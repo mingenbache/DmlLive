@@ -75,7 +75,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .title2
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFF586B06),
                                       fontSize: 32,
                                       fontWeight: FontWeight.bold,
@@ -125,7 +125,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
                                         ),
                                   ),
@@ -294,7 +294,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryColor,
                                                                           fontWeight:
@@ -400,7 +400,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                                                 Text(
                                                                               dateTimeFormat('yMMMd', listViewInvoicesRecord.createdDate!),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Montserrat',
+                                                                                    fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),

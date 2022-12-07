@@ -33,6 +33,67 @@ class TestItem4Widget extends StatefulWidget {
 
 class _TestItem4WidgetState extends State<TestItem4Widget>
     with TickerProviderStateMixin {
+  var hasContainerTriggered1 = false;
+  var hasContainerTriggered2 = false;
+  final animationsMap = {
+    'stackOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(-69, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+    'containerOnActionTriggerAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(63, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+    'containerOnActionTriggerAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(-58, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -144,7 +205,10 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                     ),
                                   ),
                                 ),
-                              ),
+                              ).animateOnActionTrigger(
+                                  animationsMap[
+                                      'containerOnActionTriggerAnimation1']!,
+                                  hasBeenTriggered: hasContainerTriggered1),
                             if (!widget.booking!.testsIncluded!
                                 .toList()
                                 .contains(widget.test))
@@ -220,9 +284,13 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                     ),
                                   ),
                                 ),
-                              ),
+                              ).animateOnActionTrigger(
+                                  animationsMap[
+                                      'containerOnActionTriggerAnimation2']!,
+                                  hasBeenTriggered: hasContainerTriggered2),
                           ],
-                        ),
+                        ).animateOnPageLoad(
+                            animationsMap['stackOnPageLoadAnimation']!),
                       ],
                     ),
                   ],
@@ -737,7 +805,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryColor,
                                           fontSize: 16,

@@ -101,7 +101,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                         .title1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: Colors.white,
                                                         ),
                                                   ),
@@ -144,7 +144,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .subtitle2
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             fontSize: 14,
                                           ),
                                       indicatorColor:
@@ -324,7 +324,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                         currency: 'Ksh ',
                                                                                       ),
                                                                                       style: FlutterFlowTheme.of(context).subtitle1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).primaryText,
                                                                                             fontWeight: FontWeight.w500,
                                                                                           ),
@@ -375,7 +375,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                           child: Text(
                                                                                             functions.dateMonth(columnPaymentsRecord.createdDate),
                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                  fontFamily: 'Montserrat',
+                                                                                                  fontFamily: 'Open Sans',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                   fontSize: 12,
                                                                                                   fontWeight: FontWeight.w500,
@@ -387,7 +387,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                           child: Text(
                                                                                             functions.dateDay(columnPaymentsRecord.createdDate),
                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                  fontFamily: 'Montserrat',
+                                                                                                  fontFamily: 'Open Sans',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                   fontSize: 22,
                                                                                                   fontWeight: FontWeight.w500,
@@ -399,7 +399,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                           child: Text(
                                                                                             functions.dateYear(columnPaymentsRecord.createdDate),
                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                  fontFamily: 'Montserrat',
+                                                                                                  fontFamily: 'Open Sans',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                   fontSize: 12,
                                                                                                   fontWeight: FontWeight.w500,
@@ -560,7 +560,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                   '${columnPaymentsRecord.firstName}   ${columnPaymentsRecord.lastName}',
                                                                                                   textAlign: TextAlign.start,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                        fontFamily: 'Montserrat',
+                                                                                                        fontFamily: 'Open Sans',
                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                                         fontWeight: FontWeight.w500,
                                                                                                       ),
@@ -619,7 +619,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                                   '${columnBookingsRecord.firstname}    ${columnBookingsRecord.lastname}',
                                                                                                   textAlign: TextAlign.start,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                        fontFamily: 'Montserrat',
+                                                                                                        fontFamily: 'Open Sans',
                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                                         fontWeight: FontWeight.w500,
                                                                                                       ),
@@ -898,7 +898,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                                     currency: 'Ksh ',
                                                                                   ),
                                                                                   style: FlutterFlowTheme.of(context).subtitle1.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -1232,7 +1232,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                               .title3
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: Colors
                                                                     .white,
                                                               ),

@@ -49,6 +49,71 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
   bool? checkboxListTileValue4;
   ReportsRecord? reportRef;
   final formKey = GlobalKey<FormState>();
+  var hasButtonTriggered = false;
+  final animationsMap = {
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 1300.ms,
+          begin: 1,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 1300.ms,
+          begin: Offset(100, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+    'buttonOnActionTriggerAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        MoveEffect(
+          curve: Curves.linear,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, 0),
+          end: Offset(-93, 0),
+        ),
+      ],
+    ),
+    'buttonOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 900.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 900.ms,
+          begin: Offset(0, 92),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +226,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .title2
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: Colors.white,
                                         fontSize: 32,
                                         fontWeight: FontWeight.bold,
@@ -377,10 +442,16 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                       .circular(
                                                                           40),
                                                             ),
-                                                          ),
+                                                          ).animateOnActionTrigger(
+                                                              animationsMap[
+                                                                  'buttonOnActionTriggerAnimation']!,
+                                                              hasBeenTriggered:
+                                                                  hasButtonTriggered),
                                                         ),
                                                       ],
-                                                    ),
+                                                    ).animateOnPageLoad(
+                                                        animationsMap[
+                                                            'columnOnPageLoadAnimation']!),
                                                   ),
                                                 ],
                                               ),
@@ -601,7 +672,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                               child: Text(
                                                                                 widget.booking!.bookedTests!.toList().length.toString(),
                                                                                 style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                     ),
                                                                               ),
@@ -748,7 +819,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                 return Text(
                                                                                   widget.booking!.verifiedTests!.toList().length.toString(),
                                                                                   style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                       ),
                                                                                 );
@@ -862,7 +933,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                 'Patient Details',
                                                                                 textAlign: TextAlign.start,
                                                                                 style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                     ),
                                                                               ),
@@ -901,7 +972,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                   child: Text(
                                                                                     'Name',
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).primaryText,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -920,7 +991,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                   child: Text(
                                                                                     '${functions.camelCase(widget.booking!.firstname)}    ${functions.camelCase(widget.booking!.lastname)}',
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).primaryText,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -965,7 +1036,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                         child: Text(
                                                                                           'Name',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -984,7 +1055,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                         child: Text(
                                                                                           '${functions.camelCase(widget.booking!.firstname)}     ${functions.camelCase(widget.booking!.lastname)}',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -1015,7 +1086,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                         child: Text(
                                                                                           'Email',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -1034,7 +1105,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                         child: Text(
                                                                                           widget.booking!.emailaddress!,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -1065,7 +1136,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                         child: Text(
                                                                                           'Phone',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -1084,7 +1155,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                         child: Text(
                                                                                           widget.booking!.phonenumber!,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -1118,7 +1189,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                               Text(
                                                                                                 'Date of\nBirth',
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                      fontFamily: 'Montserrat',
+                                                                                                      fontFamily: 'Open Sans',
                                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                                       fontWeight: FontWeight.w500,
                                                                                                     ),
@@ -1145,7 +1216,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                                 child: Text(
                                                                                                   dateTimeFormat('d/M/y', widget.booking!.dOB!),
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                        fontFamily: 'Montserrat',
+                                                                                                        fontFamily: 'Open Sans',
                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                                       ),
                                                                                                 ),
@@ -1167,7 +1238,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                               child: Text(
                                                                                                 'Sex',
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                      fontFamily: 'Montserrat',
+                                                                                                      fontFamily: 'Open Sans',
                                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                                       fontWeight: FontWeight.w500,
                                                                                                     ),
@@ -1195,7 +1266,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                                 child: Text(
                                                                                                   widget.booking!.sex!,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                        fontFamily: 'Montserrat',
+                                                                                                        fontFamily: 'Open Sans',
                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                                         fontWeight: FontWeight.normal,
                                                                                                       ),
@@ -1273,7 +1344,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -1396,7 +1467,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                   .subtitle2
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Montserrat',
+                                                                        'Open Sans',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryBackground,
@@ -1450,7 +1521,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                         .title3
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: Colors.white,
                                                           fontSize: 20,
                                                           fontWeight:
@@ -1739,7 +1810,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                   .subtitle2
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Montserrat',
+                                                                        'Open Sans',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryBackground,
@@ -1785,7 +1856,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                           .subtitle2
                                                           .override(
                                                             fontFamily:
-                                                                'Montserrat',
+                                                                'Open Sans',
                                                             color: Colors.white,
                                                           ),
                                                     ),
@@ -1954,7 +2025,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                               title: Text(
                                                                                 functions.checkNullString(checkboxListTileTestsRecord.name),
                                                                                 style: FlutterFlowTheme.of(context).title3.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).tertiaryColor,
                                                                                     ),
                                                                               ),
@@ -2013,7 +2084,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -2056,7 +2127,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                           .subtitle2
                                                           .override(
                                                             fontFamily:
-                                                                'Montserrat',
+                                                                'Open Sans',
                                                             color: Colors.white,
                                                           ),
                                                     ),
@@ -2169,7 +2240,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                         .title3
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryColor,
                                                                         ),
@@ -2284,7 +2355,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .title3
                                                                             .override(
-                                                                              fontFamily: 'Montserrat',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
                                                                             ),
                                                                       ),
@@ -2394,7 +2465,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .title3
                                                                             .override(
-                                                                              fontFamily: 'Montserrat',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
                                                                             ),
                                                                       ),
@@ -2479,7 +2550,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                   .subtitle2
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Montserrat',
+                                                                        'Open Sans',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryText,
@@ -2623,12 +2694,12 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                   builder: (alertDialogContext) {
                                     return AlertDialog(
                                       title: Text('Error'),
-                                      content: Text('Report not Created'),
+                                      content: Text('Document Unavailable'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
+                                          child: Text('Okay'),
                                         ),
                                       ],
                                     );
@@ -2662,7 +2733,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                               ),
                               borderRadius: BorderRadius.circular(25),
                             ),
-                          ),
+                          ).animateOnPageLoad(
+                              animationsMap['buttonOnPageLoadAnimation']!),
                         ),
                       ),
                     ),

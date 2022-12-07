@@ -123,7 +123,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
                                             fontWeight: FontWeight.w500,
@@ -147,7 +147,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
@@ -175,7 +175,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color: Colors.white,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -205,7 +205,7 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,

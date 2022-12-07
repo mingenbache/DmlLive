@@ -94,7 +94,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                     Text(
                       'EDIT\nUSER DETAILS',
                       style: FlutterFlowTheme.of(context).title2.override(
-                            fontFamily: 'Montserrat',
+                            fontFamily: 'Open Sans',
                             color: FlutterFlowTheme.of(context).primaryText,
                             fontSize: 32,
                             fontWeight: FontWeight.bold,
@@ -206,7 +206,6 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                           fontSize: 14,
                                           fontWeight: FontWeight.normal,
                                         ),
-                                    maxLines: null,
                                     keyboardType: TextInputType.name,
                                   ),
                                 ),
@@ -270,7 +269,6 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                           fontSize: 14,
                                           fontWeight: FontWeight.normal,
                                         ),
-                                    maxLines: null,
                                   ),
                                 ),
                               ),
@@ -347,7 +345,6 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
-                                  maxLines: null,
                                 ),
                               ),
                             ],
@@ -424,7 +421,6 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
-                                  maxLines: null,
                                   keyboardType: TextInputType.number,
                                 ),
                               ),
@@ -477,7 +473,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
@@ -505,7 +501,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
                                           fontWeight: FontWeight.w500,
@@ -525,7 +521,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyText2
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontWeight: FontWeight.w500,
@@ -630,7 +626,6 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
-                                  maxLines: null,
                                 ),
                               ),
                             ],
@@ -719,7 +714,6 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
-                                  maxLines: null,
                                 ),
                               ),
                             ],
@@ -749,13 +743,12 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                     builder: (alertDialogContext) {
                                       return AlertDialog(
                                         title: Text('Success'),
-                                        content:
-                                            Text('Record updated successfully'),
+                                        content: Text('Details updated'),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
                                                 alertDialogContext),
-                                            child: Text('Okay'),
+                                            child: Text('Cancel'),
                                           ),
                                         ],
                                       );

@@ -47,7 +47,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
         label: Text(
           'Test Console',
           style: FlutterFlowTheme.of(context).bodyText1.override(
-                fontFamily: 'Montserrat',
+                fontFamily: 'Open Sans',
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
         ),
@@ -106,7 +106,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: Colors.white,
                                     ),
                               ),
@@ -229,27 +229,29 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                             Text(
                                               functions.returnDateString(
                                                   uICalendarSelectedDay?.start),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .subtitle2
-                                                  .override(
-                                                    fontFamily: 'Montserrat',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                  ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle2
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
                                             ),
                                             Text(
                                               '${functions.getDayTestsnumber(calendarScheduleContainerBookedTestsRecordList.toList(), uICalendarSelectedDay?.start).toString()} Tests',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .subtitle2
-                                                  .override(
-                                                    fontFamily: 'Montserrat',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                  ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle2
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
                                             ),
                                             InkWell(
                                               onTap: () async {
@@ -285,7 +287,7 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                               .subtitle2
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryBackground,

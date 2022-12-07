@@ -101,7 +101,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                         fontSize: 20,

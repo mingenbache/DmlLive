@@ -191,7 +191,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                         .title1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: Colors.white,
                                                         ),
                                               ),
@@ -216,9 +216,9 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                               (alertDialogContext) {
                                                             return AlertDialog(
                                                               title: Text(
-                                                                  'Suspend Test?'),
+                                                                  'Confirm Unsuspend?'),
                                                               content: Text(
-                                                                  'Are you sure you want to suspend the test? The test will not be availooking.'),
+                                                                  'This test will be available for booking again.'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -226,7 +226,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'No'),
+                                                                      'No, Cancel'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -259,13 +259,14 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                     return AlertDialog(
                                                       title: Text('Success'),
                                                       content: Text(
-                                                          'Test Suspended'),
+                                                          'Test now Active'),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
                                                               Navigator.pop(
                                                                   alertDialogContext),
-                                                          child: Text('Okay'),
+                                                          child:
+                                                              Text('Dismiss'),
                                                         ),
                                                       ],
                                                     );
@@ -371,7 +372,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           fontSize: 16,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -1485,7 +1486,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
@@ -1514,7 +1515,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                               .subtitle2
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryBackground,

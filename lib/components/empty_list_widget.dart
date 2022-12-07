@@ -34,7 +34,7 @@ class _EmptyListWidgetState extends State<EmptyListWidget> {
                 'No Items Added',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).title3.override(
-                      fontFamily: 'Montserrat',
+                      fontFamily: 'Open Sans',
                       color: FlutterFlowTheme.of(context).primaryText,
                     ),
               ),

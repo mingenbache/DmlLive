@@ -33,6 +33,33 @@ class OnboardingWidget extends StatefulWidget {
 class _OnboardingWidgetState extends State<OnboardingWidget>
     with TickerProviderStateMixin {
   PageController? pageViewController;
+  var hasButtonTriggered = false;
+  final animationsMap = {
+    'buttonOnActionTriggerAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -183,8 +210,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .title1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color: Colors.white,
                                                       ),
                                             ),
@@ -265,7 +291,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                                 .subtitle1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: Colors
                                                                       .white,
                                                                   fontSize: 16,
@@ -382,7 +408,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                                             textAlign:
                                                                                 TextAlign.center,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                 ),
                                                                           ),
@@ -414,7 +440,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle2
                                                                               .override(
-                                                                                fontFamily: 'Montserrat',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                 fontSize: 14,
                                                                               ),
@@ -664,7 +690,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                         ),
                                         borderRadius: BorderRadius.circular(30),
                                       ),
-                                    ),
+                                    ).animateOnActionTrigger(
+                                        animationsMap[
+                                            'buttonOnActionTriggerAnimation']!,
+                                        hasBeenTriggered: hasButtonTriggered),
                                   ],
                                 ),
                               ),

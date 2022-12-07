@@ -33,6 +33,60 @@ class ConfirmTestsWidget extends StatefulWidget {
 
 class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'textFieldOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 170.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 170.ms,
+          duration: 600.ms,
+          begin: Offset(0, 80),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 170.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+    'dropDownOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: Offset(0, 100),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
   BookedTestsRecord? newBookedTest;
   String? pathologistValue;
   TextEditingController? labReferenceController;
@@ -41,6 +95,13 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
   @override
   void initState() {
     super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     labReferenceController = TextEditingController(text: widget.labRefNum);
   }
 
@@ -132,7 +193,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .title1
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                       ),
@@ -241,8 +302,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                     fontWeight: FontWeight.w500,
                                     fontSize: 16,
                                   ),
-                                  maxLines: null,
-                                ),
+                                ).animateOnPageLoad(animationsMap[
+                                    'textFieldOnPageLoadAnimation']!),
                               ),
                             ),
                             Container(
@@ -256,7 +317,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
                                         ),
@@ -267,7 +328,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                             Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 16, 0, 10),
-                              child: FlutterFlowDropDown(
+                              child: FlutterFlowDropDown<String>(
                                 options: testConfirmationStaffRecordList
                                     .map((e) => e.displayName!)
                                     .toList()
@@ -302,7 +363,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                 margin: EdgeInsetsDirectional.fromSTEB(
                                     20, 20, 12, 20),
                                 hidesUnderline: true,
-                              ),
+                              ).animateOnPageLoad(animationsMap[
+                                  'dropDownOnPageLoadAnimation']!),
                             ),
                             Divider(
                               thickness: 1,
@@ -321,7 +383,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                         ),
@@ -444,7 +506,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                           .subtitle2
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Montserrat',
+                                                                                'Open Sans',
                                                                             color:
                                                                                 Colors.white,
                                                                           ),
@@ -462,7 +524,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                           .subtitle2
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Montserrat',
+                                                                                'Open Sans',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).alternate,
                                                                             fontSize:
@@ -1312,7 +1374,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                       textStyle: FlutterFlowTheme.of(context)
                                           .subtitle2
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
                                           ),

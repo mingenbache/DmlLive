@@ -99,10 +99,11 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                         containerInvoicesRecord.invoiceNum)
                                     .maybeHandleOverflow(maxChars: 2),
                                 textAlign: TextAlign.center,
+                                maxLines: 1,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       fontSize: 16,
@@ -180,7 +181,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           3, 0, 3, 0),
                                       child: Column(
-                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
                                             padding:
@@ -481,12 +482,6 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                         bookingRef: widget.booking!.reference,
                                       ),
                                     ),
-                                    Image.network(
-                                      'https://picsum.photos/seed/822/600',
-                                      width: 100,
-                                      height: 100,
-                                      fit: BoxFit.cover,
-                                    ),
                                   ],
                                 ),
                               ),
@@ -499,7 +494,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                       smooth_page_indicator.SmoothPageIndicator(
                                     controller: pageViewController ??=
                                         PageController(initialPage: 0),
-                                    count: 3,
+                                    count: 2,
                                     axisDirection: Axis.horizontal,
                                     onDotClicked: (i) {
                                       pageViewController!.animateToPage(

@@ -139,7 +139,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color: Color(0xFF586B06),
                                             ),
                                       ),
@@ -226,7 +226,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: Color(
                                                                       0xFF586B06),
                                                                 ),
@@ -238,7 +238,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: Color(
                                                                       0xFF586B06),
                                                                 ),
@@ -325,7 +325,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,
@@ -383,7 +383,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                           .bodyText1
                                                           .override(
                                                             fontFamily:
-                                                                'Montserrat',
+                                                                'Open Sans',
                                                             color: Color(
                                                                 0xFF586B06),
                                                             fontWeight:
@@ -434,7 +434,8 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                 ? dropDownCategoriesRecordList
                                                                     .first
                                                                 : null;
-                                                        return FlutterFlowDropDown(
+                                                        return FlutterFlowDropDown<
+                                                            String>(
                                                           initialOption:
                                                               dropDownValue ??=
                                                                   columnTestsRecord
@@ -460,7 +461,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                   .bodyText1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Montserrat',
+                                                                        'Open Sans',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryColor,
@@ -644,7 +645,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .tertiaryColor,
@@ -724,7 +725,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: Color(
                                                                     0xFF586B06),
                                                                 fontWeight:
@@ -742,7 +743,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,
@@ -794,7 +795,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .alternate,
@@ -883,7 +884,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                           .bodyText1
                                                           .override(
                                                             fontFamily:
-                                                                'Montserrat',
+                                                                'Open Sans',
                                                             color: Color(
                                                                 0xFF586B06),
                                                             fontWeight:
@@ -898,7 +899,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,
@@ -1051,12 +1052,11 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: Color(
                                                                       0xFF586B06),
                                                                   fontSize: 18,
                                                                 ),
-                                                            maxLines: null,
                                                             keyboardType:
                                                                 TextInputType
                                                                     .number,
@@ -1163,7 +1163,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: Color(
                                                                     0xFF586B06),
                                                                 fontSize: 18,

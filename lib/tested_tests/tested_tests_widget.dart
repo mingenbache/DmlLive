@@ -40,7 +40,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                       'TEST DASHBOARD',
                       textAlign: TextAlign.start,
                       style: FlutterFlowTheme.of(context).title1.override(
-                            fontFamily: 'Montserrat',
+                            fontFamily: 'Open Sans',
                             color: Color(0xFF586B06),
                           ),
                     ),
@@ -248,7 +248,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                           .subtitle1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Montserrat',
+                                                                                'Open Sans',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).tertiaryColor,
                                                                             fontWeight:
@@ -377,7 +377,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     child: Text(
                                                                                       functions.dateMonth(listViewTestedTestsRecord.dateConducted),
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).primaryColor,
                                                                                             fontSize: 12,
                                                                                             fontWeight: FontWeight.w500,
@@ -389,7 +389,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     child: Text(
                                                                                       functions.dateDay(listViewTestedTestsRecord.dateConducted),
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontSize: 24,
                                                                                             fontWeight: FontWeight.w600,
@@ -401,7 +401,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     child: Text(
                                                                                       functions.dateYear(listViewTestedTestsRecord.dateConducted),
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontSize: 12,
                                                                                             fontWeight: FontWeight.w500,
@@ -669,7 +669,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     'Verify',
                                                                                     textAlign: TextAlign.center,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: Colors.white,
                                                                                         ),
                                                                                   ),
@@ -726,7 +726,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                         'Freeze',
                                                                                         textAlign: TextAlign.center,
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Montserrat',
+                                                                                              fontFamily: 'Open Sans',
                                                                                               color: Colors.white,
                                                                                             ),
                                                                                       ),
@@ -945,7 +945,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle1
                                                                               .override(
-                                                                                fontFamily: 'Montserrat',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: FlutterFlowTheme.of(context).tertiaryColor,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -1049,7 +1049,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     child: Text(
                                                                                       functions.dateMonth(listViewTestedTestsRecord.dateSampleCollected),
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).primaryColor,
                                                                                             fontSize: 12,
                                                                                             fontWeight: FontWeight.w500,
@@ -1061,7 +1061,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     child: Text(
                                                                                       functions.dateDay(listViewTestedTestsRecord.dateSampleCollected),
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontSize: 24,
                                                                                             fontWeight: FontWeight.w600,
@@ -1073,7 +1073,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     child: Text(
                                                                                       functions.dateYear(listViewTestedTestsRecord.dateSampleCollected),
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontSize: 12,
                                                                                             fontWeight: FontWeight.w500,
@@ -1338,7 +1338,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                 'Sample Collected',
                                                                                 textAlign: TextAlign.center,
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: Colors.white,
                                                                                     ),
                                                                               ),
@@ -1586,7 +1586,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                 child: Text(
                                                                                   'OCT',
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).primaryColor,
                                                                                         fontSize: 12,
                                                                                         fontWeight: FontWeight.w500,
@@ -1598,7 +1598,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                 child: Text(
                                                                                   '21',
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                         fontSize: 24,
                                                                                         fontWeight: FontWeight.w600,
@@ -1610,7 +1610,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                 child: Text(
                                                                                   '2021',
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                         fontSize: 12,
                                                                                         fontWeight: FontWeight.w500,
@@ -1745,7 +1745,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     child: Text(
                                                                                       'Test Done on',
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontWeight: FontWeight.normal,
                                                                                           ),
@@ -1762,7 +1762,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                       Text(
                                                                                         dateTimeFormat('MMMEd', listViewTestedTestsRecord.dateConducted!),
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Montserrat',
+                                                                                              fontFamily: 'Open Sans',
                                                                                               color: Color(0xFF586B06),
                                                                                               fontWeight: FontWeight.w500,
                                                                                             ),
@@ -1808,7 +1808,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                       child: Text(
                                                                                         'Submitted by',
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Montserrat',
+                                                                                              fontFamily: 'Open Sans',
                                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                               fontWeight: FontWeight.normal,
                                                                                             ),
@@ -1826,7 +1826,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                       Text(
                                                                                         'Staff Name',
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Montserrat',
+                                                                                              fontFamily: 'Open Sans',
                                                                                               color: Color(0xFF586B06),
                                                                                               fontWeight: FontWeight.w500,
                                                                                             ),
@@ -2036,7 +2036,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                               child: Text(
                                                                                 'OCT',
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).primaryColor,
                                                                                       fontSize: 12,
                                                                                       fontWeight: FontWeight.w500,
@@ -2048,7 +2048,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                               child: Text(
                                                                                 '21',
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                       fontSize: 24,
                                                                                       fontWeight: FontWeight.w600,
@@ -2060,7 +2060,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                               child: Text(
                                                                                 '2021',
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                       fontSize: 12,
                                                                                       fontWeight: FontWeight.w500,
@@ -2207,7 +2207,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                   child: Text(
                                                                                     'Note',
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                           fontWeight: FontWeight.normal,
                                                                                         ),
@@ -2224,7 +2224,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     Text(
                                                                                       'Freeze reason',
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: Color(0xFF586B06),
                                                                                             fontWeight: FontWeight.w500,
                                                                                           ),
@@ -2275,7 +2275,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     child: Text(
                                                                                       'Submitted by',
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontWeight: FontWeight.normal,
                                                                                           ),
@@ -2293,7 +2293,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     Text(
                                                                                       'Staff Name',
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: Color(0xFF586B06),
                                                                                             fontWeight: FontWeight.w500,
                                                                                           ),

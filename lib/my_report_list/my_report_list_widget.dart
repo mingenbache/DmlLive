@@ -115,7 +115,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                               .title1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryBackground,
@@ -143,15 +143,16 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                     16, 12, 0, 12),
                                             child: Text(
                                               'All Reports',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .subtitle1
-                                                  .override(
-                                                    fontFamily: 'Montserrat',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                  ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle1
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
                                             ),
                                           ),
                                         ],
@@ -295,7 +296,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                           .subtitle2
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Montserrat',
+                                                                                'Open Sans',
                                                                             color:
                                                                                 Colors.white,
                                                                           ),
@@ -495,7 +496,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                                                 Text(
                                                                                                   'On Hold',
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                        fontFamily: 'Montserrat',
+                                                                                                        fontFamily: 'Open Sans',
                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                                       ),
                                                                                                 ),
@@ -619,7 +620,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                                                                 replacement: '…',
                                                                                                               ),
                                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                                fontFamily: 'Montserrat',
+                                                                                                                fontFamily: 'Open Sans',
                                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                                                 fontWeight: FontWeight.normal,
                                                                                                               ),

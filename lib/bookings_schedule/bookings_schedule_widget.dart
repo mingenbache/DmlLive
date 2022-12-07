@@ -104,7 +104,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                         .title1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: Colors.white,
                                                         ),
                                                   ),
@@ -143,7 +143,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                               labelStyle: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Montserrat',
+                                    fontFamily: 'Open Sans',
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -370,7 +370,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                         .subtitle2
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
@@ -412,7 +412,7 @@ class _BookingsScheduleWidgetState extends State<BookingsScheduleWidget> {
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,

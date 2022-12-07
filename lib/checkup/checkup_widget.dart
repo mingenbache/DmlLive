@@ -70,7 +70,7 @@ class _CheckupWidgetState extends State<CheckupWidget> {
         title: Text(
           'DML Live',
           style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Montserrat',
+                fontFamily: 'Open Sans',
                 color: Colors.white,
                 fontSize: 22,
               ),
@@ -114,7 +114,7 @@ class _CheckupWidgetState extends State<CheckupWidget> {
                         color: FlutterFlowTheme.of(context).primaryColor,
                         textStyle:
                             FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Montserrat',
+                                  fontFamily: 'Open Sans',
                                   color: Colors.white,
                                 ),
                         borderSide: BorderSide(

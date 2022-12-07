@@ -162,7 +162,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color: Colors.white,
                                             ),
                                       ),
@@ -231,7 +231,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryBackground,
@@ -241,7 +241,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                         context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -313,7 +313,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Montserrat',
+                                                    fontFamily: 'Open Sans',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText,
@@ -353,7 +353,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Montserrat',
+                                                    fontFamily: 'Open Sans',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText,
@@ -400,7 +400,8 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                         ? testCategoryCategoriesRecordList
                                                             .first
                                                         : null;
-                                                return FlutterFlowDropDown(
+                                                return FlutterFlowDropDown<
+                                                    String>(
                                                   options:
                                                       testCategoryCategoriesRecord!
                                                           .categories!
@@ -418,8 +419,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                           .of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -482,7 +482,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: Colors.white,
                                                         ),
                                               ),
@@ -493,7 +493,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                         .subtitle2
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: Colors.white,
                                                         ),
                                               ),
@@ -628,8 +628,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -676,16 +675,17 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                             ),
                                             Text(
                                               'in minutes',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Montserrat',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryColor,
-                                                    fontSize: 14,
-                                                  ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryColor,
+                                                        fontSize: 14,
+                                                      ),
                                             ),
                                           ],
                                         ),
@@ -728,7 +728,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
@@ -782,7 +782,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                         context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -831,7 +831,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryColor,
@@ -878,8 +878,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -939,8 +938,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,

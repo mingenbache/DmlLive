@@ -27,10 +27,47 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
     with TickerProviderStateMixin {
   TextEditingController? textController1;
   TextEditingController? textController2;
+  var hasStackTriggered1 = false;
+  var hasStackTriggered2 = false;
+  final animationsMap = {
+    'stackOnActionTriggerAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        ScaleEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1.5,
+          end: 1,
+        ),
+      ],
+    ),
+    'stackOnActionTriggerAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        ScaleEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1.5,
+          end: 1,
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
     super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     textController1 = TextEditingController();
     textController2 = TextEditingController();
   }
@@ -113,7 +150,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                               'TEST CATALOG',
                               style:
                                   FlutterFlowTheme.of(context).title1.override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: Colors.white,
                                       ),
                             ),
@@ -395,7 +432,6 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                 ),
                                                         textAlign:
                                                             TextAlign.start,
-                                                        maxLines: null,
                                                       ),
                                                     ),
                                                   ),
@@ -472,7 +508,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Montserrat',
+                                                                            'Open Sans',
                                                                         color: Colors
                                                                             .white,
                                                                         fontWeight:
@@ -522,7 +558,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Montserrat',
+                                                                          'Open Sans',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryText,
@@ -654,7 +690,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                                 Text(
                                                                               testCategoriesItem,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Montserrat',
+                                                                                    fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                     fontSize: 16,
                                                                                   ),
@@ -698,7 +734,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                                 Text(
                                                                               testCategoriesItem,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Montserrat',
+                                                                                    fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontSize: 16,
                                                                                   ),
@@ -708,7 +744,11 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       ),
                                                                     ),
                                                                   ],
-                                                                );
+                                                                ).animateOnActionTrigger(
+                                                                    animationsMap[
+                                                                        'stackOnActionTriggerAnimation1']!,
+                                                                    hasBeenTriggered:
+                                                                        hasStackTriggered1);
                                                               },
                                                             );
                                                           },
@@ -1096,7 +1136,6 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                 ),
                                                         textAlign:
                                                             TextAlign.start,
-                                                        maxLines: null,
                                                       ),
                                                     ),
                                                   ),
@@ -1173,7 +1212,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Montserrat',
+                                                                            'Open Sans',
                                                                         color: Colors
                                                                             .white,
                                                                         fontWeight:
@@ -1223,7 +1262,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Montserrat',
+                                                                          'Open Sans',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .secondaryColor,
@@ -1361,7 +1400,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                                 Text(
                                                                               packagecategoriesItem,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Montserrat',
+                                                                                    fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                     fontSize: 16,
                                                                                   ),
@@ -1400,7 +1439,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                                 Text(
                                                                               packagecategoriesItem,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Montserrat',
+                                                                                    fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                     fontSize: 16,
                                                                                   ),
@@ -1409,7 +1448,11 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                         ),
                                                                       ),
                                                                   ],
-                                                                );
+                                                                ).animateOnActionTrigger(
+                                                                    animationsMap[
+                                                                        'stackOnActionTriggerAnimation2']!,
+                                                                    hasBeenTriggered:
+                                                                        hasStackTriggered2);
                                                               },
                                                             );
                                                           },

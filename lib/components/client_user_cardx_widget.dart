@@ -105,7 +105,7 @@ class _ClientUserCardxWidgetState extends State<ClientUserCardxWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryColor,
                                       fontSize: 19,

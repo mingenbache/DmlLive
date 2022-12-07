@@ -30,6 +30,48 @@ class TestActionsWidgetWidget extends StatefulWidget {
 
 class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
     with TickerProviderStateMixin {
+  var hasButtonTriggered1 = false;
+  var hasButtonTriggered2 = false;
+  final animationsMap = {
+    'buttonOnActionTriggerAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+    'buttonOnActionTriggerAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -136,7 +178,9 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                               ),
                               borderRadius: BorderRadius.circular(30),
                             ),
-                          );
+                          ).animateOnActionTrigger(
+                              animationsMap['buttonOnActionTriggerAnimation1']!,
+                              hasBeenTriggered: hasButtonTriggered1);
                         },
                       ),
                       FFButtonWidget(
@@ -201,7 +245,9 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                           ),
                           borderRadius: BorderRadius.circular(30),
                         ),
-                      ),
+                      ).animateOnActionTrigger(
+                          animationsMap['buttonOnActionTriggerAnimation2']!,
+                          hasBeenTriggered: hasButtonTriggered2),
                     ],
                   ),
                 ),

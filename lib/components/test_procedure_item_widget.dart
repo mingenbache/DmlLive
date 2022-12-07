@@ -134,7 +134,6 @@ class _TestProcedureItemWidgetState extends State<TestProcedureItemWidget> {
                       color: FlutterFlowTheme.of(context).primaryText,
                       fontSize: 16,
                     ),
-                maxLines: null,
               ),
             ),
             InkWell(

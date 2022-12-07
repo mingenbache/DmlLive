@@ -25,6 +25,34 @@ class BookingActionsWidget extends StatefulWidget {
 
 class _BookingActionsWidgetState extends State<BookingActionsWidget>
     with TickerProviderStateMixin {
+  var hasContainerTriggered = false;
+  final animationsMap = {
+    'containerOnActionTriggerAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        ScaleEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 1020.ms,
+          begin: 0.9,
+          end: 1,
+        ),
+      ],
+    ),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -96,7 +124,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                         fontWeight: FontWeight.w500,
@@ -110,7 +138,9 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                     ],
                   ),
                 ),
-              ),
+              ).animateOnActionTrigger(
+                  animationsMap['containerOnActionTriggerAnimation']!,
+                  hasBeenTriggered: hasContainerTriggered),
             ),
             Expanded(
               child: Container(
@@ -144,7 +174,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                     ),
@@ -209,7 +239,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Montserrat',
+                                                fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
@@ -272,7 +302,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Montserrat',
+                                                fontFamily: 'Open Sans',
                                                 color: Color(0x4CFFFFFF),
                                               ),
                                         ),

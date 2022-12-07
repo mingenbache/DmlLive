@@ -103,7 +103,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                           'EDIT TEST DETAILS',
                           textAlign: TextAlign.start,
                           style: FlutterFlowTheme.of(context).title1.override(
-                                fontFamily: 'Montserrat',
+                                fontFamily: 'Open Sans',
                                 color: Color(0xFF586B06),
                               ),
                         ),
@@ -134,7 +134,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title3
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiaryColor,
                                         fontWeight: FontWeight.w500,
@@ -145,7 +145,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         fontSize: 16,
                                       ),
                                 ),
@@ -244,7 +244,6 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                         fontSize: 16,
                                         fontWeight: FontWeight.normal,
                                       ),
-                                  maxLines: null,
                                 ),
                               ),
                             ),
@@ -351,7 +350,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Montserrat',
+                                    fontFamily: 'Open Sans',
                                     color: Color(0xFF586B06),
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -389,7 +388,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                     dropDownCategoriesRecordList.isNotEmpty
                                         ? dropDownCategoriesRecordList.first
                                         : null;
-                                return FlutterFlowDropDown(
+                                return FlutterFlowDropDown<String>(
                                   initialOption: dropDownValue ??=
                                       modifyTestTestsRecord.category,
                                   options: dropDownCategoriesRecord!.categories!
@@ -403,7 +402,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryColor,
                                       ),
@@ -439,7 +438,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryColor,
                                     ),
@@ -484,7 +483,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFF586B06),
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -494,7 +493,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .tertiaryColor,
                                       fontSize: 12,
@@ -581,12 +580,11 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
                                             fontSize: 18,
                                           ),
-                                      maxLines: null,
                                       keyboardType: TextInputType.number,
                                     ),
                                   ),
@@ -631,7 +629,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFF586B06),
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -641,7 +639,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .tertiaryColor,
                                       fontSize: 12,
@@ -729,12 +727,11 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
                                             fontSize: 18,
                                           ),
-                                      maxLines: null,
                                       keyboardType: TextInputType.number,
                                     ),
                                   ),
@@ -782,7 +779,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Montserrat',
+                                    fontFamily: 'Open Sans',
                                     color: Color(0xFF586B06),
                                     fontWeight: FontWeight.w500,
                                   ),

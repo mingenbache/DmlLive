@@ -19,6 +19,62 @@ class DashboardMenuWidgetLightWidget extends StatefulWidget {
 class _DashboardMenuWidgetLightWidgetState
     extends State<DashboardMenuWidgetLightWidget>
     with TickerProviderStateMixin {
+  var hasContainerTriggered1 = false;
+  var hasContainerTriggered2 = false;
+  var hasContainerTriggered3 = false;
+  final animationsMap = {
+    'containerOnActionTriggerAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 500.ms,
+          begin: 0.4,
+          end: 1,
+        ),
+      ],
+    ),
+    'containerOnActionTriggerAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 500.ms,
+          begin: 0.4,
+          end: 1,
+        ),
+      ],
+    ),
+    'containerOnActionTriggerAnimation3': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 500.ms,
+          begin: 0.4,
+          end: 1,
+        ),
+      ],
+    ),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -108,7 +164,9 @@ class _DashboardMenuWidgetLightWidgetState
                       ),
                     ),
                   ),
-                ),
+                ).animateOnActionTrigger(
+                    animationsMap['containerOnActionTriggerAnimation1']!,
+                    hasBeenTriggered: hasContainerTriggered1),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
@@ -177,7 +235,9 @@ class _DashboardMenuWidgetLightWidgetState
                       ),
                     ),
                   ),
-                ),
+                ).animateOnActionTrigger(
+                    animationsMap['containerOnActionTriggerAnimation2']!,
+                    hasBeenTriggered: hasContainerTriggered2),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
@@ -230,7 +290,9 @@ class _DashboardMenuWidgetLightWidgetState
                       ),
                     ),
                   ),
-                ),
+                ).animateOnActionTrigger(
+                    animationsMap['containerOnActionTriggerAnimation3']!,
+                    hasBeenTriggered: hasContainerTriggered3),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),

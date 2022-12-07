@@ -185,7 +185,6 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                         fontSize: 16,
                                         fontWeight: FontWeight.normal,
                                       ),
-                                  maxLines: null,
                                 ),
                               ),
                             ),
@@ -268,7 +267,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Montserrat',
+                                    fontFamily: 'Open Sans',
                                     color: Color(0xFF586B06),
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -306,7 +305,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                     dropDownCategoriesRecordList.isNotEmpty
                                         ? dropDownCategoriesRecordList.first
                                         : null;
-                                return FlutterFlowDropDown(
+                                return FlutterFlowDropDown<String>(
                                   options: dropDownCategoriesRecord!.categories!
                                       .toList()
                                       .toList(),
@@ -318,7 +317,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryColor,
                                       ),
@@ -363,7 +362,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiaryColor,
                                       ),
@@ -409,7 +408,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFF586B06),
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -419,7 +418,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryColor,
                                       fontSize: 12,
@@ -501,11 +500,10 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: Color(0xFF586B06),
                                             fontSize: 18,
                                           ),
-                                      maxLines: null,
                                       keyboardType: TextInputType.number,
                                     ),
                                   ),
@@ -549,7 +547,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFF586B06),
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -559,7 +557,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryColor,
                                       fontSize: 12,
@@ -641,11 +639,10 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: Color(0xFF586B06),
                                             fontSize: 18,
                                           ),
-                                      maxLines: null,
                                       keyboardType: TextInputType.number,
                                     ),
                                   ),
@@ -693,7 +690,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Montserrat',
+                                    fontFamily: 'Open Sans',
                                     color: Color(0xFF586B06),
                                     fontWeight: FontWeight.w500,
                                   ),

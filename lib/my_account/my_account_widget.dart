@@ -101,7 +101,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .title1
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
                                         ),
@@ -161,7 +161,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodyText1
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
@@ -248,7 +248,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                         .bodyText2
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -331,7 +331,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                         .bodyText2
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -413,7 +413,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                         .bodyText2
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -501,7 +501,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                         .bodyText2
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -584,7 +584,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                         .bodyText2
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -611,7 +611,7 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                         ),

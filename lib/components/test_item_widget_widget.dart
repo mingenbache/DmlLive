@@ -117,7 +117,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .subtitle1
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                         fontWeight: FontWeight.w500,
@@ -445,8 +445,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -522,7 +521,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
@@ -603,8 +602,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)

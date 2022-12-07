@@ -58,7 +58,7 @@ class _InvoiceListItemWidgetWidgetState
                         currency: 'Ksh. ',
                       ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Montserrat',
+                            fontFamily: 'Open Sans',
                             color: FlutterFlowTheme.of(context).primaryText,
                             fontWeight: FontWeight.w500,
                           ),
@@ -117,7 +117,7 @@ class _InvoiceListItemWidgetWidgetState
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
                                       fontWeight: FontWeight.w500,

@@ -195,8 +195,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                           context)
                                                       .title1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color: Colors.white,
                                                       ),
                                                 ),
@@ -220,9 +219,9 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                 (alertDialogContext) {
                                                               return AlertDialog(
                                                                 title: Text(
-                                                                    'Unsuspend Test Package?'),
+                                                                    'Reactivate Test?'),
                                                                 content: Text(
-                                                                    'Are you sure you want to unsuspend this package? It will be available for booking. '),
+                                                                    'Doing this will make this test available for booking'),
                                                                 actions: [
                                                                   TextButton(
                                                                     onPressed: () =>
@@ -230,7 +229,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                             alertDialogContext,
                                                                             false),
                                                                     child: Text(
-                                                                        'No'),
+                                                                        'Cancel'),
                                                                   ),
                                                                   TextButton(
                                                                     onPressed: () =>
@@ -238,7 +237,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                             alertDialogContext,
                                                                             true),
                                                                     child: Text(
-                                                                        'Yes'),
+                                                                        'Activate'),
                                                                   ),
                                                                 ],
                                                               );
@@ -265,7 +264,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                       return AlertDialog(
                                                         title: Text('Success'),
                                                         content: Text(
-                                                            'Test Package Unsuspended'),
+                                                            'Test now Active'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -381,17 +380,15 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .primaryText,
-                                                  labelStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyText1
-                                                          .override(
-                                                            fontFamily:
-                                                                'Montserrat',
-                                                            fontSize: 16,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyText1
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
                                                   indicatorColor: Colors.white,
                                                   tabs: [
                                                     Tab(
@@ -505,7 +502,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle2
                                                                               .override(
-                                                                                fontFamily: 'Montserrat',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                               ),
                                                                         ),
@@ -1522,7 +1519,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
@@ -1553,7 +1550,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,

@@ -62,7 +62,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                       ).image,
                     ),
                   ),
-                  child: ClipRect(
+                  child: ClipRRect(
                     child: BackdropFilter(
                       filter: ImageFilter.blur(
                         sigmaX: 3,
@@ -146,7 +146,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .title1
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: Colors.white,
                                                 ),
                                           ),
@@ -227,7 +227,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                         .subtitle1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           fontSize: 17,
                                                         ),
                                                   ),
@@ -519,7 +519,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         return Text(
                                                                                           textBookedTestsRecordList.length.toString(),
                                                                                           style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                               ),
                                                                                         );
@@ -643,7 +643,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         return Text(
                                                                                           textTestedTestsRecordList.length.toString(),
                                                                                           style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                               ),
                                                                                         );
@@ -722,7 +722,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                               Text(
                                                                             'Date\nRegistered',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: Color(0xFF586B06),
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -852,7 +852,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                               Text(
                                                                             'Last\nSigned-in',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: Color(0xFF586B06),
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -982,7 +982,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                               Text(
                                                                             'Last\nTest',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: Color(0xFF586B06),
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1130,7 +1130,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                 'User Details',
                                                                                 textAlign: TextAlign.start,
                                                                                 style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: Colors.white,
                                                                                     ),
                                                                               ),
@@ -1168,7 +1168,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                   child: Text(
                                                                                     'Display\nName',
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: Colors.white,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -1187,7 +1187,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                   child: Text(
                                                                                     columnUsersRecord.displayName!,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                         ),
                                                                                   ),
@@ -1227,7 +1227,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                   child: Text(
                                                                                     'Email',
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: Colors.white,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -1246,7 +1246,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                   child: Text(
                                                                                     columnUsersRecord.email!,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                         ),
                                                                                   ),
@@ -1292,7 +1292,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                   child: Text(
                                                                                     'Phone',
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: Colors.white,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -1311,7 +1311,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                   child: Text(
                                                                                     columnUsersRecord.phoneNumber!,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                         ),
                                                                                   ),
@@ -1357,7 +1357,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         Text(
                                                                                           'Date of\nBirth',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: Colors.white,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -1384,7 +1384,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                           child: Text(
                                                                                             dateTimeFormat('d/M/y', columnUsersRecord.dOB!),
                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                  fontFamily: 'Montserrat',
+                                                                                                  fontFamily: 'Open Sans',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                 ),
                                                                                           ),
@@ -1406,7 +1406,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         child: Text(
                                                                                           'Sex',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: Colors.white,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -1434,7 +1434,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                           child: Text(
                                                                                             columnUsersRecord.sex!,
                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                  fontFamily: 'Montserrat',
+                                                                                                  fontFamily: 'Open Sans',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                   fontWeight: FontWeight.normal,
                                                                                                 ),
@@ -1711,7 +1711,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                           dateTimeFormat('d/M/y', containerPaymentsRecord.createdDate!),
                                                                                           textAlign: TextAlign.start,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: Color(0xFF586B06),
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -1730,7 +1730,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         child: Text(
                                                                                           containerPaymentsRecord.transactionCode!.maybeHandleOverflow(maxChars: 8),
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                 fontWeight: FontWeight.normal,
                                                                                               ),
@@ -1752,7 +1752,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         child: Text(
                                                                                           containerPaymentsRecord.type!,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: Colors.white,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -1777,7 +1777,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                           ),
                                                                                           textAlign: TextAlign.start,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Montserrat',
+                                                                                                fontFamily: 'Open Sans',
                                                                                                 color: Color(0xFF586B06),
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -1864,7 +1864,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                           textStyle: FlutterFlowTheme.of(context)
                               .subtitle2
                               .override(
-                                fontFamily: 'Montserrat',
+                                fontFamily: 'Open Sans',
                                 color:
                                     FlutterFlowTheme.of(context).tertiaryColor,
                               ),

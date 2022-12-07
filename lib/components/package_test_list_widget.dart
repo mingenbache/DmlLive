@@ -24,10 +24,40 @@ class PackageTestListWidget extends StatefulWidget {
 class _PackageTestListWidgetState extends State<PackageTestListWidget>
     with TickerProviderStateMixin {
   TextEditingController? textController;
+  var hasButtonTriggered = false;
+  final animationsMap = {
+    'buttonOnActionTriggerAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
     super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     textController = TextEditingController();
   }
 
@@ -95,7 +125,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                               'ADD TESTS',
                               style:
                                   FlutterFlowTheme.of(context).title1.override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: Colors.white,
                                       ),
                             ),
@@ -256,7 +286,6 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                             fontWeight: FontWeight.w500,
                                           ),
                                       textAlign: TextAlign.start,
-                                      maxLines: null,
                                     ),
                                   ),
                                 ),
@@ -303,7 +332,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryColor,
@@ -339,7 +368,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryColor,
@@ -450,7 +479,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryColor,
@@ -509,7 +538,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                                   .bodyText1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Montserrat',
+                                                                        'Open Sans',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryColor,
@@ -688,7 +717,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                         textStyle: FlutterFlowTheme.of(context)
                             .subtitle2
                             .override(
-                              fontFamily: 'Montserrat',
+                              fontFamily: 'Open Sans',
                               color: FlutterFlowTheme.of(context).tertiaryColor,
                             ),
                         elevation: 2,
@@ -698,7 +727,9 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                         ),
                         borderRadius: BorderRadius.circular(25),
                       ),
-                    ),
+                    ).animateOnActionTrigger(
+                        animationsMap['buttonOnActionTriggerAnimation']!,
+                        hasBeenTriggered: hasButtonTriggered),
                   ],
                 ),
               ],

@@ -131,7 +131,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Montserrat',
+                                                    fontFamily: 'Open Sans',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .tertiaryColor,
@@ -167,21 +167,23 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                         title: Text(
                                                             'Suspend Test?'),
                                                         content: Text(
-                                                            'Are you sure you want to suspend the Test? It will no longer be available for booking.'),
+                                                            'This test will no longer be available for booking'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext,
                                                                     false),
-                                                            child: Text('No'),
+                                                            child:
+                                                                Text('Cancel'),
                                                           ),
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext,
                                                                     true),
-                                                            child: Text('Yes'),
+                                                            child:
+                                                                Text('Confirm'),
                                                           ),
                                                         ],
                                                       );
@@ -245,7 +247,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .tertiaryColor,
@@ -271,23 +273,25 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                         (alertDialogContext) {
                                                       return AlertDialog(
                                                         title: Text(
-                                                            'Unsuspend Test?'),
+                                                            'Reactivate Test'),
                                                         content: Text(
-                                                            'Are you sure you want to unsuspent the Test? It will be available for booking'),
+                                                            'This test can be booked afterwards.'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext,
                                                                     false),
-                                                            child: Text('No'),
+                                                            child:
+                                                                Text('Cancel'),
                                                           ),
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext,
                                                                     true),
-                                                            child: Text('Yes'),
+                                                            child: Text(
+                                                                'Reactivate'),
                                                           ),
                                                         ],
                                                       );
@@ -311,7 +315,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                               return AlertDialog(
                                                 title: Text('Success'),
                                                 content:
-                                                    Text('Test  Unsuspended.'),
+                                                    Text('Test Reactivated'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -368,7 +372,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .tertiaryColor,

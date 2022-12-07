@@ -88,7 +88,7 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
                                           fontWeight: FontWeight.normal,
@@ -150,7 +150,7 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                         fontWeight: FontWeight.normal,

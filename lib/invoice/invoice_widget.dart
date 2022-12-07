@@ -99,7 +99,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title1
                                       .override(
-                                        fontFamily: 'Montserrat',
+                                        fontFamily: 'Open Sans',
                                         color: Color(0xFF586B06),
                                       ),
                                 ),
@@ -129,7 +129,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: Color(0xFF586B06),
                                                   fontWeight: FontWeight.w500,
                                                 ),
@@ -178,7 +178,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Montserrat',
+                                                    fontFamily: 'Open Sans',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryColor,
@@ -227,7 +227,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Montserrat',
+                                                    fontFamily: 'Open Sans',
                                                     color: Color(0xFF586B06),
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -418,7 +418,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: Color(0xFF586B06),
                                                   fontWeight: FontWeight.w500,
                                                 ),
@@ -453,7 +453,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryColor,
@@ -526,7 +526,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                             .subtitle2
                                                             .override(
                                                               fontFamily:
-                                                                  'Montserrat',
+                                                                  'Open Sans',
                                                               color:
                                                                   Colors.white,
                                                             ),
@@ -580,7 +580,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: Colors
                                                                       .white,
                                                                   fontWeight:
@@ -621,7 +621,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryColor,
@@ -698,7 +698,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Montserrat',
+                                                                            'Open Sans',
                                                                         color: Color(
                                                                             0xFFFEFEFE),
                                                                         fontWeight:
@@ -742,7 +742,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Montserrat',
+                                                                            'Open Sans',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryColor,
                                                                         fontWeight:
@@ -808,7 +808,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Montserrat',
+                                                                            'Open Sans',
                                                                         color: Colors
                                                                             .white,
                                                                         fontWeight:
@@ -853,7 +853,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Montserrat',
+                                                                            'Open Sans',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryColor,
                                                                         fontWeight:
@@ -919,7 +919,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Montserrat',
+                                                                            'Open Sans',
                                                                         color: Color(
                                                                             0xFFFFFFFE),
                                                                         fontWeight:
@@ -964,7 +964,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Montserrat',
+                                                                            'Open Sans',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryColor,
                                                                         fontWeight:
@@ -1035,7 +1035,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Montserrat',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: Colors.white,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -1094,7 +1094,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Montserrat',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
                                                                               ),
                                                                         ),
@@ -1137,7 +1137,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Montserrat',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: Colors.white,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -1197,7 +1197,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Montserrat',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                 fontWeight: FontWeight.normal,
                                                                               ),
@@ -1255,7 +1255,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .subtitle2
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: Color(0xFF586B06),
                                           ),
                                     ),
@@ -1370,7 +1370,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryColor,
                                                                           fontWeight:
@@ -1394,7 +1394,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Montserrat',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                 fontWeight: FontWeight.w600,
                                                                               ),
@@ -1412,7 +1412,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Montserrat',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -1536,7 +1536,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color: Color(0xFF586B06),
                                             ),
                                       ),
@@ -1671,7 +1671,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Montserrat',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: Color(0xFF586B06),
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -1701,7 +1701,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Montserrat',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
                                                                               fontWeight: FontWeight.normal,
                                                                             ),
@@ -1737,7 +1737,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Montserrat',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: Colors.white,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -1777,7 +1777,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Montserrat',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: Color(0xFF586B06),
                                                                               fontWeight: FontWeight.w500,
                                                                             ),

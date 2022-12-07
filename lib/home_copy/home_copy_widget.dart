@@ -27,6 +27,27 @@ class HomeCopyWidget extends StatefulWidget {
 
 class _HomeCopyWidgetState extends State<HomeCopyWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'floatingActionButtonOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 1730.ms,
+          begin: 0,
+          end: 1,
+        ),
+        ScaleEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 1730.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -43,6 +64,13 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
         return;
       }
     });
+
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
   }
 
   @override
@@ -109,7 +137,8 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                     'Request a Test',
                     style: FlutterFlowTheme.of(context).bodyText1,
                   ),
-                ),
+                ).animateOnPageLoad(
+                    animationsMap['floatingActionButtonOnPageLoadAnimation']!),
               ),
               body: Container(
                 width: MediaQuery.of(context).size.width,
@@ -297,7 +326,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -473,7 +502,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -643,7 +672,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                   .title1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Montserrat',
+                                                                        'Open Sans',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryColor,
@@ -799,7 +828,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                 .title2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   fontSize: 18,
                                                                 ),
                                                           ),
@@ -821,7 +850,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: Color(
                                                                       0xFFFDFDFD),
                                                                   fontSize: 80,
@@ -937,7 +966,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                     .title2
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Montserrat',
+                                                                          'Open Sans',
                                                                       fontSize:
                                                                           20,
                                                                     ),
@@ -1018,7 +1047,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Montserrat',
+                                                                                'Open Sans',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryColor,
                                                                             fontSize:
@@ -1082,7 +1111,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                 .title2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   fontSize: 20,
                                                                 ),
                                                           ),
@@ -1165,7 +1194,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Montserrat',
+                                                                              'Open Sans',
                                                                           fontSize:
                                                                               54,
                                                                         ),

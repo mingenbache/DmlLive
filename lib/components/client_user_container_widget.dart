@@ -220,7 +220,7 @@ class _ClientUserContainerWidgetState extends State<ClientUserContainerWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Montserrat',
+                                                fontFamily: 'Open Sans',
                                                 color: Colors.white,
                                               ),
                                         ),
@@ -240,7 +240,7 @@ class _ClientUserContainerWidgetState extends State<ClientUserContainerWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Montserrat',
+                                                fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryColor,

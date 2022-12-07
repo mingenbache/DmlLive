@@ -57,7 +57,7 @@ class _DashboardMenuWidgetWidgetState extends State<DashboardMenuWidgetWidget> {
                             textAlign: TextAlign.center,
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFFBACA68),
                                       fontSize: 12,
                                     ),
@@ -110,7 +110,7 @@ class _DashboardMenuWidgetWidgetState extends State<DashboardMenuWidgetWidget> {
                             textAlign: TextAlign.center,
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFFBACA68),
                                       fontSize: 12,
                                     ),
@@ -163,7 +163,7 @@ class _DashboardMenuWidgetWidgetState extends State<DashboardMenuWidgetWidget> {
                             textAlign: TextAlign.center,
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFFBACA68),
                                       fontSize: 12,
                                     ),
@@ -215,7 +215,7 @@ class _DashboardMenuWidgetWidgetState extends State<DashboardMenuWidgetWidget> {
                             textAlign: TextAlign.center,
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFFBACA68),
                                       fontSize: 12,
                                     ),

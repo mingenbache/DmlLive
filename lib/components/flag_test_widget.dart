@@ -26,11 +26,46 @@ class FlagTestWidget extends StatefulWidget {
 
 class _FlagTestWidgetState extends State<FlagTestWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'textFieldOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: Offset(0, 120),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
   TextEditingController? flagNotesController;
 
   @override
   void initState() {
     super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     flagNotesController = TextEditingController();
   }
 
@@ -83,7 +118,7 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                         Text(
                           'FLAG TEST',
                           style: FlutterFlowTheme.of(context).title2.override(
-                                fontFamily: 'Montserrat',
+                                fontFamily: 'Open Sans',
                                 color: Color(0xFF586B06),
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold,
@@ -183,7 +218,8 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                                   ),
                           textAlign: TextAlign.start,
                           maxLines: 6,
-                        ),
+                        ).animateOnPageLoad(
+                            animationsMap['textFieldOnPageLoadAnimation']!),
                       ),
                     ),
                   ],
@@ -231,7 +267,7 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                         textStyle: FlutterFlowTheme.of(context)
                             .subtitle2
                             .override(
-                              fontFamily: 'Montserrat',
+                              fontFamily: 'Open Sans',
                               color: FlutterFlowTheme.of(context).tertiaryColor,
                             ),
                         elevation: 2,

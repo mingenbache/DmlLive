@@ -49,6 +49,66 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
   TextEditingController? refDoctorController;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  var hasButtonTriggered = false;
+  final animationsMap = {
+    'rowOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.elasticOut,
+          delay: 0.ms,
+          duration: 1220.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 0.ms,
+          duration: 1220.ms,
+          begin: Offset(0, -97),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.elasticOut,
+          delay: 0.ms,
+          duration: 1220.ms,
+          begin: 3,
+          end: 1,
+        ),
+      ],
+    ),
+    'buttonOnActionTriggerAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1100.ms,
+          begin: 0,
+          end: 1,
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1100.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
+    ),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+  }
 
   @override
   void dispose() {
@@ -150,7 +210,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .title1
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: Colors.white,
                                         ),
                                   ),
@@ -180,7 +240,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Montserrat',
+                                                  fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
@@ -259,7 +319,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                         ],
                                       ),
                                     ],
-                                  ),
+                                  ).animateOnPageLoad(
+                                      animationsMap['rowOnPageLoadAnimation']!),
                                 ),
                               ),
                               Padding(
@@ -291,7 +352,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         context)
                                                     .subtitle2
                                                     .override(
-                                                      fontFamily: 'Montserrat',
+                                                      fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -439,7 +500,6 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
-                                                    maxLines: null,
                                                     validator: (val) {
                                                       if (val == null ||
                                                           val.isEmpty) {
@@ -575,7 +635,6 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
-                                                    maxLines: null,
                                                     validator: (val) {
                                                       if (val == null ||
                                                           val.isEmpty) {
@@ -725,7 +784,6 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
-                                                  maxLines: null,
                                                   keyboardType: TextInputType
                                                       .emailAddress,
                                                   validator: (val) {
@@ -872,7 +930,6 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
-                                                  maxLines: null,
                                                   keyboardType:
                                                       TextInputType.phone,
                                                   validator: (val) {
@@ -922,7 +979,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         .bodyText1
                                                         .override(
                                                           fontFamily:
-                                                              'Montserrat',
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryText,
@@ -980,7 +1037,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                   .bodyText2
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Montserrat',
+                                                                        'Open Sans',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryText,
@@ -1094,7 +1151,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                     newBookingBookingsRecord.sex!,
                                                                                     textAlign: TextAlign.start,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).primaryText,
                                                                                           fontWeight: FontWeight.normal,
                                                                                         ),
@@ -1143,8 +1200,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1211,7 +1267,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
@@ -1343,7 +1399,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Montserrat',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
@@ -1672,7 +1728,6 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                               ),
-                                          maxLines: null,
                                           keyboardType: TextInputType.multiline,
                                         ),
                                       ),
@@ -1696,7 +1751,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Open Sans',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
@@ -1872,7 +1927,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                               child: Text(
                                                                                 'Ksh',
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Montserrat',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontWeight: FontWeight.w600,
                                                                                     ),
@@ -1881,7 +1936,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                             Text(
                                                                               bookingTestPackageItemTestPackagesRecord.price!.toString(),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Montserrat',
+                                                                                    fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
@@ -2087,7 +2142,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                                 Text(
                                                                               'Ksh',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Montserrat',
+                                                                                    fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontWeight: FontWeight.w600,
                                                                                   ),
@@ -2096,7 +2151,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                           Text(
                                                                             bookingTestItemTestsRecord.price!.toString(),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -2349,7 +2404,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Montserrat',
+                                                fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
@@ -2394,8 +2449,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily:
-                                                            'Montserrat',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -2494,10 +2548,10 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                       builder:
                                                           (alertDialogContext) {
                                                         return AlertDialog(
-                                                          title: Text(
-                                                              'Confirm Submission'),
+                                                          title:
+                                                              Text('Proceed'),
                                                           content: Text(
-                                                              'Are you sure you want to submit your request?'),
+                                                              'Are you sure you want to proceed with submitting this  booking request?'),
                                                           actions: [
                                                             TextButton(
                                                               onPressed: () =>
@@ -2512,7 +2566,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                       alertDialogContext,
                                                                       true),
                                                               child: Text(
-                                                                  'Yes, Proceed'),
+                                                                  'Yes, Submit'),
                                                             ),
                                                           ],
                                                         );
@@ -2639,7 +2693,10 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 BorderRadius.circular(25),
                                           ),
                                         ),
-                                      );
+                                      ).animateOnActionTrigger(
+                                          animationsMap[
+                                              'buttonOnActionTriggerAnimation']!,
+                                          hasBeenTriggered: hasButtonTriggered);
                                     },
                                   ),
                                 ),

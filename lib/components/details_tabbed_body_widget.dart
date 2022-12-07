@@ -466,7 +466,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Montserrat',
+                                    fontFamily: 'Open Sans',
                                     fontSize: 32,
                                   ),
                             ),
@@ -525,7 +525,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryColor,
                                     ),

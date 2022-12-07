@@ -93,7 +93,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
                                           fontWeight: FontWeight.w500,
@@ -117,7 +117,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .subtitle1
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 16,

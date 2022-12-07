@@ -125,7 +125,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .title2
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: Colors.white,
                                             fontSize: 32,
                                             fontWeight: FontWeight.bold,
@@ -376,7 +376,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               'Booking Details',
                                                                               textAlign: TextAlign.start,
                                                                               style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                    fontFamily: 'Montserrat',
+                                                                                    fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   ),
                                                                             ),
@@ -456,7 +456,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                   child: Text(
                                                                                                     functions.dateMonth(bookingUpdatesContainerBookingsRecord.scheduledDate),
                                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                          fontFamily: 'Montserrat',
+                                                                                                          fontFamily: 'Open Sans',
                                                                                                           color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                           fontSize: 12,
                                                                                                           fontWeight: FontWeight.w500,
@@ -468,7 +468,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                   child: Text(
                                                                                                     functions.dateDay(bookingUpdatesContainerBookingsRecord.scheduledDate),
                                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                          fontFamily: 'Montserrat',
+                                                                                                          fontFamily: 'Open Sans',
                                                                                                           color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                           fontSize: 18,
                                                                                                           fontWeight: FontWeight.w600,
@@ -480,7 +480,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                   child: Text(
                                                                                                     functions.dateYear(bookingUpdatesContainerBookingsRecord.scheduledDate),
                                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                          fontFamily: 'Montserrat',
+                                                                                                          fontFamily: 'Open Sans',
                                                                                                           color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                           fontSize: 10,
                                                                                                           fontWeight: FontWeight.w500,
@@ -542,7 +542,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                       child: Text(
                                                                                                         'Total\nTests',
                                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                              fontFamily: 'Montserrat',
+                                                                                                              fontFamily: 'Open Sans',
                                                                                                               fontWeight: FontWeight.w500,
                                                                                                             ),
                                                                                                       ),
@@ -569,7 +569,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                               child: Text(
                                                                                                 bookingUpdatesContainerBookingsRecord.bookedTests!.toList().length.toString(),
                                                                                                 style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                                      fontFamily: 'Montserrat',
+                                                                                                      fontFamily: 'Open Sans',
                                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                                     ),
                                                                                               ),
@@ -624,7 +624,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                     child: Text(
                                                                                                       'Complete Tests',
                                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                            fontFamily: 'Montserrat',
+                                                                                                            fontFamily: 'Open Sans',
                                                                                                             fontWeight: FontWeight.w500,
                                                                                                           ),
                                                                                                     ),
@@ -670,7 +670,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                 return Text(
                                                                                                   bookingUpdatesContainerBookingsRecord.verifiedTests!.toList().length.toString(),
                                                                                                   style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                                        fontFamily: 'Montserrat',
+                                                                                                        fontFamily: 'Open Sans',
                                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                                       ),
                                                                                                 );
@@ -718,7 +718,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                 Text(
                                                                                   'Total Invoice Amount',
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -750,7 +750,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                         currency: 'Ksh ',
                                                                                       ),
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).primaryText,
                                                                                             fontWeight: FontWeight.w500,
                                                                                           ),
@@ -793,7 +793,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                 Text(
                                                                                   'Total Amount Due',
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -825,7 +825,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                         currency: 'Ksh ',
                                                                                       ),
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Montserrat',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).primaryText,
                                                                                             fontWeight: FontWeight.w500,
                                                                                           ),
@@ -923,7 +923,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .subtitle2
                                                                             .override(
-                                                                              fontFamily: 'Montserrat',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                             ),
                                                                       ),
@@ -977,7 +977,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               Text(
                                                                             'Name',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1007,7 +1007,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               Text(
                                                                             '${bookingUpdatesContainerBookingsRecord.firstname} ${bookingUpdatesContainerBookingsRecord.lastname}',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1064,7 +1064,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               Text(
                                                                             'Email',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1094,7 +1094,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               Text(
                                                                             bookingUpdatesContainerBookingsRecord.emailaddress!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1160,7 +1160,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               Text(
                                                                             'Phone',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1190,7 +1190,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               Text(
                                                                             bookingUpdatesContainerBookingsRecord.phonenumber!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Montserrat',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1250,7 +1250,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                 child: Text(
                                                                                   'Date of Birth',
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -1291,7 +1291,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                 child: Text(
                                                                                   dateTimeFormat('d/M/y', bookingUpdatesContainerBookingsRecord.dOB!),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -1327,7 +1327,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                 child: Text(
                                                                                   'Sex',
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Montserrat',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontWeight: FontWeight.w500,
                                                                                       ),
@@ -1374,7 +1374,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                   child: Text(
                                                                                     bookingUpdatesContainerBookingsRecord.sex!,
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Montserrat',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).primaryText,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -1422,7 +1422,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -1462,7 +1462,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -1615,7 +1615,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                               currency: 'Ksh ',
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                  fontFamily: 'Montserrat',
+                                                                                                  fontFamily: 'Open Sans',
                                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                                   fontWeight: FontWeight.w500,
                                                                                                 ),
@@ -1675,7 +1675,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                     child: Text(
                                                                                                       dateTimeFormat('yMMMd', containerInvoicesRecord.dueDate!),
                                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                            fontFamily: 'Montserrat',
+                                                                                                            fontFamily: 'Open Sans',
                                                                                                             color: FlutterFlowTheme.of(context).primaryText,
                                                                                                             fontWeight: FontWeight.w500,
                                                                                                           ),
@@ -1855,7 +1855,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Montserrat',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,

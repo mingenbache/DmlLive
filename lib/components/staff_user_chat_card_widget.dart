@@ -106,7 +106,7 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .alternate,
                                             fontSize: 19,
@@ -256,7 +256,7 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .subtitle2
                                                   .override(
-                                                    fontFamily: 'Montserrat',
+                                                    fontFamily: 'Open Sans',
                                                     fontSize: 14,
                                                   ),
                                           borderSide: BorderSide(

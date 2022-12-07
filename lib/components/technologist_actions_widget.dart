@@ -78,7 +78,7 @@ class _TechnologistActionsWidgetState extends State<TechnologistActionsWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .tertiaryColor,
                                           fontWeight: FontWeight.w500,
@@ -139,7 +139,7 @@ class _TechnologistActionsWidgetState extends State<TechnologistActionsWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiaryColor,
                                             fontWeight: FontWeight.w500,
