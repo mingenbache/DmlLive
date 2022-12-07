@@ -14,11 +14,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TechnologistTestDeckWidget extends StatefulWidget {
   const TechnologistTestDeckWidget({
-    Key key,
+    Key? key,
     this.bookedTest,
   }) : super(key: key);
 
-  final BookedTestsRecord bookedTest;
+  final BookedTestsRecord? bookedTest;
 
   @override
   _TechnologistTestDeckWidgetState createState() =>
@@ -36,8 +36,9 @@ class _TechnologistTestDeckWidgetState
       backgroundColor: FlutterFlowTheme.of(context).primaryColor,
       body: StreamBuilder<List<TestedTestsRecord>>(
         stream: queryTestedTestsRecord(
-          queryBuilder: (testedTestsRecord) => testedTestsRecord
-              .where('booked_test_Ref', isEqualTo: widget.bookedTest.reference),
+          queryBuilder: (testedTestsRecord) => testedTestsRecord.where(
+              'booked_test_Ref',
+              isEqualTo: widget.bookedTest!.reference),
           singleRecord: true,
         ),
         builder: (context, snapshot) {
@@ -55,7 +56,7 @@ class _TechnologistTestDeckWidgetState
             );
           }
           List<TestedTestsRecord> viewResultsTestedTestsRecordList =
-              snapshot.data;
+              snapshot.data!;
           final viewResultsTestedTestsRecord =
               viewResultsTestedTestsRecordList.isNotEmpty
                   ? viewResultsTestedTestsRecordList.first
@@ -68,7 +69,7 @@ class _TechnologistTestDeckWidgetState
                 children: [
                   StreamBuilder<TestsRecord>(
                     stream: TestsRecord.getDocument(
-                        viewResultsTestedTestsRecord.testRef),
+                        viewResultsTestedTestsRecord!.testRef!),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -83,7 +84,7 @@ class _TechnologistTestDeckWidgetState
                           ),
                         );
                       }
-                      final testResultsTestsRecord = snapshot.data;
+                      final testResultsTestsRecord = snapshot.data!;
                       return Material(
                         color: Colors.transparent,
                         elevation: 3,
@@ -125,7 +126,7 @@ class _TechnologistTestDeckWidgetState
                                       style: FlutterFlowTheme.of(context)
                                           .title1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Open Sans',
                                             color: Color(0xFF586B06),
                                           ),
                                     ),
@@ -188,13 +189,13 @@ class _TechnologistTestDeckWidgetState
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     5, 15, 0, 0),
                                             child: Text(
-                                              testResultsTestsRecord.name,
+                                              testResultsTestsRecord.name!,
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         fontSize: 17,
                                                       ),
                                             ),
@@ -209,7 +210,8 @@ class _TechnologistTestDeckWidgetState
                                   children: [
                                     Stack(
                                       children: [
-                                        if (widget.bookedTest.hasResult ?? true)
+                                        if (widget.bookedTest!.hasResult ??
+                                            true)
                                           Container(
                                             width: 145,
                                             height: 32,
@@ -272,8 +274,7 @@ class _TechnologistTestDeckWidgetState
                                           child: Stack(
                                             children: [
                                               if (functions.displayUnverifiedTag(
-                                                      viewResultsTestedTestsRecord) ??
-                                                  true)
+                                                  viewResultsTestedTestsRecord))
                                                 Container(
                                                   width: 130,
                                                   height: 32,
@@ -339,8 +340,7 @@ class _TechnologistTestDeckWidgetState
                                                   ),
                                                 ),
                                               if (functions.displayVerifiedTag(
-                                                      viewResultsTestedTestsRecord) ??
-                                                  true)
+                                                  viewResultsTestedTestsRecord))
                                                 Container(
                                                   width: 130,
                                                   height: 32,
@@ -411,7 +411,7 @@ class _TechnologistTestDeckWidgetState
                                         ),
                                       ],
                                     ),
-                                    if (viewResultsTestedTestsRecord
+                                    if (viewResultsTestedTestsRecord!
                                             .isFlagged ??
                                         true)
                                       InkWell(
@@ -423,9 +423,9 @@ class _TechnologistTestDeckWidgetState
                                                         (alertDialogContext) {
                                                       return AlertDialog(
                                                         title: Text(
-                                                            'Remove Flag?'),
+                                                            'Unflag Test?'),
                                                         content: Text(
-                                                            'Are you sure you want to remove the flag on this test? The results can be published aftehr this.'),
+                                                            'Unflagging will allow results to be published'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -453,9 +453,14 @@ class _TechnologistTestDeckWidgetState
                                                 createTestedTestsRecordData(
                                               isFlagged: false,
                                             );
-                                            await viewResultsTestedTestsRecord
+                                            await viewResultsTestedTestsRecord!
                                                 .reference
                                                 .update(testedTestsUpdateData);
+                                            Navigator.pop(context);
+                                            return;
+                                          } else {
+                                            Navigator.pop(context);
+                                            return;
                                           }
                                         },
                                         child: Container(
@@ -548,8 +553,8 @@ class _TechnologistTestDeckWidgetState
                                             children: [
                                               StreamBuilder<BookingsRecord>(
                                                 stream: BookingsRecord.getDocument(
-                                                    viewResultsTestedTestsRecord
-                                                        .bookingRef),
+                                                    viewResultsTestedTestsRecord!
+                                                        .bookingRef!),
                                                 builder: (context, snapshot) {
                                                   // Customize what your widget looks like when it's loading.
                                                   if (!snapshot.hasData) {
@@ -567,7 +572,7 @@ class _TechnologistTestDeckWidgetState
                                                     );
                                                   }
                                                   final containerBookingsRecord =
-                                                      snapshot.data;
+                                                      snapshot.data!;
                                                   return Container(
                                                     width:
                                                         MediaQuery.of(context)
@@ -628,7 +633,7 @@ class _TechnologistTestDeckWidgetState
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: Color(0xFF586B06),
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -680,7 +685,7 @@ class _TechnologistTestDeckWidgetState
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Text(
-                                                                                viewResultsTestedTestsRecord.labRefNum,
+                                                                                viewResultsTestedTestsRecord!.labRefNum!,
                                                                                 style: FlutterFlowTheme.of(context).subtitle1,
                                                                               ),
                                                                             ],
@@ -693,11 +698,11 @@ class _TechnologistTestDeckWidgetState
                                                               ],
                                                             ),
                                                           ),
-                                                          if (valueOrDefault(
-                                                                  currentUserDocument
-                                                                      ?.isStaff,
-                                                                  false) ??
-                                                              true)
+                                                          if (valueOrDefault<
+                                                                  bool>(
+                                                              currentUserDocument
+                                                                  ?.isStaff,
+                                                              false))
                                                             AuthUserStreamWidget(
                                                               child: Container(
                                                                 width: MediaQuery.of(
@@ -743,7 +748,7 @@ class _TechnologistTestDeckWidgetState
                                                                                 Text(
                                                                               'Patient',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
+                                                                                    fontFamily: 'Open Sans',
                                                                                     color: Color(0xFF586B06),
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
@@ -846,7 +851,7 @@ class _TechnologistTestDeckWidgetState
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: Color(0xFF586B06),
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -898,7 +903,7 @@ class _TechnologistTestDeckWidgetState
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Text(
-                                                                                dateTimeFormat('d/M/y', viewResultsTestedTestsRecord.dateSampleCollected),
+                                                                                dateTimeFormat('d/M/y', viewResultsTestedTestsRecord!.dateSampleCollected!),
                                                                                 style: FlutterFlowTheme.of(context).subtitle1,
                                                                               ),
                                                                             ],
@@ -958,7 +963,7 @@ class _TechnologistTestDeckWidgetState
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: Color(0xFF586B06),
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -1010,7 +1015,7 @@ class _TechnologistTestDeckWidgetState
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Text(
-                                                                                dateTimeFormat('d/M/y', widget.bookedTest.scheduledDate),
+                                                                                dateTimeFormat('d/M/y', widget.bookedTest!.scheduledDate!),
                                                                                 style: FlutterFlowTheme.of(context).subtitle1,
                                                                               ),
                                                                             ],
@@ -1055,7 +1060,7 @@ class _TechnologistTestDeckWidgetState
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: Color(0xFF586B06),
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -1106,7 +1111,7 @@ class _TechnologistTestDeckWidgetState
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Text(
-                                                                                containerBookingsRecord.pathologist,
+                                                                                containerBookingsRecord.pathologist!,
                                                                                 style: FlutterFlowTheme.of(context).subtitle1,
                                                                               ),
                                                                             ],
@@ -1119,11 +1124,11 @@ class _TechnologistTestDeckWidgetState
                                                               ],
                                                             ),
                                                           ),
-                                                          if (valueOrDefault(
-                                                                  currentUserDocument
-                                                                      ?.isStaff,
-                                                                  false) ??
-                                                              true)
+                                                          if (valueOrDefault<
+                                                                  bool>(
+                                                              currentUserDocument
+                                                                  ?.isStaff,
+                                                              false))
                                                             AuthUserStreamWidget(
                                                               child: Container(
                                                                 width: MediaQuery.of(
@@ -1155,7 +1160,7 @@ class _TechnologistTestDeckWidgetState
                                                                           Text(
                                                                             'Technologist',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: Color(0xFF586B06),
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1218,11 +1223,11 @@ class _TechnologistTestDeckWidgetState
                                               ),
                                               BookedTestsWidget(
                                                 bookingRef: widget
-                                                    .bookedTest.bookingRef,
+                                                    .bookedTest!.bookingRef,
                                               ),
                                               Visibility(
-                                                visible: widget
-                                                        .bookedTest.hasResult ??
+                                                visible: widget.bookedTest!
+                                                        .hasResult ??
                                                     true,
                                                 child: StreamBuilder<
                                                     List<TestedTestsRecord>>(
@@ -1233,7 +1238,7 @@ class _TechnologistTestDeckWidgetState
                                                             testedTestsRecord.where(
                                                                 'booked_test_Ref',
                                                                 isEqualTo: widget
-                                                                    .bookedTest
+                                                                    .bookedTest!
                                                                     .reference),
                                                     singleRecord: true,
                                                   ),
@@ -1255,9 +1260,10 @@ class _TechnologistTestDeckWidgetState
                                                     }
                                                     List<TestedTestsRecord>
                                                         columnTestedTestsRecordList =
-                                                        snapshot.data;
+                                                        snapshot.data!;
                                                     // Return an empty Container when the document does not exist.
-                                                    if (snapshot.data.isEmpty) {
+                                                    if (snapshot
+                                                        .data!.isEmpty) {
                                                       return Container();
                                                     }
                                                     final columnTestedTestsRecord =
@@ -1354,7 +1360,7 @@ class _TechnologistTestDeckWidgetState
                                                                               Text(
                                                                             'Test Diagnosis',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: Colors.white,
                                                                                   fontSize: 15,
                                                                                   fontWeight: FontWeight.normal,
@@ -1368,7 +1374,7 @@ class _TechnologistTestDeckWidgetState
                                                                     children: [
                                                                       Visibility(
                                                                         visible:
-                                                                            columnTestedTestsRecord.resultsPositive ??
+                                                                            columnTestedTestsRecord!.resultsPositive ??
                                                                                 true,
                                                                         child:
                                                                             Container(
@@ -1431,7 +1437,7 @@ class _TechnologistTestDeckWidgetState
                                                                       ),
                                                                       Visibility(
                                                                         visible:
-                                                                            columnTestedTestsRecord.resultsPositive ??
+                                                                            columnTestedTestsRecord!.resultsPositive ??
                                                                                 true,
                                                                         child:
                                                                             Container(
@@ -1537,7 +1543,7 @@ class _TechnologistTestDeckWidgetState
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: Color(0xFF586B06),
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -1578,9 +1584,9 @@ class _TechnologistTestDeckWidgetState
                                                                               4),
                                                                           child:
                                                                               Text(
-                                                                            columnTestedTestsRecord.testResult,
+                                                                            columnTestedTestsRecord!.testResult!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
@@ -1632,7 +1638,7 @@ class _TechnologistTestDeckWidgetState
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: Color(0xFF586B06),
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -1679,9 +1685,9 @@ class _TechnologistTestDeckWidgetState
                                                                                 4),
                                                                             child:
                                                                                 Text(
-                                                                              columnTestedTestsRecord.testNote,
+                                                                              columnTestedTestsRecord!.testNote!,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
+                                                                                    fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
@@ -1722,7 +1728,8 @@ class _TechnologistTestDeckWidgetState
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         StreamBuilder<UsersRecord>(
-                          stream: UsersRecord.getDocument(currentUserReference),
+                          stream:
+                              UsersRecord.getDocument(currentUserReference!),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -1738,7 +1745,7 @@ class _TechnologistTestDeckWidgetState
                                 ),
                               );
                             }
-                            final stackUsersRecord = snapshot.data;
+                            final stackUsersRecord = snapshot.data!;
                             return Container(
                               width: MediaQuery.of(context).size.width * 0.9,
                               height: MediaQuery.of(context).size.height * 0.1,
@@ -1746,7 +1753,7 @@ class _TechnologistTestDeckWidgetState
                                 children: [
                                   TestedTestActionsWidget(
                                     testedTestRef:
-                                        viewResultsTestedTestsRecord.reference,
+                                        viewResultsTestedTestsRecord!.reference,
                                   ),
                                 ],
                               ),

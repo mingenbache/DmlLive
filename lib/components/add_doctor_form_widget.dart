@@ -7,20 +7,22 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddDoctorFormWidget extends StatefulWidget {
   const AddDoctorFormWidget({
-    Key key,
+    Key? key,
     this.docNames,
     this.docEmail,
     this.docPhone,
   }) : super(key: key);
 
-  final String docNames;
-  final String docEmail;
-  final int docPhone;
+  final String? docNames;
+  final String? docEmail;
+  final String? docPhone;
 
   @override
   _AddDoctorFormWidgetState createState() => _AddDoctorFormWidgetState();
@@ -28,39 +30,59 @@ class AddDoctorFormWidget extends StatefulWidget {
 
 class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
     with TickerProviderStateMixin {
-  TextEditingController doctorNamesController;
-  TextEditingController emailAddressController;
-  TextEditingController phoneNumberController;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 230,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 120),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: Offset(0, 120),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
     ),
   };
+  TextEditingController? doctorNamesController;
+  TextEditingController? emailAddressController;
+  TextEditingController? phoneNumberController;
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
 
-    doctorNamesController = TextEditingController();
-    emailAddressController = TextEditingController();
-    phoneNumberController = TextEditingController();
+    doctorNamesController = TextEditingController(text: widget.docNames);
+    emailAddressController = TextEditingController(text: widget.docEmail);
+    phoneNumberController = TextEditingController(text: widget.docPhone);
+  }
+
+  @override
+  void dispose() {
+    doctorNamesController?.dispose();
+    emailAddressController?.dispose();
+    phoneNumberController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -106,7 +128,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                         Text(
                           'ADD DOCTOR',
                           style: FlutterFlowTheme.of(context).title2.override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'Open Sans',
                                 color: Color(0xFF586B06),
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold,
@@ -181,6 +203,20 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                             contentPadding:
                                 EdgeInsetsDirectional.fromSTEB(20, 10, 24, 0),
                             prefixIcon: Icon(
@@ -195,9 +231,8 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                                     fontWeight: FontWeight.normal,
                                   ),
                           textAlign: TextAlign.start,
-                          maxLines: 1,
-                        ).animated(
-                            [animationsMap['textFieldOnPageLoadAnimation']]),
+                        ).animateOnPageLoad(
+                            animationsMap['textFieldOnPageLoadAnimation']!),
                       ),
                     ),
                     Padding(
@@ -233,6 +268,20 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                                   borderSide: BorderSide(
                                     color:
                                         FlutterFlowTheme.of(context).alternate,
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
@@ -293,6 +342,20 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
                                 filled: true,
                                 fillColor: Color(0x2CFFFFFF),
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
@@ -329,11 +392,12 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                 FFButtonWidget(
                   onPressed: () async {
                     final doctorsCreateData = createDoctorsRecordData(
-                      phonenumber: phoneNumberController.text,
-                      name: doctorNamesController.text,
-                      emailaddress: emailAddressController.text,
+                      phonenumber: phoneNumberController!.text,
+                      name: doctorNamesController!.text,
+                      emailaddress: emailAddressController!.text,
                     );
                     await DoctorsRecord.collection.doc().set(doctorsCreateData);
+                    Navigator.pop(context);
                   },
                   text: 'Submit',
                   options: FFButtonOptions(
@@ -341,7 +405,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                     height: 70,
                     color: FlutterFlowTheme.of(context).secondaryColor,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'Open Sans',
                           color: FlutterFlowTheme.of(context).tertiaryColor,
                         ),
                     elevation: 2,

@@ -16,17 +16,17 @@ class _$ReportsRecordSerializer implements StructuredSerializer<ReportsRecord> {
   final String wireName = 'ReportsRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ReportsRecord object,
+  Iterable<Object?> serialize(Serializers serializers, ReportsRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.booking;
     if (value != null) {
       result
         ..add('booking')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.testedTests;
     if (value != null) {
@@ -34,7 +34,8 @@ class _$ReportsRecordSerializer implements StructuredSerializer<ReportsRecord> {
         ..add('testedTests')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType(DocumentReference, const [const FullType(Object)])
+              const FullType(
+                  DocumentReference, const [const FullType.nullable(Object)])
             ])));
     }
     value = object.bookinguser;
@@ -43,7 +44,7 @@ class _$ReportsRecordSerializer implements StructuredSerializer<ReportsRecord> {
         ..add('bookinguser')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.doctor;
     if (value != null) {
@@ -51,7 +52,7 @@ class _$ReportsRecordSerializer implements StructuredSerializer<ReportsRecord> {
         ..add('doctor')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.technologist;
     if (value != null) {
@@ -59,7 +60,8 @@ class _$ReportsRecordSerializer implements StructuredSerializer<ReportsRecord> {
         ..add('technologist')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType(DocumentReference, const [const FullType(Object)])
+              const FullType(
+                  DocumentReference, const [const FullType.nullable(Object)])
             ])));
     }
     value = object.pathologistComments;
@@ -90,7 +92,7 @@ class _$ReportsRecordSerializer implements StructuredSerializer<ReportsRecord> {
         ..add('createdUser')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.isComplete;
     if (value != null) {
@@ -146,124 +148,125 @@ class _$ReportsRecordSerializer implements StructuredSerializer<ReportsRecord> {
         ..add('testpackageList')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(BuiltList, const [
-              const FullType(DocumentReference, const [const FullType(Object)])
+              const FullType(
+                  DocumentReference, const [const FullType.nullable(Object)])
             ])));
     }
-    value = object.reference;
+    value = object.ffRef;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     return result;
   }
 
   @override
   ReportsRecord deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ReportsRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'booking':
           result.booking = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'testedTests':
           result.testedTests.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType(
-                    DocumentReference, const [const FullType(Object)])
-              ])) as BuiltList<Object>);
+                    DocumentReference, const [const FullType.nullable(Object)])
+              ]))! as BuiltList<Object?>);
           break;
         case 'bookinguser':
           result.bookinguser = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'doctor':
           result.doctor = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'technologist':
           result.technologist.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType(
-                    DocumentReference, const [const FullType(Object)])
-              ])) as BuiltList<Object>);
+                    DocumentReference, const [const FullType.nullable(Object)])
+              ]))! as BuiltList<Object?>);
           break;
         case 'pathologistComments':
           result.pathologistComments = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'samples_released':
           result.samplesReleased.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<Object>);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
           break;
         case 'createdDate':
           result.createdDate = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'createdUser':
           result.createdUser = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'isComplete':
           result.isComplete = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'patientName':
           result.patientName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'patientSex':
           result.patientSex = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'labRefNum':
           result.labRefNum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'pathologist':
           result.pathologist = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'DML_Email':
           result.dMLEmail = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'patientAge':
           result.patientAge = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'testpackageList':
           result.testpackageList.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltList, const [
                 const FullType(
-                    DocumentReference, const [const FullType(Object)])
-              ])) as BuiltList<Object>);
+                    DocumentReference, const [const FullType.nullable(Object)])
+              ]))! as BuiltList<Object?>);
           break;
         case 'Document__Reference__Field':
-          result.reference = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+          result.ffRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
       }
     }
@@ -274,44 +277,44 @@ class _$ReportsRecordSerializer implements StructuredSerializer<ReportsRecord> {
 
 class _$ReportsRecord extends ReportsRecord {
   @override
-  final DocumentReference<Object> booking;
+  final DocumentReference<Object?>? booking;
   @override
-  final BuiltList<DocumentReference<Object>> testedTests;
+  final BuiltList<DocumentReference<Object?>>? testedTests;
   @override
-  final DocumentReference<Object> bookinguser;
+  final DocumentReference<Object?>? bookinguser;
   @override
-  final DocumentReference<Object> doctor;
+  final DocumentReference<Object?>? doctor;
   @override
-  final BuiltList<DocumentReference<Object>> technologist;
+  final BuiltList<DocumentReference<Object?>>? technologist;
   @override
-  final String pathologistComments;
+  final String? pathologistComments;
   @override
-  final BuiltList<String> samplesReleased;
+  final BuiltList<String>? samplesReleased;
   @override
-  final DateTime createdDate;
+  final DateTime? createdDate;
   @override
-  final DocumentReference<Object> createdUser;
+  final DocumentReference<Object?>? createdUser;
   @override
-  final bool isComplete;
+  final bool? isComplete;
   @override
-  final String patientName;
+  final String? patientName;
   @override
-  final String patientSex;
+  final String? patientSex;
   @override
-  final String labRefNum;
+  final String? labRefNum;
   @override
-  final String pathologist;
+  final String? pathologist;
   @override
-  final String dMLEmail;
+  final String? dMLEmail;
   @override
-  final int patientAge;
+  final int? patientAge;
   @override
-  final BuiltList<DocumentReference<Object>> testpackageList;
+  final BuiltList<DocumentReference<Object?>>? testpackageList;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object?>? ffRef;
 
-  factory _$ReportsRecord([void Function(ReportsRecordBuilder) updates]) =>
-      (new ReportsRecordBuilder()..update(updates)).build();
+  factory _$ReportsRecord([void Function(ReportsRecordBuilder)? updates]) =>
+      (new ReportsRecordBuilder()..update(updates))._build();
 
   _$ReportsRecord._(
       {this.booking,
@@ -331,7 +334,7 @@ class _$ReportsRecord extends ReportsRecord {
       this.dMLEmail,
       this.patientAge,
       this.testpackageList,
-      this.reference})
+      this.ffRef})
       : super._();
 
   @override
@@ -362,7 +365,7 @@ class _$ReportsRecord extends ReportsRecord {
         dMLEmail == other.dMLEmail &&
         patientAge == other.patientAge &&
         testpackageList == other.testpackageList &&
-        reference == other.reference;
+        ffRef == other.ffRef;
   }
 
   @override
@@ -409,12 +412,12 @@ class _$ReportsRecord extends ReportsRecord {
                     dMLEmail.hashCode),
                 patientAge.hashCode),
             testpackageList.hashCode),
-        reference.hashCode));
+        ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ReportsRecord')
+    return (newBuiltValueToStringHelper(r'ReportsRecord')
           ..add('booking', booking)
           ..add('testedTests', testedTests)
           ..add('bookinguser', bookinguser)
@@ -432,98 +435,98 @@ class _$ReportsRecord extends ReportsRecord {
           ..add('dMLEmail', dMLEmail)
           ..add('patientAge', patientAge)
           ..add('testpackageList', testpackageList)
-          ..add('reference', reference))
+          ..add('ffRef', ffRef))
         .toString();
   }
 }
 
 class ReportsRecordBuilder
     implements Builder<ReportsRecord, ReportsRecordBuilder> {
-  _$ReportsRecord _$v;
+  _$ReportsRecord? _$v;
 
-  DocumentReference<Object> _booking;
-  DocumentReference<Object> get booking => _$this._booking;
-  set booking(DocumentReference<Object> booking) => _$this._booking = booking;
+  DocumentReference<Object?>? _booking;
+  DocumentReference<Object?>? get booking => _$this._booking;
+  set booking(DocumentReference<Object?>? booking) => _$this._booking = booking;
 
-  ListBuilder<DocumentReference<Object>> _testedTests;
-  ListBuilder<DocumentReference<Object>> get testedTests =>
-      _$this._testedTests ??= new ListBuilder<DocumentReference<Object>>();
-  set testedTests(ListBuilder<DocumentReference<Object>> testedTests) =>
+  ListBuilder<DocumentReference<Object?>>? _testedTests;
+  ListBuilder<DocumentReference<Object?>> get testedTests =>
+      _$this._testedTests ??= new ListBuilder<DocumentReference<Object?>>();
+  set testedTests(ListBuilder<DocumentReference<Object?>>? testedTests) =>
       _$this._testedTests = testedTests;
 
-  DocumentReference<Object> _bookinguser;
-  DocumentReference<Object> get bookinguser => _$this._bookinguser;
-  set bookinguser(DocumentReference<Object> bookinguser) =>
+  DocumentReference<Object?>? _bookinguser;
+  DocumentReference<Object?>? get bookinguser => _$this._bookinguser;
+  set bookinguser(DocumentReference<Object?>? bookinguser) =>
       _$this._bookinguser = bookinguser;
 
-  DocumentReference<Object> _doctor;
-  DocumentReference<Object> get doctor => _$this._doctor;
-  set doctor(DocumentReference<Object> doctor) => _$this._doctor = doctor;
+  DocumentReference<Object?>? _doctor;
+  DocumentReference<Object?>? get doctor => _$this._doctor;
+  set doctor(DocumentReference<Object?>? doctor) => _$this._doctor = doctor;
 
-  ListBuilder<DocumentReference<Object>> _technologist;
-  ListBuilder<DocumentReference<Object>> get technologist =>
-      _$this._technologist ??= new ListBuilder<DocumentReference<Object>>();
-  set technologist(ListBuilder<DocumentReference<Object>> technologist) =>
+  ListBuilder<DocumentReference<Object?>>? _technologist;
+  ListBuilder<DocumentReference<Object?>> get technologist =>
+      _$this._technologist ??= new ListBuilder<DocumentReference<Object?>>();
+  set technologist(ListBuilder<DocumentReference<Object?>>? technologist) =>
       _$this._technologist = technologist;
 
-  String _pathologistComments;
-  String get pathologistComments => _$this._pathologistComments;
-  set pathologistComments(String pathologistComments) =>
+  String? _pathologistComments;
+  String? get pathologistComments => _$this._pathologistComments;
+  set pathologistComments(String? pathologistComments) =>
       _$this._pathologistComments = pathologistComments;
 
-  ListBuilder<String> _samplesReleased;
+  ListBuilder<String>? _samplesReleased;
   ListBuilder<String> get samplesReleased =>
       _$this._samplesReleased ??= new ListBuilder<String>();
-  set samplesReleased(ListBuilder<String> samplesReleased) =>
+  set samplesReleased(ListBuilder<String>? samplesReleased) =>
       _$this._samplesReleased = samplesReleased;
 
-  DateTime _createdDate;
-  DateTime get createdDate => _$this._createdDate;
-  set createdDate(DateTime createdDate) => _$this._createdDate = createdDate;
+  DateTime? _createdDate;
+  DateTime? get createdDate => _$this._createdDate;
+  set createdDate(DateTime? createdDate) => _$this._createdDate = createdDate;
 
-  DocumentReference<Object> _createdUser;
-  DocumentReference<Object> get createdUser => _$this._createdUser;
-  set createdUser(DocumentReference<Object> createdUser) =>
+  DocumentReference<Object?>? _createdUser;
+  DocumentReference<Object?>? get createdUser => _$this._createdUser;
+  set createdUser(DocumentReference<Object?>? createdUser) =>
       _$this._createdUser = createdUser;
 
-  bool _isComplete;
-  bool get isComplete => _$this._isComplete;
-  set isComplete(bool isComplete) => _$this._isComplete = isComplete;
+  bool? _isComplete;
+  bool? get isComplete => _$this._isComplete;
+  set isComplete(bool? isComplete) => _$this._isComplete = isComplete;
 
-  String _patientName;
-  String get patientName => _$this._patientName;
-  set patientName(String patientName) => _$this._patientName = patientName;
+  String? _patientName;
+  String? get patientName => _$this._patientName;
+  set patientName(String? patientName) => _$this._patientName = patientName;
 
-  String _patientSex;
-  String get patientSex => _$this._patientSex;
-  set patientSex(String patientSex) => _$this._patientSex = patientSex;
+  String? _patientSex;
+  String? get patientSex => _$this._patientSex;
+  set patientSex(String? patientSex) => _$this._patientSex = patientSex;
 
-  String _labRefNum;
-  String get labRefNum => _$this._labRefNum;
-  set labRefNum(String labRefNum) => _$this._labRefNum = labRefNum;
+  String? _labRefNum;
+  String? get labRefNum => _$this._labRefNum;
+  set labRefNum(String? labRefNum) => _$this._labRefNum = labRefNum;
 
-  String _pathologist;
-  String get pathologist => _$this._pathologist;
-  set pathologist(String pathologist) => _$this._pathologist = pathologist;
+  String? _pathologist;
+  String? get pathologist => _$this._pathologist;
+  set pathologist(String? pathologist) => _$this._pathologist = pathologist;
 
-  String _dMLEmail;
-  String get dMLEmail => _$this._dMLEmail;
-  set dMLEmail(String dMLEmail) => _$this._dMLEmail = dMLEmail;
+  String? _dMLEmail;
+  String? get dMLEmail => _$this._dMLEmail;
+  set dMLEmail(String? dMLEmail) => _$this._dMLEmail = dMLEmail;
 
-  int _patientAge;
-  int get patientAge => _$this._patientAge;
-  set patientAge(int patientAge) => _$this._patientAge = patientAge;
+  int? _patientAge;
+  int? get patientAge => _$this._patientAge;
+  set patientAge(int? patientAge) => _$this._patientAge = patientAge;
 
-  ListBuilder<DocumentReference<Object>> _testpackageList;
-  ListBuilder<DocumentReference<Object>> get testpackageList =>
-      _$this._testpackageList ??= new ListBuilder<DocumentReference<Object>>();
-  set testpackageList(ListBuilder<DocumentReference<Object>> testpackageList) =>
+  ListBuilder<DocumentReference<Object?>>? _testpackageList;
+  ListBuilder<DocumentReference<Object?>> get testpackageList =>
+      _$this._testpackageList ??= new ListBuilder<DocumentReference<Object?>>();
+  set testpackageList(
+          ListBuilder<DocumentReference<Object?>>? testpackageList) =>
       _$this._testpackageList = testpackageList;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
-      _$this._reference = reference;
+  DocumentReference<Object?>? _ffRef;
+  DocumentReference<Object?>? get ffRef => _$this._ffRef;
+  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   ReportsRecordBuilder() {
     ReportsRecord._initializeBuilder(this);
@@ -549,7 +552,7 @@ class ReportsRecordBuilder
       _dMLEmail = $v.dMLEmail;
       _patientAge = $v.patientAge;
       _testpackageList = $v.testpackageList?.toBuilder();
-      _reference = $v.reference;
+      _ffRef = $v.ffRef;
       _$v = null;
     }
     return this;
@@ -562,12 +565,14 @@ class ReportsRecordBuilder
   }
 
   @override
-  void update(void Function(ReportsRecordBuilder) updates) {
+  void update(void Function(ReportsRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$ReportsRecord build() {
+  ReportsRecord build() => _build();
+
+  _$ReportsRecord _build() {
     _$ReportsRecord _$result;
     try {
       _$result = _$v ??
@@ -589,9 +594,9 @@ class ReportsRecordBuilder
               dMLEmail: dMLEmail,
               patientAge: patientAge,
               testpackageList: _testpackageList?.build(),
-              reference: reference);
+              ffRef: ffRef);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'testedTests';
         _testedTests?.build();
@@ -606,7 +611,7 @@ class ReportsRecordBuilder
         _testpackageList?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'ReportsRecord', _$failedField, e.toString());
+            r'ReportsRecord', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -615,4 +620,4 @@ class ReportsRecordBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

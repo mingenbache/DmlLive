@@ -17,10 +17,10 @@ class _$MachinesRecordSerializer
   final String wireName = 'MachinesRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, MachinesRecord object,
+  Iterable<Object?> serialize(Serializers serializers, MachinesRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.name;
     if (value != null) {
       result
@@ -35,42 +35,42 @@ class _$MachinesRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.reference;
+    value = object.ffRef;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     return result;
   }
 
   @override
   MachinesRecord deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new MachinesRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'metadata':
           result.metadata = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
-          result.reference = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+          result.ffRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
       }
     }
@@ -81,16 +81,16 @@ class _$MachinesRecordSerializer
 
 class _$MachinesRecord extends MachinesRecord {
   @override
-  final String name;
+  final String? name;
   @override
-  final String metadata;
+  final String? metadata;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object?>? ffRef;
 
-  factory _$MachinesRecord([void Function(MachinesRecordBuilder) updates]) =>
-      (new MachinesRecordBuilder()..update(updates)).build();
+  factory _$MachinesRecord([void Function(MachinesRecordBuilder)? updates]) =>
+      (new MachinesRecordBuilder()..update(updates))._build();
 
-  _$MachinesRecord._({this.name, this.metadata, this.reference}) : super._();
+  _$MachinesRecord._({this.name, this.metadata, this.ffRef}) : super._();
 
   @override
   MachinesRecord rebuild(void Function(MachinesRecordBuilder) updates) =>
@@ -106,41 +106,40 @@ class _$MachinesRecord extends MachinesRecord {
     return other is MachinesRecord &&
         name == other.name &&
         metadata == other.metadata &&
-        reference == other.reference;
+        ffRef == other.ffRef;
   }
 
   @override
   int get hashCode {
     return $jf(
-        $jc($jc($jc(0, name.hashCode), metadata.hashCode), reference.hashCode));
+        $jc($jc($jc(0, name.hashCode), metadata.hashCode), ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('MachinesRecord')
+    return (newBuiltValueToStringHelper(r'MachinesRecord')
           ..add('name', name)
           ..add('metadata', metadata)
-          ..add('reference', reference))
+          ..add('ffRef', ffRef))
         .toString();
   }
 }
 
 class MachinesRecordBuilder
     implements Builder<MachinesRecord, MachinesRecordBuilder> {
-  _$MachinesRecord _$v;
+  _$MachinesRecord? _$v;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  String _metadata;
-  String get metadata => _$this._metadata;
-  set metadata(String metadata) => _$this._metadata = metadata;
+  String? _metadata;
+  String? get metadata => _$this._metadata;
+  set metadata(String? metadata) => _$this._metadata = metadata;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
-      _$this._reference = reference;
+  DocumentReference<Object?>? _ffRef;
+  DocumentReference<Object?>? get ffRef => _$this._ffRef;
+  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   MachinesRecordBuilder() {
     MachinesRecord._initializeBuilder(this);
@@ -151,7 +150,7 @@ class MachinesRecordBuilder
     if ($v != null) {
       _name = $v.name;
       _metadata = $v.metadata;
-      _reference = $v.reference;
+      _ffRef = $v.ffRef;
       _$v = null;
     }
     return this;
@@ -164,18 +163,19 @@ class MachinesRecordBuilder
   }
 
   @override
-  void update(void Function(MachinesRecordBuilder) updates) {
+  void update(void Function(MachinesRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$MachinesRecord build() {
+  MachinesRecord build() => _build();
+
+  _$MachinesRecord _build() {
     final _$result = _$v ??
-        new _$MachinesRecord._(
-            name: name, metadata: metadata, reference: reference);
+        new _$MachinesRecord._(name: name, metadata: metadata, ffRef: ffRef);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

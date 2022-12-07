@@ -11,21 +11,24 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'
+    as smooth_page_indicator;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ReportWizardWidget extends StatefulWidget {
   const ReportWizardWidget({
-    Key key,
+    Key? key,
     this.booking,
   }) : super(key: key);
 
-  final BookingsRecord booking;
+  final BookingsRecord? booking;
 
   @override
   _ReportWizardWidgetState createState() => _ReportWizardWidgetState();
@@ -40,77 +43,74 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
           .map((e) => e.key)
           .toList();
 
-  PageController pageViewController;
-  bool checkboxListTileValue2;
-  bool checkboxListTileValue3;
-  bool checkboxListTileValue4;
-  ReportsRecord reportRef;
+  PageController? pageViewController;
+  bool? checkboxListTileValue2;
+  bool? checkboxListTileValue3;
+  bool? checkboxListTileValue4;
+  ReportsRecord? reportRef;
   final formKey = GlobalKey<FormState>();
+  var hasButtonTriggered = false;
   final animationsMap = {
     'columnOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.elasticOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 1300,
-      delay: 300,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(100, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 1300.ms,
+          begin: 1,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 300.ms,
+          duration: 1300.ms,
+          begin: Offset(100, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'buttonOnActionTriggerAnimation': AnimationInfo(
-      curve: Curves.linear,
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(-93, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        MoveEffect(
+          curve: Curves.linear,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, 0),
+          end: Offset(-93, 0),
+        ),
+      ],
     ),
     'buttonOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 900,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 92),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 900.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 900.ms,
+          begin: Offset(0, 92),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
   };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
   }
@@ -190,12 +190,15 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                     child: Container(
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height * 0.9,
+                      constraints: BoxConstraints(
+                        maxWidth: 380,
+                      ),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Color(0x4258595B),
-                            FlutterFlowTheme.of(context).tertiaryColor,
-                            Color(0xFF77A54A)
+                            Color(0x806CD7B7),
+                            Color(0xAD006392),
+                            FlutterFlowTheme.of(context).secondaryColor
                           ],
                           stops: [0, 0.5, 1],
                           begin: AlignmentDirectional(0, -1),
@@ -223,7 +226,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .title2
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
                                         color: Colors.white,
                                         fontSize: 32,
                                         fontWeight: FontWeight.bold,
@@ -236,7 +239,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
                                     color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                        .secondaryText,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30),
                                     ),
@@ -247,7 +250,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                       icon: Icon(
                                         Icons.close_rounded,
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .secondaryBackground,
                                         size: 30,
                                       ),
                                       onPressed: () async {
@@ -364,7 +367,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                         fontFamily:
                                                                             'Lexend Deca',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .secondaryBackground,
                                                                         fontSize:
                                                                             14,
                                                                         fontWeight:
@@ -394,10 +397,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                               setState(() => FFAppState()
                                                                   .reportEmails
                                                                   .add(widget
-                                                                      .booking
-                                                                      .emailaddress));
+                                                                      .booking!
+                                                                      .emailaddress!));
                                                               await pageViewController
-                                                                  .nextPage(
+                                                                  ?.nextPage(
                                                                 duration: Duration(
                                                                     milliseconds:
                                                                         300),
@@ -439,16 +442,16 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                       .circular(
                                                                           40),
                                                             ),
-                                                          ).animated([
-                                                            animationsMap[
-                                                                'buttonOnActionTriggerAnimation']
-                                                          ]),
+                                                          ).animateOnActionTrigger(
+                                                              animationsMap[
+                                                                  'buttonOnActionTriggerAnimation']!,
+                                                              hasBeenTriggered:
+                                                                  hasButtonTriggered),
                                                         ),
                                                       ],
-                                                    ).animated([
-                                                      animationsMap[
-                                                          'columnOnPageLoadAnimation']
-                                                    ]),
+                                                    ).animateOnPageLoad(
+                                                        animationsMap[
+                                                            'columnOnPageLoadAnimation']!),
                                                   ),
                                                 ],
                                               ),
@@ -503,7 +506,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                       fit: BoxFit.cover,
                                                     ),
                                                     DateWidgetSmallWidget(
-                                                      date: widget.booking
+                                                      date: widget.booking!
                                                           .scheduledDate,
                                                     ),
                                                   ],
@@ -667,10 +670,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                             Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0),
                                                                               child: Text(
-                                                                                widget.booking.bookedTests.toList().length.toString(),
+                                                                                widget.booking!.bookedTests!.toList().length.toString(),
                                                                                 style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                      fontFamily: 'Roboto',
-                                                                                      color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                      fontFamily: 'Open Sans',
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -796,7 +799,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                             child:
                                                                                 StreamBuilder<List<TestedTestsRecord>>(
                                                                               stream: queryTestedTestsRecord(
-                                                                                queryBuilder: (testedTestsRecord) => testedTestsRecord.where('booking_ref', isEqualTo: widget.booking.reference).where('is_verified', isEqualTo: true),
+                                                                                queryBuilder: (testedTestsRecord) => testedTestsRecord.where('booking_ref', isEqualTo: widget.booking!.reference).where('is_verified', isEqualTo: true),
                                                                               ),
                                                                               builder: (context, snapshot) {
                                                                                 // Customize what your widget looks like when it's loading.
@@ -812,12 +815,12 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                     ),
                                                                                   );
                                                                                 }
-                                                                                List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data;
+                                                                                List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data!;
                                                                                 return Text(
-                                                                                  widget.booking.verifiedTests.toList().length.toString(),
+                                                                                  widget.booking!.verifiedTests!.toList().length.toString(),
                                                                                   style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                        fontFamily: 'Roboto',
-                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                        fontFamily: 'Open Sans',
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
                                                                                       ),
                                                                                 );
                                                                               },
@@ -861,6 +864,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                   .size
                                                                   .width *
                                                               0.85,
+                                                          constraints:
+                                                              BoxConstraints(
+                                                            maxWidth: 340,
+                                                          ),
                                                           decoration:
                                                               BoxDecoration(
                                                             gradient:
@@ -868,9 +875,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                               colors: [
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryColor,
-                                                                Color(
-                                                                    0xFF77A54A)
+                                                                    .secondaryColor,
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .alternate
                                                               ],
                                                               stops: [0, 1],
                                                               begin:
@@ -888,19 +896,22 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                           child: Row(
                                                             mainAxisSize:
                                                                 MainAxisSize
-                                                                    .max,
+                                                                    .min,
                                                             children: [
                                                               Expanded(
                                                                 child:
                                                                     Container(
-                                                                  width: double
-                                                                      .infinity,
+                                                                  width: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width *
+                                                                      0.95,
                                                                   color: Color(
                                                                       0x00000000),
                                                                   child:
                                                                       ExpandableNotifier(
                                                                     initialExpanded:
-                                                                        true,
+                                                                        false,
                                                                     child:
                                                                         ExpandablePanel(
                                                                       header:
@@ -922,8 +933,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                 'Patient Details',
                                                                                 textAlign: TextAlign.start,
                                                                                 style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                      fontFamily: 'Roboto',
-                                                                                      color: Colors.white,
+                                                                                      fontFamily: 'Open Sans',
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -961,8 +972,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                   child: Text(
                                                                                     'Name',
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Roboto',
-                                                                                          color: Colors.white,
+                                                                                          fontFamily: 'Open Sans',
+                                                                                          color: FlutterFlowTheme.of(context).primaryText,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
                                                                                   ),
@@ -972,16 +983,16 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                 width: MediaQuery.of(context).size.width * 0.65,
                                                                                 height: MediaQuery.of(context).size.height * 0.04,
                                                                                 decoration: BoxDecoration(
-                                                                                  color: Color(0x34FCFCFC),
+                                                                                  color: FlutterFlowTheme.of(context).primaryBackground,
                                                                                   borderRadius: BorderRadius.circular(8),
                                                                                 ),
                                                                                 child: Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6, 6, 3, 3),
                                                                                   child: Text(
-                                                                                    '${functions.camelCase(widget.booking.firstname)}    ${functions.camelCase(widget.booking.lastname)}',
+                                                                                    '${functions.camelCase(widget.booking!.firstname)}    ${functions.camelCase(widget.booking!.lastname)}',
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Roboto',
-                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                          fontFamily: 'Open Sans',
+                                                                                          color: FlutterFlowTheme.of(context).primaryText,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
                                                                                   ),
@@ -1025,8 +1036,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                         child: Text(
                                                                                           'Name',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Roboto',
-                                                                                                color: Color(0xFFFEFEFE),
+                                                                                                fontFamily: 'Open Sans',
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
                                                                                         ),
@@ -1036,16 +1047,16 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                       width: MediaQuery.of(context).size.width * 0.65,
                                                                                       height: MediaQuery.of(context).size.height * 0.04,
                                                                                       decoration: BoxDecoration(
-                                                                                        color: Color(0x34FFFFFF),
+                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         borderRadius: BorderRadius.circular(8),
                                                                                       ),
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(6, 6, 3, 3),
                                                                                         child: Text(
-                                                                                          '${functions.camelCase(widget.booking.firstname)}     ${functions.camelCase(widget.booking.lastname)}',
+                                                                                          '${functions.camelCase(widget.booking!.firstname)}     ${functions.camelCase(widget.booking!.lastname)}',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Roboto',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                fontFamily: 'Open Sans',
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
                                                                                         ),
@@ -1075,8 +1086,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                         child: Text(
                                                                                           'Email',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Roboto',
-                                                                                                color: Colors.white,
+                                                                                                fontFamily: 'Open Sans',
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
                                                                                         ),
@@ -1086,16 +1097,16 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                       width: MediaQuery.of(context).size.width * 0.65,
                                                                                       height: MediaQuery.of(context).size.height * 0.04,
                                                                                       decoration: BoxDecoration(
-                                                                                        color: Color(0x33FFFFFF),
+                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         borderRadius: BorderRadius.circular(8),
                                                                                       ),
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(6, 6, 3, 3),
                                                                                         child: Text(
-                                                                                          widget.booking.emailaddress,
+                                                                                          widget.booking!.emailaddress!,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Roboto',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                fontFamily: 'Open Sans',
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
                                                                                         ),
@@ -1125,8 +1136,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                         child: Text(
                                                                                           'Phone',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Roboto',
-                                                                                                color: Color(0xFFFFFFFE),
+                                                                                                fontFamily: 'Open Sans',
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
                                                                                         ),
@@ -1136,16 +1147,16 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                       width: MediaQuery.of(context).size.width * 0.65,
                                                                                       height: MediaQuery.of(context).size.height * 0.04,
                                                                                       decoration: BoxDecoration(
-                                                                                        color: Color(0x33FFFFFF),
+                                                                                        color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         borderRadius: BorderRadius.circular(8),
                                                                                       ),
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(6, 6, 3, 3),
                                                                                         child: Text(
-                                                                                          widget.booking.phonenumber,
+                                                                                          widget.booking!.phonenumber!,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Roboto',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                fontFamily: 'Open Sans',
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
                                                                                         ),
@@ -1178,8 +1189,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                               Text(
                                                                                                 'Date of\nBirth',
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                      fontFamily: 'Roboto',
-                                                                                                      color: Colors.white,
+                                                                                                      fontFamily: 'Open Sans',
+                                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                                       fontWeight: FontWeight.w500,
                                                                                                     ),
                                                                                               ),
@@ -1193,7 +1204,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                           width: MediaQuery.of(context).size.width * 0.25,
                                                                                           height: MediaQuery.of(context).size.height * 0.04,
                                                                                           decoration: BoxDecoration(
-                                                                                            color: Color(0x2CFFFFFF),
+                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                             borderRadius: BorderRadius.circular(7),
                                                                                           ),
                                                                                           child: Column(
@@ -1203,10 +1214,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                               Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(3, 5, 3, 0),
                                                                                                 child: Text(
-                                                                                                  dateTimeFormat('d/M/y', widget.booking.dOB),
+                                                                                                  dateTimeFormat('d/M/y', widget.booking!.dOB!),
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                        fontFamily: 'Roboto',
-                                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                        fontFamily: 'Open Sans',
+                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
                                                                                                       ),
                                                                                                 ),
                                                                                               ),
@@ -1227,8 +1238,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                               child: Text(
                                                                                                 'Sex',
                                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                      fontFamily: 'Roboto',
-                                                                                                      color: Colors.white,
+                                                                                                      fontFamily: 'Open Sans',
+                                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                                       fontWeight: FontWeight.w500,
                                                                                                     ),
                                                                                               ),
@@ -1240,7 +1251,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                         width: MediaQuery.of(context).size.width * 0.21,
                                                                                         height: MediaQuery.of(context).size.height * 0.04,
                                                                                         decoration: BoxDecoration(
-                                                                                          color: Color(0x2BFFFFFF),
+                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                           borderRadius: BorderRadius.circular(7),
                                                                                         ),
                                                                                         child: Padding(
@@ -1253,10 +1264,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                               Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                                                                                 child: Text(
-                                                                                                  widget.booking.sex,
+                                                                                                  widget.booking!.sex!,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                        fontFamily: 'Roboto',
-                                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                        fontFamily: 'Open Sans',
+                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
                                                                                                         fontWeight: FontWeight.normal,
                                                                                                       ),
                                                                                                 ),
@@ -1312,7 +1323,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                     FFButtonWidget(
                                                       onPressed: () async {
                                                         await pageViewController
-                                                            .nextPage(
+                                                            ?.nextPage(
                                                           duration: Duration(
                                                               milliseconds:
                                                                   300),
@@ -1326,17 +1337,17 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
+                                                                .secondaryText,
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiaryColor,
+                                                                      .secondaryBackground,
                                                                   fontSize: 14,
                                                                   fontWeight:
                                                                       FontWeight
@@ -1386,7 +1397,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                               .start,
                                                       children: [
                                                         Text(
-                                                          'Tests',
+                                                          'Select Tests',
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: FlutterFlowTheme
@@ -1435,7 +1446,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                       FFButtonWidget(
                                                         onPressed: () async {
                                                           await pageViewController
-                                                              .nextPage(
+                                                              ?.nextPage(
                                                             duration: Duration(
                                                                 milliseconds:
                                                                     300),
@@ -1449,17 +1460,17 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                           height: 30,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .secondaryText,
                                                           textStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
                                                                   .subtitle2
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
+                                                                        'Open Sans',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .tertiaryColor,
+                                                                        .secondaryBackground,
                                                                     fontSize:
                                                                         14,
                                                                     fontWeight:
@@ -1509,7 +1520,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                             context)
                                                         .title3
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Open Sans',
                                                           color: Colors.white,
                                                           fontSize: 20,
                                                           fontWeight:
@@ -1623,7 +1635,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                   ),
                                                                             ),
                                                                           ),
-                                                                          if (widget.booking.paidFull ??
+                                                                          if (widget.booking!.paidFull ??
                                                                               true)
                                                                             Align(
                                                                               alignment: AlignmentDirectional(0.8, 0),
@@ -1646,10 +1658,6 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                       )
                                                                                     ],
                                                                                     borderRadius: BorderRadius.circular(30),
-                                                                                    border: Border.all(
-                                                                                      color: Color(0xFFC7C7C7),
-                                                                                      width: 2,
-                                                                                    ),
                                                                                   ),
                                                                                   child: Row(
                                                                                     mainAxisSize: MainAxisSize.max,
@@ -1695,7 +1703,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                         children: [
                                                                           Text(
                                                                             formatNumber(
-                                                                              widget.booking.paymentBalance,
+                                                                              widget.booking!.paymentBalance!,
                                                                               formatType: FormatType.decimal,
                                                                               decimalType: DecimalType.periodDecimal,
                                                                               currency: 'Ksh ',
@@ -1732,11 +1740,9 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                     child: Builder(
                                                       builder: (context) {
                                                         final invoices = widget
-                                                                .booking
-                                                                .invoiceRefs
-                                                                .toList()
-                                                                ?.toList() ??
-                                                            [];
+                                                            .booking!
+                                                            .invoiceRefs!
+                                                            .toList();
                                                         return ListView.builder(
                                                           padding:
                                                               EdgeInsets.zero,
@@ -1761,6 +1767,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                           10),
                                                               child:
                                                                   InvoicePaymentWidget(
+                                                                key: Key(
+                                                                    'InvoicePayment_${invoicesIndex}'),
                                                                 invoice:
                                                                     invoicesItem,
                                                                 booking: widget
@@ -1781,7 +1789,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                       FFButtonWidget(
                                                         onPressed: () async {
                                                           await pageViewController
-                                                              .nextPage(
+                                                              ?.nextPage(
                                                             duration: Duration(
                                                                 milliseconds:
                                                                     300),
@@ -1795,17 +1803,17 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                           height: 30,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .secondaryText,
                                                           textStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
                                                                   .subtitle2
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
+                                                                        'Open Sans',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .tertiaryColor,
+                                                                        .secondaryBackground,
                                                                     fontSize:
                                                                         14,
                                                                     fontWeight:
@@ -1848,7 +1856,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                           .subtitle2
                                                           .override(
                                                             fontFamily:
-                                                                'Roboto',
+                                                                'Open Sans',
                                                             color: Colors.white,
                                                           ),
                                                     ),
@@ -1902,11 +1910,9 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                     child: Builder(
                                                       builder: (context) {
                                                         final reportVerifiedTests =
-                                                            widget.booking
-                                                                    .verifiedTests
-                                                                    .toList()
-                                                                    ?.toList() ??
-                                                                [];
+                                                            widget.booking!
+                                                                .verifiedTests!
+                                                                .toList();
                                                         return ListView.builder(
                                                           padding:
                                                               EdgeInsets.zero,
@@ -1957,7 +1963,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                   }
                                                                   final containerTestedTestsRecord =
                                                                       snapshot
-                                                                          .data;
+                                                                          .data!;
                                                                   return Material(
                                                                     color: Colors
                                                                         .transparent,
@@ -1985,7 +1991,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                       child: FutureBuilder<
                                                                           TestsRecord>(
                                                                         future:
-                                                                            TestsRecord.getDocumentOnce(containerTestedTestsRecord.testRef),
+                                                                            TestsRecord.getDocumentOnce(containerTestedTestsRecord.testRef!),
                                                                         builder:
                                                                             (context,
                                                                                 snapshot) {
@@ -2004,7 +2010,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                             );
                                                                           }
                                                                           final checkboxListTileTestsRecord =
-                                                                              snapshot.data;
+                                                                              snapshot.data!;
                                                                           return Theme(
                                                                             data:
                                                                                 ThemeData(
@@ -2013,11 +2019,13 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                             child:
                                                                                 CheckboxListTile(
                                                                               value: checkboxListTileValueMap1[reportVerifiedTestsItem] ??= false,
-                                                                              onChanged: (newValue) => setState(() => checkboxListTileValueMap1[reportVerifiedTestsItem] = newValue),
+                                                                              onChanged: (newValue) async {
+                                                                                setState(() => checkboxListTileValueMap1[reportVerifiedTestsItem] = newValue!);
+                                                                              },
                                                                               title: Text(
                                                                                 functions.checkNullString(checkboxListTileTestsRecord.name),
                                                                                 style: FlutterFlowTheme.of(context).title3.override(
-                                                                                      fontFamily: 'Roboto',
+                                                                                      fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).tertiaryColor,
                                                                                     ),
                                                                               ),
@@ -2052,7 +2060,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                     FFButtonWidget(
                                                       onPressed: () async {
                                                         await pageViewController
-                                                            .nextPage(
+                                                            ?.nextPage(
                                                           duration: Duration(
                                                               milliseconds:
                                                                   300),
@@ -2069,17 +2077,17 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
+                                                                .secondaryText,
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiaryColor,
+                                                                      .secondaryBackground,
                                                                   fontSize: 14,
                                                                   fontWeight:
                                                                       FontWeight
@@ -2119,7 +2127,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                           .subtitle2
                                                           .override(
                                                             fontFamily:
-                                                                'Roboto',
+                                                                'Open Sans',
                                                             color: Colors.white,
                                                           ),
                                                     ),
@@ -2219,10 +2227,12 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                   value:
                                                                       checkboxListTileValue2 ??=
                                                                           true,
-                                                                  onChanged: (newValue) =>
-                                                                      setState(() =>
-                                                                          checkboxListTileValue2 =
-                                                                              newValue),
+                                                                  onChanged:
+                                                                      (newValue) async {
+                                                                    setState(() =>
+                                                                        checkboxListTileValue2 =
+                                                                            newValue!);
+                                                                  },
                                                                   title: Text(
                                                                     'Patient',
                                                                     style: FlutterFlowTheme.of(
@@ -2230,7 +2240,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                         .title3
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryColor,
                                                                         ),
@@ -2238,8 +2248,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                   subtitle:
                                                                       Text(
                                                                     widget
-                                                                        .booking
-                                                                        .emailaddress,
+                                                                        .booking!
+                                                                        .emailaddress!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .subtitle2,
@@ -2293,8 +2303,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                   UsersRecord>(
                                                                 future: UsersRecord
                                                                     .getDocumentOnce(widget
-                                                                        .booking
-                                                                        .user),
+                                                                        .booking!
+                                                                        .user!),
                                                                 builder: (context,
                                                                     snapshot) {
                                                                   // Customize what your widget looks like when it's loading.
@@ -2319,7 +2329,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                   }
                                                                   final checkboxListTileUsersRecord =
                                                                       snapshot
-                                                                          .data;
+                                                                          .data!;
                                                                   return Theme(
                                                                     data:
                                                                         ThemeData(
@@ -2334,22 +2344,25 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                           .contains(
                                                                               checkboxListTileUsersRecord.email),
                                                                       onChanged:
-                                                                          (newValue) =>
-                                                                              setState(() => checkboxListTileValue3 = newValue),
+                                                                          (newValue) async {
+                                                                        setState(() =>
+                                                                            checkboxListTileValue3 =
+                                                                                newValue!);
+                                                                      },
                                                                       title:
                                                                           Text(
                                                                         'Registered User',
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .title3
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
                                                                             ),
                                                                       ),
                                                                       subtitle:
                                                                           Text(
                                                                         checkboxListTileUsersRecord
-                                                                            .email,
+                                                                            .email!,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .subtitle2,
                                                                       ),
@@ -2368,12 +2381,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                             ),
                                                           ),
                                                         ),
-                                                        if (!(functions
-                                                                .checkStringNull(
-                                                                    widget
-                                                                        .booking
-                                                                        .doctorEmail)) ??
-                                                            true)
+                                                        if (!functions
+                                                            .checkStringNull(
+                                                                widget.booking!
+                                                                    .doctorEmail))
                                                           Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
@@ -2384,22 +2395,22 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                         8),
                                                             child: InkWell(
                                                               onTap: () async {
-                                                                if (!(FFAppState()
+                                                                if (!FFAppState()
                                                                     .reportEmails
                                                                     .contains(widget
-                                                                        .booking
-                                                                        .doctorEmail))) {
+                                                                        .booking!
+                                                                        .doctorEmail)) {
                                                                   setState(() => FFAppState()
                                                                       .reportEmails
                                                                       .add(widget
-                                                                          .booking
-                                                                          .doctorEmail));
+                                                                          .booking!
+                                                                          .doctorEmail!));
                                                                 } else {
                                                                   setState(() => FFAppState()
                                                                       .reportEmails
                                                                       .remove(widget
-                                                                          .booking
-                                                                          .doctorEmail));
+                                                                          .booking!
+                                                                          .doctorEmail!));
                                                                 }
                                                               },
                                                               child: Material(
@@ -2440,26 +2451,29 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                       value: checkboxListTileValue4 ??= FFAppState()
                                                                           .reportEmails
                                                                           .contains(widget
-                                                                              .booking
+                                                                              .booking!
                                                                               .doctorEmail),
                                                                       onChanged:
-                                                                          (newValue) =>
-                                                                              setState(() => checkboxListTileValue4 = newValue),
+                                                                          (newValue) async {
+                                                                        setState(() =>
+                                                                            checkboxListTileValue4 =
+                                                                                newValue!);
+                                                                      },
                                                                       title:
                                                                           Text(
                                                                         'Patient\'s Doctor',
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .title3
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
                                                                             ),
                                                                       ),
                                                                       subtitle:
                                                                           Text(
                                                                         widget
-                                                                            .booking
-                                                                            .doctorEmail,
+                                                                            .booking!
+                                                                            .doctorEmail!,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .subtitle2,
                                                                       ),
@@ -2536,10 +2550,10 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                   .subtitle2
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
+                                                                        'Open Sans',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .tertiaryColor,
+                                                                        .secondaryText,
                                                                   ),
                                                           borderSide:
                                                               BorderSide(
@@ -2566,20 +2580,22 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 0, 0, 10),
-                                        child: SmoothPageIndicator(
+                                        child: smooth_page_indicator
+                                            .SmoothPageIndicator(
                                           controller: pageViewController ??=
                                               PageController(initialPage: 0),
                                           count: 7,
                                           axisDirection: Axis.horizontal,
                                           onDotClicked: (i) {
-                                            pageViewController.animateToPage(
+                                            pageViewController!.animateToPage(
                                               i,
                                               duration:
                                                   Duration(milliseconds: 500),
                                               curve: Curves.ease,
                                             );
                                           },
-                                          effect: ExpandingDotsEffect(
+                                          effect: smooth_page_indicator
+                                              .ExpandingDotsEffect(
                                             expansionFactor: 2,
                                             spacing: 8,
                                             radius: 16,
@@ -2617,7 +2633,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                   Container(
                     decoration: BoxDecoration(),
                     child: Visibility(
-                      visible: FFAppState().reportLastPage ?? true,
+                      visible: FFAppState().reportLastPage,
                       child: Align(
                         alignment: AlignmentDirectional(0, 0.05),
                         child: Padding(
@@ -2628,24 +2644,25 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
 
                               final reportsCreateData = {
                                 ...createReportsRecordData(
-                                  booking: widget.booking.reference,
-                                  pathologist: widget.booking.pathologist,
-                                  bookinguser: widget.booking.user,
-                                  doctor: widget.booking.docRef,
-                                  pathologistComments: widget.booking.testNotes,
+                                  booking: widget.booking!.reference,
+                                  pathologist: widget.booking!.pathologist,
+                                  bookinguser: widget.booking!.user,
+                                  doctor: widget.booking!.docRef,
+                                  pathologistComments:
+                                      widget.booking!.testNotes,
                                   createdDate: getCurrentTimestamp,
                                   createdUser: functions
                                       .returnstaffRef(currentUserReference),
                                   isComplete: false,
                                   patientName:
-                                      '${widget.booking.firstname} ${widget.booking.lastname}',
-                                  patientSex: widget.booking.sex,
-                                  labRefNum: widget.booking.labRefNum,
+                                      '${widget.booking!.firstname} ${widget.booking!.lastname}',
+                                  patientSex: widget.booking!.sex,
+                                  labRefNum: widget.booking!.labRefNum,
                                   patientAge: functions
-                                      .calculateAge(widget.booking.dOB),
+                                      .calculateAge(widget.booking!.dOB),
                                 ),
                                 'testedTests':
-                                    widget.booking.verifiedTests.toList(),
+                                    widget.booking!.verifiedTests!.toList(),
                               };
                               var reportsRecordReference =
                                   ReportsRecord.collection.doc();
@@ -2654,8 +2671,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                               reportRef = ReportsRecord.getDocumentFromData(
                                   reportsCreateData, reportsRecordReference);
                               _shouldSetState = true;
-                              if ((reportRef.reference != null)) {
-                                await pageViewController.nextPage(
+                              if (reportRef!.reference != null) {
+                                await pageViewController?.nextPage(
                                   duration: Duration(milliseconds: 300),
                                   curve: Curves.ease,
                                 );
@@ -2663,7 +2680,7 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                   notificationTitle:
                                       'Your Test Results are Ready',
                                   notificationText: 'Click here to view report',
-                                  userRefs: [widget.booking.user],
+                                  userRefs: [widget.booking!.user!],
                                   initialPageName: 'BookingReport',
                                   parameterData: {},
                                 );
@@ -2676,19 +2693,19 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                   context: context,
                                   builder: (alertDialogContext) {
                                     return AlertDialog(
-                                      title: Text('Report Creation Failed'),
-                                      content: Text(
-                                          'Please review Test Status before proceeding'),
+                                      title: Text('Error'),
+                                      content: Text('Document Unavailable'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
+                                          child: Text('Okay'),
                                         ),
                                       ],
                                     );
                                   },
                                 );
+                                Navigator.pop(context);
                                 if (_shouldSetState) setState(() {});
                                 return;
                               }
@@ -2699,14 +2716,13 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                             options: FFButtonOptions(
                               width: 260,
                               height: 60,
-                              color:
-                                  FlutterFlowTheme.of(context).secondaryColor,
+                              color: FlutterFlowTheme.of(context).secondaryText,
                               textStyle: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
                                     fontFamily: 'Roboto',
                                     color: FlutterFlowTheme.of(context)
-                                        .tertiaryColor,
+                                        .secondaryBackground,
                                     fontSize: 16,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -2717,8 +2733,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                               ),
                               borderRadius: BorderRadius.circular(25),
                             ),
-                          ).animated(
-                              [animationsMap['buttonOnPageLoadAnimation']]),
+                          ).animateOnPageLoad(
+                              animationsMap['buttonOnPageLoadAnimation']!),
                         ),
                       ),
                     ),

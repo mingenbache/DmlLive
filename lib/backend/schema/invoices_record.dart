@@ -11,68 +11,56 @@ abstract class InvoicesRecord
   static Serializer<InvoicesRecord> get serializer =>
       _$invoicesRecordSerializer;
 
-  @nullable
   @BuiltValueField(wireName: 'booked_tests_list')
-  BuiltList<DocumentReference> get bookedTestsList;
+  BuiltList<DocumentReference>? get bookedTestsList;
 
-  @nullable
   @BuiltValueField(wireName: 'created_date')
-  DateTime get createdDate;
+  DateTime? get createdDate;
 
-  @nullable
   @BuiltValueField(wireName: 'created_by')
-  DocumentReference get createdBy;
+  DocumentReference? get createdBy;
 
-  @nullable
   @BuiltValueField(wireName: 'is_paid')
-  bool get isPaid;
+  bool? get isPaid;
 
-  @nullable
   @BuiltValueField(wireName: 'payment_submitted')
-  bool get paymentSubmitted;
+  bool? get paymentSubmitted;
 
-  @nullable
   @BuiltValueField(wireName: 'full_amount')
-  bool get fullAmount;
+  bool? get fullAmount;
 
-  @nullable
-  String get labRefNum;
+  String? get labRefNum;
 
-  @nullable
   @BuiltValueField(wireName: 'Booking_ref')
-  DocumentReference get bookingRef;
+  DocumentReference? get bookingRef;
 
-  @nullable
   @BuiltValueField(wireName: 'payments_list')
-  BuiltList<DocumentReference> get paymentsList;
+  BuiltList<DocumentReference>? get paymentsList;
 
-  @nullable
   @BuiltValueField(wireName: 'Amount_due')
-  double get amountDue;
+  double? get amountDue;
 
-  @nullable
-  DocumentReference get user;
+  DocumentReference? get user;
 
-  @nullable
   @BuiltValueField(wireName: 'due_date')
-  DateTime get dueDate;
+  DateTime? get dueDate;
 
-  @nullable
-  DateTime get updateDate;
+  DateTime? get updateDate;
 
-  @nullable
-  String get updateRole;
+  String? get updateRole;
 
-  @nullable
   @BuiltValueField(wireName: 'Invoice_amount')
-  double get invoiceAmount;
+  double? get invoiceAmount;
 
-  @nullable
-  String get invoiceNum;
+  String? get invoiceNum;
 
-  @nullable
+  DocumentReference? get bookingUser;
+
+  String? get userEmail;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(InvoicesRecordBuilder builder) => builder
     ..bookedTestsList = ListBuilder()
@@ -84,18 +72,19 @@ abstract class InvoicesRecord
     ..amountDue = 0.0
     ..updateRole = ''
     ..invoiceAmount = 0.0
-    ..invoiceNum = '';
+    ..invoiceNum = ''
+    ..userEmail = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('Invoices');
 
   static Stream<InvoicesRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   static Future<InvoicesRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   InvoicesRecord._();
   factory InvoicesRecord([void Function(InvoicesRecordBuilder) updates]) =
@@ -104,41 +93,51 @@ abstract class InvoicesRecord
   static InvoicesRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
 Map<String, dynamic> createInvoicesRecordData({
-  DateTime createdDate,
-  DocumentReference createdBy,
-  bool isPaid,
-  bool paymentSubmitted,
-  bool fullAmount,
-  String labRefNum,
-  DocumentReference bookingRef,
-  double amountDue,
-  DocumentReference user,
-  DateTime dueDate,
-  DateTime updateDate,
-  String updateRole,
-  double invoiceAmount,
-  String invoiceNum,
-}) =>
-    serializers.toFirestore(
-        InvoicesRecord.serializer,
-        InvoicesRecord((i) => i
-          ..bookedTestsList = null
-          ..createdDate = createdDate
-          ..createdBy = createdBy
-          ..isPaid = isPaid
-          ..paymentSubmitted = paymentSubmitted
-          ..fullAmount = fullAmount
-          ..labRefNum = labRefNum
-          ..bookingRef = bookingRef
-          ..paymentsList = null
-          ..amountDue = amountDue
-          ..user = user
-          ..dueDate = dueDate
-          ..updateDate = updateDate
-          ..updateRole = updateRole
-          ..invoiceAmount = invoiceAmount
-          ..invoiceNum = invoiceNum));
+  DateTime? createdDate,
+  DocumentReference? createdBy,
+  bool? isPaid,
+  bool? paymentSubmitted,
+  bool? fullAmount,
+  String? labRefNum,
+  DocumentReference? bookingRef,
+  double? amountDue,
+  DocumentReference? user,
+  DateTime? dueDate,
+  DateTime? updateDate,
+  String? updateRole,
+  double? invoiceAmount,
+  String? invoiceNum,
+  DocumentReference? bookingUser,
+  String? userEmail,
+}) {
+  final firestoreData = serializers.toFirestore(
+    InvoicesRecord.serializer,
+    InvoicesRecord(
+      (i) => i
+        ..bookedTestsList = null
+        ..createdDate = createdDate
+        ..createdBy = createdBy
+        ..isPaid = isPaid
+        ..paymentSubmitted = paymentSubmitted
+        ..fullAmount = fullAmount
+        ..labRefNum = labRefNum
+        ..bookingRef = bookingRef
+        ..paymentsList = null
+        ..amountDue = amountDue
+        ..user = user
+        ..dueDate = dueDate
+        ..updateDate = updateDate
+        ..updateRole = updateRole
+        ..invoiceAmount = invoiceAmount
+        ..invoiceNum = invoiceNum
+        ..bookingUser = bookingUser
+        ..userEmail = userEmail,
+    ),
+  );
+
+  return firestoreData;
+}

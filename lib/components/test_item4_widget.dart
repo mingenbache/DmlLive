@@ -8,22 +8,24 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TestItem4Widget extends StatefulWidget {
   const TestItem4Widget({
-    Key key,
+    Key? key,
     this.test,
     this.index,
     this.booking,
     this.listSize,
   }) : super(key: key);
 
-  final DocumentReference test;
-  final int index;
-  final BookingsRecord booking;
-  final int listSize;
+  final DocumentReference? test;
+  final int? index;
+  final BookingsRecord? booking;
+  final int? listSize;
 
   @override
   _TestItem4WidgetState createState() => _TestItem4WidgetState();
@@ -31,69 +33,63 @@ class TestItem4Widget extends StatefulWidget {
 
 class _TestItem4WidgetState extends State<TestItem4Widget>
     with TickerProviderStateMixin {
+  var hasContainerTriggered1 = false;
+  var hasContainerTriggered2 = false;
   final animationsMap = {
     'stackOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(-69, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(-69, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'containerOnActionTriggerAnimation1': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(63, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(63, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'containerOnActionTriggerAnimation2': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(-58, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(-58, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
   };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
   }
@@ -103,7 +99,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
       child: StreamBuilder<TestsRecord>(
-        stream: TestsRecord.getDocument(widget.test),
+        stream: TestsRecord.getDocument(widget.test!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -118,7 +114,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
               ),
             );
           }
-          final stackTestsRecord = snapshot.data;
+          final stackTestsRecord = snapshot.data!;
           return Stack(
             children: [
               Padding(
@@ -134,32 +130,31 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                       children: [
                         Stack(
                           children: [
-                            if (widget.booking.testsIncluded
-                                    .toList()
-                                    ?.contains(widget.test) ??
-                                true)
+                            if (widget.booking!.testsIncluded!
+                                .toList()
+                                .contains(widget.test))
                               InkWell(
                                 onTap: () async {
-                                  if (widget.booking.testsIncluded
+                                  if (widget.booking!.testsIncluded!
                                       .toList()
                                       .contains(widget.test)) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
                                         totalPrice: functions.removeFromCart(
-                                            widget.booking.totalPrice,
+                                            widget.booking!.totalPrice,
                                             stackTestsRecord.price),
                                       ),
                                       'tests_included':
                                           FieldValue.arrayRemove([widget.test]),
                                       'total_tests': FieldValue.increment(-1),
                                     };
-                                    await widget.booking.reference
+                                    await widget.booking!.reference
                                         .update(bookingsUpdateData);
                                   }
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'Test Removed.${widget.booking.testsIncluded.toList().length.toString()} Tests in Total.',
+                                        'Test Removed.${widget.booking!.testsIncluded!.toList().length.toString()} Tests in Total.',
                                         style: TextStyle(),
                                       ),
                                       duration: Duration(milliseconds: 4000),
@@ -210,36 +205,35 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                     ),
                                   ),
                                 ),
-                              ).animated([
-                                animationsMap[
-                                    'containerOnActionTriggerAnimation1']
-                              ]),
-                            if (!(widget.booking.testsIncluded
-                                    .toList()
-                                    .contains(widget.test)) ??
-                                true)
+                              ).animateOnActionTrigger(
+                                  animationsMap[
+                                      'containerOnActionTriggerAnimation1']!,
+                                  hasBeenTriggered: hasContainerTriggered1),
+                            if (!widget.booking!.testsIncluded!
+                                .toList()
+                                .contains(widget.test))
                               InkWell(
                                 onTap: () async {
-                                  if (!(widget.booking.testsIncluded
+                                  if (!widget.booking!.testsIncluded!
                                       .toList()
-                                      .contains(widget.test))) {
+                                      .contains(widget.test)) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
                                         totalPrice: functions.addCartTotal(
-                                            widget.booking.totalPrice,
+                                            widget.booking!.totalPrice,
                                             stackTestsRecord.price),
                                       ),
                                       'tests_included':
                                           FieldValue.arrayUnion([widget.test]),
                                       'total_tests': FieldValue.increment(1),
                                     };
-                                    await widget.booking.reference
+                                    await widget.booking!.reference
                                         .update(bookingsUpdateData);
                                   }
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'Test Added.${widget.booking.testsIncluded.toList().length.toString()} Tests in Total.',
+                                        'Test Added.${widget.booking!.testsIncluded!.toList().length.toString()} Tests in Total.',
                                         style: TextStyle(),
                                       ),
                                       duration: Duration(milliseconds: 4000),
@@ -290,12 +284,13 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                     ),
                                   ),
                                 ),
-                              ).animated([
-                                animationsMap[
-                                    'containerOnActionTriggerAnimation2']
-                              ]),
+                              ).animateOnActionTrigger(
+                                  animationsMap[
+                                      'containerOnActionTriggerAnimation2']!,
+                                  hasBeenTriggered: hasContainerTriggered2),
                           ],
-                        ).animated([animationsMap['stackOnPageLoadAnimation']]),
+                        ).animateOnPageLoad(
+                            animationsMap['stackOnPageLoadAnimation']!),
                       ],
                     ),
                   ],
@@ -342,7 +337,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                     ),
                                   );
                                 },
-                              );
+                              ).then((value) => setState(() {}));
                             },
                             child: Material(
                               color: Colors.transparent,
@@ -513,7 +508,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                                         4),
                                                             child: Text(
                                                               stackTestsRecord
-                                                                  .category,
+                                                                  .category!,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyText1
@@ -559,7 +554,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                           size: 20,
                                                         ),
                                                         Text(
-                                                          '${stackTestsRecord.durationResults.toString()} Hrs',
+                                                          '${stackTestsRecord.durationResults?.toString()} Hrs',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyText1
@@ -729,7 +724,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                                 child: Text(
                                                                   formatNumber(
                                                                     stackTestsRecord
-                                                                        .price,
+                                                                        .price!,
                                                                     formatType:
                                                                         FormatType
                                                                             .decimal,
@@ -785,7 +780,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if ((widget.listSize) > 1)
+                        if (widget.listSize! > 1)
                           Material(
                             color: Colors.transparent,
                             elevation: 2,
@@ -803,14 +798,14 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                 children: [
                                   AutoSizeText(
                                     functions
-                                        .add1(widget.index)
+                                        .add1(widget.index)!
                                         .toString()
                                         .maybeHandleOverflow(maxChars: 2),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryColor,
                                           fontSize: 16,

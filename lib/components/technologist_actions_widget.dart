@@ -9,11 +9,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TechnologistActionsWidget extends StatefulWidget {
   const TechnologistActionsWidget({
-    Key key,
+    Key? key,
     this.testedTestRef,
   }) : super(key: key);
 
-  final DocumentReference testedTestRef;
+  final DocumentReference? testedTestRef;
 
   @override
   _TechnologistActionsWidgetState createState() =>
@@ -78,7 +78,7 @@ class _TechnologistActionsWidgetState extends State<TechnologistActionsWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .tertiaryColor,
                                           fontWeight: FontWeight.w500,
@@ -106,7 +106,7 @@ class _TechnologistActionsWidgetState extends State<TechnologistActionsWidget> {
                               ),
                             );
                           },
-                        );
+                        ).then((value) => setState(() {}));
                       },
                       child: Container(
                         width: 110,
@@ -139,7 +139,7 @@ class _TechnologistActionsWidgetState extends State<TechnologistActionsWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiaryColor,
                                             fontWeight: FontWeight.w500,

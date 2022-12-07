@@ -7,21 +7,23 @@ import '../actions/index.dart'; // Imports custom actions
 import '../../flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom widget code
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
 import 'dart:async';
 import 'dart:math';
 import 'package:fl_chart/fl_chart.dart';
 
 class ChartTests extends StatefulWidget {
   const ChartTests({
-    Key key,
+    Key? key,
     this.width,
     this.height,
     this.testData,
   }) : super(key: key);
 
-  final double width;
-  final double height;
-  final List<double> testData;
+  final double? width;
+  final double? height;
+  final List<double>? testData;
   @override
   _ChartTestsState createState() => _ChartTestsState();
 }
@@ -39,7 +41,7 @@ class _ChartTestsState extends State<ChartTests> {
     return Stack(
       children: <Widget>[
         AspectRatio(
-          aspectRatio: 1.70,
+          aspectRatio: 2.2,
           child: Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(
@@ -118,23 +120,23 @@ class _ChartTestsState extends State<ChartTests> {
               case 4:
                 return '4';
               case 5:
-                return '5';
+                return '';
               case 6:
                 return '6';
               case 7:
-                return '7';
+                return '';
               case 8:
                 return '8';
               case 9:
-                return '9';
+                return '';
               case 10:
                 return '10';
               case 11:
-                return '11';
+                return '';
               case 12:
                 return '12';
               case 13:
-                return '13';
+                return '';
               case 14:
                 return 'today';
             }
@@ -364,9 +366,9 @@ class _ChartTestsState extends State<ChartTests> {
           isCurved: true,
           colors: [
             ColorTween(begin: gradientColors[0], end: gradientColors[1])
-                .lerp(0.2),
+                .lerp(0.2)!,
             ColorTween(begin: gradientColors[0], end: gradientColors[1])
-                .lerp(0.2),
+                .lerp(0.2)!,
           ],
           barWidth: 5,
           isStrokeCapRound: true,
@@ -375,10 +377,10 @@ class _ChartTestsState extends State<ChartTests> {
           ),
           belowBarData: BarAreaData(show: true, colors: [
             ColorTween(begin: gradientColors[0], end: gradientColors[1])
-                .lerp(0.2)
+                .lerp(0.2)!
                 .withOpacity(0.1),
             ColorTween(begin: gradientColors[0], end: gradientColors[1])
-                .lerp(0.2)
+                .lerp(0.2)!
                 .withOpacity(0.1),
           ]),
         ),

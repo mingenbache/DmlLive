@@ -15,11 +15,11 @@ import 'package:page_transition/page_transition.dart';
 
 class TestDeckWidget extends StatefulWidget {
   const TestDeckWidget({
-    Key key,
+    Key? key,
     this.testedTestRef,
   }) : super(key: key);
 
-  final DocumentReference testedTestRef;
+  final DocumentReference? testedTestRef;
 
   @override
   _TestDeckWidgetState createState() => _TestDeckWidgetState();
@@ -32,9 +32,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryColor,
       body: StreamBuilder<TestedTestsRecord>(
-        stream: TestedTestsRecord.getDocument(widget.testedTestRef),
+        stream: TestedTestsRecord.getDocument(widget.testedTestRef!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -49,7 +48,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
               ),
             );
           }
-          final viewResultsTestedTestsRecord = snapshot.data;
+          final viewResultsTestedTestsRecord = snapshot.data!;
           return Container(
             decoration: BoxDecoration(),
             child: SingleChildScrollView(
@@ -58,7 +57,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                 children: [
                   StreamBuilder<TestsRecord>(
                     stream: TestsRecord.getDocument(
-                        viewResultsTestedTestsRecord.testRef),
+                        viewResultsTestedTestsRecord.testRef!),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -73,17 +72,12 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                           ),
                         );
                       }
-                      final testResultsTestsRecord = snapshot.data;
+                      final testResultsTestsRecord = snapshot.data!;
                       return Material(
                         color: Colors.transparent,
                         elevation: 3,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(16),
-                            bottomRight: Radius.circular(16),
-                            topLeft: Radius.circular(0),
-                            topRight: Radius.circular(0),
-                          ),
+                          borderRadius: BorderRadius.circular(32),
                         ),
                         child: Container(
                           width: MediaQuery.of(context).size.width,
@@ -91,13 +85,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                             maxHeight: 710,
                           ),
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).tertiaryColor,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(16),
-                              bottomRight: Radius.circular(16),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
-                            ),
+                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            borderRadius: BorderRadius.circular(32),
                           ),
                           child: Padding(
                             padding:
@@ -115,8 +104,9 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .title1
                                           .override(
-                                            fontFamily: 'Roboto',
-                                            color: Color(0xFF586B06),
+                                            fontFamily: 'Open Sans',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                           ),
                                     ),
                                     InkWell(
@@ -136,10 +126,13 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                           borderColor: Colors.transparent,
                                           borderRadius: 30,
                                           buttonSize: 48,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryText,
                                           icon: Icon(
                                             Icons.close_rounded,
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .secondaryBackground,
                                             size: 30,
                                           ),
                                           onPressed: () async {
@@ -178,13 +171,13 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     5, 15, 0, 0),
                                             child: Text(
-                                              testResultsTestsRecord.name,
+                                              testResultsTestsRecord.name!,
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         fontSize: 17,
                                                       ),
                                             ),
@@ -199,9 +192,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                   children: [
                                     Stack(
                                       children: [
-                                        if (!(viewResultsTestedTestsRecord
-                                                .resultPosted) ??
-                                            true)
+                                        if (!viewResultsTestedTestsRecord
+                                            .resultPosted!)
                                           Container(
                                             width: 145,
                                             height: 32,
@@ -264,8 +256,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                           child: Stack(
                                             children: [
                                               if (functions.displayUnverifiedTag(
-                                                      viewResultsTestedTestsRecord) ??
-                                                  true)
+                                                  viewResultsTestedTestsRecord))
                                                 Container(
                                                   width: 130,
                                                   height: 32,
@@ -331,8 +322,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                   ),
                                                 ),
                                               if (functions.displayVerifiedTag(
-                                                      viewResultsTestedTestsRecord) ??
-                                                  true)
+                                                  viewResultsTestedTestsRecord))
                                                 Container(
                                                   width: 130,
                                                   height: 32,
@@ -417,7 +407,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                         title: Text(
                                                             'Remove Flag?'),
                                                         content: Text(
-                                                            'Are you sure you want to remove the flag on this test? The results can be published aftehr this.'),
+                                                            'Are you sure you want to remove the flag on this test? Reports can be generated for the same'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -448,6 +438,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                             await viewResultsTestedTestsRecord
                                                 .reference
                                                 .update(testedTestsUpdateData);
+                                          } else {
+                                            return;
                                           }
                                         },
                                         child: Container(
@@ -511,7 +503,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                   child: StreamBuilder<BookingsRecord>(
                                     stream: BookingsRecord.getDocument(
                                         viewResultsTestedTestsRecord
-                                            .bookingRef),
+                                            .bookingRef!),
                                     builder: (context, snapshot) {
                                       // Customize what your widget looks like when it's loading.
                                       if (!snapshot.hasData) {
@@ -529,7 +521,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                         );
                                       }
                                       final tabBarBookingsRecord =
-                                          snapshot.data;
+                                          snapshot.data!;
                                       return DefaultTabController(
                                         length: 4,
                                         initialIndex: 0,
@@ -537,7 +529,12 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                           children: [
                                             TabBar(
                                               isScrollable: true,
-                                              labelColor: Color(0xFF586B06),
+                                              labelColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              unselectedLabelColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle2,
@@ -614,9 +611,9 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         FontAwesomeIcons
                                                                             .server,
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .secondaryBackground,
                                                                         size:
-                                                                            24,
+                                                                            18,
                                                                       ),
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -630,8 +627,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
-                                                                                color: Color(0xFF586B06),
+                                                                                fontFamily: 'Open Sans',
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
                                                                         ),
@@ -682,7 +679,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Text(
-                                                                                tabBarBookingsRecord.labRefNum,
+                                                                                tabBarBookingsRecord.labRefNum!,
                                                                                 style: FlutterFlowTheme.of(context).subtitle1,
                                                                               ),
                                                                             ],
@@ -695,11 +692,11 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                               ],
                                                             ),
                                                           ),
-                                                          if (valueOrDefault(
-                                                                  currentUserDocument
-                                                                      ?.isStaff,
-                                                                  false) ??
-                                                              true)
+                                                          if (valueOrDefault<
+                                                                  bool>(
+                                                              currentUserDocument
+                                                                  ?.isStaff,
+                                                              false))
                                                             AuthUserStreamWidget(
                                                               child: Container(
                                                                 width: MediaQuery.of(
@@ -731,7 +728,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                           Icon(
                                                                             Icons.person,
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             size:
                                                                                 24,
                                                                           ),
@@ -745,8 +742,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 Text(
                                                                               'Patient',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
-                                                                                    color: Color(0xFF586B06),
+                                                                                    fontFamily: 'Open Sans',
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
                                                                             ),
@@ -832,7 +829,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         Icons
                                                                             .calendar_today,
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .secondaryBackground,
                                                                         size:
                                                                             24,
                                                                       ),
@@ -848,8 +845,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
-                                                                                color: Color(0xFF586B06),
+                                                                                fontFamily: 'Open Sans',
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
                                                                         ),
@@ -900,7 +897,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Text(
-                                                                                dateTimeFormat('d/M/y', viewResultsTestedTestsRecord.dateSampleCollected),
+                                                                                dateTimeFormat('d/M/y', viewResultsTestedTestsRecord.dateSampleCollected!),
                                                                                 style: FlutterFlowTheme.of(context).subtitle1,
                                                                               ),
                                                                             ],
@@ -944,7 +941,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         Icons
                                                                             .calendar_today,
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .secondaryBackground,
                                                                         size:
                                                                             24,
                                                                       ),
@@ -960,8 +957,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
-                                                                                color: Color(0xFF586B06),
+                                                                                fontFamily: 'Open Sans',
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
                                                                         ),
@@ -1012,7 +1009,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 MainAxisSize.max,
                                                                             children: [
                                                                               Text(
-                                                                                dateTimeFormat('d/M/y', viewResultsTestedTestsRecord.dateConducted),
+                                                                                dateTimeFormat('d/M/y', viewResultsTestedTestsRecord.dateConducted!),
                                                                                 style: FlutterFlowTheme.of(context).subtitle1,
                                                                               ),
                                                                             ],
@@ -1057,8 +1054,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Color(0xFF586B06),
+                                                                              fontFamily: 'Open Sans',
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
@@ -1121,11 +1118,11 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                               ],
                                                             ),
                                                           ),
-                                                          if (valueOrDefault(
-                                                                  currentUserDocument
-                                                                      ?.isStaff,
-                                                                  false) ??
-                                                              true)
+                                                          if (valueOrDefault<
+                                                                  bool>(
+                                                              currentUserDocument
+                                                                  ?.isStaff,
+                                                              false))
                                                             AuthUserStreamWidget(
                                                               child: Container(
                                                                 width: MediaQuery.of(
@@ -1157,8 +1154,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                           Text(
                                                                             'Technologist',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
-                                                                                  color: Color(0xFF586B06),
+                                                                                  fontFamily: 'Open Sans',
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -1238,9 +1235,6 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                 0.8,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryColor,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .only(
@@ -1294,7 +1288,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               FaIcon(
                                                                             FontAwesomeIcons.flask,
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             size:
                                                                                 18,
                                                                           ),
@@ -1309,10 +1303,10 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               Text(
                                                                             'Test Diagnosis',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
-                                                                                  color: Colors.white,
+                                                                                  fontFamily: 'Open Sans',
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontSize: 15,
-                                                                                  fontWeight: FontWeight.normal,
+                                                                                  fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -1339,7 +1333,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             boxShadow: [
                                                                               BoxShadow(
                                                                                 blurRadius: 4,
@@ -1386,8 +1380,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                       ),
                                                                       Visibility(
                                                                         visible:
-                                                                            !(viewResultsTestedTestsRecord.resultsPositive) ??
-                                                                                true,
+                                                                            !viewResultsTestedTestsRecord.resultsPositive!,
                                                                         child:
                                                                             Container(
                                                                           width:
@@ -1492,8 +1485,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Color(0xFF586B06),
+                                                                              fontFamily: 'Open Sans',
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
@@ -1508,8 +1501,9 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                   height: 100,
                                                                   decoration:
                                                                       BoxDecoration(
-                                                                    color: Color(
-                                                                        0x33FFFFFF),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
                                                                     borderRadius:
                                                                         BorderRadius
                                                                             .circular(8),
@@ -1533,10 +1527,10 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               4),
                                                                           child:
                                                                               Text(
-                                                                            viewResultsTestedTestsRecord.testResult,
+                                                                            viewResultsTestedTestsRecord.testResult!,
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
-                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                  fontFamily: 'Open Sans',
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -1587,8 +1581,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: Color(0xFF586B06),
+                                                                              fontFamily: 'Open Sans',
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
@@ -1603,8 +1597,9 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                   height: 100,
                                                                   decoration:
                                                                       BoxDecoration(
-                                                                    color: Color(
-                                                                        0x33FFFFFF),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
                                                                     borderRadius:
                                                                         BorderRadius
                                                                             .circular(8),
@@ -1634,10 +1629,10 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 4),
                                                                             child:
                                                                                 Text(
-                                                                              viewResultsTestedTestsRecord.testNote,
+                                                                              viewResultsTestedTestsRecord.testNote!,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
-                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    fontFamily: 'Open Sans',
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
                                                                             ),
@@ -1684,9 +1679,9 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         .subtitle2
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
-                                                                              Color(0xFF586B06),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                         ),
                                                                   ),
                                                                 ],
@@ -1759,7 +1754,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                         ),
                                                                         child:
                                                                             Row(
@@ -1773,8 +1768,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               child: Text(
                                                                                 '12.0 - 18.0',
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Roboto',
-                                                                                      color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                      fontFamily: 'Open Sans',
+                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -1782,14 +1777,12 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         ),
                                                                       ),
                                                                       Container(
-                                                                        width:
-                                                                            100,
                                                                         height:
                                                                             100,
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           borderRadius:
                                                                               BorderRadius.only(
                                                                             bottomLeft:
@@ -1810,12 +1803,12 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               MainAxisAlignment.center,
                                                                           children: [
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
                                                                               child: Text(
                                                                                 'gm/dl',
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                      fontFamily: 'Roboto',
-                                                                                      color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                      fontFamily: 'Open Sans',
+                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -1884,7 +1877,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .primaryText,
                                                                       ),
                                                                       child:
                                                                           Row(
@@ -1903,8 +1896,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 Text(
                                                                               '11.5 - 16.5',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
-                                                                                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                    fontFamily: 'Open Sans',
+                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -1912,14 +1905,12 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                       ),
                                                                     ),
                                                                     Container(
-                                                                      width:
-                                                                          100,
                                                                       height:
                                                                           100,
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .primaryText,
                                                                         borderRadius:
                                                                             BorderRadius.only(
                                                                           bottomLeft:
@@ -1943,14 +1934,14 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 5,
                                                                                 0,
-                                                                                0,
+                                                                                5,
                                                                                 0),
                                                                             child:
                                                                                 Text(
                                                                               'gm/dl',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
-                                                                                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                    fontFamily: 'Open Sans',
+                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -2001,9 +1992,9 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                           .subtitle2
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Roboto',
+                                                                                'Open Sans',
                                                                             color:
-                                                                                Color(0xFF586B06),
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                           ),
                                                                     ),
                                                                   ],
@@ -2017,47 +2008,59 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             5,
                                                                             0,
                                                                             0),
-                                                                child:
-                                                                    Container(
-                                                                  width: MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .width,
-                                                                  height: 190,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: Color(
-                                                                        0x32FFFFFF),
+                                                                child: Material(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  elevation: 1,
+                                                                  shape:
+                                                                      RoundedRectangleBorder(
                                                                     borderRadius:
                                                                         BorderRadius
                                                                             .circular(8),
                                                                   ),
                                                                   child:
-                                                                      Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8,
-                                                                            8,
-                                                                            8,
-                                                                            4),
+                                                                      Container(
+                                                                    width: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .width,
+                                                                    height: 190,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8),
+                                                                    ),
                                                                     child:
-                                                                        SingleChildScrollView(
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              8,
+                                                                              8,
+                                                                              8,
+                                                                              4),
                                                                       child:
-                                                                          Column(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        crossAxisAlignment:
-                                                                            CrossAxisAlignment.start,
-                                                                        children: [
-                                                                          Text(
-                                                                            'Maecenas orci turpis, pharetra quis mi ac, condimentum sodales libero. Maecenas eget dui et risus ullamcorper interdum eu non libero. Etiam eu ipsum at enim imperdiet bibendum non non magna. Aliquam eleifend dolor non lorem dignissim scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dictum nibh et massa pulvinar facilisis. Phasellus elit elit, fermentum vitae imperdiet sit amet, elementum id erat. Vivamus pellentesque facilisis erat non dictum. Nulla justo urna, luctus eget justo quis, venenatis mattis metus. Morbi velit ex, vestibulum eget dignissim a, porta eget orci. Aenean ac risus et lorem porttitor porttitor in non nunc. Ut bibendum dui ac nulla accumsan maximus. Etiam scelerisque odio nec lacus cursus porttitor.',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
-                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                  fontWeight: FontWeight.w500,
-                                                                                ),
-                                                                          ),
-                                                                        ],
+                                                                          SingleChildScrollView(
+                                                                        child:
+                                                                            Column(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          crossAxisAlignment:
+                                                                              CrossAxisAlignment.start,
+                                                                          children: [
+                                                                            Text(
+                                                                              'Maecenas orci turpis, pharetra quis mi ac, condimentum sodales libero. Maecenas eget dui et risus ullamcorper interdum eu non libero. Etiam eu ipsum at enim imperdiet bibendum non non magna. Aliquam eleifend dolor non lorem dignissim scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dictum nibh et massa pulvinar facilisis. Phasellus elit elit, fermentum vitae imperdiet sit amet, elementum id erat. Vivamus pellentesque facilisis erat non dictum. Nulla justo urna, luctus eget justo quis, venenatis mattis metus. Morbi velit ex, vestibulum eget dignissim a, porta eget orci. Aenean ac risus et lorem porttitor porttitor in non nunc. Ut bibendum dui ac nulla accumsan maximus. Etiam scelerisque odio nec lacus cursus porttitor.',
+                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    fontFamily: 'Open Sans',
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
+                                                                                    fontWeight: FontWeight.w500,
+                                                                                  ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -2082,10 +2085,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                             builder: (context) {
                                                               final resultAttachments =
                                                                   viewResultsTestedTestsRecord
-                                                                          .resultsAttachment
-                                                                          .toList()
-                                                                          ?.toList() ??
-                                                                      [];
+                                                                      .resultsAttachment!
+                                                                      .toList();
                                                               return ListView
                                                                   .builder(
                                                                 padding:
@@ -2180,7 +2181,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         StreamBuilder<UsersRecord>(
-                          stream: UsersRecord.getDocument(currentUserReference),
+                          stream:
+                              UsersRecord.getDocument(currentUserReference!),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -2196,7 +2198,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                 ),
                               );
                             }
-                            final stackUsersRecord = snapshot.data;
+                            final stackUsersRecord = snapshot.data!;
                             return Container(
                               width: MediaQuery.of(context).size.width * 0.9,
                               height: MediaQuery.of(context).size.height * 0.1,

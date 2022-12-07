@@ -8,16 +8,18 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditUserRoleWidget extends StatefulWidget {
   const EditUserRoleWidget({
-    Key key,
+    Key? key,
     this.userRef,
   }) : super(key: key);
 
-  final DocumentReference userRef;
+  final DocumentReference? userRef;
 
   @override
   _EditUserRoleWidgetState createState() => _EditUserRoleWidgetState();
@@ -25,32 +27,44 @@ class EditUserRoleWidget extends StatefulWidget {
 
 class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
     with TickerProviderStateMixin {
-  String userRolesValue;
-  bool switchListTileValue;
   final animationsMap = {
     'dropDownOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 200,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 100),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: Offset(0, 100),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
     ),
   };
+  String? userRolesValue;
+  bool? switchListTileValue;
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
   }
@@ -62,7 +76,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         StreamBuilder<UsersRecord>(
-          stream: UsersRecord.getDocument(widget.userRef),
+          stream: UsersRecord.getDocument(widget.userRef!),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
@@ -77,7 +91,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                 ),
               );
             }
-            final submitRoleUsersRecord = snapshot.data;
+            final submitRoleUsersRecord = snapshot.data!;
             return Container(
               constraints: BoxConstraints(
                 maxHeight: MediaQuery.of(context).size.height * 0.63,
@@ -126,7 +140,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .title2
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
                                           fontSize: 32,
                                           fontWeight: FontWeight.bold,
@@ -154,7 +168,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                           size: 30,
                                         ),
                                         onPressed: () async {
-                                          context.pop();
+                                          Navigator.pop(context);
                                         },
                                       ),
                                     ),
@@ -194,7 +208,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Open Sans',
                                                   color: Color(0xFF586B06),
                                                   fontWeight: FontWeight.w500,
                                                 ),
@@ -259,7 +273,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Open Sans',
                                                   color: Color(0xFF586B06),
                                                 ),
                                           ),
@@ -286,12 +300,13 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Text(
-                                                    submitRoleUsersRecord.role,
+                                                    submitRoleUsersRecord.role!,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryColor,
@@ -327,16 +342,17 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                       Expanded(
                                         child: SwitchListTile.adaptive(
                                           value: switchListTileValue ??=
-                                              submitRoleUsersRecord.isStaff,
-                                          onChanged: (newValue) => setState(
-                                              () => switchListTileValue =
-                                                  newValue),
+                                              submitRoleUsersRecord.isStaff!,
+                                          onChanged: (newValue) async {
+                                            setState(() => switchListTileValue =
+                                                newValue!);
+                                          },
                                           title: Text(
                                             'Is Staff?',
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Open Sans',
                                                   color: Color(0xFF586B06),
                                                 ),
                                           ),
@@ -345,7 +361,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .subtitle2
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryColor,
@@ -379,7 +395,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 16, 0, 0),
-                                    child: FlutterFlowDropDown(
+                                    child: FlutterFlowDropDown<String>(
                                       initialOption: userRolesValue ??=
                                           submitRoleUsersRecord.role,
                                       options: [
@@ -418,10 +434,8 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                       margin: EdgeInsetsDirectional.fromSTEB(
                                           20, 20, 12, 20),
                                       hidesUnderline: true,
-                                    ).animated([
-                                      animationsMap[
-                                          'dropDownOnPageLoadAnimation']
-                                    ]),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'dropDownOnPageLoadAnimation']!),
                                   ),
                                 ),
                             ],
@@ -445,8 +459,10 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                   );
                                   await submitRoleUsersRecord.reference
                                       .update(usersUpdateData);
+
                                   context.pushNamed('UserList');
-                                  if (switchListTileValue) {
+
+                                  if (switchListTileValue!) {
                                     final staffCreateData =
                                         createStaffRecordData(
                                       email: submitRoleUsersRecord.email,
@@ -470,7 +486,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiaryColor,
                                       ),

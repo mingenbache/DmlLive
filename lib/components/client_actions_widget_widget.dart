@@ -7,7 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ClientActionsWidgetWidget extends StatefulWidget {
-  const ClientActionsWidgetWidget({Key key}) : super(key: key);
+  const ClientActionsWidgetWidget({Key? key}) : super(key: key);
 
   @override
   _ClientActionsWidgetWidgetState createState() =>
@@ -46,6 +46,7 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
                 child: InkWell(
                   onTap: () async {
                     setState(() => FFAppState().userListQuery = '');
+
                     context.pushNamed('UserList');
                   },
                   child: Material(
@@ -194,7 +195,7 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
                           child: TestListCatalogWidget(),
                         );
                       },
-                    );
+                    ).then((value) => setState(() {}));
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.2,

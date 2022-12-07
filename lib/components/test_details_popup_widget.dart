@@ -15,13 +15,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TestDetailsPopupWidget extends StatefulWidget {
   const TestDetailsPopupWidget({
-    Key key,
+    Key? key,
     this.test,
     this.booking,
   }) : super(key: key);
 
-  final TestsRecord test;
-  final DocumentReference booking;
+  final TestsRecord? test;
+  final DocumentReference? booking;
 
   @override
   _TestDetailsPopupWidgetState createState() => _TestDetailsPopupWidgetState();
@@ -96,8 +96,8 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                         gradient: LinearGradient(
                           colors: [
                             Color(0x00FFFFFF),
-                            Color(0x92BACA68),
-                            FlutterFlowTheme.of(context).tertiaryColor
+                            FlutterFlowTheme.of(context).secondaryColor,
+                            FlutterFlowTheme.of(context).secondaryColor
                           ],
                           stops: [0, 0.3, 0.4],
                           begin: AlignmentDirectional(0, -1),
@@ -149,8 +149,8 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                               ],
                             ),
                             StreamBuilder<UsersRecord>(
-                              stream:
-                                  UsersRecord.getDocument(currentUserReference),
+                              stream: UsersRecord.getDocument(
+                                  currentUserReference!),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
@@ -166,7 +166,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                     ),
                                   );
                                 }
-                                final columnUsersRecord = snapshot.data;
+                                final columnUsersRecord = snapshot.data!;
                                 return SingleChildScrollView(
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -184,13 +184,14 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(15, 0, 0, 0),
                                               child: AutoSizeText(
-                                                widget.test.name,
+                                                widget.test!.name!,
                                                 textAlign: TextAlign.start,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .title1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Open Sans',
                                                           color: Colors.white,
                                                         ),
                                               ),
@@ -198,7 +199,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                           ),
                                         ],
                                       ),
-                                      if (!(widget.test.isAvailable) ?? true)
+                                      if (!widget.test!.isAvailable!)
                                         Align(
                                           alignment:
                                               AlignmentDirectional(0.8, 0),
@@ -215,9 +216,9 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                               (alertDialogContext) {
                                                             return AlertDialog(
                                                               title: Text(
-                                                                  'Unsuspend Test?'),
+                                                                  'Confirm Unsuspend?'),
                                                               content: Text(
-                                                                  'Unsuspending will allow client bookings for this test.'),
+                                                                  'This test will be available for booking again.'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -225,7 +226,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                           alertDialogContext,
                                                                           false),
                                                                   child: Text(
-                                                                      'Cancel'),
+                                                                      'No, Cancel'),
                                                                 ),
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -233,7 +234,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                           alertDialogContext,
                                                                           true),
                                                                   child: Text(
-                                                                      'Confirm'),
+                                                                      'Yes, Proceed'),
                                                                 ),
                                                               ],
                                                             );
@@ -245,22 +246,27 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                       createTestsRecordData(
                                                     isAvailable: true,
                                                   );
-                                                  await widget.test.reference
+                                                  await widget.test!.reference
                                                       .update(testsUpdateData);
+                                                } else {
+                                                  return;
                                                 }
+
                                                 await showDialog(
                                                   context: context,
                                                   builder:
                                                       (alertDialogContext) {
                                                     return AlertDialog(
-                                                      title: Text(
-                                                          'Test Unsuspended!'),
+                                                      title: Text('Success'),
+                                                      content: Text(
+                                                          'Test now Active'),
                                                       actions: [
                                                         TextButton(
                                                           onPressed: () =>
                                                               Navigator.pop(
                                                                   alertDialogContext),
-                                                          child: Text('Ok'),
+                                                          child:
+                                                              Text('Dismiss'),
                                                         ),
                                                       ],
                                                     );
@@ -301,7 +307,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
+                                                                .primaryText,
                                                         size: 20,
                                                       ),
                                                       Padding(
@@ -319,7 +325,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                     'Lexend Deca',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryColor,
+                                                                    .primaryText,
                                                                 fontSize: 14,
                                                                 fontWeight:
                                                                     FontWeight
@@ -341,8 +347,6 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                             MediaQuery.of(context).size.height *
                                                 0.47,
                                         decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
                                           borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(0),
                                             bottomRight: Radius.circular(0),
@@ -357,15 +361,18 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                             children: [
                                               TabBar(
                                                 isScrollable: true,
-                                                labelColor: Color(0xFF586B06),
+                                                labelColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
                                                 unselectedLabelColor:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryColor,
+                                                        .primaryText,
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Open Sans',
                                                           fontSize: 16,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -428,8 +435,8 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                             13,
                                                                             0),
                                                                 child: Text(
-                                                                  widget.test
-                                                                      .description,
+                                                                  widget.test!
+                                                                      .description!,
                                                                   textAlign:
                                                                       TextAlign
                                                                           .start,
@@ -440,7 +447,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         fontFamily:
                                                                             'Roboto',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .primaryText,
                                                                         fontSize:
                                                                             14,
                                                                         fontWeight:
@@ -497,13 +504,13 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              Colors.white,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           shape:
                                                                               BoxShape.circle,
                                                                           border:
                                                                               Border.all(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             width:
                                                                                 2,
                                                                           ),
@@ -513,7 +520,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                           Icons
                                                                               .schedule_sharp,
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).primaryColor,
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
                                                                           size:
                                                                               24,
                                                                         ),
@@ -526,7 +533,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                         ),
                                                                       ),
                                                                     ],
@@ -554,7 +561,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         BoxDecoration(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryColor,
+                                                                          .primaryText,
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               8),
@@ -641,13 +648,13 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).primaryColor,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           shape:
                                                                               BoxShape.circle,
                                                                           border:
                                                                               Border.all(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             width:
                                                                                 2,
                                                                           ),
@@ -670,7 +677,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                         ),
                                                                       ),
                                                                     ],
@@ -698,7 +705,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         BoxDecoration(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryColor,
+                                                                          .primaryText,
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               8),
@@ -795,12 +802,12 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).primaryColor,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             shape:
                                                                                 BoxShape.circle,
                                                                             border:
                                                                                 Border.all(
-                                                                              color: FlutterFlowTheme.of(context).alternate,
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               width: 2,
                                                                             ),
                                                                           ),
@@ -832,7 +839,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                           ),
                                                                         ),
                                                                       ],
@@ -861,7 +868,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         BoxDecoration(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryColor,
+                                                                          .primaryText,
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               8),
@@ -948,13 +955,13 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).primaryColor,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           shape:
                                                                               BoxShape.circle,
                                                                           border:
                                                                               Border.all(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             width:
                                                                                 2,
                                                                           ),
@@ -982,11 +989,11 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              Color(0xFFBACA68),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           border:
                                                                               Border.all(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             width:
                                                                                 2,
                                                                           ),
@@ -1000,13 +1007,13 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).primaryColor,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           shape:
                                                                               BoxShape.circle,
                                                                           border:
                                                                               Border.all(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             width:
                                                                                 2,
                                                                           ),
@@ -1051,7 +1058,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         BoxDecoration(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryColor,
+                                                                          .primaryText,
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               8),
@@ -1148,12 +1155,12 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).primaryColor,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             shape:
                                                                                 BoxShape.circle,
                                                                             border:
                                                                                 Border.all(
-                                                                              color: FlutterFlowTheme.of(context).alternate,
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               width: 2,
                                                                             ),
                                                                           ),
@@ -1185,7 +1192,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                           ),
                                                                         ),
                                                                       ],
@@ -1214,7 +1221,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         BoxDecoration(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryColor,
+                                                                          .primaryText,
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               8),
@@ -1301,11 +1308,11 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              Color(0xFFBACA68),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           border:
                                                                               Border.all(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             width:
                                                                                 2,
                                                                           ),
@@ -1325,7 +1332,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                           border:
                                                                               Border.all(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).alternate,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             width:
                                                                                 2,
                                                                           ),
@@ -1339,7 +1346,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                           children: [
                                                                             Icon(
                                                                               Icons.check_sharp,
-                                                                              color: FlutterFlowTheme.of(context).alternate,
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               size: 24,
                                                                             ),
                                                                           ],
@@ -1370,7 +1377,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                         BoxDecoration(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryColor,
+                                                                          .primaryText,
                                                                       borderRadius:
                                                                           BorderRadius.circular(
                                                                               8),
@@ -1470,7 +1477,8 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                 .fromSTEB(
                                                                     8, 4, 8, 4),
                                                         child: Text(
-                                                          widget.test.category,
+                                                          widget
+                                                              .test!.category!,
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: FlutterFlowTheme
@@ -1478,10 +1486,10 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryColor,
+                                                                    .primaryText,
                                                               ),
                                                         ),
                                                       ),
@@ -1494,7 +1502,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                   children: [
                                                     Text(
                                                       formatNumber(
-                                                        widget.test.price,
+                                                        widget.test!.price!,
                                                         formatType:
                                                             FormatType.decimal,
                                                         decimalType: DecimalType
@@ -1507,9 +1515,10 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                               .subtitle2
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
-                                                                color: Color(
-                                                                    0xFF586B06),
+                                                                    'Open Sans',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
                                                               ),
                                                     ),
                                                   ],
@@ -1539,21 +1548,19 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                   children: [
                     Stack(
                       children: [
-                        if (!(valueOrDefault(
-                                currentUserDocument?.isStaff, false)) ??
-                            true)
+                        if (!valueOrDefault<bool>(
+                            currentUserDocument?.isStaff, false))
                           AuthUserStreamWidget(
                             child: TestActionsWidgetWidget(
                               test: widget.test,
                               bookingRef: widget.booking,
                             ),
                           ),
-                        if (valueOrDefault(
-                                currentUserDocument?.isStaff, false) ??
-                            true)
+                        if (valueOrDefault<bool>(
+                            currentUserDocument?.isStaff, false))
                           AuthUserStreamWidget(
                             child: AdminTestActionsWidget(
-                              testRef: widget.test.reference,
+                              testRef: widget.test!.reference,
                             ),
                           ),
                       ],

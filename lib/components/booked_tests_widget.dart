@@ -11,11 +11,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class BookedTestsWidget extends StatefulWidget {
   const BookedTestsWidget({
-    Key key,
+    Key? key,
     this.bookingRef,
   }) : super(key: key);
 
-  final DocumentReference bookingRef;
+  final DocumentReference? bookingRef;
 
   @override
   _BookedTestsWidgetState createState() => _BookedTestsWidgetState();
@@ -46,13 +46,13 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
             );
           }
           List<BookedTestsRecord>
-              bookedTestsReportContainerBookedTestsRecordList = snapshot.data;
+              bookedTestsReportContainerBookedTestsRecordList = snapshot.data!;
           return Container(
             constraints: BoxConstraints(
               maxHeight: 170,
             ),
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).tertiaryColor,
+              color: FlutterFlowTheme.of(context).primaryText,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Padding(
@@ -60,9 +60,7 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
               child: Builder(
                 builder: (context) {
                   final bookingTests =
-                      bookedTestsReportContainerBookedTestsRecordList
-                              ?.toList() ??
-                          [];
+                      bookedTestsReportContainerBookedTestsRecordList.toList();
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     primary: false,
@@ -94,10 +92,10 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                               );
                             }
                             List<TestedTestsRecord>
-                                containerTestedTestsRecordList = snapshot.data;
+                                containerTestedTestsRecordList = snapshot.data!;
                             return InkWell(
                               onTap: () async {
-                                if (bookingTestsItem.sampleCollected) {
+                                if (bookingTestsItem.sampleCollected!) {
                                   await showModalBottomSheet(
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
@@ -115,7 +113,7 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                         ),
                                       );
                                     },
-                                  );
+                                  ).then((value) => setState(() {}));
                                 } else {
                                   return;
                                 }
@@ -158,7 +156,7 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                         );
                                       }
                                       final rowBookedTestsRecord =
-                                          snapshot.data;
+                                          snapshot.data!;
                                       return Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -166,7 +164,7 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                         children: [
                                           StreamBuilder<TestsRecord>(
                                             stream: TestsRecord.getDocument(
-                                                bookingTestsItem.testRef),
+                                                bookingTestsItem.testRef!),
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
                                               if (!snapshot.hasData) {
@@ -185,21 +183,22 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                                 );
                                               }
                                               final textTestsRecord =
-                                                  snapshot.data;
+                                                  snapshot.data!;
                                               return Text(
                                                 functions.upperCase(
                                                     textTestsRecord.name),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryColor,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               );
                                             },
                                           ),
@@ -377,11 +376,10 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                                                 ),
                                                               ),
                                                               if (functions.testedTestSubmitted(functions.returnTestedTest(
-                                                                      containerTestedTestsRecordList
-                                                                          .toList(),
-                                                                      bookingTestsItem
-                                                                          .reference)) ??
-                                                                  true)
+                                                                  containerTestedTestsRecordList
+                                                                      .toList(),
+                                                                  bookingTestsItem
+                                                                      .reference)))
                                                                 Container(
                                                                   decoration:
                                                                       BoxDecoration(
@@ -437,11 +435,10 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                                                 ),
                                                               ),
                                                               if (functions.testedTestVerified(functions.returnTestedTest(
-                                                                      containerTestedTestsRecordList
-                                                                          .toList(),
-                                                                      bookingTestsItem
-                                                                          .reference)) ??
-                                                                  true)
+                                                                  containerTestedTestsRecordList
+                                                                      .toList(),
+                                                                  bookingTestsItem
+                                                                      .reference)))
                                                                 Container(
                                                                   decoration:
                                                                       BoxDecoration(

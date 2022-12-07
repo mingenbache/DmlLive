@@ -7,11 +7,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class DateWidgetSmallWidget extends StatefulWidget {
   const DateWidgetSmallWidget({
-    Key key,
+    Key? key,
     this.date,
   }) : super(key: key);
 
-  final DateTime date;
+  final DateTime? date;
 
   @override
   _DateWidgetSmallWidgetState createState() => _DateWidgetSmallWidgetState();
@@ -29,16 +29,17 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
       child: Container(
         height: 30,
         constraints: BoxConstraints(
+          maxWidth: 80,
           maxHeight: 30,
         ),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: FlutterFlowTheme.of(context).primaryText,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(2, 0, 2, 0),
           child: Row(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0),
@@ -50,8 +51,9 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
                   child: Text(
                     functions.dateDay(widget.date),
                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Roboto',
-                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          fontFamily: 'Open Sans',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
                         ),
@@ -70,8 +72,9 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
                       child: Text(
                         functions.dateMonth(widget.date),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Roboto',
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                              fontFamily: 'Open Sans',
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                             ),
@@ -85,7 +88,7 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
                       child: Text(
                         functions.dateYear(widget.date),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'Open Sans',
                               color:
                                   FlutterFlowTheme.of(context).secondaryColor,
                               fontSize: 11,

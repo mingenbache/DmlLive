@@ -1,5 +1,5 @@
 import '../backend/backend.dart';
-import '../components/client_user_card_widget.dart';
+import '../components/client_user_cardx_widget.dart';
 import '../components/staff_user_chat_card_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -12,19 +12,25 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class UserListChatWidget extends StatefulWidget {
-  const UserListChatWidget({Key key}) : super(key: key);
+  const UserListChatWidget({Key? key}) : super(key: key);
 
   @override
   _UserListChatWidgetState createState() => _UserListChatWidgetState();
 }
 
 class _UserListChatWidgetState extends State<UserListChatWidget> {
-  TextEditingController textController;
+  TextEditingController? textController;
 
   @override
   void initState() {
     super.initState();
     textController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    textController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -95,7 +101,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: Colors.white,
                                     ),
                               ),
@@ -213,13 +219,36 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                               topRight: Radius.circular(4.0),
                                             ),
                                           ),
-                                          suffixIcon: textController
+                                          errorBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 1,
+                                            ),
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                              topLeft: Radius.circular(4.0),
+                                              topRight: Radius.circular(4.0),
+                                            ),
+                                          ),
+                                          focusedErrorBorder:
+                                              UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 1,
+                                            ),
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                              topLeft: Radius.circular(4.0),
+                                              topRight: Radius.circular(4.0),
+                                            ),
+                                          ),
+                                          suffixIcon: textController!
                                                   .text.isNotEmpty
                                               ? InkWell(
-                                                  onTap: () => setState(
-                                                    () =>
-                                                        textController?.clear(),
-                                                  ),
+                                                  onTap: () async {
+                                                    textController?.clear();
+                                                    setState(() {});
+                                                  },
                                                   child: Icon(
                                                     Icons.clear,
                                                     color: FlutterFlowTheme.of(
@@ -320,7 +349,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                     }
                                                     List<UsersRecord>
                                                         clientUserContainerUsersRecordList =
-                                                        snapshot.data;
+                                                        snapshot.data!;
                                                     return Container(
                                                       width:
                                                           MediaQuery.of(context)
@@ -358,7 +387,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                         builder: (context) {
                                                           final clients = functions
                                                                   .returnUserList(
-                                                                      textController
+                                                                      textController!
                                                                           .text,
                                                                       clientUserContainerUsersRecordList
                                                                           .toList())
@@ -398,9 +427,11 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                                         'Chat',
                                                                         queryParams:
                                                                             {
-                                                                          'chatUser': serializeParam(
-                                                                              clientsItem,
-                                                                              ParamType.Document),
+                                                                          'chatUser':
+                                                                              serializeParam(
+                                                                            clientsItem,
+                                                                            ParamType.Document,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                         extra: <
                                                                             String,
@@ -411,7 +442,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                                       );
                                                                     },
                                                                     child:
-                                                                        ClientUserCardWidget(
+                                                                        ClientUserCardxWidget(
                                                                       userRecord:
                                                                           clientsItem,
                                                                     ),
@@ -451,7 +482,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                   }
                                                   List<UsersRecord>
                                                       staffUserContainerUsersRecordList =
-                                                      snapshot.data;
+                                                      snapshot.data!;
                                                   return Container(
                                                     width:
                                                         MediaQuery.of(context)
@@ -471,7 +502,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                       builder: (context) {
                                                         final staff = functions
                                                                 .returnUserList(
-                                                                    textController
+                                                                    textController!
                                                                         .text,
                                                                     staffUserContainerUsersRecordList
                                                                         .toList())
@@ -514,9 +545,11 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                                         'Chat',
                                                                         queryParams:
                                                                             {
-                                                                          'chatUser': serializeParam(
-                                                                              staffItem,
-                                                                              ParamType.Document),
+                                                                          'chatUser':
+                                                                              serializeParam(
+                                                                            staffItem,
+                                                                            ParamType.Document,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                         extra: <
                                                                             String,

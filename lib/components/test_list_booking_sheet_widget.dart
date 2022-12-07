@@ -11,16 +11,18 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TestListBookingSheetWidget extends StatefulWidget {
   const TestListBookingSheetWidget({
-    Key key,
+    Key? key,
     this.bookingRef,
   }) : super(key: key);
 
-  final DocumentReference bookingRef;
+  final DocumentReference? bookingRef;
 
   @override
   _TestListBookingSheetWidgetState createState() =>
@@ -29,29 +31,39 @@ class TestListBookingSheetWidget extends StatefulWidget {
 
 class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
     with TickerProviderStateMixin {
-  TextEditingController textController1;
-  TextEditingController textController2;
+  TextEditingController? textController1;
+  TextEditingController? textController2;
+  var hasButtonTriggered = false;
   final animationsMap = {
     'buttonOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
     ),
   };
 
   @override
   void initState() {
     super.initState();
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
 
@@ -60,9 +72,16 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
   }
 
   @override
+  void dispose() {
+    textController1?.dispose();
+    textController2?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder<BookingsRecord>(
-      stream: BookingsRecord.getDocument(widget.bookingRef),
+      stream: BookingsRecord.getDocument(widget.bookingRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -77,7 +96,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
             ),
           );
         }
-        final containerBookingsRecord = snapshot.data;
+        final containerBookingsRecord = snapshot.data!;
         return Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -124,16 +143,16 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              Color(0x542F2F2F),
-                              FlutterFlowTheme.of(context).tertiaryColor
+                              Color(0x786CD7B7),
+                              FlutterFlowTheme.of(context).secondaryBackground
                             ],
                             stops: [0, 0.4],
                             begin: AlignmentDirectional(0, -1),
                             end: AlignmentDirectional(0, 1),
                           ),
                           borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(16),
-                            bottomRight: Radius.circular(16),
+                            bottomLeft: Radius.circular(49),
+                            bottomRight: Radius.circular(49),
                             topLeft: Radius.circular(30),
                             topRight: Radius.circular(30),
                           ),
@@ -156,11 +175,11 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'ADD TESTS',
+                                      'SELECT TESTS',
                                       style: FlutterFlowTheme.of(context)
                                           .title1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Open Sans',
                                             color: Colors.white,
                                           ),
                                     ),
@@ -181,10 +200,13 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                           borderColor: Colors.transparent,
                                           borderRadius: 30,
                                           buttonSize: 48,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
                                           icon: Icon(
                                             Icons.close_rounded,
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .primaryText,
                                             size: 30,
                                           ),
                                           onPressed: () async {
@@ -219,13 +241,16 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                     children: [
                                       TabBar(
                                         isScrollable: true,
+                                        labelColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        unselectedLabelColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primaryText,
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Roboto',
-                                              fontSize: 15,
-                                            ),
-                                        indicatorColor: Colors.white,
+                                            .subtitle2,
+                                        indicatorColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
                                         tabs: [
                                           Tab(
                                             text: 'Tests',
@@ -282,7 +307,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                   .search_rounded,
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .secondaryColor,
+                                                                  .primaryText,
                                                               size: 24,
                                                             ),
                                                           ),
@@ -323,7 +348,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                         fontFamily:
                                                                             'Roboto',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .primaryText,
                                                                         fontSize:
                                                                             16,
                                                                         fontWeight:
@@ -335,8 +360,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Roboto',
-                                                                        color: Color(
-                                                                            0xFF586B06),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
                                                                         fontSize:
                                                                             16,
                                                                         fontWeight:
@@ -380,15 +405,53 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                               4.0),
                                                                     ),
                                                                   ),
-                                                                  suffixIcon: textController1
+                                                                  errorBorder:
+                                                                      UnderlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Color(
+                                                                          0x00000000),
+                                                                      width: 1,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        const BorderRadius
+                                                                            .only(
+                                                                      topLeft: Radius
+                                                                          .circular(
+                                                                              4.0),
+                                                                      topRight:
+                                                                          Radius.circular(
+                                                                              4.0),
+                                                                    ),
+                                                                  ),
+                                                                  focusedErrorBorder:
+                                                                      UnderlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Color(
+                                                                          0x00000000),
+                                                                      width: 1,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        const BorderRadius
+                                                                            .only(
+                                                                      topLeft: Radius
+                                                                          .circular(
+                                                                              4.0),
+                                                                      topRight:
+                                                                          Radius.circular(
+                                                                              4.0),
+                                                                    ),
+                                                                  ),
+                                                                  suffixIcon: textController1!
                                                                           .text
                                                                           .isNotEmpty
                                                                       ? InkWell(
-                                                                          onTap: () =>
-                                                                              setState(
-                                                                            () =>
-                                                                                textController1?.clear(),
-                                                                          ),
+                                                                          onTap:
+                                                                              () async {
+                                                                            textController1?.clear();
+                                                                            setState(() {});
+                                                                          },
                                                                           child:
                                                                               Icon(
                                                                             Icons.clear,
@@ -440,10 +503,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                       children: [
                                                         Stack(
                                                           children: [
-                                                            if (!(functions.isCategorySelected(
+                                                            if (!functions
+                                                                .isCategorySelected(
                                                                     FFAppState()
-                                                                        .categorypicked)) ??
-                                                                true)
+                                                                        .categorypicked))
                                                               InkWell(
                                                                 onTap:
                                                                     () async {
@@ -467,7 +530,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                   decoration:
                                                                       BoxDecoration(
                                                                     color: Color(
-                                                                        0x35EEEEEE),
+                                                                        0x4EEEEEEE),
                                                                     borderRadius:
                                                                         BorderRadius.circular(
                                                                             10),
@@ -487,9 +550,9 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Roboto',
+                                                                                'Open Sans',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             fontWeight:
                                                                                 FontWeight.w500,
                                                                           ),
@@ -498,8 +561,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                 ),
                                                               ),
                                                             if (FFAppState()
-                                                                    .allCategories ??
-                                                                true)
+                                                                .allCategories)
                                                               Material(
                                                                 color: Colors
                                                                     .transparent,
@@ -521,8 +583,9 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                   ),
                                                                   decoration:
                                                                       BoxDecoration(
-                                                                    color: Colors
-                                                                        .white,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     borderRadius:
                                                                         BorderRadius.circular(
                                                                             10),
@@ -542,9 +605,9 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Roboto',
+                                                                                'Open Sans',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             fontWeight:
                                                                                 FontWeight.w500,
                                                                           ),
@@ -587,10 +650,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                             }
                                                             List<CategoriesRecord>
                                                                 containerCategoriesRecordList =
-                                                                snapshot.data;
+                                                                snapshot.data!;
                                                             // Return an empty Container when the document does not exist.
-                                                            if (snapshot
-                                                                .data.isEmpty) {
+                                                            if (snapshot.data!
+                                                                .isEmpty) {
                                                               return Container();
                                                             }
                                                             final containerCategoriesRecord =
@@ -630,11 +693,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                 child: Builder(
                                                                   builder:
                                                                       (context) {
-                                                                    final testCategories = containerCategoriesRecord
-                                                                            .categories
-                                                                            .toList()
-                                                                            ?.toList() ??
-                                                                        [];
+                                                                    final testCategories =
+                                                                        containerCategoriesRecord!
+                                                                            .categories!
+                                                                            .toList();
                                                                     return ListView
                                                                         .builder(
                                                                       padding:
@@ -652,8 +714,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                             testCategories[testCategoriesIndex];
                                                                         return Stack(
                                                                           children: [
-                                                                            if ((FFAppState().categorypicked) ==
-                                                                                (testCategoriesItem))
+                                                                            if (FFAppState().categorypicked ==
+                                                                                testCategoriesItem)
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                                                                                 child: Container(
@@ -666,7 +728,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                     child: Text(
                                                                                       testCategoriesItem,
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Roboto',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontSize: 16,
                                                                                           ),
@@ -697,8 +759,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                       child: Text(
                                                                                         testCategoriesItem,
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Roboto',
-                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                              fontFamily: 'Open Sans',
+                                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                                               fontSize: 16,
                                                                                             ),
                                                                                       ),
@@ -752,7 +814,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                       }
                                                       List<TestsRecord>
                                                           testListWidgetTestsRecordList =
-                                                          snapshot.data;
+                                                          snapshot.data!;
                                                       return Container(
                                                         width: MediaQuery.of(
                                                                 context)
@@ -770,8 +832,6 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                         ),
                                                         decoration:
                                                             BoxDecoration(
-                                                          color:
-                                                              Color(0x30FFFFFF),
                                                           borderRadius:
                                                               BorderRadius.only(
                                                             bottomLeft:
@@ -792,7 +852,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                             UsersRecord>(
                                                           stream: UsersRecord
                                                               .getDocument(
-                                                                  currentUserReference),
+                                                                  currentUserReference!),
                                                           builder: (context,
                                                               snapshot) {
                                                             // Customize what your widget looks like when it's loading.
@@ -813,17 +873,21 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                               );
                                                             }
                                                             final listViewUsersRecord =
-                                                                snapshot.data;
+                                                                snapshot.data!;
                                                             return Builder(
                                                               builder:
                                                                   (context) {
                                                                 final testsListFullPage = functions
-                                                                        .filterTestsByCategory(
-                                                                            FFAppState().allCategories,
-                                                                            FFAppState().categorypicked,
-                                                                            functions.returnSearchTests(textController1.text, testListWidgetTestsRecordList.toList()).toList())
-                                                                        ?.toList() ??
-                                                                    [];
+                                                                    .filterTestsByCategory(
+                                                                        FFAppState()
+                                                                            .allCategories,
+                                                                        FFAppState()
+                                                                            .categorypicked,
+                                                                        functions
+                                                                            .returnSearchTests(textController1!.text,
+                                                                                testListWidgetTestsRecordList.toList())
+                                                                            .toList())
+                                                                    .toList();
                                                                 return ListView
                                                                     .builder(
                                                                   padding:
@@ -846,7 +910,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                               0,
                                                                               0,
                                                                               0,
-                                                                              10),
+                                                                              15),
                                                                       child:
                                                                           Container(
                                                                         height:
@@ -941,7 +1005,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                     .search_rounded,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryColor,
+                                                                    .primaryText,
                                                                 size: 24,
                                                               ),
                                                             ),
@@ -982,7 +1046,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                           fontFamily:
                                                                               'Roboto',
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               16,
                                                                           fontWeight:
@@ -995,7 +1059,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                           fontFamily:
                                                                               'Roboto',
                                                                           color:
-                                                                              Color(0xFF586B06),
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               16,
                                                                           fontWeight:
@@ -1037,18 +1101,55 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                             Radius.circular(4.0),
                                                                       ),
                                                                     ),
-                                                                    suffixIcon: textController2
+                                                                    errorBorder:
+                                                                        UnderlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0x00000000),
+                                                                        width:
+                                                                            1,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          const BorderRadius
+                                                                              .only(
+                                                                        topLeft:
+                                                                            Radius.circular(4.0),
+                                                                        topRight:
+                                                                            Radius.circular(4.0),
+                                                                      ),
+                                                                    ),
+                                                                    focusedErrorBorder:
+                                                                        UnderlineInputBorder(
+                                                                      borderSide:
+                                                                          BorderSide(
+                                                                        color: Color(
+                                                                            0x00000000),
+                                                                        width:
+                                                                            1,
+                                                                      ),
+                                                                      borderRadius:
+                                                                          const BorderRadius
+                                                                              .only(
+                                                                        topLeft:
+                                                                            Radius.circular(4.0),
+                                                                        topRight:
+                                                                            Radius.circular(4.0),
+                                                                      ),
+                                                                    ),
+                                                                    suffixIcon: textController2!
                                                                             .text
                                                                             .isNotEmpty
                                                                         ? InkWell(
-                                                                            onTap: () =>
-                                                                                setState(
-                                                                              () => textController2?.clear(),
-                                                                            ),
+                                                                            onTap:
+                                                                                () async {
+                                                                              textController2?.clear();
+                                                                              setState(() {});
+                                                                            },
                                                                             child:
                                                                                 Icon(
                                                                               Icons.clear,
-                                                                              color: Color(0xFF586B06),
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               size: 18,
                                                                             ),
                                                                           )
@@ -1060,8 +1161,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Roboto',
-                                                                        color: Colors
-                                                                            .white,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
                                                                         fontSize:
                                                                             20,
                                                                         fontWeight:
@@ -1096,10 +1197,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                         children: [
                                                           Stack(
                                                             children: [
-                                                              if (!(functions.isCategorySelected(
+                                                              if (!functions
+                                                                  .isCategorySelected(
                                                                       FFAppState()
-                                                                          .packagecategoryPicked)) ??
-                                                                  true)
+                                                                          .packagecategoryPicked))
                                                                 InkWell(
                                                                   onTap:
                                                                       () async {
@@ -1140,7 +1241,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
@@ -1149,8 +1250,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                   ),
                                                                 ),
                                                               if (FFAppState()
-                                                                      .allPackageCategories ??
-                                                                  true)
+                                                                  .allPackageCategories)
                                                                 Material(
                                                                   color: Colors
                                                                       .transparent,
@@ -1191,8 +1291,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
-                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                              fontFamily: 'Open Sans',
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
@@ -1236,9 +1336,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                               }
                                                               List<CategoriesRecord>
                                                                   containerCategoriesRecordList =
-                                                                  snapshot.data;
+                                                                  snapshot
+                                                                      .data!;
                                                               // Return an empty Container when the document does not exist.
-                                                              if (snapshot.data
+                                                              if (snapshot.data!
                                                                   .isEmpty) {
                                                                 return Container();
                                                               }
@@ -1279,9 +1380,9 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                       Builder(
                                                                     builder:
                                                                         (context) {
-                                                                      final packageCategories =
-                                                                          containerCategoriesRecord.categories.toList()?.toList() ??
-                                                                              [];
+                                                                      final packageCategories = containerCategoriesRecord!
+                                                                          .categories!
+                                                                          .toList();
                                                                       return ListView
                                                                           .builder(
                                                                         padding:
@@ -1297,7 +1398,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                               packageCategories[packageCategoriesIndex];
                                                                           return Stack(
                                                                             children: [
-                                                                              if ((FFAppState().categorypicked) == (packageCategoriesItem))
+                                                                              if (FFAppState().categorypicked == packageCategoriesItem)
                                                                                 Padding(
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                                                                                   child: Container(
@@ -1310,8 +1411,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                       child: Text(
                                                                                         packageCategoriesItem,
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                              fontFamily: 'Roboto',
-                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                              fontFamily: 'Open Sans',
+                                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                                               fontSize: 16,
                                                                                             ),
                                                                                       ),
@@ -1341,8 +1442,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                         child: Text(
                                                                                           packageCategoriesItem,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                fontFamily: 'Roboto',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                fontFamily: 'Open Sans',
+                                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                                                 fontSize: 16,
                                                                                               ),
                                                                                         ),
@@ -1391,7 +1492,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                         }
                                                         List<TestPackagesRecord>
                                                             testPackageWidgetTestPackagesRecordList =
-                                                            snapshot.data;
+                                                            snapshot.data!;
                                                         return Container(
                                                           width: MediaQuery.of(
                                                                   context)
@@ -1399,22 +1500,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                               .width,
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: Color(
-                                                                0x30FFFFFF),
                                                             borderRadius:
                                                                 BorderRadius
-                                                                    .only(
-                                                              bottomLeft: Radius
-                                                                  .circular(0),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          0),
-                                                              topLeft: Radius
-                                                                  .circular(49),
-                                                              topRight: Radius
-                                                                  .circular(49),
-                                                            ),
+                                                                    .circular(
+                                                                        49),
                                                           ),
                                                           child:
                                                               SingleChildScrollView(
@@ -1428,7 +1517,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                     UsersRecord>(
                                                                   stream: UsersRecord
                                                                       .getDocument(
-                                                                          currentUserReference),
+                                                                          currentUserReference!),
                                                                   builder: (context,
                                                                       snapshot) {
                                                                     // Customize what your widget looks like when it's loading.
@@ -1453,13 +1542,17 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                     }
                                                                     final listViewUsersRecord =
                                                                         snapshot
-                                                                            .data;
+                                                                            .data!;
                                                                     return Builder(
                                                                       builder:
                                                                           (context) {
-                                                                        final packageList =
-                                                                            functions.filterPackages(FFAppState().allPackageCategories, FFAppState().packagecategoryPicked, textController2.text, testPackageWidgetTestPackagesRecordList.toList())?.toList() ??
-                                                                                [];
+                                                                        final packageList = functions
+                                                                            .filterPackages(
+                                                                                FFAppState().allPackageCategories,
+                                                                                FFAppState().packagecategoryPicked,
+                                                                                textController2!.text,
+                                                                                testPackageWidgetTestPackagesRecordList.toList())
+                                                                            .toList();
                                                                         return ListView
                                                                             .builder(
                                                                           padding:
@@ -1477,7 +1570,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                             final packageListItem =
                                                                                 packageList[packageListIndex];
                                                                             return Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
                                                                               child: Container(
                                                                                 height: 100,
                                                                                 decoration: BoxDecoration(),
@@ -1537,12 +1630,12 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                           options: FFButtonOptions(
                             width: 240,
                             height: 70,
-                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            color: FlutterFlowTheme.of(context).secondaryText,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                          .primaryBackground,
                                     ),
                             elevation: 2,
                             borderSide: BorderSide(
@@ -1551,8 +1644,9 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                             ),
                             borderRadius: BorderRadius.circular(25),
                           ),
-                        ).animated(
-                            [animationsMap['buttonOnActionTriggerAnimation']]),
+                        ).animateOnActionTrigger(
+                            animationsMap['buttonOnActionTriggerAnimation']!,
+                            hasBeenTriggered: hasButtonTriggered),
                       ],
                     ),
                   ],

@@ -12,8 +12,11 @@ import 'package:flutter/material.dart';
 import '../../index.dart';
 import '../../main.dart';
 
+final _handledMessageIds = <String?>{};
+
 class PushNotificationsHandler extends StatefulWidget {
-  const PushNotificationsHandler({Key key, this.child}) : super(key: key);
+  const PushNotificationsHandler({Key? key, required this.child})
+      : super(key: key);
 
   final Widget child;
 
@@ -38,7 +41,14 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
   }
 
   Future _handlePushNotification(RemoteMessage message) async {
-    setState(() => _loading = true);
+    if (_handledMessageIds.contains(message.messageId)) {
+      return;
+    }
+    _handledMessageIds.add(message.messageId);
+
+    if (mounted) {
+      setState(() => _loading = true);
+    }
     try {
       final initialPageName = message.data['initialPageName'] as String;
       final initialParameterData = getInitialParameterData(message.data);
@@ -53,7 +63,9 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
     } catch (e) {
       print('Error: $e');
     } finally {
-      setState(() => _loading = false);
+      if (mounted) {
+        setState(() => _loading = false);
+      }
     }
   }
 
@@ -79,31 +91,16 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
 }
 
 final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
-  'Login': (data) async => LoginWidget(),
+  'Home': (data) async => HomeWidget(),
   'Details': (data) async => DetailsWidget(
         testId: getParameter(data, 'testId'),
       ),
   'NewTest': (data) async => NewTestWidget(),
-  'Signup': (data) async => SignupWidget(),
-  'NewBooking': (data) async => NewBookingWidget(
-        bookingRef: getParameter(data, 'bookingRef'),
-      ),
-  'Account': (data) async => AccountWidget(),
-  'Messages': (data) async => MessagesWidget(),
-  'Settings': (data) async => SettingsWidget(),
-  'ScheduledTests': (data) async => ScheduledTestsWidget(),
   'UserList': (data) async => UserListWidget(
         staffFilter: getParameter(data, 'staffFilter'),
         userNameQUery: getParameter(data, 'userNameQUery'),
       ),
-  'HomeAdmin': (data) async => HomeAdminWidget(),
-  'BookingConfirmation': (data) async => BookingConfirmationWidget(
-        bookingRef: getParameter(data, 'bookingRef'),
-      ),
   'AllTests': (data) async => AllTestsWidget(),
-  'BookingInvoicing': (data) async => BookingInvoicingWidget(
-        bookingRef: getParameter(data, 'bookingRef'),
-      ),
   'ModifyTest': (data) async => ModifyTestWidget(
         testId: getParameter(data, 'testId'),
       ),
@@ -113,11 +110,11 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'Invoice': (data) async => InvoiceWidget(
         invoiceRef: getParameter(data, 'invoiceRef'),
       ),
-  'AddPayment': (data) async => AddPaymentWidget(
-        invoiceRef: getParameter(data, 'invoiceRef'),
-      ),
   'LabReport': (data) async => LabReportWidget(
         bookingRef: getParameter(data, 'bookingRef'),
+      ),
+  'AddPayment': (data) async => AddPaymentWidget(
+        invoiceRef: getParameter(data, 'invoiceRef'),
       ),
   'ReportList': (data) async => ReportListWidget(),
   'TestDeck': (data) async => TestDeckWidget(
@@ -126,13 +123,14 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'InvoiceList': (data) async => InvoiceListWidget(),
   'editUser': (data) async => EditUserWidget(),
   'TestedTests': (data) async => TestedTestsWidget(),
-  'PaymentsList': (data) async => PaymentsListWidget(),
-  'BookingsSchedule': (data) async => BookingsScheduleWidget(),
+  'Login': (data) async => LoginWidget(),
   'MyBookings': (data) async => MyBookingsWidget(),
+  'Signup': (data) async => SignupWidget(),
   'myInvoiceList': (data) async => MyInvoiceListWidget(),
   'myReportList': (data) async => MyReportListWidget(),
+  'Settings': (data) async => SettingsWidget(),
   'TestQueue': (data) async => TestQueueWidget(),
-  'TestedTestsCopy': (data) async => TestedTestsCopyWidget(),
+  'TestConsole': (data) async => TestConsoleWidget(),
   'Chat': (data) async => ChatWidget(
         chatUser: await getDocumentParameter(
             data, 'chatUser', UsersRecord.serializer),
@@ -144,6 +142,24 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
       ),
   'BookingReport': (data) async => BookingReportWidget(
         reportRef: getParameter(data, 'reportRef'),
+      ),
+  'myPayments': (data) async => MyPaymentsWidget(),
+  'NewBooking': (data) async => NewBookingWidget(
+        bookingRef: getParameter(data, 'bookingRef'),
+      ),
+  'myAccount': (data) async => MyAccountWidget(),
+  'HomeAdmin': (data) async => HomeAdminWidget(),
+  'PaymentsList': (data) async => PaymentsListWidget(),
+  'ScheduledTests': (data) async => ScheduledTestsWidget(),
+  'BookingsSchedule': (data) async => BookingsScheduleWidget(),
+  'BookingConfirmation': (data) async => BookingConfirmationWidget(
+        bookingRef: getParameter(data, 'bookingRef'),
+      ),
+  'Messages': (data) async => MessagesWidget(),
+  'HomeCopy': (data) async => HomeCopyWidget(),
+  'HomeAdminCopy': (data) async => HomeAdminCopyWidget(),
+  'BookingInvoicing': (data) async => BookingInvoicingWidget(
+        bookingRef: getParameter(data, 'bookingRef'),
       ),
 };
 

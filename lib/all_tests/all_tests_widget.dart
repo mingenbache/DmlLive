@@ -13,15 +13,15 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AllTestsWidget extends StatefulWidget {
-  const AllTestsWidget({Key key}) : super(key: key);
+  const AllTestsWidget({Key? key}) : super(key: key);
 
   @override
   _AllTestsWidgetState createState() => _AllTestsWidgetState();
 }
 
 class _AllTestsWidgetState extends State<AllTestsWidget> {
-  List<TestsRecord> algoliaSearchResults = [];
-  TextEditingController textController;
+  List<TestsRecord>? algoliaSearchResults = [];
+  TextEditingController? textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -31,9 +31,15 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
   }
 
   @override
+  void dispose() {
+    textController?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder<UsersRecord>(
-      stream: UsersRecord.getDocument(currentUserReference),
+      stream: UsersRecord.getDocument(currentUserReference!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -48,12 +54,12 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
             ),
           );
         }
-        final allTestsUsersRecord = snapshot.data;
+        final allTestsUsersRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
           floatingActionButton: Visibility(
-            visible: (allTestsUsersRecord.role) == 'admin',
+            visible: allTestsUsersRecord.role == 'admin',
             child: FloatingActionButton.extended(
               onPressed: () async {
                 context.pushNamed('NewTest');
@@ -68,7 +74,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
               label: Text(
                 'ADD NEW TEST',
                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                      fontFamily: 'Roboto',
+                      fontFamily: 'Open Sans',
                       color: FlutterFlowTheme.of(context).tertiaryColor,
                     ),
               ),
@@ -79,7 +85,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
               child: StreamBuilder<BookingsRecord>(
                 stream: BookingsRecord.getDocument(
-                    allTestsUsersRecord.currentBooking),
+                    allTestsUsersRecord.currentBooking!),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
@@ -94,7 +100,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                       ),
                     );
                   }
-                  final columnBookingsRecord = snapshot.data;
+                  final columnBookingsRecord = snapshot.data!;
                   return Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -108,7 +114,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                             'TEST CATALOG',
                             textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context).title1.override(
-                                  fontFamily: 'Roboto',
+                                  fontFamily: 'Open Sans',
                                   color: Color(0xFF586B06),
                                 ),
                           ),
@@ -166,6 +172,27 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                             topRight: Radius.circular(4.0),
                                           ),
                                         ),
+                                        errorBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
@@ -187,7 +214,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                       setState(
                                           () => algoliaSearchResults = null);
                                       await TestsRecord.search(
-                                        term: textController.text,
+                                        term: textController!.text,
                                       )
                                           .then((r) => algoliaSearchResults = r)
                                           .onError((_, __) =>
@@ -235,7 +262,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
                                             fontWeight: FontWeight.w500,
@@ -279,7 +306,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                       }
                                       List<CategoriesRecord>
                                           listViewCategoriesRecordList =
-                                          snapshot.data;
+                                          snapshot.data!;
                                       final listViewCategoriesRecord =
                                           listViewCategoriesRecordList
                                                   .isNotEmpty
@@ -289,11 +316,9 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                       return Builder(
                                         builder: (context) {
                                           final categories =
-                                              listViewCategoriesRecord
-                                                      .categories
-                                                      .toList()
-                                                      ?.toList() ??
-                                                  [];
+                                              listViewCategoriesRecord!
+                                                  .categories!
+                                                  .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             scrollDirection: Axis.horizontal,
@@ -325,7 +350,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Open Sans',
                                                                 fontSize: 16,
                                                               ),
                                                     ),
@@ -349,7 +374,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                           queryBuilder: (testsRecord) => testsRecord
                               .where('is_available', isEqualTo: true)
                               .where('Keywords',
-                                  arrayContains: textController.text),
+                                  arrayContains: textController!.text),
                         ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
@@ -367,7 +392,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                             );
                           }
                           List<TestsRecord> testListWidgetTestsRecordList =
-                              snapshot.data;
+                              snapshot.data!;
                           return Container(
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.height * 1,
@@ -381,8 +406,8 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                               ),
                             ),
                             child: StreamBuilder<UsersRecord>(
-                              stream:
-                                  UsersRecord.getDocument(currentUserReference),
+                              stream: UsersRecord.getDocument(
+                                  currentUserReference!),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
@@ -398,13 +423,11 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                     ),
                                   );
                                 }
-                                final listViewUsersRecord = snapshot.data;
+                                final listViewUsersRecord = snapshot.data!;
                                 return Builder(
                                   builder: (context) {
                                     final testsListFullPage =
-                                        testListWidgetTestsRecordList
-                                                ?.toList() ??
-                                            [];
+                                        testListWidgetTestsRecordList.toList();
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
                                       scrollDirection: Axis.vertical,
@@ -491,7 +514,9 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                         ),
                                                                       );
                                                                     },
-                                                                  );
+                                                                  ).then((value) =>
+                                                                      setState(
+                                                                          () {}));
                                                                 },
                                                                 child:
                                                                     Container(
@@ -547,7 +572,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                               child: Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                                                                 child: Text(
-                                                                                  testsListFullPageItem.name,
+                                                                                  testsListFullPageItem.name!,
                                                                                   style: FlutterFlowTheme.of(context).subtitle1,
                                                                                 ),
                                                                               ),
@@ -584,7 +609,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                                     child: Padding(
                                                                                       padding: EdgeInsetsDirectional.fromSTEB(0, 4, 5, 0),
                                                                                       child: Text(
-                                                                                        testsListFullPageItem.category,
+                                                                                        testsListFullPageItem.category!,
                                                                                         textAlign: TextAlign.center,
                                                                                         style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                               fontFamily: 'Roboto',
@@ -611,7 +636,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                                           size: 24,
                                                                                         ),
                                                                                         Text(
-                                                                                          'Results in ${testsListFullPageItem.durationResults.toString()} Hrs',
+                                                                                          'Results in ${testsListFullPageItem.durationResults?.toString()} Hrs',
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Roboto',
                                                                                                 color: FlutterFlowTheme.of(context).primaryColor,
@@ -673,7 +698,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                                                         fontWeight: FontWeight.w500,
                                                                                                       ),
                                                                                                 ),
-                                                                                                if (!(testsListFullPageItem.homeTest) ?? true)
+                                                                                                if (!testsListFullPageItem.homeTest!)
                                                                                                   Align(
                                                                                                     alignment: AlignmentDirectional(1, 0),
                                                                                                     child: Icon(
@@ -721,7 +746,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
                                                                                                   child: Text(
                                                                                                     formatNumber(
-                                                                                                      testsListFullPageItem.price,
+                                                                                                      testsListFullPageItem.price!,
                                                                                                       formatType: FormatType.decimal,
                                                                                                       decimalType: DecimalType.periodDecimal,
                                                                                                       currency: 'Ksh ',
@@ -754,11 +779,11 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                             Stack(
                                                               children: [
                                                                 if (columnBookingsRecord
-                                                                        .testsIncluded
-                                                                        .toList()
-                                                                        ?.contains(
-                                                                            testsListFullPageItem.reference) ??
-                                                                    true)
+                                                                    .testsIncluded!
+                                                                    .toList()
+                                                                    .contains(
+                                                                        testsListFullPageItem
+                                                                            .reference))
                                                                   Align(
                                                                     alignment:
                                                                         AlignmentDirectional(
@@ -778,13 +803,13 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                       child:
                                                                           Visibility(
                                                                         visible:
-                                                                            (listViewUsersRecord.role) ==
+                                                                            listViewUsersRecord.role ==
                                                                                 'client',
                                                                         child:
                                                                             InkWell(
                                                                           onTap:
                                                                               () async {
-                                                                            if (!(columnBookingsRecord.testsIncluded.toList().contains(testsListFullPageItem.reference))) {
+                                                                            if (!columnBookingsRecord.testsIncluded!.toList().contains(testsListFullPageItem.reference)) {
                                                                               final bookingsUpdateData = {
                                                                                 ...createBookingsRecordData(
                                                                                   totalPrice: functions.removeFromCart(columnBookingsRecord.totalPrice, testsListFullPageItem.price),
@@ -799,7 +824,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                             ScaffoldMessenger.of(context).showSnackBar(
                                                                               SnackBar(
                                                                                 content: Text(
-                                                                                  'Test Removed.${columnBookingsRecord.totalTests.toString()} Tests in Total.',
+                                                                                  'Test Removed.${columnBookingsRecord.totalTests?.toString()} Tests in Total.',
                                                                                   style: TextStyle(),
                                                                                 ),
                                                                                 duration: Duration(milliseconds: 4000),
@@ -819,12 +844,12 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                if (!(columnBookingsRecord
-                                                                        .testsIncluded
-                                                                        .toList()
-                                                                        .contains(
-                                                                            testsListFullPageItem.reference)) ??
-                                                                    true)
+                                                                if (!columnBookingsRecord
+                                                                    .testsIncluded!
+                                                                    .toList()
+                                                                    .contains(
+                                                                        testsListFullPageItem
+                                                                            .reference))
                                                                   Align(
                                                                     alignment:
                                                                         AlignmentDirectional(
@@ -844,13 +869,13 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                       child:
                                                                           Visibility(
                                                                         visible:
-                                                                            (listViewUsersRecord.role) ==
+                                                                            listViewUsersRecord.role ==
                                                                                 'client',
                                                                         child:
                                                                             InkWell(
                                                                           onTap:
                                                                               () async {
-                                                                            if (!(columnBookingsRecord.testsIncluded.toList().contains(testsListFullPageItem.reference))) {
+                                                                            if (!columnBookingsRecord.testsIncluded!.toList().contains(testsListFullPageItem.reference)) {
                                                                               final bookingsUpdateData = {
                                                                                 ...createBookingsRecordData(
                                                                                   totalPrice: functions.addCartTotal(columnBookingsRecord.totalPrice, testsListFullPageItem.price),
@@ -865,7 +890,7 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                             ScaffoldMessenger.of(context).showSnackBar(
                                                                               SnackBar(
                                                                                 content: Text(
-                                                                                  'Test Added.${columnBookingsRecord.totalTests.toString()} Tests in Total.',
+                                                                                  'Test Added.${columnBookingsRecord.totalTests?.toString()} Tests in Total.',
                                                                                   style: TextStyle(),
                                                                                 ),
                                                                                 duration: Duration(milliseconds: 4000),

@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DashboardMenuWidgetWidget extends StatefulWidget {
-  const DashboardMenuWidgetWidget({Key key}) : super(key: key);
+  const DashboardMenuWidgetWidget({Key? key}) : super(key: key);
 
   @override
   _DashboardMenuWidgetWidgetState createState() =>
@@ -57,7 +57,7 @@ class _DashboardMenuWidgetWidgetState extends State<DashboardMenuWidgetWidget> {
                             textAlign: TextAlign.center,
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFFBACA68),
                                       fontSize: 12,
                                     ),
@@ -110,7 +110,7 @@ class _DashboardMenuWidgetWidgetState extends State<DashboardMenuWidgetWidget> {
                             textAlign: TextAlign.center,
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFFBACA68),
                                       fontSize: 12,
                                     ),
@@ -163,7 +163,7 @@ class _DashboardMenuWidgetWidgetState extends State<DashboardMenuWidgetWidget> {
                             textAlign: TextAlign.center,
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFFBACA68),
                                       fontSize: 12,
                                     ),
@@ -215,7 +215,7 @@ class _DashboardMenuWidgetWidgetState extends State<DashboardMenuWidgetWidget> {
                             textAlign: TextAlign.center,
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFFBACA68),
                                       fontSize: 12,
                                     ),

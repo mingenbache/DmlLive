@@ -8,11 +8,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PaymentsContainerWidget extends StatefulWidget {
   const PaymentsContainerWidget({
-    Key key,
+    Key? key,
     this.invoice,
   }) : super(key: key);
 
-  final InvoicesRecord invoice;
+  final InvoicesRecord? invoice;
 
   @override
   _PaymentsContainerWidgetState createState() =>
@@ -30,7 +30,7 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
       decoration: BoxDecoration(),
       child: Builder(
         builder: (context) {
-          final payments = widget.invoice.paymentsList.toList()?.toList() ?? [];
+          final payments = widget.invoice!.paymentsList!.toList();
           return ListView.builder(
             padding: EdgeInsets.zero,
             scrollDirection: Axis.vertical,
@@ -55,7 +55,7 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                         ),
                       );
                     }
-                    final containerPaymentsRecord = snapshot.data;
+                    final containerPaymentsRecord = snapshot.data!;
                     return InkWell(
                       onTap: () async {
                         await showModalBottomSheet(
@@ -70,7 +70,7 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                               ),
                             );
                           },
-                        );
+                        ).then((value) => setState(() {}));
                       },
                       child: Material(
                         color: Colors.transparent,
@@ -102,12 +102,12 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                                       5, 9, 5, 5),
                                   child: Text(
                                     dateTimeFormat('d/M/y',
-                                        containerPaymentsRecord.createdDate),
+                                        containerPaymentsRecord.createdDate!),
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -125,12 +125,12 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       7, 9, 5, 5),
                                   child: Text(
-                                    containerPaymentsRecord.transactionCode
+                                    containerPaymentsRecord.transactionCode!
                                         .maybeHandleOverflow(maxChars: 8),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryColor,
                                           fontWeight: FontWeight.normal,
@@ -153,11 +153,11 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       9, 9, 5, 5),
                                   child: Text(
-                                    containerPaymentsRecord.type,
+                                    containerPaymentsRecord.type!,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Open Sans',
                                           color: Colors.white,
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -176,7 +176,7 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                                       5, 9, 5, 5),
                                   child: Text(
                                     formatNumber(
-                                      containerPaymentsRecord.amount,
+                                      containerPaymentsRecord.amount!,
                                       formatType: FormatType.decimal,
                                       decimalType: DecimalType.periodDecimal,
                                       currency: 'Ksh ',
@@ -185,7 +185,7 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
                                           fontWeight: FontWeight.w500,
                                         ),

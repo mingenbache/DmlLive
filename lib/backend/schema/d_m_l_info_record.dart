@@ -10,32 +10,25 @@ abstract class DMLInfoRecord
     implements Built<DMLInfoRecord, DMLInfoRecordBuilder> {
   static Serializer<DMLInfoRecord> get serializer => _$dMLInfoRecordSerializer;
 
-  @nullable
-  String get url;
+  String? get url;
 
-  @nullable
-  String get primaryEmail;
+  String? get primaryEmail;
 
-  @nullable
   @BuiltValueField(wireName: 'phone_numbers')
-  BuiltList<String> get phoneNumbers;
+  BuiltList<String>? get phoneNumbers;
 
-  @nullable
   @BuiltValueField(wireName: 'DML_Logo')
-  String get dMLLogo;
+  String? get dMLLogo;
 
-  @nullable
-  BuiltList<String> get footerReferences;
+  BuiltList<String>? get footerReferences;
 
-  @nullable
-  String get location;
+  String? get location;
 
-  @nullable
-  bool get isMain;
+  bool? get isMain;
 
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(DMLInfoRecordBuilder builder) => builder
     ..url = ''
@@ -51,11 +44,11 @@ abstract class DMLInfoRecord
 
   static Stream<DMLInfoRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   static Future<DMLInfoRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   DMLInfoRecord._();
   factory DMLInfoRecord([void Function(DMLInfoRecordBuilder) updates]) =
@@ -64,23 +57,29 @@ abstract class DMLInfoRecord
   static DMLInfoRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
 Map<String, dynamic> createDMLInfoRecordData({
-  String url,
-  String primaryEmail,
-  String dMLLogo,
-  String location,
-  bool isMain,
-}) =>
-    serializers.toFirestore(
-        DMLInfoRecord.serializer,
-        DMLInfoRecord((d) => d
-          ..url = url
-          ..primaryEmail = primaryEmail
-          ..phoneNumbers = null
-          ..dMLLogo = dMLLogo
-          ..footerReferences = null
-          ..location = location
-          ..isMain = isMain));
+  String? url,
+  String? primaryEmail,
+  String? dMLLogo,
+  String? location,
+  bool? isMain,
+}) {
+  final firestoreData = serializers.toFirestore(
+    DMLInfoRecord.serializer,
+    DMLInfoRecord(
+      (d) => d
+        ..url = url
+        ..primaryEmail = primaryEmail
+        ..phoneNumbers = null
+        ..dMLLogo = dMLLogo
+        ..footerReferences = null
+        ..location = location
+        ..isMain = isMain,
+    ),
+  );
+
+  return firestoreData;
+}

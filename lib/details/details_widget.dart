@@ -8,17 +8,19 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DetailsWidget extends StatefulWidget {
   const DetailsWidget({
-    Key key,
+    Key? key,
     this.testId,
   }) : super(key: key);
 
-  final DocumentReference testId;
+  final DocumentReference? testId;
 
   @override
   _DetailsWidgetState createState() => _DetailsWidgetState();
@@ -26,38 +28,45 @@ class DetailsWidget extends StatefulWidget {
 
 class _DetailsWidgetState extends State<DetailsWidget>
     with TickerProviderStateMixin {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  var hasButtonTriggered1 = false;
+  var hasButtonTriggered2 = false;
   final animationsMap = {
     'buttonOnActionTriggerAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
     ),
     'buttonOnActionTriggerAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
     ),
   };
-  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
   }
@@ -65,7 +74,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<UsersRecord>(
-      stream: UsersRecord.getDocument(currentUserReference),
+      stream: UsersRecord.getDocument(currentUserReference!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -80,13 +89,13 @@ class _DetailsWidgetState extends State<DetailsWidget>
             ),
           );
         }
-        final detailsUsersRecord = snapshot.data;
+        final detailsUsersRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
           body: SafeArea(
             child: StreamBuilder<TestsRecord>(
-              stream: TestsRecord.getDocument(widget.testId),
+              stream: TestsRecord.getDocument(widget.testId!),
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {
@@ -101,13 +110,13 @@ class _DetailsWidgetState extends State<DetailsWidget>
                     ),
                   );
                 }
-                final columnTestsRecord = snapshot.data;
+                final columnTestsRecord = snapshot.data!;
                 return Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     TopActionsWidget(),
                     StreamBuilder<UsersRecord>(
-                      stream: UsersRecord.getDocument(currentUserReference),
+                      stream: UsersRecord.getDocument(currentUserReference!),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -123,7 +132,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                             ),
                           );
                         }
-                        final columnUsersRecord = snapshot.data;
+                        final columnUsersRecord = snapshot.data!;
                         return SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -139,12 +148,12 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           15, 0, 0, 0),
                                       child: Text(
-                                        columnTestsRecord.name,
+                                        columnTestsRecord.name!,
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Open Sans',
                                               color: Color(0xFF586B06),
                                             ),
                                       ),
@@ -155,15 +164,16 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                     decoration: BoxDecoration(),
                                     child: Visibility(
                                       visible:
-                                          (columnUsersRecord.role) == 'admin',
+                                          columnUsersRecord.role == 'admin',
                                       child: FFButtonWidget(
                                         onPressed: () async {
                                           context.pushNamed(
                                             'ModifyTest',
                                             queryParams: {
                                               'testId': serializeParam(
-                                                  widget.testId,
-                                                  ParamType.DocumentReference),
+                                                widget.testId,
+                                                ParamType.DocumentReference,
+                                              ),
                                             }.withoutNulls,
                                           );
                                         },
@@ -181,7 +191,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                   context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .tertiaryColor,
@@ -221,7 +231,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Open Sans',
                                               fontSize: 16,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -256,7 +266,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                       .fromSTEB(13, 13, 13, 0),
                                                   child: Text(
                                                     columnTestsRecord
-                                                        .description,
+                                                        .description!,
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -734,7 +744,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         fontSize: 32,
                                                       ),
                                             ),
@@ -779,7 +789,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                           ),
                                           Text(
                                             formatNumber(
-                                              columnTestsRecord.price,
+                                              columnTestsRecord.price!,
                                               formatType: FormatType.decimal,
                                               decimalType:
                                                   DecimalType.periodDecimal,
@@ -801,17 +811,18 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(8, 4, 8, 4),
                                               child: Text(
-                                                columnTestsRecord.category,
+                                                columnTestsRecord.category!,
                                                 textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                        ),
+                                                    ),
                                               ),
                                             ),
                                           ),
@@ -830,7 +841,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                       padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                       child: StreamBuilder<BookingsRecord>(
                         stream: BookingsRecord.getDocument(
-                            detailsUsersRecord.currentBooking),
+                            detailsUsersRecord.currentBooking!),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
@@ -846,7 +857,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                               ),
                             );
                           }
-                          final containerBookingsRecord = snapshot.data;
+                          final containerBookingsRecord = snapshot.data!;
                           return Container(
                             width: MediaQuery.of(context).size.width * 0.9,
                             decoration: BoxDecoration(
@@ -886,17 +897,17 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                       ),
                                       borderRadius: BorderRadius.circular(30),
                                     ),
-                                  ).animated([
-                                    animationsMap[
-                                        'buttonOnActionTriggerAnimation1']
-                                  ]),
+                                  ).animateOnActionTrigger(
+                                      animationsMap[
+                                          'buttonOnActionTriggerAnimation1']!,
+                                      hasBeenTriggered: hasButtonTriggered1),
                                   FFButtonWidget(
                                     onPressed: () async {
-                                      if (!(containerBookingsRecord
-                                          .testsIncluded
+                                      if (!containerBookingsRecord
+                                          .testsIncluded!
                                           .toList()
                                           .contains(
-                                              columnTestsRecord.reference))) {
+                                              columnTestsRecord.reference)) {
                                         final bookingsUpdateData = {
                                           ...createBookingsRecordData(
                                             totalPrice: functions.addCartTotal(
@@ -918,7 +929,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                           .showSnackBar(
                                         SnackBar(
                                           content: Text(
-                                            'Test Added! ${containerBookingsRecord.totalTests.toString()}Tests in total.',
+                                            'Test Added! ${containerBookingsRecord.totalTests?.toString()}Tests in total.',
                                             style: TextStyle(),
                                           ),
                                           duration:
@@ -956,10 +967,10 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                       ),
                                       borderRadius: BorderRadius.circular(30),
                                     ),
-                                  ).animated([
-                                    animationsMap[
-                                        'buttonOnActionTriggerAnimation2']
-                                  ]),
+                                  ).animateOnActionTrigger(
+                                      animationsMap[
+                                          'buttonOnActionTriggerAnimation2']!,
+                                      hasBeenTriggered: hasButtonTriggered2),
                                 ],
                               ),
                             ),

@@ -10,11 +10,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AdminTestActionsWidget extends StatefulWidget {
   const AdminTestActionsWidget({
-    Key key,
+    Key? key,
     this.testRef,
   }) : super(key: key);
 
-  final DocumentReference testRef;
+  final DocumentReference? testRef;
 
   @override
   _AdminTestActionsWidgetState createState() => _AdminTestActionsWidgetState();
@@ -34,7 +34,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             StreamBuilder<TestsRecord>(
-              stream: TestsRecord.getDocument(widget.testRef),
+              stream: TestsRecord.getDocument(widget.testRef!),
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {
@@ -49,7 +49,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                     ),
                   );
                 }
-                final containerTestsRecord = snapshot.data;
+                final containerTestsRecord = snapshot.data!;
                 return Material(
                   color: Colors.transparent,
                   elevation: 4,
@@ -92,7 +92,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                       ),
                                     );
                                   },
-                                );
+                                ).then((value) => setState(() {}));
                               },
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.5,
@@ -131,7 +131,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Roboto',
+                                                    fontFamily: 'Open Sans',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .tertiaryColor,
@@ -167,7 +167,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                         title: Text(
                                                             'Suspend Test?'),
                                                         content: Text(
-                                                            'Suspending the test will disable client bookings for this test.'),
+                                                            'This test will no longer be available for booking'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -195,8 +195,12 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                 createTestsRecordData(
                                               isAvailable: false,
                                             );
-                                            await widget.testRef
+                                            await widget.testRef!
                                                 .update(testsUpdateData);
+                                            Navigator.pop(context);
+                                          } else {
+                                            Navigator.pop(context);
+                                            return;
                                           }
                                         },
                                         child: Container(
@@ -243,7 +247,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .tertiaryColor,
@@ -259,8 +263,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                           ),
                                         ),
                                       ),
-                                    if (!(containerTestsRecord.isAvailable) ??
-                                        true)
+                                    if (!containerTestsRecord.isAvailable!)
                                       InkWell(
                                         onTap: () async {
                                           var confirmDialogResponse =
@@ -270,9 +273,9 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                         (alertDialogContext) {
                                                       return AlertDialog(
                                                         title: Text(
-                                                            'Unsuspend Test?'),
+                                                            'Reactivate Test'),
                                                         content: Text(
-                                                            'Unsuspending will allow client bookings for this test.'),
+                                                            'This test can be booked afterwards.'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
@@ -287,8 +290,8 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                                 Navigator.pop(
                                                                     alertDialogContext,
                                                                     true),
-                                                            child:
-                                                                Text('Confirm'),
+                                                            child: Text(
+                                                                'Reactivate'),
                                                           ),
                                                         ],
                                                       );
@@ -300,26 +303,31 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                 createTestsRecordData(
                                               isAvailable: true,
                                             );
-                                            await widget.testRef
+                                            await widget.testRef!
                                                 .update(testsUpdateData);
+                                          } else {
+                                            return;
                                           }
+
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
-                                                title:
-                                                    Text('Test Unsuspended!'),
+                                                title: Text('Success'),
+                                                content:
+                                                    Text('Test Reactivated'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: Text('Ok'),
+                                                    child: Text('Okay'),
                                                   ),
                                                 ],
                                               );
                                             },
                                           );
+                                          Navigator.pop(context);
                                         },
                                         child: Container(
                                           width: MediaQuery.of(context)
@@ -364,7 +372,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .tertiaryColor,

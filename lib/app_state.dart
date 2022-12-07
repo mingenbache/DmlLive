@@ -25,18 +25,19 @@ class FFAppState {
     _testPackTests = prefs
             .getStringList('ff_testPackTests')
             ?.map((path) => path.ref)
-            ?.toList() ??
+            .toList() ??
         _testPackTests;
     _testPackSubmit = prefs.getBool('ff_testPackSubmit') ?? _testPackSubmit;
+    _firstTime = prefs.getBool('ff_firstTime') ?? _firstTime;
   }
 
-  SharedPreferences prefs;
+  late SharedPreferences prefs;
 
   String labRef = '';
 
-  DateTime datepicked;
+  DateTime? datepicked;
 
-  DateTime selectedDate;
+  DateTime? selectedDate;
 
   String categorypicked = 'all';
 
@@ -49,11 +50,11 @@ class FFAppState {
 
   bool lastBookingPage = false;
 
-  DateTime calendarDate;
+  DateTime? calendarDate;
 
   bool isSubmitted = false;
 
-  DateTime dob;
+  DateTime? dob;
 
   bool dobEntered = false;
 
@@ -133,12 +134,25 @@ class FFAppState {
 
   List<DocumentReference> duplicateTests = [];
 
-  DocumentReference duplicateTest;
+  DocumentReference? duplicateTest;
 
   String testsVar = '';
+
+  String paymentsvar = '';
+
+  bool _firstTime = false;
+  bool get firstTime => _firstTime;
+  set firstTime(bool _value) {
+    _firstTime = _value;
+    prefs.setBool('ff_firstTime', _value);
+  }
+
+  List<String> images = [];
+
+  List<String> specialtests = [];
 }
 
-LatLng _latLngFromString(String val) {
+LatLng? _latLngFromString(String? val) {
   if (val == null) {
     return null;
   }

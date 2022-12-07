@@ -11,11 +11,13 @@ import 'dart:ui';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TestListCatalogWidget extends StatefulWidget {
-  const TestListCatalogWidget({Key key}) : super(key: key);
+  const TestListCatalogWidget({Key? key}) : super(key: key);
 
   @override
   _TestListCatalogWidgetState createState() => _TestListCatalogWidgetState();
@@ -23,54 +25,58 @@ class TestListCatalogWidget extends StatefulWidget {
 
 class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
     with TickerProviderStateMixin {
-  TextEditingController textController1;
-  TextEditingController textController2;
+  TextEditingController? textController1;
+  TextEditingController? textController2;
+  var hasStackTriggered1 = false;
+  var hasStackTriggered2 = false;
   final animationsMap = {
     'stackOnActionTriggerAnimation1': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1.5,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        ScaleEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1.5,
+          end: 1,
+        ),
+      ],
     ),
     'stackOnActionTriggerAnimation2': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1.5,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        ScaleEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1.5,
+          end: 1,
+        ),
+      ],
     ),
   };
 
   @override
   void initState() {
     super.initState();
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
 
     textController1 = TextEditingController();
     textController2 = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    textController1?.dispose();
+    textController2?.dispose();
+    super.dispose();
   }
 
   @override
@@ -109,15 +115,24 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.89,
                 decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0x786CD7B7),
+                      FlutterFlowTheme.of(context).secondaryBackground
+                    ],
+                    stops: [0, 0.45],
+                    begin: AlignmentDirectional(0, -1),
+                    end: AlignmentDirectional(0, 1),
+                  ),
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(16),
-                    bottomRight: Radius.circular(16),
+                    bottomLeft: Radius.circular(39),
+                    bottomRight: Radius.circular(39),
                     topLeft: Radius.circular(0),
                     topRight: Radius.circular(0),
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 34, 0, 10),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 34, 0, 0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -135,7 +150,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                               'TEST CATALOG',
                               style:
                                   FlutterFlowTheme.of(context).title1.override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
                                         color: Colors.white,
                                       ),
                             ),
@@ -154,10 +169,12 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                   borderColor: Colors.transparent,
                                   borderRadius: 30,
                                   buttonSize: 48,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   icon: Icon(
                                     Icons.close_rounded,
                                     color: FlutterFlowTheme.of(context)
-                                        .tertiaryColor,
+                                        .primaryText,
                                     size: 30,
                                   ),
                                   onPressed: () async {
@@ -184,12 +201,15 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                           child: Column(
                             children: [
                               TabBar(
-                                labelColor: Colors.white,
+                                labelColor:
+                                    FlutterFlowTheme.of(context).primaryText,
                                 unselectedLabelColor:
-                                    FlutterFlowTheme.of(context).tertiaryColor,
+                                    FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                 labelStyle:
                                     FlutterFlowTheme.of(context).subtitle2,
-                                indicatorColor: Colors.white,
+                                indicatorColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                                 tabs: [
                                   Tab(
                                     text: 'Tests',
@@ -270,8 +290,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                   .override(
                                                                     fontFamily:
                                                                         'Roboto',
-                                                                    color: Color(
-                                                                        0xFF586B06),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     fontSize:
                                                                         16,
                                                                     fontWeight:
@@ -285,8 +306,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                   .override(
                                                                     fontFamily:
                                                                         'Roboto',
-                                                                    color: Color(
-                                                                        0xFF586B06),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     fontSize:
                                                                         16,
                                                                     fontWeight:
@@ -331,22 +353,62 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       4.0),
                                                             ),
                                                           ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
                                                           suffixIcon:
-                                                              textController1
+                                                              textController1!
                                                                       .text
                                                                       .isNotEmpty
                                                                   ? InkWell(
-                                                                      onTap: () =>
-                                                                          setState(
-                                                                        () => textController1
-                                                                            ?.clear(),
-                                                                      ),
+                                                                      onTap:
+                                                                          () async {
+                                                                        textController1
+                                                                            ?.clear();
+                                                                        setState(
+                                                                            () {});
+                                                                      },
                                                                       child:
                                                                           Icon(
                                                                         Icons
                                                                             .clear,
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primaryColor,
+                                                                            .primaryText,
                                                                         size:
                                                                             18,
                                                                       ),
@@ -360,8 +422,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
-                                                                  color: Color(
-                                                                      0xFF586B06),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
                                                                   fontSize: 20,
                                                                   fontWeight:
                                                                       FontWeight
@@ -393,11 +456,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                       0.05,
                                                   child: Stack(
                                                     children: [
-                                                      if (!(functions
-                                                              .isCategorySelected(
-                                                                  FFAppState()
-                                                                      .categorypicked)) ??
-                                                          true)
+                                                      if (!functions
+                                                          .isCategorySelected(
+                                                              FFAppState()
+                                                                  .categorypicked))
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -446,7 +508,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Roboto',
+                                                                            'Open Sans',
                                                                         color: Colors
                                                                             .white,
                                                                         fontWeight:
@@ -458,8 +520,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                           ),
                                                         ),
                                                       if (FFAppState()
-                                                              .allCategories ??
-                                                          true)
+                                                          .allCategories)
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -497,10 +558,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Roboto',
+                                                                          'Open Sans',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryColor,
+                                                                          .primaryText,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w500,
@@ -564,10 +625,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                         }
                                                         List<CategoriesRecord>
                                                             listViewCategoriesRecordList =
-                                                            snapshot.data;
+                                                            snapshot.data!;
                                                         // Return an empty Container when the document does not exist.
                                                         if (snapshot
-                                                            .data.isEmpty) {
+                                                            .data!.isEmpty) {
                                                           return Container();
                                                         }
                                                         final listViewCategoriesRecord =
@@ -579,11 +640,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                         return Builder(
                                                           builder: (context) {
                                                             final testCategories =
-                                                                listViewCategoriesRecord
-                                                                        .categories
-                                                                        .toList()
-                                                                        ?.toList() ??
-                                                                    [];
+                                                                listViewCategoriesRecord!
+                                                                    .categories!
+                                                                    .toList();
                                                             return ListView
                                                                 .builder(
                                                               padding:
@@ -601,10 +660,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                         testCategoriesIndex];
                                                                 return Stack(
                                                                   children: [
-                                                                    if ((functions.upperCase(
-                                                                            testCategoriesItem)) ==
-                                                                        (functions
-                                                                            .upperCase(FFAppState().categorypicked)))
+                                                                    if (functions.upperCase(
+                                                                            testCategoriesItem) ==
+                                                                        functions
+                                                                            .upperCase(FFAppState().categorypicked))
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
                                                                             10,
@@ -631,7 +690,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                                 Text(
                                                                               testCategoriesItem,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
+                                                                                    fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                     fontSize: 16,
                                                                                   ),
@@ -675,8 +734,8 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                                 Text(
                                                                               testCategoriesItem,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
-                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    fontFamily: 'Open Sans',
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontSize: 16,
                                                                                   ),
                                                                             ),
@@ -685,10 +744,11 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       ),
                                                                     ),
                                                                   ],
-                                                                ).animated([
-                                                                  animationsMap[
-                                                                      'stackOnActionTriggerAnimation1']
-                                                                ]);
+                                                                ).animateOnActionTrigger(
+                                                                    animationsMap[
+                                                                        'stackOnActionTriggerAnimation1']!,
+                                                                    hasBeenTriggered:
+                                                                        hasStackTriggered1);
                                                               },
                                                             );
                                                           },
@@ -724,7 +784,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                               }
                                               List<TestsRecord>
                                                   testListWidgetTestsRecordList =
-                                                  snapshot.data;
+                                                  snapshot.data!;
                                               return Container(
                                                 width: MediaQuery.of(context)
                                                     .size
@@ -739,12 +799,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                 decoration: BoxDecoration(
                                                   gradient: LinearGradient(
                                                     colors: [
+                                                      Color(0x00FFFFFF),
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .tertiaryColor,
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate
+                                                          .secondaryBackground
                                                     ],
                                                     stops: [0, 1],
                                                     begin: AlignmentDirectional(
@@ -753,7 +811,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                         0, 1),
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(40),
+                                                      BorderRadius.circular(49),
                                                 ),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
@@ -768,7 +826,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                             UsersRecord>(
                                                           stream: UsersRecord
                                                               .getDocument(
-                                                                  currentUserReference),
+                                                                  currentUserReference!),
                                                           builder: (context,
                                                               snapshot) {
                                                             // Customize what your widget looks like when it's loading.
@@ -789,17 +847,21 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                               );
                                                             }
                                                             final listViewUsersRecord =
-                                                                snapshot.data;
+                                                                snapshot.data!;
                                                             return Builder(
                                                               builder:
                                                                   (context) {
                                                                 final catalogTestsList = functions
-                                                                        .filterTestsByCategory(
-                                                                            FFAppState().allCategories,
-                                                                            FFAppState().categorypicked,
-                                                                            functions.returnSearchTests(textController1.text, testListWidgetTestsRecordList.toList()).toList())
-                                                                        ?.toList() ??
-                                                                    [];
+                                                                    .filterTestsByCategory(
+                                                                        FFAppState()
+                                                                            .allCategories,
+                                                                        FFAppState()
+                                                                            .categorypicked,
+                                                                        functions
+                                                                            .returnSearchTests(textController1!.text,
+                                                                                testListWidgetTestsRecordList.toList())
+                                                                            .toList())
+                                                                    .toList();
                                                                 return ListView
                                                                     .builder(
                                                                   padding:
@@ -826,7 +888,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                               4,
                                                                               0,
                                                                               4,
-                                                                              10),
+                                                                              15),
                                                                       child:
                                                                           Container(
                                                                         decoration:
@@ -894,7 +956,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                 4, 0, 4, 0),
                                                     child: Icon(
                                                       Icons.search_rounded,
-                                                      color: Color(0xFF586B06),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                       size: 24,
                                                     ),
                                                   ),
@@ -929,8 +994,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                   .override(
                                                                     fontFamily:
                                                                         'Roboto',
-                                                                    color: Color(
-                                                                        0xFF586B06),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     fontSize:
                                                                         16,
                                                                     fontWeight:
@@ -944,8 +1010,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                   .override(
                                                                     fontFamily:
                                                                         'Roboto',
-                                                                    color: Color(
-                                                                        0xFF586B06),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     fontSize:
                                                                         16,
                                                                     fontWeight:
@@ -990,22 +1057,62 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       4.0),
                                                             ),
                                                           ),
+                                                          errorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              UnderlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .only(
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      4.0),
+                                                            ),
+                                                          ),
                                                           suffixIcon:
-                                                              textController2
+                                                              textController2!
                                                                       .text
                                                                       .isNotEmpty
                                                                   ? InkWell(
-                                                                      onTap: () =>
-                                                                          setState(
-                                                                        () => textController2
-                                                                            ?.clear(),
-                                                                      ),
+                                                                      onTap:
+                                                                          () async {
+                                                                        textController2
+                                                                            ?.clear();
+                                                                        setState(
+                                                                            () {});
+                                                                      },
                                                                       child:
                                                                           Icon(
                                                                         Icons
                                                                             .clear,
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primaryColor,
+                                                                            .primaryText,
                                                                         size:
                                                                             18,
                                                                       ),
@@ -1019,8 +1126,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
-                                                                  color: Color(
-                                                                      0xFF586B06),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
                                                                   fontSize: 20,
                                                                   fontWeight:
                                                                       FontWeight
@@ -1052,11 +1160,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                       0.05,
                                                   child: Stack(
                                                     children: [
-                                                      if (!(functions
-                                                              .isCategorySelected(
-                                                                  FFAppState()
-                                                                      .categorypicked)) ??
-                                                          true)
+                                                      if (!functions
+                                                          .isCategorySelected(
+                                                              FFAppState()
+                                                                  .categorypicked))
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -1105,7 +1212,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Roboto',
+                                                                            'Open Sans',
                                                                         color: Colors
                                                                             .white,
                                                                         fontWeight:
@@ -1117,8 +1224,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                           ),
                                                         ),
                                                       if (FFAppState()
-                                                              .allPackageCategories ??
-                                                          true)
+                                                          .allPackageCategories)
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -1156,7 +1262,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Roboto',
+                                                                          'Open Sans',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .secondaryColor,
@@ -1223,10 +1329,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                         }
                                                         List<CategoriesRecord>
                                                             listViewCategoriesRecordList =
-                                                            snapshot.data;
+                                                            snapshot.data!;
                                                         // Return an empty Container when the document does not exist.
                                                         if (snapshot
-                                                            .data.isEmpty) {
+                                                            .data!.isEmpty) {
                                                           return Container();
                                                         }
                                                         final listViewCategoriesRecord =
@@ -1238,11 +1344,9 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                         return Builder(
                                                           builder: (context) {
                                                             final packagecategories =
-                                                                listViewCategoriesRecord
-                                                                        .categories
-                                                                        .toList()
-                                                                        ?.toList() ??
-                                                                    [];
+                                                                listViewCategoriesRecord!
+                                                                    .categories!
+                                                                    .toList();
                                                             return ListView
                                                                 .builder(
                                                               padding:
@@ -1296,7 +1400,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                                 Text(
                                                                               packagecategoriesItem,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
+                                                                                    fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                     fontSize: 16,
                                                                                   ),
@@ -1305,10 +1409,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                    if ((functions.upperCase(
-                                                                            packagecategoriesItem)) ==
-                                                                        (functions
-                                                                            .upperCase(FFAppState().packagecategoryPicked)))
+                                                                    if (functions.upperCase(
+                                                                            packagecategoriesItem) ==
+                                                                        functions
+                                                                            .upperCase(FFAppState().packagecategoryPicked))
                                                                       Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
                                                                             10,
@@ -1335,7 +1439,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                                 Text(
                                                                               packagecategoriesItem,
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Roboto',
+                                                                                    fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                     fontSize: 16,
                                                                                   ),
@@ -1344,10 +1448,11 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                         ),
                                                                       ),
                                                                   ],
-                                                                ).animated([
-                                                                  animationsMap[
-                                                                      'stackOnActionTriggerAnimation2']
-                                                                ]);
+                                                                ).animateOnActionTrigger(
+                                                                    animationsMap[
+                                                                        'stackOnActionTriggerAnimation2']!,
+                                                                    hasBeenTriggered:
+                                                                        hasStackTriggered2);
                                                               },
                                                             );
                                                           },
@@ -1383,7 +1488,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                               }
                                               List<TestPackagesRecord>
                                                   packageListWidgetTestPackagesRecordList =
-                                                  snapshot.data;
+                                                  snapshot.data!;
                                               return Container(
                                                 width: MediaQuery.of(context)
                                                     .size
@@ -1398,12 +1503,10 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                 decoration: BoxDecoration(
                                                   gradient: LinearGradient(
                                                     colors: [
+                                                      Color(0x00F4F4F5),
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .tertiaryColor,
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate
+                                                          .secondaryBackground
                                                     ],
                                                     stops: [0, 1],
                                                     begin: AlignmentDirectional(
@@ -1412,16 +1515,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                         0, 1),
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
-                                                    bottomLeft:
-                                                        Radius.circular(16),
-                                                    bottomRight:
-                                                        Radius.circular(16),
-                                                    topLeft:
-                                                        Radius.circular(40),
-                                                    topRight:
-                                                        Radius.circular(40),
-                                                  ),
+                                                      BorderRadius.circular(40),
                                                 ),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
@@ -1436,7 +1530,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                             UsersRecord>(
                                                           stream: UsersRecord
                                                               .getDocument(
-                                                                  currentUserReference),
+                                                                  currentUserReference!),
                                                           builder: (context,
                                                               snapshot) {
                                                             // Customize what your widget looks like when it's loading.
@@ -1457,17 +1551,19 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                               );
                                                             }
                                                             final listViewUsersRecord =
-                                                                snapshot.data;
+                                                                snapshot.data!;
                                                             return Builder(
                                                               builder:
                                                                   (context) {
                                                                 final packages = functions
-                                                                        .filterPackagesByCategory(
-                                                                            FFAppState().allPackageCategories,
-                                                                            FFAppState().packagecategoryPicked,
-                                                                            packageListWidgetTestPackagesRecordList.toList())
-                                                                        ?.toList() ??
-                                                                    [];
+                                                                    .filterPackagesByCategory(
+                                                                        FFAppState()
+                                                                            .allPackageCategories,
+                                                                        FFAppState()
+                                                                            .packagecategoryPicked,
+                                                                        packageListWidgetTestPackagesRecordList
+                                                                            .toList())
+                                                                    .toList();
                                                                 return ListView
                                                                     .builder(
                                                                   padding:
@@ -1497,6 +1593,8 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                               10),
                                                                       child:
                                                                           CatalogPackageItemWidget(
+                                                                        key: Key(
+                                                                            'CatalogPackageItem_${packagesIndex}'),
                                                                         index:
                                                                             packagesIndex,
                                                                         listSize:

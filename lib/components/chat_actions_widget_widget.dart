@@ -6,7 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ChatActionsWidgetWidget extends StatefulWidget {
-  const ChatActionsWidgetWidget({Key key}) : super(key: key);
+  const ChatActionsWidgetWidget({Key? key}) : super(key: key);
 
   @override
   _ChatActionsWidgetWidgetState createState() =>
@@ -32,7 +32,7 @@ class _ChatActionsWidgetWidgetState extends State<ChatActionsWidgetWidget> {
                   child: UserListChatWidget(),
                 );
               },
-            );
+            ).then((value) => setState(() {}));
           },
           child: Container(
             width: MediaQuery.of(context).size.width * 0.9,
@@ -60,7 +60,7 @@ class _ChatActionsWidgetWidgetState extends State<ChatActionsWidgetWidget> {
                     child: Text(
                       'New Message',
                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Roboto',
+                            fontFamily: 'Open Sans',
                             color: FlutterFlowTheme.of(context).tertiaryColor,
                             fontSize: 16,
                             fontWeight: FontWeight.w500,

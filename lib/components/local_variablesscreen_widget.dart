@@ -4,16 +4,18 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LocalVariablesscreenWidget extends StatefulWidget {
   const LocalVariablesscreenWidget({
-    Key key,
+    Key? key,
     this.testedTestRef,
   }) : super(key: key);
 
-  final DocumentReference testedTestRef;
+  final DocumentReference? testedTestRef;
 
   @override
   _LocalVariablesscreenWidgetState createState() =>
@@ -22,37 +24,55 @@ class LocalVariablesscreenWidget extends StatefulWidget {
 
 class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
     with TickerProviderStateMixin {
-  TextEditingController localStateDataController;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 230,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 120),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: Offset(0, 120),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
     ),
   };
+  TextEditingController? localStateDataController;
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
 
     localStateDataController = TextEditingController(
         text:
             'Num Tests: ${FFAppState().numTests.toString()}num tests done: ${FFAppState().numTestDone.toString()}');
+  }
+
+  @override
+  void dispose() {
+    localStateDataController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -98,7 +118,7 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
                         Text(
                           'TESTS INFO',
                           style: FlutterFlowTheme.of(context).title2.override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'Open Sans',
                                 color: Color(0xFF586B06),
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold,
@@ -172,6 +192,20 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                             contentPadding:
                                 EdgeInsetsDirectional.fromSTEB(20, 10, 24, 0),
                           ),
@@ -183,9 +217,8 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
                                     fontWeight: FontWeight.normal,
                                   ),
                           textAlign: TextAlign.start,
-                          maxLines: 1,
-                        ).animated(
-                            [animationsMap['textFieldOnPageLoadAnimation']]),
+                        ).animateOnPageLoad(
+                            animationsMap['textFieldOnPageLoadAnimation']!),
                       ),
                     ),
                   ],

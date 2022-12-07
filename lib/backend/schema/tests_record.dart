@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:from_css_color/from_css_color.dart';
+
 import 'index.dart';
 import 'serializers.dart';
 import 'package:built_value/built_value.dart';
@@ -9,65 +11,48 @@ part 'tests_record.g.dart';
 abstract class TestsRecord implements Built<TestsRecord, TestsRecordBuilder> {
   static Serializer<TestsRecord> get serializer => _$testsRecordSerializer;
 
-  @nullable
-  int get price;
+  int? get price;
 
-  @nullable
-  String get name;
+  String? get name;
 
-  @nullable
   @BuiltValueField(wireName: 'home_test')
-  bool get homeTest;
+  bool? get homeTest;
 
-  @nullable
-  String get description;
+  String? get description;
 
-  @nullable
-  double get duration;
+  double? get duration;
 
-  @nullable
   @BuiltValueField(wireName: 'duration_results')
-  double get durationResults;
+  double? get durationResults;
 
-  @nullable
-  String get category;
+  String? get category;
 
-  @nullable
   @BuiltValueField(wireName: 'is_available')
-  bool get isAvailable;
+  bool? get isAvailable;
 
-  @nullable
   @BuiltValueField(wireName: 'Keywords')
-  BuiltList<String> get keywords;
+  BuiltList<String>? get keywords;
 
-  @nullable
   @BuiltValueField(wireName: 'update_date')
-  DateTime get updateDate;
+  DateTime? get updateDate;
 
-  @nullable
-  String get updateRole;
+  String? get updateRole;
 
-  @nullable
-  String get varianceMale;
+  String? get varianceMale;
 
-  @nullable
-  String get varianceFemale;
+  String? get varianceFemale;
 
-  @nullable
-  String get varianceUnitsMale;
+  String? get varianceUnitsMale;
 
-  @nullable
-  String get varianceUnitsFemale;
+  String? get varianceUnitsFemale;
 
-  @nullable
-  String get equipmentInfo;
+  String? get equipmentInfo;
 
-  @nullable
-  BuiltList<String> get procedure;
+  BuiltList<String>? get procedure;
 
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(TestsRecordBuilder builder) => builder
     ..price = 0
@@ -92,11 +77,11 @@ abstract class TestsRecord implements Built<TestsRecord, TestsRecordBuilder> {
 
   static Stream<TestsRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   static Future<TestsRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   static TestsRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) => TestsRecord(
         (c) => c
@@ -118,14 +103,14 @@ abstract class TestsRecord implements Built<TestsRecord, TestsRecordBuilder> {
           ..varianceUnitsFemale = snapshot.data['varianceUnitsFemale']
           ..equipmentInfo = snapshot.data['equipmentInfo']
           ..procedure = safeGet(() => ListBuilder(snapshot.data['procedure']))
-          ..reference = TestsRecord.collection.doc(snapshot.objectID),
+          ..ffRef = TestsRecord.collection.doc(snapshot.objectID),
       );
 
   static Future<List<TestsRecord>> search(
-          {String term,
-          FutureOr<LatLng> location,
-          int maxResults,
-          double searchRadiusMeters}) =>
+          {String? term,
+          FutureOr<LatLng>? location,
+          int? maxResults,
+          double? searchRadiusMeters}) =>
       FFAlgoliaManager.instance
           .algoliaQuery(
             index: 'tests',
@@ -143,43 +128,49 @@ abstract class TestsRecord implements Built<TestsRecord, TestsRecordBuilder> {
   static TestsRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
 Map<String, dynamic> createTestsRecordData({
-  int price,
-  String name,
-  bool homeTest,
-  String description,
-  double duration,
-  double durationResults,
-  String category,
-  bool isAvailable,
-  DateTime updateDate,
-  String updateRole,
-  String varianceMale,
-  String varianceFemale,
-  String varianceUnitsMale,
-  String varianceUnitsFemale,
-  String equipmentInfo,
-}) =>
-    serializers.toFirestore(
-        TestsRecord.serializer,
-        TestsRecord((t) => t
-          ..price = price
-          ..name = name
-          ..homeTest = homeTest
-          ..description = description
-          ..duration = duration
-          ..durationResults = durationResults
-          ..category = category
-          ..isAvailable = isAvailable
-          ..keywords = null
-          ..updateDate = updateDate
-          ..updateRole = updateRole
-          ..varianceMale = varianceMale
-          ..varianceFemale = varianceFemale
-          ..varianceUnitsMale = varianceUnitsMale
-          ..varianceUnitsFemale = varianceUnitsFemale
-          ..equipmentInfo = equipmentInfo
-          ..procedure = null));
+  int? price,
+  String? name,
+  bool? homeTest,
+  String? description,
+  double? duration,
+  double? durationResults,
+  String? category,
+  bool? isAvailable,
+  DateTime? updateDate,
+  String? updateRole,
+  String? varianceMale,
+  String? varianceFemale,
+  String? varianceUnitsMale,
+  String? varianceUnitsFemale,
+  String? equipmentInfo,
+}) {
+  final firestoreData = serializers.toFirestore(
+    TestsRecord.serializer,
+    TestsRecord(
+      (t) => t
+        ..price = price
+        ..name = name
+        ..homeTest = homeTest
+        ..description = description
+        ..duration = duration
+        ..durationResults = durationResults
+        ..category = category
+        ..isAvailable = isAvailable
+        ..keywords = null
+        ..updateDate = updateDate
+        ..updateRole = updateRole
+        ..varianceMale = varianceMale
+        ..varianceFemale = varianceFemale
+        ..varianceUnitsMale = varianceUnitsMale
+        ..varianceUnitsFemale = varianceUnitsFemale
+        ..equipmentInfo = equipmentInfo
+        ..procedure = null,
+    ),
+  );
+
+  return firestoreData;
+}

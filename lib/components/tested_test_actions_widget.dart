@@ -12,11 +12,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TestedTestActionsWidget extends StatefulWidget {
   const TestedTestActionsWidget({
-    Key key,
+    Key? key,
     this.testedTestRef,
   }) : super(key: key);
 
-  final DocumentReference testedTestRef;
+  final DocumentReference? testedTestRef;
 
   @override
   _TestedTestActionsWidgetState createState() =>
@@ -31,7 +31,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
       height: 90,
       decoration: BoxDecoration(),
       child: StreamBuilder<TestedTestsRecord>(
-        stream: TestedTestsRecord.getDocument(widget.testedTestRef),
+        stream: TestedTestsRecord.getDocument(widget.testedTestRef!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -46,7 +46,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
               ),
             );
           }
-          final rowTestedTestsRecord = snapshot.data;
+          final rowTestedTestsRecord = snapshot.data!;
           return Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +65,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                     maxHeight: 80,
                   ),
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryColor,
+                    color: FlutterFlowTheme.of(context).secondaryText,
                     borderRadius: BorderRadius.circular(28),
                   ),
                   child: Column(
@@ -87,12 +87,11 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                 height: 50,
                                 child: Stack(
                                   children: [
-                                    if (!(rowTestedTestsRecord.resultPosted) ??
-                                        true)
+                                    if (!rowTestedTestsRecord.resultPosted!)
                                       InkWell(
                                         onTap: () async {
-                                          if (!(rowTestedTestsRecord
-                                              .resultPosted)) {
+                                          if (!rowTestedTestsRecord
+                                              .resultPosted!) {
                                             await showModalBottomSheet(
                                               isScrollControlled: true,
                                               backgroundColor:
@@ -110,7 +109,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                   ),
                                                 );
                                               },
-                                            );
+                                            ).then((value) => setState(() {}));
                                           }
                                         },
                                         child: Container(
@@ -139,7 +138,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                   Icons.receipt_long,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .tertiaryColor,
+                                                      .secondaryBackground,
                                                   size: 18,
                                                 ),
                                                 Row(
@@ -161,7 +160,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .tertiaryColor,
@@ -217,17 +216,20 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                       'Submit\nResult',
                                                       textAlign:
                                                           TextAlign.center,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyText1
-                                                          .override(
-                                                            fontFamily:
-                                                                'Roboto',
-                                                            color: Color(
-                                                                0x34FFFFFF),
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Open Sans',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
                                                     ),
                                                   ),
                                                 ],
@@ -248,8 +250,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                 height: 50,
                                 child: Stack(
                                   children: [
-                                    if (!(rowTestedTestsRecord.isVerified) ??
-                                        true)
+                                    if (!rowTestedTestsRecord.isVerified!)
                                       Container(
                                         height: 50,
                                         constraints: BoxConstraints(
@@ -289,7 +290,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                           .bodyText1
                                                           .override(
                                                             fontFamily:
-                                                                'Roboto',
+                                                                'Open Sans',
                                                             color: Color(
                                                                 0x33FFFFFF),
                                                             fontWeight:
@@ -304,9 +305,8 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                         ),
                                       ),
                                     if (functions.displayVerifyButton(
-                                            rowTestedTestsRecord.resultPosted,
-                                            rowTestedTestsRecord.isVerified) ??
-                                        true)
+                                        rowTestedTestsRecord.resultPosted,
+                                        rowTestedTestsRecord.isVerified))
                                       InkWell(
                                         onTap: () async {
                                           await showModalBottomSheet(
@@ -323,7 +323,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                 ),
                                               );
                                             },
-                                          );
+                                          ).then((value) => setState(() {}));
                                         },
                                         child: Container(
                                           width: MediaQuery.of(context)
@@ -351,7 +351,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                   Icons.verified_user,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .tertiaryColor,
+                                                      .secondaryBackground,
                                                   size: 18,
                                                 ),
                                                 Row(
@@ -373,10 +373,10 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiaryColor,
+                                                                      .secondaryBackground,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
@@ -441,7 +441,8 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .tertiaryColor,
@@ -455,8 +456,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                           ],
                                         ),
                                       ),
-                                    if (!(rowTestedTestsRecord.isFlagged) ??
-                                        true)
+                                    if (!rowTestedTestsRecord.isFlagged!)
                                       InkWell(
                                         onTap: () async {
                                           await showModalBottomSheet(
@@ -472,13 +472,15 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                 ),
                                               );
                                             },
-                                          );
+                                          ).then((value) => setState(() {}));
+
                                           context.goNamed(
                                             'TestDeck',
                                             queryParams: {
                                               'testedTestRef': serializeParam(
-                                                  widget.testedTestRef,
-                                                  ParamType.DocumentReference),
+                                                widget.testedTestRef,
+                                                ParamType.DocumentReference,
+                                              ),
                                             }.withoutNulls,
                                           );
                                         },
@@ -504,7 +506,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                 Icons.flag_sharp,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
+                                                        .secondaryBackground,
                                                 size: 18,
                                               ),
                                               Row(
@@ -524,10 +526,10 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .tertiaryColor,
+                                                                    .secondaryBackground,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,

@@ -7,11 +7,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PaymentsContainerCopyWidget extends StatefulWidget {
   const PaymentsContainerCopyWidget({
-    Key key,
+    Key? key,
     this.invoice,
   }) : super(key: key);
 
-  final InvoicesRecord invoice;
+  final InvoicesRecord? invoice;
 
   @override
   _PaymentsContainerCopyWidgetState createState() =>
@@ -66,7 +66,7 @@ class _PaymentsContainerCopyWidgetState
                           textAlign: TextAlign.start,
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Open Sans',
                                     color: Color(0xFF586B06),
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -87,7 +87,7 @@ class _PaymentsContainerCopyWidgetState
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'Open Sans',
                                 color:
                                     FlutterFlowTheme.of(context).secondaryColor,
                                 fontWeight: FontWeight.normal,
@@ -111,7 +111,7 @@ class _PaymentsContainerCopyWidgetState
                           'BANK',
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Open Sans',
                                     color: Colors.white,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -132,7 +132,7 @@ class _PaymentsContainerCopyWidgetState
                           textAlign: TextAlign.start,
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Open Sans',
                                     color: Color(0xFF586B06),
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -175,7 +175,7 @@ class _PaymentsContainerCopyWidgetState
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'Open Sans',
                                 color:
                                     FlutterFlowTheme.of(context).secondaryColor,
                                 fontWeight: FontWeight.normal,
@@ -194,7 +194,7 @@ class _PaymentsContainerCopyWidgetState
                           textAlign: TextAlign.start,
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Open Sans',
                                     color: Color(0xFF586B06),
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -218,7 +218,7 @@ class _PaymentsContainerCopyWidgetState
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'Open Sans',
                                 color:
                                     FlutterFlowTheme.of(context).secondaryColor,
                                 fontWeight: FontWeight.w500,

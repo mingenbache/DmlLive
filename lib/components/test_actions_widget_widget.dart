@@ -7,19 +7,21 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TestActionsWidgetWidget extends StatefulWidget {
   const TestActionsWidgetWidget({
-    Key key,
+    Key? key,
     this.test,
     this.bookingRef,
   }) : super(key: key);
 
-  final TestsRecord test;
-  final DocumentReference bookingRef;
+  final TestsRecord? test;
+  final DocumentReference? bookingRef;
 
   @override
   _TestActionsWidgetWidgetState createState() =>
@@ -28,37 +30,44 @@ class TestActionsWidgetWidget extends StatefulWidget {
 
 class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
     with TickerProviderStateMixin {
+  var hasButtonTriggered1 = false;
+  var hasButtonTriggered2 = false;
   final animationsMap = {
     'buttonOnActionTriggerAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
     ),
     'buttonOnActionTriggerAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
     ),
   };
 
   @override
   void initState() {
     super.initState();
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
   }
@@ -71,8 +80,8 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
       children: [
         AuthUserStreamWidget(
           child: StreamBuilder<BookingsRecord>(
-            stream:
-                BookingsRecord.getDocument(currentUserDocument?.currentBooking),
+            stream: BookingsRecord.getDocument(
+                currentUserDocument!.currentBooking!),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {
@@ -87,7 +96,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                   ),
                 );
               }
-              final containerBookingsRecord = snapshot.data;
+              final containerBookingsRecord = snapshot.data!;
               return Container(
                 width: MediaQuery.of(context).size.width * 0.9,
                 constraints: BoxConstraints(
@@ -95,7 +104,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                   maxHeight: 80,
                 ),
                 decoration: BoxDecoration(
-                  color: Color(0xFF58585C),
+                  color: FlutterFlowTheme.of(context).secondaryColor,
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Padding(
@@ -126,7 +135,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                             );
                           }
                           List<UsersRecord> buttonUsersRecordList =
-                              snapshot.data;
+                              snapshot.data!;
                           final buttonUsersRecord =
                               buttonUsersRecordList.isNotEmpty
                                   ? buttonUsersRecordList.first
@@ -137,7 +146,9 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                                 'Chat',
                                 queryParams: {
                                   'chatUser': serializeParam(
-                                      buttonUsersRecord, ParamType.Document),
+                                    buttonUsersRecord,
+                                    ParamType.Document,
+                                  ),
                                 }.withoutNulls,
                                 extra: <String, dynamic>{
                                   'chatUser': buttonUsersRecord,
@@ -157,7 +168,9 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                                   .bodyText1
                                   .override(
                                     fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.w300,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontWeight: FontWeight.w500,
                                   ),
                               borderSide: BorderSide(
                                 color: Colors.transparent,
@@ -165,24 +178,24 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                               ),
                               borderRadius: BorderRadius.circular(30),
                             ),
-                          ).animated([
-                            animationsMap['buttonOnActionTriggerAnimation1']
-                          ]);
+                          ).animateOnActionTrigger(
+                              animationsMap['buttonOnActionTriggerAnimation1']!,
+                              hasBeenTriggered: hasButtonTriggered1);
                         },
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          if (!(containerBookingsRecord.testsIncluded
+                          if (!containerBookingsRecord.testsIncluded!
                               .toList()
-                              .contains(widget.test.reference))) {
+                              .contains(widget.test!.reference)) {
                             final bookingsUpdateData = {
                               ...createBookingsRecordData(
                                 totalPrice: functions.addCartTotal(
                                     containerBookingsRecord.totalPrice,
-                                    widget.test.price),
+                                    widget.test!.price),
                               ),
                               'tests_included': FieldValue.arrayUnion(
-                                  [widget.test.reference]),
+                                  [widget.test!.reference]),
                               'total_tests': FieldValue.increment(1),
                             };
                             await containerBookingsRecord.reference
@@ -220,19 +233,21 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                           width: 130,
                           height: 40,
                           color: Color(0x00B3B2B2),
-                          textStyle:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Roboto',
-                                    color: Color(0xFFBACA68),
-                                    fontWeight: FontWeight.w300,
-                                  ),
+                          textStyle: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: 'Roboto',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontWeight: FontWeight.w500,
+                              ),
                           borderSide: BorderSide(
                             color: Colors.transparent,
                           ),
                           borderRadius: BorderRadius.circular(30),
                         ),
-                      ).animated(
-                          [animationsMap['buttonOnActionTriggerAnimation2']]),
+                      ).animateOnActionTrigger(
+                          animationsMap['buttonOnActionTriggerAnimation2']!,
+                          hasBeenTriggered: hasButtonTriggered2),
                     ],
                   ),
                 ),

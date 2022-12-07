@@ -1,5 +1,5 @@
 import '../backend/backend.dart';
-import '../components/client_user_card2_widget.dart';
+import '../components/client_user_card_widget.dart';
 import '../components/staff_user_card_widget.dart';
 import '../components/top_actions_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -13,26 +13,32 @@ import 'package:google_fonts/google_fonts.dart';
 
 class UserListWidget extends StatefulWidget {
   const UserListWidget({
-    Key key,
+    Key? key,
     this.staffFilter,
     this.userNameQUery,
   }) : super(key: key);
 
-  final bool staffFilter;
-  final String userNameQUery;
+  final bool? staffFilter;
+  final String? userNameQUery;
 
   @override
   _UserListWidgetState createState() => _UserListWidgetState();
 }
 
 class _UserListWidgetState extends State<UserListWidget> {
-  TextEditingController textController;
+  TextEditingController? textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
     textController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    textController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -48,24 +54,9 @@ class _UserListWidgetState extends State<UserListWidget> {
               Material(
                 color: Colors.transparent,
                 elevation: 2,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(12),
-                    bottomRight: Radius.circular(12),
-                    topLeft: Radius.circular(0),
-                    topRight: Radius.circular(0),
-                  ),
-                ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(12),
-                      bottomRight: Radius.circular(12),
-                      topLeft: Radius.circular(0),
-                      topRight: Radius.circular(0),
-                    ),
-                  ),
+                  decoration: BoxDecoration(),
                   child: ClipRect(
                     child: ImageFiltered(
                       imageFilter: ImageFilter.blur(
@@ -93,13 +84,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.28,
                 decoration: BoxDecoration(
-                  color: Color(0x67586B06),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(12),
-                    bottomRight: Radius.circular(12),
-                    topLeft: Radius.circular(0),
-                    topRight: Radius.circular(0),
-                  ),
+                  color: Color(0xB06CD7B7),
                 ),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
@@ -135,7 +120,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .title1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color: Colors.white,
                                                       ),
                                             ),
@@ -163,7 +148,9 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                     .fromSTEB(4, 0, 4, 0),
                                                 child: Icon(
                                                   Icons.search_rounded,
-                                                  color: Color(0xFF586B06),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                   size: 24,
                                                 ),
                                               ),
@@ -194,8 +181,9 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Lexend Deca',
-                                                                color: Color(
-                                                                    0xFF95A1AC),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                                 fontSize: 14,
                                                                 fontWeight:
                                                                     FontWeight
@@ -237,20 +225,59 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                                   4.0),
                                                         ),
                                                       ),
-                                                      suffixIcon: textController
-                                                              .text.isNotEmpty
-                                                          ? InkWell(
-                                                              onTap: () =>
-                                                                  setState(
-                                                                () => textController
-                                                                    ?.clear(),
-                                                              ),
-                                                              child: Icon(
-                                                                Icons.clear,
-                                                                size: 22,
-                                                              ),
-                                                            )
-                                                          : null,
+                                                      errorBorder:
+                                                          UnderlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color:
+                                                              Color(0x00000000),
+                                                          width: 1,
+                                                        ),
+                                                        borderRadius:
+                                                            const BorderRadius
+                                                                .only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  4.0),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  4.0),
+                                                        ),
+                                                      ),
+                                                      focusedErrorBorder:
+                                                          UnderlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color:
+                                                              Color(0x00000000),
+                                                          width: 1,
+                                                        ),
+                                                        borderRadius:
+                                                            const BorderRadius
+                                                                .only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  4.0),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  4.0),
+                                                        ),
+                                                      ),
+                                                      suffixIcon:
+                                                          textController!.text
+                                                                  .isNotEmpty
+                                                              ? InkWell(
+                                                                  onTap:
+                                                                      () async {
+                                                                    textController
+                                                                        ?.clear();
+                                                                    setState(
+                                                                        () {});
+                                                                  },
+                                                                  child: Icon(
+                                                                    Icons.clear,
+                                                                    size: 22,
+                                                                  ),
+                                                                )
+                                                              : null,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -259,7 +286,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .primaryText,
                                                           fontSize: 16,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -270,7 +297,9 @@ class _UserListWidgetState extends State<UserListWidget> {
                                               ),
                                               Icon(
                                                 Icons.tune_sharp,
-                                                color: Color(0xFF586B06),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 size: 24,
                                               ),
                                             ],
@@ -300,18 +329,12 @@ class _UserListWidgetState extends State<UserListWidget> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  FlutterFlowTheme.of(context).tertiaryColor,
-                  FlutterFlowTheme.of(context).alternate
+                  Color(0xAF6CD7B7),
+                  FlutterFlowTheme.of(context).secondaryBackground
                 ],
                 stops: [0, 1],
                 begin: AlignmentDirectional(0, -1),
                 end: AlignmentDirectional(0, 1),
-              ),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(0),
-                bottomRight: Radius.circular(0),
-                topLeft: Radius.circular(26),
-                topRight: Radius.circular(26),
               ),
             ),
             child: Padding(
@@ -328,9 +351,10 @@ class _UserListWidgetState extends State<UserListWidget> {
                       child: Column(
                         children: [
                           TabBar(
-                            labelColor: Color(0xFF586B06),
-                            unselectedLabelColor:
-                                FlutterFlowTheme.of(context).primaryColor,
+                            labelColor:
+                                FlutterFlowTheme.of(context).primaryText,
+                            unselectedLabelColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             labelStyle: FlutterFlowTheme.of(context).subtitle2,
                             indicatorColor: Colors.white,
                             tabs: [
@@ -368,7 +392,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                       }
                                       List<UsersRecord>
                                           clientUserContainerUsersRecordList =
-                                          snapshot.data;
+                                          snapshot.data!;
                                       return Container(
                                         width:
                                             MediaQuery.of(context).size.width *
@@ -385,7 +409,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                           builder: (context) {
                                             final clients = functions
                                                     .returnUserList(
-                                                        textController.text,
+                                                        textController!.text,
                                                         clientUserContainerUsersRecordList
                                                             .toList())
                                                     ?.toList() ??
@@ -403,11 +427,14 @@ class _UserListWidgetState extends State<UserListWidget> {
                                                       .fromSTEB(0, 0, 0, 10),
                                                   child: Container(
                                                     decoration: BoxDecoration(),
-                                                    child:
-                                                        ClientUserCard2Widget(
-                                                      userRecord: clientsItem,
-                                                      index: functions
-                                                          .add1(clientsIndex),
+                                                    child: Container(
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child:
+                                                          ClientUserCardWidget(
+                                                        index: clientsIndex,
+                                                        userRecord: clientsItem,
+                                                      ),
                                                     ),
                                                   ),
                                                 );
@@ -441,7 +468,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                     }
                                     List<UsersRecord>
                                         staffUserContainerUsersRecordList =
-                                        snapshot.data;
+                                        snapshot.data!;
                                     return Container(
                                       width: MediaQuery.of(context).size.width *
                                           0.8,
@@ -456,22 +483,28 @@ class _UserListWidgetState extends State<UserListWidget> {
                                         builder: (context) {
                                           final staff = functions
                                                   .returnUserList(
-                                                      textController.text,
+                                                      textController!.text,
                                                       staffUserContainerUsersRecordList
                                                           .toList())
                                                   ?.toList() ??
                                               [];
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
+                                            shrinkWrap: true,
                                             scrollDirection: Axis.vertical,
                                             itemCount: staff.length,
                                             itemBuilder: (context, staffIndex) {
                                               final staffItem =
                                                   staff[staffIndex];
-                                              return Container(
-                                                height: 200,
-                                                child: StaffUserCardWidget(
-                                                  userRecord: staffItem,
+                                              return Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 0, 10),
+                                                child: Container(
+                                                  decoration: BoxDecoration(),
+                                                  child: StaffUserCardWidget(
+                                                    userRecord: staffItem,
+                                                    index: staffIndex,
+                                                  ),
                                                 ),
                                               );
                                             },

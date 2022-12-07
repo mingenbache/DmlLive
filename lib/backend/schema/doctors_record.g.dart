@@ -16,10 +16,10 @@ class _$DoctorsRecordSerializer implements StructuredSerializer<DoctorsRecord> {
   final String wireName = 'DoctorsRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, DoctorsRecord object,
+  Iterable<Object?> serialize(Serializers serializers, DoctorsRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.names;
     if (value != null) {
       result
@@ -56,56 +56,56 @@ class _$DoctorsRecordSerializer implements StructuredSerializer<DoctorsRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.reference;
+    value = object.ffRef;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     return result;
   }
 
   @override
   DoctorsRecord deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new DoctorsRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'names':
           result.names.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<Object>);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
           break;
         case 'address':
           result.address = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'phonenumber':
           result.phonenumber = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'emailaddress':
           result.emailaddress = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
-          result.reference = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+          result.ffRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
       }
     }
@@ -116,20 +116,20 @@ class _$DoctorsRecordSerializer implements StructuredSerializer<DoctorsRecord> {
 
 class _$DoctorsRecord extends DoctorsRecord {
   @override
-  final BuiltList<String> names;
+  final BuiltList<String>? names;
   @override
-  final String address;
+  final String? address;
   @override
-  final String phonenumber;
+  final String? phonenumber;
   @override
-  final String name;
+  final String? name;
   @override
-  final String emailaddress;
+  final String? emailaddress;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object?>? ffRef;
 
-  factory _$DoctorsRecord([void Function(DoctorsRecordBuilder) updates]) =>
-      (new DoctorsRecordBuilder()..update(updates)).build();
+  factory _$DoctorsRecord([void Function(DoctorsRecordBuilder)? updates]) =>
+      (new DoctorsRecordBuilder()..update(updates))._build();
 
   _$DoctorsRecord._(
       {this.names,
@@ -137,7 +137,7 @@ class _$DoctorsRecord extends DoctorsRecord {
       this.phonenumber,
       this.name,
       this.emailaddress,
-      this.reference})
+      this.ffRef})
       : super._();
 
   @override
@@ -156,7 +156,7 @@ class _$DoctorsRecord extends DoctorsRecord {
         phonenumber == other.phonenumber &&
         name == other.name &&
         emailaddress == other.emailaddress &&
-        reference == other.reference;
+        ffRef == other.ffRef;
   }
 
   @override
@@ -168,50 +168,49 @@ class _$DoctorsRecord extends DoctorsRecord {
                     phonenumber.hashCode),
                 name.hashCode),
             emailaddress.hashCode),
-        reference.hashCode));
+        ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('DoctorsRecord')
+    return (newBuiltValueToStringHelper(r'DoctorsRecord')
           ..add('names', names)
           ..add('address', address)
           ..add('phonenumber', phonenumber)
           ..add('name', name)
           ..add('emailaddress', emailaddress)
-          ..add('reference', reference))
+          ..add('ffRef', ffRef))
         .toString();
   }
 }
 
 class DoctorsRecordBuilder
     implements Builder<DoctorsRecord, DoctorsRecordBuilder> {
-  _$DoctorsRecord _$v;
+  _$DoctorsRecord? _$v;
 
-  ListBuilder<String> _names;
+  ListBuilder<String>? _names;
   ListBuilder<String> get names => _$this._names ??= new ListBuilder<String>();
-  set names(ListBuilder<String> names) => _$this._names = names;
+  set names(ListBuilder<String>? names) => _$this._names = names;
 
-  String _address;
-  String get address => _$this._address;
-  set address(String address) => _$this._address = address;
+  String? _address;
+  String? get address => _$this._address;
+  set address(String? address) => _$this._address = address;
 
-  String _phonenumber;
-  String get phonenumber => _$this._phonenumber;
-  set phonenumber(String phonenumber) => _$this._phonenumber = phonenumber;
+  String? _phonenumber;
+  String? get phonenumber => _$this._phonenumber;
+  set phonenumber(String? phonenumber) => _$this._phonenumber = phonenumber;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  String _emailaddress;
-  String get emailaddress => _$this._emailaddress;
-  set emailaddress(String emailaddress) => _$this._emailaddress = emailaddress;
+  String? _emailaddress;
+  String? get emailaddress => _$this._emailaddress;
+  set emailaddress(String? emailaddress) => _$this._emailaddress = emailaddress;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
-      _$this._reference = reference;
+  DocumentReference<Object?>? _ffRef;
+  DocumentReference<Object?>? get ffRef => _$this._ffRef;
+  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   DoctorsRecordBuilder() {
     DoctorsRecord._initializeBuilder(this);
@@ -225,7 +224,7 @@ class DoctorsRecordBuilder
       _phonenumber = $v.phonenumber;
       _name = $v.name;
       _emailaddress = $v.emailaddress;
-      _reference = $v.reference;
+      _ffRef = $v.ffRef;
       _$v = null;
     }
     return this;
@@ -238,12 +237,14 @@ class DoctorsRecordBuilder
   }
 
   @override
-  void update(void Function(DoctorsRecordBuilder) updates) {
+  void update(void Function(DoctorsRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$DoctorsRecord build() {
+  DoctorsRecord build() => _build();
+
+  _$DoctorsRecord _build() {
     _$DoctorsRecord _$result;
     try {
       _$result = _$v ??
@@ -253,15 +254,15 @@ class DoctorsRecordBuilder
               phonenumber: phonenumber,
               name: name,
               emailaddress: emailaddress,
-              reference: reference);
+              ffRef: ffRef);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'names';
         _names?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'DoctorsRecord', _$failedField, e.toString());
+            r'DoctorsRecord', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -270,4 +271,4 @@ class DoctorsRecordBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

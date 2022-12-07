@@ -17,10 +17,10 @@ class _$CategoriesRecordSerializer
   final String wireName = 'CategoriesRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, CategoriesRecord object,
+  Iterable<Object?> serialize(Serializers serializers, CategoriesRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.categories;
     if (value != null) {
       result
@@ -50,52 +50,52 @@ class _$CategoriesRecordSerializer
         ..add(
             serializers.serialize(value, specifiedType: const FullType(bool)));
     }
-    value = object.reference;
+    value = object.ffRef;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     return result;
   }
 
   @override
   CategoriesRecord deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new CategoriesRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'categories':
           result.categories.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<Object>);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'ispackage_Category':
           result.ispackageCategory = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'istest_Category':
           result.istestCategory = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'Document__Reference__Field':
-          result.reference = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+          result.ffRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
       }
     }
@@ -106,26 +106,26 @@ class _$CategoriesRecordSerializer
 
 class _$CategoriesRecord extends CategoriesRecord {
   @override
-  final BuiltList<String> categories;
+  final BuiltList<String>? categories;
   @override
-  final String name;
+  final String? name;
   @override
-  final bool ispackageCategory;
+  final bool? ispackageCategory;
   @override
-  final bool istestCategory;
+  final bool? istestCategory;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object?>? ffRef;
 
   factory _$CategoriesRecord(
-          [void Function(CategoriesRecordBuilder) updates]) =>
-      (new CategoriesRecordBuilder()..update(updates)).build();
+          [void Function(CategoriesRecordBuilder)? updates]) =>
+      (new CategoriesRecordBuilder()..update(updates))._build();
 
   _$CategoriesRecord._(
       {this.categories,
       this.name,
       this.ispackageCategory,
       this.istestCategory,
-      this.reference})
+      this.ffRef})
       : super._();
 
   @override
@@ -144,7 +144,7 @@ class _$CategoriesRecord extends CategoriesRecord {
         name == other.name &&
         ispackageCategory == other.ispackageCategory &&
         istestCategory == other.istestCategory &&
-        reference == other.reference;
+        ffRef == other.ffRef;
   }
 
   @override
@@ -154,49 +154,48 @@ class _$CategoriesRecord extends CategoriesRecord {
             $jc($jc($jc(0, categories.hashCode), name.hashCode),
                 ispackageCategory.hashCode),
             istestCategory.hashCode),
-        reference.hashCode));
+        ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('CategoriesRecord')
+    return (newBuiltValueToStringHelper(r'CategoriesRecord')
           ..add('categories', categories)
           ..add('name', name)
           ..add('ispackageCategory', ispackageCategory)
           ..add('istestCategory', istestCategory)
-          ..add('reference', reference))
+          ..add('ffRef', ffRef))
         .toString();
   }
 }
 
 class CategoriesRecordBuilder
     implements Builder<CategoriesRecord, CategoriesRecordBuilder> {
-  _$CategoriesRecord _$v;
+  _$CategoriesRecord? _$v;
 
-  ListBuilder<String> _categories;
+  ListBuilder<String>? _categories;
   ListBuilder<String> get categories =>
       _$this._categories ??= new ListBuilder<String>();
-  set categories(ListBuilder<String> categories) =>
+  set categories(ListBuilder<String>? categories) =>
       _$this._categories = categories;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  bool _ispackageCategory;
-  bool get ispackageCategory => _$this._ispackageCategory;
-  set ispackageCategory(bool ispackageCategory) =>
+  bool? _ispackageCategory;
+  bool? get ispackageCategory => _$this._ispackageCategory;
+  set ispackageCategory(bool? ispackageCategory) =>
       _$this._ispackageCategory = ispackageCategory;
 
-  bool _istestCategory;
-  bool get istestCategory => _$this._istestCategory;
-  set istestCategory(bool istestCategory) =>
+  bool? _istestCategory;
+  bool? get istestCategory => _$this._istestCategory;
+  set istestCategory(bool? istestCategory) =>
       _$this._istestCategory = istestCategory;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
-      _$this._reference = reference;
+  DocumentReference<Object?>? _ffRef;
+  DocumentReference<Object?>? get ffRef => _$this._ffRef;
+  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   CategoriesRecordBuilder() {
     CategoriesRecord._initializeBuilder(this);
@@ -209,7 +208,7 @@ class CategoriesRecordBuilder
       _name = $v.name;
       _ispackageCategory = $v.ispackageCategory;
       _istestCategory = $v.istestCategory;
-      _reference = $v.reference;
+      _ffRef = $v.ffRef;
       _$v = null;
     }
     return this;
@@ -222,12 +221,14 @@ class CategoriesRecordBuilder
   }
 
   @override
-  void update(void Function(CategoriesRecordBuilder) updates) {
+  void update(void Function(CategoriesRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$CategoriesRecord build() {
+  CategoriesRecord build() => _build();
+
+  _$CategoriesRecord _build() {
     _$CategoriesRecord _$result;
     try {
       _$result = _$v ??
@@ -236,15 +237,15 @@ class CategoriesRecordBuilder
               name: name,
               ispackageCategory: ispackageCategory,
               istestCategory: istestCategory,
-              reference: reference);
+              ffRef: ffRef);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'categories';
         _categories?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'CategoriesRecord', _$failedField, e.toString());
+            r'CategoriesRecord', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -253,4 +254,4 @@ class CategoriesRecordBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

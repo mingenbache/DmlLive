@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,42 +8,43 @@ const double _kChoiceChipsHeight = 40.0;
 class ChipData {
   const ChipData(this.label, [this.iconData]);
   final String label;
-  final IconData iconData;
+  final IconData? iconData;
 }
 
 class ChipStyle {
   const ChipStyle(
-      {this.backgroundColor,
-      this.textStyle,
-      this.iconColor,
-      this.iconSize,
+      {required this.backgroundColor,
+      required this.textStyle,
+      required this.iconColor,
+      required this.iconSize,
       this.labelPadding,
-      this.elevation});
+      required this.elevation});
   final Color backgroundColor;
   final TextStyle textStyle;
   final Color iconColor;
   final double iconSize;
-  final EdgeInsetsGeometry labelPadding;
+  final EdgeInsetsGeometry? labelPadding;
   final double elevation;
 }
 
 class FlutterFlowChoiceChips extends StatefulWidget {
   const FlutterFlowChoiceChips({
     this.initiallySelected,
-    @required this.options,
-    @required this.onChanged,
-    this.selectedChipStyle,
-    this.unselectedChipStyle,
-    this.chipSpacing,
+    required this.options,
+    required this.onChanged,
+    required this.selectedChipStyle,
+    required this.unselectedChipStyle,
+    required this.chipSpacing,
     this.rowSpacing = 0.0,
-    this.multiselect,
+    required this.multiselect,
     this.initialized = true,
     this.alignment = WrapAlignment.start,
+    this.selectedValuesVariable,
   });
 
-  final List<String> initiallySelected;
+  final List<String>? initiallySelected;
   final List<ChipData> options;
-  final void Function(List<String>) onChanged;
+  final void Function(List<String>?) onChanged;
   final ChipStyle selectedChipStyle;
   final ChipStyle unselectedChipStyle;
   final double chipSpacing;
@@ -50,13 +52,17 @@ class FlutterFlowChoiceChips extends StatefulWidget {
   final bool multiselect;
   final bool initialized;
   final WrapAlignment alignment;
+  final ValueNotifier<List<String>?>? selectedValuesVariable;
 
   @override
   State<FlutterFlowChoiceChips> createState() => _FlutterFlowChoiceChipsState();
 }
 
 class _FlutterFlowChoiceChipsState extends State<FlutterFlowChoiceChips> {
-  List<String> choiceChipValues;
+  late List<String> choiceChipValues;
+  ValueListenable<List<String>?>? get changeSelectedValues =>
+      widget.selectedValuesVariable;
+  List<String>? get selectedValues => widget.selectedValuesVariable?.value;
 
   @override
   void initState() {
@@ -67,6 +73,19 @@ class _FlutterFlowChoiceChipsState extends State<FlutterFlowChoiceChips> {
         (_) => widget.onChanged(choiceChipValues),
       );
     }
+    changeSelectedValues?.addListener(() {
+      if (widget.selectedValuesVariable != null &&
+          selectedValues != null &&
+          choiceChipValues != selectedValues) {
+        setState(() => choiceChipValues = List.from(selectedValues!));
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    changeSelectedValues?.removeListener(() {});
+    super.dispose();
   }
 
   @override

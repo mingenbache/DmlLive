@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:from_css_color/from_css_color.dart';
+
 import 'index.dart';
 import 'serializers.dart';
 import 'package:built_value/built_value.dart';
@@ -9,69 +11,52 @@ part 'users_record.g.dart';
 abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   static Serializer<UsersRecord> get serializer => _$usersRecordSerializer;
 
-  @nullable
-  String get email;
+  String? get email;
 
-  @nullable
   @BuiltValueField(wireName: 'display_name')
-  String get displayName;
+  String? get displayName;
 
-  @nullable
   @BuiltValueField(wireName: 'photo_url')
-  String get photoUrl;
+  String? get photoUrl;
 
-  @nullable
-  String get uid;
+  String? get uid;
 
-  @nullable
   @BuiltValueField(wireName: 'created_time')
-  DateTime get createdTime;
+  DateTime? get createdTime;
 
-  @nullable
   @BuiltValueField(wireName: 'phone_number')
-  String get phoneNumber;
+  String? get phoneNumber;
 
-  @nullable
-  String get role;
+  String? get role;
 
-  @nullable
   @BuiltValueField(wireName: 'first_name')
-  String get firstName;
+  String? get firstName;
 
-  @nullable
   @BuiltValueField(wireName: 'last_name')
-  String get lastName;
+  String? get lastName;
 
-  @nullable
-  String get sex;
+  String? get sex;
 
-  @nullable
   @BuiltValueField(wireName: 'd_o_b')
-  DateTime get dOB;
+  DateTime? get dOB;
 
-  @nullable
-  String get password;
+  String? get password;
 
-  @nullable
   @BuiltValueField(wireName: 'current_booking')
-  DocumentReference get currentBooking;
+  DocumentReference? get currentBooking;
 
-  @nullable
   @BuiltValueField(wireName: 'has_current_booking')
-  bool get hasCurrentBooking;
+  bool? get hasCurrentBooking;
 
-  @nullable
-  bool get isStaff;
+  bool? get isStaff;
 
-  @nullable
-  DateTime get lastLogin;
+  DateTime? get lastLogin;
 
-  @nullable
-  bool get hasInitAccount;
+  bool? get hasInitAccount;
 
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(UsersRecordBuilder builder) => builder
     ..email = ''
@@ -93,11 +78,11 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
 
   static Stream<UsersRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   static Future<UsersRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   static UsersRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) => UsersRecord(
         (c) => c
@@ -122,14 +107,14 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
           ..lastLogin = safeGet(() =>
               DateTime.fromMillisecondsSinceEpoch(snapshot.data['lastLogin']))
           ..hasInitAccount = snapshot.data['hasInitAccount']
-          ..reference = UsersRecord.collection.doc(snapshot.objectID),
+          ..ffRef = UsersRecord.collection.doc(snapshot.objectID),
       );
 
   static Future<List<UsersRecord>> search(
-          {String term,
-          FutureOr<LatLng> location,
-          int maxResults,
-          double searchRadiusMeters}) =>
+          {String? term,
+          FutureOr<LatLng>? location,
+          int? maxResults,
+          double? searchRadiusMeters}) =>
       FFAlgoliaManager.instance
           .algoliaQuery(
             index: 'users',
@@ -147,45 +132,51 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   static UsersRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
 Map<String, dynamic> createUsersRecordData({
-  String email,
-  String displayName,
-  String photoUrl,
-  String uid,
-  DateTime createdTime,
-  String phoneNumber,
-  String role,
-  String firstName,
-  String lastName,
-  String sex,
-  DateTime dOB,
-  String password,
-  DocumentReference currentBooking,
-  bool hasCurrentBooking,
-  bool isStaff,
-  DateTime lastLogin,
-  bool hasInitAccount,
-}) =>
-    serializers.toFirestore(
-        UsersRecord.serializer,
-        UsersRecord((u) => u
-          ..email = email
-          ..displayName = displayName
-          ..photoUrl = photoUrl
-          ..uid = uid
-          ..createdTime = createdTime
-          ..phoneNumber = phoneNumber
-          ..role = role
-          ..firstName = firstName
-          ..lastName = lastName
-          ..sex = sex
-          ..dOB = dOB
-          ..password = password
-          ..currentBooking = currentBooking
-          ..hasCurrentBooking = hasCurrentBooking
-          ..isStaff = isStaff
-          ..lastLogin = lastLogin
-          ..hasInitAccount = hasInitAccount));
+  String? email,
+  String? displayName,
+  String? photoUrl,
+  String? uid,
+  DateTime? createdTime,
+  String? phoneNumber,
+  String? role,
+  String? firstName,
+  String? lastName,
+  String? sex,
+  DateTime? dOB,
+  String? password,
+  DocumentReference? currentBooking,
+  bool? hasCurrentBooking,
+  bool? isStaff,
+  DateTime? lastLogin,
+  bool? hasInitAccount,
+}) {
+  final firestoreData = serializers.toFirestore(
+    UsersRecord.serializer,
+    UsersRecord(
+      (u) => u
+        ..email = email
+        ..displayName = displayName
+        ..photoUrl = photoUrl
+        ..uid = uid
+        ..createdTime = createdTime
+        ..phoneNumber = phoneNumber
+        ..role = role
+        ..firstName = firstName
+        ..lastName = lastName
+        ..sex = sex
+        ..dOB = dOB
+        ..password = password
+        ..currentBooking = currentBooking
+        ..hasCurrentBooking = hasCurrentBooking
+        ..isStaff = isStaff
+        ..lastLogin = lastLogin
+        ..hasInitAccount = hasInitAccount,
+    ),
+  );
+
+  return firestoreData;
+}

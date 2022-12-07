@@ -8,7 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AdminCatalogTestActWidget extends StatefulWidget {
-  const AdminCatalogTestActWidget({Key key}) : super(key: key);
+  const AdminCatalogTestActWidget({Key? key}) : super(key: key);
 
   @override
   _AdminCatalogTestActWidgetState createState() =>
@@ -33,7 +33,7 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
             maxWidth: 380,
           ),
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryColor,
+            color: FlutterFlowTheme.of(context).secondaryText,
             borderRadius: BorderRadius.circular(25),
           ),
           child: Padding(
@@ -56,7 +56,7 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                             child: AddNewTestWidget(),
                           );
                         },
-                      );
+                      ).then((value) => setState(() {}));
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.5,
@@ -72,7 +72,8 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                           children: [
                             FaIcon(
                               FontAwesomeIcons.flask,
-                              color: FlutterFlowTheme.of(context).tertiaryColor,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                               size: 20,
                             ),
                             Row(
@@ -87,9 +88,9 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
+                                              .secondaryBackground,
                                           fontWeight: FontWeight.normal,
                                         ),
                                   ),
@@ -116,7 +117,7 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                             child: AddNewTestPackageWidget(),
                           );
                         },
-                      );
+                      ).then((value) => setState(() {}));
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.5,
@@ -133,7 +134,8 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                         children: [
                           Icon(
                             Icons.format_list_numbered_sharp,
-                            color: FlutterFlowTheme.of(context).tertiaryColor,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             size: 20,
                           ),
                           Row(
@@ -148,9 +150,9 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .secondaryBackground,
                                         fontWeight: FontWeight.normal,
                                       ),
                                 ),

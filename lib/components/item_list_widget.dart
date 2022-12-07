@@ -6,7 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ItemListWidget extends StatefulWidget {
-  const ItemListWidget({Key key}) : super(key: key);
+  const ItemListWidget({Key? key}) : super(key: key);
 
   @override
   _ItemListWidgetState createState() => _ItemListWidgetState();
@@ -19,8 +19,7 @@ class _ItemListWidgetState extends State<ItemListWidget> {
       padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
       child: Builder(
         builder: (context) {
-          final duplicatetestsList =
-              FFAppState().duplicateTests?.toList() ?? [];
+          final duplicatetestsList = FFAppState().duplicateTests.toList();
           return ListView.builder(
             padding: EdgeInsets.zero,
             scrollDirection: Axis.vertical,
@@ -46,14 +45,16 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                         ),
                       );
                     }
-                    final duplicateTestItemTestsRecord = snapshot.data;
+                    final duplicateTestItemTestsRecord = snapshot.data!;
                     return InkWell(
                       onTap: () async {
                         context.pushNamed(
                           'Details',
                           queryParams: {
-                            'testId': serializeParam(duplicatetestsListItem,
-                                ParamType.DocumentReference),
+                            'testId': serializeParam(
+                              duplicatetestsListItem,
+                              ParamType.DocumentReference,
+                            ),
                           }.withoutNulls,
                         );
                       },
@@ -84,11 +85,11 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        duplicateTestItemTestsRecord.name,
+                                        duplicateTestItemTestsRecord.name!,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Open Sans',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryColor,

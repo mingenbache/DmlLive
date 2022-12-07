@@ -12,13 +12,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class DuplicateTestItemWidget extends StatefulWidget {
   const DuplicateTestItemWidget({
-    Key key,
+    Key? key,
     this.booking,
     this.packageRef,
   }) : super(key: key);
 
-  final BookingsRecord booking;
-  final DocumentReference packageRef;
+  final BookingsRecord? booking;
+  final DocumentReference? packageRef;
 
   @override
   _DuplicateTestItemWidgetState createState() =>
@@ -29,7 +29,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<TestPackagesRecord>(
-      stream: TestPackagesRecord.getDocument(widget.packageRef),
+      stream: TestPackagesRecord.getDocument(widget.packageRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -44,7 +44,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
             ),
           );
         }
-        final duplicateTestsContainerTestPackagesRecord = snapshot.data;
+        final duplicateTestsContainerTestPackagesRecord = snapshot.data!;
         return Container(
           decoration: BoxDecoration(),
           child: Column(
@@ -68,7 +68,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                     );
                   }
                   List<TestPackagesRecord> containerTestPackagesRecordList =
-                      snapshot.data;
+                      snapshot.data!;
                   return Material(
                     color: Colors.transparent,
                     elevation: 3,
@@ -106,7 +106,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title2
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
                                         color: Color(0xFF586B06),
                                         fontSize: 32,
                                         fontWeight: FontWeight.bold,
@@ -150,7 +150,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
                                       fontSize: 15,
@@ -166,7 +166,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
                                     ),
@@ -179,20 +179,19 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                 child: Builder(
                                   builder: (context) {
                                     final duplicatetestPackage = functions
-                                            .returnPackagesContainingDuplicateTests(
-                                                functions
-                                                    .returnPackagesinBooking(
-                                                        containerTestPackagesRecordList
-                                                            .toList(),
-                                                        widget.booking
-                                                            .testPackages
-                                                            .toList())
-                                                    .toList(),
-                                                FFAppState()
-                                                    .duplicateTests
-                                                    .toList())
-                                            ?.toList() ??
-                                        [];
+                                        .returnPackagesContainingDuplicateTests(
+                                            functions
+                                                .returnPackagesinBooking(
+                                                    containerTestPackagesRecordList
+                                                        .toList(),
+                                                    widget
+                                                        .booking!.testPackages!
+                                                        .toList())
+                                                .toList(),
+                                            FFAppState()
+                                                .duplicateTests
+                                                .toList())
+                                        .toList();
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
                                       scrollDirection: Axis.vertical,
@@ -255,13 +254,13 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                                             children: [
                                                               Text(
                                                                 duplicatetestPackageItem
-                                                                    .packageName,
+                                                                    .packageName!,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Roboto',
+                                                                          'Open Sans',
                                                                       color: Colors
                                                                           .white,
                                                                       fontWeight:
@@ -279,8 +278,8 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                                             InkWell(
                                                               onTap: () async {
                                                                 if (widget
-                                                                    .booking
-                                                                    .testPackages
+                                                                    .booking!
+                                                                    .testPackages!
                                                                     .toList()
                                                                     .contains(
                                                                         duplicatetestPackageItem
@@ -290,7 +289,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                                                     ...createBookingsRecordData(
                                                                       totalPrice: functions.removeFromCart(
                                                                           widget
-                                                                              .booking
+                                                                              .booking!
                                                                               .totalPrice,
                                                                           duplicatetestPackageItem
                                                                               .price),
@@ -303,15 +302,15 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                                                     ]),
                                                                     'testPackTests': functions.removeBookingPackageTests(
                                                                         duplicateTestsContainerTestPackagesRecord
-                                                                            .testsIncluded
+                                                                            .testsIncluded!
                                                                             .toList(),
                                                                         widget
-                                                                            .booking
-                                                                            .testPackTests
+                                                                            .booking!
+                                                                            .testPackTests!
                                                                             .toList()),
                                                                   };
                                                                   await widget
-                                                                      .booking
+                                                                      .booking!
                                                                       .reference
                                                                       .update(
                                                                           bookingsUpdateData);
@@ -378,7 +377,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                                         stream: TestsRecord
                                                             .getDocument(
                                                                 FFAppState()
-                                                                    .duplicateTest),
+                                                                    .duplicateTest!),
                                                         builder: (context,
                                                             snapshot) {
                                                           // Customize what your widget looks like when it's loading.
@@ -399,7 +398,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                                             );
                                                           }
                                                           final containerTestsRecord =
-                                                              snapshot.data;
+                                                              snapshot.data!;
                                                           return Material(
                                                             color: Colors
                                                                 .transparent,
@@ -445,7 +444,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                                                                           .bodyText1
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Roboto',
+                                                                                'Open Sans',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).secondaryColor,
                                                                           ),
@@ -497,7 +496,7 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
                             color: FlutterFlowTheme.of(context).secondaryColor,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .tertiaryColor,
                                     ),

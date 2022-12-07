@@ -10,15 +10,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CatalogPackageItemWidget extends StatefulWidget {
   const CatalogPackageItemWidget({
-    Key key,
+    Key? key,
     this.package,
     this.index,
     this.listSize,
   }) : super(key: key);
 
-  final TestPackagesRecord package;
-  final int index;
-  final int listSize;
+  final TestPackagesRecord? package;
+  final int? index;
+  final int? listSize;
 
   @override
   _CatalogPackageItemWidgetState createState() =>
@@ -53,7 +53,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                         ),
                       );
                     },
-                  );
+                  ).then((value) => setState(() {}));
                 },
                 child: Container(
                   height: 100,
@@ -67,7 +67,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                           maxHeight: 130,
                         ),
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryColor,
+                          color: FlutterFlowTheme.of(context).secondaryColor,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Padding(
@@ -85,17 +85,17 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                       decoration: BoxDecoration(),
                                       child: AutoSizeText(
                                         functions
-                                            .add1(widget.index)
+                                            .add1(widget.index)!
                                             .toString()
                                             .maybeHandleOverflow(maxChars: 2),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Open Sans',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .tertiaryColor,
+                                                      .secondaryBackground,
                                               fontSize: 16,
                                             ),
                                       ),
@@ -108,11 +108,12 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                         child: Text(
                                           functions
                                               .camelCase(
-                                                  widget.package.packageName)
+                                                  widget.package!.packageName)
                                               .maybeHandleOverflow(
                                                   maxChars: 25),
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                             fontWeight: FontWeight.w500,
                                             fontSize: 18,
                                           ),
@@ -217,7 +218,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                               BoxDecoration(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .tertiaryColor,
+                                                                .primaryText,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
@@ -232,8 +233,8 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                                         6,
                                                                         4),
                                                             child: Text(
-                                                              widget.package
-                                                                  .category,
+                                                              widget.package!
+                                                                  .category!,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyText1
@@ -242,7 +243,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                                         'Lexend Deca',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .secondaryColor,
+                                                                        .secondaryBackground,
                                                                     fontSize:
                                                                         12,
                                                                     fontWeight:
@@ -275,11 +276,11 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                           Icons.timer,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryColor,
+                                                              .primaryText,
                                                           size: 20,
                                                         ),
                                                         Text(
-                                                          '${widget.package.durationResults.toString()} Hrs',
+                                                          '${widget.package!.durationResults?.toString()} Hrs',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyText1
@@ -288,7 +289,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                                     'Roboto Mono',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryColor,
+                                                                    .primaryText,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -311,7 +312,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                           height: 2,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
-                                                .primaryColor,
+                                                .primaryText,
                                           ),
                                         ),
                                       ),
@@ -364,7 +365,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                           Icons.delivery_dining,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryColor,
+                                                              .primaryText,
                                                           size: 20,
                                                         ),
                                                         Padding(
@@ -386,7 +387,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                                         .check_circle_outline,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .secondaryColor,
+                                                                        .primaryText,
                                                                     size: 16,
                                                                   ),
                                                                 ),
@@ -399,7 +400,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                                         .not_interested,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .secondaryColor,
+                                                                        .primaryText,
                                                                     size: 16,
                                                                   ),
                                                                 ),
@@ -445,8 +446,9 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                                           0),
                                                               child: Text(
                                                                 formatNumber(
-                                                                  widget.package
-                                                                      .price,
+                                                                  widget
+                                                                      .package!
+                                                                      .price!,
                                                                   formatType:
                                                                       FormatType
                                                                           .decimal,
@@ -460,7 +462,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                                     TextStyle(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .alternate,
+                                                                      .primaryText,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,

@@ -5,7 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class UserWidgetWidget extends StatefulWidget {
-  const UserWidgetWidget({Key key}) : super(key: key);
+  const UserWidgetWidget({Key? key}) : super(key: key);
 
   @override
   _UserWidgetWidgetState createState() => _UserWidgetWidgetState();
@@ -129,7 +129,7 @@ class _UserWidgetWidgetState extends State<UserWidgetWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryColor,
                                       ),

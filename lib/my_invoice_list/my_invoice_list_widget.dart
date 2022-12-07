@@ -9,7 +9,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyInvoiceListWidget extends StatefulWidget {
-  const MyInvoiceListWidget({Key key}) : super(key: key);
+  const MyInvoiceListWidget({Key? key}) : super(key: key);
 
   @override
   _MyInvoiceListWidgetState createState() => _MyInvoiceListWidgetState();
@@ -39,7 +39,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
             ),
           );
         }
-        List<InvoicesRecord> myInvoiceListInvoicesRecordList = snapshot.data;
+        List<InvoicesRecord> myInvoiceListInvoicesRecordList = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -81,7 +81,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .title1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             Color(0xFF586B06),
                                                       ),
@@ -109,7 +109,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .subtitle1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
                                           ),
@@ -145,7 +145,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                   child: Builder(
                     builder: (context) {
                       final userInvoices =
-                          myInvoiceListInvoicesRecordList?.toList() ?? [];
+                          myInvoiceListInvoicesRecordList.toList();
                       return SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -177,16 +177,17 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                     );
                                   }
                                   final invoiceListItemInvoicesRecord =
-                                      snapshot.data;
+                                      snapshot.data!;
                                   return InkWell(
                                     onTap: () async {
                                       context.pushNamed(
                                         'Invoice',
                                         queryParams: {
                                           'invoiceRef': serializeParam(
-                                              invoiceListItemInvoicesRecord
-                                                  .reference,
-                                              ParamType.DocumentReference),
+                                            invoiceListItemInvoicesRecord
+                                                .reference,
+                                            ParamType.DocumentReference,
+                                          ),
                                         }.withoutNulls,
                                       );
                                     },
@@ -222,17 +223,19 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                             }
                                             List<PaymentsRecord>
                                                 containerPaymentsRecordList =
-                                                snapshot.data;
+                                                snapshot.data!;
                                             return InkWell(
                                               onTap: () async {
                                                 context.pushNamed(
                                                   'Invoice',
                                                   queryParams: {
-                                                    'invoiceRef': serializeParam(
-                                                        invoiceListItemInvoicesRecord
-                                                            .reference,
-                                                        ParamType
-                                                            .DocumentReference),
+                                                    'invoiceRef':
+                                                        serializeParam(
+                                                      invoiceListItemInvoicesRecord
+                                                          .reference,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
                                                   }.withoutNulls,
                                                 );
                                               },
@@ -328,7 +331,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                               Text(
                                                                             '21',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                   fontSize: 22,
                                                                                   fontWeight: FontWeight.w500,
@@ -342,7 +345,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                               Text(
                                                                             'OCT',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                   fontSize: 12,
                                                                                   fontWeight: FontWeight.w500,
@@ -422,7 +425,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                             textAlign:
                                                                                 TextAlign.start,
                                                                             style: FlutterFlowTheme.of(context).subtitle1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryColor,
                                                                                 ),
                                                                           ),
@@ -455,13 +458,13 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                           child:
                                                                               Text(
                                                                             formatNumber(
-                                                                              invoiceListItemInvoicesRecord.invoiceAmount,
+                                                                              invoiceListItemInvoicesRecord.invoiceAmount!,
                                                                               formatType: FormatType.decimal,
                                                                               decimalType: DecimalType.periodDecimal,
                                                                               currency: 'Ksh ',
                                                                             ),
                                                                             style: FlutterFlowTheme.of(context).subtitle1.override(
-                                                                                  fontFamily: 'Roboto',
+                                                                                  fontFamily: 'Open Sans',
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -505,8 +508,8 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                       child:
                                                                           Stack(
                                                                         children: [
-                                                                          if (!(invoiceListItemInvoicesRecord.isPaid) ??
-                                                                              true)
+                                                                          if (!invoiceListItemInvoicesRecord
+                                                                              .isPaid!)
                                                                             Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(7, 3, 8, 3),
                                                                               child: Text(
@@ -561,7 +564,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle2
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                 fontSize: 14,
                                                                               ),
@@ -588,7 +591,7 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                               Builder(
                                                                             builder:
                                                                                 (context) {
-                                                                              final paymentOnInvoice = containerPaymentsRecordList?.toList() ?? [];
+                                                                              final paymentOnInvoice = containerPaymentsRecordList.toList();
                                                                               return ListView.builder(
                                                                                 padding: EdgeInsets.zero,
                                                                                 scrollDirection: Axis.vertical,
@@ -622,10 +625,10 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                               child: Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
                                                                                                 child: Text(
-                                                                                                  dateTimeFormat('d/M/y', paymentOnInvoiceItem.createdDate),
+                                                                                                  dateTimeFormat('d/M/y', paymentOnInvoiceItem.createdDate!),
                                                                                                   textAlign: TextAlign.start,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                        fontFamily: 'Roboto',
+                                                                                                        fontFamily: 'Open Sans',
                                                                                                         color: Color(0xFF586B06),
                                                                                                         fontWeight: FontWeight.w500,
                                                                                                       ),
@@ -639,9 +642,9 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                               child: Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(7, 9, 5, 5),
                                                                                                 child: Text(
-                                                                                                  paymentOnInvoiceItem.transactionCode,
+                                                                                                  paymentOnInvoiceItem.transactionCode!,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                        fontFamily: 'Roboto',
+                                                                                                        fontFamily: 'Open Sans',
                                                                                                         color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                                         fontWeight: FontWeight.normal,
                                                                                                       ),
@@ -658,13 +661,13 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(9, 9, 5, 5),
                                                                                                 child: Text(
                                                                                                   formatNumber(
-                                                                                                    paymentOnInvoiceItem.amount,
+                                                                                                    paymentOnInvoiceItem.amount!,
                                                                                                     formatType: FormatType.decimal,
                                                                                                     decimalType: DecimalType.periodDecimal,
                                                                                                     currency: 'Kshs',
                                                                                                   ),
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                        fontFamily: 'Roboto',
+                                                                                                        fontFamily: 'Open Sans',
                                                                                                         color: Colors.white,
                                                                                                         fontWeight: FontWeight.w500,
                                                                                                       ),
@@ -679,13 +682,13 @@ class _MyInvoiceListWidgetState extends State<MyInvoiceListWidget> {
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5, 9, 5, 5),
                                                                                                 child: Text(
                                                                                                   formatNumber(
-                                                                                                    paymentOnInvoiceItem.amount,
+                                                                                                    paymentOnInvoiceItem.amount!,
                                                                                                     formatType: FormatType.decimal,
                                                                                                     decimalType: DecimalType.periodDecimal,
                                                                                                   ),
                                                                                                   textAlign: TextAlign.start,
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                        fontFamily: 'Roboto',
+                                                                                                        fontFamily: 'Open Sans',
                                                                                                         color: Color(0xFF586B06),
                                                                                                         fontWeight: FontWeight.w500,
                                                                                                       ),

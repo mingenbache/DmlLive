@@ -15,13 +15,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AllChatsPopupWidget extends StatefulWidget {
   const AllChatsPopupWidget({
-    Key key,
+    Key? key,
     this.test,
     this.booking,
   }) : super(key: key);
 
-  final TestsRecord test;
-  final DocumentReference booking;
+  final TestsRecord? test;
+  final DocumentReference? booking;
 
   @override
   _AllChatsPopupWidgetState createState() => _AllChatsPopupWidgetState();
@@ -141,7 +141,7 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                         size: 30,
                                       ),
                                       onPressed: () async {
-                                        context.pop();
+                                        Navigator.pop(context);
                                       },
                                     ),
                                   ),
@@ -170,7 +170,7 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .title1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Open Sans',
                                                   color: Colors.white,
                                                 ),
                                           ),
@@ -300,7 +300,7 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                               }
                                               List<ChatsRecord>
                                                   listViewChatsRecordList =
-                                                  snapshot.data;
+                                                  snapshot.data!;
                                               return ListView.builder(
                                                 padding: EdgeInsets.zero,
                                                 scrollDirection: Axis.vertical,
@@ -339,7 +339,8 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                               ),
                                                             );
                                                           },
-                                                        );
+                                                        ).then((value) =>
+                                                            setState(() {}));
                                                       },
                                                       child: Material(
                                                         color:
@@ -379,20 +380,25 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                                         .pushNamed(
                                                                   'Chat',
                                                                   queryParams: {
-                                                                    'chatUser': serializeParam(
-                                                                        chatInfo.otherUsers.length ==
-                                                                                1
-                                                                            ? chatInfo
-                                                                                .otherUsersList.first
-                                                                            : null,
-                                                                        ParamType
-                                                                            .Document),
-                                                                    'chatRef': serializeParam(
-                                                                        chatInfo
-                                                                            .chatRecord
-                                                                            .reference,
-                                                                        ParamType
-                                                                            .DocumentReference),
+                                                                    'chatUser':
+                                                                        serializeParam(
+                                                                      chatInfo.otherUsers.length ==
+                                                                              1
+                                                                          ? chatInfo
+                                                                              .otherUsersList
+                                                                              .first
+                                                                          : null,
+                                                                      ParamType
+                                                                          .Document,
+                                                                    ),
+                                                                    'chatRef':
+                                                                        serializeParam(
+                                                                      chatInfo
+                                                                          .chatRecord
+                                                                          .reference,
+                                                                      ParamType
+                                                                          .DocumentReference,
+                                                                    ),
                                                                   }.withoutNulls,
                                                                   extra: <
                                                                       String,
@@ -412,7 +418,7 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                                     listViewChatsRecord
                                                                         .lastMessageTime,
                                                                 seen: listViewChatsRecord
-                                                                    .lastMessageSeenBy
+                                                                    .lastMessageSeenBy!
                                                                     .contains(
                                                                         currentUserReference),
                                                                 title: chatInfo

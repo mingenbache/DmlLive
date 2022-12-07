@@ -9,7 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TopActionsWidget extends StatefulWidget {
-  const TopActionsWidget({Key key}) : super(key: key);
+  const TopActionsWidget({Key? key}) : super(key: key);
 
   @override
   _TopActionsWidgetState createState() => _TopActionsWidgetState();
@@ -19,7 +19,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<UsersRecord>(
-      stream: UsersRecord.getDocument(currentUserReference),
+      stream: UsersRecord.getDocument(currentUserReference!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -34,7 +34,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
             ),
           );
         }
-        final containerUsersRecord = snapshot.data;
+        final containerUsersRecord = snapshot.data!;
         return Container(
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(),
@@ -62,7 +62,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                   );
                 }
                 List<BookingsRecord> rowActionsBookingsRecordList =
-                    snapshot.data;
+                    snapshot.data!;
                 final rowActionsBookingsRecord =
                     rowActionsBookingsRecordList.isNotEmpty
                         ? rowActionsBookingsRecordList.first
@@ -77,6 +77,8 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                       child: InkWell(
                         onTap: () async {
                           Navigator.pop(context);
+
+                          context.goNamed('checkup');
                         },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.4,
@@ -90,7 +92,8 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                               children: [
                                 Icon(
                                   Icons.arrow_back,
-                                  color: Colors.white,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   size: 24,
                                 ),
                                 Text(
@@ -98,7 +101,9 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         fontSize: 20,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -125,8 +130,8 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                   EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                               child: InkWell(
                                 onTap: () async {
-                                  if (!(containerUsersRecord
-                                      .hasCurrentBooking)) {
+                                  if (!containerUsersRecord
+                                      .hasCurrentBooking!) {
                                     await showModalBottomSheet(
                                       isScrollControlled: true,
                                       backgroundColor: Colors.transparent,
@@ -138,24 +143,37 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                           child: NewBookingSheetWidget(),
                                         );
                                       },
-                                    );
-                                  }
-                                  setState(() =>
-                                      FFAppState().lastBookingPage = false);
-                                  if (containerUsersRecord.hasCurrentBooking) {
+                                    ).then((value) => setState(() {}));
+                                  } else {
                                     context.pushNamed(
                                       'NewBooking',
                                       queryParams: {
                                         'bookingRef': serializeParam(
-                                            currentUserDocument?.currentBooking,
-                                            ParamType.DocumentReference),
+                                          rowActionsBookingsRecord!.reference,
+                                          ParamType.DocumentReference,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  }
+
+                                  setState(() =>
+                                      FFAppState().lastBookingPage = false);
+                                  if (containerUsersRecord.hasCurrentBooking!) {
+                                    context.pushNamed(
+                                      'NewBooking',
+                                      queryParams: {
+                                        'bookingRef': serializeParam(
+                                          currentUserDocument!.currentBooking,
+                                          ParamType.DocumentReference,
+                                        ),
                                       }.withoutNulls,
                                     );
                                   }
                                 },
                                 child: FaIcon(
                                   FontAwesomeIcons.shoppingBasket,
-                                  color: Colors.white,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   size: 24,
                                 ),
                               ),
@@ -165,11 +183,12 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                   EdgeInsetsDirectional.fromSTEB(5, 0, 1, 0),
                               child: InkWell(
                                 onTap: () async {
-                                  context.pushNamed('Account');
+                                  context.pushNamed('myAccount');
                                 },
                                 child: Icon(
                                   Icons.person_rounded,
-                                  color: Colors.white,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   size: 26,
                                 ),
                               ),

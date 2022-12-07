@@ -7,16 +7,18 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FlagTestWidget extends StatefulWidget {
   const FlagTestWidget({
-    Key key,
+    Key? key,
     this.testedTestRef,
   }) : super(key: key);
 
-  final DocumentReference testedTestRef;
+  final DocumentReference? testedTestRef;
 
   @override
   _FlagTestWidgetState createState() => _FlagTestWidgetState();
@@ -24,35 +26,53 @@ class FlagTestWidget extends StatefulWidget {
 
 class _FlagTestWidgetState extends State<FlagTestWidget>
     with TickerProviderStateMixin {
-  TextEditingController flagNotesController;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 230,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 120),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: Offset(0, 120),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
     ),
   };
+  TextEditingController? flagNotesController;
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
 
     flagNotesController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    flagNotesController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -98,7 +118,7 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                         Text(
                           'FLAG TEST',
                           style: FlutterFlowTheme.of(context).title2.override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'Open Sans',
                                 color: Color(0xFF586B06),
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold,
@@ -172,6 +192,20 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                             contentPadding:
                                 EdgeInsetsDirectional.fromSTEB(20, 40, 24, 0),
                           ),
@@ -184,8 +218,8 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                                   ),
                           textAlign: TextAlign.start,
                           maxLines: 6,
-                        ).animated(
-                            [animationsMap['textFieldOnPageLoadAnimation']]),
+                        ).animateOnPageLoad(
+                            animationsMap['textFieldOnPageLoadAnimation']!),
                       ),
                     ),
                   ],
@@ -209,17 +243,19 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                           isVerified: false,
                           isFlagged: true,
                           flaggedDate: getCurrentTimestamp,
-                          flagNotes: flagNotesController.text,
+                          flagNotes: flagNotesController!.text,
                           pathologistRef: currentUserReference,
                         );
-                        await widget.testedTestRef
+                        await widget.testedTestRef!
                             .update(testedTestsUpdateData);
+
                         context.goNamed(
                           'TestDeck',
                           queryParams: {
                             'testedTestRef': serializeParam(
-                                widget.testedTestRef,
-                                ParamType.DocumentReference),
+                              widget.testedTestRef,
+                              ParamType.DocumentReference,
+                            ),
                           }.withoutNulls,
                         );
                       },
@@ -231,7 +267,7 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
                         textStyle: FlutterFlowTheme.of(context)
                             .subtitle2
                             .override(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'Open Sans',
                               color: FlutterFlowTheme.of(context).tertiaryColor,
                             ),
                         elevation: 2,

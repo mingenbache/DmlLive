@@ -16,10 +16,10 @@ class _$DMLInfoRecordSerializer implements StructuredSerializer<DMLInfoRecord> {
   final String wireName = 'DMLInfoRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, DMLInfoRecord object,
+  Iterable<Object?> serialize(Serializers serializers, DMLInfoRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.url;
     if (value != null) {
       result
@@ -71,66 +71,66 @@ class _$DMLInfoRecordSerializer implements StructuredSerializer<DMLInfoRecord> {
         ..add(
             serializers.serialize(value, specifiedType: const FullType(bool)));
     }
-    value = object.reference;
+    value = object.ffRef;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     return result;
   }
 
   @override
   DMLInfoRecord deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new DMLInfoRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'primaryEmail':
           result.primaryEmail = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'phone_numbers':
           result.phoneNumbers.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<Object>);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
           break;
         case 'DML_Logo':
           result.dMLLogo = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'footerReferences':
           result.footerReferences.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<Object>);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
           break;
         case 'location':
           result.location = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'isMain':
           result.isMain = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'Document__Reference__Field':
-          result.reference = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+          result.ffRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
       }
     }
@@ -141,24 +141,24 @@ class _$DMLInfoRecordSerializer implements StructuredSerializer<DMLInfoRecord> {
 
 class _$DMLInfoRecord extends DMLInfoRecord {
   @override
-  final String url;
+  final String? url;
   @override
-  final String primaryEmail;
+  final String? primaryEmail;
   @override
-  final BuiltList<String> phoneNumbers;
+  final BuiltList<String>? phoneNumbers;
   @override
-  final String dMLLogo;
+  final String? dMLLogo;
   @override
-  final BuiltList<String> footerReferences;
+  final BuiltList<String>? footerReferences;
   @override
-  final String location;
+  final String? location;
   @override
-  final bool isMain;
+  final bool? isMain;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object?>? ffRef;
 
-  factory _$DMLInfoRecord([void Function(DMLInfoRecordBuilder) updates]) =>
-      (new DMLInfoRecordBuilder()..update(updates)).build();
+  factory _$DMLInfoRecord([void Function(DMLInfoRecordBuilder)? updates]) =>
+      (new DMLInfoRecordBuilder()..update(updates))._build();
 
   _$DMLInfoRecord._(
       {this.url,
@@ -168,7 +168,7 @@ class _$DMLInfoRecord extends DMLInfoRecord {
       this.footerReferences,
       this.location,
       this.isMain,
-      this.reference})
+      this.ffRef})
       : super._();
 
   @override
@@ -189,7 +189,7 @@ class _$DMLInfoRecord extends DMLInfoRecord {
         footerReferences == other.footerReferences &&
         location == other.location &&
         isMain == other.isMain &&
-        reference == other.reference;
+        ffRef == other.ffRef;
   }
 
   @override
@@ -205,12 +205,12 @@ class _$DMLInfoRecord extends DMLInfoRecord {
                     footerReferences.hashCode),
                 location.hashCode),
             isMain.hashCode),
-        reference.hashCode));
+        ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('DMLInfoRecord')
+    return (newBuiltValueToStringHelper(r'DMLInfoRecord')
           ..add('url', url)
           ..add('primaryEmail', primaryEmail)
           ..add('phoneNumbers', phoneNumbers)
@@ -218,51 +218,50 @@ class _$DMLInfoRecord extends DMLInfoRecord {
           ..add('footerReferences', footerReferences)
           ..add('location', location)
           ..add('isMain', isMain)
-          ..add('reference', reference))
+          ..add('ffRef', ffRef))
         .toString();
   }
 }
 
 class DMLInfoRecordBuilder
     implements Builder<DMLInfoRecord, DMLInfoRecordBuilder> {
-  _$DMLInfoRecord _$v;
+  _$DMLInfoRecord? _$v;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
-  String _primaryEmail;
-  String get primaryEmail => _$this._primaryEmail;
-  set primaryEmail(String primaryEmail) => _$this._primaryEmail = primaryEmail;
+  String? _primaryEmail;
+  String? get primaryEmail => _$this._primaryEmail;
+  set primaryEmail(String? primaryEmail) => _$this._primaryEmail = primaryEmail;
 
-  ListBuilder<String> _phoneNumbers;
+  ListBuilder<String>? _phoneNumbers;
   ListBuilder<String> get phoneNumbers =>
       _$this._phoneNumbers ??= new ListBuilder<String>();
-  set phoneNumbers(ListBuilder<String> phoneNumbers) =>
+  set phoneNumbers(ListBuilder<String>? phoneNumbers) =>
       _$this._phoneNumbers = phoneNumbers;
 
-  String _dMLLogo;
-  String get dMLLogo => _$this._dMLLogo;
-  set dMLLogo(String dMLLogo) => _$this._dMLLogo = dMLLogo;
+  String? _dMLLogo;
+  String? get dMLLogo => _$this._dMLLogo;
+  set dMLLogo(String? dMLLogo) => _$this._dMLLogo = dMLLogo;
 
-  ListBuilder<String> _footerReferences;
+  ListBuilder<String>? _footerReferences;
   ListBuilder<String> get footerReferences =>
       _$this._footerReferences ??= new ListBuilder<String>();
-  set footerReferences(ListBuilder<String> footerReferences) =>
+  set footerReferences(ListBuilder<String>? footerReferences) =>
       _$this._footerReferences = footerReferences;
 
-  String _location;
-  String get location => _$this._location;
-  set location(String location) => _$this._location = location;
+  String? _location;
+  String? get location => _$this._location;
+  set location(String? location) => _$this._location = location;
 
-  bool _isMain;
-  bool get isMain => _$this._isMain;
-  set isMain(bool isMain) => _$this._isMain = isMain;
+  bool? _isMain;
+  bool? get isMain => _$this._isMain;
+  set isMain(bool? isMain) => _$this._isMain = isMain;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
-      _$this._reference = reference;
+  DocumentReference<Object?>? _ffRef;
+  DocumentReference<Object?>? get ffRef => _$this._ffRef;
+  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   DMLInfoRecordBuilder() {
     DMLInfoRecord._initializeBuilder(this);
@@ -278,7 +277,7 @@ class DMLInfoRecordBuilder
       _footerReferences = $v.footerReferences?.toBuilder();
       _location = $v.location;
       _isMain = $v.isMain;
-      _reference = $v.reference;
+      _ffRef = $v.ffRef;
       _$v = null;
     }
     return this;
@@ -291,12 +290,14 @@ class DMLInfoRecordBuilder
   }
 
   @override
-  void update(void Function(DMLInfoRecordBuilder) updates) {
+  void update(void Function(DMLInfoRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$DMLInfoRecord build() {
+  DMLInfoRecord build() => _build();
+
+  _$DMLInfoRecord _build() {
     _$DMLInfoRecord _$result;
     try {
       _$result = _$v ??
@@ -308,9 +309,9 @@ class DMLInfoRecordBuilder
               footerReferences: _footerReferences?.build(),
               location: location,
               isMain: isMain,
-              reference: reference);
+              ffRef: ffRef);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'phoneNumbers';
         _phoneNumbers?.build();
@@ -319,7 +320,7 @@ class DMLInfoRecordBuilder
         _footerReferences?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'DMLInfoRecord', _$failedField, e.toString());
+            r'DMLInfoRecord', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -328,4 +329,4 @@ class DMLInfoRecordBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

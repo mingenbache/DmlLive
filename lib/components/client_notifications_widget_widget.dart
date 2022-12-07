@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/dashboard_menu_widget_light_widget.dart';
+import '../components/empty_list_widget.dart';
 import '../components/notification_list_item_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -10,7 +11,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ClientNotificationsWidgetWidget extends StatefulWidget {
-  const ClientNotificationsWidgetWidget({Key key}) : super(key: key);
+  const ClientNotificationsWidgetWidget({Key? key}) : super(key: key);
 
   @override
   _ClientNotificationsWidgetWidgetState createState() =>
@@ -59,7 +60,7 @@ class _ClientNotificationsWidgetWidgetState
                     );
                   }
                   List<NotificationsRecord> containerNotificationsRecordList =
-                      snapshot.data;
+                      snapshot.data!;
                   return Container(
                     width: MediaQuery.of(context).size.width * 0.9,
                     height: 100,
@@ -75,12 +76,19 @@ class _ClientNotificationsWidgetWidgetState
                           child: Builder(
                             builder: (context) {
                               final unseenNotifications = functions
-                                      .filterNotifications(
-                                          containerNotificationsRecordList
-                                              .toList(),
-                                          currentUserReference)
-                                      ?.toList() ??
-                                  [];
+                                  .filterNotifications(
+                                      containerNotificationsRecordList.toList(),
+                                      currentUserReference)
+                                  .toList();
+                              if (unseenNotifications.isEmpty) {
+                                return Center(
+                                  child: Container(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.5,
+                                    child: EmptyListWidget(),
+                                  ),
+                                );
+                              }
                               return ListView.builder(
                                 padding: EdgeInsets.zero,
                                 shrinkWrap: true,
@@ -95,6 +103,8 @@ class _ClientNotificationsWidgetWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 0, 0, 5),
                                     child: NotificationListItemWidget(
+                                      key: Key(
+                                          'notificationListItem_${unseenNotificationsIndex}'),
                                       notificationRef: unseenNotificationsItem,
                                     ),
                                   );

@@ -7,7 +7,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DashboardMenuWidgetLight2Widget extends StatefulWidget {
-  const DashboardMenuWidgetLight2Widget({Key key}) : super(key: key);
+  const DashboardMenuWidgetLight2Widget({Key? key}) : super(key: key);
 
   @override
   _DashboardMenuWidgetLight2WidgetState createState() =>

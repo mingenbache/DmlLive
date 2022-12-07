@@ -5,20 +5,22 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PackageaddTestItemWidget extends StatefulWidget {
   const PackageaddTestItemWidget({
-    Key key,
+    Key? key,
     this.index,
     this.listSize,
     this.test,
   }) : super(key: key);
 
-  final int index;
-  final int listSize;
-  final TestsRecord test;
+  final int? index;
+  final int? listSize;
+  final TestsRecord? test;
 
   @override
   _PackageaddTestItemWidgetState createState() =>
@@ -27,104 +29,101 @@ class PackageaddTestItemWidget extends StatefulWidget {
 
 class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
     with TickerProviderStateMixin {
+  var hasContainerTriggered1 = false;
+  var hasContainerTriggered2 = false;
   final animationsMap = {
     'stackOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 1300,
-      delay: 280,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(-92, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 280.ms,
+          duration: 1300.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 280.ms,
+          duration: 1300.ms,
+          begin: Offset(-92, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'containerOnActionTriggerAnimation1': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(63, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(63, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'containerOnActionTriggerAnimation2': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 950,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(-58, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 950.ms,
+          begin: Offset(-58, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'containerOnPageLoadAnimation1': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, -73),
-        scale: 1,
-        opacity: 1,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, -73),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'containerOnPageLoadAnimation2': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(-96, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(-96, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
   };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
   }
@@ -153,17 +152,16 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                       Stack(
                         children: [
                           if (FFAppState()
-                                  .testPackTests
-                                  ?.contains(widget.test.reference) ??
-                              true)
+                              .testPackTests
+                              .contains(widget.test!.reference))
                             InkWell(
                               onTap: () async {
                                 if (FFAppState()
                                     .testPackTests
-                                    .contains(widget.test.reference)) {
+                                    .contains(widget.test!.reference)) {
                                   setState(() => FFAppState()
                                       .removeFromTestPackTests(
-                                          widget.test.reference));
+                                          widget.test!.reference));
                                 } else {
                                   return;
                                 }
@@ -224,22 +222,21 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                   ),
                                 ),
                               ),
-                            ).animated([
-                              animationsMap[
-                                  'containerOnActionTriggerAnimation1']
-                            ]),
-                          if (!(FFAppState()
-                                  .testPackTests
-                                  .contains(widget.test.reference)) ??
-                              true)
+                            ).animateOnActionTrigger(
+                                animationsMap[
+                                    'containerOnActionTriggerAnimation1']!,
+                                hasBeenTriggered: hasContainerTriggered1),
+                          if (!FFAppState()
+                              .testPackTests
+                              .contains(widget.test!.reference))
                             InkWell(
                               onTap: () async {
-                                if (!(FFAppState()
+                                if (!FFAppState()
                                     .testPackTests
-                                    .contains(widget.test.reference))) {
+                                    .contains(widget.test!.reference)) {
                                   setState(() => FFAppState()
                                       .addToTestPackTests(
-                                          widget.test.reference));
+                                          widget.test!.reference));
                                 } else {
                                   return;
                                 }
@@ -247,7 +244,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Test Added.${widget.listSize.toString()} Tests in Total.',
+                                      'Test Added.${widget.listSize?.toString()} Tests in Total.',
                                       style: TextStyle(),
                                     ),
                                     duration: Duration(milliseconds: 400),
@@ -300,12 +297,13 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                   ),
                                 ),
                               ),
-                            ).animated([
-                              animationsMap[
-                                  'containerOnActionTriggerAnimation2']
-                            ]),
+                            ).animateOnActionTrigger(
+                                animationsMap[
+                                    'containerOnActionTriggerAnimation2']!,
+                                hasBeenTriggered: hasContainerTriggered2),
                         ],
-                      ).animated([animationsMap['stackOnPageLoadAnimation']]),
+                      ).animateOnPageLoad(
+                          animationsMap['stackOnPageLoadAnimation']!),
                     ],
                   ),
                 ],
@@ -356,21 +354,22 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                               decoration: BoxDecoration(),
                                               child: AutoSizeText(
                                                 functions
-                                                    .add1(widget.index)
+                                                    .add1(widget.index)!
                                                     .toString()
                                                     .maybeHandleOverflow(
                                                         maxChars: 2),
                                                 textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .tertiaryColor,
-                                                          fontSize: 16,
-                                                        ),
+                                                      fontSize: 16,
+                                                    ),
                                               ),
                                             ),
                                             Container(
@@ -381,7 +380,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                                 child: Text(
                                                   functions
                                                       .camelCase(
-                                                          widget.test.name)
+                                                          widget.test!.name)
                                                       .maybeHandleOverflow(
                                                           maxChars: 25),
                                                   style: TextStyle(
@@ -398,9 +397,8 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                     ],
                                   ),
                                 ),
-                              ).animated([
-                                animationsMap['containerOnPageLoadAnimation1']
-                              ]),
+                              ).animateOnPageLoad(animationsMap[
+                                  'containerOnPageLoadAnimation1']!),
                               Align(
                                 alignment: AlignmentDirectional(0, 1),
                                 child: Material(
@@ -528,8 +526,8 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                                                             4),
                                                                     child: Text(
                                                                       widget
-                                                                          .test
-                                                                          .category,
+                                                                          .test!
+                                                                          .category!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyText1
@@ -582,7 +580,7 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                                                   size: 20,
                                                                 ),
                                                                 Text(
-                                                                  '${widget.test.durationResults.toString()} Hrs',
+                                                                  '${widget.test!.durationResults?.toString()} Hrs',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1
@@ -690,8 +688,8 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                                                           Text(
                                                                         formatNumber(
                                                                           widget
-                                                                              .test
-                                                                              .price,
+                                                                              .test!
+                                                                              .price!,
                                                                           formatType:
                                                                               FormatType.decimal,
                                                                           decimalType:
@@ -727,9 +725,8 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
                                       ),
                                     ),
                                   ),
-                                ).animated([
-                                  animationsMap['containerOnPageLoadAnimation2']
-                                ]),
+                                ).animateOnPageLoad(animationsMap[
+                                    'containerOnPageLoadAnimation2']!),
                               ),
                             ],
                           ),

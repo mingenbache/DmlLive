@@ -8,20 +8,23 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'
+    as smooth_page_indicator;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class AddNewTestPackageWidget extends StatefulWidget {
   const AddNewTestPackageWidget({
-    Key key,
+    Key? key,
     this.userRef,
   }) : super(key: key);
 
-  final DocumentReference userRef;
+  final DocumentReference? userRef;
 
   @override
   _AddNewTestPackageWidgetState createState() =>
@@ -30,43 +33,40 @@ class AddNewTestPackageWidget extends StatefulWidget {
 
 class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
     with TickerProviderStateMixin {
-  PageController pageViewController;
-  String packageCategoryDropDownValue;
-  TextEditingController packageDescriptionController;
-  bool atHomeToggleValue;
-  TextEditingController testDurationTextController;
-  double testDurationSliderValue;
-  TextEditingController resultsDurationTextController;
-  double durationResultsSliderValue;
-  TextEditingController testPriceController;
-  TextEditingController testPackageNameController;
-  TestPackagesRecord newTestPackId;
-  final formKey = GlobalKey<FormState>();
   final animationsMap = {
     'buttonOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(0, 82),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, 82),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
   };
+  PageController? pageViewController;
+  String? packageCategoryDropDownValue;
+  TextEditingController? packageDescriptionController;
+  bool? atHomeToggleValue;
+  TextEditingController? testDurationTextController;
+  double? testDurationSliderValue;
+  TextEditingController? resultsDurationTextController;
+  double? durationResultsSliderValue;
+  TextEditingController? testPriceController;
+  TextEditingController? testPackageNameController;
+  TestPackagesRecord? newTestPackId;
+  final formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
 
@@ -79,6 +79,16 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
     testPriceController = TextEditingController();
     testPackageNameController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    packageDescriptionController?.dispose();
+    testDurationTextController?.dispose();
+    resultsDurationTextController?.dispose();
+    testPriceController?.dispose();
+    testPackageNameController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -106,9 +116,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
               ),
             );
           }
-          List<StaffRecord> columnStaffRecordList = snapshot.data;
+          List<StaffRecord> columnStaffRecordList = snapshot.data!;
           // Return an empty Container when the document does not exist.
-          if (snapshot.data.isEmpty) {
+          if (snapshot.data!.isEmpty) {
             return Container();
           }
           final columnStaffRecord = columnStaffRecordList.isNotEmpty
@@ -158,7 +168,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFF586B06),
                                     ),
                               ),
@@ -215,14 +225,14 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Open Sans',
                                               color: Color(0xFF586B06),
                                             ),
                                         hintText: 'Enter Name',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Open Sans',
                                               color: Color(0xFF586B06),
                                             ),
                                         enabledBorder: OutlineInputBorder(
@@ -241,19 +251,35 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
+                                        errorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 2,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                        ),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 2,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                        ),
                                         filled: true,
                                         fillColor: Color(0x65FFFFFF),
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 15, 15, 15, 15),
-                                        suffixIcon: testPackageNameController
+                                        suffixIcon: testPackageNameController!
                                                 .text.isNotEmpty
                                             ? InkWell(
-                                                onTap: () => setState(
-                                                  () =>
-                                                      testPackageNameController
-                                                          ?.clear(),
-                                                ),
+                                                onTap: () async {
+                                                  testPackageNameController
+                                                      ?.clear();
+                                                  setState(() {});
+                                                },
                                                 child: Icon(
                                                   Icons.clear,
                                                   color: Color(0xFF757575),
@@ -265,18 +291,18 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
                                             fontSize: 16,
                                             fontWeight: FontWeight.w500,
                                             lineHeight: 1.4,
                                           ),
-                                      maxLines: 1,
                                       validator: (val) {
                                         if (val == null || val.isEmpty) {
                                           return 'Field is required';
                                         }
+
                                         if (val.length < 3) {
                                           return 'Requires at least 3 characters.';
                                         }
@@ -338,7 +364,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Open Sans',
                                                                 color: Color(
                                                                     0xFF586B06),
                                                                 fontWeight:
@@ -388,17 +414,18 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                             }
                                                             List<CategoriesRecord>
                                                                 packageCategoryDropDownCategoriesRecordList =
-                                                                snapshot.data;
+                                                                snapshot.data!;
                                                             final packageCategoryDropDownCategoriesRecord =
                                                                 packageCategoryDropDownCategoriesRecordList
                                                                         .isNotEmpty
                                                                     ? packageCategoryDropDownCategoriesRecordList
                                                                         .first
                                                                     : null;
-                                                            return FlutterFlowDropDown(
+                                                            return FlutterFlowDropDown<
+                                                                String>(
                                                               options:
-                                                                  packageCategoryDropDownCategoriesRecord
-                                                                      .categories
+                                                                  packageCategoryDropDownCategoriesRecord!
+                                                                      .categories!
                                                                       .toList()
                                                                       .toList(),
                                                               onChanged: (val) =>
@@ -417,7 +444,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                       .bodyText1
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Roboto',
+                                                                            'Open Sans',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryColor,
                                                                       ),
@@ -513,6 +540,28 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                             BorderRadius
                                                                 .circular(12),
                                                       ),
+                                                      errorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color:
+                                                              Color(0x00000000),
+                                                          width: 1,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12),
+                                                      ),
+                                                      focusedErrorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color:
+                                                              Color(0x00000000),
+                                                          width: 1,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12),
+                                                      ),
                                                       filled: true,
                                                       fillColor:
                                                           Color(0xFFEEEEEE),
@@ -521,15 +570,17 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .fromSTEB(
                                                                   5, 5, 0, 5),
                                                       suffixIcon:
-                                                          packageDescriptionController
+                                                          packageDescriptionController!
                                                                   .text
                                                                   .isNotEmpty
                                                               ? InkWell(
-                                                                  onTap: () =>
-                                                                      setState(
-                                                                    () => packageDescriptionController
-                                                                        ?.clear(),
-                                                                  ),
+                                                                  onTap:
+                                                                      () async {
+                                                                    packageDescriptionController
+                                                                        ?.clear();
+                                                                    setState(
+                                                                        () {});
+                                                                  },
                                                                   child: Icon(
                                                                     Icons.clear,
                                                                     color: Color(
@@ -597,49 +648,53 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(0, 10,
                                                                     0, 0),
-                                                        child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(8),
-                                                          child: SwitchListTile(
-                                                            value:
-                                                                atHomeToggleValue ??=
-                                                                    false,
-                                                            onChanged: (newValue) =>
-                                                                setState(() =>
-                                                                    atHomeToggleValue =
-                                                                        newValue),
-                                                            title: Text(
-                                                              'Test @ Home ',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyText1
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Roboto',
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .tertiaryColor,
-                                                                  ),
-                                                            ),
-                                                            subtitle: Text(
-                                                              'Can the tests be done at home?',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .subtitle2,
-                                                            ),
-                                                            activeColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                            activeTrackColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryColor,
-                                                            dense: false,
-                                                            controlAffinity:
-                                                                ListTileControlAffinity
-                                                                    .trailing,
+                                                        child: SwitchListTile(
+                                                          value:
+                                                              atHomeToggleValue ??=
+                                                                  false,
+                                                          onChanged:
+                                                              (newValue) async {
+                                                            setState(() =>
+                                                                atHomeToggleValue =
+                                                                    newValue!);
+                                                          },
+                                                          title: Text(
+                                                            'Test @ Home ',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Open Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .tertiaryColor,
+                                                                ),
+                                                          ),
+                                                          subtitle: Text(
+                                                            'Can the tests be done at home?',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .subtitle2,
+                                                          ),
+                                                          activeColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primaryColor,
+                                                          activeTrackColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .secondaryColor,
+                                                          dense: false,
+                                                          controlAffinity:
+                                                              ListTileControlAffinity
+                                                                  .trailing,
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8),
                                                           ),
                                                         ),
                                                       ),
@@ -690,7 +745,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Open Sans',
                                                                 color: Color(
                                                                     0xFF586B06),
                                                                 fontWeight:
@@ -705,7 +760,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,
@@ -815,6 +870,44 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                               4.0),
                                                                     ),
                                                                   ),
+                                                                  errorBorder:
+                                                                      UnderlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Color(
+                                                                          0x00000000),
+                                                                      width: 1,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        const BorderRadius
+                                                                            .only(
+                                                                      topLeft: Radius
+                                                                          .circular(
+                                                                              4.0),
+                                                                      topRight:
+                                                                          Radius.circular(
+                                                                              4.0),
+                                                                    ),
+                                                                  ),
+                                                                  focusedErrorBorder:
+                                                                      UnderlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Color(
+                                                                          0x00000000),
+                                                                      width: 1,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        const BorderRadius
+                                                                            .only(
+                                                                      topLeft: Radius
+                                                                          .circular(
+                                                                              4.0),
+                                                                      topRight:
+                                                                          Radius.circular(
+                                                                              4.0),
+                                                                    ),
+                                                                  ),
                                                                   contentPadding:
                                                                       EdgeInsetsDirectional
                                                                           .fromSTEB(
@@ -828,13 +921,12 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Roboto',
+                                                                          'Open Sans',
                                                                       color: Color(
                                                                           0xFF586B06),
                                                                       fontSize:
                                                                           18,
                                                                     ),
-                                                                maxLines: 1,
                                                                 keyboardType:
                                                                     TextInputType
                                                                         .number,
@@ -916,7 +1008,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Open Sans',
                                                                 color: Color(
                                                                     0xFF586B06),
                                                                 fontWeight:
@@ -931,7 +1023,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,
@@ -1040,6 +1132,44 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                               4.0),
                                                                     ),
                                                                   ),
+                                                                  errorBorder:
+                                                                      UnderlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Color(
+                                                                          0x00000000),
+                                                                      width: 1,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        const BorderRadius
+                                                                            .only(
+                                                                      topLeft: Radius
+                                                                          .circular(
+                                                                              4.0),
+                                                                      topRight:
+                                                                          Radius.circular(
+                                                                              4.0),
+                                                                    ),
+                                                                  ),
+                                                                  focusedErrorBorder:
+                                                                      UnderlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Color(
+                                                                          0x00000000),
+                                                                      width: 1,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        const BorderRadius
+                                                                            .only(
+                                                                      topLeft: Radius
+                                                                          .circular(
+                                                                              4.0),
+                                                                      topRight:
+                                                                          Radius.circular(
+                                                                              4.0),
+                                                                    ),
+                                                                  ),
                                                                   contentPadding:
                                                                       EdgeInsetsDirectional
                                                                           .fromSTEB(
@@ -1053,7 +1183,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Roboto',
+                                                                          'Open Sans',
                                                                       color: Color(
                                                                           0xFF586B06),
                                                                       fontSize:
@@ -1166,7 +1296,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Open Sans',
                                                                   color: Color(
                                                                       0xFF586B06),
                                                                   fontSize: 18,
@@ -1239,6 +1369,32 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     .circular(
                                                                         12),
                                                           ),
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12),
+                                                          ),
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12),
+                                                          ),
                                                           filled: true,
                                                           fillColor:
                                                               Color(0xC1EEEEEE),
@@ -1255,7 +1411,6 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
-                                                        maxLines: 1,
                                                         keyboardType:
                                                             TextInputType
                                                                 .number,
@@ -1284,7 +1439,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                     FFButtonWidget(
                                                       onPressed: () async {
                                                         await pageViewController
-                                                            .nextPage(
+                                                            ?.nextPage(
                                                           duration: Duration(
                                                               milliseconds:
                                                                   300),
@@ -1308,7 +1463,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .tertiaryColor,
@@ -1354,7 +1509,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                           context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             Color(0xFF586B06),
                                                       ),
@@ -1377,9 +1532,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                         builder: (context) {
                                                           final testsList =
                                                               FFAppState()
-                                                                      .testPackTests
-                                                                      ?.toList() ??
-                                                                  [];
+                                                                  .testPackTests
+                                                                  .toList();
                                                           return ListView
                                                               .builder(
                                                             padding:
@@ -1431,7 +1585,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     }
                                                                     final testPackTestItemTestsRecord =
                                                                         snapshot
-                                                                            .data;
+                                                                            .data!;
                                                                     return Material(
                                                                       color: Colors
                                                                           .transparent,
@@ -1474,9 +1628,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                                   mainAxisSize: MainAxisSize.max,
                                                                                   children: [
                                                                                     Text(
-                                                                                      testPackTestItemTestsRecord.name,
+                                                                                      testPackTestItemTestsRecord.name!,
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Roboto',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontWeight: FontWeight.w500,
                                                                                           ),
@@ -1492,16 +1646,16 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                                     child: Text(
                                                                                       'Ksh',
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Roboto',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).primaryColor,
                                                                                             fontWeight: FontWeight.w600,
                                                                                           ),
                                                                                     ),
                                                                                   ),
                                                                                   Text(
-                                                                                    testPackTestItemTestsRecord.price.toString(),
+                                                                                    testPackTestItemTestsRecord.price!.toString(),
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                          fontFamily: 'Roboto',
+                                                                                          fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).primaryColor,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -1585,7 +1739,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                       PackageTestListWidget(),
                                                                 );
                                                               },
-                                                            );
+                                                            ).then((value) =>
+                                                                setState(
+                                                                    () {}));
                                                           },
                                                           text: 'Add Test',
                                                           icon: Icon(
@@ -1605,7 +1761,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     .bodyText1
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Roboto',
+                                                                          'Open Sans',
                                                                       color: Colors
                                                                           .white,
                                                                     ),
@@ -1636,20 +1792,22 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 10),
-                                      child: SmoothPageIndicator(
+                                      child: smooth_page_indicator
+                                          .SmoothPageIndicator(
                                         controller: pageViewController ??=
                                             PageController(initialPage: 0),
                                         count: 2,
                                         axisDirection: Axis.horizontal,
                                         onDotClicked: (i) {
-                                          pageViewController.animateToPage(
+                                          pageViewController!.animateToPage(
                                             i,
                                             duration:
                                                 Duration(milliseconds: 500),
                                             curve: Curves.ease,
                                           );
                                         },
-                                        effect: ExpandingDotsEffect(
+                                        effect: smooth_page_indicator
+                                            .ExpandingDotsEffect(
                                           expansionFactor: 2,
                                           spacing: 8,
                                           radius: 16,
@@ -1673,7 +1831,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                   ),
                 ),
               ),
-              if (FFAppState().testPackSubmit ?? true)
+              if (FFAppState().testPackSubmit)
                 Expanded(
                   flex: 1,
                   child: Row(
@@ -1693,15 +1851,15 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                   final testPackagesCreateData = {
                                     ...createTestPackagesRecordData(
                                       price:
-                                          int.parse(testPriceController.text),
+                                          int.parse(testPriceController!.text),
                                       packageName:
-                                          testPackageNameController.text,
+                                          testPackageNameController!.text,
                                       description:
-                                          packageDescriptionController.text,
+                                          packageDescriptionController!.text,
                                       duration: double.parse(
-                                          testDurationTextController.text),
+                                          testDurationTextController!.text),
                                       durationResults: double.parse(
-                                          resultsDurationTextController.text),
+                                          resultsDurationTextController!.text),
                                       category: packageCategoryDropDownValue,
                                       atHome: atHomeToggleValue,
                                       createDate: getCurrentTimestamp,
@@ -1742,8 +1900,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                   ),
                                   borderRadius: BorderRadius.circular(25),
                                 ),
-                              ).animated(
-                                  [animationsMap['buttonOnPageLoadAnimation']]),
+                              ).animateOnPageLoad(
+                                  animationsMap['buttonOnPageLoadAnimation']!),
                             ),
                           ),
                         ],

@@ -11,11 +11,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class BookingReportWidget extends StatefulWidget {
   const BookingReportWidget({
-    Key key,
+    Key? key,
     this.reportRef,
   }) : super(key: key);
 
-  final DocumentReference reportRef;
+  final DocumentReference? reportRef;
 
   @override
   _BookingReportWidgetState createState() => _BookingReportWidgetState();
@@ -27,7 +27,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<ReportsRecord>(
-      stream: ReportsRecord.getDocument(widget.reportRef),
+      stream: ReportsRecord.getDocument(widget.reportRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -42,7 +42,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
             ),
           );
         }
-        final bookingReportReportsRecord = snapshot.data;
+        final bookingReportReportsRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -72,7 +72,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                         );
                       }
                       List<DMLInfoRecord> containerDMLInfoRecordList =
-                          snapshot.data;
+                          snapshot.data!;
                       final containerDMLInfoRecord =
                           containerDMLInfoRecordList.isNotEmpty
                               ? containerDMLInfoRecordList.first
@@ -85,7 +85,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                           child: StreamBuilder<UsersRecord>(
                             stream:
-                                UsersRecord.getDocument(currentUserReference),
+                                UsersRecord.getDocument(currentUserReference!),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -101,7 +101,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                   ),
                                 );
                               }
-                              final columnUsersRecord = snapshot.data;
+                              final columnUsersRecord = snapshot.data!;
                               return Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -167,7 +167,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                     child: InkWell(
                                                       onTap: () async {
                                                         context.pushNamed(
-                                                            'Account');
+                                                            'myAccount');
                                                       },
                                                       child: Icon(
                                                         Icons.person_sharp,
@@ -208,7 +208,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Image.network(
-                                              containerDMLInfoRecord.dMLLogo,
+                                              containerDMLInfoRecord!.dMLLogo!,
                                               width: 200,
                                               height: 100,
                                               fit: BoxFit.contain,
@@ -229,7 +229,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -244,11 +244,9 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                   child: Builder(
                                                     builder: (context) {
                                                       final phonenumbers =
-                                                          containerDMLInfoRecord
-                                                                  .phoneNumbers
-                                                                  .toList()
-                                                                  ?.toList() ??
-                                                              [];
+                                                          containerDMLInfoRecord!
+                                                              .phoneNumbers!
+                                                              .toList();
                                                       return ListView.builder(
                                                         padding:
                                                             EdgeInsets.zero,
@@ -269,7 +267,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryColor,
@@ -291,7 +289,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -301,13 +299,13 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                       ),
                                                 ),
                                                 Text(
-                                                  containerDMLInfoRecord
-                                                      .primaryEmail,
+                                                  containerDMLInfoRecord!
+                                                      .primaryEmail!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -325,7 +323,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -335,12 +333,12 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                       ),
                                                 ),
                                                 Text(
-                                                  containerDMLInfoRecord.url,
+                                                  containerDMLInfoRecord!.url!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -383,7 +381,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             Color(0xFF586B06),
                                                         fontWeight:
@@ -405,12 +403,12 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                     .fromSTEB(6, 6, 3, 3),
                                                 child: Text(
                                                   bookingReportReportsRecord
-                                                      .patientName,
+                                                      .patientName!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -450,7 +448,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Roboto',
+                                                    fontFamily: 'Open Sans',
                                                     color: Color(0xFF586B06),
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -485,13 +483,14 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                       .fromSTEB(0, 5, 16, 0),
                                                   child: Text(
                                                     bookingReportReportsRecord
-                                                        .patientAge
+                                                        .patientAge!
                                                         .toString(),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryColor,
@@ -539,16 +538,15 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                   .fromSTEB(8, 8, 0, 0),
                                               child: Text(
                                                 'SEX',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color: Color(0xFF586B06),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                           ),
@@ -576,17 +574,18 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                   .fromSTEB(0, 8, 16, 0),
                                               child: Text(
                                                 bookingReportReportsRecord
-                                                    .patientSex,
+                                                    .patientSex!,
                                                 textAlign: TextAlign.end,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                        ),
+                                                    ),
                                               ),
                                             ),
                                           ),
@@ -625,16 +624,15 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                   .fromSTEB(8, 8, 0, 0),
                                               child: Text(
                                                 'LAB REF',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color: Color(0xFF586B06),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                           ),
@@ -662,17 +660,18 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                   .fromSTEB(0, 8, 16, 0),
                                               child: Text(
                                                 bookingReportReportsRecord
-                                                    .labRefNum,
+                                                    .labRefNum!,
                                                 textAlign: TextAlign.end,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                        ),
+                                                    ),
                                               ),
                                             ),
                                           ),
@@ -707,7 +706,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             Color(0xFF586B06),
                                                         fontWeight:
@@ -727,7 +726,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                               StreamBuilder<DoctorsRecord>(
                                                 stream: DoctorsRecord.getDocument(
                                                     bookingReportReportsRecord
-                                                        .doctor),
+                                                        .doctor!),
                                                 builder: (context, snapshot) {
                                                   // Customize what your widget looks like when it's loading.
                                                   if (!snapshot.hasData) {
@@ -745,7 +744,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                     );
                                                   }
                                                   final containerDoctorsRecord =
-                                                      snapshot.data;
+                                                      snapshot.data!;
                                                   return Container(
                                                     width:
                                                         MediaQuery.of(context)
@@ -765,14 +764,14 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                   0, 6, 0, 0),
                                                       child: Text(
                                                         containerDoctorsRecord
-                                                            .name,
+                                                            .name!,
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryColor,
@@ -814,7 +813,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Roboto',
+                                                    fontFamily: 'Open Sans',
                                                     color: Color(0xFF586B06),
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -851,12 +850,13 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                     dateTimeFormat(
                                                         'd/M/y',
                                                         bookingReportReportsRecord
-                                                            .createdDate),
+                                                            .createdDate!),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryColor,
@@ -899,7 +899,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                         context)
                                                     .subtitle2
                                                     .override(
-                                                      fontFamily: 'Roboto',
+                                                      fontFamily: 'Open Sans',
                                                       color: Color(0xFF586B06),
                                                       decoration: TextDecoration
                                                           .underline,
@@ -914,10 +914,8 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                               builder: (context) {
                                                 final testPackages =
                                                     bookingReportReportsRecord
-                                                            .testpackageList
-                                                            .toList()
-                                                            ?.toList() ??
-                                                        [];
+                                                        .testpackageList!
+                                                        .toList();
                                                 return ListView.builder(
                                                   padding: EdgeInsets.zero,
                                                   scrollDirection:
@@ -953,7 +951,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                           );
                                                         }
                                                         final containerTestPackagesRecord =
-                                                            snapshot.data;
+                                                            snapshot.data!;
                                                         return Container(
                                                           width: 100,
                                                           height: 100,
@@ -979,7 +977,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryColor,
                                                                           fontWeight:
@@ -988,13 +986,13 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                   ),
                                                                   Text(
                                                                     containerTestPackagesRecord
-                                                                        .packageName,
+                                                                        .packageName!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryColor,
                                                                           fontWeight:
@@ -1018,7 +1016,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryColor,
                                                                           fontWeight:
@@ -1032,7 +1030,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryColor,
                                                                           fontWeight:
@@ -1046,7 +1044,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryColor,
                                                                           fontWeight:
@@ -1058,11 +1056,10 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                               Builder(
                                                                 builder:
                                                                     (context) {
-                                                                  final packagetestedtests = containerTestPackagesRecord
-                                                                          .testsIncluded
-                                                                          .toList()
-                                                                          ?.toList() ??
-                                                                      [];
+                                                                  final packagetestedtests =
+                                                                      containerTestPackagesRecord
+                                                                          .testsIncluded!
+                                                                          .toList();
                                                                   return ListView
                                                                       .builder(
                                                                     padding:
@@ -1103,7 +1100,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                             );
                                                                           }
                                                                           final containerTestsRecord =
-                                                                              snapshot.data;
+                                                                              snapshot.data!;
                                                                           return Container(
                                                                             width:
                                                                                 MediaQuery.of(context).size.width * 0.8,
@@ -1115,9 +1112,9 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                                               children: [
                                                                                 Text(
-                                                                                  containerTestsRecord.name,
+                                                                                  containerTestsRecord.name!,
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                        fontFamily: 'Roboto',
+                                                                                        fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                         fontWeight: FontWeight.normal,
                                                                                       ),
@@ -1141,12 +1138,12 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                                         ),
                                                                                       );
                                                                                     }
-                                                                                    List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data;
+                                                                                    List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data!;
                                                                                     final textTestedTestsRecord = textTestedTestsRecordList.isNotEmpty ? textTestedTestsRecordList.first : null;
                                                                                     return Text(
-                                                                                      textTestedTestsRecord.testResult,
+                                                                                      textTestedTestsRecord!.testResult!,
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Roboto',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontWeight: FontWeight.normal,
                                                                                           ),
@@ -1159,7 +1156,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                                     Text(
                                                                                       'Male ${containerTestsRecord.varianceMale}${containerTestsRecord.varianceUnitsMale}',
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Roboto',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontWeight: FontWeight.normal,
                                                                                           ),
@@ -1167,7 +1164,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                                     Text(
                                                                                       'Female ${containerTestsRecord.varianceFemale}${containerTestsRecord.varianceUnitsFemale}',
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                            fontFamily: 'Roboto',
+                                                                                            fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                             fontWeight: FontWeight.normal,
                                                                                           ),
@@ -1200,10 +1197,8 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                               builder: (context) {
                                                 final tests =
                                                     bookingReportReportsRecord
-                                                            .testedTests
-                                                            .toList()
-                                                            ?.toList() ??
-                                                        [];
+                                                        .testedTests!
+                                                        .toList();
                                                 return ListView.builder(
                                                   padding: EdgeInsets.zero,
                                                   scrollDirection:
@@ -1237,7 +1232,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                           );
                                                         }
                                                         final containerTestedTestsRecord =
-                                                            snapshot.data;
+                                                            snapshot.data!;
                                                         return Container(
                                                           width: MediaQuery.of(
                                                                       context)
@@ -1251,7 +1246,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                             stream: TestsRecord
                                                                 .getDocument(
                                                                     containerTestedTestsRecord
-                                                                        .testRef),
+                                                                        .testRef!),
                                                             builder: (context,
                                                                 snapshot) {
                                                               // Customize what your widget looks like when it's loading.
@@ -1273,7 +1268,8 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                 );
                                                               }
                                                               final rowTestsRecord =
-                                                                  snapshot.data;
+                                                                  snapshot
+                                                                      .data!;
                                                               return Row(
                                                                 mainAxisSize:
                                                                     MainAxisSize
@@ -1284,13 +1280,13 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                 children: [
                                                                   Text(
                                                                     rowTestsRecord
-                                                                        .name,
+                                                                        .name!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryColor,
                                                                           fontWeight:
@@ -1299,13 +1295,13 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                   ),
                                                                   Text(
                                                                     containerTestedTestsRecord
-                                                                        .testResult,
+                                                                        .testResult!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryColor,
                                                                           fontWeight:
@@ -1322,7 +1318,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
                                                                               fontWeight: FontWeight.normal,
                                                                             ),
@@ -1332,7 +1328,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText1
                                                                             .override(
-                                                                              fontFamily: 'Roboto',
+                                                                              fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).secondaryColor,
                                                                               fontWeight: FontWeight.normal,
                                                                             ),
@@ -1369,7 +1365,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                fontFamily: 'Open Sans',
                                                 color: Color(0xFF586B06),
                                                 fontWeight: FontWeight.w500,
                                               ),
@@ -1401,14 +1397,14 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                                 14, 14, 14, 14),
                                                     child: Text(
                                                       bookingReportReportsRecord
-                                                          .pathologistComments,
+                                                          .pathologistComments!,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,
@@ -1439,44 +1435,46 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                             children: [
                                               Text(
                                                 'Hello World',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                        ),
+                                                    ),
                                               ),
                                               Text(
                                                 'Technologist',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .underline,
-                                                        ),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      decoration: TextDecoration
+                                                          .underline,
+                                                    ),
                                               ),
                                               Text(
                                                 'Hello World',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                        ),
+                                                    ),
                                               ),
                                             ],
                                           ),
@@ -1488,30 +1486,31 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                             children: [
                                               Text(
                                                 'Hello World',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                        ),
+                                                    ),
                                               ),
                                               Text(
                                                 'Consultant Pathologist',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .underline,
-                                                        ),
+                                                      decoration: TextDecoration
+                                                          .underline,
+                                                    ),
                                               ),
                                             ],
                                           ),
@@ -1532,11 +1531,9 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                     decoration: BoxDecoration(),
                                     child: Builder(
                                       builder: (context) {
-                                        final refs = containerDMLInfoRecord
-                                                .footerReferences
-                                                .toList()
-                                                ?.toList() ??
-                                            [];
+                                        final refs = containerDMLInfoRecord!
+                                            .footerReferences!
+                                            .toList();
                                         return Wrap(
                                           spacing: 5,
                                           runSpacing: 0,
@@ -1557,7 +1554,7 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Roboto',
+                                                    fontFamily: 'Open Sans',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryColor,

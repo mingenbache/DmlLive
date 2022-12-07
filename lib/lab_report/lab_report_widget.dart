@@ -5,35 +5,36 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:smooth_page_indicator/smooth_page_indicator.dart'
+    as smooth_page_indicator;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class LabReportWidget extends StatefulWidget {
   const LabReportWidget({
-    Key key,
+    Key? key,
     this.bookingRef,
   }) : super(key: key);
 
-  final DocumentReference bookingRef;
+  final DocumentReference? bookingRef;
 
   @override
   _LabReportWidgetState createState() => _LabReportWidgetState();
 }
 
 class _LabReportWidgetState extends State<LabReportWidget> {
-  PageController pageViewController;
-  String choiceChipsValue;
+  PageController? pageViewController;
+  String? choiceChipsValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<BookingsRecord>(
-      stream: BookingsRecord.getDocument(widget.bookingRef),
+      stream: BookingsRecord.getDocument(widget.bookingRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -48,7 +49,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
             ),
           );
         }
-        final labReportBookingsRecord = snapshot.data;
+        final labReportBookingsRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -60,7 +61,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                     child: StreamBuilder<UsersRecord>(
-                      stream: UsersRecord.getDocument(currentUserReference),
+                      stream: UsersRecord.getDocument(currentUserReference!),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -76,7 +77,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                             ),
                           );
                         }
-                        final columnUsersRecord = snapshot.data;
+                        final columnUsersRecord = snapshot.data!;
                         return Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -132,7 +133,8 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                   .fromSTEB(5, 0, 0, 0),
                                               child: InkWell(
                                                 onTap: () async {
-                                                  context.pushNamed('Account');
+                                                  context
+                                                      .pushNamed('myAccount');
                                                 },
                                                 child: Icon(
                                                   Icons.person_sharp,
@@ -171,7 +173,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title1
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
                                         color: Color(0xFF586B06),
                                       ),
                                 ),
@@ -210,7 +212,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Roboto',
+                                                    fontFamily: 'Open Sans',
                                                     color: Color(0xFF586B06),
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -256,12 +258,12 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                     .fromSTEB(0, 5, 0, 0),
                                                 child: Text(
                                                   labReportBookingsRecord
-                                                      .bookingstatus,
+                                                      .bookingstatus!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color: Colors.white,
                                                       ),
                                                 ),
@@ -313,7 +315,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Open Sans',
                                                   color: Color(0xFF586B06),
                                                   fontWeight: FontWeight.w500,
                                                 ),
@@ -342,12 +344,12 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0, 8, 16, 0),
                                           child: Text(
-                                            labReportBookingsRecord.labRefNum,
+                                            labReportBookingsRecord.labRefNum!,
                                             textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryColor,
@@ -388,7 +390,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                fontFamily: 'Open Sans',
                                                 color: Color(0xFF586B06),
                                                 fontWeight: FontWeight.w500,
                                               ),
@@ -423,19 +425,20 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                 dateTimeFormat(
                                                     'd/M/y',
                                                     labReportBookingsRecord
-                                                        .scheduledDate),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                        .scheduledDate!),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                          fontSize: 16,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                           ],
@@ -474,7 +477,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Roboto',
+                                                    fontFamily: 'Open Sans',
                                                     color: Color(0xFF586B06),
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -518,7 +521,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                               .bodyText1
                                                               .override(
                                                                 fontFamily:
-                                                                    'Roboto',
+                                                                    'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryColor,
@@ -565,7 +568,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                       context)
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Roboto',
+                                                    fontFamily: 'Open Sans',
                                                     color: Color(0xFF586B06),
                                                     fontWeight: FontWeight.w500,
                                                   ),
@@ -595,16 +598,17 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                   .fromSTEB(0, 6, 0, 0),
                                               child: Text(
                                                 labReportBookingsRecord
-                                                    .docNameAddress,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                    .docNameAddress!,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                        ),
+                                                    ),
                                               ),
                                             ),
                                           ),
@@ -651,7 +655,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                           context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color: Colors.white,
                                                       ),
                                                 ),
@@ -701,7 +705,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Open Sans',
                                                                   color: Colors
                                                                       .white,
                                                                   fontWeight:
@@ -740,7 +744,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .tertiaryColor,
@@ -831,7 +835,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).tertiaryColor,
                                                                           fontWeight:
@@ -872,7 +876,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -936,7 +940,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).tertiaryColor,
                                                                           fontWeight:
@@ -972,13 +976,13 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                           3),
                                                                   child: Text(
                                                                     labReportBookingsRecord
-                                                                        .emailaddress,
+                                                                        .emailaddress!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -1042,7 +1046,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
                                                                               FlutterFlowTheme.of(context).tertiaryColor,
                                                                           fontWeight:
@@ -1078,13 +1082,13 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                           3),
                                                                   child: Text(
                                                                     labReportBookingsRecord
-                                                                        .phonenumber,
+                                                                        .phonenumber!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
                                                                               Colors.white,
                                                                         ),
@@ -1153,7 +1157,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: FlutterFlowTheme.of(context).tertiaryColor,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
@@ -1207,11 +1211,11 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                             Text(
                                                                           dateTimeFormat(
                                                                               'd/M/y',
-                                                                              labReportBookingsRecord.dOB),
+                                                                              labReportBookingsRecord.dOB!),
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyText1
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
+                                                                                fontFamily: 'Open Sans',
                                                                                 color: Colors.white,
                                                                               ),
                                                                         ),
@@ -1223,18 +1227,12 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                               Expanded(
                                                                 child:
                                                                     FlutterFlowChoiceChips(
-                                                                  initiallySelected:
-                                                                      choiceChipsValue !=
-                                                                              null
-                                                                          ? [
-                                                                              choiceChipsValue
-                                                                            ]
-                                                                          : [
-                                                                              labReportBookingsRecord.sex
-                                                                            ],
-                                                                  options: (functions
-                                                                              .returnSexOptions() ??
-                                                                          [])
+                                                                  initiallySelected: [
+                                                                    labReportBookingsRecord
+                                                                        .sex!
+                                                                  ],
+                                                                  options: functions
+                                                                      .returnSexOptions()
                                                                       .map((label) =>
                                                                           ChipData(
                                                                               label))
@@ -1242,7 +1240,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                   onChanged: (val) =>
                                                                       setState(() =>
                                                                           choiceChipsValue =
-                                                                              val.first),
+                                                                              val?.first),
                                                                   selectedChipStyle:
                                                                       ChipStyle(
                                                                     backgroundColor:
@@ -1269,7 +1267,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                         .bodyText2
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Roboto',
+                                                                              'Open Sans',
                                                                           color:
                                                                               Colors.white,
                                                                           fontWeight:
@@ -1345,7 +1343,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Open Sans',
                                             color: Color(0xFF586B06),
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -1373,12 +1371,12 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                     .fromSTEB(14, 14, 14, 14),
                                                 child: Text(
                                                   labReportBookingsRecord
-                                                      .diagnosis,
+                                                      .diagnosis!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1411,7 +1409,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .subtitle2
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Open Sans',
                                             color: Color(0xFF586B06),
                                           ),
                                     ),
@@ -1446,7 +1444,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                           }
                                           List<TestedTestsRecord>
                                               containerTestedTestsRecordList =
-                                              snapshot.data;
+                                              snapshot.data!;
                                           return Container(
                                             height: MediaQuery.of(context)
                                                     .size
@@ -1460,8 +1458,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                               builder: (context) {
                                                 final testedTests =
                                                     containerTestedTestsRecordList
-                                                            ?.toList() ??
-                                                        [];
+                                                        .toList();
                                                 return Container(
                                                   width: double.infinity,
                                                   height: 500,
@@ -1508,8 +1505,8 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(0,
                                                                       0, 0, 10),
-                                                          child:
-                                                              SmoothPageIndicator(
+                                                          child: smooth_page_indicator
+                                                              .SmoothPageIndicator(
                                                             controller: pageViewController ??=
                                                                 PageController(
                                                                     initialPage: min(
@@ -1521,7 +1518,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                             axisDirection:
                                                                 Axis.horizontal,
                                                             onDotClicked: (i) {
-                                                              pageViewController
+                                                              pageViewController!
                                                                   .animateToPage(
                                                                 i,
                                                                 duration: Duration(
@@ -1531,8 +1528,8 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                     Curves.ease,
                                                               );
                                                             },
-                                                            effect:
-                                                                ExpandingDotsEffect(
+                                                            effect: smooth_page_indicator
+                                                                .ExpandingDotsEffect(
                                                               expansionFactor:
                                                                   2,
                                                               spacing: 8,
@@ -1582,7 +1579,7 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -1608,16 +1605,17 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                   .fromSTEB(14, 14, 14, 14),
                                               child: Text(
                                                 labReportBookingsRecord
-                                                    .diagnosis,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                    .diagnosis!,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryColor,
-                                                        ),
+                                                    ),
                                               ),
                                             ),
                                           ],

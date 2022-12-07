@@ -7,16 +7,18 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class VerifyTestResultWidget extends StatefulWidget {
   const VerifyTestResultWidget({
-    Key key,
+    Key? key,
     this.testedTestRef,
   }) : super(key: key);
 
-  final DocumentReference testedTestRef;
+  final DocumentReference? testedTestRef;
 
   @override
   _VerifyTestResultWidgetState createState() => _VerifyTestResultWidgetState();
@@ -24,31 +26,43 @@ class VerifyTestResultWidget extends StatefulWidget {
 
 class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
     with TickerProviderStateMixin {
-  TextEditingController pathologistNotesController;
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 230,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 120),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: Offset(0, 120),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
     ),
   };
+  TextEditingController? pathologistNotesController;
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
 
@@ -56,11 +70,17 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
   }
 
   @override
+  void dispose() {
+    pathologistNotesController?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(),
       child: StreamBuilder<TestedTestsRecord>(
-        stream: TestedTestsRecord.getDocument(widget.testedTestRef),
+        stream: TestedTestsRecord.getDocument(widget.testedTestRef!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -75,7 +95,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
               ),
             );
           }
-          final columnTestedTestsRecord = snapshot.data;
+          final columnTestedTestsRecord = snapshot.data!;
           return Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
@@ -95,7 +115,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 0.4,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                    color: FlutterFlowTheme.of(context).secondaryColor,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(16),
                       bottomRight: Radius.circular(16),
@@ -116,8 +136,9 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                               'VERIFY TEST',
                               style:
                                   FlutterFlowTheme.of(context).title2.override(
-                                        fontFamily: 'Roboto',
-                                        color: Color(0xFF586B06),
+                                        fontFamily: 'Open Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         fontSize: 32,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -137,10 +158,12 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                   borderColor: Colors.transparent,
                                   borderRadius: 30,
                                   buttonSize: 48,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   icon: Icon(
                                     Icons.close_rounded,
                                     color: FlutterFlowTheme.of(context)
-                                        .tertiaryColor,
+                                        .primaryText,
                                     size: 30,
                                   ),
                                   onPressed: () async {
@@ -166,7 +189,8 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                     .bodyText1
                                     .override(
                                       fontFamily: 'Lexend Deca',
-                                      color: Color(0xFF586B06),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                       fontSize: 14,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -175,24 +199,44 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                     .bodyText1
                                     .override(
                                       fontFamily: 'Lexend Deca',
-                                      color: Color(0xFF586B06),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                       fontSize: 14,
                                       fontWeight: FontWeight.normal,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xFF586B06),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Color(0xFF586B06),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     20, 40, 24, 0),
                               ),
@@ -200,15 +244,15 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                   .bodyText1
                                   .override(
                                     fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF586B06),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     fontSize: 14,
                                     fontWeight: FontWeight.normal,
                                   ),
                               textAlign: TextAlign.start,
                               maxLines: 6,
-                            ).animated([
-                              animationsMap['textFieldOnPageLoadAnimation']
-                            ]),
+                            ).animateOnPageLoad(
+                                animationsMap['textFieldOnPageLoadAnimation']!),
                           ),
                         ),
                       ],
@@ -245,12 +289,12 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                           );
                         }
                         List<BookedTestsRecord> containerBookedTestsRecordList =
-                            snapshot.data;
+                            snapshot.data!;
                         return Container(
                           decoration: BoxDecoration(),
                           child: StreamBuilder<BookingsRecord>(
                             stream: BookingsRecord.getDocument(
-                                columnTestedTestsRecord.bookingRef),
+                                columnTestedTestsRecord.bookingRef!),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -266,7 +310,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                   ),
                                 );
                               }
-                              final rowBookingsRecord = snapshot.data;
+                              final rowBookingsRecord = snapshot.data!;
                               return Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -298,7 +342,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                       }
                                       List<TestedTestsRecord>
                                           buttonTestedTestsRecordList =
-                                          snapshot.data;
+                                          snapshot.data!;
                                       return FFButtonWidget(
                                         onPressed: () async {
                                           final testedTestsUpdateData =
@@ -308,11 +352,12 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                                 currentUserReference,
                                             verifiedDate: getCurrentTimestamp,
                                             pathologistNote:
-                                                pathologistNotesController.text,
+                                                pathologistNotesController!
+                                                    .text,
                                           );
-                                          await widget.testedTestRef
+                                          await widget.testedTestRef!
                                               .update(testedTestsUpdateData);
-                                          if (rowBookingsRecord.verifiedTests
+                                          if (!rowBookingsRecord.verifiedTests!
                                               .toList()
                                               .contains(widget.testedTestRef)) {
                                             final bookingsUpdateData = {
@@ -329,16 +374,15 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                               context: context,
                                               builder: (alertDialogContext) {
                                                 return AlertDialog(
-                                                  title: Text(
-                                                      'Test Already Verified!'),
+                                                  title: Text('Error'),
                                                   content: Text(
-                                                      'You cannot verify a test twice.'),
+                                                      'Test Already in List'),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: Text('Ok'),
+                                                      child: Text('Okay'),
                                                     ),
                                                   ],
                                                 );
@@ -346,40 +390,22 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                             );
                                           }
 
-                                          context.pop();
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('Test Verified'),
-                                                content: Text(
-                                                    'The test report can now be shared with the client.'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
+                                          Navigator.pop(context);
                                         },
                                         text: 'Verify Test',
                                         options: FFButtonOptions(
                                           width: 300,
                                           height: 70,
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryColor,
+                                              .secondaryText,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
                                               .subtitle2
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
+                                                        .secondaryBackground,
                                               ),
                                           elevation: 2,
                                           borderSide: BorderSide(

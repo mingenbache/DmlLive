@@ -1,7 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/top_actions_widget.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -9,14 +8,14 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MessagesWidget extends StatefulWidget {
-  const MessagesWidget({Key key}) : super(key: key);
+  const MessagesWidget({Key? key}) : super(key: key);
 
   @override
   _MessagesWidgetState createState() => _MessagesWidgetState();
 }
 
 class _MessagesWidgetState extends State<MessagesWidget> {
-  TextEditingController textController;
+  TextEditingController? textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -26,31 +25,37 @@ class _MessagesWidgetState extends State<MessagesWidget> {
   }
 
   @override
+  void dispose() {
+    textController?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+      backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           print('FloatingActionButton pressed ...');
         },
-        backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primaryText,
         icon: Icon(
           Icons.add,
-          color: FlutterFlowTheme.of(context).tertiaryColor,
+          color: FlutterFlowTheme.of(context).secondaryBackground,
         ),
         elevation: 8,
         label: Text(
           'New Message',
           style: FlutterFlowTheme.of(context).bodyText1.override(
-                fontFamily: 'Roboto',
-                color: FlutterFlowTheme.of(context).tertiaryColor,
+                fontFamily: 'Open Sans',
+                color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
         ),
       ),
       body: SafeArea(
         child: FutureBuilder<UsersRecord>(
-          future: UsersRecord.getDocumentOnce(currentUserReference),
+          future: UsersRecord.getDocumentOnce(currentUserReference!),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
@@ -65,7 +70,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                 ),
               );
             }
-            final columnUsersRecord = snapshot.data;
+            final columnUsersRecord = snapshot.data!;
             return Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -91,8 +96,9 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .title1
                                       .override(
-                                        fontFamily: 'Roboto',
-                                        color: Color(0xFF586B06),
+                                        fontFamily: 'Open Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                       ),
                                 ),
                               ],
@@ -103,7 +109,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                 EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
                             child: Card(
                               clipBehavior: Clip.antiAliasWithSaveLayer,
-                              color: Color(0x2CFFFFFF),
+                              color: FlutterFlowTheme.of(context).primaryText,
                               elevation: 2,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
@@ -155,32 +161,43 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                 topRight: Radius.circular(4.0),
                                               ),
                                             ),
+                                            errorBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  const BorderRadius.only(
+                                                topLeft: Radius.circular(4.0),
+                                                topRight: Radius.circular(4.0),
+                                              ),
+                                            ),
+                                            focusedErrorBorder:
+                                                UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1,
+                                              ),
+                                              borderRadius:
+                                                  const BorderRadius.only(
+                                                topLeft: Radius.circular(4.0),
+                                                topRight: Radius.circular(4.0),
+                                              ),
+                                            ),
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
                                                 fontFamily: 'Lexend Deca',
-                                                color: Color(0xFF586B06),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
                                               ),
                                           textAlign: TextAlign.start,
                                         ),
                                       ),
-                                    ),
-                                    FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30,
-                                      buttonSize: 48,
-                                      icon: Icon(
-                                        Icons.tune_sharp,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
-                                        size: 30,
-                                      ),
-                                      onPressed: () {
-                                        print('IconButton pressed ...');
-                                      },
                                     ),
                                   ],
                                 ),
@@ -225,7 +242,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                 );
                               }
                               List<ChatsRecord> columnChatsRecordList =
-                                  snapshot.data;
+                                  snapshot.data!;
                               return SingleChildScrollView(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -252,8 +269,9 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                   'Chat',
                                                   queryParams: {
                                                     'chatUser': serializeParam(
-                                                        columnUsersRecord,
-                                                        ParamType.Document),
+                                                      columnUsersRecord,
+                                                      ParamType.Document,
+                                                    ),
                                                   }.withoutNulls,
                                                   extra: <String, dynamic>{
                                                     'chatUser':
@@ -305,7 +323,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                                 children: [
                                                                   Text(
                                                                     columnChatsRecord
-                                                                        .topic,
+                                                                        .topic!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .subtitle1
@@ -331,7 +349,7 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                                           Text(
                                                                         dateTimeFormat(
                                                                             'd/M H:mm',
-                                                                            columnChatsRecord.lastMessageTime),
+                                                                            columnChatsRecord.lastMessageTime!),
                                                                         textAlign:
                                                                             TextAlign.end,
                                                                         style:
@@ -377,12 +395,12 @@ class _MessagesWidgetState extends State<MessagesWidget> {
                                                                       child:
                                                                           Text(
                                                                         columnChatsRecord
-                                                                            .lastMessage,
+                                                                            .lastMessage!,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyText2
                                                                             .override(
                                                                               fontFamily: 'Lexend Deca',
-                                                                              color: Color(0xFF586B06),
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               fontSize: 12,
                                                                               fontWeight: FontWeight.normal,
                                                                             ),

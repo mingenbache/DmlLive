@@ -10,11 +10,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class StaffUserCardWidget extends StatefulWidget {
   const StaffUserCardWidget({
-    Key key,
+    Key? key,
     this.userRecord,
+    this.index,
   }) : super(key: key);
 
-  final UsersRecord userRecord;
+  final UsersRecord? userRecord;
+  final int? index;
 
   @override
   _StaffUserCardWidgetState createState() => _StaffUserCardWidgetState();
@@ -28,199 +30,207 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Stack(
-          children: [
-            Align(
-              alignment: AlignmentDirectional(0, 0),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  height: MediaQuery.of(context).size.height * 0.165,
-                  constraints: BoxConstraints(
-                    maxWidth: 315,
-                    maxHeight: 140,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color(0x44262D34),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(12),
-                      bottomRight: Radius.circular(12),
-                      topLeft: Radius.circular(0),
-                      topRight: Radius.circular(0),
+        Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+          child: InkWell(
+            onTap: () async {
+              await showModalBottomSheet(
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                context: context,
+                builder: (context) {
+                  return Padding(
+                    padding: MediaQuery.of(context).viewInsets,
+                    child: UserActivityWidget(
+                      userRef: widget.userRecord!.reference,
                     ),
-                  ),
-                  child: Stack(
-                    children: [
-                      if ((widget.userRecord.role) == 'patho')
-                        Align(
-                          alignment: AlignmentDirectional(0, -1),
-                          child: Image.asset(
-                            'assets/images/doctor_icon@2x.png',
-                            height: MediaQuery.of(context).size.height * 0.2,
-                            fit: BoxFit.fitHeight,
-                          ),
-                        ),
-                      if ((widget.userRecord.role) == 'front')
-                        Image.asset(
-                          'assets/images/reception@2x.png',
-                          fit: BoxFit.fitHeight,
-                        ),
-                      if ((widget.userRecord.role) == 'tech')
-                        Image.asset(
-                          'assets/images/technologist@2x.png',
-                          fit: BoxFit.fitWidth,
-                        ),
-                      if ((widget.userRecord.role) == 'super')
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 60, 0, 0),
-                          child: Image.asset(
-                            'assets/images/super.png',
-                            fit: BoxFit.fitWidth,
-                          ),
-                        ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Align(
-              alignment: AlignmentDirectional(0, 0),
-              child: InkWell(
-                onTap: () async {
-                  await showModalBottomSheet(
-                    isScrollControlled: true,
-                    backgroundColor: Colors.transparent,
-                    context: context,
-                    builder: (context) {
-                      return Padding(
-                        padding: MediaQuery.of(context).viewInsets,
-                        child: UserActivityWidget(
-                          userRef: widget.userRecord.reference,
-                        ),
-                      );
-                    },
                   );
                 },
-                child: Material(
-                  color: Colors.transparent,
-                  elevation: 2,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    height: MediaQuery.of(context).size.height * 0.24,
-                    constraints: BoxConstraints(
-                      maxWidth: 315,
-                      maxHeight: 180,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Color(0x44262D34),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.07,
-                          constraints: BoxConstraints(
-                            maxHeight: 62,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Color(0xB1FFFFFF),
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(0),
-                              bottomRight: Radius.circular(0),
-                              topLeft: Radius.circular(12),
-                              topRight: Radius.circular(12),
-                            ),
-                          ),
-                          child: Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(10, 0, 20, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  '${functions.camelCase(widget.userRecord.firstName)} ${functions.camelCase(widget.userRecord.lastName)}',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Roboto',
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        fontSize: 19,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.9,
-                          constraints: BoxConstraints(
-                            maxHeight: 120,
-                          ),
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [Color(0x72586B06), Color(0xB088993A)],
-                              stops: [0, 1],
-                              begin: AlignmentDirectional(0, -1),
-                              end: AlignmentDirectional(0, 1),
-                            ),
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              bottomRight: Radius.circular(8),
-                              topLeft: Radius.circular(0),
-                              topRight: Radius.circular(0),
-                            ),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20, 10, 20, 0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Container(
-                                      width: 30,
-                                      decoration: BoxDecoration(),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Icon(
-                                            Icons.email_outlined,
-                                            color: Color(0xFFFFFFFE),
-                                            size: 20,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Text(
-                                      widget.userRecord.email,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Lexend Deca',
-                                            color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Row(
+              ).then((value) => setState(() {}));
+            },
+            child: Material(
+              color: Colors.transparent,
+              elevation: 2,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.8,
+                constraints: BoxConstraints(
+                  maxWidth: 330,
+                ),
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            flex: 6,
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(7, 0, 0, 0),
+                              child: Row(
                                 mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        20, 10, 0, 0),
+                                        0, 0, 8, 0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryColor,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            5, 5, 5, 5),
+                                        child: Text(
+                                          functions
+                                              .add1(widget.index)
+                                              .toString(),
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Open Sans',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 8, 0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8, 4, 4, 4),
+                                        child: Text(
+                                          '${functions.camelCase(widget.userRecord!.firstName)} ${functions.camelCase(widget.userRecord!.lastName)}',
+                                          maxLines: 1,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle1
+                                              .override(
+                                                fontFamily: 'Open Sans',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          if (widget.userRecord!.isStaff ?? true)
+                            Expanded(
+                              flex: 4,
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.3,
+                                  height: 25,
+                                  constraints: BoxConstraints(
+                                    maxWidth: 130,
+                                    maxHeight: 32,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 4,
+                                        color: Color(0x32171717),
+                                        offset: Offset(0, 2),
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.verified_user_sharp,
+                                        color: Colors.white,
+                                        size: 20,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            3, 0, 0, 0),
+                                        child: Text(
+                                          widget.userRecord!.role!,
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Lexend Deca',
+                                                color: Colors.white,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryColor,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.75,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        7, 3, 0, 3),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -230,123 +240,187 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              FaIcon(
-                                                FontAwesomeIcons.userPlus,
-                                                color: Color(0xFFFFFFFE),
-                                                size: 18,
+                                              Icon(
+                                                Icons.email_outlined,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 16,
                                               ),
                                             ],
                                           ),
                                         ),
-                                        Container(
-                                          width: 80,
-                                          decoration: BoxDecoration(),
-                                          child: Text(
-                                            dateTimeFormat('d/M/y',
-                                                widget.userRecord.createdTime),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Lexend Deca',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .tertiaryColor,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                          ),
+                                        Text(
+                                          widget.userRecord!.email!,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Lexend Deca',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.normal,
+                                              ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                  Padding(
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.75,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        10, 10, 20, 0),
+                                        7, 3, 0, 3),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Container(
                                           width: 30,
                                           decoration: BoxDecoration(),
-                                          child: FaIcon(
-                                            FontAwesomeIcons.userClock,
-                                            color: Color(0xFFFFFFFE),
-                                            size: 20,
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Icon(
+                                                Icons.phone,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 16,
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                        Container(
-                                          width: 75,
-                                          decoration: BoxDecoration(),
-                                          child: Text(
-                                            dateTimeFormat('d/M/y',
-                                                widget.userRecord.lastLogin),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Lexend Deca',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .tertiaryColor,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                          ),
+                                        Text(
+                                          widget.userRecord!.phoneNumber!,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Lexend Deca',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.normal,
+                                              ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                ],
+                                ),
                               ),
-                              Align(
-                                alignment: AlignmentDirectional(0.8, 0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      5, 5, 5, 0),
-                                  child: Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.3,
-                                    height: 32,
-                                    constraints: BoxConstraints(
-                                      maxWidth: 130,
-                                      maxHeight: 32,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Color(0x4CFFFFFF),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 4,
-                                          color: Color(0x32171717),
-                                          offset: Offset(0, 2),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.75,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        7, 3, 0, 3),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Icon(
-                                          Icons.verified_user_sharp,
-                                          color: Colors.white,
-                                          size: 20,
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              width: 30,
+                                              decoration: BoxDecoration(),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  FaIcon(
+                                                    FontAwesomeIcons.userPlus,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    size: 16,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 80,
+                                              decoration: BoxDecoration(),
+                                              child: Text(
+                                                dateTimeFormat(
+                                                    'd/M/y',
+                                                    widget.userRecord!
+                                                        .createdTime!),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Lexend Deca',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  3, 0, 0, 0),
-                                          child: Text(
-                                            widget.userRecord.role,
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Lexend Deca',
-                                                  color: Colors.white,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.normal,
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              width: 30,
+                                              decoration: BoxDecoration(),
+                                              child: FaIcon(
+                                                FontAwesomeIcons.userClock,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 16,
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 75,
+                                              decoration: BoxDecoration(),
+                                              child: Text(
+                                                valueOrDefault<String>(
+                                                  dateTimeFormat(
+                                                      'd/M/y',
+                                                      widget.userRecord!
+                                                          .lastLogin),
+                                                  'n/a',
                                                 ),
-                                          ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Lexend Deca',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
@@ -356,13 +430,13 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                             ],
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
             ),
-          ],
+          ),
         ),
       ],
     );

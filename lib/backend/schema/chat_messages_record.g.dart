@@ -17,17 +17,18 @@ class _$ChatMessagesRecordSerializer
   final String wireName = 'ChatMessagesRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ChatMessagesRecord object,
+  Iterable<Object?> serialize(
+      Serializers serializers, ChatMessagesRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.user;
     if (value != null) {
       result
         ..add('user')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.chat;
     if (value != null) {
@@ -35,7 +36,7 @@ class _$ChatMessagesRecordSerializer
         ..add('chat')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.text;
     if (value != null) {
@@ -58,58 +59,58 @@ class _$ChatMessagesRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
     }
-    value = object.reference;
+    value = object.ffRef;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     return result;
   }
 
   @override
   ChatMessagesRecord deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ChatMessagesRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'user':
           result.user = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'chat':
           result.chat = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'text':
           result.text = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'image':
           result.image = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'timestamp':
           result.timestamp = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'Document__Reference__Field':
-          result.reference = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+          result.ffRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
       }
     }
@@ -120,29 +121,24 @@ class _$ChatMessagesRecordSerializer
 
 class _$ChatMessagesRecord extends ChatMessagesRecord {
   @override
-  final DocumentReference<Object> user;
+  final DocumentReference<Object?>? user;
   @override
-  final DocumentReference<Object> chat;
+  final DocumentReference<Object?>? chat;
   @override
-  final String text;
+  final String? text;
   @override
-  final String image;
+  final String? image;
   @override
-  final DateTime timestamp;
+  final DateTime? timestamp;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object?>? ffRef;
 
   factory _$ChatMessagesRecord(
-          [void Function(ChatMessagesRecordBuilder) updates]) =>
-      (new ChatMessagesRecordBuilder()..update(updates)).build();
+          [void Function(ChatMessagesRecordBuilder)? updates]) =>
+      (new ChatMessagesRecordBuilder()..update(updates))._build();
 
   _$ChatMessagesRecord._(
-      {this.user,
-      this.chat,
-      this.text,
-      this.image,
-      this.timestamp,
-      this.reference})
+      {this.user, this.chat, this.text, this.image, this.timestamp, this.ffRef})
       : super._();
 
   @override
@@ -163,7 +159,7 @@ class _$ChatMessagesRecord extends ChatMessagesRecord {
         text == other.text &&
         image == other.image &&
         timestamp == other.timestamp &&
-        reference == other.reference;
+        ffRef == other.ffRef;
   }
 
   @override
@@ -173,50 +169,49 @@ class _$ChatMessagesRecord extends ChatMessagesRecord {
             $jc($jc($jc($jc(0, user.hashCode), chat.hashCode), text.hashCode),
                 image.hashCode),
             timestamp.hashCode),
-        reference.hashCode));
+        ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ChatMessagesRecord')
+    return (newBuiltValueToStringHelper(r'ChatMessagesRecord')
           ..add('user', user)
           ..add('chat', chat)
           ..add('text', text)
           ..add('image', image)
           ..add('timestamp', timestamp)
-          ..add('reference', reference))
+          ..add('ffRef', ffRef))
         .toString();
   }
 }
 
 class ChatMessagesRecordBuilder
     implements Builder<ChatMessagesRecord, ChatMessagesRecordBuilder> {
-  _$ChatMessagesRecord _$v;
+  _$ChatMessagesRecord? _$v;
 
-  DocumentReference<Object> _user;
-  DocumentReference<Object> get user => _$this._user;
-  set user(DocumentReference<Object> user) => _$this._user = user;
+  DocumentReference<Object?>? _user;
+  DocumentReference<Object?>? get user => _$this._user;
+  set user(DocumentReference<Object?>? user) => _$this._user = user;
 
-  DocumentReference<Object> _chat;
-  DocumentReference<Object> get chat => _$this._chat;
-  set chat(DocumentReference<Object> chat) => _$this._chat = chat;
+  DocumentReference<Object?>? _chat;
+  DocumentReference<Object?>? get chat => _$this._chat;
+  set chat(DocumentReference<Object?>? chat) => _$this._chat = chat;
 
-  String _text;
-  String get text => _$this._text;
-  set text(String text) => _$this._text = text;
+  String? _text;
+  String? get text => _$this._text;
+  set text(String? text) => _$this._text = text;
 
-  String _image;
-  String get image => _$this._image;
-  set image(String image) => _$this._image = image;
+  String? _image;
+  String? get image => _$this._image;
+  set image(String? image) => _$this._image = image;
 
-  DateTime _timestamp;
-  DateTime get timestamp => _$this._timestamp;
-  set timestamp(DateTime timestamp) => _$this._timestamp = timestamp;
+  DateTime? _timestamp;
+  DateTime? get timestamp => _$this._timestamp;
+  set timestamp(DateTime? timestamp) => _$this._timestamp = timestamp;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
-      _$this._reference = reference;
+  DocumentReference<Object?>? _ffRef;
+  DocumentReference<Object?>? get ffRef => _$this._ffRef;
+  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   ChatMessagesRecordBuilder() {
     ChatMessagesRecord._initializeBuilder(this);
@@ -230,7 +225,7 @@ class ChatMessagesRecordBuilder
       _text = $v.text;
       _image = $v.image;
       _timestamp = $v.timestamp;
-      _reference = $v.reference;
+      _ffRef = $v.ffRef;
       _$v = null;
     }
     return this;
@@ -243,12 +238,14 @@ class ChatMessagesRecordBuilder
   }
 
   @override
-  void update(void Function(ChatMessagesRecordBuilder) updates) {
+  void update(void Function(ChatMessagesRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$ChatMessagesRecord build() {
+  ChatMessagesRecord build() => _build();
+
+  _$ChatMessagesRecord _build() {
     final _$result = _$v ??
         new _$ChatMessagesRecord._(
             user: user,
@@ -256,10 +253,10 @@ class ChatMessagesRecordBuilder
             text: text,
             image: image,
             timestamp: timestamp,
-            reference: reference);
+            ffRef: ffRef);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

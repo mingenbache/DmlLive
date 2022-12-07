@@ -4,12 +4,14 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DateOfBirthWidget extends StatefulWidget {
-  const DateOfBirthWidget({Key key}) : super(key: key);
+  const DateOfBirthWidget({Key? key}) : super(key: key);
 
   @override
   _DateOfBirthWidgetState createState() => _DateOfBirthWidgetState();
@@ -17,30 +19,36 @@ class DateOfBirthWidget extends StatefulWidget {
 
 class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
     with TickerProviderStateMixin {
-  DateTime datePicked;
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 1990,
-      delay: 10,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 10.ms,
+          duration: 1990.ms,
+          begin: 0,
+          end: 1,
+        ),
+        ScaleEffect(
+          curve: Curves.bounceOut,
+          delay: 10.ms,
+          duration: 1990.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
     ),
   };
+  DateTime? datePicked;
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
   }
@@ -75,7 +83,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * 0.4,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                    color: FlutterFlowTheme.of(context).secondaryColor,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(16),
                       bottomRight: Radius.circular(16),
@@ -96,8 +104,9 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                               'Date of Birth',
                               style:
                                   FlutterFlowTheme.of(context).title2.override(
-                                        fontFamily: 'Roboto',
-                                        color: Color(0xFF586B06),
+                                        fontFamily: 'Open Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         fontSize: 32,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -117,6 +126,8 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                   borderColor: Colors.transparent,
                                   borderRadius: 30,
                                   buttonSize: 48,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   icon: Icon(
                                     Icons.close_rounded,
                                     color: FlutterFlowTheme.of(context)
@@ -124,7 +135,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                     size: 30,
                                   ),
                                   onPressed: () async {
-                                    if ((datePicked) < (getCurrentTimestamp)) {
+                                    if (datePicked! < getCurrentTimestamp) {
                                       context.pop();
                                     }
                                   },
@@ -141,8 +152,9 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Roboto',
-                                    color: Color(0xFF586B06),
+                                    fontFamily: 'Open Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                   ),
                             ),
                           ],
@@ -186,7 +198,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                     ),
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondaryText,
                                       borderRadius: BorderRadius.circular(15),
                                     ),
                                     child: Padding(
@@ -198,7 +210,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                           Icon(
                                             Icons.calendar_today_rounded,
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .secondaryBackground,
                                             size: 16,
                                           ),
                                           Text(
@@ -211,9 +223,8 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                     ),
                                   ),
                                 ),
-                              ).animated([
-                                animationsMap['containerOnPageLoadAnimation']
-                              ]),
+                              ).animateOnPageLoad(animationsMap[
+                                  'containerOnPageLoadAnimation']!),
                             ],
                           ),
                         ),
@@ -233,7 +244,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                       children: [
                         FFButtonWidget(
                           onPressed: () async {
-                            if ((datePicked) < (getCurrentTimestamp)) {
+                            if (datePicked! < getCurrentTimestamp) {
                               context.pop();
                             }
                           },
@@ -241,12 +252,12 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                           options: FFButtonOptions(
                             width: 300,
                             height: 70,
-                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            color: FlutterFlowTheme.of(context).secondaryText,
                             textStyle:
                                 FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                          .secondaryBackground,
                                     ),
                             elevation: 2,
                             borderSide: BorderSide(

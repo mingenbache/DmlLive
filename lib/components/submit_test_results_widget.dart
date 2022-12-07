@@ -10,20 +10,22 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SubmitTestResultsWidget extends StatefulWidget {
   const SubmitTestResultsWidget({
-    Key key,
+    Key? key,
     this.testedTestRef,
     this.labRefNum,
     this.testId,
   }) : super(key: key);
 
-  final DocumentReference testedTestRef;
-  final String labRefNum;
-  final DocumentReference testId;
+  final DocumentReference? testedTestRef;
+  final String? labRefNum;
+  final DocumentReference? testId;
 
   @override
   _SubmitTestResultsWidgetState createState() =>
@@ -32,66 +34,102 @@ class SubmitTestResultsWidget extends StatefulWidget {
 
 class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
     with TickerProviderStateMixin {
-  String uploadedFileUrl = '';
-  String testMachineValue;
-  bool checkboxListTileValue;
-  TextEditingController testResultController;
-  TextEditingController testNoteController;
-  final formKey = GlobalKey<FormState>();
   final animationsMap = {
     'dropDownOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 200,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 100),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: Offset(0, 100),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
     ),
     'textFieldOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 230,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 120),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: Offset(0, 120),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
     ),
     'textFieldOnPageLoadAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 230,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 120),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: Offset(0, 120),
+          end: Offset(0, 0),
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 230.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
     ),
   };
+  bool isMediaUploading = false;
+  String uploadedFileUrl = '';
+
+  String? testMachineValue;
+  bool? checkboxListTileValue;
+  TextEditingController? testResultController;
+  TextEditingController? testNoteController;
+  final formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
 
@@ -100,12 +138,19 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
   }
 
   @override
+  void dispose() {
+    testNoteController?.dispose();
+    testResultController?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
       autovalidateMode: AutovalidateMode.disabled,
       child: StreamBuilder<TestedTestsRecord>(
-        stream: TestedTestsRecord.getDocument(widget.testedTestRef),
+        stream: TestedTestsRecord.getDocument(widget.testedTestRef!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -120,7 +165,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
               ),
             );
           }
-          final submitResultsTestedTestsRecord = snapshot.data;
+          final submitResultsTestedTestsRecord = snapshot.data!;
           return Container(
             decoration: BoxDecoration(),
             child: Column(
@@ -163,7 +208,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFF586B06),
                                     ),
                               ),
@@ -225,7 +270,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                           child: FutureBuilder<TestsRecord>(
                                             future: TestsRecord.getDocumentOnce(
                                                 submitResultsTestedTestsRecord
-                                                    .testRef),
+                                                    .testRef!),
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
                                               if (!snapshot.hasData) {
@@ -244,10 +289,10 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                                 );
                                               }
                                               final textTestsRecord =
-                                                  snapshot.data;
+                                                  snapshot.data!;
                                               return Text(
                                                 submitResultsTestedTestsRecord
-                                                    .labRefNum,
+                                                    .labRefNum!,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .subtitle1,
@@ -285,7 +330,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                         FutureBuilder<TestsRecord>(
                                           future: TestsRecord.getDocumentOnce(
                                               submitResultsTestedTestsRecord
-                                                  .testRef),
+                                                  .testRef!),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.
                                             if (!snapshot.hasData) {
@@ -303,9 +348,9 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                               );
                                             }
                                             final textTestsRecord =
-                                                snapshot.data;
+                                                snapshot.data!;
                                             return Text(
-                                              textTestsRecord.name,
+                                              textTestsRecord.name!,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle1,
@@ -322,7 +367,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                           Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                            child: FlutterFlowDropDown(
+                            child: FlutterFlowDropDown<String>(
                               options: ['Machine 1', 'Machine 2', 'Machine 3'],
                               onChanged: (val) =>
                                   setState(() => testMachineValue = val),
@@ -353,8 +398,8 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                               margin: EdgeInsetsDirectional.fromSTEB(
                                   20, 20, 12, 20),
                               hidesUnderline: true,
-                            ).animated(
-                                [animationsMap['dropDownOnPageLoadAnimation']]),
+                            ).animateOnPageLoad(
+                                animationsMap['dropDownOnPageLoadAnimation']!),
                           ),
                           Padding(
                             padding:
@@ -371,8 +416,10 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                 ),
                                 child: CheckboxListTile(
                                   value: checkboxListTileValue ??= false,
-                                  onChanged: (newValue) => setState(
-                                      () => checkboxListTileValue = newValue),
+                                  onChanged: (newValue) async {
+                                    setState(() =>
+                                        checkboxListTileValue = newValue!);
+                                  },
                                   title: Text(
                                     'Diagnosis',
                                     style:
@@ -436,6 +483,20 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                     ),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
                                   filled: true,
                                   fillColor: Color(0x32FFFFFF),
                                   contentPadding:
@@ -459,9 +520,8 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
 
                                   return null;
                                 },
-                              ).animated([
-                                animationsMap['textFieldOnPageLoadAnimation1']
-                              ]),
+                              ).animateOnPageLoad(animationsMap[
+                                  'textFieldOnPageLoadAnimation1']!),
                             ),
                           ),
                           Padding(
@@ -496,34 +556,38 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                           selectedMedia.every((m) =>
                                               validateFileFormat(
                                                   m.storagePath, context))) {
-                                        showUploadMessage(
-                                          context,
-                                          'Uploading file...',
-                                          showLoading: true,
-                                        );
-                                        final downloadUrls = (await Future.wait(
-                                                selectedMedia.map((m) async =>
-                                                    await uploadData(
-                                                        m.storagePath,
-                                                        m.bytes))))
-                                            .where((u) => u != null)
-                                            .toList();
-                                        ScaffoldMessenger.of(context)
-                                            .hideCurrentSnackBar();
-                                        if (downloadUrls != null &&
-                                            downloadUrls.length ==
-                                                selectedMedia.length) {
+                                        setState(() => isMediaUploading = true);
+                                        var downloadUrls = <String>[];
+                                        try {
+                                          showUploadMessage(
+                                            context,
+                                            'Uploading file...',
+                                            showLoading: true,
+                                          );
+                                          downloadUrls = (await Future.wait(
+                                            selectedMedia.map(
+                                              (m) async => await uploadData(
+                                                  m.storagePath, m.bytes),
+                                            ),
+                                          ))
+                                              .where((u) => u != null)
+                                              .map((u) => u!)
+                                              .toList();
+                                        } finally {
+                                          ScaffoldMessenger.of(context)
+                                              .hideCurrentSnackBar();
+                                          isMediaUploading = false;
+                                        }
+                                        if (downloadUrls.length ==
+                                            selectedMedia.length) {
                                           setState(() => uploadedFileUrl =
                                               downloadUrls.first);
                                           showUploadMessage(
-                                            context,
-                                            'Success!',
-                                          );
+                                              context, 'Success!');
                                         } else {
-                                          showUploadMessage(
-                                            context,
-                                            'Failed to upload media',
-                                          );
+                                          setState(() {});
+                                          showUploadMessage(context,
+                                              'Failed to upload media');
                                           return;
                                         }
                                       }
@@ -606,6 +670,20 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                     ),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
                                   contentPadding:
                                       EdgeInsetsDirectional.fromSTEB(
                                           20, 40, 24, 0),
@@ -621,9 +699,8 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                 textAlign: TextAlign.start,
                                 maxLines: 4,
                                 keyboardType: TextInputType.multiline,
-                              ).animated([
-                                animationsMap['textFieldOnPageLoadAnimation2']
-                              ]),
+                              ).animateOnPageLoad(animationsMap[
+                                  'textFieldOnPageLoadAnimation2']!),
                             ),
                           ),
                         ],
@@ -642,7 +719,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                         children: [
                           StreamBuilder<BookedTestsRecord>(
                             stream: BookedTestsRecord.getDocument(
-                                submitResultsTestedTestsRecord.bookedTestRef),
+                                submitResultsTestedTestsRecord.bookedTestRef!),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -658,22 +735,22 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                   ),
                                 );
                               }
-                              final buttonBookedTestsRecord = snapshot.data;
+                              final buttonBookedTestsRecord = snapshot.data!;
                               return FFButtonWidget(
                                 onPressed: () async {
                                   final testedTestsUpdateData = {
                                     ...createTestedTestsRecordData(
                                       isVerified: false,
                                       dateConducted: getCurrentTimestamp,
-                                      testNote: testNoteController.text,
-                                      testResult: testResultController.text,
+                                      testNote: testNoteController!.text,
+                                      testResult: testResultController!.text,
                                       resultsPositive: checkboxListTileValue,
                                       resultPosted: true,
                                     ),
                                     'results_attachment': FieldValue.arrayUnion(
                                         [uploadedFileUrl]),
                                   };
-                                  await widget.testedTestRef
+                                  await widget.testedTestRef!
                                       .update(testedTestsUpdateData);
 
                                   final bookedTestsUpdateData =
@@ -693,7 +770,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiaryColor,
                                       ),

@@ -11,15 +11,13 @@ abstract class MachinesRecord
   static Serializer<MachinesRecord> get serializer =>
       _$machinesRecordSerializer;
 
-  @nullable
-  String get name;
+  String? get name;
 
-  @nullable
-  String get metadata;
+  String? get metadata;
 
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(MachinesRecordBuilder builder) => builder
     ..name = ''
@@ -30,11 +28,11 @@ abstract class MachinesRecord
 
   static Stream<MachinesRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   static Future<MachinesRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
+      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   MachinesRecord._();
   factory MachinesRecord([void Function(MachinesRecordBuilder) updates]) =
@@ -43,15 +41,21 @@ abstract class MachinesRecord
   static MachinesRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
 Map<String, dynamic> createMachinesRecordData({
-  String name,
-  String metadata,
-}) =>
-    serializers.toFirestore(
-        MachinesRecord.serializer,
-        MachinesRecord((m) => m
-          ..name = name
-          ..metadata = metadata));
+  String? name,
+  String? metadata,
+}) {
+  final firestoreData = serializers.toFirestore(
+    MachinesRecord.serializer,
+    MachinesRecord(
+      (m) => m
+        ..name = name
+        ..metadata = metadata,
+    ),
+  );
+
+  return firestoreData;
+}

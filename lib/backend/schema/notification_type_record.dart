@@ -11,19 +11,16 @@ abstract class NotificationTypeRecord
   static Serializer<NotificationTypeRecord> get serializer =>
       _$notificationTypeRecordSerializer;
 
-  @nullable
-  String get context;
+  String? get context;
 
-  @nullable
   @BuiltValueField(wireName: 'page_to_open')
-  String get pageToOpen;
+  String? get pageToOpen;
 
-  @nullable
-  String get type;
+  String? get type;
 
-  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference get reference;
+  DocumentReference? get ffRef;
+  DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(NotificationTypeRecordBuilder builder) =>
       builder
@@ -36,12 +33,12 @@ abstract class NotificationTypeRecord
 
   static Stream<NotificationTypeRecord> getDocument(DocumentReference ref) =>
       ref.snapshots().map(
-          (s) => serializers.deserializeWith(serializer, serializedData(s)));
+          (s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   static Future<NotificationTypeRecord> getDocumentOnce(
           DocumentReference ref) =>
       ref.get().then(
-          (s) => serializers.deserializeWith(serializer, serializedData(s)));
+          (s) => serializers.deserializeWith(serializer, serializedData(s))!);
 
   NotificationTypeRecord._();
   factory NotificationTypeRecord(
@@ -51,17 +48,23 @@ abstract class NotificationTypeRecord
   static NotificationTypeRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference});
+          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
 }
 
 Map<String, dynamic> createNotificationTypeRecordData({
-  String context,
-  String pageToOpen,
-  String type,
-}) =>
-    serializers.toFirestore(
-        NotificationTypeRecord.serializer,
-        NotificationTypeRecord((n) => n
-          ..context = context
-          ..pageToOpen = pageToOpen
-          ..type = type));
+  String? context,
+  String? pageToOpen,
+  String? type,
+}) {
+  final firestoreData = serializers.toFirestore(
+    NotificationTypeRecord.serializer,
+    NotificationTypeRecord(
+      (n) => n
+        ..context = context
+        ..pageToOpen = pageToOpen
+        ..type = type,
+    ),
+  );
+
+  return firestoreData;
+}

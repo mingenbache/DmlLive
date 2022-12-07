@@ -8,22 +8,24 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BookingPackageItemWidget extends StatefulWidget {
   const BookingPackageItemWidget({
-    Key key,
+    Key? key,
     this.package,
     this.index,
     this.listSize,
     this.booking,
   }) : super(key: key);
 
-  final TestPackagesRecord package;
-  final int index;
-  final int listSize;
-  final BookingsRecord booking;
+  final TestPackagesRecord? package;
+  final int? index;
+  final int? listSize;
+  final BookingsRecord? booking;
 
   @override
   _BookingPackageItemWidgetState createState() =>
@@ -32,104 +34,101 @@ class BookingPackageItemWidget extends StatefulWidget {
 
 class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
     with TickerProviderStateMixin {
+  var hasContainerTriggered1 = false;
+  var hasContainerTriggered2 = false;
   final animationsMap = {
     'stackOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 1300,
-      delay: 280,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(-92, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 280.ms,
+          duration: 1300.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 280.ms,
+          duration: 1300.ms,
+          begin: Offset(-92, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'containerOnActionTriggerAnimation1': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(63, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(63, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'containerOnActionTriggerAnimation2': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 950,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(-58, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 950.ms,
+          begin: Offset(-58, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'containerOnPageLoadAnimation1': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, -73),
-        scale: 1,
-        opacity: 1,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, -73),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'containerOnPageLoadAnimation2': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(-96, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(-96, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
   };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
   }
@@ -157,31 +156,30 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                     children: [
                       Stack(
                         children: [
-                          if (widget.booking.testPackages
-                                  .toList()
-                                  ?.contains(widget.package.reference) ??
-                              true)
+                          if (widget.booking!.testPackages!
+                              .toList()
+                              .contains(widget.package!.reference))
                             InkWell(
                               onTap: () async {
-                                if (widget.booking.testPackages
+                                if (widget.booking!.testPackages!
                                     .toList()
-                                    .contains(widget.package.reference)) {
+                                    .contains(widget.package!.reference)) {
                                   final bookingsUpdateData = {
                                     ...createBookingsRecordData(
                                       totalPrice: functions.removeFromCart(
-                                          widget.booking.totalPrice,
-                                          widget.package.price),
+                                          widget.booking!.totalPrice,
+                                          widget.package!.price),
                                     ),
                                     'testPackages': FieldValue.arrayRemove(
-                                        [widget.package.reference]),
+                                        [widget.package!.reference]),
                                     'testPackTests':
                                         functions.removeBookingPackageTests(
-                                            widget.package.testsIncluded
+                                            widget.package!.testsIncluded!
                                                 .toList(),
-                                            widget.booking.testPackTests
+                                            widget.booking!.testPackTests!
                                                 .toList()),
                                   };
-                                  await widget.booking.reference
+                                  await widget.booking!.reference
                                       .update(bookingsUpdateData);
                                 } else {
                                   return;
@@ -243,37 +241,36 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                   ),
                                 ),
                               ),
-                            ).animated([
-                              animationsMap[
-                                  'containerOnActionTriggerAnimation1']
-                            ]),
-                          if (!(widget.booking.testPackages
-                                  .toList()
-                                  .contains(widget.package.reference)) ??
-                              true)
+                            ).animateOnActionTrigger(
+                                animationsMap[
+                                    'containerOnActionTriggerAnimation1']!,
+                                hasBeenTriggered: hasContainerTriggered1),
+                          if (!widget.booking!.testPackages!
+                              .toList()
+                              .contains(widget.package!.reference))
                             InkWell(
                               onTap: () async {
-                                if (widget.booking.hasTestPackages) {
-                                  if (!(widget.booking.testPackages
+                                if (widget.booking!.hasTestPackages!) {
+                                  if (!widget.booking!.testPackages!
                                       .toList()
-                                      .contains(widget.package.reference))) {
+                                      .contains(widget.package!.reference)) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
                                         totalPrice: functions.addCartTotal(
-                                            widget.booking.totalPrice,
-                                            widget.package.price),
+                                            widget.booking!.totalPrice,
+                                            widget.package!.price),
                                         hasTestPackages: true,
                                       ),
                                       'testPackages': FieldValue.arrayUnion(
-                                          [widget.package.reference]),
+                                          [widget.package!.reference]),
                                       'testPackTests':
                                           functions.addBookingPackageTests(
-                                              widget.booking.testPackTests
+                                              widget.booking!.testPackTests!
                                                   .toList(),
-                                              widget.package.testsIncluded
+                                              widget.package!.testsIncluded!
                                                   .toList()),
                                     };
-                                    await widget.booking.reference
+                                    await widget.booking!.reference
                                         .update(bookingsUpdateData);
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
@@ -293,20 +290,20 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                   final bookingsUpdateData = {
                                     ...createBookingsRecordData(
                                       totalPrice: functions.addCartTotal(
-                                          widget.booking.totalPrice,
-                                          widget.package.price),
+                                          widget.booking!.totalPrice,
+                                          widget.package!.price),
                                       hasTestPackages: true,
                                     ),
                                     'testPackages': FieldValue.arrayUnion(
-                                        [widget.package.reference]),
+                                        [widget.package!.reference]),
                                     'testPackTests':
                                         functions.addBookingPackageTests(
-                                            widget.booking.testPackTests
+                                            widget.booking!.testPackTests!
                                                 .toList(),
-                                            widget.package.testsIncluded
+                                            widget.package!.testsIncluded!
                                                 .toList()),
                                   };
-                                  await widget.booking.reference
+                                  await widget.booking!.reference
                                       .update(bookingsUpdateData);
                                   return;
                                 }
@@ -328,7 +325,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                   height: 100,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                        .primaryText,
                                     borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(0),
                                       bottomRight: Radius.circular(16),
@@ -356,12 +353,13 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                   ),
                                 ),
                               ),
-                            ).animated([
-                              animationsMap[
-                                  'containerOnActionTriggerAnimation2']
-                            ]),
+                            ).animateOnActionTrigger(
+                                animationsMap[
+                                    'containerOnActionTriggerAnimation2']!,
+                                hasBeenTriggered: hasContainerTriggered2),
                         ],
-                      ).animated([animationsMap['stackOnPageLoadAnimation']]),
+                      ).animateOnPageLoad(
+                          animationsMap['stackOnPageLoadAnimation']!),
                     ],
                   ),
                 ],
@@ -399,7 +397,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                         ),
                                       );
                                     },
-                                  );
+                                  ).then((value) => setState(() {}));
                                 },
                                 child: Container(
                                   width:
@@ -411,7 +409,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                   ),
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                        .primaryText,
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Padding(
@@ -431,7 +429,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                 decoration: BoxDecoration(),
                                                 child: AutoSizeText(
                                                   functions
-                                                      .add1(widget.index)
+                                                      .add1(widget.index)!
                                                       .toString()
                                                       .maybeHandleOverflow(
                                                           maxChars: 2),
@@ -440,11 +438,11 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .tertiaryColor,
+                                                                .alternate,
                                                         fontSize: 16,
                                                       ),
                                                 ),
@@ -457,7 +455,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                   child: Text(
                                                     functions
                                                         .camelCase(widget
-                                                            .package
+                                                            .package!
                                                             .packageName)
                                                         .maybeHandleOverflow(
                                                             maxChars: 25),
@@ -477,9 +475,8 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                     ),
                                   ),
                                 ),
-                              ).animated([
-                                animationsMap['containerOnPageLoadAnimation1']
-                              ]),
+                              ).animateOnPageLoad(animationsMap[
+                                  'containerOnPageLoadAnimation1']!),
                               Align(
                                 alignment: AlignmentDirectional(0, 1),
                                 child: Material(
@@ -592,7 +589,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                       BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .tertiaryColor,
+                                                                        .primaryText,
                                                                     borderRadius:
                                                                         BorderRadius.circular(
                                                                             12),
@@ -607,8 +604,8 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                             4),
                                                                     child: Text(
                                                                       widget
-                                                                          .package
-                                                                          .category,
+                                                                          .package!
+                                                                          .category!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyText1
@@ -616,7 +613,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                             fontFamily:
                                                                                 'Lexend Deca',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             fontSize:
                                                                                 12,
                                                                             fontWeight:
@@ -657,11 +654,11 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                   Icons.timer,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryColor,
+                                                                      .primaryText,
                                                                   size: 20,
                                                                 ),
                                                                 Text(
-                                                                  '${widget.package.durationResults.toString()} Hrs',
+                                                                  '${widget.package!.durationResults?.toString()} Hrs',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1
@@ -669,7 +666,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                         fontFamily:
                                                                             'Roboto Mono',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .primaryText,
                                                                         fontWeight:
                                                                             FontWeight.w500,
                                                                       ),
@@ -755,7 +752,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                       .delivery_dining,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryColor,
+                                                                      .primaryText,
                                                                   size: 20,
                                                                 ),
                                                                 Padding(
@@ -772,7 +769,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                     child:
                                                                         Stack(
                                                                       children: [
-                                                                        if (widget.package.atHome ??
+                                                                        if (widget.package!.atHome ??
                                                                             true)
                                                                           Align(
                                                                             alignment:
@@ -780,11 +777,11 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                             child:
                                                                                 Icon(
                                                                               Icons.check_circle_outline,
-                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               size: 16,
                                                                             ),
                                                                           ),
-                                                                        if (widget.package.atHome ??
+                                                                        if (widget.package!.atHome ??
                                                                             true)
                                                                           Align(
                                                                             alignment:
@@ -792,7 +789,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                             child:
                                                                                 Icon(
                                                                               Icons.not_interested,
-                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
                                                                               size: 16,
                                                                             ),
                                                                           ),
@@ -848,8 +845,8 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                           Text(
                                                                         formatNumber(
                                                                           widget
-                                                                              .package
-                                                                              .price,
+                                                                              .package!
+                                                                              .price!,
                                                                           formatType:
                                                                               FormatType.decimal,
                                                                           decimalType:
@@ -860,7 +857,7 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                                                         style:
                                                                             TextStyle(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontWeight:
                                                                               FontWeight.w500,
                                                                           fontSize:
@@ -885,9 +882,8 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
                                       ),
                                     ),
                                   ),
-                                ).animated([
-                                  animationsMap['containerOnPageLoadAnimation2']
-                                ]),
+                                ).animateOnPageLoad(animationsMap[
+                                    'containerOnPageLoadAnimation2']!),
                               ),
                             ],
                           ),

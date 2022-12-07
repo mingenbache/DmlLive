@@ -15,13 +15,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PackageDetailsPopupWidget extends StatefulWidget {
   const PackageDetailsPopupWidget({
-    Key key,
+    Key? key,
     this.package,
     this.booking,
   }) : super(key: key);
 
-  final TestPackagesRecord package;
-  final DocumentReference booking;
+  final TestPackagesRecord? package;
+  final DocumentReference? booking;
 
   @override
   _PackageDetailsPopupWidgetState createState() =>
@@ -100,11 +100,10 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              Color(0x00FFFFFF),
-                              Color(0x92BACA68),
-                              FlutterFlowTheme.of(context).tertiaryColor
+                              Color(0x646CD7B7),
+                              FlutterFlowTheme.of(context).secondaryColor
                             ],
-                            stops: [0, 0.3, 0.4],
+                            stops: [0.3, 0.4],
                             begin: AlignmentDirectional(0, -1),
                             end: AlignmentDirectional(0, 1),
                           ),
@@ -147,7 +146,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                           size: 30,
                                         ),
                                         onPressed: () async {
-                                          context.pop();
+                                          Navigator.pop(context);
                                         },
                                       ),
                                     ),
@@ -156,7 +155,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                               ),
                               StreamBuilder<UsersRecord>(
                                 stream: UsersRecord.getDocument(
-                                    currentUserReference),
+                                    currentUserReference!),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
@@ -172,7 +171,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                       ),
                                     );
                                   }
-                                  final columnUsersRecord = snapshot.data;
+                                  final columnUsersRecord = snapshot.data!;
                                   return SingleChildScrollView(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -190,13 +189,13 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(15, 0, 0, 0),
                                                 child: AutoSizeText(
-                                                  widget.package.packageName,
+                                                  widget.package!.packageName!,
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .title1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color: Colors.white,
                                                       ),
                                                 ),
@@ -204,7 +203,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                             ),
                                           ],
                                         ),
-                                        if (widget.package.isAvailable ?? true)
+                                        if (widget.package!.isAvailable ?? true)
                                           Align(
                                             alignment:
                                                 AlignmentDirectional(0.8, 0),
@@ -220,9 +219,9 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                 (alertDialogContext) {
                                                               return AlertDialog(
                                                                 title: Text(
-                                                                    'Unsuspend Package?'),
+                                                                    'Reactivate Test?'),
                                                                 content: Text(
-                                                                    'Unsuspending will allow client bookings for this package of tests'),
+                                                                    'Doing this will make this test available for booking'),
                                                                 actions: [
                                                                   TextButton(
                                                                     onPressed: () =>
@@ -238,7 +237,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                             alertDialogContext,
                                                                             true),
                                                                     child: Text(
-                                                                        'Confirm'),
+                                                                        'Activate'),
                                                                   ),
                                                                 ],
                                                               );
@@ -251,7 +250,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                       isAvailable: true,
                                                     );
                                                     await widget
-                                                        .package.reference
+                                                        .package!.reference
                                                         .update(
                                                             testPackagesUpdateData);
                                                   } else {
@@ -263,19 +262,21 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                     builder:
                                                         (alertDialogContext) {
                                                       return AlertDialog(
-                                                        title: Text(
-                                                            'Test Package Unsuspended!'),
+                                                        title: Text('Success'),
+                                                        content: Text(
+                                                            'Test now Active'),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext),
-                                                            child: Text('Ok'),
+                                                            child: Text('Okay'),
                                                           ),
                                                         ],
                                                       );
                                                     },
                                                   );
+                                                  Navigator.pop(context);
                                                 },
                                                 child: Container(
                                                   width: 130,
@@ -314,7 +315,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                               .motion_photos_pause_rounded,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .secondaryBackground,
                                                           size: 20,
                                                         ),
                                                         Padding(
@@ -332,7 +333,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                       'Lexend Deca',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryColor,
+                                                                      .secondaryBackground,
                                                                   fontSize: 14,
                                                                   fontWeight:
                                                                       FontWeight
@@ -356,7 +357,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                               0.47,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .secondaryColor,
                                             borderRadius: BorderRadius.only(
                                               bottomLeft: Radius.circular(0),
                                               bottomRight: Radius.circular(0),
@@ -371,16 +372,19 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                               children: [
                                                 TabBar(
                                                   isScrollable: true,
-                                                  labelColor: Color(0xFF586B06),
+                                                  labelColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
                                                   unselectedLabelColor:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .primaryColor,
+                                                          .primaryText,
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         fontSize: 16,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -444,8 +448,8 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                           0),
                                                                   child: Text(
                                                                     widget
-                                                                        .package
-                                                                        .description,
+                                                                        .package!
+                                                                        .description!,
                                                                     textAlign:
                                                                         TextAlign
                                                                             .start,
@@ -456,7 +460,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                           fontFamily:
                                                                               'Roboto',
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontSize:
                                                                               14,
                                                                           fontWeight:
@@ -470,7 +474,7 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                   endIndent: 10,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .alternate,
+                                                                      .primaryText,
                                                                 ),
                                                                 Container(
                                                                   width: MediaQuery.of(
@@ -498,8 +502,8 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle2
                                                                               .override(
-                                                                                fontFamily: 'Roboto',
-                                                                                color: FlutterFlowTheme.of(context).alternate,
+                                                                                fontFamily: 'Open Sans',
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
                                                                               ),
                                                                         ),
                                                                       ],
@@ -514,11 +518,9 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                     builder:
                                                                         (context) {
                                                                       final packageTests = widget
-                                                                              .package
-                                                                              .testsIncluded
-                                                                              .toList()
-                                                                              ?.toList() ??
-                                                                          [];
+                                                                          .package!
+                                                                          .testsIncluded!
+                                                                          .toList();
                                                                       return ListView
                                                                           .builder(
                                                                         padding:
@@ -535,6 +537,8 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                           final packageTestsItem =
                                                                               packageTests[packageTestsIndex];
                                                                           return PackageTestListItemWidget(
+                                                                            key:
+                                                                                Key('packageTestListItem_${packageTestsIndex}'),
                                                                             isAdmin:
                                                                                 columnUsersRecord.isStaff,
                                                                             testRef:
@@ -1506,8 +1510,8 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                   .fromSTEB(8,
                                                                       4, 8, 4),
                                                           child: Text(
-                                                            widget.package
-                                                                .category,
+                                                            widget.package!
+                                                                .category!,
                                                             textAlign: TextAlign
                                                                 .center,
                                                             style: FlutterFlowTheme
@@ -1515,10 +1519,10 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryColor,
+                                                                      .primaryText,
                                                                 ),
                                                           ),
                                                         ),
@@ -1531,7 +1535,8 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                     children: [
                                                       Text(
                                                         formatNumber(
-                                                          widget.package.price,
+                                                          widget
+                                                              .package!.price!,
                                                           formatType: FormatType
                                                               .decimal,
                                                           decimalType:
@@ -1545,9 +1550,10 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
                                                                 .subtitle2
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
-                                                                  color: Color(
-                                                                      0xFF586B06),
+                                                                      'Open Sans',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
                                                                 ),
                                                       ),
                                                     ],

@@ -13,23 +13,25 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditUserDetailsWidget extends StatefulWidget {
-  const EditUserDetailsWidget({Key key}) : super(key: key);
+  const EditUserDetailsWidget({Key? key}) : super(key: key);
 
   @override
   _EditUserDetailsWidgetState createState() => _EditUserDetailsWidgetState();
 }
 
 class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
-  DateTime datePicked;
-  String sexChoiceChipsValue;
-  TextEditingController emailAddressController;
-  TextEditingController firstNameController;
-  TextEditingController lastNameController;
-  TextEditingController phoneNumberController;
-  TextEditingController passwordController;
-  bool passwordVisibility;
-  TextEditingController confirmPasswordController;
-  bool confirmPasswordVisibility;
+  DateTime? datePicked;
+  String? sexChoiceChipsValue;
+  TextEditingController? emailAddressController;
+  TextEditingController? firstNameController;
+  TextEditingController? lastNameController;
+  TextEditingController? phoneNumberController;
+  TextEditingController? passwordController;
+
+  late bool passwordVisibility;
+  TextEditingController? confirmPasswordController;
+
+  late bool confirmPasswordVisibility;
 
   @override
   void initState() {
@@ -41,9 +43,20 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
   }
 
   @override
+  void dispose() {
+    confirmPasswordController?.dispose();
+    emailAddressController?.dispose();
+    firstNameController?.dispose();
+    lastNameController?.dispose();
+    phoneNumberController?.dispose();
+    passwordController?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder<UsersRecord>(
-      stream: UsersRecord.getDocument(currentUserReference),
+      stream: UsersRecord.getDocument(currentUserReference!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -58,13 +71,14 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
             ),
           );
         }
-        final editUserDetailsUsersRecord = snapshot.data;
+        final editUserDetailsUsersRecord = snapshot.data!;
         return Container(
           constraints: BoxConstraints(
             maxHeight: 600,
           ),
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).tertiaryColor,
+            color: FlutterFlowTheme.of(context).secondaryColor,
+            borderRadius: BorderRadius.circular(32),
           ),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
@@ -75,13 +89,13 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
               children: [
                 Row(
                   mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      'EDIT USER DETAILS',
+                      'EDIT\nUSER DETAILS',
                       style: FlutterFlowTheme.of(context).title2.override(
-                            fontFamily: 'Roboto',
-                            color: Color(0xFF586B06),
+                            fontFamily: 'Open Sans',
+                            color: FlutterFlowTheme.of(context).primaryText,
                             fontSize: 32,
                             fontWeight: FontWeight.bold,
                           ),
@@ -100,6 +114,8 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                           borderColor: Colors.transparent,
                           borderRadius: 30,
                           buttonSize: 48,
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           icon: Icon(
                             Icons.close_rounded,
                             color: FlutterFlowTheme.of(context).tertiaryColor,
@@ -146,20 +162,37 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                       hintText: 'Enter your name here...',
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0xFF586B06),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           width: 2,
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0xFF586B06),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
                                           width: 2,
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       filled: true,
-                                      fillColor: Color(0x2BFFFFFF),
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                       contentPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               16, 24, 0, 24),
@@ -168,7 +201,8 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         .bodyText1
                                         .override(
                                           fontFamily: 'Roboto',
-                                          color: Color(0xFF586B06),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           fontSize: 14,
                                           fontWeight: FontWeight.normal,
                                         ),
@@ -191,20 +225,37 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                       hintText: 'Enter your name here...',
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0xFF586B06),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           width: 2,
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0xFF586B06),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
                                           width: 2,
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       filled: true,
-                                      fillColor: Color(0x2BFFFFFF),
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                       contentPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               16, 24, 0, 24),
@@ -213,7 +264,8 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         .bodyText1
                                         .override(
                                           fontFamily: 'Roboto',
-                                          color: Color(0xFF586B06),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           fontSize: 14,
                                           fontWeight: FontWeight.normal,
                                         ),
@@ -249,20 +301,37 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         width: 2,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
                                         width: 2,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     filled: true,
-                                    fillColor: Color(0x2BFFFFFF),
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                     contentPadding:
                                         EdgeInsetsDirectional.fromSTEB(
                                             16, 24, 0, 24),
@@ -271,7 +340,8 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                       .bodyText1
                                       .override(
                                         fontFamily: 'Roboto',
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -307,20 +377,37 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         width: 2,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
                                         width: 2,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     filled: true,
-                                    fillColor: Color(0x2CFFFFFF),
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                     contentPadding:
                                         EdgeInsetsDirectional.fromSTEB(
                                             16, 24, 0, 24),
@@ -329,7 +416,8 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                       .bodyText1
                                       .override(
                                         fontFamily: 'Roboto',
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -357,7 +445,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         setState(() => datePicked = date);
                                       },
                                       currentTime:
-                                          editUserDetailsUsersRecord.dOB,
+                                          editUserDetailsUsersRecord.dOB!,
                                       minTime: DateTime(0, 0, 0),
                                     );
                                   },
@@ -367,10 +455,12 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                     height: MediaQuery.of(context).size.height *
                                         0.05,
                                     decoration: BoxDecoration(
-                                      color: Color(0x2CFFFFFF),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                       borderRadius: BorderRadius.circular(8),
                                       border: Border.all(
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         width: 2,
                                       ),
                                     ),
@@ -379,12 +469,14 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                           8, 8, 8, 8),
                                       child: Text(
                                         dateTimeFormat('d/M/y',
-                                            editUserDetailsUsersRecord.dOB),
+                                            editUserDetailsUsersRecord.dOB!),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
-                                              color: Color(0xFF586B06),
+                                              fontFamily: 'Open Sans',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                             ),
                                       ),
                                     ),
@@ -393,29 +485,29 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                               ),
                               Expanded(
                                 child: FlutterFlowChoiceChips(
-                                  initiallySelected: sexChoiceChipsValue != null
-                                      ? [sexChoiceChipsValue]
-                                      : [editUserDetailsUsersRecord.sex],
+                                  initiallySelected: [
+                                    editUserDetailsUsersRecord.sex!
+                                  ],
                                   options: [
                                     ChipData('Female', FontAwesomeIcons.female),
                                     ChipData('Male', FontAwesomeIcons.male)
                                   ],
                                   onChanged: (val) => setState(
-                                      () => sexChoiceChipsValue = val.first),
+                                      () => sexChoiceChipsValue = val?.first),
                                   selectedChipStyle: ChipStyle(
                                     backgroundColor:
                                         FlutterFlowTheme.of(context)
-                                            .secondaryColor,
+                                            .primaryText,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyText1
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
+                                              .secondaryBackground,
                                           fontWeight: FontWeight.w500,
                                         ),
                                     iconColor: FlutterFlowTheme.of(context)
-                                        .tertiaryColor,
+                                        .secondaryBackground,
                                     iconSize: 18,
                                     labelPadding:
                                         EdgeInsetsDirectional.fromSTEB(
@@ -425,17 +517,17 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                   unselectedChipStyle: ChipStyle(
                                     backgroundColor:
                                         FlutterFlowTheme.of(context)
-                                            .primaryColor,
+                                            .secondaryBackground,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyText2
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryColor,
+                                              .primaryText,
                                           fontWeight: FontWeight.w500,
                                         ),
                                     iconColor: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                        .primaryText,
                                     iconSize: 18,
                                     labelPadding:
                                         EdgeInsetsDirectional.fromSTEB(
@@ -468,26 +560,44 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         .bodyText1
                                         .override(
                                           fontFamily: 'Lexend Deca',
-                                          color: Color(0xFF95A1AC),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           fontSize: 14,
                                           fontWeight: FontWeight.normal,
                                         ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         width: 2,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
                                         width: 2,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     filled: true,
-                                    fillColor: Color(0x2BFFFFFF),
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                     contentPadding:
                                         EdgeInsetsDirectional.fromSTEB(
                                             16, 24, 24, 24),
@@ -501,7 +611,8 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         passwordVisibility
                                             ? Icons.visibility_outlined
                                             : Icons.visibility_off_outlined,
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         size: 22,
                                       ),
                                     ),
@@ -510,7 +621,8 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                       .bodyText1
                                       .override(
                                         fontFamily: 'Roboto',
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -536,26 +648,44 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         .bodyText1
                                         .override(
                                           fontFamily: 'Lexend Deca',
-                                          color: Color(0xFF95A1AC),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           fontSize: 14,
                                           fontWeight: FontWeight.normal,
                                         ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         width: 2,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
                                         width: 2,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     filled: true,
-                                    fillColor: Color(0x2CFFFFFF),
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                     contentPadding:
                                         EdgeInsetsDirectional.fromSTEB(
                                             16, 24, 24, 24),
@@ -569,7 +699,8 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         confirmPasswordVisibility
                                             ? Icons.visibility_outlined
                                             : Icons.visibility_off_outlined,
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         size: 22,
                                       ),
                                     ),
@@ -578,7 +709,8 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                       .bodyText1
                                       .override(
                                         fontFamily: 'Roboto',
-                                        color: Color(0xFF586B06),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                       ),
@@ -610,13 +742,13 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                     context: context,
                                     builder: (alertDialogContext) {
                                       return AlertDialog(
-                                        title: Text('Alert'),
-                                        content: Text('Details Updated!!'),
+                                        title: Text('Success'),
+                                        content: Text('Details updated'),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
                                                 alertDialogContext),
-                                            child: Text('Ok'),
+                                            child: Text('Cancel'),
                                           ),
                                         ],
                                       );

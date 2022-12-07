@@ -17,17 +17,17 @@ class _$TestedTestsRecordSerializer
   final String wireName = 'TestedTestsRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, TestedTestsRecord object,
+  Iterable<Object?> serialize(Serializers serializers, TestedTestsRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.testRef;
     if (value != null) {
       result
         ..add('test_ref')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.bookingRef;
     if (value != null) {
@@ -35,7 +35,7 @@ class _$TestedTestsRecordSerializer
         ..add('booking_ref')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.isVerified;
     if (value != null) {
@@ -57,7 +57,7 @@ class _$TestedTestsRecordSerializer
         ..add('pathologist_Ref')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.dateConducted;
     if (value != null) {
@@ -94,7 +94,7 @@ class _$TestedTestsRecordSerializer
         ..add('booked_test_Ref')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.machineUsed;
     if (value != null) {
@@ -102,7 +102,7 @@ class _$TestedTestsRecordSerializer
         ..add('machine_used')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.flaggedDate;
     if (value != null) {
@@ -166,7 +166,7 @@ class _$TestedTestsRecordSerializer
         ..add('staff_Reference')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.verifiedDate;
     if (value != null) {
@@ -195,148 +195,148 @@ class _$TestedTestsRecordSerializer
         ..add('testPackRef')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
-    value = object.reference;
+    value = object.ffRef;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     return result;
   }
 
   @override
   TestedTestsRecord deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new TestedTestsRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'test_ref':
           result.testRef = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'booking_ref':
           result.bookingRef = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'is_verified':
           result.isVerified = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'is_flagged':
           result.isFlagged = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'pathologist_Ref':
           result.pathologistRef = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'date_conducted':
           result.dateConducted = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'results_positive':
           result.resultsPositive = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'results_attachment':
           result.resultsAttachment.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<Object>);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
           break;
         case 'sample_released':
           result.sampleReleased = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'booked_test_Ref':
           result.bookedTestRef = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'machine_used':
           result.machineUsed = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'flagged_date':
           result.flaggedDate = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'date_sample_collected':
           result.dateSampleCollected = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'labRefNum':
           result.labRefNum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'test_note':
           result.testNote = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'pathologist_note':
           result.pathologistNote = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'test_result':
           result.testResult = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'flag_notes':
           result.flagNotes = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'resultPosted':
           result.resultPosted = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'staff_Reference':
           result.staffReference = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'verified_Date':
           result.verifiedDate = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'batchNum':
           result.batchNum = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'has_test_pack':
           result.hasTestPack = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'testPackRef':
           result.testPackRef = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'Document__Reference__Field':
-          result.reference = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+          result.ffRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
       }
     }
@@ -347,59 +347,59 @@ class _$TestedTestsRecordSerializer
 
 class _$TestedTestsRecord extends TestedTestsRecord {
   @override
-  final DocumentReference<Object> testRef;
+  final DocumentReference<Object?>? testRef;
   @override
-  final DocumentReference<Object> bookingRef;
+  final DocumentReference<Object?>? bookingRef;
   @override
-  final bool isVerified;
+  final bool? isVerified;
   @override
-  final bool isFlagged;
+  final bool? isFlagged;
   @override
-  final DocumentReference<Object> pathologistRef;
+  final DocumentReference<Object?>? pathologistRef;
   @override
-  final DateTime dateConducted;
+  final DateTime? dateConducted;
   @override
-  final bool resultsPositive;
+  final bool? resultsPositive;
   @override
-  final BuiltList<String> resultsAttachment;
+  final BuiltList<String>? resultsAttachment;
   @override
-  final bool sampleReleased;
+  final bool? sampleReleased;
   @override
-  final DocumentReference<Object> bookedTestRef;
+  final DocumentReference<Object?>? bookedTestRef;
   @override
-  final DocumentReference<Object> machineUsed;
+  final DocumentReference<Object?>? machineUsed;
   @override
-  final DateTime flaggedDate;
+  final DateTime? flaggedDate;
   @override
-  final DateTime dateSampleCollected;
+  final DateTime? dateSampleCollected;
   @override
-  final String labRefNum;
+  final String? labRefNum;
   @override
-  final String testNote;
+  final String? testNote;
   @override
-  final String pathologistNote;
+  final String? pathologistNote;
   @override
-  final String testResult;
+  final String? testResult;
   @override
-  final String flagNotes;
+  final String? flagNotes;
   @override
-  final bool resultPosted;
+  final bool? resultPosted;
   @override
-  final DocumentReference<Object> staffReference;
+  final DocumentReference<Object?>? staffReference;
   @override
-  final DateTime verifiedDate;
+  final DateTime? verifiedDate;
   @override
-  final String batchNum;
+  final String? batchNum;
   @override
-  final bool hasTestPack;
+  final bool? hasTestPack;
   @override
-  final DocumentReference<Object> testPackRef;
+  final DocumentReference<Object?>? testPackRef;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object?>? ffRef;
 
   factory _$TestedTestsRecord(
-          [void Function(TestedTestsRecordBuilder) updates]) =>
-      (new TestedTestsRecordBuilder()..update(updates)).build();
+          [void Function(TestedTestsRecordBuilder)? updates]) =>
+      (new TestedTestsRecordBuilder()..update(updates))._build();
 
   _$TestedTestsRecord._(
       {this.testRef,
@@ -426,7 +426,7 @@ class _$TestedTestsRecord extends TestedTestsRecord {
       this.batchNum,
       this.hasTestPack,
       this.testPackRef,
-      this.reference})
+      this.ffRef})
       : super._();
 
   @override
@@ -465,7 +465,7 @@ class _$TestedTestsRecord extends TestedTestsRecord {
         batchNum == other.batchNum &&
         hasTestPack == other.hasTestPack &&
         testPackRef == other.testPackRef &&
-        reference == other.reference;
+        ffRef == other.ffRef;
   }
 
   @override
@@ -507,12 +507,12 @@ class _$TestedTestsRecord extends TestedTestsRecord {
                     batchNum.hashCode),
                 hasTestPack.hashCode),
             testPackRef.hashCode),
-        reference.hashCode));
+        ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('TestedTestsRecord')
+    return (newBuiltValueToStringHelper(r'TestedTestsRecord')
           ..add('testRef', testRef)
           ..add('bookingRef', bookingRef)
           ..add('isVerified', isVerified)
@@ -537,129 +537,128 @@ class _$TestedTestsRecord extends TestedTestsRecord {
           ..add('batchNum', batchNum)
           ..add('hasTestPack', hasTestPack)
           ..add('testPackRef', testPackRef)
-          ..add('reference', reference))
+          ..add('ffRef', ffRef))
         .toString();
   }
 }
 
 class TestedTestsRecordBuilder
     implements Builder<TestedTestsRecord, TestedTestsRecordBuilder> {
-  _$TestedTestsRecord _$v;
+  _$TestedTestsRecord? _$v;
 
-  DocumentReference<Object> _testRef;
-  DocumentReference<Object> get testRef => _$this._testRef;
-  set testRef(DocumentReference<Object> testRef) => _$this._testRef = testRef;
+  DocumentReference<Object?>? _testRef;
+  DocumentReference<Object?>? get testRef => _$this._testRef;
+  set testRef(DocumentReference<Object?>? testRef) => _$this._testRef = testRef;
 
-  DocumentReference<Object> _bookingRef;
-  DocumentReference<Object> get bookingRef => _$this._bookingRef;
-  set bookingRef(DocumentReference<Object> bookingRef) =>
+  DocumentReference<Object?>? _bookingRef;
+  DocumentReference<Object?>? get bookingRef => _$this._bookingRef;
+  set bookingRef(DocumentReference<Object?>? bookingRef) =>
       _$this._bookingRef = bookingRef;
 
-  bool _isVerified;
-  bool get isVerified => _$this._isVerified;
-  set isVerified(bool isVerified) => _$this._isVerified = isVerified;
+  bool? _isVerified;
+  bool? get isVerified => _$this._isVerified;
+  set isVerified(bool? isVerified) => _$this._isVerified = isVerified;
 
-  bool _isFlagged;
-  bool get isFlagged => _$this._isFlagged;
-  set isFlagged(bool isFlagged) => _$this._isFlagged = isFlagged;
+  bool? _isFlagged;
+  bool? get isFlagged => _$this._isFlagged;
+  set isFlagged(bool? isFlagged) => _$this._isFlagged = isFlagged;
 
-  DocumentReference<Object> _pathologistRef;
-  DocumentReference<Object> get pathologistRef => _$this._pathologistRef;
-  set pathologistRef(DocumentReference<Object> pathologistRef) =>
+  DocumentReference<Object?>? _pathologistRef;
+  DocumentReference<Object?>? get pathologistRef => _$this._pathologistRef;
+  set pathologistRef(DocumentReference<Object?>? pathologistRef) =>
       _$this._pathologistRef = pathologistRef;
 
-  DateTime _dateConducted;
-  DateTime get dateConducted => _$this._dateConducted;
-  set dateConducted(DateTime dateConducted) =>
+  DateTime? _dateConducted;
+  DateTime? get dateConducted => _$this._dateConducted;
+  set dateConducted(DateTime? dateConducted) =>
       _$this._dateConducted = dateConducted;
 
-  bool _resultsPositive;
-  bool get resultsPositive => _$this._resultsPositive;
-  set resultsPositive(bool resultsPositive) =>
+  bool? _resultsPositive;
+  bool? get resultsPositive => _$this._resultsPositive;
+  set resultsPositive(bool? resultsPositive) =>
       _$this._resultsPositive = resultsPositive;
 
-  ListBuilder<String> _resultsAttachment;
+  ListBuilder<String>? _resultsAttachment;
   ListBuilder<String> get resultsAttachment =>
       _$this._resultsAttachment ??= new ListBuilder<String>();
-  set resultsAttachment(ListBuilder<String> resultsAttachment) =>
+  set resultsAttachment(ListBuilder<String>? resultsAttachment) =>
       _$this._resultsAttachment = resultsAttachment;
 
-  bool _sampleReleased;
-  bool get sampleReleased => _$this._sampleReleased;
-  set sampleReleased(bool sampleReleased) =>
+  bool? _sampleReleased;
+  bool? get sampleReleased => _$this._sampleReleased;
+  set sampleReleased(bool? sampleReleased) =>
       _$this._sampleReleased = sampleReleased;
 
-  DocumentReference<Object> _bookedTestRef;
-  DocumentReference<Object> get bookedTestRef => _$this._bookedTestRef;
-  set bookedTestRef(DocumentReference<Object> bookedTestRef) =>
+  DocumentReference<Object?>? _bookedTestRef;
+  DocumentReference<Object?>? get bookedTestRef => _$this._bookedTestRef;
+  set bookedTestRef(DocumentReference<Object?>? bookedTestRef) =>
       _$this._bookedTestRef = bookedTestRef;
 
-  DocumentReference<Object> _machineUsed;
-  DocumentReference<Object> get machineUsed => _$this._machineUsed;
-  set machineUsed(DocumentReference<Object> machineUsed) =>
+  DocumentReference<Object?>? _machineUsed;
+  DocumentReference<Object?>? get machineUsed => _$this._machineUsed;
+  set machineUsed(DocumentReference<Object?>? machineUsed) =>
       _$this._machineUsed = machineUsed;
 
-  DateTime _flaggedDate;
-  DateTime get flaggedDate => _$this._flaggedDate;
-  set flaggedDate(DateTime flaggedDate) => _$this._flaggedDate = flaggedDate;
+  DateTime? _flaggedDate;
+  DateTime? get flaggedDate => _$this._flaggedDate;
+  set flaggedDate(DateTime? flaggedDate) => _$this._flaggedDate = flaggedDate;
 
-  DateTime _dateSampleCollected;
-  DateTime get dateSampleCollected => _$this._dateSampleCollected;
-  set dateSampleCollected(DateTime dateSampleCollected) =>
+  DateTime? _dateSampleCollected;
+  DateTime? get dateSampleCollected => _$this._dateSampleCollected;
+  set dateSampleCollected(DateTime? dateSampleCollected) =>
       _$this._dateSampleCollected = dateSampleCollected;
 
-  String _labRefNum;
-  String get labRefNum => _$this._labRefNum;
-  set labRefNum(String labRefNum) => _$this._labRefNum = labRefNum;
+  String? _labRefNum;
+  String? get labRefNum => _$this._labRefNum;
+  set labRefNum(String? labRefNum) => _$this._labRefNum = labRefNum;
 
-  String _testNote;
-  String get testNote => _$this._testNote;
-  set testNote(String testNote) => _$this._testNote = testNote;
+  String? _testNote;
+  String? get testNote => _$this._testNote;
+  set testNote(String? testNote) => _$this._testNote = testNote;
 
-  String _pathologistNote;
-  String get pathologistNote => _$this._pathologistNote;
-  set pathologistNote(String pathologistNote) =>
+  String? _pathologistNote;
+  String? get pathologistNote => _$this._pathologistNote;
+  set pathologistNote(String? pathologistNote) =>
       _$this._pathologistNote = pathologistNote;
 
-  String _testResult;
-  String get testResult => _$this._testResult;
-  set testResult(String testResult) => _$this._testResult = testResult;
+  String? _testResult;
+  String? get testResult => _$this._testResult;
+  set testResult(String? testResult) => _$this._testResult = testResult;
 
-  String _flagNotes;
-  String get flagNotes => _$this._flagNotes;
-  set flagNotes(String flagNotes) => _$this._flagNotes = flagNotes;
+  String? _flagNotes;
+  String? get flagNotes => _$this._flagNotes;
+  set flagNotes(String? flagNotes) => _$this._flagNotes = flagNotes;
 
-  bool _resultPosted;
-  bool get resultPosted => _$this._resultPosted;
-  set resultPosted(bool resultPosted) => _$this._resultPosted = resultPosted;
+  bool? _resultPosted;
+  bool? get resultPosted => _$this._resultPosted;
+  set resultPosted(bool? resultPosted) => _$this._resultPosted = resultPosted;
 
-  DocumentReference<Object> _staffReference;
-  DocumentReference<Object> get staffReference => _$this._staffReference;
-  set staffReference(DocumentReference<Object> staffReference) =>
+  DocumentReference<Object?>? _staffReference;
+  DocumentReference<Object?>? get staffReference => _$this._staffReference;
+  set staffReference(DocumentReference<Object?>? staffReference) =>
       _$this._staffReference = staffReference;
 
-  DateTime _verifiedDate;
-  DateTime get verifiedDate => _$this._verifiedDate;
-  set verifiedDate(DateTime verifiedDate) =>
+  DateTime? _verifiedDate;
+  DateTime? get verifiedDate => _$this._verifiedDate;
+  set verifiedDate(DateTime? verifiedDate) =>
       _$this._verifiedDate = verifiedDate;
 
-  String _batchNum;
-  String get batchNum => _$this._batchNum;
-  set batchNum(String batchNum) => _$this._batchNum = batchNum;
+  String? _batchNum;
+  String? get batchNum => _$this._batchNum;
+  set batchNum(String? batchNum) => _$this._batchNum = batchNum;
 
-  bool _hasTestPack;
-  bool get hasTestPack => _$this._hasTestPack;
-  set hasTestPack(bool hasTestPack) => _$this._hasTestPack = hasTestPack;
+  bool? _hasTestPack;
+  bool? get hasTestPack => _$this._hasTestPack;
+  set hasTestPack(bool? hasTestPack) => _$this._hasTestPack = hasTestPack;
 
-  DocumentReference<Object> _testPackRef;
-  DocumentReference<Object> get testPackRef => _$this._testPackRef;
-  set testPackRef(DocumentReference<Object> testPackRef) =>
+  DocumentReference<Object?>? _testPackRef;
+  DocumentReference<Object?>? get testPackRef => _$this._testPackRef;
+  set testPackRef(DocumentReference<Object?>? testPackRef) =>
       _$this._testPackRef = testPackRef;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
-      _$this._reference = reference;
+  DocumentReference<Object?>? _ffRef;
+  DocumentReference<Object?>? get ffRef => _$this._ffRef;
+  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   TestedTestsRecordBuilder() {
     TestedTestsRecord._initializeBuilder(this);
@@ -692,7 +691,7 @@ class TestedTestsRecordBuilder
       _batchNum = $v.batchNum;
       _hasTestPack = $v.hasTestPack;
       _testPackRef = $v.testPackRef;
-      _reference = $v.reference;
+      _ffRef = $v.ffRef;
       _$v = null;
     }
     return this;
@@ -705,12 +704,14 @@ class TestedTestsRecordBuilder
   }
 
   @override
-  void update(void Function(TestedTestsRecordBuilder) updates) {
+  void update(void Function(TestedTestsRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$TestedTestsRecord build() {
+  TestedTestsRecord build() => _build();
+
+  _$TestedTestsRecord _build() {
     _$TestedTestsRecord _$result;
     try {
       _$result = _$v ??
@@ -739,15 +740,15 @@ class TestedTestsRecordBuilder
               batchNum: batchNum,
               hasTestPack: hasTestPack,
               testPackRef: testPackRef,
-              reference: reference);
+              ffRef: ffRef);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'resultsAttachment';
         _resultsAttachment?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'TestedTestsRecord', _$failedField, e.toString());
+            r'TestedTestsRecord', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -756,4 +757,4 @@ class TestedTestsRecordBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

@@ -13,34 +13,51 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ModifyTestWidget extends StatefulWidget {
   const ModifyTestWidget({
-    Key key,
+    Key? key,
     this.testId,
   }) : super(key: key);
 
-  final DocumentReference testId;
+  final DocumentReference? testId;
 
   @override
   _ModifyTestWidgetState createState() => _ModifyTestWidgetState();
 }
 
 class _ModifyTestWidgetState extends State<ModifyTestWidget> {
-  String dropDownValue;
-  TextEditingController testDescriptionController;
-  TextEditingController testNameController;
-  bool switchListTileValue;
-  bool atHomeToggleValue;
-  TextEditingController testDurationTextController;
-  double testDurationSliderValue;
-  TextEditingController resultsDurationTextController;
-  double durationResultsSliderValue;
-  TextEditingController testPriceController;
+  String? dropDownValue;
+  TextEditingController? testDescriptionController;
+  TextEditingController? testNameController;
+  bool? switchListTileValue;
+  bool? atHomeToggleValue;
+  TextEditingController? testDurationTextController;
+  double? testDurationSliderValue;
+  TextEditingController? resultsDurationTextController;
+  double? durationResultsSliderValue;
+  TextEditingController? testPriceController;
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    resultsDurationTextController?.dispose();
+    testDescriptionController?.dispose();
+    testNameController?.dispose();
+    testDurationTextController?.dispose();
+    testPriceController?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder<TestsRecord>(
-      stream: TestsRecord.getDocument(widget.testId),
+      stream: TestsRecord.getDocument(widget.testId!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -55,7 +72,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
             ),
           );
         }
-        final modifyTestTestsRecord = snapshot.data;
+        final modifyTestTestsRecord = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -86,7 +103,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                           'EDIT TEST DETAILS',
                           textAlign: TextAlign.start,
                           style: FlutterFlowTheme.of(context).title1.override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'Open Sans',
                                 color: Color(0xFF586B06),
                               ),
                         ),
@@ -107,15 +124,17 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                             Expanded(
                               child: SwitchListTile(
                                 value: switchListTileValue ??=
-                                    modifyTestTestsRecord.isAvailable,
-                                onChanged: (newValue) => setState(
-                                    () => switchListTileValue = newValue),
+                                    modifyTestTestsRecord.isAvailable!,
+                                onChanged: (newValue) async {
+                                  setState(
+                                      () => switchListTileValue = newValue!);
+                                },
                                 title: Text(
                                   'Active',
                                   style: FlutterFlowTheme.of(context)
                                       .title3
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiaryColor,
                                         fontWeight: FontWeight.w500,
@@ -126,7 +145,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
                                         fontSize: 16,
                                       ),
                                 ),
@@ -196,6 +215,20 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
                                     filled: true,
                                     fillColor: Color(0x2BFFFFFF),
                                     contentPadding:
@@ -261,23 +294,38 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                             filled: true,
                             fillColor: Color(0x65FFFFFF),
                             contentPadding:
                                 EdgeInsetsDirectional.fromSTEB(5, 5, 0, 5),
-                            suffixIcon: testDescriptionController
-                                    .text.isNotEmpty
-                                ? InkWell(
-                                    onTap: () => setState(
-                                      () => testDescriptionController?.clear(),
-                                    ),
-                                    child: Icon(
-                                      Icons.clear,
-                                      color: Color(0xFF889238),
-                                      size: 15,
-                                    ),
-                                  )
-                                : null,
+                            suffixIcon:
+                                testDescriptionController!.text.isNotEmpty
+                                    ? InkWell(
+                                        onTap: () async {
+                                          testDescriptionController?.clear();
+                                          setState(() {});
+                                        },
+                                        child: Icon(
+                                          Icons.clear,
+                                          color: Color(0xFF889238),
+                                          size: 15,
+                                        ),
+                                      )
+                                    : null,
                           ),
                           style: GoogleFonts.getFont(
                             'Roboto',
@@ -302,7 +350,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Open Sans',
                                     color: Color(0xFF586B06),
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -335,15 +383,15 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 }
                                 List<CategoriesRecord>
                                     dropDownCategoriesRecordList =
-                                    snapshot.data;
+                                    snapshot.data!;
                                 final dropDownCategoriesRecord =
                                     dropDownCategoriesRecordList.isNotEmpty
                                         ? dropDownCategoriesRecordList.first
                                         : null;
-                                return FlutterFlowDropDown(
+                                return FlutterFlowDropDown<String>(
                                   initialOption: dropDownValue ??=
                                       modifyTestTestsRecord.category,
-                                  options: dropDownCategoriesRecord.categories
+                                  options: dropDownCategoriesRecord!.categories!
                                       .toList()
                                       .toList(),
                                   onChanged: (val) =>
@@ -354,7 +402,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyText1
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryColor,
                                       ),
@@ -379,35 +427,35 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                           child: Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: SwitchListTile(
-                                value: atHomeToggleValue ??=
-                                    modifyTestTestsRecord.homeTest,
-                                onChanged: (newValue) => setState(
-                                    () => atHomeToggleValue = newValue),
-                                title: Text(
-                                  'Test @ Home ',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Roboto',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryColor,
-                                      ),
-                                ),
-                                subtitle: Text(
-                                  'Can the test be done at home?',
-                                  style: FlutterFlowTheme.of(context).subtitle2,
-                                ),
-                                tileColor:
-                                    FlutterFlowTheme.of(context).primaryColor,
-                                activeColor:
-                                    FlutterFlowTheme.of(context).secondaryColor,
-                                activeTrackColor: Color(0x68BACA68),
-                                dense: false,
-                                controlAffinity:
-                                    ListTileControlAffinity.trailing,
+                            child: SwitchListTile(
+                              value: atHomeToggleValue ??=
+                                  modifyTestTestsRecord.homeTest!,
+                              onChanged: (newValue) async {
+                                setState(() => atHomeToggleValue = newValue!);
+                              },
+                              title: Text(
+                                'Test @ Home ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Open Sans',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryColor,
+                                    ),
+                              ),
+                              subtitle: Text(
+                                'Can the test be done at home?',
+                                style: FlutterFlowTheme.of(context).subtitle2,
+                              ),
+                              tileColor:
+                                  FlutterFlowTheme.of(context).primaryColor,
+                              activeColor:
+                                  FlutterFlowTheme.of(context).secondaryColor,
+                              activeTrackColor: Color(0x68BACA68),
+                              dense: false,
+                              controlAffinity: ListTileControlAffinity.trailing,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
                               ),
                             ),
                           ),
@@ -435,7 +483,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFF586B06),
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -445,7 +493,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .tertiaryColor,
                                       fontSize: 12,
@@ -479,7 +527,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                       controller: testDurationTextController ??=
                                           TextEditingController(
                                         text: modifyTestTestsRecord.duration
-                                            .toString(),
+                                            ?.toString(),
                                       ),
                                       obscureText: false,
                                       decoration: InputDecoration(
@@ -504,6 +552,27 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                             topRight: Radius.circular(4.0),
                                           ),
                                         ),
+                                        errorBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 0, 0, 0, 15),
@@ -511,7 +580,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
                                             fontSize: 18,
@@ -560,7 +629,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: Color(0xFF586B06),
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -570,7 +639,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
                                           .tertiaryColor,
                                       fontSize: 12,
@@ -605,7 +674,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                               TextEditingController(
                                         text: modifyTestTestsRecord
                                             .durationResults
-                                            .toString(),
+                                            ?.toString(),
                                       ),
                                       obscureText: false,
                                       decoration: InputDecoration(
@@ -630,6 +699,27 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                             topRight: Radius.circular(4.0),
                                           ),
                                         ),
+                                        errorBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 0, 0, 0, 15),
@@ -637,7 +727,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
                                             fontSize: 18,
@@ -657,7 +747,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   min: 1,
                                   max: 120,
                                   value: durationResultsSliderValue ??=
-                                      testDurationSliderValue,
+                                      testDurationSliderValue!,
                                   label: durationResultsSliderValue.toString(),
                                   divisions: 119,
                                   onChanged: (newValue) {
@@ -689,7 +779,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyText1
                                   .override(
-                                    fontFamily: 'Roboto',
+                                    fontFamily: 'Open Sans',
                                     color: Color(0xFF586B06),
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -717,13 +807,15 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   controller: testPriceController ??=
                                       TextEditingController(
                                     text:
-                                        modifyTestTestsRecord.price.toString(),
+                                        modifyTestTestsRecord.price?.toString(),
                                   ),
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     hintText: 'Kshs...',
                                     enabledBorder: InputBorder.none,
                                     focusedBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    focusedErrorBorder: InputBorder.none,
                                     contentPadding:
                                         EdgeInsetsDirectional.fromSTEB(
                                             0, 0, 0, 12),
@@ -735,7 +827,6 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                     fontWeight: FontWeight.normal,
                                   ),
                                   textAlign: TextAlign.end,
-                                  maxLines: 1,
                                   keyboardType: TextInputType.number,
                                   validator: (val) {
                                     if (val == null || val.isEmpty) {
@@ -780,12 +871,14 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 backgroundColor: Color(0x00000000),
                               ),
                             );
+
                             context.pushNamed(
                               'Details',
                               queryParams: {
                                 'testId': serializeParam(
-                                    modifyTestTestsRecord.reference,
-                                    ParamType.DocumentReference),
+                                  modifyTestTestsRecord.reference,
+                                  ParamType.DocumentReference,
+                                ),
                               }.withoutNulls,
                             );
                           },

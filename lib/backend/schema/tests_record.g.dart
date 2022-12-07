@@ -15,10 +15,10 @@ class _$TestsRecordSerializer implements StructuredSerializer<TestsRecord> {
   final String wireName = 'TestsRecord';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, TestsRecord object,
+  Iterable<Object?> serialize(Serializers serializers, TestsRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.price;
     if (value != null) {
       result
@@ -139,105 +139,105 @@ class _$TestsRecordSerializer implements StructuredSerializer<TestsRecord> {
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
     }
-    value = object.reference;
+    value = object.ffRef;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType(Object)])));
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     return result;
   }
 
   @override
-  TestsRecord deserialize(Serializers serializers, Iterable<Object> serialized,
+  TestsRecord deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new TestsRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'price':
           result.price = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'home_test':
           result.homeTest = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'duration':
           result.duration = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double)) as double?;
           break;
         case 'duration_results':
           result.durationResults = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double;
+              specifiedType: const FullType(double)) as double?;
           break;
         case 'category':
           result.category = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'is_available':
           result.isAvailable = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'Keywords':
           result.keywords.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<Object>);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
           break;
         case 'update_date':
           result.updateDate = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(DateTime)) as DateTime?;
           break;
         case 'updateRole':
           result.updateRole = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'varianceMale':
           result.varianceMale = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'varianceFemale':
           result.varianceFemale = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'varianceUnitsMale':
           result.varianceUnitsMale = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'varianceUnitsFemale':
           result.varianceUnitsFemale = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'equipmentInfo':
           result.equipmentInfo = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'procedure':
           result.procedure.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<Object>);
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(String)]))!
+              as BuiltList<Object?>);
           break;
         case 'Document__Reference__Field':
-          result.reference = serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      DocumentReference, const [const FullType(Object)]))
-              as DocumentReference<Object>;
+          result.ffRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
       }
     }
@@ -248,44 +248,44 @@ class _$TestsRecordSerializer implements StructuredSerializer<TestsRecord> {
 
 class _$TestsRecord extends TestsRecord {
   @override
-  final int price;
+  final int? price;
   @override
-  final String name;
+  final String? name;
   @override
-  final bool homeTest;
+  final bool? homeTest;
   @override
-  final String description;
+  final String? description;
   @override
-  final double duration;
+  final double? duration;
   @override
-  final double durationResults;
+  final double? durationResults;
   @override
-  final String category;
+  final String? category;
   @override
-  final bool isAvailable;
+  final bool? isAvailable;
   @override
-  final BuiltList<String> keywords;
+  final BuiltList<String>? keywords;
   @override
-  final DateTime updateDate;
+  final DateTime? updateDate;
   @override
-  final String updateRole;
+  final String? updateRole;
   @override
-  final String varianceMale;
+  final String? varianceMale;
   @override
-  final String varianceFemale;
+  final String? varianceFemale;
   @override
-  final String varianceUnitsMale;
+  final String? varianceUnitsMale;
   @override
-  final String varianceUnitsFemale;
+  final String? varianceUnitsFemale;
   @override
-  final String equipmentInfo;
+  final String? equipmentInfo;
   @override
-  final BuiltList<String> procedure;
+  final BuiltList<String>? procedure;
   @override
-  final DocumentReference<Object> reference;
+  final DocumentReference<Object?>? ffRef;
 
-  factory _$TestsRecord([void Function(TestsRecordBuilder) updates]) =>
-      (new TestsRecordBuilder()..update(updates)).build();
+  factory _$TestsRecord([void Function(TestsRecordBuilder)? updates]) =>
+      (new TestsRecordBuilder()..update(updates))._build();
 
   _$TestsRecord._(
       {this.price,
@@ -305,7 +305,7 @@ class _$TestsRecord extends TestsRecord {
       this.varianceUnitsFemale,
       this.equipmentInfo,
       this.procedure,
-      this.reference})
+      this.ffRef})
       : super._();
 
   @override
@@ -336,7 +336,7 @@ class _$TestsRecord extends TestsRecord {
         varianceUnitsFemale == other.varianceUnitsFemale &&
         equipmentInfo == other.equipmentInfo &&
         procedure == other.procedure &&
-        reference == other.reference;
+        ffRef == other.ffRef;
   }
 
   @override
@@ -382,12 +382,12 @@ class _$TestsRecord extends TestsRecord {
                     varianceUnitsFemale.hashCode),
                 equipmentInfo.hashCode),
             procedure.hashCode),
-        reference.hashCode));
+        ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('TestsRecord')
+    return (newBuiltValueToStringHelper(r'TestsRecord')
           ..add('price', price)
           ..add('name', name)
           ..add('homeTest', homeTest)
@@ -405,93 +405,93 @@ class _$TestsRecord extends TestsRecord {
           ..add('varianceUnitsFemale', varianceUnitsFemale)
           ..add('equipmentInfo', equipmentInfo)
           ..add('procedure', procedure)
-          ..add('reference', reference))
+          ..add('ffRef', ffRef))
         .toString();
   }
 }
 
 class TestsRecordBuilder implements Builder<TestsRecord, TestsRecordBuilder> {
-  _$TestsRecord _$v;
+  _$TestsRecord? _$v;
 
-  int _price;
-  int get price => _$this._price;
-  set price(int price) => _$this._price = price;
+  int? _price;
+  int? get price => _$this._price;
+  set price(int? price) => _$this._price = price;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  bool _homeTest;
-  bool get homeTest => _$this._homeTest;
-  set homeTest(bool homeTest) => _$this._homeTest = homeTest;
+  bool? _homeTest;
+  bool? get homeTest => _$this._homeTest;
+  set homeTest(bool? homeTest) => _$this._homeTest = homeTest;
 
-  String _description;
-  String get description => _$this._description;
-  set description(String description) => _$this._description = description;
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
 
-  double _duration;
-  double get duration => _$this._duration;
-  set duration(double duration) => _$this._duration = duration;
+  double? _duration;
+  double? get duration => _$this._duration;
+  set duration(double? duration) => _$this._duration = duration;
 
-  double _durationResults;
-  double get durationResults => _$this._durationResults;
-  set durationResults(double durationResults) =>
+  double? _durationResults;
+  double? get durationResults => _$this._durationResults;
+  set durationResults(double? durationResults) =>
       _$this._durationResults = durationResults;
 
-  String _category;
-  String get category => _$this._category;
-  set category(String category) => _$this._category = category;
+  String? _category;
+  String? get category => _$this._category;
+  set category(String? category) => _$this._category = category;
 
-  bool _isAvailable;
-  bool get isAvailable => _$this._isAvailable;
-  set isAvailable(bool isAvailable) => _$this._isAvailable = isAvailable;
+  bool? _isAvailable;
+  bool? get isAvailable => _$this._isAvailable;
+  set isAvailable(bool? isAvailable) => _$this._isAvailable = isAvailable;
 
-  ListBuilder<String> _keywords;
+  ListBuilder<String>? _keywords;
   ListBuilder<String> get keywords =>
       _$this._keywords ??= new ListBuilder<String>();
-  set keywords(ListBuilder<String> keywords) => _$this._keywords = keywords;
+  set keywords(ListBuilder<String>? keywords) => _$this._keywords = keywords;
 
-  DateTime _updateDate;
-  DateTime get updateDate => _$this._updateDate;
-  set updateDate(DateTime updateDate) => _$this._updateDate = updateDate;
+  DateTime? _updateDate;
+  DateTime? get updateDate => _$this._updateDate;
+  set updateDate(DateTime? updateDate) => _$this._updateDate = updateDate;
 
-  String _updateRole;
-  String get updateRole => _$this._updateRole;
-  set updateRole(String updateRole) => _$this._updateRole = updateRole;
+  String? _updateRole;
+  String? get updateRole => _$this._updateRole;
+  set updateRole(String? updateRole) => _$this._updateRole = updateRole;
 
-  String _varianceMale;
-  String get varianceMale => _$this._varianceMale;
-  set varianceMale(String varianceMale) => _$this._varianceMale = varianceMale;
+  String? _varianceMale;
+  String? get varianceMale => _$this._varianceMale;
+  set varianceMale(String? varianceMale) => _$this._varianceMale = varianceMale;
 
-  String _varianceFemale;
-  String get varianceFemale => _$this._varianceFemale;
-  set varianceFemale(String varianceFemale) =>
+  String? _varianceFemale;
+  String? get varianceFemale => _$this._varianceFemale;
+  set varianceFemale(String? varianceFemale) =>
       _$this._varianceFemale = varianceFemale;
 
-  String _varianceUnitsMale;
-  String get varianceUnitsMale => _$this._varianceUnitsMale;
-  set varianceUnitsMale(String varianceUnitsMale) =>
+  String? _varianceUnitsMale;
+  String? get varianceUnitsMale => _$this._varianceUnitsMale;
+  set varianceUnitsMale(String? varianceUnitsMale) =>
       _$this._varianceUnitsMale = varianceUnitsMale;
 
-  String _varianceUnitsFemale;
-  String get varianceUnitsFemale => _$this._varianceUnitsFemale;
-  set varianceUnitsFemale(String varianceUnitsFemale) =>
+  String? _varianceUnitsFemale;
+  String? get varianceUnitsFemale => _$this._varianceUnitsFemale;
+  set varianceUnitsFemale(String? varianceUnitsFemale) =>
       _$this._varianceUnitsFemale = varianceUnitsFemale;
 
-  String _equipmentInfo;
-  String get equipmentInfo => _$this._equipmentInfo;
-  set equipmentInfo(String equipmentInfo) =>
+  String? _equipmentInfo;
+  String? get equipmentInfo => _$this._equipmentInfo;
+  set equipmentInfo(String? equipmentInfo) =>
       _$this._equipmentInfo = equipmentInfo;
 
-  ListBuilder<String> _procedure;
+  ListBuilder<String>? _procedure;
   ListBuilder<String> get procedure =>
       _$this._procedure ??= new ListBuilder<String>();
-  set procedure(ListBuilder<String> procedure) => _$this._procedure = procedure;
+  set procedure(ListBuilder<String>? procedure) =>
+      _$this._procedure = procedure;
 
-  DocumentReference<Object> _reference;
-  DocumentReference<Object> get reference => _$this._reference;
-  set reference(DocumentReference<Object> reference) =>
-      _$this._reference = reference;
+  DocumentReference<Object?>? _ffRef;
+  DocumentReference<Object?>? get ffRef => _$this._ffRef;
+  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
   TestsRecordBuilder() {
     TestsRecord._initializeBuilder(this);
@@ -517,7 +517,7 @@ class TestsRecordBuilder implements Builder<TestsRecord, TestsRecordBuilder> {
       _varianceUnitsFemale = $v.varianceUnitsFemale;
       _equipmentInfo = $v.equipmentInfo;
       _procedure = $v.procedure?.toBuilder();
-      _reference = $v.reference;
+      _ffRef = $v.ffRef;
       _$v = null;
     }
     return this;
@@ -530,12 +530,14 @@ class TestsRecordBuilder implements Builder<TestsRecord, TestsRecordBuilder> {
   }
 
   @override
-  void update(void Function(TestsRecordBuilder) updates) {
+  void update(void Function(TestsRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$TestsRecord build() {
+  TestsRecord build() => _build();
+
+  _$TestsRecord _build() {
     _$TestsRecord _$result;
     try {
       _$result = _$v ??
@@ -557,9 +559,9 @@ class TestsRecordBuilder implements Builder<TestsRecord, TestsRecordBuilder> {
               varianceUnitsFemale: varianceUnitsFemale,
               equipmentInfo: equipmentInfo,
               procedure: _procedure?.build(),
-              reference: reference);
+              ffRef: ffRef);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'keywords';
         _keywords?.build();
@@ -568,7 +570,7 @@ class TestsRecordBuilder implements Builder<TestsRecord, TestsRecordBuilder> {
         _procedure?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'TestsRecord', _$failedField, e.toString());
+            r'TestsRecord', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -577,4 +579,4 @@ class TestsRecordBuilder implements Builder<TestsRecord, TestsRecordBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

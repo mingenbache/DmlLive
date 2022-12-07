@@ -10,20 +10,20 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ChatWidget extends StatefulWidget {
   const ChatWidget({
-    Key key,
+    Key? key,
     this.chatUser,
     this.chatRef,
   }) : super(key: key);
 
-  final UsersRecord chatUser;
-  final DocumentReference chatRef;
+  final UsersRecord? chatUser;
+  final DocumentReference? chatRef;
 
   @override
   _ChatWidgetState createState() => _ChatWidgetState();
 }
 
 class _ChatWidgetState extends State<ChatWidget> {
-  FFChatInfo _chatInfo;
+  FFChatInfo? _chatInfo;
   bool isGroupChat() {
     if (widget.chatUser == null) {
       return true;
@@ -56,7 +56,7 @@ class _ChatWidgetState extends State<ChatWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primaryText,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
@@ -65,7 +65,7 @@ class _ChatWidgetState extends State<ChatWidget> {
           buttonSize: 60,
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: FlutterFlowTheme.of(context).tertiaryColor,
+            color: FlutterFlowTheme.of(context).secondaryBackground,
             size: 24,
           ),
           onPressed: () async {
@@ -78,7 +78,7 @@ class _ChatWidgetState extends State<ChatWidget> {
               'CHAT',
               style: FlutterFlowTheme.of(context).bodyText1.override(
                     fontFamily: 'Roboto',
-                    color: Colors.white,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
@@ -87,7 +87,7 @@ class _ChatWidgetState extends State<ChatWidget> {
         ),
         actions: [
           Visibility(
-            visible: isGroupChat() ?? true,
+            visible: isGroupChat(),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
               child: InkWell(
@@ -105,7 +105,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                 },
                 child: Icon(
                   Icons.person_add,
-                  color: Colors.black,
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
                   size: 24,
                 ),
               ),
@@ -123,19 +123,19 @@ class _ChatWidgetState extends State<ChatWidget> {
           ),
           builder: (context, snapshot) => snapshot.hasData
               ? FFChatPage(
-                  chatInfo: snapshot.data,
+                  chatInfo: snapshot.data!,
                   allowImages: true,
-                  backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+                  backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
                   timeDisplaySetting: TimeDisplaySetting.visibleOnTap,
                   currentUserBoxDecoration: BoxDecoration(
-                    color: Colors.white,
+                    color: FlutterFlowTheme.of(context).primaryText,
                     border: Border.all(
                       color: Colors.transparent,
                     ),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   otherUsersBoxDecoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).primaryColor,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                     border: Border.all(
                       color: Colors.transparent,
                     ),
@@ -143,14 +143,14 @@ class _ChatWidgetState extends State<ChatWidget> {
                   ),
                   currentUserTextStyle: GoogleFonts.getFont(
                     'DM Sans',
-                    color: Color(0xFF1E2429),
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                     fontStyle: FontStyle.normal,
                   ),
                   otherUsersTextStyle: GoogleFonts.getFont(
                     'DM Sans',
-                    color: Colors.white,
+                    color: FlutterFlowTheme.of(context).primaryText,
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                   ),

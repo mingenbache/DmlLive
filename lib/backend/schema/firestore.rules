@@ -9,98 +9,98 @@ service cloud.firestore {
     }
 
     match /tests/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if true;
       allow write: if request.auth != null;
       allow delete: if false;
     }
 
     match /categories/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if true;
       allow write: if false;
       allow delete: if false;
     }
 
     match /bookings/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if true;
       allow write: if true;
       allow delete: if false;
     }
 
     match /chats/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if true;
       allow write: if request.auth != null;
       allow delete: if false;
     }
 
     match /chat_messages/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if true;
       allow write: if request.auth != null;
       allow delete: if false;
     }
 
     match /notification_type/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if true;
       allow write: if false;
       allow delete: if false;
     }
 
     match /staff/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if true;
       allow write: if request.auth != null;
       allow delete: if false;
     }
 
     match /doctors/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if true;
       allow write: if false;
       allow delete: if false;
     }
 
     match /references/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if true;
       allow write: if false;
       allow delete: if false;
     }
 
     match /booked_tests/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if true;
       allow write: if true;
       allow delete: if false;
     }
 
     match /payments/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if true;
       allow write: if request.auth != null;
       allow delete: if false;
     }
 
     match /Invoices/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if true;
       allow write: if true;
       allow delete: if false;
     }
 
     match /tested_tests/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if true;
       allow write: if request.auth != null;
       allow delete: if false;
     }
 
     match /machines/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if true;
       allow write: if false;
       allow delete: if false;
@@ -114,7 +114,7 @@ service cloud.firestore {
     }
 
     match /reports/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if true;
       allow write: if true;
       allow delete: if false;
@@ -128,6 +128,13 @@ service cloud.firestore {
     }
 
     match /test_Packages/{document} {
+      allow create: if request.auth != null;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /special_tests/{document} {
       allow create: if true;
       allow read: if true;
       allow write: if false;

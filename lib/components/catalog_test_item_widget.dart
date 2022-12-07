@@ -11,15 +11,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CatalogTestItemWidget extends StatefulWidget {
   const CatalogTestItemWidget({
-    Key key,
+    Key? key,
     this.test,
     this.index,
     this.listSize,
   }) : super(key: key);
 
-  final DocumentReference test;
-  final int index;
-  final int listSize;
+  final DocumentReference? test;
+  final int? index;
+  final int? listSize;
 
   @override
   _CatalogTestItemWidgetState createState() => _CatalogTestItemWidgetState();
@@ -29,7 +29,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<TestsRecord>(
-      stream: TestsRecord.getDocument(widget.test),
+      stream: TestsRecord.getDocument(widget.test!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -44,7 +44,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
             ),
           );
         }
-        final containerTestsRecord = snapshot.data;
+        final containerTestsRecord = snapshot.data!;
         return Container(
           height: 100,
           decoration: BoxDecoration(),
@@ -70,7 +70,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                             ),
                           );
                         },
-                      );
+                      ).then((value) => setState(() {}));
                     },
                     child: Container(
                       height: 100,
@@ -84,7 +84,8 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                               maxHeight: 130,
                             ),
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                              color:
+                                  FlutterFlowTheme.of(context).secondaryColor,
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Padding(
@@ -103,7 +104,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                           decoration: BoxDecoration(),
                                           child: AutoSizeText(
                                             functions
-                                                .add1(widget.index)
+                                                .add1(widget.index)!
                                                 .toString()
                                                 .maybeHandleOverflow(
                                                     maxChars: 2),
@@ -111,10 +112,10 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .tertiaryColor,
+                                                      .secondaryBackground,
                                                   fontSize: 16,
                                                 ),
                                           ),
@@ -132,7 +133,9 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                   .maybeHandleOverflow(
                                                       maxChars: 25),
                                               style: TextStyle(
-                                                color: Colors.white,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 18,
                                               ),
@@ -248,7 +251,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                     BoxDecoration(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiaryColor,
+                                                                      .primaryText,
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
@@ -263,7 +266,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                           4),
                                                                   child: Text(
                                                                     containerTestsRecord
-                                                                        .category,
+                                                                        .category!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
@@ -271,7 +274,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                           fontFamily:
                                                                               'Lexend Deca',
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
                                                                           fontSize:
                                                                               12,
                                                                           fontWeight:
@@ -305,11 +308,11 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                 Icons.timer,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryColor,
+                                                                    .primaryText,
                                                                 size: 20,
                                                               ),
                                                               Text(
-                                                                '${containerTestsRecord.durationResults.toString()} Hrs',
+                                                                '${containerTestsRecord.durationResults?.toString()} Hrs',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyText1
@@ -318,7 +321,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                           'Roboto Mono',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryColor,
+                                                                          .primaryText,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w500,
@@ -343,7 +346,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryColor,
+                                                        .primaryText,
                                               ),
                                             ),
                                           ),
@@ -400,7 +403,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                     .delivery_dining,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryColor,
+                                                                    .primaryText,
                                                                 size: 20,
                                                               ),
                                                               Padding(
@@ -428,14 +431,13 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                               Icon(
                                                                             Icons.check_circle_outline,
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             size:
                                                                                 16,
                                                                           ),
                                                                         ),
-                                                                      if (!(containerTestsRecord
-                                                                              .homeTest) ??
-                                                                          true)
+                                                                      if (!containerTestsRecord
+                                                                          .homeTest!)
                                                                         Align(
                                                                           alignment: AlignmentDirectional(
                                                                               1,
@@ -444,7 +446,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                               Icon(
                                                                             Icons.not_interested,
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).primaryText,
                                                                             size:
                                                                                 16,
                                                                           ),
@@ -497,7 +499,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                     child: Text(
                                                                       formatNumber(
                                                                         containerTestsRecord
-                                                                            .price,
+                                                                            .price!,
                                                                         formatType:
                                                                             FormatType.decimal,
                                                                         decimalType:
@@ -508,7 +510,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                       style:
                                                                           TextStyle(
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .alternate,
+                                                                            .primaryText,
                                                                         fontWeight:
                                                                             FontWeight.w500,
                                                                         fontSize:

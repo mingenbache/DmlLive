@@ -6,7 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ClientUserContainerWidget extends StatefulWidget {
-  const ClientUserContainerWidget({Key key}) : super(key: key);
+  const ClientUserContainerWidget({Key? key}) : super(key: key);
 
   @override
   _ClientUserContainerWidgetState createState() =>
@@ -32,7 +32,7 @@ class _ClientUserContainerWidgetState extends State<ClientUserContainerWidget> {
             ),
           );
         }
-        List<UsersRecord> clientUserContainerUsersRecordList = snapshot.data;
+        List<UsersRecord> clientUserContainerUsersRecordList = snapshot.data!;
         return Container(
           width: MediaQuery.of(context).size.width * 0.8,
           height: MediaQuery.of(context).size.height * 1,
@@ -220,7 +220,7 @@ class _ClientUserContainerWidgetState extends State<ClientUserContainerWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                fontFamily: 'Open Sans',
                                                 color: Colors.white,
                                               ),
                                         ),
@@ -240,7 +240,7 @@ class _ClientUserContainerWidgetState extends State<ClientUserContainerWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText1
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryColor,

@@ -5,7 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DateWidgetSmallCopyWidget extends StatefulWidget {
-  const DateWidgetSmallCopyWidget({Key key}) : super(key: key);
+  const DateWidgetSmallCopyWidget({Key? key}) : super(key: key);
 
   @override
   _DateWidgetSmallCopyWidgetState createState() =>
@@ -46,7 +46,7 @@ class _DateWidgetSmallCopyWidgetState extends State<DateWidgetSmallCopyWidget> {
                   child: Text(
                     '29',
                     style: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily: 'Roboto',
+                          fontFamily: 'Open Sans',
                           color: FlutterFlowTheme.of(context).secondaryColor,
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
@@ -70,7 +70,7 @@ class _DateWidgetSmallCopyWidgetState extends State<DateWidgetSmallCopyWidget> {
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'Open Sans',
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
                                 fontSize: 12,
@@ -92,7 +92,7 @@ class _DateWidgetSmallCopyWidgetState extends State<DateWidgetSmallCopyWidget> {
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
-                                fontFamily: 'Roboto',
+                                fontFamily: 'Open Sans',
                                 color:
                                     FlutterFlowTheme.of(context).secondaryColor,
                                 fontSize: 11,

@@ -5,7 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DasboardOffersWidgetWidget extends StatefulWidget {
-  const DasboardOffersWidgetWidget({Key key}) : super(key: key);
+  const DasboardOffersWidgetWidget({Key? key}) : super(key: key);
 
   @override
   _DasboardOffersWidgetWidgetState createState() =>

@@ -9,11 +9,13 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PackageTestListWidget extends StatefulWidget {
-  const PackageTestListWidget({Key key}) : super(key: key);
+  const PackageTestListWidget({Key? key}) : super(key: key);
 
   @override
   _PackageTestListWidgetState createState() => _PackageTestListWidgetState();
@@ -21,32 +23,48 @@ class PackageTestListWidget extends StatefulWidget {
 
 class _PackageTestListWidgetState extends State<PackageTestListWidget>
     with TickerProviderStateMixin {
-  TextEditingController textController;
+  TextEditingController? textController;
+  var hasButtonTriggered = false;
   final animationsMap = {
     'buttonOnActionTriggerAnimation': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        ScaleEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+      ],
     ),
   };
 
   @override
   void initState() {
     super.initState();
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
 
     textController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    textController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -107,7 +125,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                               'ADD TESTS',
                               style:
                                   FlutterFlowTheme.of(context).title1.override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
                                         color: Colors.white,
                                       ),
                             ),
@@ -223,19 +241,41 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                             topRight: Radius.circular(4.0),
                                           ),
                                         ),
-                                        suffixIcon: textController
-                                                .text.isNotEmpty
-                                            ? InkWell(
-                                                onTap: () => setState(
-                                                  () => textController?.clear(),
-                                                ),
-                                                child: Icon(
-                                                  Icons.clear,
-                                                  color: Color(0xFF586B06),
-                                                  size: 18,
-                                                ),
-                                              )
-                                            : null,
+                                        errorBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(4.0),
+                                            topRight: Radius.circular(4.0),
+                                          ),
+                                        ),
+                                        suffixIcon:
+                                            textController!.text.isNotEmpty
+                                                ? InkWell(
+                                                    onTap: () async {
+                                                      textController?.clear();
+                                                      setState(() {});
+                                                    },
+                                                    child: Icon(
+                                                      Icons.clear,
+                                                      color: Color(0xFF586B06),
+                                                      size: 18,
+                                                    ),
+                                                  )
+                                                : null,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
@@ -264,9 +304,8 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                             children: [
                               Stack(
                                 children: [
-                                  if (!(functions.isCategorySelected(
-                                          FFAppState().categorypicked)) ??
-                                      true)
+                                  if (!functions.isCategorySelected(
+                                      FFAppState().categorypicked))
                                     InkWell(
                                       onTap: () async {
                                         setState(() => FFAppState()
@@ -293,7 +332,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryColor,
@@ -303,7 +342,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                         ),
                                       ),
                                     ),
-                                  if (FFAppState().allCategories ?? true)
+                                  if (FFAppState().allCategories)
                                     Material(
                                       color: Colors.transparent,
                                       elevation: 2,
@@ -329,7 +368,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryColor,
@@ -380,9 +419,9 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                       }
                                       List<CategoriesRecord>
                                           listViewCategoriesRecordList =
-                                          snapshot.data;
+                                          snapshot.data!;
                                       // Return an empty Container when the document does not exist.
-                                      if (snapshot.data.isEmpty) {
+                                      if (snapshot.data!.isEmpty) {
                                         return Container();
                                       }
                                       final listViewCategoriesRecord =
@@ -394,11 +433,9 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                       return Builder(
                                         builder: (context) {
                                           final packageCategories =
-                                              listViewCategoriesRecord
-                                                      .categories
-                                                      .toList()
-                                                      ?.toList() ??
-                                                  [];
+                                              listViewCategoriesRecord!
+                                                  .categories!
+                                                  .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             scrollDirection: Axis.horizontal,
@@ -410,13 +447,13 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                       packageCategoriesIndex];
                                               return Stack(
                                                 children: [
-                                                  if (functions.isThisCategorySelected(
+                                                  if (functions
+                                                      .isThisCategorySelected(
                                                           FFAppState()
                                                               .categorypicked,
                                                           packageCategoriesItem,
                                                           FFAppState()
-                                                              .allCategories) ??
-                                                      true)
+                                                              .allCategories))
                                                     Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
@@ -442,7 +479,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                                 .bodyText1
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Roboto',
+                                                                      'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryColor,
@@ -501,7 +538,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                                   .bodyText1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Roboto',
+                                                                        'Open Sans',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryColor,
@@ -549,7 +586,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                             );
                           }
                           List<TestsRecord> testListWidgetTestsRecordList =
-                              snapshot.data;
+                              snapshot.data!;
                           return Container(
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.height * 0.55,
@@ -569,7 +606,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                 children: [
                                   StreamBuilder<UsersRecord>(
                                     stream: UsersRecord.getDocument(
-                                        currentUserReference),
+                                        currentUserReference!),
                                     builder: (context, snapshot) {
                                       // Customize what your widget looks like when it's loading.
                                       if (!snapshot.hasData) {
@@ -586,24 +623,21 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                           ),
                                         );
                                       }
-                                      final listViewUsersRecord = snapshot.data;
+                                      final listViewUsersRecord =
+                                          snapshot.data!;
                                       return Builder(
                                         builder: (context) {
                                           final testsListFullPage = functions
-                                                  .filterTestsByCategory(
-                                                      FFAppState()
-                                                          .allCategories,
-                                                      FFAppState()
-                                                          .categorypicked,
-                                                      functions
-                                                          .returnSearchTests(
-                                                              textController
-                                                                  .text,
-                                                              testListWidgetTestsRecordList
-                                                                  .toList())
-                                                          .toList())
-                                                  ?.toList() ??
-                                              [];
+                                              .filterTestsByCategory(
+                                                  FFAppState().allCategories,
+                                                  FFAppState().categorypicked,
+                                                  functions
+                                                      .returnSearchTests(
+                                                          textController!.text,
+                                                          testListWidgetTestsRecordList
+                                                              .toList())
+                                                      .toList())
+                                              .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             primary: false,
@@ -683,7 +717,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                         textStyle: FlutterFlowTheme.of(context)
                             .subtitle2
                             .override(
-                              fontFamily: 'Roboto',
+                              fontFamily: 'Open Sans',
                               color: FlutterFlowTheme.of(context).tertiaryColor,
                             ),
                         elevation: 2,
@@ -693,8 +727,9 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                         ),
                         borderRadius: BorderRadius.circular(25),
                       ),
-                    ).animated(
-                        [animationsMap['buttonOnActionTriggerAnimation']]),
+                    ).animateOnActionTrigger(
+                        animationsMap['buttonOnActionTriggerAnimation']!,
+                        hasBeenTriggered: hasButtonTriggered),
                   ],
                 ),
               ],

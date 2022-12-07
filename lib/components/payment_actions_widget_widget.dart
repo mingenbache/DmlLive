@@ -10,11 +10,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PaymentActionsWidgetWidget extends StatefulWidget {
   const PaymentActionsWidgetWidget({
-    Key key,
+    Key? key,
     this.paymentRef,
   }) : super(key: key);
 
-  final DocumentReference paymentRef;
+  final DocumentReference? paymentRef;
 
   @override
   _PaymentActionsWidgetWidgetState createState() =>
@@ -26,7 +26,7 @@ class _PaymentActionsWidgetWidgetState
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<PaymentsRecord>(
-      stream: PaymentsRecord.getDocument(widget.paymentRef),
+      stream: PaymentsRecord.getDocument(widget.paymentRef!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -41,7 +41,7 @@ class _PaymentActionsWidgetWidgetState
             ),
           );
         }
-        final containerPaymentsRecord = snapshot.data;
+        final containerPaymentsRecord = snapshot.data!;
         return Material(
           color: Colors.transparent,
           elevation: 2,
@@ -54,7 +54,7 @@ class _PaymentActionsWidgetWidgetState
               maxWidth: 300,
             ),
             decoration: BoxDecoration(
-              color: Color(0xFF58585C),
+              color: FlutterFlowTheme.of(context).secondaryText,
               boxShadow: [
                 BoxShadow(
                   blurRadius: 1,
@@ -68,7 +68,7 @@ class _PaymentActionsWidgetWidgetState
               padding: EdgeInsetsDirectional.fromSTEB(22, 22, 22, 22),
               child: StreamBuilder<BookingsRecord>(
                 stream: BookingsRecord.getDocument(
-                    containerPaymentsRecord.bookingRef),
+                    containerPaymentsRecord.bookingRef!),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
@@ -83,14 +83,14 @@ class _PaymentActionsWidgetWidgetState
                       ),
                     );
                   }
-                  final rowBookingsRecord = snapshot.data;
+                  final rowBookingsRecord = snapshot.data!;
                   return Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Stack(
                         children: [
-                          if (!(containerPaymentsRecord.isApproved) ?? true)
+                          if (!containerPaymentsRecord.isApproved!)
                             Container(
                               width: 110,
                               height: 50,
@@ -107,7 +107,7 @@ class _PaymentActionsWidgetWidgetState
                                     Icon(
                                       Icons.receipt,
                                       color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                          .secondaryBackground,
                                       size: 20,
                                     ),
                                     Row(
@@ -124,10 +124,10 @@ class _PaymentActionsWidgetWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .tertiaryColor,
+                                                      .secondaryBackground,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -142,10 +142,10 @@ class _PaymentActionsWidgetWidgetState
                       ),
                       Stack(
                         children: [
-                          if (!(containerPaymentsRecord.isApproved) ?? true)
+                          if (!containerPaymentsRecord.isApproved!)
                             StreamBuilder<InvoicesRecord>(
                               stream: InvoicesRecord.getDocument(
-                                  containerPaymentsRecord.invoiceRef),
+                                  containerPaymentsRecord.invoiceRef!),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
@@ -162,7 +162,7 @@ class _PaymentActionsWidgetWidgetState
                                   );
                                 }
                                 final verifyButtonInvoicesRecord =
-                                    snapshot.data;
+                                    snapshot.data!;
                                 return InkWell(
                                   onTap: () async {
                                     final paymentsUpdateData =
@@ -182,11 +182,11 @@ class _PaymentActionsWidgetWidgetState
                                             verifyButtonInvoicesRecord
                                                 .invoiceAmount,
                                             containerPaymentsRecord.amount
-                                                .toDouble()),
+                                                ?.toDouble()),
                                         amountDue: functions
                                             .returnInvoiceAmountDue(
                                                 containerPaymentsRecord.amount
-                                                    .toDouble(),
+                                                    ?.toDouble(),
                                                 verifyButtonInvoicesRecord
                                                     .amountDue),
                                         updateDate: getCurrentTimestamp,
@@ -198,15 +198,15 @@ class _PaymentActionsWidgetWidgetState
                                     };
                                     await verifyButtonInvoicesRecord.reference
                                         .update(invoicesUpdateData);
-                                    if (!(rowBookingsRecord.payments
+                                    if (!rowBookingsRecord.payments!
                                         .toList()
-                                        .contains(widget.paymentRef))) {
+                                        .contains(widget.paymentRef)) {
                                       final bookingsUpdateData = {
                                         ...createBookingsRecordData(
                                           paymentBalance:
                                               functions.returnBookingBalance(
                                                   containerPaymentsRecord.amount
-                                                      .toDouble(),
+                                                      ?.toDouble(),
                                                   rowBookingsRecord
                                                       .paymentBalance),
                                           updatedDate: getCurrentTimestamp,
@@ -255,7 +255,7 @@ class _PaymentActionsWidgetWidgetState
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -290,7 +290,8 @@ class _PaymentActionsWidgetWidgetState
                                   children: [
                                     Icon(
                                       Icons.verified_sharp,
-                                      color: Color(0x74BACA68),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                       size: 18,
                                     ),
                                     Row(
@@ -307,8 +308,10 @@ class _PaymentActionsWidgetWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1
                                                 .override(
-                                                  fontFamily: 'Roboto',
-                                                  color: Color(0x73BACA68),
+                                                  fontFamily: 'Open Sans',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),

@@ -1,7 +1,7 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 import 'backend/push_notifications/push_notifications_util.dart';
@@ -27,17 +27,17 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 
   static _MyAppState of(BuildContext context) =>
-      context.findAncestorStateOfType<_MyAppState>();
+      context.findAncestorStateOfType<_MyAppState>()!;
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale _locale;
+  Locale? _locale;
   ThemeMode _themeMode = ThemeMode.system;
 
-  Stream<DmlLiveFirebaseUser> userStream;
+  late Stream<DmlLiveFirebaseUser> userStream;
 
-  AppStateNotifier _appStateNotifier;
-  GoRouter _router;
+  late AppStateNotifier _appStateNotifier;
+  late GoRouter _router;
 
   final authUserSub = authenticatedUserStream.listen((_) {});
   final fcmTokenSub = fcmTokenUserStream.listen((_) {});
@@ -49,6 +49,7 @@ class _MyAppState extends State<MyApp> {
     _router = createRouter(_appStateNotifier);
     userStream = dmlLiveFirebaseUserStream()
       ..listen((user) => _appStateNotifier.update(user));
+    jwtTokenStream.listen((_) {});
     Future.delayed(
       Duration(seconds: 1),
       () => _appStateNotifier.stopShowingSplashImage(),
@@ -62,7 +63,10 @@ class _MyAppState extends State<MyApp> {
     super.dispose();
   }
 
-  void setLocale(Locale value) => setState(() => _locale = value);
+  void setLocale(String language) {
+    setState(() => _locale = createLocale(language));
+  }
+
   void setThemeMode(ThemeMode mode) => setState(() {
         _themeMode = mode;
       });

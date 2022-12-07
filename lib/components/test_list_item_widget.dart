@@ -9,22 +9,24 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TestListItemWidget extends StatefulWidget {
   const TestListItemWidget({
-    Key key,
+    Key? key,
     this.test,
     this.index,
     this.listSize,
     this.booking,
   }) : super(key: key);
 
-  final TestsRecord test;
-  final int index;
-  final int listSize;
-  final BookingsRecord booking;
+  final TestsRecord? test;
+  final int? index;
+  final int? listSize;
+  final BookingsRecord? booking;
 
   @override
   _TestListItemWidgetState createState() => _TestListItemWidgetState();
@@ -32,104 +34,101 @@ class TestListItemWidget extends StatefulWidget {
 
 class _TestListItemWidgetState extends State<TestListItemWidget>
     with TickerProviderStateMixin {
+  var hasContainerTriggered1 = false;
+  var hasContainerTriggered2 = false;
   final animationsMap = {
     'stackOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 1300,
-      delay: 280,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(-92, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 280.ms,
+          duration: 1300.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 280.ms,
+          duration: 1300.ms,
+          begin: Offset(-92, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'containerOnActionTriggerAnimation1': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 600,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(63, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(63, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'containerOnActionTriggerAnimation2': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onActionTrigger,
-      duration: 950,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(-58, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      applyInitialState: false,
+      effects: [
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 950.ms,
+          begin: Offset(-58, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'containerOnPageLoadAnimation1': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, -73),
-        scale: 1,
-        opacity: 1,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, -73),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'containerOnPageLoadAnimation2': AnimationInfo(
-      curve: Curves.bounceOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(-96, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(-96, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
   };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-    setupTriggerAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
   }
@@ -157,26 +156,25 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                     children: [
                       Stack(
                         children: [
-                          if (widget.booking.testsIncluded
-                                  .toList()
-                                  ?.contains(widget.test.reference) ??
-                              true)
+                          if (widget.booking!.testsIncluded!
+                              .toList()
+                              .contains(widget.test!.reference))
                             InkWell(
                               onTap: () async {
-                                if (widget.booking.testsIncluded
+                                if (widget.booking!.testsIncluded!
                                     .toList()
-                                    .contains(widget.test.reference)) {
+                                    .contains(widget.test!.reference)) {
                                   final bookingsUpdateData = {
                                     ...createBookingsRecordData(
                                       totalPrice: functions.removeFromCart(
-                                          widget.booking.totalPrice,
-                                          widget.test.price),
+                                          widget.booking!.totalPrice,
+                                          widget.test!.price),
                                     ),
                                     'tests_included': FieldValue.arrayRemove(
-                                        [widget.test.reference]),
+                                        [widget.test!.reference]),
                                     'total_tests': FieldValue.increment(-1),
                                   };
-                                  await widget.booking.reference
+                                  await widget.booking!.reference
                                       .update(bookingsUpdateData);
                                 } else {
                                   return;
@@ -238,38 +236,37 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                   ),
                                 ),
                               ),
-                            ).animated([
-                              animationsMap[
-                                  'containerOnActionTriggerAnimation1']
-                            ]),
-                          if (!(widget.booking.testsIncluded
-                                  .toList()
-                                  .contains(widget.test.reference)) ??
-                              true)
+                            ).animateOnActionTrigger(
+                                animationsMap[
+                                    'containerOnActionTriggerAnimation1']!,
+                                hasBeenTriggered: hasContainerTriggered1),
+                          if (!widget.booking!.testsIncluded!
+                              .toList()
+                              .contains(widget.test!.reference))
                             InkWell(
                               onTap: () async {
-                                if (!(widget.booking.testsIncluded
+                                if (!widget.booking!.testsIncluded!
                                     .toList()
-                                    .contains(widget.test.reference))) {
-                                  if (!(widget.booking.testPackTests
+                                    .contains(widget.test!.reference)) {
+                                  if (!widget.booking!.testPackTests!
                                       .toList()
-                                      .contains(widget.test.reference))) {
+                                      .contains(widget.test!.reference)) {
                                     final bookingsUpdateData = {
                                       ...createBookingsRecordData(
                                         totalPrice: functions.addCartTotal(
-                                            widget.booking.totalPrice,
-                                            widget.test.price),
+                                            widget.booking!.totalPrice,
+                                            widget.test!.price),
                                       ),
                                       'tests_included': FieldValue.arrayUnion(
-                                          [widget.test.reference]),
+                                          [widget.test!.reference]),
                                       'total_tests': FieldValue.increment(1),
                                     };
-                                    await widget.booking.reference
+                                    await widget.booking!.reference
                                         .update(bookingsUpdateData);
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          'Test Added.${widget.booking.testsIncluded.toList().length.toString()} Tests in Total.',
+                                          'Test Added.${widget.booking!.testsIncluded!.toList().length.toString()} Tests in Total.',
                                           style: TextStyle(),
                                         ),
                                         duration: Duration(milliseconds: 4000),
@@ -290,7 +287,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                           ),
                                         );
                                       },
-                                    );
+                                    ).then((value) => setState(() {}));
+
                                     return;
                                   }
                                 } else {
@@ -314,7 +312,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                   height: 100,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                        .secondaryColor,
                                     borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(0),
                                       bottomRight: Radius.circular(16),
@@ -342,12 +340,13 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                   ),
                                 ),
                               ),
-                            ).animated([
-                              animationsMap[
-                                  'containerOnActionTriggerAnimation2']
-                            ]),
+                            ).animateOnActionTrigger(
+                                animationsMap[
+                                    'containerOnActionTriggerAnimation2']!,
+                                hasBeenTriggered: hasContainerTriggered2),
                         ],
-                      ).animated([animationsMap['stackOnPageLoadAnimation']]),
+                      ).animateOnPageLoad(
+                          animationsMap['stackOnPageLoadAnimation']!),
                     ],
                   ),
                 ],
@@ -382,11 +381,11 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                             MediaQuery.of(context).viewInsets,
                                         child: TestDetailsPopupWidget(
                                           test: widget.test,
-                                          booking: widget.booking.reference,
+                                          booking: widget.booking!.reference,
                                         ),
                                       );
                                     },
-                                  );
+                                  ).then((value) => setState(() {}));
                                 },
                                 child: Container(
                                   width:
@@ -398,7 +397,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                   ),
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                        .secondaryColor,
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Padding(
@@ -418,7 +417,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                 decoration: BoxDecoration(),
                                                 child: AutoSizeText(
                                                   functions
-                                                      .add1(widget.index)
+                                                      .add1(widget.index)!
                                                       .toString()
                                                       .maybeHandleOverflow(
                                                           maxChars: 2),
@@ -427,11 +426,11 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .tertiaryColor,
+                                                                .primaryText,
                                                         fontSize: 16,
                                                       ),
                                                 ),
@@ -444,7 +443,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                   child: Text(
                                                     functions
                                                         .camelCase(
-                                                            widget.test.name)
+                                                            widget.test!.name)
                                                         .maybeHandleOverflow(
                                                             maxChars: 25),
                                                     style: TextStyle(
@@ -463,9 +462,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                     ),
                                   ),
                                 ),
-                              ).animated([
-                                animationsMap['containerOnPageLoadAnimation1']
-                              ]),
+                              ).animateOnPageLoad(animationsMap[
+                                  'containerOnPageLoadAnimation1']!),
                               Align(
                                 alignment: AlignmentDirectional(0, 1),
                                 child: Material(
@@ -578,7 +576,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                       BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .tertiaryColor,
+                                                                        .primaryText,
                                                                     borderRadius:
                                                                         BorderRadius.circular(
                                                                             12),
@@ -593,8 +591,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                             4),
                                                                     child: Text(
                                                                       widget
-                                                                          .test
-                                                                          .category,
+                                                                          .test!
+                                                                          .category!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyText1
@@ -602,7 +600,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                             fontFamily:
                                                                                 'Lexend Deca',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                             fontSize:
                                                                                 12,
                                                                             fontWeight:
@@ -643,11 +641,11 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                   Icons.timer,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryColor,
+                                                                      .primaryText,
                                                                   size: 20,
                                                                 ),
                                                                 Text(
-                                                                  '${widget.test.durationResults.toString()} Hrs',
+                                                                  '${widget.test!.durationResults?.toString()} Hrs',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1
@@ -655,7 +653,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                         fontFamily:
                                                                             'Roboto Mono',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .primaryText,
                                                                         fontWeight:
                                                                             FontWeight.w500,
                                                                       ),
@@ -678,7 +676,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                   decoration: BoxDecoration(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryColor,
+                                                        .primaryText,
                                                   ),
                                                 ),
                                               ),
@@ -755,8 +753,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                           Text(
                                                                         formatNumber(
                                                                           widget
-                                                                              .test
-                                                                              .price,
+                                                                              .test!
+                                                                              .price!,
                                                                           formatType:
                                                                               FormatType.decimal,
                                                                           decimalType:
@@ -767,7 +765,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                         style:
                                                                             TextStyle(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontWeight:
                                                                               FontWeight.w500,
                                                                           fontSize:
@@ -792,9 +790,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                       ),
                                     ),
                                   ),
-                                ).animated([
-                                  animationsMap['containerOnPageLoadAnimation2']
-                                ]),
+                                ).animateOnPageLoad(animationsMap[
+                                    'containerOnPageLoadAnimation2']!),
                               ),
                             ],
                           ),

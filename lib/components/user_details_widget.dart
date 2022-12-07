@@ -7,16 +7,18 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class UserDetailsWidget extends StatefulWidget {
   const UserDetailsWidget({
-    Key key,
+    Key? key,
     this.userRef,
   }) : super(key: key);
 
-  final DocumentReference userRef;
+  final DocumentReference? userRef;
 
   @override
   _UserDetailsWidgetState createState() => _UserDetailsWidgetState();
@@ -26,29 +28,26 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
     with TickerProviderStateMixin {
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.elasticOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 1080,
-      hideBeforeAnimating: false,
-      initialState: AnimationState(
-        offset: Offset(0, -87),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 0.ms,
+          duration: 1080.ms,
+          begin: Offset(0, -87),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
   };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
   }
@@ -60,7 +59,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         StreamBuilder<UsersRecord>(
-          stream: UsersRecord.getDocument(widget.userRef),
+          stream: UsersRecord.getDocument(widget.userRef!),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
@@ -75,7 +74,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                 ),
               );
             }
-            final submitRoleUsersRecord = snapshot.data;
+            final submitRoleUsersRecord = snapshot.data!;
             return Container(
               height: MediaQuery.of(context).size.height * 0.66,
               decoration: BoxDecoration(
@@ -122,7 +121,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .title2
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
                                           fontSize: 32,
                                           fontWeight: FontWeight.bold,
@@ -200,16 +199,15 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                               ),
                                               child: Text(
                                                 'Name:',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .subtitle2
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color: Color(0xFF586B06),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                           ),
@@ -266,16 +264,15 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                               decoration: BoxDecoration(),
                                               child: Text(
                                                 'Phone:',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .subtitle2
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color: Color(0xFF586B06),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                             Padding(
@@ -296,7 +293,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                       .fromSTEB(3, 6, 0, 6),
                                                   child: Text(
                                                     submitRoleUsersRecord
-                                                        .phoneNumber,
+                                                        .phoneNumber!,
                                                     style: TextStyle(
                                                       color:
                                                           FlutterFlowTheme.of(
@@ -333,16 +330,15 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                               decoration: BoxDecoration(),
                                               child: Text(
                                                 'Email:',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .subtitle2
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color: Color(0xFF586B06),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                             Container(
@@ -359,7 +355,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(3, 6, 0, 6),
                                                 child: Text(
-                                                  submitRoleUsersRecord.email,
+                                                  submitRoleUsersRecord.email!,
                                                   style: TextStyle(
                                                     color: FlutterFlowTheme.of(
                                                             context)
@@ -396,16 +392,15 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                               decoration: BoxDecoration(),
                                               child: Text(
                                                 'D.O.B:',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF586B06),
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .subtitle2
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color: Color(0xFF586B06),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                             Padding(
@@ -440,7 +435,8 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                             context)
                                                         .bodyText1
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryColor,
@@ -492,7 +488,8 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                             context)
                                                         .subtitle2
                                                         .override(
-                                                          fontFamily: 'Roboto',
+                                                          fontFamily:
+                                                              'Open Sans',
                                                           color:
                                                               Color(0xFF586B06),
                                                           fontWeight:
@@ -520,13 +517,13 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(4, 9, 0, 0),
                                                 child: Text(
-                                                  submitRoleUsersRecord.sex,
+                                                  submitRoleUsersRecord.sex!,
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -569,7 +566,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                           context)
                                                       .subtitle2
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        fontFamily: 'Open Sans',
                                                         color:
                                                             Color(0xFF586B06),
                                                         fontWeight:
@@ -595,7 +592,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(3, 6, 0, 6),
                                                 child: Text(
-                                                  submitRoleUsersRecord.role,
+                                                  submitRoleUsersRecord.role!,
                                                   style: TextStyle(
                                                     color: FlutterFlowTheme.of(
                                                             context)
@@ -617,7 +614,8 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                           ],
                         ),
                       ),
-                    ).animated([animationsMap['containerOnPageLoadAnimation']]),
+                    ).animateOnPageLoad(
+                        animationsMap['containerOnPageLoadAnimation']!),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
                       child: Row(
@@ -642,7 +640,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                         ),
                                       );
                                     },
-                                  );
+                                  ).then((value) => setState(() {}));
                                 },
                                 text: 'Edit Role',
                                 options: FFButtonOptions(
@@ -653,7 +651,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiaryColor,
                                       ),

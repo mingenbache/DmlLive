@@ -1,5 +1,5 @@
 import '../backend/backend.dart';
-import '../components/client_user_card_widget.dart';
+import '../components/client_user_cardx_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
@@ -9,11 +9,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ClientUserContainer2Widget extends StatefulWidget {
   const ClientUserContainer2Widget({
-    Key key,
+    Key? key,
     this.nameQuery,
   }) : super(key: key);
 
-  final String nameQuery;
+  final String? nameQuery;
 
   @override
   _ClientUserContainer2WidgetState createState() =>
@@ -40,7 +40,7 @@ class _ClientUserContainer2WidgetState
             ),
           );
         }
-        List<UsersRecord> clientUserContainerUsersRecordList = snapshot.data;
+        List<UsersRecord> clientUserContainerUsersRecordList = snapshot.data!;
         return Container(
           width: MediaQuery.of(context).size.width * 0.83,
           height: MediaQuery.of(context).size.height * 1,
@@ -66,7 +66,8 @@ class _ClientUserContainer2WidgetState
                 itemCount: clients.length,
                 itemBuilder: (context, clientsIndex) {
                   final clientsItem = clients[clientsIndex];
-                  return ClientUserCardWidget(
+                  return ClientUserCardxWidget(
+                    key: Key('clientUserCardx_${clientsIndex}'),
                     userRecord: clientsItem,
                   );
                 },

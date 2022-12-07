@@ -6,7 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TestListLightWidget extends StatefulWidget {
-  const TestListLightWidget({Key key}) : super(key: key);
+  const TestListLightWidget({Key? key}) : super(key: key);
 
   @override
   _TestListLightWidgetState createState() => _TestListLightWidgetState();
@@ -31,7 +31,7 @@ class _TestListLightWidgetState extends State<TestListLightWidget> {
             ),
           );
         }
-        List<TestsRecord> testListWidgetTestsRecordList = snapshot.data;
+        List<TestsRecord> testListWidgetTestsRecordList = snapshot.data!;
         return Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height * 1,
@@ -46,8 +46,7 @@ class _TestListLightWidgetState extends State<TestListLightWidget> {
           ),
           child: Builder(
             builder: (context) {
-              final testsListFullPage =
-                  testListWidgetTestsRecordList?.toList() ?? [];
+              final testsListFullPage = testListWidgetTestsRecordList.toList();
               return ListView.builder(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.vertical,
