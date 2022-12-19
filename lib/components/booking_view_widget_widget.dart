@@ -268,6 +268,10 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                       List<TestedTestsRecord>
                                           testItemContainerTestedTestsRecordList =
                                           snapshot.data!;
+                                      // Return an empty Container when the item does not exist.
+                                      if (snapshot.data!.isEmpty) {
+                                        return Container();
+                                      }
                                       final testItemContainerTestedTestsRecord =
                                           testItemContainerTestedTestsRecordList
                                                   .isNotEmpty
