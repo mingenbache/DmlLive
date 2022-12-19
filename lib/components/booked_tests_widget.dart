@@ -76,8 +76,12 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                         child: StreamBuilder<List<TestedTestsRecord>>(
                           stream: queryTestedTestsRecord(
                             queryBuilder: (testedTestsRecord) =>
-                                testedTestsRecord.where('booking_ref',
-                                    isEqualTo: widget.bookingRef),
+                                testedTestsRecord
+                                    .where('booking_ref',
+                                        isEqualTo: widget.bookingRef)
+                                    .where('test_ref',
+                                        isEqualTo: bookingTestsItem.testRef),
+                            singleRecord: true,
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
@@ -96,6 +100,14 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                             }
                             List<TestedTestsRecord>
                                 containerTestedTestsRecordList = snapshot.data!;
+                            // Return an empty Container when the item does not exist.
+                            if (snapshot.data!.isEmpty) {
+                              return Container();
+                            }
+                            final containerTestedTestsRecord =
+                                containerTestedTestsRecordList.isNotEmpty
+                                    ? containerTestedTestsRecordList.first
+                                    : null;
                             return InkWell(
                               onTap: () async {
                                 if (bookingTestsItem.sampleCollected!) {
@@ -109,10 +121,8 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                             MediaQuery.of(context).viewInsets,
                                         child: ViewTestResultWidget(
                                           testedTestRef:
-                                              functions.returnTestedTestRef(
-                                                  containerTestedTestsRecordList
-                                                      .toList(),
-                                                  bookingTestsItem.reference),
+                                              containerTestedTestsRecord!
+                                                  .reference,
                                         ),
                                       );
                                     },
@@ -378,11 +388,9 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                                                   ),
                                                                 ),
                                                               ),
-                                                              if (functions.testedTestSubmitted(functions.returnTestedTest(
-                                                                  containerTestedTestsRecordList
-                                                                      .toList(),
-                                                                  bookingTestsItem
-                                                                      .reference)))
+                                                              if (functions
+                                                                  .testedTestSubmitted(
+                                                                      containerTestedTestsRecord))
                                                                 Container(
                                                                   decoration:
                                                                       BoxDecoration(
@@ -437,11 +445,9 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
                                                                   ),
                                                                 ),
                                                               ),
-                                                              if (functions.testedTestVerified(functions.returnTestedTest(
-                                                                  containerTestedTestsRecordList
-                                                                      .toList(),
-                                                                  bookingTestsItem
-                                                                      .reference)))
+                                                              if (functions
+                                                                  .testedTestVerified(
+                                                                      containerTestedTestsRecord))
                                                                 Container(
                                                                   decoration:
                                                                       BoxDecoration(

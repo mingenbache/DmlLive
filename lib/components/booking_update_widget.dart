@@ -414,7 +414,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                           mainAxisSize:
                                                                               MainAxisSize.max,
                                                                           mainAxisAlignment:
-                                                                              MainAxisAlignment.spaceEvenly,
+                                                                              MainAxisAlignment.center,
                                                                           crossAxisAlignment:
                                                                               CrossAxisAlignment.center,
                                                                           children: [
@@ -454,40 +454,50 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                             child: Column(
                                                                                               mainAxisSize: MainAxisSize.max,
                                                                                               children: [
-                                                                                                Container(
-                                                                                                  decoration: BoxDecoration(),
-                                                                                                  child: Text(
-                                                                                                    functions.dateMonth(bookingUpdatesContainerBookingsRecord.scheduledDate),
-                                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                          fontFamily: 'Open Sans',
-                                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                          fontSize: 12,
-                                                                                                          fontWeight: FontWeight.w500,
-                                                                                                        ),
+                                                                                                Expanded(
+                                                                                                  flex: 2,
+                                                                                                  child: Container(
+                                                                                                    decoration: BoxDecoration(),
+                                                                                                    child: Text(
+                                                                                                      functions.upperCase(functions.dateMonth(bookingUpdatesContainerBookingsRecord.scheduledDate)),
+                                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                            fontFamily: 'Open Sans',
+                                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                            fontSize: 12,
+                                                                                                            fontWeight: FontWeight.w500,
+                                                                                                          ),
+                                                                                                    ),
                                                                                                   ),
                                                                                                 ),
-                                                                                                Container(
-                                                                                                  decoration: BoxDecoration(),
-                                                                                                  child: Text(
-                                                                                                    functions.dateDay(bookingUpdatesContainerBookingsRecord.scheduledDate),
-                                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                          fontFamily: 'Open Sans',
-                                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                                          fontSize: 18,
-                                                                                                          fontWeight: FontWeight.w600,
-                                                                                                        ),
+                                                                                                Expanded(
+                                                                                                  flex: 3,
+                                                                                                  child: Container(
+                                                                                                    decoration: BoxDecoration(),
+                                                                                                    child: Text(
+                                                                                                      functions.dateDay(bookingUpdatesContainerBookingsRecord.scheduledDate),
+                                                                                                      maxLines: 1,
+                                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                            fontFamily: 'Open Sans',
+                                                                                                            color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                            fontSize: 18,
+                                                                                                            fontWeight: FontWeight.w600,
+                                                                                                          ),
+                                                                                                    ),
                                                                                                   ),
                                                                                                 ),
-                                                                                                Container(
-                                                                                                  decoration: BoxDecoration(),
-                                                                                                  child: Text(
-                                                                                                    functions.dateYear(bookingUpdatesContainerBookingsRecord.scheduledDate),
-                                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                          fontFamily: 'Open Sans',
-                                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                          fontSize: 10,
-                                                                                                          fontWeight: FontWeight.w500,
-                                                                                                        ),
+                                                                                                Expanded(
+                                                                                                  flex: 2,
+                                                                                                  child: Container(
+                                                                                                    decoration: BoxDecoration(),
+                                                                                                    child: Text(
+                                                                                                      functions.dateYear(bookingUpdatesContainerBookingsRecord.scheduledDate),
+                                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                            fontFamily: 'Open Sans',
+                                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                            fontSize: 10,
+                                                                                                            fontWeight: FontWeight.w500,
+                                                                                                          ),
+                                                                                                    ),
                                                                                                   ),
                                                                                                 ),
                                                                                               ],
@@ -566,15 +576,20 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                         ),
                                                                                         child: Row(
                                                                                           mainAxisSize: MainAxisSize.max,
+                                                                                          mainAxisAlignment: MainAxisAlignment.center,
                                                                                           children: [
-                                                                                            Padding(
-                                                                                              padding: EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0),
-                                                                                              child: Text(
-                                                                                                bookingUpdatesContainerBookingsRecord.bookedTests!.toList().length.toString(),
-                                                                                                style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                                      fontFamily: 'Open Sans',
-                                                                                                      color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                    ),
+                                                                                            Expanded(
+                                                                                              child: Padding(
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0),
+                                                                                                child: Text(
+                                                                                                  bookingUpdatesContainerBookingsRecord.bookedTests!.toList().length.toString(),
+                                                                                                  textAlign: TextAlign.center,
+                                                                                                  maxLines: 1,
+                                                                                                  style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                                        fontFamily: 'Open Sans',
+                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                      ),
+                                                                                                ),
                                                                                               ),
                                                                                             ),
                                                                                           ],
@@ -586,7 +601,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               ),
                                                                             ),
                                                                             Expanded(
-                                                                              flex: 2,
+                                                                              flex: 3,
                                                                               child: Container(
                                                                                 width: MediaQuery.of(context).size.width * 0.3,
                                                                                 height: 100,
@@ -618,21 +633,17 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                 maxWidth: 80,
                                                                                               ),
                                                                                               decoration: BoxDecoration(),
-                                                                                              child: Column(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                                                                children: [
-                                                                                                  Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(3, 0, 3, 0),
-                                                                                                    child: Text(
-                                                                                                      'Complete Tests',
-                                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                                            fontFamily: 'Open Sans',
-                                                                                                            fontWeight: FontWeight.w500,
-                                                                                                          ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ],
+                                                                                              child: Padding(
+                                                                                                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 3, 0),
+                                                                                                child: Text(
+                                                                                                  'Complete\nTests',
+                                                                                                  textAlign: TextAlign.end,
+                                                                                                  maxLines: 2,
+                                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                        fontFamily: 'Open Sans',
+                                                                                                        fontWeight: FontWeight.w500,
+                                                                                                      ),
+                                                                                                ),
                                                                                               ),
                                                                                             ),
                                                                                           ],
@@ -648,36 +659,41 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                       ),
                                                                                       child: Row(
                                                                                         mainAxisSize: MainAxisSize.max,
+                                                                                        mainAxisAlignment: MainAxisAlignment.center,
                                                                                         children: [
-                                                                                          Padding(
-                                                                                            padding: EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0),
-                                                                                            child: StreamBuilder<List<TestedTestsRecord>>(
-                                                                                              stream: queryTestedTestsRecord(
-                                                                                                queryBuilder: (testedTestsRecord) => testedTestsRecord.where('booking_ref', isEqualTo: bookingUpdatesContainerBookingsRecord.reference).where('is_verified', isEqualTo: true),
-                                                                                              ),
-                                                                                              builder: (context, snapshot) {
-                                                                                                // Customize what your widget looks like when it's loading.
-                                                                                                if (!snapshot.hasData) {
-                                                                                                  return Center(
-                                                                                                    child: SizedBox(
-                                                                                                      width: 50,
-                                                                                                      height: 50,
-                                                                                                      child: SpinKitRipple(
-                                                                                                        color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                                        size: 50,
+                                                                                          Expanded(
+                                                                                            child: Padding(
+                                                                                              padding: EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0),
+                                                                                              child: StreamBuilder<List<TestedTestsRecord>>(
+                                                                                                stream: queryTestedTestsRecord(
+                                                                                                  queryBuilder: (testedTestsRecord) => testedTestsRecord.where('booking_ref', isEqualTo: bookingUpdatesContainerBookingsRecord.reference).where('is_verified', isEqualTo: true),
+                                                                                                ),
+                                                                                                builder: (context, snapshot) {
+                                                                                                  // Customize what your widget looks like when it's loading.
+                                                                                                  if (!snapshot.hasData) {
+                                                                                                    return Center(
+                                                                                                      child: SizedBox(
+                                                                                                        width: 50,
+                                                                                                        height: 50,
+                                                                                                        child: SpinKitRipple(
+                                                                                                          color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                          size: 50,
+                                                                                                        ),
                                                                                                       ),
-                                                                                                    ),
+                                                                                                    );
+                                                                                                  }
+                                                                                                  List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data!;
+                                                                                                  return Text(
+                                                                                                    bookingUpdatesContainerBookingsRecord.verifiedTests!.toList().length.toString(),
+                                                                                                    textAlign: TextAlign.center,
+                                                                                                    maxLines: 1,
+                                                                                                    style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                                          fontFamily: 'Open Sans',
+                                                                                                          color: FlutterFlowTheme.of(context).primaryText,
+                                                                                                        ),
                                                                                                   );
-                                                                                                }
-                                                                                                List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data!;
-                                                                                                return Text(
-                                                                                                  bookingUpdatesContainerBookingsRecord.verifiedTests!.toList().length.toString(),
-                                                                                                  style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                                        fontFamily: 'Open Sans',
-                                                                                                        color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                      ),
-                                                                                                );
-                                                                                              },
+                                                                                                },
+                                                                                              ),
                                                                                             ),
                                                                                           ),
                                                                                         ],
@@ -728,23 +744,21 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                 ),
                                                                               ],
                                                                             ),
-                                                                            Column(
-                                                                              mainAxisSize: MainAxisSize.max,
-                                                                              mainAxisAlignment: MainAxisAlignment.start,
-                                                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                                                              children: [
-                                                                                Container(
-                                                                                  width: MediaQuery.of(context).size.width * 0.25,
-                                                                                  height: MediaQuery.of(context).size.height * 0.04,
-                                                                                  constraints: BoxConstraints(
-                                                                                    maxWidth: MediaQuery.of(context).size.width * 0.45,
-                                                                                  ),
-                                                                                  decoration: BoxDecoration(
-                                                                                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                    borderRadius: BorderRadius.circular(10),
-                                                                                  ),
-                                                                                  child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(3, 7, 0, 0),
+                                                                            Container(
+                                                                              width: MediaQuery.of(context).size.width * 0.25,
+                                                                              height: MediaQuery.of(context).size.height * 0.04,
+                                                                              constraints: BoxConstraints(
+                                                                                maxWidth: MediaQuery.of(context).size.width * 0.45,
+                                                                              ),
+                                                                              decoration: BoxDecoration(
+                                                                                color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                borderRadius: BorderRadius.circular(10),
+                                                                              ),
+                                                                              child: Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                children: [
+                                                                                  Padding(
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(3, 0, 0, 0),
                                                                                     child: Text(
                                                                                       formatNumber(
                                                                                         bookingUpdatesContainerBookingsRecord.totalPrice!,
@@ -759,8 +773,8 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                           ),
                                                                                     ),
                                                                                   ),
-                                                                                ),
-                                                                              ],
+                                                                                ],
+                                                                              ),
                                                                             ),
                                                                           ],
                                                                         ),
@@ -803,10 +817,8 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                 ),
                                                                               ],
                                                                             ),
-                                                                            Column(
+                                                                            Row(
                                                                               mainAxisSize: MainAxisSize.max,
-                                                                              mainAxisAlignment: MainAxisAlignment.start,
-                                                                              crossAxisAlignment: CrossAxisAlignment.center,
                                                                               children: [
                                                                                 Container(
                                                                                   width: MediaQuery.of(context).size.width * 0.25,
@@ -995,7 +1007,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                              Color(0x87FFFFFF),
                                                                           borderRadius:
                                                                               BorderRadius.circular(7),
                                                                         ),
@@ -1082,7 +1094,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                              Color(0x86FFFFFF),
                                                                           borderRadius:
                                                                               BorderRadius.circular(7),
                                                                         ),
@@ -1178,7 +1190,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                              Color(0x88FFFFFF),
                                                                           borderRadius:
                                                                               BorderRadius.circular(7),
                                                                         ),
@@ -1278,7 +1290,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                Color(0x88FFFFFF),
                                                                             borderRadius:
                                                                                 BorderRadius.circular(7),
                                                                           ),
@@ -1355,7 +1367,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                Color(0x87FFFFFF),
                                                                             borderRadius:
                                                                                 BorderRadius.circular(7),
                                                                           ),
