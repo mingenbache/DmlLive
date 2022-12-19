@@ -203,19 +203,19 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
                                 child: Builder(
                                   builder: (context) {
-                                    final pastBookingTests =
+                                    final bookingTests =
                                         bookedTestsContainerBookedTestsRecordList
+                                            .map((e) => e)
                                             .toList();
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
                                       primary: false,
                                       scrollDirection: Axis.vertical,
-                                      itemCount: pastBookingTests.length,
+                                      itemCount: bookingTests.length,
                                       itemBuilder:
-                                          (context, pastBookingTestsIndex) {
-                                        final pastBookingTestsItem =
-                                            pastBookingTests[
-                                                pastBookingTestsIndex];
+                                          (context, bookingTestsIndex) {
+                                        final bookingTestsItem =
+                                            bookingTests[bookingTestsIndex];
                                         return Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -248,7 +248,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                                   StreamBuilder<TestsRecord>(
                                                     stream:
                                                         TestsRecord.getDocument(
-                                                            pastBookingTestsItem
+                                                            bookingTestsItem
                                                                 .testRef!),
                                                     builder:
                                                         (context, snapshot) {
@@ -411,7 +411,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                      if (pastBookingTestsItem
+                                                                      if (bookingTestsItem
                                                                               .sampleCollected ??
                                                                           true)
                                                                         Container(
@@ -468,7 +468,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                      if (pastBookingTestsItem
+                                                                      if (bookingTestsItem
                                                                               .hasResult ??
                                                                           true)
                                                                         Container(
@@ -532,7 +532,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
                                                                             queryTestedTestsRecord(
                                                                           queryBuilder: (testedTestsRecord) => testedTestsRecord.where(
                                                                               'booked_test_Ref',
-                                                                              isEqualTo: pastBookingTestsItem.reference),
+                                                                              isEqualTo: bookingTestsItem.reference),
                                                                           singleRecord:
                                                                               true,
                                                                         ),

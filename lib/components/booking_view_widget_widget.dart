@@ -205,13 +205,10 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                             ),
                           ),
                         ),
-                        Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 5, 5, 0),
-                            child: DateWidgetSmallWidget(
-                              date: widget.bookingRef!.scheduledDate,
-                            ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 5, 0),
+                          child: DateWidgetSmallWidget(
+                            date: widget.bookingRef!.scheduledDate,
                           ),
                         ),
                       ],
@@ -226,8 +223,10 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                       padding: EdgeInsetsDirectional.fromSTEB(6, 0, 6, 0),
                       child: Builder(
                         builder: (context) {
-                          final bookedTests =
-                              widget.bookingRef!.bookedTests!.toList();
+                          final bookedTests = widget.bookingRef!.bookedTests!
+                              .toList()
+                              .map((e) => e)
+                              .toList();
                           return SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
@@ -268,10 +267,6 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                       List<TestedTestsRecord>
                                           testItemContainerTestedTestsRecordList =
                                           snapshot.data!;
-                                      // Return an empty Container when the item does not exist.
-                                      if (snapshot.data!.isEmpty) {
-                                        return Container();
-                                      }
                                       final testItemContainerTestedTestsRecord =
                                           testItemContainerTestedTestsRecordList
                                                   .isNotEmpty
@@ -400,313 +395,264 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                       MainAxisAlignment
                                                           .spaceEvenly,
                                                   children: [
-                                                    StreamBuilder<
-                                                        List<
-                                                            TestedTestsRecord>>(
-                                                      stream:
-                                                          queryTestedTestsRecord(
-                                                        queryBuilder: (testedTestsRecord) =>
-                                                            testedTestsRecord
-                                                                .where(
-                                                                    'booking_ref',
-                                                                    isEqualTo: widget
-                                                                        .bookingRef!
-                                                                        .reference)
-                                                                .where(
-                                                                    'test_ref',
-                                                                    isEqualTo:
-                                                                        bookedTestsItem),
-                                                        singleRecord: true,
+                                                    Material(
+                                                      color: Colors.transparent,
+                                                      elevation: 2,
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(16),
                                                       ),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 50,
-                                                              height: 50,
-                                                              child:
-                                                                  SpinKitRipple(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                                size: 50,
+                                                      child: Container(
+                                                        height: 30,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 0.6,
+                                                              color: Color(
+                                                                  0x31000000),
+                                                              spreadRadius: 0.6,
+                                                            )
+                                                          ],
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(16),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(5,
+                                                                      0, 5, 0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceEvenly,
+                                                            children: [
+                                                              Container(
+                                                                width: 25,
+                                                                height: 25,
+                                                                decoration:
+                                                                    BoxDecoration(),
+                                                                child: Stack(
+                                                                  children: [
+                                                                    Container(
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        shape: BoxShape
+                                                                            .circle,
+                                                                      ),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            2,
+                                                                            2,
+                                                                            2,
+                                                                            2),
+                                                                        child:
+                                                                            FaIcon(
+                                                                          FontAwesomeIcons
+                                                                              .clock,
+                                                                          color:
+                                                                              Color(0xFFF3F3F3),
+                                                                          size:
+                                                                              20,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
                                                               ),
-                                                            ),
-                                                          );
-                                                        }
-                                                        List<TestedTestsRecord>
-                                                            containerTestedTestsRecordList =
-                                                            snapshot.data!;
-                                                        final containerTestedTestsRecord =
-                                                            containerTestedTestsRecordList
-                                                                    .isNotEmpty
-                                                                ? containerTestedTestsRecordList
-                                                                    .first
-                                                                : null;
-                                                        return Material(
-                                                          color: Colors
-                                                              .transparent,
-                                                          elevation: 2,
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        16),
-                                                          ),
-                                                          child: Container(
-                                                            height: 30,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                              boxShadow: [
-                                                                BoxShadow(
-                                                                  blurRadius:
-                                                                      0.6,
-                                                                  color: Color(
-                                                                      0x31000000),
-                                                                  spreadRadius:
-                                                                      0.6,
-                                                                )
-                                                              ],
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          16),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          5,
-                                                                          0,
-                                                                          5,
-                                                                          0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceEvenly,
-                                                                children: [
-                                                                  Container(
-                                                                    width: 25,
-                                                                    height: 25,
-                                                                    decoration:
-                                                                        BoxDecoration(),
-                                                                    child:
-                                                                        Stack(
-                                                                      children: [
-                                                                        Container(
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            shape:
-                                                                                BoxShape.circle,
-                                                                          ),
+                                                              Container(
+                                                                width: 25,
+                                                                height: 25,
+                                                                decoration:
+                                                                    BoxDecoration(),
+                                                                child: Stack(
+                                                                  children: [
+                                                                    Container(
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        shape: BoxShape
+                                                                            .circle,
+                                                                      ),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            2,
+                                                                            2,
+                                                                            2,
+                                                                            2),
+                                                                        child:
+                                                                            FaIcon(
+                                                                          FontAwesomeIcons
+                                                                              .handHoldingMedical,
+                                                                          color:
+                                                                              Color(0x34FFFFFF),
+                                                                          size:
+                                                                              20,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    if (testItemContainerTestedTestsRecord !=
+                                                                        null)
+                                                                      Container(
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          shape:
+                                                                              BoxShape.circle,
+                                                                        ),
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              2,
+                                                                              2,
+                                                                              2,
+                                                                              2),
                                                                           child:
-                                                                              Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                2,
-                                                                                2,
-                                                                                2,
-                                                                                2),
-                                                                            child:
-                                                                                FaIcon(
-                                                                              FontAwesomeIcons.clock,
-                                                                              color: Color(0xFFF3F3F3),
-                                                                              size: 20,
-                                                                            ),
+                                                                              FaIcon(
+                                                                            FontAwesomeIcons.handHoldingMedical,
+                                                                            color:
+                                                                                Color(0xFFF3F3F3),
+                                                                            size:
+                                                                                20,
                                                                           ),
                                                                         ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  Container(
-                                                                    width: 25,
-                                                                    height: 25,
-                                                                    decoration:
-                                                                        BoxDecoration(),
-                                                                    child:
-                                                                        Stack(
-                                                                      children: [
-                                                                        Container(
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            shape:
-                                                                                BoxShape.circle,
-                                                                          ),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                2,
-                                                                                2,
-                                                                                2,
-                                                                                2),
-                                                                            child:
-                                                                                FaIcon(
-                                                                              FontAwesomeIcons.handHoldingMedical,
-                                                                              color: Color(0x34FFFFFF),
-                                                                              size: 20,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        if (containerTestedTestsRecord !=
-                                                                            null)
-                                                                          Container(
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              shape: BoxShape.circle,
-                                                                            ),
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                                                                              child: FaIcon(
-                                                                                FontAwesomeIcons.handHoldingMedical,
-                                                                                color: Color(0xFFF3F3F3),
-                                                                                size: 20,
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  Container(
-                                                                    width: 25,
-                                                                    height: 25,
-                                                                    decoration:
-                                                                        BoxDecoration(),
-                                                                    child:
-                                                                        Stack(
-                                                                      children: [
-                                                                        Container(
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            shape:
-                                                                                BoxShape.circle,
-                                                                          ),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                2,
-                                                                                2,
-                                                                                2,
-                                                                                2),
-                                                                            child:
-                                                                                FaIcon(
-                                                                              FontAwesomeIcons.flask,
-                                                                              color: Color(0x33FFFFFF),
-                                                                              size: 20,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        if (containerTestedTestsRecord!.resultPosted ??
-                                                                            true)
-                                                                          Container(
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              shape: BoxShape.circle,
-                                                                            ),
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                                                                              child: FaIcon(
-                                                                                FontAwesomeIcons.flask,
-                                                                                color: Color(0xFFF3F3F3),
-                                                                                size: 20,
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  Container(
-                                                                    width: 25,
-                                                                    height: 25,
-                                                                    decoration:
-                                                                        BoxDecoration(),
-                                                                    child:
-                                                                        Stack(
-                                                                      children: [
-                                                                        Container(
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            shape:
-                                                                                BoxShape.circle,
-                                                                          ),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                2,
-                                                                                2,
-                                                                                2,
-                                                                                2),
-                                                                            child:
-                                                                                Icon(
-                                                                              Icons.check_circle_outlined,
-                                                                              color: Color(0x34FFFFFF),
-                                                                              size: 20,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        if (containerTestedTestsRecord!.isVerified ??
-                                                                            true)
-                                                                          StreamBuilder<
-                                                                              List<TestedTestsRecord>>(
-                                                                            stream:
-                                                                                queryTestedTestsRecord(
-                                                                              queryBuilder: (testedTestsRecord) => testedTestsRecord.where('booked_test_Ref', isEqualTo: containerTestedTestsRecord!.bookedTestRef),
-                                                                              singleRecord: true,
-                                                                            ),
-                                                                            builder:
-                                                                                (context, snapshot) {
-                                                                              // Customize what your widget looks like when it's loading.
-                                                                              if (!snapshot.hasData) {
-                                                                                return Center(
-                                                                                  child: SizedBox(
-                                                                                    width: 50,
-                                                                                    height: 50,
-                                                                                    child: SpinKitRipple(
-                                                                                      color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                      size: 50,
-                                                                                    ),
-                                                                                  ),
-                                                                                );
-                                                                              }
-                                                                              List<TestedTestsRecord> testVerifiedTestedTestsRecordList = snapshot.data!;
-                                                                              // Return an empty Container when the item does not exist.
-                                                                              if (snapshot.data!.isEmpty) {
-                                                                                return Container();
-                                                                              }
-                                                                              final testVerifiedTestedTestsRecord = testVerifiedTestedTestsRecordList.isNotEmpty ? testVerifiedTestedTestsRecordList.first : null;
-                                                                              return Container(
-                                                                                decoration: BoxDecoration(
-                                                                                  shape: BoxShape.circle,
-                                                                                ),
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                                                                                  child: Icon(
-                                                                                    Icons.check_circle_outlined,
-                                                                                    color: Color(0xFFF3F3F3),
-                                                                                    size: 22,
-                                                                                  ),
-                                                                                ),
-                                                                              );
-                                                                            },
-                                                                          ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ],
+                                                                      ),
+                                                                  ],
+                                                                ),
                                                               ),
-                                                            ),
+                                                              Container(
+                                                                width: 25,
+                                                                height: 25,
+                                                                decoration:
+                                                                    BoxDecoration(),
+                                                                child: Stack(
+                                                                  children: [
+                                                                    Container(
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        shape: BoxShape
+                                                                            .circle,
+                                                                      ),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            2,
+                                                                            2,
+                                                                            2,
+                                                                            2),
+                                                                        child:
+                                                                            FaIcon(
+                                                                          FontAwesomeIcons
+                                                                              .flask,
+                                                                          color:
+                                                                              Color(0x33FFFFFF),
+                                                                          size:
+                                                                              20,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    if (testItemContainerTestedTestsRecord!
+                                                                            .resultPosted ??
+                                                                        true)
+                                                                      Container(
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          shape:
+                                                                              BoxShape.circle,
+                                                                        ),
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              2,
+                                                                              2,
+                                                                              2,
+                                                                              2),
+                                                                          child:
+                                                                              FaIcon(
+                                                                            FontAwesomeIcons.flask,
+                                                                            color:
+                                                                                Color(0xFFF3F3F3),
+                                                                            size:
+                                                                                20,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Container(
+                                                                width: 25,
+                                                                height: 25,
+                                                                decoration:
+                                                                    BoxDecoration(),
+                                                                child: Stack(
+                                                                  children: [
+                                                                    Container(
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        shape: BoxShape
+                                                                            .circle,
+                                                                      ),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            2,
+                                                                            2,
+                                                                            2,
+                                                                            2),
+                                                                        child:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .check_circle_outlined,
+                                                                          color:
+                                                                              Color(0x34FFFFFF),
+                                                                          size:
+                                                                              20,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    if (testItemContainerTestedTestsRecord!
+                                                                            .isVerified ??
+                                                                        true)
+                                                                      Container(
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          shape:
+                                                                              BoxShape.circle,
+                                                                        ),
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              2,
+                                                                              2,
+                                                                              2,
+                                                                              2),
+                                                                          child:
+                                                                              Icon(
+                                                                            Icons.check_circle_outlined,
+                                                                            color:
+                                                                                Color(0xFFF3F3F3),
+                                                                            size:
+                                                                                22,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ),
-                                                        );
-                                                      },
+                                                        ),
+                                                      ),
                                                     ),
                                                   ],
                                                 ),
@@ -768,41 +714,52 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      width: 20,
-                                      height: 20,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 0, 0, 2),
-                                            child: Text(
-                                              widget.bookingRef!.bookedTests!
-                                                  .toList()
-                                                  .length
-                                                  .toString()
-                                                  .maybeHandleOverflow(
-                                                      maxChars: 2),
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 14,
+                                    Expanded(
+                                      child: Container(
+                                        width: 20,
+                                        height: 20,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  2, 2, 2, 2),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Expanded(
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0, 0),
+                                                  child: Text(
+                                                    widget.bookingRef!
+                                                        .bookedTests!
+                                                        .toList()
+                                                        .length
+                                                        .toString()
+                                                        .maybeHandleOverflow(
+                                                            maxChars: 2),
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: 14,
+                                                    ),
+                                                  ),
+                                                ),
                                               ),
-                                            ),
+                                            ],
                                           ),
-                                        ],
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -835,41 +792,46 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      width: 20,
-                                      height: 20,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 0, 0, 2),
-                                            child: Text(
-                                              widget.bookingRef!.verifiedTests!
-                                                  .toList()
-                                                  .length
-                                                  .toString()
-                                                  .maybeHandleOverflow(
-                                                      maxChars: 2),
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
+                                    Expanded(
+                                      child: Container(
+                                        width: 20,
+                                        height: 20,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  2, 2, 2, 2),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Expanded(
+                                                child: Text(
+                                                  widget.bookingRef!
+                                                      .verifiedTests!
+                                                      .toList()
+                                                      .length
+                                                      .toString()
+                                                      .maybeHandleOverflow(
+                                                          maxChars: 2),
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .secondaryBackground,
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 14,
+                                                  ),
+                                                ),
                                               ),
-                                            ),
+                                            ],
                                           ),
-                                        ],
+                                        ),
                                       ),
                                     ),
                                   ],
