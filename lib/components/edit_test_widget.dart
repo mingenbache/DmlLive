@@ -10,6 +10,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class EditTestWidget extends StatefulWidget {
   const EditTestWidget({
@@ -60,6 +61,8 @@ class _EditTestWidgetState extends State<EditTestWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Form(
       key: formKey,
       autovalidateMode: AutovalidateMode.always,
@@ -1293,8 +1296,8 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                           child: FFButtonWidget(
                             onPressed: () async {
                               final testsUpdateData = createTestsRecordData(
-                                price:
-                                    int.parse(testPriceController?.text ?? ''),
+                                price: int.tryParse(
+                                    testPriceController?.text ?? ''),
                                 name: textController1?.text ?? '',
                                 homeTest: atHomeToggleValue,
                                 description:
@@ -1328,6 +1331,8 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                   backgroundColor: Color(0x00000000),
                                 ),
                               );
+
+                              setState(() {});
                             },
                             text: 'Submit',
                             options: FFButtonOptions(

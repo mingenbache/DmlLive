@@ -15,14 +15,15 @@ import 'dart:ui';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 class BookingConfirmationWidget extends StatefulWidget {
   const BookingConfirmationWidget({
@@ -87,6 +88,8 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<BookingsRecord>(
       stream: BookingsRecord.getDocument(widget.bookingRef!),
       builder: (context, snapshot) {
@@ -567,20 +570,27 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                           children: [
                                             InkWell(
                                               onTap: () async {
-                                                await DatePicker.showDatePicker(
-                                                  context,
-                                                  showTitleActions: true,
-                                                  onConfirm: (date) {
-                                                    setState(() =>
-                                                        datePicked = date);
-                                                  },
-                                                  currentTime:
+                                                final _datePickedDate =
+                                                    await showDatePicker(
+                                                  context: context,
+                                                  initialDate:
                                                       bookingConfirmationBookingsRecord
                                                           .scheduledDate!,
-                                                  minTime:
+                                                  firstDate:
                                                       bookingConfirmationBookingsRecord
                                                           .scheduledDate!,
+                                                  lastDate: DateTime(2050),
                                                 );
+
+                                                if (_datePickedDate != null) {
+                                                  setState(
+                                                    () => datePicked = DateTime(
+                                                      _datePickedDate.year,
+                                                      _datePickedDate.month,
+                                                      _datePickedDate.day,
+                                                    ),
+                                                  );
+                                                }
                                               },
                                               child: Container(
                                                 width: MediaQuery.of(context)
@@ -2602,20 +2612,24 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                             await bookingConfirmationBookingsRecord
                                                 .reference
                                                 .update(bookingsUpdateData);
-                                            setState(() => FFAppState().labRef =
-                                                labRefNumController!.text);
-                                            setState(() => FFAppState()
-                                                .pathologistassigned = false);
-                                            setState(() => FFAppState()
-                                                .technologistassigned = false);
-                                            setState(() => FFAppState()
-                                                    .numTests =
-                                                bookingConfirmationBookingsRecord
-                                                    .testsIncluded!
-                                                    .toList()
-                                                    .length);
-                                            setState(() =>
-                                                FFAppState().numTestDone = 0);
+                                            setState(() {
+                                              FFAppState().labRef =
+                                                  labRefNumController!.text;
+                                              FFAppState().pathologistassigned =
+                                                  false;
+                                            });
+                                            setState(() {
+                                              FFAppState()
+                                                  .technologistassigned = false;
+                                              FFAppState().numTests =
+                                                  bookingConfirmationBookingsRecord
+                                                      .testsIncluded!
+                                                      .toList()
+                                                      .length;
+                                            });
+                                            setState(() {
+                                              FFAppState().numTestDone = 0;
+                                            });
                                           },
                                           text: 'Confirm and Proceed',
                                           options: FFButtonOptions(

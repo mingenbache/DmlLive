@@ -12,6 +12,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class TestActionsWidgetWidget extends StatefulWidget {
   const TestActionsWidgetWidget({
@@ -74,6 +75,8 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -104,7 +107,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                   maxHeight: 80,
                 ),
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryColor,
+                  color: FlutterFlowTheme.of(context).secondaryText,
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Padding(
@@ -169,7 +172,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                                   .override(
                                     fontFamily: 'Roboto',
                                     color: FlutterFlowTheme.of(context)
-                                        .primaryText,
+                                        .primaryBackground,
                                     fontWeight: FontWeight.w500,
                                   ),
                               borderSide: BorderSide(
@@ -233,13 +236,13 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                           width: 130,
                           height: 40,
                           color: Color(0x00B3B2B2),
-                          textStyle: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: 'Roboto',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontWeight: FontWeight.w500,
-                              ),
+                          textStyle:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Roboto',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                           borderSide: BorderSide(
                             color: Colors.transparent,
                           ),

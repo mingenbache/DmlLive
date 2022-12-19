@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class CatalogTestItem2Widget extends StatefulWidget {
   const CatalogTestItem2Widget({
@@ -26,6 +27,8 @@ class CatalogTestItem2Widget extends StatefulWidget {
 class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,

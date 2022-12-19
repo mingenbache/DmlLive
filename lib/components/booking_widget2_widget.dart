@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class BookingWidget2Widget extends StatefulWidget {
   const BookingWidget2Widget({Key? key}) : super(key: key);
@@ -17,6 +18,8 @@ class BookingWidget2Widget extends StatefulWidget {
 class _BookingWidget2WidgetState extends State<BookingWidget2Widget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
       child: Material(

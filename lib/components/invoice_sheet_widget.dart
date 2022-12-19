@@ -10,6 +10,7 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class InvoiceSheetWidget extends StatefulWidget {
   const InvoiceSheetWidget({
@@ -28,6 +29,8 @@ class InvoiceSheetWidget extends StatefulWidget {
 class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<BookingsRecord>(
       stream: BookingsRecord.getDocument(widget.booking!),
       builder: (context, snapshot) {

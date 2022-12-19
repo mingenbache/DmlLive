@@ -12,6 +12,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 class TestDeckWidget extends StatefulWidget {
   const TestDeckWidget({
@@ -30,6 +31,8 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       body: StreamBuilder<TestedTestsRecord>(

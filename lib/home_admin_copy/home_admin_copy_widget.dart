@@ -13,6 +13,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class HomeAdminCopyWidget extends StatefulWidget {
   const HomeAdminCopyWidget({Key? key}) : super(key: key);
@@ -35,6 +36,8 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: AlignmentDirectional(-0.05, 0),
       child: Padding(

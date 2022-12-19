@@ -13,6 +13,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ChooseTechnologistWidget extends StatefulWidget {
   const ChooseTechnologistWidget({
@@ -82,6 +83,8 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.end,
@@ -349,7 +352,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                             }
                             List<StaffRecord> rowStaffRecordList =
                                 snapshot.data!;
-                            // Return an empty Container when the document does not exist.
+                            // Return an empty Container when the item does not exist.
                             if (snapshot.data!.isEmpty) {
                               return Container();
                             }
@@ -383,7 +386,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                     }
                                     List<StaffRecord> buttonStaffRecordList =
                                         snapshot.data!;
-                                    // Return an empty Container when the document does not exist.
+                                    // Return an empty Container when the item does not exist.
                                     if (snapshot.data!.isEmpty) {
                                       return Container();
                                     }
@@ -393,8 +396,10 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                             : null;
                                     return FFButtonWidget(
                                       onPressed: () async {
-                                        setState(() => FFAppState()
-                                            .assignTechnologist = true);
+                                        setState(() {
+                                          FFAppState().assignTechnologist =
+                                              true;
+                                        });
                                         if (FFAppState().assignTechnologist) {
                                           final bookingsUpdateData = {
                                             'bookedTests':

@@ -10,6 +10,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class UserListWidget extends StatefulWidget {
   const UserListWidget({
@@ -43,6 +44,8 @@ class _UserListWidgetState extends State<UserListWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
@@ -51,30 +54,26 @@ class _UserListWidgetState extends State<UserListWidget> {
         children: [
           Stack(
             children: [
-              Material(
-                color: Colors.transparent,
-                elevation: 2,
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(),
-                  child: ClipRect(
-                    child: ImageFiltered(
-                      imageFilter: ImageFilter.blur(
-                        sigmaX: 1,
-                        sigmaY: 1,
+              Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(),
+                child: ClipRect(
+                  child: ImageFiltered(
+                    imageFilter: ImageFilter.blur(
+                      sigmaX: 1,
+                      sigmaY: 1,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(12),
+                        bottomRight: Radius.circular(12),
+                        topLeft: Radius.circular(0),
+                        topRight: Radius.circular(0),
                       ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(12),
-                          bottomRight: Radius.circular(12),
-                          topLeft: Radius.circular(0),
-                          topRight: Radius.circular(0),
-                        ),
-                        child: Image.asset(
-                          'assets/images/aditya-vyas-7qUWVveyiYI-unsplash_reduced.jpg',
-                          height: MediaQuery.of(context).size.height * 0.28,
-                          fit: BoxFit.cover,
-                        ),
+                      child: Image.asset(
+                        'assets/images/aditya-vyas-7qUWVveyiYI-unsplash_reduced.jpg',
+                        height: MediaQuery.of(context).size.height * 0.28,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
@@ -84,7 +83,15 @@ class _UserListWidgetState extends State<UserListWidget> {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.28,
                 decoration: BoxDecoration(
-                  color: Color(0xB06CD7B7),
+                  gradient: LinearGradient(
+                    colors: [
+                      FlutterFlowTheme.of(context).secondaryColor,
+                      Color(0xAF6CD7B7)
+                    ],
+                    stops: [0, 0.8],
+                    begin: AlignmentDirectional(0, -1),
+                    end: AlignmentDirectional(0, 1),
+                  ),
                 ),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
@@ -332,7 +339,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                   Color(0xAF6CD7B7),
                   FlutterFlowTheme.of(context).secondaryBackground
                 ],
-                stops: [0, 1],
+                stops: [0.05, 0.2],
                 begin: AlignmentDirectional(0, -1),
                 end: AlignmentDirectional(0, 1),
               ),

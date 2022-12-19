@@ -5,6 +5,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class DashboardMenuWidgetLight2Widget extends StatefulWidget {
   const DashboardMenuWidgetLight2Widget({Key? key}) : super(key: key);
@@ -18,6 +19,8 @@ class _DashboardMenuWidgetLight2WidgetState
     extends State<DashboardMenuWidgetLight2Widget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Stack(
       children: [
         Padding(

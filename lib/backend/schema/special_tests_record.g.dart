@@ -129,6 +129,12 @@ class _$SpecialTestsRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.stringListIndex;
+    if (value != null) {
+      result
+        ..add('stringListIndex')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -218,6 +224,10 @@ class _$SpecialTestsRecordSerializer
           result.category = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'stringListIndex':
+          result.stringListIndex = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -263,6 +273,8 @@ class _$SpecialTestsRecord extends SpecialTestsRecord {
   @override
   final String? category;
   @override
+  final int? stringListIndex;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$SpecialTestsRecord(
@@ -285,6 +297,7 @@ class _$SpecialTestsRecord extends SpecialTestsRecord {
       this.description,
       this.testAtHome,
       this.category,
+      this.stringListIndex,
       this.ffRef})
       : super._();
 
@@ -316,6 +329,7 @@ class _$SpecialTestsRecord extends SpecialTestsRecord {
         description == other.description &&
         testAtHome == other.testAtHome &&
         category == other.category &&
+        stringListIndex == other.stringListIndex &&
         ffRef == other.ffRef;
   }
 
@@ -337,25 +351,28 @@ class _$SpecialTestsRecord extends SpecialTestsRecord {
                                                         $jc(
                                                             $jc(
                                                                 $jc(
-                                                                    0,
-                                                                    name
+                                                                    $jc(
+                                                                        0,
+                                                                        name
+                                                                            .hashCode),
+                                                                    vendorName
                                                                         .hashCode),
-                                                                vendorName
+                                                                vendorContact
                                                                     .hashCode),
-                                                            vendorContact
-                                                                .hashCode),
-                                                        cost.hashCode),
-                                                    durationResults.hashCode),
-                                                scheduledDate.hashCode),
-                                            technologistAssigned.hashCode),
-                                        bookingRef.hashCode),
-                                    sampleCollected.hashCode),
-                                resultSubmitted.hashCode),
-                            createdBy.hashCode),
-                        createdDate.hashCode),
-                    description.hashCode),
-                testAtHome.hashCode),
-            category.hashCode),
+                                                            cost.hashCode),
+                                                        durationResults
+                                                            .hashCode),
+                                                    scheduledDate.hashCode),
+                                                technologistAssigned.hashCode),
+                                            bookingRef.hashCode),
+                                        sampleCollected.hashCode),
+                                    resultSubmitted.hashCode),
+                                createdBy.hashCode),
+                            createdDate.hashCode),
+                        description.hashCode),
+                    testAtHome.hashCode),
+                category.hashCode),
+            stringListIndex.hashCode),
         ffRef.hashCode));
   }
 
@@ -377,6 +394,7 @@ class _$SpecialTestsRecord extends SpecialTestsRecord {
           ..add('description', description)
           ..add('testAtHome', testAtHome)
           ..add('category', category)
+          ..add('stringListIndex', stringListIndex)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -455,6 +473,11 @@ class SpecialTestsRecordBuilder
   String? get category => _$this._category;
   set category(String? category) => _$this._category = category;
 
+  int? _stringListIndex;
+  int? get stringListIndex => _$this._stringListIndex;
+  set stringListIndex(int? stringListIndex) =>
+      _$this._stringListIndex = stringListIndex;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -481,6 +504,7 @@ class SpecialTestsRecordBuilder
       _description = $v.description;
       _testAtHome = $v.testAtHome;
       _category = $v.category;
+      _stringListIndex = $v.stringListIndex;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -519,6 +543,7 @@ class SpecialTestsRecordBuilder
             description: description,
             testAtHome: testAtHome,
             category: category,
+            stringListIndex: stringListIndex,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

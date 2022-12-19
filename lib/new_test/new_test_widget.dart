@@ -11,6 +11,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class NewTestWidget extends StatefulWidget {
   const NewTestWidget({Key? key}) : super(key: key);
@@ -59,6 +60,8 @@ class _NewTestWidgetState extends State<NewTestWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<UsersRecord>(
       stream: UsersRecord.getDocument(currentUserReference!),
       builder: (context, snapshot) {
@@ -794,13 +797,13 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                         child: FFButtonWidget(
                           onPressed: () async {
                             final testsCreateData = createTestsRecordData(
-                              price: int.parse(testPriceController!.text),
+                              price: int.tryParse(testPriceController!.text),
                               name: testNameController!.text,
                               homeTest: atHomeToggleValue,
                               description: testDescriptionController!.text,
-                              duration: double.parse(
+                              duration: double.tryParse(
                                   testDurationTextController!.text),
-                              durationResults: double.parse(
+                              durationResults: double.tryParse(
                                   resultsDurationTextController!.text),
                               category: dropDownValue,
                               isAvailable: true,

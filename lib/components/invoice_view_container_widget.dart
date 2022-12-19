@@ -7,6 +7,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class InvoiceViewContainerWidget extends StatefulWidget {
   const InvoiceViewContainerWidget({
@@ -27,6 +28,8 @@ class _InvoiceViewContainerWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
       child: StreamBuilder<BookingsRecord>(

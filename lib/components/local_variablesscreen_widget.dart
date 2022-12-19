@@ -8,6 +8,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class LocalVariablesscreenWidget extends StatefulWidget {
   const LocalVariablesscreenWidget({
@@ -77,6 +78,8 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       decoration: BoxDecoration(),
       child: Column(

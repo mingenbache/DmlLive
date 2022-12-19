@@ -396,6 +396,16 @@ class _$BookingsRecordSerializer
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
     }
+    value = object.bookedSpecialTests;
+    if (value != null) {
+      result
+        ..add('bookedSpecialTests')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(BuiltList, const [
+              const FullType(
+                  DocumentReference, const [const FullType.nullable(Object)])
+            ])));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -656,6 +666,13 @@ class _$BookingsRecordSerializer
                       BuiltList, const [const FullType(String)]))!
               as BuiltList<Object?>);
           break;
+        case 'bookedSpecialTests':
+          result.bookedSpecialTests.replace(serializers.deserialize(value,
+              specifiedType: const FullType(BuiltList, const [
+                const FullType(
+                    DocumentReference, const [const FullType.nullable(Object)])
+              ]))! as BuiltList<Object?>);
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -769,6 +786,8 @@ class _$BookingsRecord extends BookingsRecord {
   @override
   final BuiltList<String>? specialTests;
   @override
+  final BuiltList<DocumentReference<Object?>>? bookedSpecialTests;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$BookingsRecord([void Function(BookingsRecordBuilder)? updates]) =>
@@ -824,6 +843,7 @@ class _$BookingsRecord extends BookingsRecord {
       this.frozenTests,
       this.formImages,
       this.specialTests,
+      this.bookedSpecialTests,
       this.ffRef})
       : super._();
 
@@ -888,6 +908,7 @@ class _$BookingsRecord extends BookingsRecord {
         frozenTests == other.frozenTests &&
         formImages == other.formImages &&
         specialTests == other.specialTests &&
+        bookedSpecialTests == other.bookedSpecialTests &&
         ffRef == other.ffRef;
   }
 
@@ -911,25 +932,25 @@ class _$BookingsRecord extends BookingsRecord {
                                                                 $jc(
                                                                     $jc(
                                                                         $jc(
-                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, labRefNum.hashCode), createdDate.hashCode), scheduledDate.hashCode), completed.hashCode), testVerified.hashCode), testNotes.hashCode), technologist.hashCode), user.hashCode), diagnosis.hashCode), totalPrice.hashCode), bookingConfirmed.hashCode), firstname.hashCode), lastname.hashCode), phonenumber.hashCode), sex.hashCode), emailaddress.hashCode), bookingstatus.hashCode), docNameAddress.hashCode), testsIncluded.hashCode), isInvoiced.hashCode), isSubmitted.hashCode), totalTests.hashCode), pathologist.hashCode), userPatient.hashCode), dOB.hashCode), invoiceRefs.hashCode), updatedDate.hashCode), paidFull.hashCode), updateRole.hashCode), resultPublished.hashCode), paymentBalance.hashCode),
-                                                                                updateStaff.hashCode),
-                                                                            confirmationBegan.hashCode),
-                                                                        bookedTests.hashCode),
-                                                                    payments.hashCode),
-                                                                reportSent.hashCode),
-                                                            docNames.hashCode),
-                                                        doctorPhoneNumber.hashCode),
-                                                    doctorEmail.hashCode),
-                                                docRef.hashCode),
-                                            verifiedTests.hashCode),
-                                        hasTestPackages.hashCode),
-                                    testPackages.hashCode),
-                                testPackTests.hashCode),
-                            reportRef.hashCode),
-                        flaggedTests.hashCode),
-                    frozenTests.hashCode),
-                formImages.hashCode),
-            specialTests.hashCode),
+                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, labRefNum.hashCode), createdDate.hashCode), scheduledDate.hashCode), completed.hashCode), testVerified.hashCode), testNotes.hashCode), technologist.hashCode), user.hashCode), diagnosis.hashCode), totalPrice.hashCode), bookingConfirmed.hashCode), firstname.hashCode), lastname.hashCode), phonenumber.hashCode), sex.hashCode), emailaddress.hashCode), bookingstatus.hashCode), docNameAddress.hashCode), testsIncluded.hashCode), isInvoiced.hashCode), isSubmitted.hashCode), totalTests.hashCode), pathologist.hashCode), userPatient.hashCode), dOB.hashCode), invoiceRefs.hashCode), updatedDate.hashCode), paidFull.hashCode), updateRole.hashCode), resultPublished.hashCode), paymentBalance.hashCode), updateStaff.hashCode),
+                                                                                confirmationBegan.hashCode),
+                                                                            bookedTests.hashCode),
+                                                                        payments.hashCode),
+                                                                    reportSent.hashCode),
+                                                                docNames.hashCode),
+                                                            doctorPhoneNumber.hashCode),
+                                                        doctorEmail.hashCode),
+                                                    docRef.hashCode),
+                                                verifiedTests.hashCode),
+                                            hasTestPackages.hashCode),
+                                        testPackages.hashCode),
+                                    testPackTests.hashCode),
+                                reportRef.hashCode),
+                            flaggedTests.hashCode),
+                        frozenTests.hashCode),
+                    formImages.hashCode),
+                specialTests.hashCode),
+            bookedSpecialTests.hashCode),
         ffRef.hashCode));
   }
 
@@ -985,6 +1006,7 @@ class _$BookingsRecord extends BookingsRecord {
           ..add('frozenTests', frozenTests)
           ..add('formImages', formImages)
           ..add('specialTests', specialTests)
+          ..add('bookedSpecialTests', bookedSpecialTests)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -1224,6 +1246,14 @@ class BookingsRecordBuilder
   set specialTests(ListBuilder<String>? specialTests) =>
       _$this._specialTests = specialTests;
 
+  ListBuilder<DocumentReference<Object?>>? _bookedSpecialTests;
+  ListBuilder<DocumentReference<Object?>> get bookedSpecialTests =>
+      _$this._bookedSpecialTests ??=
+          new ListBuilder<DocumentReference<Object?>>();
+  set bookedSpecialTests(
+          ListBuilder<DocumentReference<Object?>>? bookedSpecialTests) =>
+      _$this._bookedSpecialTests = bookedSpecialTests;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -1284,6 +1314,7 @@ class BookingsRecordBuilder
       _frozenTests = $v.frozenTests?.toBuilder();
       _formImages = $v.formImages?.toBuilder();
       _specialTests = $v.specialTests?.toBuilder();
+      _bookedSpecialTests = $v.bookedSpecialTests?.toBuilder();
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -1358,6 +1389,7 @@ class BookingsRecordBuilder
               frozenTests: _frozenTests?.build(),
               formImages: _formImages?.build(),
               specialTests: _specialTests?.build(),
+              bookedSpecialTests: _bookedSpecialTests?.build(),
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;
@@ -1389,6 +1421,8 @@ class BookingsRecordBuilder
         _formImages?.build();
         _$failedField = 'specialTests';
         _specialTests?.build();
+        _$failedField = 'bookedSpecialTests';
+        _bookedSpecialTests?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'BookingsRecord', _$failedField, e.toString());

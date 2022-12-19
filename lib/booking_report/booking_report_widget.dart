@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class BookingReportWidget extends StatefulWidget {
   const BookingReportWidget({
@@ -26,6 +27,8 @@ class _BookingReportWidgetState extends State<BookingReportWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<ReportsRecord>(
       stream: ReportsRecord.getDocument(widget.reportRef!),
       builder: (context, snapshot) {

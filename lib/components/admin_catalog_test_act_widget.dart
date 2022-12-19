@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class AdminCatalogTestActWidget extends StatefulWidget {
   const AdminCatalogTestActWidget({Key? key}) : super(key: key);
@@ -18,6 +19,8 @@ class AdminCatalogTestActWidget extends StatefulWidget {
 class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: AlignmentDirectional(0, 0),
       child: Material(
@@ -106,7 +109,9 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                 Expanded(
                   child: InkWell(
                     onTap: () async {
-                      setState(() => FFAppState().testPackSubmit = false);
+                      setState(() {
+                        FFAppState().testPackSubmit = false;
+                      });
                       await showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,

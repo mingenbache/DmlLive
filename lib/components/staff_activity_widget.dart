@@ -11,6 +11,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class StaffActivityWidget extends StatefulWidget {
   const StaffActivityWidget({
@@ -27,6 +28,8 @@ class StaffActivityWidget extends StatefulWidget {
 class _StaffActivityWidgetState extends State<StaffActivityWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<UsersRecord>(
       stream: UsersRecord.getDocument(widget.userRef!),
       builder: (context, snapshot) {

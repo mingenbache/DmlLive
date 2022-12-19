@@ -15,6 +15,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class TestListBookingSheetWidget extends StatefulWidget {
   const TestListBookingSheetWidget({
@@ -80,6 +81,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<BookingsRecord>(
       stream: BookingsRecord.getDocument(widget.bookingRef!),
       builder: (context, snapshot) {
@@ -211,8 +214,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                           ),
                                           onPressed: () async {
                                             Navigator.pop(context);
-                                            setState(() => FFAppState()
-                                                .categorypicked = 'All');
+                                            setState(() {
+                                              FFAppState().categorypicked =
+                                                  'All';
+                                            });
                                           },
                                         ),
                                       ),
@@ -510,14 +515,14 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                               InkWell(
                                                                 onTap:
                                                                     () async {
-                                                                  setState(() =>
-                                                                      FFAppState()
-                                                                              .categorypicked =
-                                                                          'All');
-                                                                  setState(() =>
-                                                                      FFAppState()
-                                                                              .allCategories =
-                                                                          true);
+                                                                  setState(() {
+                                                                    FFAppState()
+                                                                            .categorypicked =
+                                                                        'All';
+                                                                    FFAppState()
+                                                                            .allCategories =
+                                                                        true;
+                                                                  });
                                                                 },
                                                                 child:
                                                                     Container(
@@ -651,7 +656,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                             List<CategoriesRecord>
                                                                 containerCategoriesRecordList =
                                                                 snapshot.data!;
-                                                            // Return an empty Container when the document does not exist.
+                                                            // Return an empty Container when the item does not exist.
                                                             if (snapshot.data!
                                                                 .isEmpty) {
                                                               return Container();
@@ -720,7 +725,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                                                                                 child: Container(
                                                                                   decoration: BoxDecoration(
-                                                                                    color: Colors.white,
+                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
                                                                                     borderRadius: BorderRadius.circular(10),
                                                                                   ),
                                                                                   child: Padding(
@@ -729,7 +734,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                       testCategoriesItem,
                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                             fontFamily: 'Open Sans',
-                                                                                            color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                            color: FlutterFlowTheme.of(context).primaryBackground,
                                                                                             fontSize: 16,
                                                                                           ),
                                                                                     ),
@@ -740,8 +745,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                               padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                                                                               child: InkWell(
                                                                                 onTap: () async {
-                                                                                  setState(() => FFAppState().categorypicked = testCategoriesItem);
-                                                                                  setState(() => FFAppState().allCategories = false);
+                                                                                  setState(() {
+                                                                                    FFAppState().categorypicked = testCategoriesItem;
+                                                                                    FFAppState().allCategories = false;
+                                                                                  });
                                                                                 },
                                                                                 child: Material(
                                                                                   color: Colors.transparent,
@@ -751,7 +758,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                   ),
                                                                                   child: Container(
                                                                                     decoration: BoxDecoration(
-                                                                                      color: Color(0x4EEEEEEE),
+                                                                                      color: FlutterFlowTheme.of(context).lineColor,
                                                                                       borderRadius: BorderRadius.circular(10),
                                                                                     ),
                                                                                     child: Padding(
@@ -1204,12 +1211,15 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                 InkWell(
                                                                   onTap:
                                                                       () async {
-                                                                    setState(() =>
-                                                                        FFAppState().categorypicked =
-                                                                            'All');
-                                                                    setState(() =>
-                                                                        FFAppState().allCategories =
-                                                                            true);
+                                                                    setState(
+                                                                        () {
+                                                                      FFAppState()
+                                                                              .categorypicked =
+                                                                          'All';
+                                                                      FFAppState()
+                                                                              .allCategories =
+                                                                          true;
+                                                                    });
                                                                   },
                                                                   child:
                                                                       Container(
@@ -1338,7 +1348,7 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                   containerCategoriesRecordList =
                                                                   snapshot
                                                                       .data!;
-                                                              // Return an empty Container when the document does not exist.
+                                                              // Return an empty Container when the item does not exist.
                                                               if (snapshot.data!
                                                                   .isEmpty) {
                                                                 return Container();
@@ -1423,8 +1433,10 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                                                                                 child: InkWell(
                                                                                   onTap: () async {
-                                                                                    setState(() => FFAppState().packagecategoryPicked = packageCategoriesItem);
-                                                                                    setState(() => FFAppState().allPackageCategories = false);
+                                                                                    setState(() {
+                                                                                      FFAppState().packagecategoryPicked = packageCategoriesItem;
+                                                                                      FFAppState().allPackageCategories = false;
+                                                                                    });
                                                                                   },
                                                                                   child: Material(
                                                                                     color: Colors.transparent,

@@ -7,6 +7,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class DashboardMenuWidgetLightWidget extends StatefulWidget {
   const DashboardMenuWidgetLightWidget({Key? key}) : super(key: key);
@@ -77,6 +78,8 @@ class _DashboardMenuWidgetLightWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
       child: Container(
@@ -104,7 +107,9 @@ class _DashboardMenuWidgetLightWidgetState
                 padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                 child: InkWell(
                   onTap: () async {
-                    setState(() => FFAppState().testsVar = 'previous');
+                    setState(() {
+                      FFAppState().testsVar = 'previous';
+                    });
 
                     context.pushNamed(
                       'MyBookings',
@@ -172,7 +177,9 @@ class _DashboardMenuWidgetLightWidgetState
                 padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                 child: InkWell(
                   onTap: () async {
-                    setState(() => FFAppState().testsVar = 'upcoming');
+                    setState(() {
+                      FFAppState().testsVar = 'upcoming';
+                    });
 
                     context.pushNamed(
                       'MyBookings',

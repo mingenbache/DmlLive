@@ -13,6 +13,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class PackageTestListWidget extends StatefulWidget {
   const PackageTestListWidget({Key? key}) : super(key: key);
@@ -69,6 +70,8 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       decoration: BoxDecoration(),
       child: Column(
@@ -152,8 +155,9 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                   ),
                                   onPressed: () async {
                                     Navigator.pop(context);
-                                    setState(() =>
-                                        FFAppState().categorypicked = 'All');
+                                    setState(() {
+                                      FFAppState().categorypicked = 'All';
+                                    });
                                   },
                                 ),
                               ),
@@ -308,10 +312,10 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                       FFAppState().categorypicked))
                                     InkWell(
                                       onTap: () async {
-                                        setState(() => FFAppState()
-                                            .categorypicked = 'All');
-                                        setState(() =>
-                                            FFAppState().allCategories = true);
+                                        setState(() {
+                                          FFAppState().categorypicked = 'All';
+                                          FFAppState().allCategories = true;
+                                        });
                                       },
                                       child: Container(
                                         width: 40,
@@ -420,7 +424,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                       List<CategoriesRecord>
                                           listViewCategoriesRecordList =
                                           snapshot.data!;
-                                      // Return an empty Container when the document does not exist.
+                                      // Return an empty Container when the item does not exist.
                                       if (snapshot.data!.isEmpty) {
                                         return Container();
                                       }
@@ -496,12 +500,14 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                                 10, 0, 0, 0),
                                                     child: InkWell(
                                                       onTap: () async {
-                                                        setState(() => FFAppState()
-                                                                .categorypicked =
-                                                            packageCategoriesItem);
-                                                        setState(() => FFAppState()
-                                                                .allCategories =
-                                                            false);
+                                                        setState(() {
+                                                          FFAppState()
+                                                                  .categorypicked =
+                                                              packageCategoriesItem;
+                                                          FFAppState()
+                                                                  .allCategories =
+                                                              false;
+                                                        });
                                                       },
                                                       child: Material(
                                                         color:

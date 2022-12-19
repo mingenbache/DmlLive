@@ -12,6 +12,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class AddNewTestWidget extends StatefulWidget {
   const AddNewTestWidget({
@@ -55,6 +56,8 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Form(
       key: formKey,
       autovalidateMode: AutovalidateMode.always,
@@ -1097,7 +1100,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                         child: FFButtonWidget(
                           onPressed: () async {
                             final testsCreateData = createTestsRecordData(
-                              price: int.parse(testPriceController!.text),
+                              price: int.tryParse(testPriceController!.text),
                               name: textController1!.text,
                               homeTest: atHomeToggleValue,
                               description: testDescriptionController!.text,

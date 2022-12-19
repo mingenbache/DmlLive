@@ -16,6 +16,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 class NewBookingSheetWidget extends StatefulWidget {
   const NewBookingSheetWidget({Key? key}) : super(key: key);
@@ -108,9 +109,13 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return InkWell(
       onTap: () async {
-        setState(() => FFAppState().lastBookingPage = false);
+        setState(() {
+          FFAppState().lastBookingPage = false;
+        });
       },
       child: Align(
         alignment: AlignmentDirectional(0, 1),
@@ -414,8 +419,10 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                       children: [
                                         FFButtonWidget(
                                           onPressed: () async {
-                                            setState(() => FFAppState()
-                                                .isPatient = isPatientValue!);
+                                            setState(() {
+                                              FFAppState().isPatient =
+                                                  isPatientValue!;
+                                            });
                                             await pageViewController?.nextPage(
                                               duration:
                                                   Duration(milliseconds: 300),
@@ -894,11 +901,12 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                             children: [
                                               FFButtonWidget(
                                                 onPressed: () async {
-                                                  setState(() => FFAppState()
-                                                      .lastBookingPage = true);
-                                                  setState(() =>
-                                                      FFAppState().isPatient =
-                                                          isPatientValue!);
+                                                  setState(() {
+                                                    FFAppState()
+                                                        .lastBookingPage = true;
+                                                    FFAppState().isPatient =
+                                                        isPatientValue!;
+                                                  });
                                                   await pageViewController
                                                       ?.nextPage(
                                                     duration: Duration(
@@ -1276,8 +1284,9 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                 .set(bookingsCreateData);
                             newbookingRef = BookingsRecord.getDocumentFromData(
                                 bookingsCreateData, bookingsRecordReference);
-                            setState(
-                                () => FFAppState().isPatient = isPatientValue!);
+                            setState(() {
+                              FFAppState().isPatient = isPatientValue!;
+                            });
                             if (isPatientValue!) {
                               final bookingsUpdateData =
                                   createBookingsRecordData(
@@ -1294,7 +1303,9 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                               await newbookingRef!.reference
                                   .update(bookingsUpdateData);
                             } else {
-                              setState(() => FFAppState().dobEntered = false);
+                              setState(() {
+                                FFAppState().dobEntered = false;
+                              });
                             }
 
                             final usersUpdateData = createUsersRecordData(
@@ -1302,11 +1313,12 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                               hasCurrentBooking: true,
                             );
                             await currentUserReference!.update(usersUpdateData);
-                            setState(() => FFAppState().dob =
-                                functions.returnDOBLoader(
-                                    newbookingRef, isPatientValue));
-                            setState(() => FFAppState().selectedDate =
-                                functions.getNextWeekday());
+                            setState(() {
+                              FFAppState().dob = functions.returnDOBLoader(
+                                  newbookingRef, isPatientValue);
+                              FFAppState().selectedDate =
+                                  functions.getNextWeekday();
+                            });
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
@@ -1317,8 +1329,9 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                                 backgroundColor: Color(0x00000000),
                               ),
                             );
-                            setState(
-                                () => FFAppState().lastBookingPage = false);
+                            setState(() {
+                              FFAppState().lastBookingPage = false;
+                            });
                             Navigator.pop(context);
 
                             context.goNamed(

@@ -13,6 +13,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class BookingUpdateWidget extends StatefulWidget {
   const BookingUpdateWidget({
@@ -31,6 +32,8 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: AlignmentDirectional(0, 1),
       child: StreamBuilder<BookingsRecord>(

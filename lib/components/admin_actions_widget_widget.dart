@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class AdminActionsWidgetWidget extends StatefulWidget {
   const AdminActionsWidgetWidget({Key? key}) : super(key: key);
@@ -18,6 +19,8 @@ class AdminActionsWidgetWidget extends StatefulWidget {
 class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: AlignmentDirectional(0, 0),
       child: Padding(
@@ -52,7 +55,9 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                     child: InkWell(
                       onTap: () async {
-                        setState(() => FFAppState().userListQuery = '');
+                        setState(() {
+                          FFAppState().userListQuery = '';
+                        });
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
@@ -219,9 +224,10 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                     child: InkWell(
                       onTap: () async {
-                        setState(() => FFAppState().allCategories = true);
-                        setState(
-                            () => FFAppState().allPackageCategories = true);
+                        setState(() {
+                          FFAppState().allCategories = true;
+                          FFAppState().allPackageCategories = true;
+                        });
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,

@@ -18,6 +18,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class EditTestCopyWidget extends StatefulWidget {
   const EditTestCopyWidget({
@@ -99,6 +100,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Form(
       key: formKey,
       autovalidateMode: AutovalidateMode.always,
@@ -2722,8 +2725,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                           child: FFButtonWidget(
                             onPressed: () async {
                               final testsUpdateData = createTestsRecordData(
-                                price:
-                                    int.parse(testPriceController?.text ?? ''),
+                                price: int.tryParse(
+                                    testPriceController?.text ?? ''),
                                 name: textController1?.text ?? '',
                                 homeTest: atHomeToggleValue,
                                 duration: testDurationSliderValue,
@@ -2753,6 +2756,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                   backgroundColor: Color(0x00000000),
                                 ),
                               );
+
+                              setState(() {});
                             },
                             text: 'Submit',
                             options: FFButtonOptions(

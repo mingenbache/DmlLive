@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ConfirmBookingSheetWidget extends StatefulWidget {
   const ConfirmBookingSheetWidget({
@@ -23,6 +24,8 @@ class ConfirmBookingSheetWidget extends StatefulWidget {
 class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.end,
@@ -155,8 +158,10 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
                       children: [
                         FFButtonWidget(
                           onPressed: () async {
-                            setState(() => FFAppState().isSubmitted = true);
-                            setState(() => FFAppState().lastBookingPage = true);
+                            setState(() {
+                              FFAppState().isSubmitted = true;
+                              FFAppState().lastBookingPage = true;
+                            });
                             if (FFAppState().isSubmitted) {
                               Navigator.pop(context);
                             } else {

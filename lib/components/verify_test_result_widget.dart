@@ -11,6 +11,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class VerifyTestResultWidget extends StatefulWidget {
   const VerifyTestResultWidget({
@@ -77,6 +78,8 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       decoration: BoxDecoration(),
       child: StreamBuilder<TestedTestsRecord>(

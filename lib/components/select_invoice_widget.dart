@@ -8,6 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class SelectInvoiceWidget extends StatefulWidget {
   const SelectInvoiceWidget({
@@ -24,6 +25,8 @@ class SelectInvoiceWidget extends StatefulWidget {
 class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.end,

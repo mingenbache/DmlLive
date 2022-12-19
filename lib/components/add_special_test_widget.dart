@@ -15,6 +15,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class AddSpecialTestWidget extends StatefulWidget {
   const AddSpecialTestWidget({
@@ -103,6 +104,8 @@ class _AddSpecialTestWidgetState extends State<AddSpecialTestWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Form(
       key: formKey,
       autovalidateMode: AutovalidateMode.always,
@@ -642,84 +645,91 @@ class _AddSpecialTestWidgetState extends State<AddSpecialTestWidget>
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        StreamBuilder<List<CategoriesRecord>>(
-                                          stream: queryCategoriesRecord(
-                                            queryBuilder: (categoriesRecord) =>
-                                                categoriesRecord
-                                                    .orderBy('name'),
-                                            singleRecord: true,
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.8,
+                                          height: 100,
+                                          constraints: BoxConstraints(
+                                            maxWidth: 330,
                                           ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50,
-                                                  height: 50,
-                                                  child: SpinKitRipple(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryColor,
-                                                    size: 50,
+                                          decoration: BoxDecoration(),
+                                          child: FutureBuilder<
+                                              List<CategoriesRecord>>(
+                                            future: queryCategoriesRecordOnce(
+                                              queryBuilder: (categoriesRecord) =>
+                                                  categoriesRecord
+                                                      .where(
+                                                          'ispackage_Category',
+                                                          isEqualTo: true)
+                                                      .orderBy('name'),
+                                            ),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 50,
+                                                    height: 50,
+                                                    child: SpinKitRipple(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryColor,
+                                                      size: 50,
+                                                    ),
                                                   ),
+                                                );
+                                              }
+                                              List<CategoriesRecord>
+                                                  testCategoryCategoriesRecordList =
+                                                  snapshot.data!;
+                                              return FlutterFlowDropDown<
+                                                  String>(
+                                                initialOption:
+                                                    testCategoryValue ??=
+                                                        'Uncategorized',
+                                                options:
+                                                    testCategoryCategoriesRecordList
+                                                        .map((e) => e.name!)
+                                                        .toList()
+                                                        .toList(),
+                                                onChanged: (val) => setState(
+                                                    () => testCategoryValue =
+                                                        val),
+                                                width: 150,
+                                                height: 40,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                hintText: 'Choose Category',
+                                                icon: Icon(
+                                                  Icons.keyboard_arrow_down,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  size: 15,
                                                 ),
-                                              );
-                                            }
-                                            List<CategoriesRecord>
-                                                testCategoryCategoriesRecordList =
-                                                snapshot.data!;
-                                            final testCategoryCategoriesRecord =
-                                                testCategoryCategoriesRecordList
-                                                        .isNotEmpty
-                                                    ? testCategoryCategoriesRecordList
-                                                        .first
-                                                    : null;
-                                            return FlutterFlowDropDown<String>(
-                                              initialOption:
-                                                  testCategoryValue ??=
-                                                      'Uncategorized',
-                                              options:
-                                                  testCategoryCategoriesRecord!
-                                                      .categories!
-                                                      .toList()
-                                                      .toList(),
-                                              onChanged: (val) => setState(() =>
-                                                  testCategoryValue = val),
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.4,
-                                              height: 40,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
-                                              hintText: 'Choose Category',
-                                              icon: Icon(
-                                                Icons.keyboard_arrow_down,
-                                                color:
+                                                fillColor:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
-                                                size: 15,
-                                              ),
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              elevation: 2,
-                                              borderColor: Color(0x00000000),
-                                              borderWidth: 0,
-                                              borderRadius: 10,
-                                              margin: EdgeInsetsDirectional
-                                                  .fromSTEB(8, 4, 8, 4),
-                                              hidesUnderline: true,
-                                            );
-                                          },
+                                                elevation: 2,
+                                                borderColor: Color(0x00000000),
+                                                borderWidth: 0,
+                                                borderRadius: 10,
+                                                margin: EdgeInsetsDirectional
+                                                    .fromSTEB(8, 4, 8, 4),
+                                                hidesUnderline: true,
+                                              );
+                                            },
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -1515,7 +1525,7 @@ class _AddSpecialTestWidgetState extends State<AddSpecialTestWidget>
                         child: FFButtonWidget(
                           onPressed: () async {
                             final testsCreateData = createTestsRecordData(
-                              price: int.parse(testPriceController!.text),
+                              price: int.tryParse(testPriceController!.text),
                               name: textController1!.text,
                               homeTest: atHomeToggleValue,
                               description: testDescriptionController!.text,

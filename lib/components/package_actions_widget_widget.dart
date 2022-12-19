@@ -13,6 +13,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class PackageActionsWidgetWidget extends StatefulWidget {
   const PackageActionsWidgetWidget({
@@ -75,6 +76,8 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -105,7 +108,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                   maxHeight: 80,
                 ),
                 decoration: BoxDecoration(
-                  color: Color(0xFF58585C),
+                  color: FlutterFlowTheme.of(context).primaryColor,
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Padding(
@@ -193,20 +196,21 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                                           .toList())
                                   .toList(),
                               widget.package!.testsIncluded!.toList())) {
-                            setState(() => FFAppState().duplicateTests =
-                                functions
-                                    .returnDuplicateTestsinBooking(
-                                        functions
-                                            .returnAllBookingTests(
-                                                containerBookingsRecord
-                                                    .testPackTests!
-                                                    .toList(),
-                                                containerBookingsRecord
-                                                    .testsIncluded!
-                                                    .toList())
-                                            .toList(),
-                                        widget.package!.testsIncluded!.toList())
-                                    .toList());
+                            setState(() {
+                              FFAppState().duplicateTests = functions
+                                  .returnDuplicateTestsinBooking(
+                                      functions
+                                          .returnAllBookingTests(
+                                              containerBookingsRecord
+                                                  .testPackTests!
+                                                  .toList(),
+                                              containerBookingsRecord
+                                                  .testsIncluded!
+                                                  .toList())
+                                          .toList(),
+                                      widget.package!.testsIncluded!.toList())
+                                  .toList();
+                            });
                             await showModalBottomSheet(
                               isScrollControlled: true,
                               backgroundColor: Colors.transparent,
@@ -260,7 +264,8 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                           textStyle:
                               FlutterFlowTheme.of(context).bodyText1.override(
                                     fontFamily: 'Roboto',
-                                    color: Color(0xFFBACA68),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
                                     fontWeight: FontWeight.w300,
                                   ),
                           borderSide: BorderSide(

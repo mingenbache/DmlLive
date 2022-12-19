@@ -8,12 +8,13 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class AddPaymentWIdgetWidget extends StatefulWidget {
   const AddPaymentWIdgetWidget({
@@ -174,6 +175,8 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Form(
       key: formKey,
       autovalidateMode: AutovalidateMode.disabled,
@@ -543,15 +546,23 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                       alignment: AlignmentDirectional(0, -0.1),
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          await DatePicker.showDatePicker(
-                                            context,
-                                            showTitleActions: true,
-                                            onConfirm: (date) {
-                                              setState(() => datePicked = date);
-                                            },
-                                            currentTime: getCurrentTimestamp,
-                                            minTime: DateTime(0, 0, 0),
+                                          final _datePickedDate =
+                                              await showDatePicker(
+                                            context: context,
+                                            initialDate: getCurrentTimestamp,
+                                            firstDate: DateTime(1900),
+                                            lastDate: DateTime(2050),
                                           );
+
+                                          if (_datePickedDate != null) {
+                                            setState(
+                                              () => datePicked = DateTime(
+                                                _datePickedDate.year,
+                                                _datePickedDate.month,
+                                                _datePickedDate.day,
+                                              ),
+                                            );
+                                          }
                                         },
                                         text: 'Select Date',
                                         icon: Icon(
@@ -877,7 +888,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                           createdDate: getCurrentTimestamp,
                           isApproved: false,
                           invoiceRef: widget.invoiceRef,
-                          amount: int.parse(paymentAmountController!.text),
+                          amount: int.tryParse(paymentAmountController!.text),
                           firstName: firstNameController!.text,
                           lastName: lastNameController!.text,
                           paymentNotes: paymentNoteController!.text,

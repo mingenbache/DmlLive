@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 class UploadedImageViewWidget extends StatefulWidget {
   const UploadedImageViewWidget({
@@ -24,6 +25,8 @@ class UploadedImageViewWidget extends StatefulWidget {
 class _UploadedImageViewWidgetState extends State<UploadedImageViewWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16, 8, 16, 4),
       child: Container(

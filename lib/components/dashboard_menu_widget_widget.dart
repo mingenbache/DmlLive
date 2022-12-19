@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class DashboardMenuWidgetWidget extends StatefulWidget {
   const DashboardMenuWidgetWidget({Key? key}) : super(key: key);
@@ -16,6 +17,8 @@ class DashboardMenuWidgetWidget extends StatefulWidget {
 class _DashboardMenuWidgetWidgetState extends State<DashboardMenuWidgetWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(),

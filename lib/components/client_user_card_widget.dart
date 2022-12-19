@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ClientUserCardWidget extends StatefulWidget {
   const ClientUserCardWidget({
@@ -25,6 +26,8 @@ class ClientUserCardWidget extends StatefulWidget {
 class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -139,7 +142,8 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                       child: Container(
                         decoration: BoxDecoration(),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -153,8 +157,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                     width: MediaQuery.of(context).size.width *
                                         0.75,
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
+                                      color: Color(0x86FFFFFF),
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     child: Padding(
@@ -205,8 +208,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                   width:
                                       MediaQuery.of(context).size.width * 0.75,
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                                    color: Color(0x87FFFFFF),
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Padding(
@@ -266,8 +268,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                             MediaQuery.of(context).size.width *
                                                 0.3,
                                         decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
+                                          color: Color(0x86FFFFFF),
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
@@ -329,8 +330,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                             MediaQuery.of(context).size.width *
                                                 0.3,
                                         decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
+                                          color: Color(0x87FFFFFF),
                                           borderRadius:
                                               BorderRadius.circular(12),
                                         ),
