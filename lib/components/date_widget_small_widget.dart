@@ -69,34 +69,41 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      height: 12,
-                      decoration: BoxDecoration(),
-                      child: Text(
-                        functions.dateMonth(widget.date),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Open Sans',
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                            ),
+                    Expanded(
+                      child: Container(
+                        height: 12,
+                        decoration: BoxDecoration(),
+                        child: Text(
+                          functions.dateMonth(widget.date),
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Open Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                        ),
                       ),
                     ),
-                    Container(
-                      constraints: BoxConstraints(
-                        maxHeight: 12,
-                      ),
-                      decoration: BoxDecoration(),
-                      child: Text(
-                        functions.dateYear(widget.date),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Open Sans',
-                              color:
-                                  FlutterFlowTheme.of(context).secondaryColor,
-                              fontSize: 11,
-                              fontWeight: FontWeight.w500,
-                            ),
+                    Expanded(
+                      child: Container(
+                        constraints: BoxConstraints(
+                          maxHeight: 12,
+                        ),
+                        decoration: BoxDecoration(),
+                        child: Text(
+                          functions.dateYear(widget.date),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: 'Open Sans',
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryColor,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w500,
+                              ),
+                        ),
                       ),
                     ),
                   ],
