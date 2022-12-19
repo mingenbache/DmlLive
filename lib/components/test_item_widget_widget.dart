@@ -115,16 +115,29 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Text(
-                                  functions.add1(widget.index).toString(),
-                                  style: FlutterFlowTheme.of(context)
-                                      .subtitle1
-                                      .override(
-                                        fontFamily: 'Open Sans',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        fontWeight: FontWeight.w500,
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        functions.add1(widget.index).toString(),
+                                        style: FlutterFlowTheme.of(context)
+                                            .subtitle1
+                                            .override(
+                                              fontFamily: 'Open Sans',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              fontWeight: FontWeight.w500,
+                                            ),
                                       ),
+                                    ],
+                                  ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -225,29 +238,25 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(8),
                                               ),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(7, 3, 8, 3),
-                                                child: Text(
-                                                  widget.bookedTest!.labRefNum!
-                                                      .maybeHandleOverflow(
-                                                          maxChars: 10),
-                                                  maxLines: 1,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText2
-                                                      .override(
-                                                        fontFamily:
-                                                            'Lexend Deca',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                ),
+                                              child: Text(
+                                                containerTestedTestsRecord!
+                                                    .labRefNum!
+                                                    .maybeHandleOverflow(
+                                                        maxChars: 10),
+                                                maxLines: 1,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText2
+                                                    .override(
+                                                      fontFamily: 'Lexend Deca',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
                                               ),
                                             ),
                                           ],
@@ -330,33 +339,28 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                                             BorderRadius
                                                                 .circular(8),
                                                       ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    7, 3, 8, 3),
-                                                        child: Text(
-                                                          '${functions.camelCase(containerBookingsRecord.firstname)} ${functions.camelCase(containerBookingsRecord.lastname)}'
-                                                              .maybeHandleOverflow(
-                                                            maxChars: 20,
-                                                            replacement: '…',
-                                                          ),
-                                                          maxLines: 1,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText2
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Lexend Deca',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
+                                                      child: Text(
+                                                        '${functions.camelCase(containerBookingsRecord.firstname)} ${functions.camelCase(containerBookingsRecord.lastname)}'
+                                                            .maybeHandleOverflow(
+                                                          maxChars: 20,
+                                                          replacement: '…',
                                                         ),
+                                                        maxLines: 1,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText2
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Lexend Deca',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  fontSize: 14,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
                                                       ),
                                                     );
                                                   },

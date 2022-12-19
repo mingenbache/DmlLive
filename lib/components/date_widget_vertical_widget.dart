@@ -49,43 +49,57 @@ class _DateWidgetVerticalWidgetState extends State<DateWidgetVerticalWidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(),
-                      child: Text(
-                        functions.dateMonth(widget.date),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Open Sans',
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                            ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        decoration: BoxDecoration(),
+                        child: Text(
+                          functions.upperCase(functions.dateMonth(widget.date)),
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Open Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                        ),
                       ),
                     ),
-                    Container(
-                      decoration: BoxDecoration(),
-                      child: Text(
-                        functions.dateDay(widget.date),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Open Sans',
-                              color:
-                                  FlutterFlowTheme.of(context).secondaryColor,
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600,
-                            ),
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        decoration: BoxDecoration(),
+                        child: Text(
+                          functions.dateDay(widget.date),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: 'Open Sans',
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryColor,
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600,
+                              ),
+                        ),
                       ),
                     ),
-                    Container(
-                      decoration: BoxDecoration(),
-                      child: Text(
-                        functions.dateYear(widget.date),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Open Sans',
-                              color:
-                                  FlutterFlowTheme.of(context).secondaryColor,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                            ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        decoration: BoxDecoration(),
+                        child: Text(
+                          functions.dateYear(widget.date),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: 'Open Sans',
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryColor,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              ),
+                        ),
                       ),
                     ),
                   ],

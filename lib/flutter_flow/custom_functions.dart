@@ -1560,3 +1560,18 @@ int checkAttachmentsExist(List<String>? attachments) {
   }
   return 100;
 }
+
+DocumentReference? returnTestedRef(BookedTestsRecord? bookedTest) {
+// return testedtest record where booked test reference matches and test ref matches
+  if (bookedTest == null) {
+    return null;
+  } else {
+    final dynamic result = FirebaseFirestore.instance
+        .collection('tested_tests')
+        .where('booking_ref', isEqualTo: bookedTest.bookingRef)
+        .where('test_ref', isEqualTo: bookedTest.testRef)
+        .get();
+
+    return result.docs[0].reference;
+  }
+}

@@ -198,6 +198,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                     0.4,
                                                 constraints: BoxConstraints(
                                                   maxWidth: 200,
+                                                  maxHeight: 40,
                                                 ),
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
