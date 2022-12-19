@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class PaymentActionsWidgetWidget extends StatefulWidget {
   const PaymentActionsWidgetWidget({
@@ -25,6 +26,8 @@ class _PaymentActionsWidgetWidgetState
     extends State<PaymentActionsWidgetWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<PaymentsRecord>(
       stream: PaymentsRecord.getDocument(widget.paymentRef!),
       builder: (context, snapshot) {

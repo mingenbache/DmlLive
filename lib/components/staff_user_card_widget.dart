@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class StaffUserCardWidget extends StatefulWidget {
   const StaffUserCardWidget({
@@ -25,6 +26,8 @@ class StaffUserCardWidget extends StatefulWidget {
 class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -213,7 +216,8 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -225,7 +229,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                   width:
                                       MediaQuery.of(context).size.width * 0.75,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Color(0x88FFFFFF),
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Padding(
@@ -275,7 +279,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                   width:
                                       MediaQuery.of(context).size.width * 0.75,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Color(0x86FFFFFF),
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Padding(
@@ -325,7 +329,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                   width:
                                       MediaQuery.of(context).size.width * 0.75,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: Color(0x87FFFFFF),
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Padding(

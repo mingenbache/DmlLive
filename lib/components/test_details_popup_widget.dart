@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class TestDetailsPopupWidget extends StatefulWidget {
   const TestDetailsPopupWidget({
@@ -30,6 +31,8 @@ class TestDetailsPopupWidget extends StatefulWidget {
 class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
@@ -410,8 +413,9 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                         ),
                                                         decoration:
                                                             BoxDecoration(
-                                                          color:
-                                                              Color(0x2CFFFFFF),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(12),

@@ -8,6 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class CatalogTestItemWidget extends StatefulWidget {
   const CatalogTestItemWidget({
@@ -28,6 +29,8 @@ class CatalogTestItemWidget extends StatefulWidget {
 class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<TestsRecord>(
       stream: TestsRecord.getDocument(widget.test!),
       builder: (context, snapshot) {

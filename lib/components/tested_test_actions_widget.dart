@@ -9,6 +9,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class TestedTestActionsWidget extends StatefulWidget {
   const TestedTestActionsWidget({
@@ -26,6 +27,8 @@ class TestedTestActionsWidget extends StatefulWidget {
 class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       width: 330,
       height: 90,

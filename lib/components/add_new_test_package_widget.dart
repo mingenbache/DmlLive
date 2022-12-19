@@ -17,6 +17,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class AddNewTestPackageWidget extends StatefulWidget {
   const AddNewTestPackageWidget({
@@ -93,6 +94,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Form(
       key: formKey,
       autovalidateMode: AutovalidateMode.always,
@@ -117,7 +120,7 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
             );
           }
           List<StaffRecord> columnStaffRecordList = snapshot.data!;
-          // Return an empty Container when the document does not exist.
+          // Return an empty Container when the item does not exist.
           if (snapshot.data!.isEmpty) {
             return Container();
           }
@@ -1445,9 +1448,11 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                   300),
                                                           curve: Curves.ease,
                                                         );
-                                                        setState(() => FFAppState()
-                                                                .testPackSubmit =
-                                                            true);
+                                                        setState(() {
+                                                          FFAppState()
+                                                                  .testPackSubmit =
+                                                              true;
+                                                        });
                                                       },
                                                       text: 'Continue',
                                                       options: FFButtonOptions(
@@ -1663,7 +1668,9 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                                   InkWell(
                                                                                     onTap: () async {
                                                                                       if (FFAppState().testPackTests.contains(testsListItem)) {
-                                                                                        setState(() => FFAppState().removeFromTestPackTests(testsListItem));
+                                                                                        setState(() {
+                                                                                          setState(() => FFAppState().removeFromTestPackTests(testsListItem));
+                                                                                        });
                                                                                         ScaffoldMessenger.of(context).showSnackBar(
                                                                                           SnackBar(
                                                                                             content: Text(
@@ -1718,10 +1725,11 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     5, 5, 5, 5),
                                                         child: FFButtonWidget(
                                                           onPressed: () async {
-                                                            setState(() =>
-                                                                FFAppState()
-                                                                        .allCategories =
-                                                                    true);
+                                                            setState(() {
+                                                              FFAppState()
+                                                                      .allCategories =
+                                                                  true;
+                                                            });
                                                             await showModalBottomSheet(
                                                               isScrollControlled:
                                                                   true,
@@ -1850,15 +1858,15 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                 onPressed: () async {
                                   final testPackagesCreateData = {
                                     ...createTestPackagesRecordData(
-                                      price:
-                                          int.parse(testPriceController!.text),
+                                      price: int.tryParse(
+                                          testPriceController!.text),
                                       packageName:
                                           testPackageNameController!.text,
                                       description:
                                           packageDescriptionController!.text,
-                                      duration: double.parse(
+                                      duration: double.tryParse(
                                           testDurationTextController!.text),
-                                      durationResults: double.parse(
+                                      durationResults: double.tryParse(
                                           resultsDurationTextController!.text),
                                       category: packageCategoryDropDownValue,
                                       atHome: atHomeToggleValue,

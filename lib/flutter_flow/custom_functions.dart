@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -1541,12 +1542,21 @@ List<String>? returnSpecialTests(List<String>? specialTests) {
   }
 }
 
-List<String>? removeSpecialTestsitem(
-  List<String>? specialTests,
-  int? index,
+List<String> removeSpecialTestsitem(
+  List<String> specialTests,
+  int index,
 ) {
-  if (specialTests != null && index != null) {
+  if (specialTests != null && index > -1) {
     specialTests.removeAt(index);
-    return specialTests;
+    return specialTests.toList();
+  } else
+    return specialTests.toList();
+}
+
+int checkAttachmentsExist(List<String>? attachments) {
+  // check if list is empty return 0 else return 100
+  if (attachments?.isEmpty ?? true) {
+    return 0;
   }
+  return 100;
 }

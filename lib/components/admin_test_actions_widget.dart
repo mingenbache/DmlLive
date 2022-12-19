@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class AdminTestActionsWidget extends StatefulWidget {
   const AdminTestActionsWidget({
@@ -23,6 +24,8 @@ class AdminTestActionsWidget extends StatefulWidget {
 class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Material(
       color: Colors.transparent,
       elevation: 2,
@@ -64,7 +67,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                       maxHeight: 80,
                     ),
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryColor,
+                      color: FlutterFlowTheme.of(context).primaryColor,
                       borderRadius: BorderRadius.circular(28),
                     ),
                     child: Column(
@@ -114,7 +117,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                       Icon(
                                         Icons.edit,
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .primaryBackground,
                                         size: 20,
                                       ),
                                       Row(
@@ -134,7 +137,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                     fontFamily: 'Open Sans',
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .tertiaryColor,
+                                                        .primaryBackground,
                                                     fontWeight: FontWeight.w300,
                                                   ),
                                             ),
@@ -227,7 +230,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                     .motion_photos_paused_sharp,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
+                                                        .primaryBackground,
                                                 size: 20,
                                               ),
                                               Row(
@@ -250,7 +253,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                                     'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .tertiaryColor,
+                                                                    .primaryBackground,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w300,
@@ -352,7 +355,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                 Icons.motion_photos_pause_sharp,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
+                                                        .primaryBackground,
                                                 size: 20,
                                               ),
                                               Row(
@@ -375,7 +378,7 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
                                                                     'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .tertiaryColor,
+                                                                    .primaryBackground,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w300,

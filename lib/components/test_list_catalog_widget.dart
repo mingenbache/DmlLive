@@ -15,6 +15,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class TestListCatalogWidget extends StatefulWidget {
   const TestListCatalogWidget({Key? key}) : super(key: key);
@@ -81,6 +82,8 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       decoration: BoxDecoration(),
       child: Column(
@@ -179,14 +182,15 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                   ),
                                   onPressed: () async {
                                     Navigator.pop(context);
-                                    setState(() =>
-                                        FFAppState().categorypicked = 'All');
-                                    setState(() =>
-                                        FFAppState().allCategories = true);
-                                    setState(() => FFAppState()
-                                        .allPackageCategories = true);
-                                    setState(() => FFAppState()
-                                        .packagecategoryPicked = 'All');
+                                    setState(() {
+                                      FFAppState().categorypicked = 'All';
+                                      FFAppState().allCategories = true;
+                                    });
+                                    setState(() {
+                                      FFAppState().allPackageCategories = true;
+                                      FFAppState().packagecategoryPicked =
+                                          'All';
+                                    });
                                   },
                                 ),
                               ),
@@ -467,14 +471,14 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       10, 0, 0),
                                                           child: InkWell(
                                                             onTap: () async {
-                                                              setState(() =>
-                                                                  FFAppState()
-                                                                          .categorypicked =
-                                                                      'All');
-                                                              setState(() =>
-                                                                  FFAppState()
-                                                                          .allCategories =
-                                                                      true);
+                                                              setState(() {
+                                                                FFAppState()
+                                                                        .categorypicked =
+                                                                    'All';
+                                                                FFAppState()
+                                                                        .allCategories =
+                                                                    true;
+                                                              });
                                                             },
                                                             child: Container(
                                                               width: 40,
@@ -626,7 +630,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                         List<CategoriesRecord>
                                                             listViewCategoriesRecordList =
                                                             snapshot.data!;
-                                                        // Return an empty Container when the document does not exist.
+                                                        // Return an empty Container when the item does not exist.
                                                         if (snapshot
                                                             .data!.isEmpty) {
                                                           return Container();
@@ -709,10 +713,13 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                           InkWell(
                                                                         onTap:
                                                                             () async {
-                                                                          setState(() =>
-                                                                              FFAppState().categorypicked = testCategoriesItem);
-                                                                          setState(() =>
-                                                                              FFAppState().allCategories = false);
+                                                                          setState(
+                                                                              () {
+                                                                            FFAppState().categorypicked =
+                                                                                testCategoriesItem;
+                                                                            FFAppState().allCategories =
+                                                                                false;
+                                                                          });
                                                                         },
                                                                         child:
                                                                             Container(
@@ -1171,14 +1178,14 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                       10, 0, 0),
                                                           child: InkWell(
                                                             onTap: () async {
-                                                              setState(() =>
-                                                                  FFAppState()
-                                                                          .allPackageCategories =
-                                                                      true);
-                                                              setState(() =>
-                                                                  FFAppState()
-                                                                          .packagecategoryPicked =
-                                                                      'all');
+                                                              setState(() {
+                                                                FFAppState()
+                                                                        .allPackageCategories =
+                                                                    true;
+                                                                FFAppState()
+                                                                        .packagecategoryPicked =
+                                                                    'all';
+                                                              });
                                                             },
                                                             child: Container(
                                                               width: 40,
@@ -1330,7 +1337,7 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                         List<CategoriesRecord>
                                                             listViewCategoriesRecordList =
                                                             snapshot.data!;
-                                                        // Return an empty Container when the document does not exist.
+                                                        // Return an empty Container when the item does not exist.
                                                         if (snapshot
                                                             .data!.isEmpty) {
                                                           return Container();
@@ -1375,10 +1382,13 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
                                                                           InkWell(
                                                                         onTap:
                                                                             () async {
-                                                                          setState(() =>
-                                                                              FFAppState().packagecategoryPicked = packagecategoriesItem);
-                                                                          setState(() =>
-                                                                              FFAppState().allPackageCategories = false);
+                                                                          setState(
+                                                                              () {
+                                                                            FFAppState().packagecategoryPicked =
+                                                                                packagecategoriesItem;
+                                                                            FFAppState().allPackageCategories =
+                                                                                false;
+                                                                          });
                                                                         },
                                                                         child:
                                                                             Container(

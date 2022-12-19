@@ -13,6 +13,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class BookingViewWidgetWidget extends StatefulWidget {
   const BookingViewWidgetWidget({
@@ -66,6 +67,8 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: AlignmentDirectional(0, 0),
       child: InkWell(
@@ -671,7 +674,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                                                                 );
                                                                               }
                                                                               List<TestedTestsRecord> testVerifiedTestedTestsRecordList = snapshot.data!;
-                                                                              // Return an empty Container when the document does not exist.
+                                                                              // Return an empty Container when the item does not exist.
                                                                               if (snapshot.data!.isEmpty) {
                                                                                 return Container();
                                                                               }

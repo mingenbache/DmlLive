@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class SettingsWidget extends StatefulWidget {
   const SettingsWidget({Key? key}) : super(key: key);
@@ -21,6 +22,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       body: SafeArea(
@@ -191,7 +194,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   ),
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.9,
-                    height: 100,
+                    height: 110,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).primaryText,
                       borderRadius: BorderRadius.circular(12),
@@ -207,6 +210,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               fontFamily: 'Open Sans',
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
                             ),
                       ),
                       subtitle: Text(
@@ -237,7 +242,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   ),
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.9,
-                    height: 100,
+                    height: 110,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).primaryText,
                       borderRadius: BorderRadius.circular(12),
@@ -253,6 +258,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               fontFamily: 'Open Sans',
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
+                              fontWeight: FontWeight.bold,
                             ),
                       ),
                       subtitle: Text(
@@ -289,7 +295,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   ),
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.9,
-                    height: 100,
+                    height: 120,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).primaryText,
                       borderRadius: BorderRadius.circular(12),
@@ -305,6 +311,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               fontFamily: 'Open Sans',
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
+                              fontWeight: FontWeight.bold,
                             ),
                       ),
                       subtitle: Text(

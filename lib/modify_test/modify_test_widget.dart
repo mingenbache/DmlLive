@@ -10,6 +10,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ModifyTestWidget extends StatefulWidget {
   const ModifyTestWidget({
@@ -56,6 +57,8 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<TestsRecord>(
       stream: TestsRecord.getDocument(widget.testId!),
       builder: (context, snapshot) {
@@ -849,14 +852,15 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                         child: FFButtonWidget(
                           onPressed: () async {
                             final testsUpdateData = createTestsRecordData(
-                              price: int.parse(testPriceController?.text ?? ''),
+                              price:
+                                  int.tryParse(testPriceController?.text ?? ''),
                               name: testNameController?.text ?? '',
                               homeTest: atHomeToggleValue,
                               description:
                                   testDescriptionController?.text ?? '',
-                              duration: double.parse(
+                              duration: double.tryParse(
                                   testDurationTextController?.text ?? ''),
-                              durationResults: double.parse(
+                              durationResults: double.tryParse(
                                   resultsDurationTextController?.text ?? ''),
                             );
                             await modifyTestTestsRecord.reference
@@ -881,6 +885,8 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 ),
                               }.withoutNulls,
                             );
+
+                            setState(() {});
                           },
                           text: 'Update Test',
                           options: FFButtonOptions(

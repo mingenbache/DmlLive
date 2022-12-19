@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ClientActionsWidgetWidget extends StatefulWidget {
   const ClientActionsWidgetWidget({Key? key}) : super(key: key);
@@ -17,6 +18,8 @@ class ClientActionsWidgetWidget extends StatefulWidget {
 class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(5, 5, 5, 5),
       child: Container(
@@ -45,7 +48,9 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                 child: InkWell(
                   onTap: () async {
-                    setState(() => FFAppState().userListQuery = '');
+                    setState(() {
+                      FFAppState().userListQuery = '';
+                    });
 
                     context.pushNamed('UserList');
                   },
@@ -184,7 +189,9 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(3, 3, 3, 3),
                 child: InkWell(
                   onTap: () async {
-                    setState(() => FFAppState().allCategories = true);
+                    setState(() {
+                      FFAppState().allCategories = true;
+                    });
                     await showModalBottomSheet(
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,

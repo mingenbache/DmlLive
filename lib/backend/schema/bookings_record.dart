@@ -128,6 +128,8 @@ abstract class BookingsRecord
 
   BuiltList<String>? get specialTests;
 
+  BuiltList<DocumentReference>? get bookedSpecialTests;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -172,7 +174,8 @@ abstract class BookingsRecord
     ..flaggedTests = ListBuilder()
     ..frozenTests = ListBuilder()
     ..formImages = ListBuilder()
-    ..specialTests = ListBuilder();
+    ..specialTests = ListBuilder()
+    ..bookedSpecialTests = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('bookings');
@@ -287,7 +290,8 @@ Map<String, dynamic> createBookingsRecordData({
         ..flaggedTests = null
         ..frozenTests = null
         ..formImages = null
-        ..specialTests = null,
+        ..specialTests = null
+        ..bookedSpecialTests = null,
     ),
   );
 

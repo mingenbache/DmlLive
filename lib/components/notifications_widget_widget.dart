@@ -9,6 +9,7 @@ import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class NotificationsWidgetWidget extends StatefulWidget {
   const NotificationsWidgetWidget({Key? key}) : super(key: key);
@@ -21,6 +22,8 @@ class NotificationsWidgetWidget extends StatefulWidget {
 class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: AlignmentDirectional(0, 0),
       child: Container(
@@ -164,7 +167,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                             width: MediaQuery.of(context).size.width * 0.9,
                             height: 100,
                             constraints: BoxConstraints(
-                              maxWidth: 380,
+                              maxWidth: 360,
                             ),
                             decoration: BoxDecoration(),
                             child: Padding(
@@ -295,36 +298,42 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                               borderRadius: BorderRadius.circular(12),
                                                                             ),
                                                                             child:
-                                                                                Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
-                                                                              child: StreamBuilder<UsersRecord>(
-                                                                                stream: UsersRecord.getDocument(columnChatsRecord.lastMessageSentBy!),
-                                                                                builder: (context, snapshot) {
-                                                                                  // Customize what your widget looks like when it's loading.
-                                                                                  if (!snapshot.hasData) {
-                                                                                    return Center(
-                                                                                      child: SizedBox(
-                                                                                        width: 50,
-                                                                                        height: 50,
-                                                                                        child: SpinKitRipple(
-                                                                                          color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                          size: 50,
-                                                                                        ),
-                                                                                      ),
-                                                                                    );
-                                                                                  }
-                                                                                  final textUsersRecord = snapshot.data!;
-                                                                                  return Text(
-                                                                                    '${textUsersRecord.firstName} ${textUsersRecord.lastName}',
-                                                                                    textAlign: TextAlign.center,
-                                                                                    style: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                          fontFamily: 'Open Sans',
-                                                                                          fontSize: 11,
-                                                                                          fontWeight: FontWeight.normal,
-                                                                                        ),
-                                                                                  );
-                                                                                },
-                                                                              ),
+                                                                                Row(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              mainAxisAlignment: MainAxisAlignment.center,
+                                                                              children: [
+                                                                                Expanded(
+                                                                                  child: StreamBuilder<UsersRecord>(
+                                                                                    stream: UsersRecord.getDocument(columnChatsRecord.lastMessageSentBy!),
+                                                                                    builder: (context, snapshot) {
+                                                                                      // Customize what your widget looks like when it's loading.
+                                                                                      if (!snapshot.hasData) {
+                                                                                        return Center(
+                                                                                          child: SizedBox(
+                                                                                            width: 50,
+                                                                                            height: 50,
+                                                                                            child: SpinKitRipple(
+                                                                                              color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                              size: 50,
+                                                                                            ),
+                                                                                          ),
+                                                                                        );
+                                                                                      }
+                                                                                      final textUsersRecord = snapshot.data!;
+                                                                                      return Text(
+                                                                                        '${textUsersRecord.firstName} ${textUsersRecord.lastName}',
+                                                                                        textAlign: TextAlign.center,
+                                                                                        maxLines: 1,
+                                                                                        style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                              fontFamily: 'Open Sans',
+                                                                                              fontSize: 12,
+                                                                                              fontWeight: FontWeight.normal,
+                                                                                            ),
+                                                                                      );
+                                                                                    },
+                                                                                  ),
+                                                                                ),
+                                                                              ],
                                                                             ),
                                                                           ),
                                                                         ),

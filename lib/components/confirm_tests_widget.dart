@@ -16,6 +16,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ConfirmTestsWidget extends StatefulWidget {
   const ConfirmTestsWidget({
@@ -91,6 +92,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
   String? pathologistValue;
   TextEditingController? labReferenceController;
   BookedTestsRecord? newTestPackBookedTest;
+  SpecialTestsRecord? newSpecialTest;
 
   @override
   void initState() {
@@ -113,6 +115,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<BookingsRecord>(
       stream: BookingsRecord.getDocument(widget.booking!),
       builder: (context, snapshot) {
@@ -135,10 +139,11 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              StreamBuilder<List<StaffRecord>>(
-                stream: queryStaffRecord(
-                  queryBuilder: (staffRecord) =>
-                      staffRecord.where('role', isEqualTo: 'pathologist'),
+              FutureBuilder<List<StaffRecord>>(
+                future: queryStaffRecordOnce(
+                  queryBuilder: (staffRecord) => staffRecord.where('UserRef',
+                      isEqualTo: currentUserReference),
+                  singleRecord: true,
                 ),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
@@ -156,6 +161,14 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                   }
                   List<StaffRecord> testConfirmationStaffRecordList =
                       snapshot.data!;
+                  // Return an empty Container when the item does not exist.
+                  if (snapshot.data!.isEmpty) {
+                    return Container();
+                  }
+                  final testConfirmationStaffRecord =
+                      testConfirmationStaffRecordList.isNotEmpty
+                          ? testConfirmationStaffRecordList.first
+                          : null;
                   return Material(
                     color: Colors.transparent,
                     elevation: 3,
@@ -328,43 +341,68 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                             Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 16, 0, 10),
-                              child: FlutterFlowDropDown<String>(
-                                options: testConfirmationStaffRecordList
-                                    .map((e) => e.displayName!)
-                                    .toList()
-                                    .toList(),
-                                onChanged: (val) =>
-                                    setState(() => pathologistValue = val),
-                                width: MediaQuery.of(context).size.width * 0.9,
-                                height: 60,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .bodyText1
-                                    .override(
-                                      fontFamily: 'Lexend Deca',
+                              child: FutureBuilder<List<StaffRecord>>(
+                                future: queryStaffRecordOnce(
+                                  queryBuilder: (staffRecord) => staffRecord
+                                      .where('role', isEqualTo: 'pathologist'),
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50,
+                                        height: 50,
+                                        child: SpinKitRipple(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                          size: 50,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  List<StaffRecord> pathologistStaffRecordList =
+                                      snapshot.data!;
+                                  return FlutterFlowDropDown<String>(
+                                    options: pathologistStaffRecordList
+                                        .map((e) => e.displayName!)
+                                        .toList()
+                                        .toList(),
+                                    onChanged: (val) =>
+                                        setState(() => pathologistValue = val),
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.9,
+                                    height: 60,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Lexend Deca',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                    hintText: 'choose pathologist',
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_down_rounded,
                                       color: FlutterFlowTheme.of(context)
                                           .primaryText,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.normal,
+                                      size: 15,
                                     ),
-                                hintText: 'choose pathologist',
-                                icon: Icon(
-                                  Icons.keyboard_arrow_down_rounded,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 15,
-                                ),
-                                fillColor: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                elevation: 2,
-                                borderColor:
-                                    FlutterFlowTheme.of(context).primaryText,
-                                borderWidth: 2,
-                                borderRadius: 8,
-                                margin: EdgeInsetsDirectional.fromSTEB(
-                                    20, 20, 12, 20),
-                                hidesUnderline: true,
-                              ).animateOnPageLoad(animationsMap[
-                                  'dropDownOnPageLoadAnimation']!),
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    elevation: 2,
+                                    borderColor: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    borderWidth: 2,
+                                    borderRadius: 8,
+                                    margin: EdgeInsetsDirectional.fromSTEB(
+                                        20, 20, 12, 20),
+                                    hidesUnderline: true,
+                                  ).animateOnPageLoad(animationsMap[
+                                      'dropDownOnPageLoadAnimation']!);
+                                },
+                              ),
                             ),
                             Divider(
                               thickness: 1,
@@ -789,7 +827,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                                     );
                                                                                                   }
                                                                                                   List<BookedTestsRecord> iconCheckedBookedTestsRecordList = snapshot.data!;
-                                                                                                  // Return an empty Container when the document does not exist.
+                                                                                                  // Return an empty Container when the item does not exist.
                                                                                                   if (snapshot.data!.isEmpty) {
                                                                                                     return Container();
                                                                                                   }
@@ -1062,7 +1100,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                           iconCheckedBookedTestsRecordList =
                                                                           snapshot
                                                                               .data!;
-                                                                      // Return an empty Container when the document does not exist.
+                                                                      // Return an empty Container when the item does not exist.
                                                                       if (snapshot
                                                                           .data!
                                                                           .isEmpty) {
@@ -1128,89 +1166,181 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0, 0, 0, 4),
-                                          child: Container(
-                                            width: 100,
-                                            height: 45,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xFFECECEC),
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                            ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(10, 0, 10, 0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Container(
-                                                    width: 280,
-                                                    constraints: BoxConstraints(
-                                                      maxWidth: 280,
+                                          child: InkWell(
+                                            onTap: () async {
+                                              final specialTestsCreateData =
+                                                  createSpecialTestsRecordData(
+                                                name: specialTestsListItem,
+                                                stringListIndex:
+                                                    specialTestsListIndex,
+                                                bookingRef:
+                                                    confirmTestsSheetBookingsRecord
+                                                        .reference,
+                                                createdDate:
+                                                    getCurrentTimestamp,
+                                                scheduledDate:
+                                                    confirmTestsSheetBookingsRecord
+                                                        .scheduledDate,
+                                                createdBy:
+                                                    testConfirmationStaffRecord!
+                                                        .reference,
+                                              );
+                                              var specialTestsRecordReference =
+                                                  SpecialTestsRecord.collection
+                                                      .doc();
+                                              await specialTestsRecordReference
+                                                  .set(specialTestsCreateData);
+                                              newSpecialTest = SpecialTestsRecord
+                                                  .getDocumentFromData(
+                                                      specialTestsCreateData,
+                                                      specialTestsRecordReference);
+
+                                              setState(() {});
+                                            },
+                                            child: Container(
+                                              width: 100,
+                                              height: 45,
+                                              decoration: BoxDecoration(
+                                                color: Color(0xFFECECEC),
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(10, 0, 10, 0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Container(
+                                                      width: 280,
+                                                      constraints:
+                                                          BoxConstraints(
+                                                        maxWidth: 280,
+                                                      ),
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            'Test Name',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyText1
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  fontSize: 18,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
-                                                    decoration: BoxDecoration(),
-                                                    child: Row(
+                                                    Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        Text(
-                                                          'Test Name',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyText1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
+                                                        Container(
+                                                          width: 30,
+                                                          height: 30,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Color(
+                                                                0xFFEEEEEE),
+                                                          ),
+                                                          child: Stack(
+                                                            children: [
+                                                              Icon(
+                                                                Icons
+                                                                    .check_box_outline_blank_sharp,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryText,
-                                                                fontSize: 18,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
+                                                                    .secondaryColor,
+                                                                size: 30,
                                                               ),
+                                                              StreamBuilder<
+                                                                  List<
+                                                                      SpecialTestsRecord>>(
+                                                                stream:
+                                                                    querySpecialTestsRecord(
+                                                                  queryBuilder: (specialTestsRecord) => specialTestsRecord
+                                                                      .where(
+                                                                          'booking_ref',
+                                                                          isEqualTo: confirmTestsSheetBookingsRecord
+                                                                              .reference)
+                                                                      .where(
+                                                                          'name',
+                                                                          isEqualTo: specialTestsListItem != ''
+                                                                              ? specialTestsListItem
+                                                                              : null),
+                                                                  singleRecord:
+                                                                      true,
+                                                                ),
+                                                                builder: (context,
+                                                                    snapshot) {
+                                                                  // Customize what your widget looks like when it's loading.
+                                                                  if (!snapshot
+                                                                      .hasData) {
+                                                                    return Center(
+                                                                      child:
+                                                                          SizedBox(
+                                                                        width:
+                                                                            50,
+                                                                        height:
+                                                                            50,
+                                                                        child:
+                                                                            SpinKitRipple(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryColor,
+                                                                          size:
+                                                                              50,
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  }
+                                                                  List<SpecialTestsRecord>
+                                                                      iconCheckedSpecialTestsRecordList =
+                                                                      snapshot
+                                                                          .data!;
+                                                                  // Return an empty Container when the item does not exist.
+                                                                  if (snapshot
+                                                                      .data!
+                                                                      .isEmpty) {
+                                                                    return Container();
+                                                                  }
+                                                                  final iconCheckedSpecialTestsRecord = iconCheckedSpecialTestsRecordList
+                                                                          .isNotEmpty
+                                                                      ? iconCheckedSpecialTestsRecordList
+                                                                          .first
+                                                                      : null;
+                                                                  return Icon(
+                                                                    Icons
+                                                                        .check_box_outlined,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                    size: 30,
+                                                                  );
+                                                                },
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
                                                       ],
                                                     ),
-                                                  ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Container(
-                                                        width: 30,
-                                                        height: 30,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color:
-                                                              Color(0xFFEEEEEE),
-                                                        ),
-                                                        child: Stack(
-                                                          children: [
-                                                            Icon(
-                                                              Icons
-                                                                  .check_box_outline_blank_sharp,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryColor,
-                                                              size: 30,
-                                                            ),
-                                                            Icon(
-                                                              Icons
-                                                                  .check_box_outlined,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                              size: 30,
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1288,8 +1418,9 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                           : null;
                                   return FFButtonWidget(
                                     onPressed: () async {
-                                      setState(() => FFAppState()
-                                          .proceedconfirmation = true);
+                                      setState(() {
+                                        FFAppState().proceedconfirmation = true;
+                                      });
                                       if (functions.checktestsListsEqual(
                                           confirmTestsSheetBookingsRecord
                                               .testsIncluded!

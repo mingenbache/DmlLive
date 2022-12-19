@@ -9,6 +9,7 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class InvoiceWidget extends StatefulWidget {
   const InvoiceWidget({
@@ -27,6 +28,8 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<InvoicesRecord>(
       stream: InvoicesRecord.getDocument(widget.invoiceRef!),
       builder: (context, snapshot) {

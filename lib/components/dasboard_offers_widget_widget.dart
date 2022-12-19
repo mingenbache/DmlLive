@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class DasboardOffersWidgetWidget extends StatefulWidget {
   const DasboardOffersWidgetWidget({Key? key}) : super(key: key);
@@ -16,6 +17,8 @@ class _DasboardOffersWidgetWidgetState
     extends State<DasboardOffersWidgetWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: AlignmentDirectional(0, 0),
       child: Padding(

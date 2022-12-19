@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class BookedTestsWidget extends StatefulWidget {
   const BookedTestsWidget({
@@ -24,6 +25,8 @@ class BookedTestsWidget extends StatefulWidget {
 class _BookedTestsWidgetState extends State<BookedTestsWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
       child: StreamBuilder<List<BookedTestsRecord>>(

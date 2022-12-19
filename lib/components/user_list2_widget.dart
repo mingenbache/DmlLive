@@ -11,6 +11,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class UserList2Widget extends StatefulWidget {
   const UserList2Widget({Key? key}) : super(key: key);
@@ -36,6 +37,8 @@ class _UserList2WidgetState extends State<UserList2Widget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).primaryColor,
@@ -138,8 +141,9 @@ class _UserList2WidgetState extends State<UserList2Widget> {
                                         size: 30,
                                       ),
                                       onPressed: () async {
-                                        setState(() => FFAppState()
-                                            .categorypicked = 'All');
+                                        setState(() {
+                                          FFAppState().categorypicked = 'All';
+                                        });
                                         Navigator.pop(context);
                                       },
                                     ),

@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ReportPaymentsListWidget extends StatefulWidget {
   const ReportPaymentsListWidget({
@@ -23,6 +24,8 @@ class ReportPaymentsListWidget extends StatefulWidget {
 class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       width: MediaQuery.of(context).size.width,
       constraints: BoxConstraints(

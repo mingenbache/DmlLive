@@ -17,6 +17,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class HomeCopyWidget extends StatefulWidget {
   const HomeCopyWidget({Key? key}) : super(key: key);
@@ -75,6 +76,8 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: AlignmentDirectional(-0.05, 0),
       child: Padding(
@@ -102,7 +105,9 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                 visible: !homeCopyUsersRecord.isStaff!,
                 child: FloatingActionButton.extended(
                   onPressed: () async {
-                    setState(() => FFAppState().lastBookingPage = false);
+                    setState(() {
+                      FFAppState().lastBookingPage = false;
+                    });
                     if (homeCopyUsersRecord.hasCurrentBooking!) {
                       context.pushNamed(
                         'NewBooking',
@@ -568,7 +573,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                           iconButtonUsersRecordList =
                                                                           snapshot
                                                                               .data!;
-                                                                      // Return an empty Container when the document does not exist.
+                                                                      // Return an empty Container when the item does not exist.
                                                                       if (snapshot
                                                                           .data!
                                                                           .isEmpty) {
@@ -894,8 +899,10 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                         children: [
                                           InkWell(
                                             onTap: () async {
-                                              setState(() => FFAppState()
-                                                  .testsVar = 'upcoming');
+                                              setState(() {
+                                                FFAppState().testsVar =
+                                                    'upcoming';
+                                              });
 
                                               context.pushNamed(
                                                 'MyBookings',
@@ -1069,8 +1076,10 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                           ),
                                           InkWell(
                                             onTap: () async {
-                                              setState(() => FFAppState()
-                                                  .paymentsvar = 'invoices');
+                                              setState(() {
+                                                FFAppState().paymentsvar =
+                                                    'invoices';
+                                              });
 
                                               context.pushNamed('myPayments');
                                             },

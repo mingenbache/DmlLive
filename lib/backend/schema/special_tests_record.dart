@@ -52,6 +52,8 @@ abstract class SpecialTestsRecord
 
   String? get category;
 
+  int? get stringListIndex;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -65,7 +67,8 @@ abstract class SpecialTestsRecord
     ..resultSubmitted = false
     ..description = ''
     ..testAtHome = false
-    ..category = '';
+    ..category = ''
+    ..stringListIndex = 0;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('special_tests');
@@ -105,6 +108,7 @@ Map<String, dynamic> createSpecialTestsRecordData({
   String? description,
   bool? testAtHome,
   String? category,
+  int? stringListIndex,
 }) {
   final firestoreData = serializers.toFirestore(
     SpecialTestsRecord.serializer,
@@ -124,7 +128,8 @@ Map<String, dynamic> createSpecialTestsRecordData({
         ..createdDate = createdDate
         ..description = description
         ..testAtHome = testAtHome
-        ..category = category,
+        ..category = category
+        ..stringListIndex = stringListIndex,
     ),
   );
 

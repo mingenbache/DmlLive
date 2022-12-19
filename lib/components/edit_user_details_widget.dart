@@ -6,11 +6,12 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class EditUserDetailsWidget extends StatefulWidget {
   const EditUserDetailsWidget({Key? key}) : super(key: key);
@@ -55,6 +56,8 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<UsersRecord>(
       stream: UsersRecord.getDocument(currentUserReference!),
       builder: (context, snapshot) {
@@ -438,16 +441,24 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 5, 5, 5),
                                 child: InkWell(
                                   onTap: () async {
-                                    await DatePicker.showDatePicker(
-                                      context,
-                                      showTitleActions: true,
-                                      onConfirm: (date) {
-                                        setState(() => datePicked = date);
-                                      },
-                                      currentTime:
+                                    final _datePickedDate =
+                                        await showDatePicker(
+                                      context: context,
+                                      initialDate:
                                           editUserDetailsUsersRecord.dOB!,
-                                      minTime: DateTime(0, 0, 0),
+                                      firstDate: DateTime(1900),
+                                      lastDate: DateTime(2050),
                                     );
+
+                                    if (_datePickedDate != null) {
+                                      setState(
+                                        () => datePicked = DateTime(
+                                          _datePickedDate.year,
+                                          _datePickedDate.month,
+                                          _datePickedDate.day,
+                                        ),
+                                      );
+                                    }
                                   },
                                   child: Container(
                                     width:

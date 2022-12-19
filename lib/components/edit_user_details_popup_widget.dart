@@ -7,11 +7,12 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class EditUserDetailsPopupWidget extends StatefulWidget {
   const EditUserDetailsPopupWidget({
@@ -46,6 +47,8 @@ class _EditUserDetailsPopupWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.end,
@@ -808,19 +811,26 @@ class _EditUserDetailsPopupWidgetState
                                                   AlignmentDirectional(0, -0.1),
                                               child: FFButtonWidget(
                                                 onPressed: () async {
-                                                  await DatePicker
-                                                      .showDatePicker(
-                                                    context,
-                                                    showTitleActions: true,
-                                                    onConfirm: (date) {
-                                                      setState(() =>
-                                                          datePicked = date);
-                                                    },
-                                                    currentTime:
+                                                  final _datePickedDate =
+                                                      await showDatePicker(
+                                                    context: context,
+                                                    initialDate:
                                                         editUserContainerUsersRecord
                                                             .dOB!,
-                                                    minTime: DateTime(0, 0, 0),
+                                                    firstDate: DateTime(1900),
+                                                    lastDate: DateTime(2050),
                                                   );
+
+                                                  if (_datePickedDate != null) {
+                                                    setState(
+                                                      () =>
+                                                          datePicked = DateTime(
+                                                        _datePickedDate.year,
+                                                        _datePickedDate.month,
+                                                        _datePickedDate.day,
+                                                      ),
+                                                    );
+                                                  }
                                                 },
                                                 text: dateTimeFormat(
                                                     'd/M/y',

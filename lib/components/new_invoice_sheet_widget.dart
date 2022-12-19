@@ -7,10 +7,11 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class NewInvoiceSheetWidget extends StatefulWidget {
   const NewInvoiceSheetWidget({
@@ -40,6 +41,8 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Form(
       key: formKey,
       autovalidateMode: AutovalidateMode.always,
@@ -1701,23 +1704,30 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                   AlignmentDirectional(0, -0.1),
                                               child: FFButtonWidget(
                                                 onPressed: () async {
-                                                  await DatePicker
-                                                      .showDatePicker(
-                                                    context,
-                                                    showTitleActions: true,
-                                                    onConfirm: (date) {
-                                                      setState(() =>
-                                                          datePicked = date);
-                                                    },
-                                                    currentTime:
+                                                  final _datePickedDate =
+                                                      await showDatePicker(
+                                                    context: context,
+                                                    initialDate:
                                                         getCurrentTimestamp,
-                                                    minTime:
+                                                    firstDate:
                                                         getCurrentTimestamp,
+                                                    lastDate: DateTime(2050),
                                                   );
 
-                                                  setState(() => FFAppState()
-                                                          .selectedDate =
-                                                      datePicked);
+                                                  if (_datePickedDate != null) {
+                                                    setState(
+                                                      () =>
+                                                          datePicked = DateTime(
+                                                        _datePickedDate.year,
+                                                        _datePickedDate.month,
+                                                        _datePickedDate.day,
+                                                      ),
+                                                    );
+                                                  }
+                                                  setState(() {
+                                                    FFAppState().selectedDate =
+                                                        datePicked;
+                                                  });
                                                 },
                                                 text: functions
                                                     .scheduleButtonString(
@@ -1793,7 +1803,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                   paymentSubmitted: false,
                                   fullAmount:
                                       functions.invoiceFullAmountBooking(
-                                          double.parse(
+                                          double.tryParse(
                                               invoiceAmountController?.text ??
                                                   ''),
                                           bookingInvoicingContentBookingsRecord
@@ -1805,7 +1815,7 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                   bookingRef:
                                       bookingInvoicingContentBookingsRecord
                                           .reference,
-                                  amountDue: double.parse(
+                                  amountDue: double.tryParse(
                                       invoiceAmountController?.text ?? ''),
                                   user: currentUserReference,
                                   dueDate:

@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:provider/provider.dart';
 
 class PaymentSelectInvoicePopupWidget extends StatefulWidget {
   const PaymentSelectInvoicePopupWidget({Key? key}) : super(key: key);
@@ -33,9 +34,13 @@ class _PaymentSelectInvoicePopupWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return InkWell(
       onTap: () async {
-        setState(() => FFAppState().lastBookingPage = false);
+        setState(() {
+          FFAppState().lastBookingPage = false;
+        });
       },
       child: Align(
         alignment: AlignmentDirectional(0, 0.9),

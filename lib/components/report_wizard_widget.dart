@@ -21,6 +21,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ReportWizardWidget extends StatefulWidget {
   const ReportWizardWidget({
@@ -117,6 +118,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Form(
       key: formKey,
       autovalidateMode: AutovalidateMode.disabled,
@@ -386,19 +389,19 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                           child: FFButtonWidget(
                                                             onPressed:
                                                                 () async {
-                                                              setState(() =>
-                                                                  FFAppState()
-                                                                          .reportLastPage =
-                                                                      false);
-                                                              setState(() =>
-                                                                  FFAppState()
-                                                                          .reportEmails =
-                                                                      []);
-                                                              setState(() => FFAppState()
-                                                                  .reportEmails
-                                                                  .add(widget
-                                                                      .booking!
-                                                                      .emailaddress!));
+                                                              setState(() {
+                                                                FFAppState()
+                                                                        .reportLastPage =
+                                                                    false;
+                                                                FFAppState()
+                                                                    .reportEmails = [];
+                                                              });
+                                                              setState(() {
+                                                                setState(() => FFAppState()
+                                                                    .addToReportEmails(widget
+                                                                        .booking!
+                                                                        .emailaddress!));
+                                                              });
                                                               await pageViewController
                                                                   ?.nextPage(
                                                                 duration: Duration(
@@ -2066,9 +2069,11 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                   300),
                                                           curve: Curves.ease,
                                                         );
-                                                        setState(() => FFAppState()
-                                                                .reportLastPage =
-                                                            true);
+                                                        setState(() {
+                                                          FFAppState()
+                                                                  .reportLastPage =
+                                                              true;
+                                                        });
                                                       },
                                                       text: 'Continue',
                                                       options: FFButtonOptions(
@@ -2400,17 +2405,19 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                     .contains(widget
                                                                         .booking!
                                                                         .doctorEmail)) {
-                                                                  setState(() => FFAppState()
-                                                                      .reportEmails
-                                                                      .add(widget
-                                                                          .booking!
-                                                                          .doctorEmail!));
+                                                                  setState(() {
+                                                                    setState(() =>
+                                                                        FFAppState().addToReportEmails(widget
+                                                                            .booking!
+                                                                            .doctorEmail!));
+                                                                  });
                                                                 } else {
-                                                                  setState(() => FFAppState()
-                                                                      .reportEmails
-                                                                      .remove(widget
-                                                                          .booking!
-                                                                          .doctorEmail!));
+                                                                  setState(() {
+                                                                    setState(() =>
+                                                                        FFAppState().removeFromReportEmails(widget
+                                                                            .booking!
+                                                                            .doctorEmail!));
+                                                                  });
                                                                 }
                                                               },
                                                               child: Material(
@@ -2684,8 +2691,9 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                   initialPageName: 'BookingReport',
                                   parameterData: {},
                                 );
-                                setState(
-                                    () => FFAppState().reportLastPage = false);
+                                setState(() {
+                                  FFAppState().reportLastPage = false;
+                                });
                                 if (_shouldSetState) setState(() {});
                                 return;
                               } else {
