@@ -482,6 +482,8 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                                 );
                                               },
                                             ).then((value) => setState(() {}));
+                                          } else {
+                                            return;
                                           }
                                         },
                                         child: Container(

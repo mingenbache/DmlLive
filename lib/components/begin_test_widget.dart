@@ -538,9 +538,9 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                 .bookedTestRef,
                                                             dateSampleCollected:
                                                                 getCurrentTimestamp,
-                                                            labRefNum: widget
-                                                                .booking!
-                                                                .labRefNum,
+                                                            labRefNum:
+                                                                buttonBookedTestsRecord
+                                                                    .labRefNum,
                                                             resultPosted: false,
                                                             staffReference:
                                                                 columnStaffRecord!
