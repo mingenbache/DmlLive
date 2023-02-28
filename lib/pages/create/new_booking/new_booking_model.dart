@@ -16,6 +16,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_media.dart';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
@@ -30,9 +31,17 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 class NewBookingModel extends FlutterFlowModel {
+  ///  Local state fields for this page.
+
+  BookingsRecord? booking;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - getBookingDocument] action in NewBooking widget.
+  BookingsRecord? currentBookingDocument;
+  // Stores action output result for [Custom Action - getBookingDocument] action in NewBooking widget.
+  BookingsRecord? currentBookingDocument2;
   // Model for TopActions component.
   late TopActionsModel topActionsModel;
   DateTime? datePicked1;
