@@ -1403,7 +1403,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                             await currentUserReference!.update(usersUpdateData);
                             FFAppState().update(() {
                               FFAppState().dob = functions.returnDOBLoader(
-                                  _model.newbookingRef, _model.isPatientValue);
+                                  _model.newbookingRef, _model.isPatientValue!);
                               FFAppState().selectedDate =
                                   functions.getNextWeekday();
                             });
