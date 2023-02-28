@@ -212,7 +212,7 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
                               Column(
                                 mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   Row(
                                     mainAxisSize: MainAxisSize.min,
