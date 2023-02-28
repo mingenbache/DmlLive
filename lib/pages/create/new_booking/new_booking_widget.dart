@@ -3593,8 +3593,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                 if (confirmDialogResponse) {
                                                   final bookingsUpdateData =
                                                       createBookingsRecordData(
-                                                    scheduledDate:
-                                                        _model.datePicked1,
+                                                    scheduledDate: FFAppState()
+                                                        .selectedDate,
                                                     diagnosis: _model
                                                         .diagnosisController
                                                         .text,
