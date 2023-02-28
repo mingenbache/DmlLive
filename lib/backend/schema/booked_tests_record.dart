@@ -54,6 +54,9 @@ abstract class BookedTestsRecord
   @BuiltValueField(wireName: 'test_pack_ref')
   DocumentReference? get testPackRef;
 
+  @BuiltValueField(wireName: 'tested_test_Ref')
+  DocumentReference? get testedTestRef;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -106,6 +109,7 @@ Map<String, dynamic> createBookedTestsRecordData({
   DocumentReference? createUser,
   bool? hasTestPack,
   DocumentReference? testPackRef,
+  DocumentReference? testedTestRef,
 }) {
   final firestoreData = serializers.toFirestore(
     BookedTestsRecord.serializer,
@@ -126,7 +130,8 @@ Map<String, dynamic> createBookedTestsRecordData({
         ..technologist = technologist
         ..createUser = createUser
         ..hasTestPack = hasTestPack
-        ..testPackRef = testPackRef,
+        ..testPackRef = testPackRef
+        ..testedTestRef = testedTestRef,
     ),
   );
 

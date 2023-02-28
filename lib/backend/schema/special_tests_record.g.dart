@@ -135,6 +135,27 @@ class _$SpecialTestsRecordSerializer
         ..add('stringListIndex')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
+    value = object.isVerified;
+    if (value != null) {
+      result
+        ..add('isVerified')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.pathologistNotes;
+    if (value != null) {
+      result
+        ..add('pathologistNotes')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.resultAttachment;
+    if (value != null) {
+      result
+        ..add('resultAttachment')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -228,6 +249,18 @@ class _$SpecialTestsRecordSerializer
           result.stringListIndex = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
+        case 'isVerified':
+          result.isVerified = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'pathologistNotes':
+          result.pathologistNotes = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'resultAttachment':
+          result.resultAttachment = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -275,6 +308,12 @@ class _$SpecialTestsRecord extends SpecialTestsRecord {
   @override
   final int? stringListIndex;
   @override
+  final bool? isVerified;
+  @override
+  final String? pathologistNotes;
+  @override
+  final String? resultAttachment;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$SpecialTestsRecord(
@@ -298,6 +337,9 @@ class _$SpecialTestsRecord extends SpecialTestsRecord {
       this.testAtHome,
       this.category,
       this.stringListIndex,
+      this.isVerified,
+      this.pathologistNotes,
+      this.resultAttachment,
       this.ffRef})
       : super._();
 
@@ -330,6 +372,9 @@ class _$SpecialTestsRecord extends SpecialTestsRecord {
         testAtHome == other.testAtHome &&
         category == other.category &&
         stringListIndex == other.stringListIndex &&
+        isVerified == other.isVerified &&
+        pathologistNotes == other.pathologistNotes &&
+        resultAttachment == other.resultAttachment &&
         ffRef == other.ffRef;
   }
 
@@ -352,27 +397,36 @@ class _$SpecialTestsRecord extends SpecialTestsRecord {
                                                             $jc(
                                                                 $jc(
                                                                     $jc(
-                                                                        0,
-                                                                        name
+                                                                        $jc(
+                                                                            $jc(
+                                                                                $jc(
+                                                                                    0,
+                                                                                    name
+                                                                                        .hashCode),
+                                                                                vendorName
+                                                                                    .hashCode),
+                                                                            vendorContact
+                                                                                .hashCode),
+                                                                        cost
                                                                             .hashCode),
-                                                                    vendorName
+                                                                    durationResults
                                                                         .hashCode),
-                                                                vendorContact
+                                                                scheduledDate
                                                                     .hashCode),
-                                                            cost.hashCode),
-                                                        durationResults
-                                                            .hashCode),
-                                                    scheduledDate.hashCode),
-                                                technologistAssigned.hashCode),
-                                            bookingRef.hashCode),
-                                        sampleCollected.hashCode),
-                                    resultSubmitted.hashCode),
-                                createdBy.hashCode),
-                            createdDate.hashCode),
-                        description.hashCode),
-                    testAtHome.hashCode),
-                category.hashCode),
-            stringListIndex.hashCode),
+                                                            technologistAssigned
+                                                                .hashCode),
+                                                        bookingRef.hashCode),
+                                                    sampleCollected.hashCode),
+                                                resultSubmitted.hashCode),
+                                            createdBy.hashCode),
+                                        createdDate.hashCode),
+                                    description.hashCode),
+                                testAtHome.hashCode),
+                            category.hashCode),
+                        stringListIndex.hashCode),
+                    isVerified.hashCode),
+                pathologistNotes.hashCode),
+            resultAttachment.hashCode),
         ffRef.hashCode));
   }
 
@@ -395,6 +449,9 @@ class _$SpecialTestsRecord extends SpecialTestsRecord {
           ..add('testAtHome', testAtHome)
           ..add('category', category)
           ..add('stringListIndex', stringListIndex)
+          ..add('isVerified', isVerified)
+          ..add('pathologistNotes', pathologistNotes)
+          ..add('resultAttachment', resultAttachment)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -478,6 +535,20 @@ class SpecialTestsRecordBuilder
   set stringListIndex(int? stringListIndex) =>
       _$this._stringListIndex = stringListIndex;
 
+  bool? _isVerified;
+  bool? get isVerified => _$this._isVerified;
+  set isVerified(bool? isVerified) => _$this._isVerified = isVerified;
+
+  String? _pathologistNotes;
+  String? get pathologistNotes => _$this._pathologistNotes;
+  set pathologistNotes(String? pathologistNotes) =>
+      _$this._pathologistNotes = pathologistNotes;
+
+  String? _resultAttachment;
+  String? get resultAttachment => _$this._resultAttachment;
+  set resultAttachment(String? resultAttachment) =>
+      _$this._resultAttachment = resultAttachment;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -505,6 +576,9 @@ class SpecialTestsRecordBuilder
       _testAtHome = $v.testAtHome;
       _category = $v.category;
       _stringListIndex = $v.stringListIndex;
+      _isVerified = $v.isVerified;
+      _pathologistNotes = $v.pathologistNotes;
+      _resultAttachment = $v.resultAttachment;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -544,6 +618,9 @@ class SpecialTestsRecordBuilder
             testAtHome: testAtHome,
             category: category,
             stringListIndex: stringListIndex,
+            isVerified: isVerified,
+            pathologistNotes: pathologistNotes,
+            resultAttachment: resultAttachment,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

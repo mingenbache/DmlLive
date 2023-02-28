@@ -52,6 +52,8 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   DMLInfoRecord,
   TestPackagesRecord,
   SpecialTestsRecord,
+  TestResultItemStruct,
+  SpecialTestTypeStruct,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

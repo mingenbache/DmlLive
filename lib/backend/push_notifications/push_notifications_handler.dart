@@ -52,12 +52,13 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
     try {
       final initialPageName = message.data['initialPageName'] as String;
       final initialParameterData = getInitialParameterData(message.data);
-      final pageBuilder = pageBuilderMap[initialPageName];
-      if (pageBuilder != null) {
-        final page = await pageBuilder(initialParameterData);
-        await Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => page),
+      final parametersBuilder = parametersBuilderMap[initialPageName];
+      if (parametersBuilder != null) {
+        final parameterData = await parametersBuilder(initialParameterData);
+        context.pushNamed(
+          initialPageName,
+          params: parameterData.params,
+          extra: parameterData.extra,
         );
       }
     } catch (e) {
@@ -79,92 +80,139 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
   Widget build(BuildContext context) => _loading
       ? Center(
           child: SizedBox(
-            width: 50,
-            height: 50,
+            width: 50.0,
+            height: 50.0,
             child: SpinKitRipple(
               color: FlutterFlowTheme.of(context).primaryColor,
-              size: 50,
+              size: 50.0,
             ),
           ),
         )
       : widget.child;
 }
 
-final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
-  'Home': (data) async => HomeWidget(),
-  'Details': (data) async => DetailsWidget(
-        testId: getParameter(data, 'testId'),
+class ParameterData {
+  const ParameterData(
+      {this.requiredParams = const {}, this.allParams = const {}});
+  final Map<String, String?> requiredParams;
+  final Map<String, dynamic> allParams;
+
+  Map<String, String> get params => Map.fromEntries(
+        requiredParams.entries
+            .where((e) => e.value != null)
+            .map((e) => MapEntry(e.key, e.value!)),
+      );
+  Map<String, dynamic> get extra => Map.fromEntries(
+        allParams.entries.where((e) => e.value != null),
+      );
+
+  static Future<ParameterData> Function(Map<String, dynamic>) none() =>
+      (data) async => ParameterData();
+}
+
+final parametersBuilderMap =
+    <String, Future<ParameterData> Function(Map<String, dynamic>)>{
+  'Home': ParameterData.none(),
+  'Details': (data) async => ParameterData(
+        allParams: {
+          'testId': getParameter<DocumentReference>(data, 'testId'),
+        },
       ),
-  'NewTest': (data) async => NewTestWidget(),
-  'UserList': (data) async => UserListWidget(
-        staffFilter: getParameter(data, 'staffFilter'),
-        userNameQUery: getParameter(data, 'userNameQUery'),
+  'NewTest': ParameterData.none(),
+  'UserList': (data) async => ParameterData(
+        allParams: {
+          'staffFilter': getParameter<bool>(data, 'staffFilter'),
+          'userNameQUery': getParameter<String>(data, 'userNameQUery'),
+        },
       ),
-  'AllTests': (data) async => AllTestsWidget(),
-  'ModifyTest': (data) async => ModifyTestWidget(
-        testId: getParameter(data, 'testId'),
+  'AllTests': ParameterData.none(),
+  'ModifyTest': (data) async => ParameterData(
+        allParams: {
+          'testId': getParameter<DocumentReference>(data, 'testId'),
+        },
       ),
-  'BookingUpdates': (data) async => BookingUpdatesWidget(
-        bookingRef: getParameter(data, 'bookingRef'),
+  'BookingUpdates': (data) async => ParameterData(
+        allParams: {
+          'bookingRef': getParameter<DocumentReference>(data, 'bookingRef'),
+        },
       ),
-  'Invoice': (data) async => InvoiceWidget(
-        invoiceRef: getParameter(data, 'invoiceRef'),
+  'Invoice': (data) async => ParameterData(
+        allParams: {
+          'invoiceRef': getParameter<DocumentReference>(data, 'invoiceRef'),
+        },
       ),
-  'LabReport': (data) async => LabReportWidget(
-        bookingRef: getParameter(data, 'bookingRef'),
+  'LabReport': (data) async => ParameterData(
+        allParams: {
+          'bookingRef': getParameter<DocumentReference>(data, 'bookingRef'),
+        },
       ),
-  'AddPayment': (data) async => AddPaymentWidget(
-        invoiceRef: getParameter(data, 'invoiceRef'),
+  'AddPayment': (data) async => ParameterData(
+        allParams: {
+          'invoiceRef': getParameter<DocumentReference>(data, 'invoiceRef'),
+        },
       ),
-  'ReportList': (data) async => ReportListWidget(),
-  'TestDeck': (data) async => TestDeckWidget(
-        testedTestRef: getParameter(data, 'testedTestRef'),
+  'ReportList': ParameterData.none(),
+  'TestDeck': (data) async => ParameterData(
+        allParams: {
+          'testedTestRef':
+              getParameter<DocumentReference>(data, 'testedTestRef'),
+        },
       ),
-  'InvoiceList': (data) async => InvoiceListWidget(),
-  'editUser': (data) async => EditUserWidget(),
-  'TestedTests': (data) async => TestedTestsWidget(),
-  'Login': (data) async => LoginWidget(),
-  'MyBookings': (data) async => MyBookingsWidget(),
-  'Signup': (data) async => SignupWidget(),
-  'myInvoiceList': (data) async => MyInvoiceListWidget(),
-  'myReportList': (data) async => MyReportListWidget(),
-  'Settings': (data) async => SettingsWidget(),
-  'TestQueue': (data) async => TestQueueWidget(),
-  'TestConsole': (data) async => TestConsoleWidget(),
-  'Chat': (data) async => ChatWidget(
-        chatUser: await getDocumentParameter(
-            data, 'chatUser', UsersRecord.serializer),
-        chatRef: getParameter(data, 'chatRef'),
+  'InvoiceList': ParameterData.none(),
+  'editUser': ParameterData.none(),
+  'TestedTests': ParameterData.none(),
+  'Login': ParameterData.none(),
+  'checkup': ParameterData.none(),
+  'MyBookings': ParameterData.none(),
+  'Signup': ParameterData.none(),
+  'myInvoiceList': ParameterData.none(),
+  'myReportList': ParameterData.none(),
+  'Settings': ParameterData.none(),
+  'TestQueue': ParameterData.none(),
+  'TestConsole': ParameterData.none(),
+  'Chat': (data) async => ParameterData(
+        allParams: {
+          'chatUser': await getDocumentParameter<UsersRecord>(
+              data, 'chatUser', UsersRecord.serializer),
+          'chatRef': getParameter<DocumentReference>(data, 'chatRef'),
+        },
       ),
-  'TechnologistTestDeck': (data) async => TechnologistTestDeckWidget(
-        bookedTest: await getDocumentParameter(
-            data, 'bookedTest', BookedTestsRecord.serializer),
+  'TechnologistTestDeck': (data) async => ParameterData(
+        allParams: {
+          'bookedTest': await getDocumentParameter<BookedTestsRecord>(
+              data, 'bookedTest', BookedTestsRecord.serializer),
+        },
       ),
-  'BookingReport': (data) async => BookingReportWidget(
-        reportRef: getParameter(data, 'reportRef'),
+  'BookingReport': (data) async => ParameterData(
+        allParams: {
+          'reportRef': getParameter<DocumentReference>(data, 'reportRef'),
+        },
       ),
-  'myPayments': (data) async => MyPaymentsWidget(),
-  'NewBooking': (data) async => NewBookingWidget(
-        bookingRef: getParameter(data, 'bookingRef'),
+  'myPayments': ParameterData.none(),
+  'NewBooking': (data) async => ParameterData(
+        allParams: {
+          'bookingRef': getParameter<DocumentReference>(data, 'bookingRef'),
+        },
       ),
-  'myAccount': (data) async => MyAccountWidget(),
-  'HomeAdmin': (data) async => HomeAdminWidget(),
-  'PaymentsList': (data) async => PaymentsListWidget(),
-  'ScheduledTests': (data) async => ScheduledTestsWidget(),
-  'BookingsSchedule': (data) async => BookingsScheduleWidget(),
-  'BookingConfirmation': (data) async => BookingConfirmationWidget(
-        bookingRef: getParameter(data, 'bookingRef'),
+  'myAccount': ParameterData.none(),
+  'HomeAdmin': ParameterData.none(),
+  'PaymentsList': ParameterData.none(),
+  'ScheduledTests': ParameterData.none(),
+  'BookingsSchedule': ParameterData.none(),
+  'BookingConfirmation': (data) async => ParameterData(
+        allParams: {
+          'bookingRef': getParameter<DocumentReference>(data, 'bookingRef'),
+        },
       ),
-  'Messages': (data) async => MessagesWidget(),
-  'HomeCopy': (data) async => HomeCopyWidget(),
-  'HomeAdminCopy': (data) async => HomeAdminCopyWidget(),
-  'BookingInvoicing': (data) async => BookingInvoicingWidget(
-        bookingRef: getParameter(data, 'bookingRef'),
+  'Messages': ParameterData.none(),
+  'HomeCopy': ParameterData.none(),
+  'HomeAdminCopy': ParameterData.none(),
+  'BookingInvoicing': (data) async => ParameterData(
+        allParams: {
+          'bookingRef': getParameter<DocumentReference>(data, 'bookingRef'),
+        },
       ),
 };
-
-bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>
-    params.any((param) => getParameter(data, param) != null);
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {
   try {
