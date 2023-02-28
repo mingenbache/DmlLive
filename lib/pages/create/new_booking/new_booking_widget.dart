@@ -3634,16 +3634,6 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         true;
                                                   });
 
-                                                  final usersUpdateData = {
-                                                    ...createUsersRecordData(
-                                                      hasCurrentBooking: false,
-                                                    ),
-                                                    'current_booking':
-                                                        FieldValue.delete(),
-                                                  };
-                                                  await currentUserReference!
-                                                      .update(usersUpdateData);
-
                                                   final notificationsCreateData =
                                                       {
                                                     ...createNotificationsRecordData(
@@ -3715,6 +3705,16 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                           widget.bookingRef,
                                                     },
                                                   );
+
+                                                  final usersUpdateData = {
+                                                    ...createUsersRecordData(
+                                                      hasCurrentBooking: false,
+                                                    ),
+                                                    'current_booking':
+                                                        FieldValue.delete(),
+                                                  };
+                                                  await currentUserReference!
+                                                      .update(usersUpdateData);
 
                                                   context.goNamed('MyBookings');
                                                 }
