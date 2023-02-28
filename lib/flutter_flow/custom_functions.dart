@@ -200,19 +200,19 @@ DateTime? returnDOB(
 
 DateTime returnDOBLoader(
   BookingsRecord? booking,
-  bool? isPatient,
+  bool isPatient,
 ) {
   // Add your function code here!
-  DateTime? date;
+  DateTime date;
   // check if document boolean value is true, return datetime field, if false return current date
   //check if user is patient and set dob value if so
-  if (isPatient!) {
-    date = booking!.dOB;
+  if (isPatient) {
+    date = booking!.dOB ?? DateTime.now();
   } else {
     //return null
     date = DateTime(1980, 1, 20);
   }
-  return date!;
+  return date;
 }
 
 bool displayDOBButton(
