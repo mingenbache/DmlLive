@@ -35,6 +35,8 @@ class _ClientNotificationsWidgetWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => ClientNotificationsWidgetModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

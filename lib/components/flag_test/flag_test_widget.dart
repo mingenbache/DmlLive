@@ -78,6 +78,8 @@ class _FlagTestWidgetState extends State<FlagTestWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

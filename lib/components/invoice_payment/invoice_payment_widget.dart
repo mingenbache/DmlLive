@@ -44,6 +44,8 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => InvoicePaymentModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -527,10 +529,14 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                                   3.0),
                                                       child: Text(
                                                         dateTimeFormat(
-                                                                'MMMEd',
-                                                                containerInvoicesRecord
-                                                                    .createdDate!)
-                                                            .maybeHandleOverflow(
+                                                          'MMMEd',
+                                                          containerInvoicesRecord
+                                                              .createdDate!,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        ).maybeHandleOverflow(
                                                           maxChars: 20,
                                                           replacement: '…',
                                                         ),

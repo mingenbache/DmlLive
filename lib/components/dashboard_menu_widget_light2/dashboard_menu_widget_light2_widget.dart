@@ -31,6 +31,8 @@ class _DashboardMenuWidgetLight2WidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => DashboardMenuWidgetLight2Model());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

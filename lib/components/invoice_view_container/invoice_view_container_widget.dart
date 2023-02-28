@@ -38,6 +38,8 @@ class _InvoiceViewContainerWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => InvoiceViewContainerModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -289,9 +291,13 @@ class _InvoiceViewContainerWidgetState
                                                                       0.0),
                                                           child: Text(
                                                             dateTimeFormat(
-                                                                'd/M/y',
-                                                                containerBookingsRecord
-                                                                    .scheduledDate!),
+                                                              'd/M/y',
+                                                              containerBookingsRecord
+                                                                  .scheduledDate!,
+                                                              locale: FFLocalizations
+                                                                      .of(context)
+                                                                  .languageCode,
+                                                            ),
                                                             textAlign:
                                                                 TextAlign.end,
                                                             style: FlutterFlowTheme
@@ -644,9 +650,12 @@ class _InvoiceViewContainerWidgetState
                                                                             0.0),
                                                                     child: Text(
                                                                       dateTimeFormat(
-                                                                          'd/M/y',
-                                                                          paymentsListViewPaymentsRecord
-                                                                              .transactionDate!),
+                                                                        'd/M/y',
+                                                                        paymentsListViewPaymentsRecord
+                                                                            .transactionDate!,
+                                                                        locale:
+                                                                            FFLocalizations.of(context).languageCode,
+                                                                      ),
                                                                       textAlign:
                                                                           TextAlign
                                                                               .start,
@@ -1317,9 +1326,13 @@ class _InvoiceViewContainerWidgetState
                                                                           0.0),
                                                               child: Text(
                                                                 dateTimeFormat(
-                                                                    'd/M/y',
-                                                                    containerBookingsRecord
-                                                                        .dOB!),
+                                                                  'd/M/y',
+                                                                  containerBookingsRecord
+                                                                      .dOB!,
+                                                                  locale: FFLocalizations.of(
+                                                                          context)
+                                                                      .languageCode,
+                                                                ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyText1

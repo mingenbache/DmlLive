@@ -63,6 +63,8 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -455,9 +457,14 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                   child: Text(
                                                     valueOrDefault<String>(
                                                       dateTimeFormat(
-                                                          'd/M/y',
-                                                          submitRoleUsersRecord
-                                                              .dOB),
+                                                        'd/M/y',
+                                                        submitRoleUsersRecord
+                                                            .dOB,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      ),
                                                       'Date of Birth',
                                                     ),
                                                     style: FlutterFlowTheme.of(

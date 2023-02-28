@@ -42,6 +42,8 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => UserActivityModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -789,8 +791,11 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                       children: [
                                                                         Text(
                                                                           dateTimeFormat(
-                                                                              'd/M/y',
-                                                                              columnUsersRecord.createdTime!),
+                                                                            'd/M/y',
+                                                                            columnUsersRecord.createdTime!,
+                                                                            locale:
+                                                                                FFLocalizations.of(context).languageCode,
+                                                                          ),
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle1
                                                                               .override(
@@ -938,8 +943,11 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                       children: [
                                                                         Text(
                                                                           dateTimeFormat(
-                                                                              'd/M/y',
-                                                                              columnUsersRecord.lastLogin!),
+                                                                            'd/M/y',
+                                                                            columnUsersRecord.lastLogin!,
+                                                                            locale:
+                                                                                FFLocalizations.of(context).languageCode,
+                                                                          ),
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .subtitle1
                                                                               .override(
@@ -1561,7 +1569,11 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 children: [
                                                                                   Text(
-                                                                                    dateTimeFormat('d/M/y', columnUsersRecord.dOB!),
+                                                                                    dateTimeFormat(
+                                                                                      'd/M/y',
+                                                                                      columnUsersRecord.dOB!,
+                                                                                      locale: FFLocalizations.of(context).languageCode,
+                                                                                    ),
                                                                                     style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).primaryText,
@@ -1923,7 +1935,11 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                               child: Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5.0, 9.0, 5.0, 5.0),
                                                                                 child: Text(
-                                                                                  dateTimeFormat('d/M/y', containerPaymentsRecord.createdDate!),
+                                                                                  dateTimeFormat(
+                                                                                    'd/M/y',
+                                                                                    containerPaymentsRecord.createdDate!,
+                                                                                    locale: FFLocalizations.of(context).languageCode,
+                                                                                  ),
                                                                                   textAlign: TextAlign.start,
                                                                                   maxLines: 1,
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
@@ -2210,7 +2226,11 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                                             child: Align(
                                                                                               alignment: AlignmentDirectional(0.7, 0.0),
                                                                                               child: Text(
-                                                                                                dateTimeFormat('d/M H:mm', columnChatsRecord.lastMessageTime!),
+                                                                                                dateTimeFormat(
+                                                                                                  'd/M H:mm',
+                                                                                                  columnChatsRecord.lastMessageTime!,
+                                                                                                  locale: FFLocalizations.of(context).languageCode,
+                                                                                                ),
                                                                                                 textAlign: TextAlign.end,
                                                                                                 style: TextStyle(
                                                                                                   color: Color(0xFF57636C),

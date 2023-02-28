@@ -41,6 +41,8 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CatalogPackageItemModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

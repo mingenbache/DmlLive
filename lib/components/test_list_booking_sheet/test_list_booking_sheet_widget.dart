@@ -79,6 +79,8 @@ class _TestListBookingSheetWidgetState extends State<TestListBookingSheetWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

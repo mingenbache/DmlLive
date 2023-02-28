@@ -36,6 +36,8 @@ class _PaymentSelectInvoicePopupWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => PaymentSelectInvoicePopupModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

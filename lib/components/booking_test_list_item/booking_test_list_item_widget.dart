@@ -40,6 +40,8 @@ class _BookingTestListItemWidgetState extends State<BookingTestListItemWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BookingTestListItemModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

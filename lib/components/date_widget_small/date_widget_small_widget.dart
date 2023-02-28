@@ -33,6 +33,8 @@ class _DateWidgetSmallWidgetState extends State<DateWidgetSmallWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DateWidgetSmallModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

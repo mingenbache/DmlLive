@@ -78,6 +78,8 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

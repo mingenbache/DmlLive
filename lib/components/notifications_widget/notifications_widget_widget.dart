@@ -34,6 +34,8 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NotificationsWidgetModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -372,7 +374,11 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                                 AlignmentDirectional(0.7, 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              dateTimeFormat('d/M H:mm', columnChatsRecord.lastMessageTime!),
+                                                                              dateTimeFormat(
+                                                                                'd/M H:mm',
+                                                                                columnChatsRecord.lastMessageTime!,
+                                                                                locale: FFLocalizations.of(context).languageCode,
+                                                                              ),
                                                                               textAlign: TextAlign.end,
                                                                               style: TextStyle(
                                                                                 color: Color(0xFF57636C),

@@ -29,6 +29,8 @@ class _DasboardOffersWidgetWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => DasboardOffersWidgetModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

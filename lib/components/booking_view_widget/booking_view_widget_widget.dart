@@ -74,6 +74,8 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

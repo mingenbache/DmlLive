@@ -41,6 +41,8 @@ class _ReportwizardspecialTestWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => ReportwizardspecialTestModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

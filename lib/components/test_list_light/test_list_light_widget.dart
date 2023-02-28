@@ -28,6 +28,8 @@ class _TestListLightWidgetState extends State<TestListLightWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TestListLightModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

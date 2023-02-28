@@ -86,6 +86,8 @@ class _DashboardMenuWidgetLightWidgetState
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

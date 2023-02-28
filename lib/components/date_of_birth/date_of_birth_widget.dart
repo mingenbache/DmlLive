@@ -63,6 +63,8 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -246,7 +248,12 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                           ),
                                           Text(
                                             dateTimeFormat(
-                                                'yMMMd', _model.datePicked),
+                                              'yMMMd',
+                                              _model.datePicked,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText1,
                                           ),

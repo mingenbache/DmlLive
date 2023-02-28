@@ -36,6 +36,8 @@ class _TechnologistActionsWidgetState extends State<TechnologistActionsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TechnologistActionsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

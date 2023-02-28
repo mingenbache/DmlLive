@@ -40,6 +40,8 @@ class _SpecialTestListItemWidgetState extends State<SpecialTestListItemWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SpecialTestListItemModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

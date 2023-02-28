@@ -31,6 +31,8 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AdminCatalogTestActModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

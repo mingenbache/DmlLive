@@ -41,6 +41,8 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ViewTestResultModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -1043,7 +1045,11 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 children: [
                                                                                   Text(
-                                                                                    dateTimeFormat('d/M/y', viewResultsTestedTestsRecord.dateSampleCollected!),
+                                                                                    dateTimeFormat(
+                                                                                      'd/M/y',
+                                                                                      viewResultsTestedTestsRecord.dateSampleCollected!,
+                                                                                      locale: FFLocalizations.of(context).languageCode,
+                                                                                    ),
                                                                                     style: FlutterFlowTheme.of(context).subtitle1,
                                                                                   ),
                                                                                 ],
@@ -1162,7 +1168,11 @@ class _ViewTestResultWidgetState extends State<ViewTestResultWidget> {
                                                                                 mainAxisSize: MainAxisSize.max,
                                                                                 children: [
                                                                                   Text(
-                                                                                    dateTimeFormat('d/M/y', viewResultsTestedTestsRecord.dateConducted!),
+                                                                                    dateTimeFormat(
+                                                                                      'd/M/y',
+                                                                                      viewResultsTestedTestsRecord.dateConducted!,
+                                                                                      locale: FFLocalizations.of(context).languageCode,
+                                                                                    ),
                                                                                     style: FlutterFlowTheme.of(context).subtitle1,
                                                                                   ),
                                                                                 ],

@@ -87,6 +87,8 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

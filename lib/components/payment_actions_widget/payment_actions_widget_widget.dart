@@ -38,6 +38,8 @@ class _PaymentActionsWidgetWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => PaymentActionsWidgetModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

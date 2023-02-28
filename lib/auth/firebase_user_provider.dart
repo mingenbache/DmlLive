@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 
 class DmlLiveFirebaseUser {
   DmlLiveFirebaseUser(this.user);
@@ -17,6 +19,9 @@ Stream<DmlLiveFirebaseUser> dmlLiveFirebaseUserStream() => FirebaseAuth.instance
         .map<DmlLiveFirebaseUser>(
       (user) {
         currentUser = DmlLiveFirebaseUser(user);
+        if (!kIsWeb) {
+          FirebaseCrashlytics.instance.setUserIdentifier(user?.uid ?? '');
+        }
         return currentUser!;
       },
     );

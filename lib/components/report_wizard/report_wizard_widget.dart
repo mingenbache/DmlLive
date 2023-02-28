@@ -114,6 +114,8 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -1262,7 +1264,11 @@ class _ReportWizardWidgetState extends State<ReportWizardWidget>
                                                                                               Padding(
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(3.0, 5.0, 3.0, 0.0),
                                                                                                 child: Text(
-                                                                                                  dateTimeFormat('d/M/y', widget.booking!.dOB!),
+                                                                                                  dateTimeFormat(
+                                                                                                    'd/M/y',
+                                                                                                    widget.booking!.dOB!,
+                                                                                                    locale: FFLocalizations.of(context).languageCode,
+                                                                                                  ),
                                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                         fontFamily: 'Open Sans',
                                                                                                         color: FlutterFlowTheme.of(context).primaryText,

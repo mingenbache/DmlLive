@@ -41,6 +41,8 @@ class _NotificationListItemWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => NotificationListItemModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

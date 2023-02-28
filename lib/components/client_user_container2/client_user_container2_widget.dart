@@ -37,6 +37,8 @@ class _ClientUserContainer2WidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => ClientUserContainer2Model());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

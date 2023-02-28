@@ -73,6 +73,8 @@ class _UnconfirmedBookingWidgetWidgetState
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

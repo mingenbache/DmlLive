@@ -36,6 +36,8 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => StaffUserChatCardModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

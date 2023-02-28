@@ -36,6 +36,8 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ReportPaymentsListModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -142,8 +144,12 @@ class _ReportPaymentsListWidgetState extends State<ReportPaymentsListWidget> {
                                     ),
                                     decoration: BoxDecoration(),
                                     child: Text(
-                                      dateTimeFormat('d/M/y',
-                                          containerPaymentsRecord.createdDate!),
+                                      dateTimeFormat(
+                                        'd/M/y',
+                                        containerPaymentsRecord.createdDate!,
+                                        locale: FFLocalizations.of(context)
+                                            .languageCode,
+                                      ),
                                       textAlign: TextAlign.start,
                                       maxLines: 1,
                                       style: FlutterFlowTheme.of(context)

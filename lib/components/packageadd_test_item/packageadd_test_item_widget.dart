@@ -139,6 +139,8 @@ class _PackageaddTestItemWidgetState extends State<PackageaddTestItemWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

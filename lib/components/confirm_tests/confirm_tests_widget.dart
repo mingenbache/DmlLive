@@ -112,6 +112,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -1470,7 +1472,14 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                             notificationTitle:
                                                 'New Booking Confirmed',
                                             notificationText:
-                                                'A New Booking has been confirmed for ${dateTimeFormat('MMMMEEEEd', confirmTestsSheetBookingsRecord.scheduledDate)}',
+                                                'A New Booking has been confirmed for ${dateTimeFormat(
+                                              'MMMMEEEEd',
+                                              confirmTestsSheetBookingsRecord
+                                                  .scheduledDate,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            )}',
                                             userRefs: containerStaffRecordList
                                                 .map((e) => e.userRef)
                                                 .withoutNulls
@@ -1484,7 +1493,14 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                             notificationTitle:
                                                 'Your Booking is Confirmed',
                                             notificationText:
-                                                'YourBooking has been confirmed for ${dateTimeFormat('MMMMEEEEd', confirmTestsSheetBookingsRecord.scheduledDate)}',
+                                                'YourBooking has been confirmed for ${dateTimeFormat(
+                                              'MMMMEEEEd',
+                                              confirmTestsSheetBookingsRecord
+                                                  .scheduledDate,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            )}',
                                             userRefs: [
                                               confirmTestsSheetBookingsRecord
                                                   .user!
@@ -1498,7 +1514,14 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                           final notificationsCreateData = {
                                             ...createNotificationsRecordData(
                                               message:
-                                                  'Your Booking for ${dateTimeFormat('MMMEd', confirmTestsSheetBookingsRecord.scheduledDate)} is confirmed.',
+                                                  'Your Booking for ${dateTimeFormat(
+                                                'MMMEd',
+                                                confirmTestsSheetBookingsRecord
+                                                    .scheduledDate,
+                                                locale:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
+                                              )} is confirmed.',
                                               createdDate: getCurrentTimestamp,
                                               isSeen: false,
                                             ),

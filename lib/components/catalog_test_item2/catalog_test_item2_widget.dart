@@ -39,6 +39,8 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CatalogTestItem2Model());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -43,6 +43,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
     _model = createModel(context, () => BeginTestModel());
 
     _model.batchNumController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

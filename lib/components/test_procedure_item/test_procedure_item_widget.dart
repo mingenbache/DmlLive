@@ -44,6 +44,7 @@ class _TestProcedureItemWidgetState extends State<TestProcedureItemWidget> {
 
     _model.textController ??=
         TextEditingController(text: widget.procedureString);
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

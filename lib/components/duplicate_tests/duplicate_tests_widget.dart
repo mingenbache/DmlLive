@@ -40,6 +40,8 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DuplicateTestsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

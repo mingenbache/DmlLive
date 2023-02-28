@@ -37,6 +37,8 @@ class _TechnologistTestNotificationWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => TechnologistTestNotificationModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -37,6 +37,8 @@ class _BookedTestsWidgetState extends State<BookedTestsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BookedTestsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

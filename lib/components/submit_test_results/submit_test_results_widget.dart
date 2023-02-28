@@ -139,6 +139,8 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -31,6 +31,8 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TopActionsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

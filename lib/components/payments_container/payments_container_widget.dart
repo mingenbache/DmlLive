@@ -35,6 +35,8 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PaymentsContainerModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -127,8 +129,12 @@ class _PaymentsContainerWidgetState extends State<PaymentsContainerWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 9.0, 5.0, 5.0),
                                   child: Text(
-                                    dateTimeFormat('d/M/y',
-                                        containerPaymentsRecord.createdDate!),
+                                    dateTimeFormat(
+                                      'd/M/y',
+                                      containerPaymentsRecord.createdDate!,
+                                      locale: FFLocalizations.of(context)
+                                          .languageCode,
+                                    ),
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyText1

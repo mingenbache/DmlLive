@@ -35,6 +35,8 @@ class _ClientUserCardxWidgetState extends State<ClientUserCardxWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ClientUserCardxModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -36,6 +36,8 @@ class _ViewSpecialTestWidgetState extends State<ViewSpecialTestWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ViewSpecialTestModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
