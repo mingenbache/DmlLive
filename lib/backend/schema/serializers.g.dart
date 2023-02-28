@@ -21,9 +21,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(PaymentsRecord.serializer)
       ..add(ReferencesRecord.serializer)
       ..add(ReportsRecord.serializer)
+      ..add(SpecialTestTypeStruct.serializer)
       ..add(SpecialTestsRecord.serializer)
       ..add(StaffRecord.serializer)
       ..add(TestPackagesRecord.serializer)
+      ..add(TestResultItemStruct.serializer)
       ..add(TestedTestsRecord.serializer)
       ..add(TestsRecord.serializer)
       ..add(UsersRecord.serializer)
@@ -133,14 +135,21 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          const FullType(BuiltList, const [
+            const FullType(
+                DocumentReference, const [const FullType.nullable(Object)])
+          ]),
+          () => new ListBuilder<DocumentReference<Object?>>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(
                 DocumentReference, const [const FullType.nullable(Object)])
           ]),
           () => new ListBuilder<DocumentReference<Object?>>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(SpecialTestTypeStruct)]),
+          () => new ListBuilder<SpecialTestTypeStruct>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(

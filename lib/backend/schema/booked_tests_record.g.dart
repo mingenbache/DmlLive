@@ -139,6 +139,14 @@ class _$BookedTestsRecordSerializer
             specifiedType: const FullType(
                 DocumentReference, const [const FullType.nullable(Object)])));
     }
+    value = object.testedTestRef;
+    if (value != null) {
+      result
+        ..add('tested_test_Ref')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                DocumentReference, const [const FullType.nullable(Object)])));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -238,6 +246,12 @@ class _$BookedTestsRecordSerializer
                 const FullType.nullable(Object)
               ])) as DocumentReference<Object?>?;
           break;
+        case 'tested_test_Ref':
+          result.testedTestRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -285,6 +299,8 @@ class _$BookedTestsRecord extends BookedTestsRecord {
   @override
   final DocumentReference<Object?>? testPackRef;
   @override
+  final DocumentReference<Object?>? testedTestRef;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$BookedTestsRecord(
@@ -308,6 +324,7 @@ class _$BookedTestsRecord extends BookedTestsRecord {
       this.createUser,
       this.hasTestPack,
       this.testPackRef,
+      this.testedTestRef,
       this.ffRef})
       : super._();
 
@@ -339,6 +356,7 @@ class _$BookedTestsRecord extends BookedTestsRecord {
         createUser == other.createUser &&
         hasTestPack == other.hasTestPack &&
         testPackRef == other.testPackRef &&
+        testedTestRef == other.testedTestRef &&
         ffRef == other.ffRef;
   }
 
@@ -361,29 +379,31 @@ class _$BookedTestsRecord extends BookedTestsRecord {
                                                             $jc(
                                                                 $jc(
                                                                     $jc(
-                                                                        0,
-                                                                        testRef
+                                                                        $jc(
+                                                                            0,
+                                                                            testRef
+                                                                                .hashCode),
+                                                                        scheduledDate
                                                                             .hashCode),
-                                                                    scheduledDate
+                                                                    bookingRef
                                                                         .hashCode),
-                                                                bookingRef
+                                                                sampleCollected
                                                                     .hashCode),
-                                                            sampleCollected
+                                                            sampleSlideRequested
                                                                 .hashCode),
-                                                        sampleSlideRequested
+                                                        sampleSlideSurrendered
                                                             .hashCode),
-                                                    sampleSlideSurrendered
-                                                        .hashCode),
-                                                user.hashCode),
-                                            testResult.hashCode),
-                                        testAttachment.hashCode),
-                                    createdDate.hashCode),
-                                hasResult.hashCode),
-                            labRefNum.hashCode),
-                        technologist.hashCode),
-                    createUser.hashCode),
-                hasTestPack.hashCode),
-            testPackRef.hashCode),
+                                                    user.hashCode),
+                                                testResult.hashCode),
+                                            testAttachment.hashCode),
+                                        createdDate.hashCode),
+                                    hasResult.hashCode),
+                                labRefNum.hashCode),
+                            technologist.hashCode),
+                        createUser.hashCode),
+                    hasTestPack.hashCode),
+                testPackRef.hashCode),
+            testedTestRef.hashCode),
         ffRef.hashCode));
   }
 
@@ -406,6 +426,7 @@ class _$BookedTestsRecord extends BookedTestsRecord {
           ..add('createUser', createUser)
           ..add('hasTestPack', hasTestPack)
           ..add('testPackRef', testPackRef)
+          ..add('testedTestRef', testedTestRef)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -488,6 +509,11 @@ class BookedTestsRecordBuilder
   set testPackRef(DocumentReference<Object?>? testPackRef) =>
       _$this._testPackRef = testPackRef;
 
+  DocumentReference<Object?>? _testedTestRef;
+  DocumentReference<Object?>? get testedTestRef => _$this._testedTestRef;
+  set testedTestRef(DocumentReference<Object?>? testedTestRef) =>
+      _$this._testedTestRef = testedTestRef;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -515,6 +541,7 @@ class BookedTestsRecordBuilder
       _createUser = $v.createUser;
       _hasTestPack = $v.hasTestPack;
       _testPackRef = $v.testPackRef;
+      _testedTestRef = $v.testedTestRef;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -554,6 +581,7 @@ class BookedTestsRecordBuilder
             createUser: createUser,
             hasTestPack: hasTestPack,
             testPackRef: testPackRef,
+            testedTestRef: testedTestRef,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

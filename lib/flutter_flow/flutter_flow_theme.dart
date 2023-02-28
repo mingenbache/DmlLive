@@ -25,6 +25,21 @@ abstract class FlutterFlowTheme {
   late Color customColor4;
   late Color white;
   late Color background;
+  late Color customColor1;
+  late Color overlay;
+  late Color primary600;
+  late Color secondary600;
+  late Color tertiary600;
+  late Color darkBGstatic;
+  late Color secondary30;
+  late Color overlay0;
+  late Color primary30;
+  late Color grayIcon;
+  late Color gray200;
+  late Color gray600;
+  late Color black600;
+  late Color tertiary400;
+  late Color textColor;
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
@@ -62,6 +77,21 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color customColor4 = Color(0xFF090F13);
   late Color white = Color(0xFFFFFFFF);
   late Color background = Color(0xFF1D2429);
+  late Color customColor1 = Color(0xFF2FB73C);
+  late Color overlay = Color(0xB3FFFFFF);
+  late Color primary600 = Color(0xFF336A4A);
+  late Color secondary600 = Color(0xFF6D604A);
+  late Color tertiary600 = Color(0xFF0C2533);
+  late Color darkBGstatic = Color(0xFF0D1E23);
+  late Color secondary30 = Color(0x4D928163);
+  late Color overlay0 = Color(0x00FFFFFF);
+  late Color primary30 = Color(0x4D4B986C);
+  late Color grayIcon = Color(0xFF95A1AC);
+  late Color gray200 = Color(0xFFDBE2E7);
+  late Color gray600 = Color(0xFF262D34);
+  late Color black600 = Color(0xFF090F13);
+  late Color tertiary400 = Color(0xFF39D2C0);
+  late Color textColor = Color(0xFF1E2429);
 }
 
 abstract class Typography {
@@ -91,49 +121,49 @@ class ThemeTypography extends Typography {
         'Open Sans',
         color: Colors.white,
         fontWeight: FontWeight.bold,
-        fontSize: 32,
+        fontSize: 32.0,
       );
   String get title2Family => 'Open Sans';
   TextStyle get title2 => GoogleFonts.getFont(
         'Open Sans',
         color: Colors.white,
         fontWeight: FontWeight.bold,
-        fontSize: 28,
+        fontSize: 28.0,
       );
   String get title3Family => 'Open Sans';
   TextStyle get title3 => GoogleFonts.getFont(
         'Open Sans',
         color: theme.secondaryColor,
         fontWeight: FontWeight.w600,
-        fontSize: 24,
+        fontSize: 24.0,
       );
   String get subtitle1Family => 'Open Sans';
   TextStyle get subtitle1 => GoogleFonts.getFont(
         'Open Sans',
         color: Color(0xFF424242),
         fontWeight: FontWeight.bold,
-        fontSize: 20,
+        fontSize: 20.0,
       );
   String get subtitle2Family => 'Open Sans';
   TextStyle get subtitle2 => GoogleFonts.getFont(
         'Open Sans',
         color: Colors.white,
         fontWeight: FontWeight.w500,
-        fontSize: 18,
+        fontSize: 18.0,
       );
   String get bodyText1Family => 'Open Sans';
   TextStyle get bodyText1 => GoogleFonts.getFont(
         'Open Sans',
         color: Colors.white,
         fontWeight: FontWeight.normal,
-        fontSize: 14,
+        fontSize: 14.0,
       );
   String get bodyText2Family => 'Open Sans';
   TextStyle get bodyText2 => GoogleFonts.getFont(
         'Open Sans',
         color: Color(0xFF424242),
         fontWeight: FontWeight.w300,
-        fontSize: 14,
+        fontSize: 14.0,
       );
 }
 

@@ -1575,3 +1575,41 @@ DocumentReference? returnTestedRef(BookedTestsRecord? bookedTest) {
     return result.docs[0].reference;
   }
 }
+
+String? returnTestResultsCompilationString(
+    List<TestedTestsRecord>? testedTests) {
+  String result = ' ';
+  String desc = ' ';
+  String testResult = ' ';
+  if (testedTests != null) {
+    for (TestedTestsRecord test in testedTests) {
+      if (test != null) {
+        desc = test.pathologistNote ?? ' ';
+        if (test.hasTestPack != true) {
+          testResult = test.testResult ?? ' ';
+          /*TestsRecord thisTest =
+              await TestsRecord.getDocumentOnce(test.testRef); */
+          result += '\n' + testResult + '\n' + desc + '\n';
+        }
+      }
+    }
+  }
+  return result;
+}
+
+List<DocumentReference> removeTestsfromList(
+  List<DocumentReference>? testsToRemove,
+  List<DocumentReference>? alltests,
+) {
+  // remove all items from one list that are in the other list
+  if (testsToRemove == null || alltests == null) {
+    return [];
+  }
+  List<DocumentReference> newList = [];
+  for (DocumentReference test in alltests) {
+    if (!testsToRemove.contains(test)) {
+      newList.add(test);
+    }
+  }
+  return newList;
+}
