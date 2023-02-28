@@ -90,6 +90,8 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -444,7 +446,13 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                             notificationTitle:
                                                 'New Test Assigned',
                                             notificationText:
-                                                '${widget.testName} Test Scheduled for ${dateTimeFormat('MMMMEEEEd', widget.scheduledDate)}',
+                                                '${widget.testName} Test Scheduled for ${dateTimeFormat(
+                                              'MMMMEEEEd',
+                                              widget.scheduledDate,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            )}',
                                             userRefs: [
                                               buttonStaffRecord!.userRef!
                                             ],

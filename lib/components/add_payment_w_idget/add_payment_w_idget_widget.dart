@@ -163,6 +163,8 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

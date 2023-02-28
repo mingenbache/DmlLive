@@ -43,6 +43,8 @@ class _EditUserDetailsPopupWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => EditUserDetailsPopupModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -870,9 +872,13 @@ class _EditUserDetailsPopupWidgetState
                                                   }
                                                 },
                                                 text: dateTimeFormat(
-                                                    'd/M/y',
-                                                    editUserContainerUsersRecord
-                                                        .dOB!),
+                                                  'd/M/y',
+                                                  editUserContainerUsersRecord
+                                                      .dOB!,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ),
                                                 icon: Icon(
                                                   Icons.calendar_today,
                                                   color: FlutterFlowTheme.of(

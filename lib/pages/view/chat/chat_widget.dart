@@ -55,6 +55,8 @@ class _ChatWidgetState extends State<ChatWidget> {
         setState(() => _chatInfo = info);
       }
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -68,136 +70,140 @@ class _ChatWidgetState extends State<ChatWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryText,
-        automaticallyImplyLeading: false,
-        leading: FlutterFlowIconButton(
-          borderColor: Colors.transparent,
-          borderRadius: 30.0,
-          borderWidth: 1.0,
-          buttonSize: 60.0,
-          icon: Icon(
-            Icons.arrow_back_rounded,
-            color: FlutterFlowTheme.of(context).secondaryBackground,
-            size: 24.0,
-          ),
-          onPressed: () async {
-            context.pop();
-          },
-        ),
-        title: Stack(
-          children: [
-            Text(
-              'CHAT',
-              style: FlutterFlowTheme.of(context).bodyText1.override(
-                    fontFamily: 'Roboto',
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+    return Title(
+        title: 'Chat',
+        color: FlutterFlowTheme.of(context).primaryColor,
+        child: Scaffold(
+          key: scaffoldKey,
+          appBar: AppBar(
+            backgroundColor: FlutterFlowTheme.of(context).primaryText,
+            automaticallyImplyLeading: false,
+            leading: FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 30.0,
+              borderWidth: 1.0,
+              buttonSize: 60.0,
+              icon: Icon(
+                Icons.arrow_back_rounded,
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+                size: 24.0,
+              ),
+              onPressed: () async {
+                context.pop();
+              },
             ),
-          ],
-        ),
-        actions: [
-          Visibility(
-            visible: isGroupChat(),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
-              child: InkWell(
-                onTap: () async {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        'Navigate to add users page!',
-                        style: TextStyle(),
+            title: Stack(
+              children: [
+                Text(
+                  'CHAT',
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Roboto',
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        fontSize: 28.0,
+                        fontWeight: FontWeight.bold,
                       ),
-                      duration: Duration(milliseconds: 4000),
-                      backgroundColor: Color(0x00000000),
+                ),
+              ],
+            ),
+            actions: [
+              Visibility(
+                visible: isGroupChat(),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                  child: InkWell(
+                    onTap: () async {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Navigate to add users page!',
+                            style: TextStyle(),
+                          ),
+                          duration: Duration(milliseconds: 4000),
+                          backgroundColor: Color(0x00000000),
+                        ),
+                      );
+                    },
+                    child: Icon(
+                      Icons.person_add,
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      size: 24.0,
                     ),
-                  );
-                },
-                child: Icon(
-                  Icons.person_add,
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                  size: 24.0,
+                  ),
                 ),
               ),
+            ],
+            centerTitle: false,
+            elevation: 2.0,
+          ),
+          body: SafeArea(
+            child: StreamBuilder<FFChatInfo>(
+              stream: FFChatManager.instance.getChatInfo(
+                otherUserRecord: widget.chatUser,
+                chatReference: widget.chatRef,
+              ),
+              builder: (context, snapshot) => snapshot.hasData
+                  ? FFChatPage(
+                      chatInfo: snapshot.data!,
+                      allowImages: true,
+                      backgroundColor:
+                          FlutterFlowTheme.of(context).secondaryColor,
+                      timeDisplaySetting: TimeDisplaySetting.visibleOnTap,
+                      currentUserBoxDecoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        border: Border.all(
+                          color: Colors.transparent,
+                        ),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      otherUsersBoxDecoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        border: Border.all(
+                          color: Colors.transparent,
+                        ),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      currentUserTextStyle: GoogleFonts.getFont(
+                        'DM Sans',
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14.0,
+                        fontStyle: FontStyle.normal,
+                      ),
+                      otherUsersTextStyle: GoogleFonts.getFont(
+                        'DM Sans',
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14.0,
+                      ),
+                      inputHintTextStyle: GoogleFonts.getFont(
+                        'DM Sans',
+                        color: Color(0xFF95A1AC),
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14.0,
+                      ),
+                      inputTextStyle: GoogleFonts.getFont(
+                        'DM Sans',
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 14.0,
+                      ),
+                      emptyChatWidget: Image.asset(
+                        'assets/images/messagesEmpty@2x.png',
+                        width: MediaQuery.of(context).size.width * 0.76,
+                      ),
+                    )
+                  : Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: SpinKitRipple(
+                          color: FlutterFlowTheme.of(context).primaryColor,
+                          size: 50.0,
+                        ),
+                      ),
+                    ),
             ),
           ),
-        ],
-        centerTitle: false,
-        elevation: 2.0,
-      ),
-      body: SafeArea(
-        child: StreamBuilder<FFChatInfo>(
-          stream: FFChatManager.instance.getChatInfo(
-            otherUserRecord: widget.chatUser,
-            chatReference: widget.chatRef,
-          ),
-          builder: (context, snapshot) => snapshot.hasData
-              ? FFChatPage(
-                  chatInfo: snapshot.data!,
-                  allowImages: true,
-                  backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
-                  timeDisplaySetting: TimeDisplaySetting.visibleOnTap,
-                  currentUserBoxDecoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    border: Border.all(
-                      color: Colors.transparent,
-                    ),
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  otherUsersBoxDecoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    border: Border.all(
-                      color: Colors.transparent,
-                    ),
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  currentUserTextStyle: GoogleFonts.getFont(
-                    'DM Sans',
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14.0,
-                    fontStyle: FontStyle.normal,
-                  ),
-                  otherUsersTextStyle: GoogleFonts.getFont(
-                    'DM Sans',
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14.0,
-                  ),
-                  inputHintTextStyle: GoogleFonts.getFont(
-                    'DM Sans',
-                    color: Color(0xFF95A1AC),
-                    fontWeight: FontWeight.normal,
-                    fontSize: 14.0,
-                  ),
-                  inputTextStyle: GoogleFonts.getFont(
-                    'DM Sans',
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 14.0,
-                  ),
-                  emptyChatWidget: Image.asset(
-                    'assets/images/messagesEmpty@2x.png',
-                    width: MediaQuery.of(context).size.width * 0.76,
-                  ),
-                )
-              : Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: SpinKitRipple(
-                      color: FlutterFlowTheme.of(context).primaryColor,
-                      size: 50.0,
-                    ),
-                  ),
-                ),
-        ),
-      ),
-    );
+        ));
   }
 }

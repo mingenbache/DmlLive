@@ -28,6 +28,8 @@ class _DateWidgetSmallCopyWidgetState extends State<DateWidgetSmallCopyWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DateWidgetSmallCopyModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

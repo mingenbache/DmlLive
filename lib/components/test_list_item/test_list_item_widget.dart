@@ -144,6 +144,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

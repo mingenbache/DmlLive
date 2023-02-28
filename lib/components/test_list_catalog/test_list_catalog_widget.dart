@@ -80,6 +80,8 @@ class _TestListCatalogWidgetState extends State<TestListCatalogWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

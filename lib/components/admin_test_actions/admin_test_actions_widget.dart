@@ -36,6 +36,8 @@ class _AdminTestActionsWidgetState extends State<AdminTestActionsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AdminTestActionsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

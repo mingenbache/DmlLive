@@ -29,6 +29,8 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => InvoiceListModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -42,93 +44,97 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      body: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color(0x8B6CD7B7),
-                  Colors.white,
-                  FlutterFlowTheme.of(context).secondaryColor
-                ],
-                stops: [0.0, 0.4, 1.0],
-                begin: AlignmentDirectional(0.0, -1.0),
-                end: AlignmentDirectional(0, 1.0),
-              ),
-            ),
-            child: ClipRect(
-              child: ImageFiltered(
-                imageFilter: ImageFilter.blur(
-                  sigmaX: 2.0,
-                  sigmaY: 2.0,
+    return Title(
+        title: 'InvoiceList',
+        color: FlutterFlowTheme.of(context).primaryColor,
+        child: Scaffold(
+          key: scaffoldKey,
+          body: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0x8B6CD7B7),
+                      Colors.white,
+                      FlutterFlowTheme.of(context).secondaryColor
+                    ],
+                    stops: [0.0, 0.4, 1.0],
+                    begin: AlignmentDirectional(0.0, -1.0),
+                    end: AlignmentDirectional(0, 1.0),
+                  ),
                 ),
-                child: Image.asset(
-                  'assets/images/martha-dominguez-de-gouveia-g0PTp89dumc-unsplash_reduced.jpg',
-                  fit: BoxFit.fitWidth,
+                child: ClipRect(
+                  child: ImageFiltered(
+                    imageFilter: ImageFilter.blur(
+                      sigmaX: 2.0,
+                      sigmaY: 2.0,
+                    ),
+                    child: Image.asset(
+                      'assets/images/martha-dominguez-de-gouveia-g0PTp89dumc-unsplash_reduced.jpg',
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color(0x8B6CD7B7),
-                  Colors.white,
-                  FlutterFlowTheme.of(context).secondaryColor
-                ],
-                stops: [0.0, 0.4, 1.0],
-                begin: AlignmentDirectional(0.0, -1.0),
-                end: AlignmentDirectional(0, 1.0),
-              ),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width * 1.0,
-                  decoration: BoxDecoration(),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        wrapWithModel(
-                          model: _model.topActionsModel,
-                          updateCallback: () => setState(() {}),
-                          child: TopActionsWidget(),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 10.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Row(
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0x8B6CD7B7),
+                      Colors.white,
+                      FlutterFlowTheme.of(context).secondaryColor
+                    ],
+                    stops: [0.0, 0.4, 1.0],
+                    begin: AlignmentDirectional(0.0, -1.0),
+                    end: AlignmentDirectional(0, 1.0),
+                  ),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 1.0,
+                      decoration: BoxDecoration(),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            wrapWithModel(
+                              model: _model.topActionsModel,
+                              updateCallback: () => setState(() {}),
+                              child: TopActionsWidget(),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 10.0),
+                              child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 1.0,
-                                    decoration: BoxDecoration(),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 0.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Text(
-                                                'INVOICES',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                1.0,
+                                        decoration: BoxDecoration(),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 0.0, 0.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    'INVOICES',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .title1
                                                         .override(
                                                           fontFamily:
@@ -137,237 +143,115 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                                                   .of(context)
                                                               .primaryBackground,
                                                         ),
+                                                  ),
+                                                ],
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    constraints: BoxConstraints(
-                      maxWidth: 340.0,
-                    ),
-                    decoration: BoxDecoration(),
-                    child: DefaultTabController(
-                      length: 3,
-                      initialIndex: 0,
-                      child: Column(
-                        children: [
-                          TabBar(
-                            labelColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            unselectedLabelColor:
-                                FlutterFlowTheme.of(context).primaryText,
-                            labelStyle: FlutterFlowTheme.of(context).bodyText1,
-                            indicatorColor:
-                                FlutterFlowTheme.of(context).primaryText,
-                            tabs: [
-                              Tab(
-                                text: 'Overdue',
-                              ),
-                              Tab(
-                                text: 'All ',
-                              ),
-                              Tab(
-                                text: 'By Date',
-                              ),
-                            ],
-                          ),
-                          Expanded(
-                            child: TabBarView(
-                              children: [
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.8,
-                                  decoration: BoxDecoration(),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 20.0, 0.0, 0.0),
-                                    child: StreamBuilder<List<InvoicesRecord>>(
-                                      stream: queryInvoicesRecord(
-                                        queryBuilder: (invoicesRecord) =>
-                                            invoicesRecord.where('is_paid',
-                                                isNotEqualTo: true),
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: SpinKitRipple(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryColor,
-                                                size: 50.0,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<InvoicesRecord>
-                                            overdueInvoicesInvoicesRecordList =
-                                            snapshot.data!;
-                                        return SingleChildScrollView(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: List.generate(
-                                                overdueInvoicesInvoicesRecordList
-                                                    .length,
-                                                (overdueInvoicesIndex) {
-                                              final overdueInvoicesInvoicesRecord =
-                                                  overdueInvoicesInvoicesRecordList[
-                                                      overdueInvoicesIndex];
-                                              return InvoiceViewContainerWidget(
-                                                key: Key(
-                                                    'Keywfh_${overdueInvoicesIndex}_of_${overdueInvoicesInvoicesRecordList.length}'),
-                                                invoice:
-                                                    overdueInvoicesInvoicesRecord,
-                                              );
-                                            }),
-                                          ),
-                                        );
-                                      },
-                                    ),
+                    Expanded(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        constraints: BoxConstraints(
+                          maxWidth: 340.0,
+                        ),
+                        decoration: BoxDecoration(),
+                        child: DefaultTabController(
+                          length: 3,
+                          initialIndex: 0,
+                          child: Column(
+                            children: [
+                              TabBar(
+                                labelColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                unselectedLabelColor:
+                                    FlutterFlowTheme.of(context).primaryText,
+                                labelStyle:
+                                    FlutterFlowTheme.of(context).bodyText1,
+                                indicatorColor:
+                                    FlutterFlowTheme.of(context).primaryText,
+                                tabs: [
+                                  Tab(
+                                    text: 'Overdue',
                                   ),
-                                ),
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.8,
-                                  decoration: BoxDecoration(),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 20.0, 0.0, 0.0),
-                                    child: StreamBuilder<List<InvoicesRecord>>(
-                                      stream: queryInvoicesRecord(
-                                        queryBuilder: (invoicesRecord) =>
-                                            invoicesRecord.where('is_paid',
-                                                isNotEqualTo: true),
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: SpinKitRipple(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryColor,
-                                                size: 50.0,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<InvoicesRecord>
-                                            mainContentInvoicesRecordList =
-                                            snapshot.data!;
-                                        return SingleChildScrollView(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: List.generate(
-                                                mainContentInvoicesRecordList
-                                                    .length,
-                                                (mainContentIndex) {
-                                              final mainContentInvoicesRecord =
-                                                  mainContentInvoicesRecordList[
-                                                      mainContentIndex];
-                                              return Container(
-                                                  width: 100,
-                                                  height: 100,
-                                                  color: Colors.green);
-                                            }),
-                                          ),
-                                        );
-                                      },
-                                    ),
+                                  Tab(
+                                    text: 'All ',
                                   ),
-                                ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
+                                  Tab(
+                                    text: 'By Date',
+                                  ),
+                                ],
+                              ),
+                              Expanded(
+                                child: TabBarView(
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          6.0, 6.0, 6.0, 6.0),
-                                      child: Material(
-                                        color: Colors.transparent,
-                                        elevation: 1.0,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        child: Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.9,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.8,
+                                      decoration: BoxDecoration(),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 20.0, 0.0, 0.0),
+                                        child:
+                                            StreamBuilder<List<InvoicesRecord>>(
+                                          stream: queryInvoicesRecord(
+                                            queryBuilder: (invoicesRecord) =>
+                                                invoicesRecord.where('is_paid',
+                                                    isNotEqualTo: true),
                                           ),
-                                          child: FlutterFlowCalendar(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            iconColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryText,
-                                            weekFormat: true,
-                                            weekStartsMonday: true,
-                                            initialDate: functions.returntheDay(
-                                                getCurrentTimestamp),
-                                            onChange: (DateTimeRange?
-                                                newSelectedDate) {
-                                              setState(() =>
-                                                  _model.uICalendarSelectedDay =
-                                                      newSelectedDate);
-                                            },
-                                            titleStyle: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                            dayOfWeekStyle: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryColor,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                            dateStyle: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                            selectedDateStyle: TextStyle(),
-                                            inactiveDateStyle: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryColor,
-                                            ),
-                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child: SpinKitRipple(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryColor,
+                                                    size: 50.0,
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            List<InvoicesRecord>
+                                                overdueInvoicesInvoicesRecordList =
+                                                snapshot.data!;
+                                            return SingleChildScrollView(
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: List.generate(
+                                                    overdueInvoicesInvoicesRecordList
+                                                        .length,
+                                                    (overdueInvoicesIndex) {
+                                                  final overdueInvoicesInvoicesRecord =
+                                                      overdueInvoicesInvoicesRecordList[
+                                                          overdueInvoicesIndex];
+                                                  return InvoiceViewContainerWidget(
+                                                    key: Key(
+                                                        'Keywfh_${overdueInvoicesIndex}_of_${overdueInvoicesInvoicesRecordList.length}'),
+                                                    invoice:
+                                                        overdueInvoicesInvoicesRecord,
+                                                  );
+                                                }),
+                                              ),
+                                            );
+                                          },
                                         ),
                                       ),
                                     ),
@@ -429,21 +313,160 @@ class _InvoiceListWidgetState extends State<InvoiceListWidget> {
                                         ),
                                       ),
                                     ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  6.0, 6.0, 6.0, 6.0),
+                                          child: Material(
+                                            color: Colors.transparent,
+                                            elevation: 1.0,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            child: Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.9,
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                              ),
+                                              child: FlutterFlowCalendar(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                iconColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                weekFormat: true,
+                                                weekStartsMonday: true,
+                                                initialDate:
+                                                    functions.returntheDay(
+                                                        getCurrentTimestamp),
+                                                onChange: (DateTimeRange?
+                                                    newSelectedDate) {
+                                                  setState(() => _model
+                                                          .uICalendarSelectedDay =
+                                                      newSelectedDate);
+                                                },
+                                                titleStyle: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                                dayOfWeekStyle: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryColor,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                                dateStyle: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                                selectedDateStyle: TextStyle(),
+                                                inactiveDateStyle: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryColor,
+                                                ),
+                                                locale:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.8,
+                                          decoration: BoxDecoration(),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 20.0, 0.0, 0.0),
+                                            child: StreamBuilder<
+                                                List<InvoicesRecord>>(
+                                              stream: queryInvoicesRecord(
+                                                queryBuilder:
+                                                    (invoicesRecord) =>
+                                                        invoicesRecord.where(
+                                                            'is_paid',
+                                                            isNotEqualTo: true),
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child: SpinKitRipple(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryColor,
+                                                        size: 50.0,
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                List<InvoicesRecord>
+                                                    mainContentInvoicesRecordList =
+                                                    snapshot.data!;
+                                                return SingleChildScrollView(
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: List.generate(
+                                                        mainContentInvoicesRecordList
+                                                            .length,
+                                                        (mainContentIndex) {
+                                                      final mainContentInvoicesRecord =
+                                                          mainContentInvoicesRecordList[
+                                                              mainContentIndex];
+                                                      return Container(
+                                                          width: 100,
+                                                          height: 100,
+                                                          color: Colors.green);
+                                                    }),
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 }

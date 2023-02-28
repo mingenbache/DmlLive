@@ -36,6 +36,8 @@ class _ConfirmBookingSheetWidgetState extends State<ConfirmBookingSheetWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ConfirmBookingSheetModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

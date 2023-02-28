@@ -24,6 +24,8 @@ class _EditUserWidgetState extends State<EditUserWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EditUserModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -37,16 +39,19 @@ class _EditUserWidgetState extends State<EditUserWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
-      body: SafeArea(
-        child: wrapWithModel(
-          model: _model.editUserDetailsModel,
-          updateCallback: () => setState(() {}),
-          child: EditUserDetailsWidget(),
-        ),
-      ),
-    );
+    return Title(
+        title: 'editUser',
+        color: FlutterFlowTheme.of(context).primaryColor,
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+          body: SafeArea(
+            child: wrapWithModel(
+              model: _model.editUserDetailsModel,
+              updateCallback: () => setState(() {}),
+              child: EditUserDetailsWidget(),
+            ),
+          ),
+        ));
   }
 }

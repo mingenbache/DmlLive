@@ -29,6 +29,8 @@ class _ChatActionsWidgetWidgetState extends State<ChatActionsWidgetWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ChatActionsWidgetModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

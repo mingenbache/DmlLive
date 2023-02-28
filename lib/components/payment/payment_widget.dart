@@ -39,6 +39,8 @@ class _PaymentWidgetState extends State<PaymentWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PaymentModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -694,10 +696,14 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                             0.0),
                                                                 child: Text(
                                                                   dateTimeFormat(
-                                                                      'd/M/y',
-                                                                      widget
-                                                                          .paymentRef!
-                                                                          .transactionDate!),
+                                                                    'd/M/y',
+                                                                    widget
+                                                                        .paymentRef!
+                                                                        .transactionDate!,
+                                                                    locale: FFLocalizations.of(
+                                                                            context)
+                                                                        .languageCode,
+                                                                  ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyText1
@@ -998,7 +1004,11 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                 Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(4.0, 6.0, 0.0, 0.0),
                                                                               child: Text(
-                                                                                dateTimeFormat('d/M/y', verifyPaymentContainerBookingsRecord.scheduledDate!),
+                                                                                dateTimeFormat(
+                                                                                  'd/M/y',
+                                                                                  verifyPaymentContainerBookingsRecord.scheduledDate!,
+                                                                                  locale: FFLocalizations.of(context).languageCode,
+                                                                                ),
                                                                                 style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                       fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
@@ -1865,7 +1875,11 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                                                 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              dateTimeFormat('d/M/y', verifyPaymentContainerBookingsRecord.dOB!),
+                                                                              dateTimeFormat(
+                                                                                'd/M/y',
+                                                                                verifyPaymentContainerBookingsRecord.dOB!,
+                                                                                locale: FFLocalizations.of(context).languageCode,
+                                                                              ),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).primaryText,

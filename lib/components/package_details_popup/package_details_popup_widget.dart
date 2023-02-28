@@ -44,6 +44,8 @@ class _PackageDetailsPopupWidgetState extends State<PackageDetailsPopupWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PackageDetailsPopupModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

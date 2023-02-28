@@ -40,6 +40,8 @@ class _ReportWidgetBookedTestWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => ReportWidgetBookedTestModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

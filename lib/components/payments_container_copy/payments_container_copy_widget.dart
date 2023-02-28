@@ -35,6 +35,8 @@ class _PaymentsContainerCopyWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => PaymentsContainerCopyModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

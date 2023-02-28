@@ -41,6 +41,8 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => InvoiceSheetModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -228,8 +230,12 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                         alignment:
                                             AlignmentDirectional(0.0, 0.0),
                                         child: Text(
-                                          dateTimeFormat('d/M/y',
-                                              columnInvoicesRecord.dueDate!),
+                                          dateTimeFormat(
+                                            'd/M/y',
+                                            columnInvoicesRecord.dueDate!,
+                                            locale: FFLocalizations.of(context)
+                                                .languageCode,
+                                          ),
                                           textAlign: TextAlign.center,
                                           maxLines: 1,
                                           style: FlutterFlowTheme.of(context)
@@ -1179,8 +1185,11 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            dateTimeFormat('d/M/y',
-                                                                                invoiceContainerBookingsRecord.dOB!),
+                                                                            dateTimeFormat(
+                                                                              'd/M/y',
+                                                                              invoiceContainerBookingsRecord.dOB!,
+                                                                              locale: FFLocalizations.of(context).languageCode,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -1773,8 +1782,11 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
                                                                         child:
                                                                             Text(
                                                                           dateTimeFormat(
-                                                                              'd/M/y',
-                                                                              containerPaymentsRecord.createdDate!),
+                                                                            'd/M/y',
+                                                                            containerPaymentsRecord.createdDate!,
+                                                                            locale:
+                                                                                FFLocalizations.of(context).languageCode,
+                                                                          ),
                                                                           textAlign:
                                                                               TextAlign.start,
                                                                           style: FlutterFlowTheme.of(context)

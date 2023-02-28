@@ -38,6 +38,8 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ClientUserCardModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -326,9 +328,13 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                                 decoration: BoxDecoration(),
                                                 child: Text(
                                                   dateTimeFormat(
-                                                      'd/M/y',
-                                                      widget.userRecord!
-                                                          .createdTime!),
+                                                    'd/M/y',
+                                                    widget.userRecord!
+                                                        .createdTime!,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1
@@ -382,9 +388,14 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                                 child: Text(
                                                   valueOrDefault<String>(
                                                     dateTimeFormat(
-                                                        'd/M/y',
-                                                        widget.userRecord!
-                                                            .lastLogin),
+                                                      'd/M/y',
+                                                      widget.userRecord!
+                                                          .lastLogin,
+                                                      locale:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode,
+                                                    ),
                                                     'n/a',
                                                   ),
                                                   style: FlutterFlowTheme.of(

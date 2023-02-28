@@ -34,6 +34,8 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DetailsTabbedBodyModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

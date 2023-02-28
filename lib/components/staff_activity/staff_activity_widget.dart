@@ -40,6 +40,8 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => StaffActivityModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -816,7 +818,11 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
                                                                                 Text(
-                                                                                  dateTimeFormat('d/M/y', columnUsersRecord.createdTime!),
+                                                                                  dateTimeFormat(
+                                                                                    'd/M/y',
+                                                                                    columnUsersRecord.createdTime!,
+                                                                                    locale: FFLocalizations.of(context).languageCode,
+                                                                                  ),
                                                                                   style: FlutterFlowTheme.of(context).subtitle1,
                                                                                 ),
                                                                               ],
@@ -947,7 +953,11 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                               mainAxisSize: MainAxisSize.max,
                                                                               children: [
                                                                                 Text(
-                                                                                  dateTimeFormat('d/M/y', columnUsersRecord.lastLogin!),
+                                                                                  dateTimeFormat(
+                                                                                    'd/M/y',
+                                                                                    columnUsersRecord.lastLogin!,
+                                                                                    locale: FFLocalizations.of(context).languageCode,
+                                                                                  ),
                                                                                   style: FlutterFlowTheme.of(context).subtitle1,
                                                                                 ),
                                                                               ],
@@ -1422,7 +1432,11 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         Padding(
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(3.0, 5.0, 3.0, 0.0),
                                                                                           child: Text(
-                                                                                            dateTimeFormat('d/M/y', columnUsersRecord.dOB!),
+                                                                                            dateTimeFormat(
+                                                                                              'd/M/y',
+                                                                                              columnUsersRecord.dOB!,
+                                                                                              locale: FFLocalizations.of(context).languageCode,
+                                                                                            ),
                                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                   fontFamily: 'Open Sans',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryColor,
@@ -1748,7 +1762,11 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(5.0, 9.0, 5.0, 5.0),
                                                                                         child: Text(
-                                                                                          dateTimeFormat('d/M/y', containerPaymentsRecord.createdDate!),
+                                                                                          dateTimeFormat(
+                                                                                            'd/M/y',
+                                                                                            containerPaymentsRecord.createdDate!,
+                                                                                            locale: FFLocalizations.of(context).languageCode,
+                                                                                          ),
                                                                                           textAlign: TextAlign.start,
                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                 fontFamily: 'Open Sans',

@@ -42,6 +42,8 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NewInvoiceSheetModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -416,9 +418,13 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                         0.0, 3.0, 0.0, 3.0),
                                                 child: Text(
                                                   dateTimeFormat(
-                                                      'd/M/y',
-                                                      bookingInvoicingContentBookingsRecord
-                                                          .scheduledDate!),
+                                                    'd/M/y',
+                                                    bookingInvoicingContentBookingsRecord
+                                                        .scheduledDate!,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  ),
                                                   textAlign: TextAlign.end,
                                                   maxLines: 1,
                                                   style: FlutterFlowTheme.of(
@@ -1168,8 +1174,11 @@ class _NewInvoiceSheetWidgetState extends State<NewInvoiceSheetWidget> {
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            dateTimeFormat('d/M/y',
-                                                                                bookingInvoicingContentBookingsRecord.dOB!),
+                                                                            dateTimeFormat(
+                                                                              'd/M/y',
+                                                                              bookingInvoicingContentBookingsRecord.dOB!,
+                                                                              locale: FFLocalizations.of(context).languageCode,
+                                                                            ),
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,

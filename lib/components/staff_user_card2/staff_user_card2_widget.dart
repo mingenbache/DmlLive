@@ -37,6 +37,8 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => StaffUserCard2Model());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -286,9 +288,12 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                                             decoration: BoxDecoration(),
                                             child: Text(
                                               dateTimeFormat(
-                                                  'd/M/y',
-                                                  widget.userRecord!
-                                                      .createdTime!),
+                                                'd/M/y',
+                                                widget.userRecord!.createdTime!,
+                                                locale:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
+                                              ),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyText1
@@ -326,9 +331,12 @@ class _StaffUserCard2WidgetState extends State<StaffUserCard2Widget> {
                                             decoration: BoxDecoration(),
                                             child: Text(
                                               dateTimeFormat(
-                                                  'd/M/y',
-                                                  widget
-                                                      .userRecord!.lastLogin!),
+                                                'd/M/y',
+                                                widget.userRecord!.lastLogin!,
+                                                locale:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
+                                              ),
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyText1

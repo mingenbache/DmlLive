@@ -99,6 +99,8 @@ class _NewBookingSheetWidgetState extends State<NewBookingSheetWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -37,6 +37,7 @@ class _UserList2WidgetState extends State<UserList2Widget> {
     _model = createModel(context, () => UserList2Model());
 
     _model.textController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

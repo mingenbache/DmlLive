@@ -41,6 +41,8 @@ class _DuplicateTestItemWidgetState extends State<DuplicateTestItemWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DuplicateTestItemModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

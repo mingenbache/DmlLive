@@ -43,6 +43,8 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BookingUpdateModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -1327,7 +1329,11 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               Padding(
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(3.0, 5.0, 3.0, 0.0),
                                                                                 child: Text(
-                                                                                  dateTimeFormat('d/M/y', bookingUpdatesContainerBookingsRecord.dOB!),
+                                                                                  dateTimeFormat(
+                                                                                    'd/M/y',
+                                                                                    bookingUpdatesContainerBookingsRecord.dOB!,
+                                                                                    locale: FFLocalizations.of(context).languageCode,
+                                                                                  ),
                                                                                   style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
@@ -1720,7 +1726,11 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                   Padding(
                                                                                                     padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 0.0, 0.0),
                                                                                                     child: Text(
-                                                                                                      dateTimeFormat('yMMMd', containerInvoicesRecord.dueDate!),
+                                                                                                      dateTimeFormat(
+                                                                                                        'yMMMd',
+                                                                                                        containerInvoicesRecord.dueDate!,
+                                                                                                        locale: FFLocalizations.of(context).languageCode,
+                                                                                                      ),
                                                                                                       style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                             fontFamily: 'Open Sans',
                                                                                                             color: FlutterFlowTheme.of(context).primaryText,

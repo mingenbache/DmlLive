@@ -36,6 +36,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
     _model = createModel(context, () => UserListChatModel());
 
     _model.textController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

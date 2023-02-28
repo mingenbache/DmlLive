@@ -29,6 +29,8 @@ class _DashboardMenuWidgetWidgetState extends State<DashboardMenuWidgetWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DashboardMenuWidgetModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

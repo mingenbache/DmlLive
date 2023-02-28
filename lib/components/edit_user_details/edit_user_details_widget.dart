@@ -38,6 +38,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
 
     _model.passwordController ??= TextEditingController();
     _model.confirmPasswordController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -492,8 +493,12 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           8.0, 8.0, 8.0, 8.0),
                                       child: Text(
-                                        dateTimeFormat('d/M/y',
-                                            editUserDetailsUsersRecord.dOB!),
+                                        dateTimeFormat(
+                                          'd/M/y',
+                                          editUserDetailsUsersRecord.dOB!,
+                                          locale: FFLocalizations.of(context)
+                                              .languageCode,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(

@@ -39,6 +39,8 @@ class _PackageTestListItemWidgetState extends State<PackageTestListItemWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PackageTestListItemModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

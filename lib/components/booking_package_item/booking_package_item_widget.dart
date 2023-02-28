@@ -144,6 +144,8 @@ class _BookingPackageItemWidgetState extends State<BookingPackageItemWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

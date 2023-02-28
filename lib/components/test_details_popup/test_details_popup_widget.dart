@@ -43,6 +43,8 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TestDetailsPopupModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

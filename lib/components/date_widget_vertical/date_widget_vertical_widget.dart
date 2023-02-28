@@ -34,6 +34,8 @@ class _DateWidgetVerticalWidgetState extends State<DateWidgetVerticalWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DateWidgetVerticalModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

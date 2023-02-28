@@ -37,6 +37,8 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SelectInvoiceModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -427,7 +429,11 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                                                 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              dateTimeFormat('yMMMd', listViewInvoicesRecord.createdDate!),
+                                                                              dateTimeFormat(
+                                                                                'yMMMd',
+                                                                                listViewInvoicesRecord.createdDate!,
+                                                                                locale: FFLocalizations.of(context).languageCode,
+                                                                              ),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).secondaryColor,

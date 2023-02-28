@@ -84,6 +84,8 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

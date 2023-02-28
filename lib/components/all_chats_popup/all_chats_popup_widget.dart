@@ -43,6 +43,8 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AllChatsPopupModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

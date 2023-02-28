@@ -29,6 +29,8 @@ class _NotificationsWidgeDarkWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => NotificationsWidgeDarkModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -78,6 +78,8 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

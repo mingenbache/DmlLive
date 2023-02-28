@@ -35,6 +35,8 @@ class _InvoiceListItemWidgetWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => InvoiceListItemWidgetModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -140,7 +142,11 @@ class _InvoiceListItemWidgetWidgetState
                                   3.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 dateTimeFormat(
-                                    'd/M/y', widget.invoice!.createdDate!),
+                                  'd/M/y',
+                                  widget.invoice!.createdDate!,
+                                  locale:
+                                      FFLocalizations.of(context).languageCode,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(

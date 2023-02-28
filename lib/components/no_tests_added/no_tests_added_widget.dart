@@ -33,6 +33,8 @@ class _NoTestsAddedWidgetState extends State<NoTestsAddedWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NoTestsAddedModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
