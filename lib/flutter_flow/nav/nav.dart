@@ -265,6 +265,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'NewBooking',
               path: 'newBooking',
+              requireAuth: true,
               builder: (context, params) => NewBookingWidget(
                 bookingRef: params.getParam('bookingRef',
                     ParamType.DocumentReference, false, ['bookings']),
