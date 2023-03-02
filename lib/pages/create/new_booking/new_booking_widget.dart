@@ -2248,7 +2248,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                     .fromSTEB(
                                                         0.0, 5.0, 0.0, 5.0),
                                                 child: Container(
-                                                  height: _model.booking!
+                                                  height: formBookingsRecord
                                                               .testPackages!
                                                               .toList()
                                                               .length <
@@ -2954,7 +2954,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                               ),
                                               Stack(
                                                 children: [
-                                                  if (_model.booking!
+                                                  if (formBookingsRecord
                                                           .specialTests!
                                                           .toList()
                                                           .length >
