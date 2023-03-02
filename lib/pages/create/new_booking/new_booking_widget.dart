@@ -3028,7 +3028,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         ),
                                                       ),
                                                     ),
-                                                  if (_model.booking!
+                                                  if (formBookingsRecord
                                                           .specialTests!
                                                           .toList()
                                                           .length >
@@ -3516,249 +3516,199 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                               buttonUsersRecordList.isNotEmpty
                                                   ? buttonUsersRecordList.first
                                                   : null;
-                                          return InkWell(
-                                            onLongPress: () async {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    functions.bookingValidator(
-                                                        _model
-                                                            .firstNameController
-                                                            .text,
-                                                        _model
-                                                            .lastNameController
-                                                            .text,
-                                                        _model
-                                                            .emailAddressController
-                                                            .text,
-                                                        _model
-                                                            .phoneNumberController
-                                                            .text,
-                                                        _model.choiceChipsValue,
-                                                        _model.booking!
-                                                            .testsIncluded!
-                                                            .toList()),
-                                                    style: TextStyle(
-                                                      color:
-                                                          FlutterFlowTheme.of(
+                                          return FFButtonWidget(
+                                            onPressed: () async {
+                                              if (_model.formKey.currentState ==
+                                                      null ||
+                                                  !_model.formKey.currentState!
+                                                      .validate()) {
+                                                return;
+                                              }
+                                              var confirmDialogResponse =
+                                                  await showDialog<bool>(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                'Confirm New Booking?'),
+                                                            content: Text(
+                                                                'Booking for ${dateTimeFormat(
+                                                              'MMMEd',
+                                                              FFAppState()
+                                                                  .selectedDate,
+                                                              locale: FFLocalizations
+                                                                      .of(context)
+                                                                  .languageCode,
+                                                            )} with  ${formBookingsRecord.testsIncluded!.toList().length.toString()} tests and ${formBookingsRecord.testPackages!.toList().length.toString()} test packages.'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        false),
+                                                                child: Text(
+                                                                    'Cancel'),
+                                                              ),
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext,
+                                                                        true),
+                                                                child: Text(
+                                                                    'Confirm'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      ) ??
+                                                      false;
+                                              if (confirmDialogResponse) {
+                                                final bookingsUpdateData =
+                                                    createBookingsRecordData(
+                                                  scheduledDate:
+                                                      FFAppState().selectedDate,
+                                                  diagnosis: _model
+                                                      .diagnosisController.text,
+                                                  firstname: _model
+                                                      .firstNameController.text,
+                                                  lastname: _model
+                                                      .lastNameController.text,
+                                                  phonenumber: _model
+                                                      .phoneNumberController
+                                                      .text,
+                                                  sex: _model.choiceChipsValue,
+                                                  emailaddress: _model
+                                                      .emailAddressController
+                                                      .text,
+                                                  docNameAddress: _model
+                                                      .refDoctorController.text,
+                                                  isSubmitted: true,
+                                                  dOB: functions.returnDOB(
+                                                      _model.booking,
+                                                      FFAppState().dob,
+                                                      FFAppState().dobEntered,
+                                                      FFAppState().isPatient),
+                                                );
+                                                await widget.bookingRef!
+                                                    .update(bookingsUpdateData);
+                                                FFAppState().update(() {
+                                                  FFAppState().isSubmitted =
+                                                      true;
+                                                });
+
+                                                final notificationsCreateData =
+                                                    {
+                                                  ...createNotificationsRecordData(
+                                                    userRole: 'front',
+                                                    message:
+                                                        '${valueOrDefault(currentUserDocument?.firstName, '')} ${valueOrDefault(currentUserDocument?.lastName, '')} Has created a new booking for ${dateTimeFormat(
+                                                      'MMMEd',
+                                                      _model.datePicked1,
+                                                      locale:
+                                                          FFLocalizations.of(
                                                                   context)
-                                                              .secondaryColor,
-                                                    ),
+                                                              .languageCode,
+                                                    )}',
+                                                    createdDate:
+                                                        getCurrentTimestamp,
+                                                    isSeen: false,
+                                                    isBooking: true,
+                                                    isTest: false,
+                                                    type: 'newbooking',
+                                                    bookingRef:
+                                                        widget.bookingRef,
+                                                    userRef:
+                                                        currentUserReference,
+                                                    istestedtest: false,
                                                   ),
-                                                  duration: Duration(
-                                                      milliseconds: 4000),
-                                                  backgroundColor: Colors.white,
-                                                ),
-                                              );
-                                            },
-                                            child: FFButtonWidget(
-                                              onPressed: () async {
-                                                if (_model.formKey
-                                                            .currentState ==
-                                                        null ||
-                                                    !_model
-                                                        .formKey.currentState!
-                                                        .validate()) {
-                                                  return;
-                                                }
-                                                var confirmDialogResponse =
-                                                    await showDialog<bool>(
-                                                          context: context,
-                                                          builder:
-                                                              (alertDialogContext) {
-                                                            return AlertDialog(
-                                                              title: Text(
-                                                                  'Confirm New Booking?'),
-                                                              content: Text(
-                                                                  'Booking for ${dateTimeFormat(
-                                                                'MMMEd',
-                                                                FFAppState()
-                                                                    .selectedDate,
-                                                                locale: FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode,
-                                                              )} with  ${_model.booking!.testsIncluded!.toList().length.toString()} tests and ${_model.booking!.testPackages!.toList().length.toString()} test packages.'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          false),
-                                                                  child: Text(
-                                                                      'Cancel'),
-                                                                ),
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          true),
-                                                                  child: Text(
-                                                                      'Confirm'),
-                                                                ),
-                                                              ],
-                                                            );
-                                                          },
-                                                        ) ??
-                                                        false;
-                                                if (confirmDialogResponse) {
-                                                  final bookingsUpdateData =
-                                                      createBookingsRecordData(
-                                                    scheduledDate: FFAppState()
-                                                        .selectedDate,
-                                                    diagnosis: _model
-                                                        .diagnosisController
-                                                        .text,
-                                                    firstname: _model
-                                                        .firstNameController
-                                                        .text,
-                                                    lastname: _model
-                                                        .lastNameController
-                                                        .text,
-                                                    phonenumber: _model
-                                                        .phoneNumberController
-                                                        .text,
-                                                    sex:
-                                                        _model.choiceChipsValue,
-                                                    emailaddress: _model
-                                                        .emailAddressController
-                                                        .text,
-                                                    docNameAddress: _model
-                                                        .refDoctorController
-                                                        .text,
-                                                    isSubmitted: true,
-                                                    dOB: functions.returnDOB(
-                                                        _model.booking,
-                                                        FFAppState().dob,
-                                                        FFAppState().dobEntered,
-                                                        FFAppState().isPatient),
-                                                  );
-                                                  await widget.bookingRef!
-                                                      .update(
-                                                          bookingsUpdateData);
-                                                  FFAppState().update(() {
-                                                    FFAppState().isSubmitted =
-                                                        true;
-                                                  });
-
-                                                  final notificationsCreateData =
-                                                      {
-                                                    ...createNotificationsRecordData(
-                                                      userRole: 'front',
-                                                      message:
-                                                          '${valueOrDefault(currentUserDocument?.firstName, '')} ${valueOrDefault(currentUserDocument?.lastName, '')} Has created a new booking for ${dateTimeFormat(
-                                                        'MMMEd',
-                                                        _model.datePicked1,
-                                                        locale:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .languageCode,
-                                                      )}',
-                                                      createdDate:
-                                                          getCurrentTimestamp,
-                                                      isSeen: false,
-                                                      isBooking: true,
-                                                      isTest: false,
-                                                      type: 'newbooking',
-                                                      bookingRef:
-                                                          widget.bookingRef,
-                                                      userRef:
-                                                          currentUserReference,
-                                                      istestedtest: false,
-                                                    ),
-                                                    'users_receiving': [
-                                                      buttonUsersRecord!
-                                                          .reference
-                                                    ],
-                                                  };
-                                                  await NotificationsRecord
-                                                      .collection
-                                                      .doc()
-                                                      .set(
-                                                          notificationsCreateData);
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text(
-                                                        'Booking successfully created.',
-                                                        style: TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryBackground,
-                                                        ),
+                                                  'users_receiving': [
+                                                    buttonUsersRecord!.reference
+                                                  ],
+                                                };
+                                                await NotificationsRecord
+                                                    .collection
+                                                    .doc()
+                                                    .set(
+                                                        notificationsCreateData);
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      'Booking successfully created.',
+                                                      style: TextStyle(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryBackground,
                                                       ),
-                                                      duration: Duration(
-                                                          milliseconds: 4000),
-                                                      backgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
                                                     ),
-                                                  );
-                                                  triggerPushNotification(
-                                                    notificationTitle:
-                                                        'New Booking Created',
-                                                    notificationText:
-                                                        'User created a new booking.',
-                                                    userRefs: [
-                                                      buttonUsersRecord!
-                                                          .reference
-                                                    ],
-                                                    initialPageName:
-                                                        'BookingConfirmation',
-                                                    parameterData: {
-                                                      'bookingRef':
-                                                          widget.bookingRef,
-                                                    },
-                                                  );
+                                                    duration: Duration(
+                                                        milliseconds: 4000),
+                                                    backgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                  ),
+                                                );
+                                                triggerPushNotification(
+                                                  notificationTitle:
+                                                      'New Booking Created',
+                                                  notificationText:
+                                                      'User created a new booking.',
+                                                  userRefs: [
+                                                    buttonUsersRecord!.reference
+                                                  ],
+                                                  initialPageName:
+                                                      'BookingConfirmation',
+                                                  parameterData: {
+                                                    'bookingRef':
+                                                        widget.bookingRef,
+                                                  },
+                                                );
 
-                                                  final usersUpdateData = {
-                                                    ...createUsersRecordData(
-                                                      hasCurrentBooking: false,
-                                                    ),
-                                                    'current_booking':
-                                                        FieldValue.delete(),
-                                                  };
-                                                  await currentUserReference!
-                                                      .update(usersUpdateData);
+                                                final usersUpdateData = {
+                                                  ...createUsersRecordData(
+                                                    hasCurrentBooking: false,
+                                                  ),
+                                                  'current_booking':
+                                                      FieldValue.delete(),
+                                                };
+                                                await currentUserReference!
+                                                    .update(usersUpdateData);
 
-                                                  context.goNamed('MyBookings');
-                                                }
-                                              },
-                                              text: 'Submit',
-                                              options: FFButtonOptions(
-                                                width: 280.0,
-                                                height: 60.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryColor,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          fontSize: 16.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                                elevation: 2.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(25.0),
+                                                context.goNamed('MyBookings');
+                                              }
+                                            },
+                                            text: 'Submit',
+                                            options: FFButtonOptions(
+                                              width: 280.0,
+                                              height: 60.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle2
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        fontSize: 16.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                              elevation: 2.0,
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
                                               ),
+                                              borderRadius:
+                                                  BorderRadius.circular(25.0),
                                             ),
                                           ).animateOnActionTrigger(
                                               animationsMap[
