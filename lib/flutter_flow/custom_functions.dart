@@ -200,7 +200,7 @@ DateTime returnDOB(
       }
     }
   }
-  return date!;
+  return date ?? DateTime.now();
 }
 
 DateTime returnDOBLoader(
