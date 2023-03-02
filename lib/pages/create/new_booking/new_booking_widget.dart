@@ -1385,16 +1385,18 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                           0.0,
                                                                           0.0),
                                                               child: Text(
-                                                                functions.returnDateString(functions.returnDOB(
-                                                                    _model
-                                                                        .booking,
-                                                                    FFAppState()
-                                                                        .dob,
-                                                                    FFAppState()
-                                                                        .dobEntered,
-                                                                    _model
-                                                                        .booking!
-                                                                        .userPatient)),
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  functions.returnDateString(functions.returnDOB(
+                                                                      formBookingsRecord,
+                                                                      FFAppState()
+                                                                          .dob,
+                                                                      FFAppState()
+                                                                          .dobEntered,
+                                                                      formBookingsRecord
+                                                                          .userPatient)),
+                                                                  'no date',
+                                                                ),
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,

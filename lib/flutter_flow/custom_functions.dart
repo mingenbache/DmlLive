@@ -177,22 +177,27 @@ DateTime getNextWeekday() {
   return nextWeekDate;
 }
 
-DateTime? returnDOB(
+DateTime returnDOB(
   BookingsRecord? booking,
   DateTime? statedateofbirth,
   bool? dobEntered,
   bool? isPatient,
 ) {
   // Add your function code here!
+  statedateofbirth = statedateofbirth ?? DateTime.now();
+  dobEntered = dobEntered ?? false;
+  isPatient = isPatient ?? false;
   DateTime? date;
   // check if document boolean value is true, return datetime field, if false return current date
   //check if user is patient and set dob value if so
-  if (isPatient!) {
-    date = booking!.dOB;
-  } else {
-    //check if the user is not the patient but has entered the dob
-    if (!isPatient && dobEntered!) {
-      date = statedateofbirth;
+  if (booking != null) {
+    if (isPatient) {
+      date = booking.dOB;
+    } else {
+      //check if the user is not the patient but has entered the dob
+      if (!isPatient && dobEntered) {
+        date = statedateofbirth;
+      }
     }
   }
   return date!;
@@ -251,6 +256,7 @@ bool displayDOBField(
 
 String returnDateString(DateTime? date) {
   // Add your function code here!
+  date = date ?? DateTime.now();
   var formatted = DateFormat('yMMMd').format(date!);
   return formatted;
 }
