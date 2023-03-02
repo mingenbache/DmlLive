@@ -3028,7 +3028,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                         ),
                                                       ),
                                                     ),
-                                                  if (_model.booking!
+                                                  if (formBookingsRecord
                                                           .specialTests!
                                                           .toList()
                                                           .length >
