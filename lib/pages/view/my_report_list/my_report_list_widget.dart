@@ -633,6 +633,7 @@ class _MyReportListWidgetState extends State<MyReportListWidget> {
                                                                                     await showModalBottomSheet(
                                                                                       isScrollControlled: true,
                                                                                       backgroundColor: Colors.transparent,
+                                                                                      barrierColor: Color(0x00000000),
                                                                                       context: context,
                                                                                       builder: (context) {
                                                                                         return Padding(

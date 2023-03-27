@@ -7,7 +7,8 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_media.dart';
+import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/upload_data.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -377,6 +378,8 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 16.0, 0.0, 0.0),
                             child: FlutterFlowDropDown<String>(
+                              controller: _model.testMachineController ??=
+                                  FormFieldController<String>(null),
                               options: ['Machine 1', 'Machine 2', 'Machine 3'],
                               onChanged: (val) =>
                                   setState(() => _model.testMachineValue = val),
@@ -407,6 +410,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                               margin: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 20.0, 12.0, 20.0),
                               hidesUnderline: true,
+                              isSearchable: false,
                             ).animateOnPageLoad(
                                 animationsMap['dropDownOnPageLoadAnimation']!),
                           ),
@@ -561,7 +565,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                               validateFileFormat(
                                                   m.storagePath, context))) {
                                         setState(() =>
-                                            _model.isMediaUploading = true);
+                                            _model.isDataUploading = true);
                                         var selectedUploadedFiles =
                                             <FFUploadedFile>[];
                                         var downloadUrls = <String>[];
@@ -595,7 +599,7 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                         } finally {
                                           ScaffoldMessenger.of(context)
                                               .hideCurrentSnackBar();
-                                          _model.isMediaUploading = false;
+                                          _model.isDataUploading = false;
                                         }
                                         if (selectedUploadedFiles.length ==
                                                 selectedMedia.length &&
@@ -611,8 +615,8 @@ class _SubmitTestResultsWidgetState extends State<SubmitTestResultsWidget>
                                               context, 'Success!');
                                         } else {
                                           setState(() {});
-                                          showUploadMessage(context,
-                                              'Failed to upload media');
+                                          showUploadMessage(
+                                              context, 'Failed to upload data');
                                           return;
                                         }
                                       }

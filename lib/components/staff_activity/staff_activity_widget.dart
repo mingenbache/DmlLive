@@ -1719,6 +1719,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                               await showModalBottomSheet(
                                                                                 isScrollControlled: true,
                                                                                 backgroundColor: Colors.transparent,
+                                                                                barrierColor: Color(0x00000000),
                                                                                 context: context,
                                                                                 builder: (context) {
                                                                                   return Padding(
@@ -1903,6 +1904,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor: Color(0x00FFFFFF),
+                            barrierColor: Color(0x00000000),
                             context: context,
                             builder: (context) {
                               return Padding(

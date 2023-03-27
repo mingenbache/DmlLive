@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
@@ -424,6 +425,11 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                     : null;
                                                             return FlutterFlowDropDown<
                                                                 String>(
+                                                              controller: _model
+                                                                      .packageCategoryDropDownController ??=
+                                                                  FormFieldController<
+                                                                          String>(
+                                                                      null),
                                                               options:
                                                                   packageCategoryDropDownCategoriesRecord!
                                                                       .categories!
@@ -464,6 +470,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                                           4.0,
                                                                           8.0,
                                                                           4.0),
+                                                              isSearchable:
+                                                                  false,
                                                             );
                                                           },
                                                         ),
@@ -1803,6 +1811,8 @@ class _AddNewTestPackageWidgetState extends State<AddNewTestPackageWidget>
                                                               backgroundColor:
                                                                   Colors
                                                                       .transparent,
+                                                              barrierColor: Color(
+                                                                  0x00000000),
                                                               context: context,
                                                               builder:
                                                                   (context) {

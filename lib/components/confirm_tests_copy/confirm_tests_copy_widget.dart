@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -440,6 +441,9 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                           pathologistStaffRecordList =
                                           snapshot.data!;
                                       return FlutterFlowDropDown<String>(
+                                        controller: _model
+                                                .pathologistController ??=
+                                            FormFieldController<String>(null),
                                         options: pathologistStaffRecordList
                                             .map((e) => e.displayName)
                                             .withoutNulls
@@ -479,6 +483,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                         margin: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 20.0, 12.0, 20.0),
                                         hidesUnderline: true,
+                                        isSearchable: false,
                                       ).animateOnPageLoad(animationsMap[
                                           'dropDownOnPageLoadAnimation']!);
                                     },
@@ -697,6 +702,8 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                                               true,
                                                                           backgroundColor:
                                                                               Colors.transparent,
+                                                                          barrierColor:
+                                                                              Color(0x00000000),
                                                                           context:
                                                                               context,
                                                                           builder:
@@ -1168,6 +1175,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                                                           await showModalBottomSheet(
                                                                                             isScrollControlled: true,
                                                                                             backgroundColor: Colors.transparent,
+                                                                                            barrierColor: Color(0x00000000),
                                                                                             enableDrag: false,
                                                                                             context: context,
                                                                                             builder: (context) {
@@ -1541,6 +1549,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                                                                   await showModalBottomSheet(
                                                                                                     isScrollControlled: true,
                                                                                                     backgroundColor: Colors.transparent,
+                                                                                                    barrierColor: Color(0x00000000),
                                                                                                     context: context,
                                                                                                     builder: (context) {
                                                                                                       return Padding(
@@ -1977,6 +1986,7 @@ class _ConfirmTestsCopyWidgetState extends State<ConfirmTestsCopyWidget>
                                                                                 await showModalBottomSheet(
                                                                                   isScrollControlled: true,
                                                                                   backgroundColor: Colors.transparent,
+                                                                                  barrierColor: Color(0x00000000),
                                                                                   enableDrag: false,
                                                                                   context: context,
                                                                                   builder: (context) {

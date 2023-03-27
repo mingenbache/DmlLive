@@ -79,6 +79,7 @@ class _BookingWidgetWidgetState extends State<BookingWidgetWidget> {
             await showModalBottomSheet(
               isScrollControlled: true,
               backgroundColor: Color(0x4CFFFFFF),
+              barrierColor: Color(0x00000000),
               context: context,
               builder: (context) {
                 return Padding(

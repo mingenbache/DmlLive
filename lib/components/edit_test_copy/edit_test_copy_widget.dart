@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:auto_size_text/auto_size_text.dart';
@@ -500,10 +501,14 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                       : null;
                                                               return FlutterFlowDropDown<
                                                                   String>(
-                                                                initialOption: _model
-                                                                        .dropDownValue ??=
-                                                                    columnTestsRecord
-                                                                        .category,
+                                                                controller: _model
+                                                                        .dropDownController ??=
+                                                                    FormFieldController<
+                                                                        String>(
+                                                                  _model.dropDownValue ??=
+                                                                      columnTestsRecord
+                                                                          .category,
+                                                                ),
                                                                 options: dropDownCategoriesRecord!
                                                                     .categories!
                                                                     .toList()
@@ -551,6 +556,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                             4.0),
                                                                 hidesUnderline:
                                                                     true,
+                                                                isSearchable:
+                                                                    false,
                                                               );
                                                             },
                                                           ),

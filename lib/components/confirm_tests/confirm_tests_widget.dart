@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -377,6 +378,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                   List<StaffRecord> pathologistStaffRecordList =
                                       snapshot.data!;
                                   return FlutterFlowDropDown<String>(
+                                    controller: _model.pathologistController ??=
+                                        FormFieldController<String>(null),
                                     options: pathologistStaffRecordList
                                         .map((e) => e.displayName)
                                         .withoutNulls
@@ -413,6 +416,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                     margin: EdgeInsetsDirectional.fromSTEB(
                                         20.0, 20.0, 12.0, 20.0),
                                     hidesUnderline: true,
+                                    isSearchable: false,
                                   ).animateOnPageLoad(animationsMap[
                                       'dropDownOnPageLoadAnimation']!);
                                 },
@@ -740,6 +744,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                 true,
                                                                             backgroundColor:
                                                                                 Colors.transparent,
+                                                                            barrierColor:
+                                                                                Color(0x00000000),
                                                                             context:
                                                                                 context,
                                                                             builder:
@@ -978,6 +984,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                     isScrollControlled: true,
                                                     backgroundColor:
                                                         Colors.transparent,
+                                                    barrierColor:
+                                                        Color(0x00000000),
                                                     context: context,
                                                     builder: (context) {
                                                       return Padding(

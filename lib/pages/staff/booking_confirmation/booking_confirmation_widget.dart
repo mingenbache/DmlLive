@@ -13,6 +13,7 @@ import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
@@ -922,6 +923,9 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                     backgroundColor:
                                                                         Colors
                                                                             .transparent,
+                                                                    barrierColor:
+                                                                        Color(
+                                                                            0x00000000),
                                                                     context:
                                                                         context,
                                                                     builder:
@@ -1084,6 +1088,11 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                       .data!;
                                                               return FlutterFlowDropDown<
                                                                   String>(
+                                                                controller: _model
+                                                                        .refDoctorController ??=
+                                                                    FormFieldController<
+                                                                            String>(
+                                                                        null),
                                                                 options: refDoctorDoctorsRecordList
                                                                     .map((e) =>
                                                                         e.name)
@@ -1128,6 +1137,8 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                             4.0),
                                                                 hidesUnderline:
                                                                     true,
+                                                                isSearchable:
+                                                                    false,
                                                               );
                                                             },
                                                           ),
@@ -2364,6 +2375,7 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                                                 await showModalBottomSheet(
                                                                                   isScrollControlled: true,
                                                                                   backgroundColor: Colors.transparent,
+                                                                                  barrierColor: Color(0x00000000),
                                                                                   context: context,
                                                                                   builder: (context) {
                                                                                     return Padding(
@@ -3074,6 +3086,8 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                             backgroundColor:
                                                                 Colors
                                                                     .transparent,
+                                                            barrierColor: Color(
+                                                                0x00000000),
                                                             context: context,
                                                             builder: (context) {
                                                               return Padding(
@@ -3326,6 +3340,8 @@ class _BookingConfirmationWidgetState extends State<BookingConfirmationWidget>
                                                   isScrollControlled: true,
                                                   backgroundColor:
                                                       Color(0x00FFFFFF),
+                                                  barrierColor:
+                                                      Color(0x00000000),
                                                   context: context,
                                                   builder: (context) {
                                                     return Padding(

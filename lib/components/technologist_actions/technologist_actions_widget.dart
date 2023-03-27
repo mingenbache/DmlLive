@@ -127,6 +127,7 @@ class _TechnologistActionsWidgetState extends State<TechnologistActionsWidget> {
                           isScrollControlled: true,
                           backgroundColor:
                               FlutterFlowTheme.of(context).tertiaryColor,
+                          barrierColor: Color(0x00000000),
                           context: context,
                           builder: (context) {
                             return Padding(

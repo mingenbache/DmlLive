@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -437,10 +438,14 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                 : null;
                                                         return FlutterFlowDropDown<
                                                             String>(
-                                                          initialOption: _model
-                                                                  .dropDownValue ??=
-                                                              columnTestsRecord
-                                                                  .category,
+                                                          controller: _model
+                                                                  .dropDownController ??=
+                                                              FormFieldController<
+                                                                  String>(
+                                                            _model.dropDownValue ??=
+                                                                columnTestsRecord
+                                                                    .category,
+                                                          ),
                                                           options:
                                                               dropDownCategoriesRecord!
                                                                   .categories!
@@ -484,6 +489,7 @@ class _EditTestWidgetState extends State<EditTestWidget> {
                                                                       8.0,
                                                                       4.0),
                                                           hidesUnderline: true,
+                                                          isSearchable: false,
                                                         );
                                                       },
                                                     ),

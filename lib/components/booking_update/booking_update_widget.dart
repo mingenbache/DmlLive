@@ -482,6 +482,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                             ),
                                                                                             child: Column(
                                                                                               mainAxisSize: MainAxisSize.max,
+                                                                                              mainAxisAlignment: MainAxisAlignment.center,
                                                                                               children: [
                                                                                                 Text(
                                                                                                   functions.upperCase(functions.dateMonth(bookingUpdatesContainerBookingsRecord.scheduledDate)),
@@ -1616,6 +1617,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               await showModalBottomSheet(
                                                                                 isScrollControlled: true,
                                                                                 backgroundColor: Colors.transparent,
+                                                                                barrierColor: Color(0x00000000),
                                                                                 context: context,
                                                                                 builder: (context) {
                                                                                   return Padding(

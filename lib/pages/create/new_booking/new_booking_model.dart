@@ -14,7 +14,8 @@ import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_media.dart';
+import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -98,8 +99,9 @@ class NewBookingModel extends FlutterFlowModel {
 
   // State field(s) for ChoiceChips widget.
   String? choiceChipsValue;
+  FormFieldController<List<String>>? choiceChipsController;
   DateTime? datePicked2;
-  bool isMediaUploading = false;
+  bool isDataUploading = false;
   List<FFUploadedFile> uploadedLocalFiles = [];
   List<String> uploadedFileUrls = [];
 

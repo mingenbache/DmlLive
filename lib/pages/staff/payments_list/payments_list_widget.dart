@@ -260,6 +260,9 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                     backgroundColor:
                                                                         Color(
                                                                             0x00FFFFFF),
+                                                                    barrierColor:
+                                                                        Color(
+                                                                            0x00000000),
                                                                     context:
                                                                         context,
                                                                     builder:
@@ -772,6 +775,9 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                   backgroundColor:
                                                                       Color(
                                                                           0x00FFFFFF),
+                                                                  barrierColor:
+                                                                      Color(
+                                                                          0x00000000),
                                                                   context:
                                                                       context,
                                                                   builder:
@@ -1336,6 +1342,7 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                       }(),
                                                       padding: EdgeInsets.zero,
                                                       shrinkWrap: true,
+                                                      reverse: false,
                                                       scrollDirection:
                                                           Axis.vertical,
                                                       builderDelegate:

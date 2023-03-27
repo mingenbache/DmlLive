@@ -140,6 +140,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor: Color(0x00F9F9F9),
+                            barrierColor: Color(0x00000000),
                             context: context,
                             builder: (context) {
                               return Padding(

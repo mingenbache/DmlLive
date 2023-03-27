@@ -288,6 +288,8 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                                 backgroundColor:
                                                                     Colors
                                                                         .transparent,
+                                                                barrierColor: Color(
+                                                                    0x00000000),
                                                                 context:
                                                                     context,
                                                                 builder:

@@ -159,6 +159,8 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                                   isScrollControlled: true,
                                                   backgroundColor:
                                                       Color(0x00FFFFFF),
+                                                  barrierColor:
+                                                      Color(0x00000000),
                                                   context: context,
                                                   builder: (context) {
                                                     return Padding(
@@ -1178,6 +1180,8 @@ class _MyAccountWidgetState extends State<MyAccountWidget> {
                                           GoRouter.of(context)
                                               .prepareAuthEvent();
                                           await signOut();
+                                          GoRouter.of(context)
+                                              .clearRedirectLocation();
 
                                           context.goNamedAuth('Login', mounted);
                                         },

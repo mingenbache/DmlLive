@@ -221,6 +221,7 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
                     await showModalBottomSheet(
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
+                      barrierColor: Color(0x00000000),
                       context: context,
                       builder: (context) {
                         return Padding(

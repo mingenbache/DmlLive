@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -414,6 +415,10 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                         : null;
                                                 return FlutterFlowDropDown<
                                                     String>(
+                                                  controller: _model
+                                                          .testCategoryController ??=
+                                                      FormFieldController<
+                                                          String>(null),
                                                   options:
                                                       testCategoryCategoriesRecord!
                                                           .categories!
@@ -449,6 +454,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                   margin: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 4.0, 8.0, 4.0),
+                                                  isSearchable: false,
                                                 );
                                               },
                                             ),

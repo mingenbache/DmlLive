@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -37,6 +38,7 @@ class AddSpecialTestModel extends FlutterFlowModel {
   String? Function(BuildContext, String?)? testDescriptionControllerValidator;
   // State field(s) for technologist widget.
   String? technologistValue;
+  FormFieldController<String>? technologistController;
   // State field(s) for test_duration_slider widget.
   double? testDurationSliderValue;
   // State field(s) for results_duration_slider widget.

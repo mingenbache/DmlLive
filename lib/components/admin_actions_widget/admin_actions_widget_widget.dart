@@ -86,6 +86,7 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
+                          barrierColor: Color(0x00000000),
                           context: context,
                           builder: (context) {
                             return Padding(
@@ -256,6 +257,7 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
+                          barrierColor: Color(0x00000000),
                           context: context,
                           builder: (context) {
                             return Padding(

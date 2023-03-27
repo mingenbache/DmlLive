@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
@@ -479,6 +480,8 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 16.0, 0.0, 0.0),
                               child: FlutterFlowDropDown<String>(
+                                controller: _model.paymentMethodController ??=
+                                    FormFieldController<String>(null),
                                 options: [
                                   'MPESA',
                                   'Bank Transfer',
@@ -514,6 +517,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                 margin: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 20.0, 12.0, 20.0),
                                 hidesUnderline: true,
+                                isSearchable: false,
                               ).animateOnPageLoad(animationsMap[
                                   'dropDownOnPageLoadAnimation']!),
                             ),

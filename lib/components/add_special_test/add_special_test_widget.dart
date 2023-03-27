@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -888,9 +889,13 @@ class _AddSpecialTestWidgetState extends State<AddSpecialTestWidget>
                                                     snapshot.data!;
                                                 return FlutterFlowDropDown<
                                                     String>(
-                                                  initialOption: _model
-                                                          .technologistValue ??=
-                                                      'No Technologist Assigned',
+                                                  controller: _model
+                                                          .technologistController ??=
+                                                      FormFieldController<
+                                                          String>(
+                                                    _model.technologistValue ??=
+                                                        'No Technologist Assigned',
+                                                  ),
                                                   options:
                                                       technologistStaffRecordList
                                                           .map((e) =>
@@ -944,6 +949,7 @@ class _AddSpecialTestWidgetState extends State<AddSpecialTestWidget>
                                                       .fromSTEB(20.0, 20.0,
                                                           12.0, 20.0),
                                                   hidesUnderline: true,
+                                                  isSearchable: false,
                                                 ).animateOnPageLoad(animationsMap[
                                                     'dropDownOnPageLoadAnimation']!);
                                               },

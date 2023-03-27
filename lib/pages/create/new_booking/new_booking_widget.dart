@@ -14,7 +14,8 @@ import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_media.dart';
+import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -1139,12 +1140,6 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                             AuthUserStreamWidget(
                                                               builder: (context) =>
                                                                   FlutterFlowChoiceChips(
-                                                                initiallySelected: [
-                                                                  valueOrDefault(
-                                                                      currentUserDocument
-                                                                          ?.sex,
-                                                                      '')
-                                                                ],
                                                                 options: functions
                                                                     .returnSexOptions()
                                                                     .map((label) =>
@@ -1206,6 +1201,18 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                 alignment:
                                                                     WrapAlignment
                                                                         .start,
+                                                                controller: _model
+                                                                        .choiceChipsController ??=
+                                                                    FormFieldController<
+                                                                        List<
+                                                                            String>>(
+                                                                  [
+                                                                    valueOrDefault(
+                                                                        currentUserDocument
+                                                                            ?.sex,
+                                                                        '')
+                                                                  ],
+                                                                ),
                                                               ),
                                                             ),
                                                           if (formBookingsRecord
@@ -1728,7 +1735,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                         m.storagePath,
                                                                         context))) {
                                                               setState(() =>
-                                                                  _model.isMediaUploading =
+                                                                  _model.isDataUploading =
                                                                       true);
                                                               var selectedUploadedFiles =
                                                                   <FFUploadedFile>[];
@@ -1763,7 +1770,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                         u!)
                                                                     .toList();
                                                               } finally {
-                                                                _model.isMediaUploading =
+                                                                _model.isDataUploading =
                                                                     false;
                                                               }
                                                               if (selectedUploadedFiles
@@ -2423,6 +2430,7 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                                             await showModalBottomSheet(
                                                                               isScrollControlled: true,
                                                                               backgroundColor: Colors.transparent,
+                                                                              barrierColor: Color(0x00000000),
                                                                               context: context,
                                                                               builder: (context) {
                                                                                 return Padding(
@@ -3310,6 +3318,8 @@ class _NewBookingWidgetState extends State<NewBookingWidget>
                                                             backgroundColor:
                                                                 Colors
                                                                     .transparent,
+                                                            barrierColor: Color(
+                                                                0x00000000),
                                                             context: context,
                                                             builder: (context) {
                                                               return Padding(

@@ -557,6 +557,8 @@ class _AllTestsWidgetState extends State<AllTestsWidget> {
                                                                             true,
                                                                         backgroundColor:
                                                                             Colors.transparent,
+                                                                        barrierColor:
+                                                                            Color(0x00000000),
                                                                         context:
                                                                             context,
                                                                         builder:

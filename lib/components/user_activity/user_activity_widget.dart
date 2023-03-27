@@ -1870,6 +1870,8 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                                                                             true,
                                                                         backgroundColor:
                                                                             Colors.transparent,
+                                                                        barrierColor:
+                                                                            Color(0x00000000),
                                                                         context:
                                                                             context,
                                                                         builder:
@@ -2332,6 +2334,7 @@ class _UserActivityWidgetState extends State<UserActivityWidget> {
                             await showModalBottomSheet(
                               isScrollControlled: true,
                               backgroundColor: Color(0x00FFFFFF),
+                              barrierColor: Color(0x00000000),
                               context: context,
                               builder: (context) {
                                 return Padding(

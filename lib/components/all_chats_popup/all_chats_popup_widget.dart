@@ -356,6 +356,8 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                           backgroundColor:
                                                               Colors
                                                                   .transparent,
+                                                          barrierColor:
+                                                              Color(0x00000000),
                                                           context: context,
                                                           builder: (context) {
                                                             return Padding(

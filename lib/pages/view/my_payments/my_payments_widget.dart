@@ -57,6 +57,7 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
               await showModalBottomSheet(
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,
+                barrierColor: Color(0x00000000),
                 context: context,
                 builder: (context) {
                   return Padding(
@@ -292,6 +293,9 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
                                                                     backgroundColor:
                                                                         Color(
                                                                             0x00FFFFFF),
+                                                                    barrierColor:
+                                                                        Color(
+                                                                            0x00000000),
                                                                     context:
                                                                         context,
                                                                     builder:
@@ -747,6 +751,9 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
                                                                     backgroundColor:
                                                                         Color(
                                                                             0x00FFFFFF),
+                                                                    barrierColor:
+                                                                        Color(
+                                                                            0x00000000),
                                                                     context:
                                                                         context,
                                                                     builder:
@@ -1370,6 +1377,7 @@ class _MyPaymentsWidgetState extends State<MyPaymentsWidget> {
                                                       }(),
                                                       padding: EdgeInsets.zero,
                                                       shrinkWrap: true,
+                                                      reverse: false,
                                                       scrollDirection:
                                                           Axis.vertical,
                                                       builderDelegate:

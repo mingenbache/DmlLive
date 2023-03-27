@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -38,6 +39,7 @@ class ConfirmTestsCopyModel extends FlutterFlowModel {
   String? Function(BuildContext, String?)? labReferenceControllerValidator;
   // State field(s) for pathologist widget.
   String? pathologistValue;
+  FormFieldController<String>? pathologistController;
   // State field(s) for PageView widget.
   PageController? pageViewController;
   // Stores action output result for [Backend Call - Create Document] action in ConfirmTestCard widget.

@@ -138,6 +138,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor: Color(0x00F9F9F9),
+                            barrierColor: Color(0x00000000),
                             context: context,
                             builder: (context) {
                               return Padding(
@@ -423,6 +424,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                                 true,
                                                                             backgroundColor:
                                                                                 Colors.transparent,
+                                                                            barrierColor:
+                                                                                Color(0x00000000),
                                                                             context:
                                                                                 context,
                                                                             builder:

@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
@@ -1299,10 +1300,6 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                   Expanded(
                                                                     child:
                                                                         FlutterFlowChoiceChips(
-                                                                      initiallySelected: [
-                                                                        labReportBookingsRecord
-                                                                            .sex!
-                                                                      ],
                                                                       options: functions
                                                                           .returnSexOptions()
                                                                           .map((label) =>
@@ -1352,6 +1349,15 @@ class _LabReportWidgetState extends State<LabReportWidget> {
                                                                       alignment:
                                                                           WrapAlignment
                                                                               .start,
+                                                                      controller: _model
+                                                                              .choiceChipsController ??=
+                                                                          FormFieldController<
+                                                                              List<String>>(
+                                                                        [
+                                                                          labReportBookingsRecord
+                                                                              .sex!
+                                                                        ],
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ],

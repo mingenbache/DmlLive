@@ -1890,6 +1890,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                               await showModalBottomSheet(
                                 isScrollControlled: true,
                                 backgroundColor: Color(0x00FFFFFF),
+                                barrierColor: Color(0x00000000),
                                 context: context,
                                 builder: (context) {
                                   return Padding(

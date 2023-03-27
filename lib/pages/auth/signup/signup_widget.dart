@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/foundation.dart';
@@ -628,7 +629,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           ),
                                           Expanded(
                                             child: FlutterFlowChoiceChips(
-                                              initiallySelected: ['Female'],
                                               options: [
                                                 ChipData('Female',
                                                     FontAwesomeIcons.female),
@@ -695,6 +695,12 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                   _model.sexChoiceChipsValue !=
                                                       null,
                                               alignment: WrapAlignment.start,
+                                              controller: _model
+                                                      .sexChoiceChipsController ??=
+                                                  FormFieldController<
+                                                      List<String>>(
+                                                ['Female'],
+                                              ),
                                             ),
                                           ),
                                         ],
@@ -1030,6 +1036,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 isScrollControlled: true,
                                                 backgroundColor:
                                                     Colors.transparent,
+                                                barrierColor: Color(0x00000000),
                                                 context: context,
                                                 builder: (context) {
                                                   return Padding(

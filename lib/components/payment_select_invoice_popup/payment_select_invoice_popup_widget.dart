@@ -336,6 +336,7 @@ class _PaymentSelectInvoicePopupWidgetState
                                               }(),
                                               padding: EdgeInsets.zero,
                                               primary: false,
+                                              reverse: false,
                                               scrollDirection: Axis.vertical,
                                               builderDelegate:
                                                   PagedChildBuilderDelegate<
@@ -370,6 +371,8 @@ class _PaymentSelectInvoicePopupWidgetState
                                                             true,
                                                         backgroundColor:
                                                             Colors.transparent,
+                                                        barrierColor:
+                                                            Color(0x00000000),
                                                         context: context,
                                                         builder: (context) {
                                                           return Padding(

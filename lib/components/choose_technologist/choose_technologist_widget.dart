@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -288,9 +289,12 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                             technologistStaffRecordList =
                                             snapshot.data!;
                                         return FlutterFlowDropDown<String>(
-                                          initialOption:
-                                              _model.technologistValue ??=
-                                                  'No Technologist Assigned',
+                                          controller:
+                                              _model.technologistController ??=
+                                                  FormFieldController<String>(
+                                            _model.technologistValue ??=
+                                                'No Technologist Assigned',
+                                          ),
                                           options: technologistStaffRecordList
                                               .map((e) => e.displayName)
                                               .withoutNulls
@@ -332,6 +336,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 20.0, 12.0, 20.0),
                                           hidesUnderline: true,
+                                          isSearchable: false,
                                         ).animateOnPageLoad(animationsMap[
                                             'dropDownOnPageLoadAnimation']!);
                                       },

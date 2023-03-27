@@ -124,6 +124,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                               isScrollControlled: true,
                                               backgroundColor:
                                                   Color(0x09FFFFFF),
+                                              barrierColor: Color(0x00000000),
                                               context: context,
                                               builder: (context) {
                                                 return Padding(
@@ -340,6 +341,7 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
                                             backgroundColor: Colors.transparent,
+                                            barrierColor: Color(0x00000000),
                                             context: context,
                                             builder: (context) {
                                               return Padding(
@@ -489,6 +491,8 @@ class _TestedTestActionsWidgetState extends State<TestedTestActionsWidget> {
                                         onTap: () async {
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
+                                            backgroundColor: Color(0x00000000),
+                                            barrierColor: Color(0x00000000),
                                             context: context,
                                             builder: (context) {
                                               return Padding(
