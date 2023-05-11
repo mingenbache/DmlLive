@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/admin_actions_widget/admin_actions_widget_widget.dart';
 import '/components/empty_list/empty_list_widget.dart';
@@ -72,21 +72,24 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                 initialIndex: 0,
                 child: Column(
                   children: [
-                    TabBar(
-                      isScrollable: true,
-                      labelColor: FlutterFlowTheme.of(context).secondaryColor,
-                      unselectedLabelColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      labelStyle: FlutterFlowTheme.of(context).bodyText1,
-                      indicatorColor: Colors.white,
-                      tabs: [
-                        Tab(
-                          text: 'Notifications',
-                        ),
-                        Tab(
-                          text: 'Messages',
-                        ),
-                      ],
+                    Align(
+                      alignment: Alignment(0.0, 0),
+                      child: TabBar(
+                        isScrollable: true,
+                        labelColor: FlutterFlowTheme.of(context).secondary,
+                        unselectedLabelColor:
+                            FlutterFlowTheme.of(context).secondaryBackground,
+                        labelStyle: FlutterFlowTheme.of(context).bodyMedium,
+                        indicatorColor: Colors.white,
+                        tabs: [
+                          Tab(
+                            text: 'Notifications',
+                          ),
+                          Tab(
+                            text: 'Messages',
+                          ),
+                        ],
+                      ),
                     ),
                     Expanded(
                       child: TabBarView(
@@ -108,8 +111,8 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                     width: 50.0,
                                     height: 50.0,
                                     child: SpinKitRipple(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       size: 50.0,
                                     ),
                                   ),
@@ -216,7 +219,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                         height: 50.0,
                                         child: SpinKitRipple(
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                              .primary,
                                           size: 50.0,
                                         ),
                                       ),
@@ -246,6 +249,14 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 4.0),
                                                 child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
                                                   onTap: () async {
                                                     context.pushNamed(
                                                       'Chat',
@@ -324,7 +335,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                               Container(
                                                                             decoration:
                                                                                 BoxDecoration(
-                                                                              color: FlutterFlowTheme.of(context).primaryColor,
+                                                                              color: FlutterFlowTheme.of(context).primary,
                                                                               borderRadius: BorderRadius.circular(12.0),
                                                                             ),
                                                                             child:
@@ -343,7 +354,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                                             width: 50.0,
                                                                                             height: 50.0,
                                                                                             child: SpinKitRipple(
-                                                                                              color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                              color: FlutterFlowTheme.of(context).primary,
                                                                                               size: 50.0,
                                                                                             ),
                                                                                           ),
@@ -354,7 +365,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                                         '${textUsersRecord.firstName} ${textUsersRecord.lastName}',
                                                                                         textAlign: TextAlign.center,
                                                                                         maxLines: 1,
-                                                                                        style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                        style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                               fontFamily: 'Open Sans',
                                                                                               fontSize: 12.0,
                                                                                               fontWeight: FontWeight.normal,
@@ -419,7 +430,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                               padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 4.0, 0.0),
                                                                               child: Text(
                                                                                 columnChatsRecord.lastMessage!,
-                                                                                style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                       fontFamily: 'Lexend Deca',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontSize: 12.0,
@@ -434,7 +445,7 @@ class _NotificationsWidgetWidgetState extends State<NotificationsWidgetWidget> {
                                                                             child:
                                                                                 Icon(
                                                                               Icons.keyboard_arrow_right,
-                                                                              color: FlutterFlowTheme.of(context).primaryColor,
+                                                                              color: FlutterFlowTheme.of(context).primary,
                                                                               size: 24.0,
                                                                             ),
                                                                           ),

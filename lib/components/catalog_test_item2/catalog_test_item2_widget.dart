@@ -61,14 +61,19 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
         Align(
           alignment: AlignmentDirectional(-0.95, 0.0),
           child: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onTap: () async {
               await showModalBottomSheet(
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,
+                barrierColor: Color(0x00000000),
                 context: context,
-                builder: (context) {
+                builder: (bottomSheetContext) {
                   return Padding(
-                    padding: MediaQuery.of(context).viewInsets,
+                    padding: MediaQuery.of(bottomSheetContext).viewInsets,
                     child: TestDetailsPopupWidget(
                       test: widget.test,
                     ),
@@ -100,7 +105,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                           width: 50.0,
                           height: 50.0,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).tertiaryColor,
+                            color: FlutterFlowTheme.of(context).tertiary,
                             shape: BoxShape.circle,
                           ),
                           child: Align(
@@ -143,8 +148,8 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                       .camelCase(widget.test!.name)
                                       .maybeHandleOverflow(maxChars: 20),
                                   style: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
                                     fontWeight: FontWeight.w500,
                                     fontSize: 18.0,
                                   ),
@@ -161,7 +166,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                           width: 240.0,
                           height: 2.0,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                            color: FlutterFlowTheme.of(context).primary,
                           ),
                         ),
                       ),
@@ -194,7 +199,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                               BorderRadius.circular(12.0),
                                           border: Border.all(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondary,
                                             width: 1.0,
                                           ),
                                         ),
@@ -205,12 +210,12 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                           child: Text(
                                             widget.test!.category!,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Lexend Deca',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryColor,
+                                                      .secondary,
                                                   fontSize: 12.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
@@ -234,18 +239,18 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                       Icon(
                                         Icons.timer,
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
+                                            .primary,
                                         size: 20.0,
                                       ),
                                       Text(
                                         '${widget.test!.durationResults?.toString()} Hrs',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Roboto Mono',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryColor,
+                                                      .secondary,
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),
@@ -288,7 +293,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                       Icon(
                                         Icons.delivery_dining,
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
+                                            .primary,
                                         size: 20.0,
                                       ),
                                       Padding(
@@ -308,7 +313,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                                     Icons.check_circle_outline,
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondaryColor,
+                                                        .secondary,
                                                     size: 16.0,
                                                   ),
                                                 ),
@@ -321,7 +326,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                                     Icons.not_interested,
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondaryColor,
+                                                        .secondary,
                                                     size: 16.0,
                                                   ),
                                                 ),
@@ -360,7 +365,7 @@ class _CatalogTestItem2WidgetState extends State<CatalogTestItem2Widget> {
                                             style: TextStyle(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryColor,
+                                                      .primary,
                                               fontWeight: FontWeight.w500,
                                               fontSize: 17.0,
                                             ),

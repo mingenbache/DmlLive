@@ -55,6 +55,10 @@ class _ClientUserCardxWidgetState extends State<ClientUserCardxWidget> {
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
         child: InkWell(
+          splashColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           onTap: () async {
             context.pushNamed(
               'Chat',
@@ -132,11 +136,11 @@ class _ClientUserCardxWidgetState extends State<ClientUserCardxWidget> {
                               Text(
                                 '${functions.camelCase(widget.userRecord!.firstName)} ${functions.camelCase(widget.userRecord!.lastName)}',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondary,
                                       fontSize: 19.0,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -158,8 +162,8 @@ class _ClientUserCardxWidgetState extends State<ClientUserCardxWidget> {
                                   children: [
                                     Icon(
                                       Icons.email_outlined,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       size: 20.0,
                                     ),
                                   ],
@@ -168,11 +172,11 @@ class _ClientUserCardxWidgetState extends State<ClientUserCardxWidget> {
                               Text(
                                 widget.userRecord!.email!,
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Roboto',
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondary,
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -194,8 +198,8 @@ class _ClientUserCardxWidgetState extends State<ClientUserCardxWidget> {
                                   children: [
                                     Icon(
                                       Icons.phone,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       size: 18.0,
                                     ),
                                   ],
@@ -204,11 +208,11 @@ class _ClientUserCardxWidgetState extends State<ClientUserCardxWidget> {
                               Text(
                                 widget.userRecord!.phoneNumber!,
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Roboto',
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondary,
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                     ),

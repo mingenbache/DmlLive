@@ -104,7 +104,10 @@ class _DashboardMenuWidgetLightWidgetState
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.13,
+        constraints: BoxConstraints(
+          maxWidth: 440.0,
+          maxHeight: 100.0,
+        ),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -124,242 +127,300 @@ class _DashboardMenuWidgetLightWidgetState
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
-                child: InkWell(
-                  onTap: () async {
-                    FFAppState().update(() {
-                      FFAppState().testsVar = 'previous';
-                    });
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      FFAppState().update(() {
+                        FFAppState().testsVar = 'previous';
+                      });
 
-                    context.pushNamed(
-                      'MyBookings',
-                      extra: <String, dynamic>{
-                        kTransitionInfoKey: TransitionInfo(
-                          hasTransition: true,
-                          transitionType: PageTransitionType.rightToLeft,
-                          duration: Duration(milliseconds: 300),
-                        ),
-                      },
-                    );
-                  },
-                  child: Material(
-                    color: Colors.transparent,
-                    elevation: 3.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.23,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).primaryBtnText,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 4.0,
-                            color: Color(0x33000000),
-                            offset: Offset(0.0, 2.0),
-                          )
-                        ],
+                      context.pushNamed(
+                        'MyBookings',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.rightToLeft,
+                            duration: Duration(milliseconds: 300),
+                          ),
+                        },
+                      );
+                    },
+                    child: Material(
+                      color: Colors.transparent,
+                      elevation: 3.0,
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
-                        shape: BoxShape.rectangle,
                       ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryBtnText,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4.0,
+                              color: Color(0x33000000),
+                              offset: Offset(0.0, 2.0),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(20.0),
+                          shape: BoxShape.rectangle,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 3.0, 0.0, 3.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 50.0,
+                                decoration: BoxDecoration(),
+                                child: Icon(
+                                  Icons.fast_rewind,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 40.0,
+                                ),
+                              ),
+                              Text(
+                                'Previous\nTests',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.normal,
+                                      lineHeight: 0.9,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ).animateOnActionTrigger(
+                      animationsMap['containerOnActionTriggerAnimation1']!,
+                      hasBeenTriggered: hasContainerTriggered1),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      FFAppState().update(() {
+                        FFAppState().testsVar = 'upcoming';
+                      });
+
+                      context.pushNamed(
+                        'MyBookings',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.rightToLeft,
+                          ),
+                        },
+                      );
+                    },
+                    child: Material(
+                      color: Colors.transparent,
+                      elevation: 3.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).secondary,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4.0,
+                              color: Color(0x33000000),
+                              offset: Offset(0.0, 2.0),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(20.0),
+                          shape: BoxShape.rectangle,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 3.0, 0.0, 3.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Container(
+                                height: 50.0,
+                                decoration: BoxDecoration(),
+                                child: Icon(
+                                  Icons.schedule_send,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 40.0,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    2.0, 0.0, 2.0, 0.0),
+                                child: AutoSizeText(
+                                  'Upcoming\nTests',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.normal,
+                                        lineHeight: 0.9,
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ).animateOnActionTrigger(
+                      animationsMap['containerOnActionTriggerAnimation2']!,
+                      hasBeenTriggered: hasContainerTriggered2),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.pushNamed('myPayments');
+                    },
+                    child: Material(
+                      color: Colors.transparent,
+                      elevation: 3.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4.0,
+                              color: Color(0x33000000),
+                              offset: Offset(0.0, 2.0),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(20.0),
+                          shape: BoxShape.rectangle,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 3.0, 0.0, 9.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Container(
+                                height: 50.0,
+                                decoration: BoxDecoration(),
+                                child: Icon(
+                                  Icons.payments_outlined,
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  size: 40.0,
+                                ),
+                              ),
+                              Text(
+                                'Payments',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      fontSize: 14.0,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ).animateOnActionTrigger(
+                      animationsMap['containerOnActionTriggerAnimation3']!,
+                      hasBeenTriggered: hasContainerTriggered3),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 4.0,
+                          color: Color(0x33000000),
+                          offset: Offset(0.0, 2.0),
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(20.0),
+                      shape: BoxShape.rectangle,
+                    ),
+                    alignment: AlignmentDirectional(0.0, 0.30000000000000004),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
                       child: Column(
-                        mainAxisSize: MainAxisSize.max,
+                        mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.fast_rewind,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 40.0,
+                          Container(
+                            height: 50.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Icon(
+                              Icons.help_outline,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 40.0,
+                            ),
                           ),
                           Text(
-                            'Previous\nTests',
+                            'Help',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
-                                .bodyText1
+                                .bodyMedium
                                 .override(
                                   fontFamily: 'Roboto',
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
                                   fontSize: 14.0,
-                                  fontWeight: FontWeight.normal,
                                 ),
                           ),
                         ],
                       ),
                     ),
-                  ),
-                ).animateOnActionTrigger(
-                    animationsMap['containerOnActionTriggerAnimation1']!,
-                    hasBeenTriggered: hasContainerTriggered1),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
-                child: InkWell(
-                  onTap: () async {
-                    FFAppState().update(() {
-                      FFAppState().testsVar = 'upcoming';
-                    });
-
-                    context.pushNamed(
-                      'MyBookings',
-                      extra: <String, dynamic>{
-                        kTransitionInfoKey: TransitionInfo(
-                          hasTransition: true,
-                          transitionType: PageTransitionType.rightToLeft,
-                        ),
-                      },
-                    );
-                  },
-                  child: Material(
-                    color: Colors.transparent,
-                    elevation: 3.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.23,
-                      height: MediaQuery.of(context).size.height * 0.11,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryColor,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 4.0,
-                            color: Color(0x33000000),
-                            offset: Offset(0.0, 2.0),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(20.0),
-                        shape: BoxShape.rectangle,
-                      ),
-                      alignment: AlignmentDirectional(0.0, 0.30000000000000004),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.schedule_send,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 40.0,
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                2.0, 0.0, 2.0, 0.0),
-                            child: AutoSizeText(
-                              'Upcoming\nTests',
-                              textAlign: TextAlign.center,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
-                                    fontFamily: 'Roboto',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ).animateOnActionTrigger(
-                    animationsMap['containerOnActionTriggerAnimation2']!,
-                    hasBeenTriggered: hasContainerTriggered2),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
-                child: InkWell(
-                  onTap: () async {
-                    context.pushNamed('myPayments');
-                  },
-                  child: Material(
-                    color: Colors.transparent,
-                    elevation: 3.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.23,
-                      height: MediaQuery.of(context).size.height * 0.11,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 4.0,
-                            color: Color(0x33000000),
-                            offset: Offset(0.0, 2.0),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(20.0),
-                        shape: BoxShape.rectangle,
-                      ),
-                      alignment: AlignmentDirectional(0.0, 0.30000000000000004),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.payments_outlined,
-                            color: FlutterFlowTheme.of(context).alternate,
-                            size: 40.0,
-                          ),
-                          Text(
-                            'Payments',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyText1
-                                .override(
-                                  fontFamily: 'Roboto',
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  fontSize: 14.0,
-                                ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ).animateOnActionTrigger(
-                    animationsMap['containerOnActionTriggerAnimation3']!,
-                    hasBeenTriggered: hasContainerTriggered3),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.24,
-                  height: MediaQuery.of(context).size.height * 0.11,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 4.0,
-                        color: Color(0x33000000),
-                        offset: Offset(0.0, 2.0),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(20.0),
-                    shape: BoxShape.rectangle,
-                  ),
-                  alignment: AlignmentDirectional(0.0, 0.30000000000000004),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.help_outline,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 40.0,
-                      ),
-                      Text(
-                        'Help',
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Roboto',
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              fontSize: 14.0,
-                            ),
-                      ),
-                    ],
                   ),
                 ),
               ),

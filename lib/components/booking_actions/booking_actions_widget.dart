@@ -40,8 +40,8 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
           curve: Curves.bounceOut,
           delay: 0.ms,
           duration: 1020.ms,
-          begin: 0.9,
-          end: 1.0,
+          begin: Offset(0.9, 0.9),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -92,7 +92,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
           maxWidth: 320.0,
         ),
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).primaryColor,
+          color: FlutterFlowTheme.of(context).primary,
           borderRadius: BorderRadius.circular(28.0),
         ),
         child: Row(
@@ -103,14 +103,19 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
             Expanded(
               flex: 2,
               child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
                 onTap: () async {
                   await showModalBottomSheet(
                     isScrollControlled: true,
                     backgroundColor: Colors.transparent,
+                    barrierColor: Color(0x00000000),
                     context: context,
-                    builder: (context) {
+                    builder: (bottomSheetContext) {
                       return Padding(
-                        padding: MediaQuery.of(context).viewInsets,
+                        padding: MediaQuery.of(bottomSheetContext).viewInsets,
                         child: NewInvoiceSheetWidget(
                           bookingRef: widget.bookingRef!.reference,
                         ),
@@ -147,7 +152,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                                   textAlign: TextAlign.center,
                                   maxLines: 1,
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
@@ -198,7 +203,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                                 textAlign: TextAlign.center,
                                 maxLines: 1,
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
@@ -223,6 +228,10 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                   children: [
                     if (widget.bookingRef!.resultPublished ?? true)
                       InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           context.pushNamed(
                             'BookingReport',
@@ -264,7 +273,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                                           textAlign: TextAlign.center,
                                           maxLines: 1,
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color:
@@ -283,14 +292,20 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                       ),
                     if (!widget.bookingRef!.resultPublished!)
                       InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
+                            barrierColor: Color(0x00000000),
                             context: context,
-                            builder: (context) {
+                            builder: (bottomSheetContext) {
                               return Padding(
-                                padding: MediaQuery.of(context).viewInsets,
+                                padding: MediaQuery.of(bottomSheetContext)
+                                    .viewInsets,
                                 child: ReportWizardWidget(
                                   booking: widget.bookingRef,
                                 ),
@@ -327,7 +342,7 @@ class _BookingActionsWidgetState extends State<BookingActionsWidget>
                                           textAlign: TextAlign.center,
                                           maxLines: 1,
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color: Color(0x4CFFFFFF),

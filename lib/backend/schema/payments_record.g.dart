@@ -318,42 +318,25 @@ class _$PaymentsRecord extends PaymentsRecord {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(
-                                                                $jc(
-                                                                    0,
-                                                                    userRef
-                                                                        .hashCode),
-                                                                bookingRef
-                                                                    .hashCode),
-                                                            type.hashCode),
-                                                        transactionCode
-                                                            .hashCode),
-                                                    createdDate.hashCode),
-                                                isApproved.hashCode),
-                                            invoiceRef.hashCode),
-                                        amount.hashCode),
-                                    firstName.hashCode),
-                                lastName.hashCode),
-                            paymentNotes.hashCode),
-                        transactionDate.hashCode),
-                    updatedDate.hashCode),
-                hasReceipt.hashCode),
-            updateRole.hashCode),
-        ffRef.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, userRef.hashCode);
+    _$hash = $jc(_$hash, bookingRef.hashCode);
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, transactionCode.hashCode);
+    _$hash = $jc(_$hash, createdDate.hashCode);
+    _$hash = $jc(_$hash, isApproved.hashCode);
+    _$hash = $jc(_$hash, invoiceRef.hashCode);
+    _$hash = $jc(_$hash, amount.hashCode);
+    _$hash = $jc(_$hash, firstName.hashCode);
+    _$hash = $jc(_$hash, lastName.hashCode);
+    _$hash = $jc(_$hash, paymentNotes.hashCode);
+    _$hash = $jc(_$hash, transactionDate.hashCode);
+    _$hash = $jc(_$hash, updatedDate.hashCode);
+    _$hash = $jc(_$hash, hasReceipt.hashCode);
+    _$hash = $jc(_$hash, updateRole.hashCode);
+    _$hash = $jc(_$hash, ffRef.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -517,4 +500,4 @@ class PaymentsRecordBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

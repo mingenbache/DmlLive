@@ -1,10 +1,11 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +63,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
               width: 50.0,
               height: 50.0,
               child: SpinKitRipple(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 size: 50.0,
               ),
             ),
@@ -71,10 +72,11 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
         final editUserDetailsUsersRecord = snapshot.data!;
         return Container(
           constraints: BoxConstraints(
+            maxWidth: 440.0,
             maxHeight: 600.0,
           ),
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryColor,
+            color: FlutterFlowTheme.of(context).secondary,
             borderRadius: BorderRadius.circular(32.0),
           ),
           child: Padding(
@@ -90,20 +92,25 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                   children: [
                     Text(
                       'EDIT\nUSER DETAILS',
-                      style: FlutterFlowTheme.of(context).title2.override(
-                            fontFamily: 'Open Sans',
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            fontSize: 32.0,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      style:
+                          FlutterFlowTheme.of(context).headlineMedium.override(
+                                fontFamily: 'Open Sans',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 32.0,
+                                fontWeight: FontWeight.bold,
+                              ),
                     ),
                     InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         context.pop();
                       },
                       child: Card(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: FlutterFlowTheme.of(context).secondaryColor,
+                        color: FlutterFlowTheme.of(context).secondary,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         ),
@@ -115,7 +122,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                           icon: Icon(
                             Icons.close_rounded,
-                            color: FlutterFlowTheme.of(context).tertiaryColor,
+                            color: FlutterFlowTheme.of(context).tertiary,
                             size: 30.0,
                           ),
                           onPressed: () async {
@@ -199,7 +206,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                               16.0, 24.0, 0.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.of(context)
@@ -268,7 +275,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                               16.0, 24.0, 0.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.of(context)
@@ -303,7 +310,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                     labelText: 'Email Address',
                                     hintText: 'Enter your email here...',
                                     hintStyle: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Lexend Deca',
                                           color: Color(0xFF95A1AC),
@@ -347,7 +354,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                             16.0, 24.0, 0.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Roboto',
                                         color: FlutterFlowTheme.of(context)
@@ -382,7 +389,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                     labelText: 'Phone Number',
                                     hintText: 'Enter your name here...',
                                     hintStyle: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Lexend Deca',
                                           color: Color(0xFF95A1AC),
@@ -426,7 +433,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                             16.0, 24.0, 0.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Roboto',
                                         color: FlutterFlowTheme.of(context)
@@ -454,6 +461,10 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 5.0, 5.0, 5.0),
                                 child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     final _datePickedDate =
                                         await showDatePicker(
@@ -500,7 +511,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                               .languageCode,
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Open Sans',
                                               color:
@@ -514,9 +525,6 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                               ),
                               Expanded(
                                 child: FlutterFlowChoiceChips(
-                                  initiallySelected: [
-                                    editUserDetailsUsersRecord.sex!
-                                  ],
                                   options: [
                                     ChipData('Female', FontAwesomeIcons.female),
                                     ChipData('Male', FontAwesomeIcons.male)
@@ -528,7 +536,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         FlutterFlowTheme.of(context)
                                             .primaryText,
                                     textStyle: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
@@ -548,7 +556,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                         FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                     textStyle: FlutterFlowTheme.of(context)
-                                        .bodyText2
+                                        .bodySmall
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
@@ -568,6 +576,11 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                   initialized:
                                       _model.sexChoiceChipsValue != null,
                                   alignment: WrapAlignment.start,
+                                  controller:
+                                      _model.sexChoiceChipsValueController ??=
+                                          FormFieldController<List<String>>(
+                                    [editUserDetailsUsersRecord.sex!],
+                                  ),
                                 ),
                               ),
                             ],
@@ -588,7 +601,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                     labelText: 'Password',
                                     hintText: 'Enter your email here...',
                                     hintStyle: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Lexend Deca',
                                           color: FlutterFlowTheme.of(context)
@@ -648,7 +661,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                     ),
                                   ),
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Roboto',
                                         color: FlutterFlowTheme.of(context)
@@ -679,7 +692,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                     labelText: 'Confirm Password',
                                     hintText: 'Enter your email here...',
                                     hintStyle: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Lexend Deca',
                                           color: FlutterFlowTheme.of(context)
@@ -739,7 +752,7 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                     ),
                                   ),
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Roboto',
                                         color: FlutterFlowTheme.of(context)
@@ -800,10 +813,9 @@ class _EditUserDetailsWidgetState extends State<EditUserDetailsWidget> {
                                       0.0, 0.0, 0.0, 0.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
-                                      .subtitle1
+                                      .titleMedium
                                       .override(
                                         fontFamily: 'Roboto',
                                         color: FlutterFlowTheme.of(context)

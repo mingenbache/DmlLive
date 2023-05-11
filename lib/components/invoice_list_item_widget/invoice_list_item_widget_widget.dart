@@ -85,7 +85,7 @@ class _InvoiceListItemWidgetWidgetState
                         decimalType: DecimalType.periodDecimal,
                         currency: 'Ksh. ',
                       ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Open Sans',
                             color: FlutterFlowTheme.of(context).primaryText,
                             fontWeight: FontWeight.w500,
@@ -148,7 +148,7 @@ class _InvoiceListItemWidgetWidgetState
                                       FFLocalizations.of(context).languageCode,
                                 ),
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)

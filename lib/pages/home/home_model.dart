@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/client_notifications_widget/client_notifications_widget_widget.dart';
 import '/components/new_booking_sheet/new_booking_sheet_widget.dart';

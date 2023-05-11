@@ -66,7 +66,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
               width: 50.0,
               height: 50.0,
               child: SpinKitRipple(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 size: 50.0,
               ),
             ),
@@ -85,14 +85,21 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
                     onTap: () async {
                       await showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,
+                        barrierColor:
+                            FlutterFlowTheme.of(context).secondaryBackground,
                         context: context,
-                        builder: (context) {
+                        builder: (bottomSheetContext) {
                           return Padding(
-                            padding: MediaQuery.of(context).viewInsets,
+                            padding:
+                                MediaQuery.of(bottomSheetContext).viewInsets,
                             child: TestDetailsPopupWidget(
                               test: containerTestsRecord,
                             ),
@@ -112,8 +119,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                               maxHeight: 130.0,
                             ),
                             decoration: BoxDecoration(
-                              color:
-                                  FlutterFlowTheme.of(context).secondaryColor,
+                              color: FlutterFlowTheme.of(context).secondary,
                               borderRadius: BorderRadius.circular(12.0),
                             ),
                             child: Padding(
@@ -138,7 +144,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                     maxChars: 2),
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
@@ -304,7 +310,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                         .category!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyText1
+                                                                        .bodyMedium
                                                                         .override(
                                                                           fontFamily:
                                                                               'Lexend Deca',
@@ -354,7 +360,7 @@ class _CatalogTestItemWidgetState extends State<CatalogTestItemWidget> {
                                                                 '${containerTestsRecord.durationResults?.toString()} Hrs',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Roboto Mono',

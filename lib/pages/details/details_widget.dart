@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/top_actions/top_actions_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -45,8 +45,8 @@ class _DetailsWidgetState extends State<DetailsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -58,8 +58,8 @@ class _DetailsWidgetState extends State<DetailsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -101,7 +101,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
               width: 50.0,
               height: 50.0,
               child: SpinKitRipple(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 size: 50.0,
               ),
             ),
@@ -110,10 +110,10 @@ class _DetailsWidgetState extends State<DetailsWidget>
         final detailsUsersRecord = snapshot.data!;
         return Title(
             title: 'Details',
-            color: FlutterFlowTheme.of(context).primaryColor,
+            color: FlutterFlowTheme.of(context).primary,
             child: Scaffold(
               key: scaffoldKey,
-              backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+              backgroundColor: FlutterFlowTheme.of(context).tertiary,
               body: SafeArea(
                 child: StreamBuilder<TestsRecord>(
                   stream: TestsRecord.getDocument(widget.testId!),
@@ -125,7 +125,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                           width: 50.0,
                           height: 50.0,
                           child: SpinKitRipple(
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                            color: FlutterFlowTheme.of(context).primary,
                             size: 50.0,
                           ),
                         ),
@@ -151,8 +151,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                   width: 50.0,
                                   height: 50.0,
                                   child: SpinKitRipple(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                    color: FlutterFlowTheme.of(context).primary,
                                     size: 50.0,
                                   ),
                                 ),
@@ -179,7 +178,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                             columnTestsRecord.name!,
                                             textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
-                                                .title1
+                                                .displaySmall
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: Color(0xFF586B06),
@@ -219,16 +218,16 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryColor,
+                                                      .secondary,
                                               textStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .tertiaryColor,
+                                                                .tertiary,
                                                       ),
                                               elevation: 2.0,
                                               borderSide: BorderSide(
@@ -249,41 +248,44 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                     height: MediaQuery.of(context).size.height *
                                         0.5,
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
                                     ),
                                     child: DefaultTabController(
                                       length: 3,
                                       initialIndex: 0,
                                       child: Column(
                                         children: [
-                                          TabBar(
-                                            isScrollable: true,
-                                            labelColor: Color(0xFF586B06),
-                                            unselectedLabelColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryColor,
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyText1
-                                                    .override(
-                                                      fontFamily: 'Open Sans',
-                                                      fontSize: 16.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                            indicatorColor: Colors.white,
-                                            tabs: [
-                                              Tab(
-                                                text: 'Details',
-                                              ),
-                                              Tab(
-                                                text: 'Procedure',
-                                              ),
-                                              Tab(
-                                                text: 'FAQs',
-                                              ),
-                                            ],
+                                          Align(
+                                            alignment: Alignment(0.0, 0),
+                                            child: TabBar(
+                                              isScrollable: true,
+                                              labelColor: Color(0xFF586B06),
+                                              unselectedLabelColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              labelStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        fontSize: 16.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                              indicatorColor: Colors.white,
+                                              tabs: [
+                                                Tab(
+                                                  text: 'Details',
+                                                ),
+                                                Tab(
+                                                  text: 'Procedure',
+                                                ),
+                                                Tab(
+                                                  text: 'FAQs',
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                           Expanded(
                                             child: TabBarView(
@@ -316,13 +318,13 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryColor,
+                                                                      .secondary,
                                                                   fontSize:
                                                                       14.0,
                                                                   fontWeight:
@@ -444,7 +446,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                                       Text(
                                                                         '14, Sept. 2021',
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
+                                                                            .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Lexend Deca',
                                                                               color: Color(0xFF95A1AC),
@@ -470,7 +472,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                                       Text(
                                                                         'Created New User',
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .subtitle2
+                                                                            .titleSmall
                                                                             .override(
                                                                               fontFamily: 'Lexend Deca',
                                                                               color: Color(0xFF151B1E),
@@ -488,7 +490,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                                             Text(
                                                                           'Andrew Daniels',
                                                                           style: FlutterFlowTheme.of(context)
-                                                                              .subtitle1
+                                                                              .titleMedium
                                                                               .override(
                                                                                 fontFamily: 'Lexend Deca',
                                                                                 color: Color(0xFF4B39EF),
@@ -540,7 +542,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                                           child:
                                                                               Text(
                                                                             'Andrew F.',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Lexend Deca',
                                                                                   color: Color(0xFF95A1AC),
                                                                                   fontSize: 12.0,
@@ -668,7 +670,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                                       Text(
                                                                         '14, Sept. 2021',
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
+                                                                            .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Lexend Deca',
                                                                               color: Color(0xFF95A1AC),
@@ -694,7 +696,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                                       Text(
                                                                         'Created a Group',
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .subtitle2
+                                                                            .titleSmall
                                                                             .override(
                                                                               fontFamily: 'Lexend Deca',
                                                                               color: Color(0xFF151B1E),
@@ -712,7 +714,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                                             Text(
                                                                           'Design Team',
                                                                           style: FlutterFlowTheme.of(context)
-                                                                              .subtitle1
+                                                                              .titleMedium
                                                                               .override(
                                                                                 fontFamily: 'Lexend Deca',
                                                                                 color: Color(0xFF39D2C0),
@@ -764,7 +766,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                                           child:
                                                                               Text(
                                                                             'Andrew F.',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Lexend Deca',
                                                                                   color: Color(0xFF95A1AC),
                                                                                   fontSize: 12.0,
@@ -788,7 +790,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                   'Tab View 3',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         fontSize: 32.0,
@@ -805,8 +807,8 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                     height: MediaQuery.of(context).size.height *
                                         0.2,
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(69.0),
                                         bottomRight: Radius.circular(69.0),
@@ -832,7 +834,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                 'Kshs.',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1,
+                                                        .bodyMedium,
                                               ),
                                               Text(
                                                 formatNumber(
@@ -844,7 +846,7 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1,
+                                                        .bodyMedium,
                                               ),
                                             ],
                                           ),
@@ -866,13 +868,13 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                                     textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .secondary,
                                                         ),
                                                   ),
                                                 ),
@@ -902,8 +904,8 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                     width: 50.0,
                                     height: 50.0,
                                     child: SpinKitRipple(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       size: 50.0,
                                     ),
                                   ),
@@ -945,11 +947,12 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                           color: Color(0x00B3B2B2),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyText1
+                                                  .bodyMedium
                                                   .override(
                                                     fontFamily: 'Roboto',
                                                     fontWeight: FontWeight.w300,
                                                   ),
+                                          elevation: 2.0,
                                           borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 0.0,
@@ -994,19 +997,14 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                             SnackBar(
                                               content: Text(
                                                 'Test Added! ${containerBookingsRecord.totalTests?.toString()}Tests in total.',
-                                                style: TextStyle(),
+                                                style: TextStyle(
+                                                  color: Color(0x00000000),
+                                                ),
                                               ),
                                               duration:
                                                   Duration(milliseconds: 4000),
                                               backgroundColor:
                                                   Color(0x00000000),
-                                              action: SnackBarAction(
-                                                label: 'Added action!',
-                                                textColor: Color(0x00000000),
-                                                onPressed: () async {
-                                                  context.pushNamed('AllTests');
-                                                },
-                                              ),
                                             ),
                                           );
                                         },
@@ -1027,12 +1025,13 @@ class _DetailsWidgetState extends State<DetailsWidget>
                                           color: Color(0x00B3B2B2),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyText1
+                                                  .bodyMedium
                                                   .override(
                                                     fontFamily: 'Roboto',
                                                     color: Color(0xFFBACA68),
                                                     fontWeight: FontWeight.w300,
                                                   ),
+                                          elevation: 2.0,
                                           borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,

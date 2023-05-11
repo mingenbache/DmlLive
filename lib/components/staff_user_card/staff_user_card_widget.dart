@@ -61,14 +61,19 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
         Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
           child: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onTap: () async {
               await showModalBottomSheet(
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,
+                barrierColor: Color(0x00000000),
                 context: context,
-                builder: (context) {
+                builder: (bottomSheetContext) {
                   return Padding(
-                    padding: MediaQuery.of(context).viewInsets,
+                    padding: MediaQuery.of(bottomSheetContext).viewInsets,
                     child: UserActivityWidget(
                       userRef: widget.userRecord!.reference,
                     ),
@@ -88,7 +93,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                   maxWidth: 330.0,
                 ),
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryColor,
+                  color: FlutterFlowTheme.of(context).secondary,
                   borderRadius: BorderRadius.circular(12.0),
                 ),
                 child: Padding(
@@ -134,7 +139,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                                 .toString(),
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
@@ -162,7 +167,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                             '${functions.camelCase(widget.userRecord!.firstName)} ${functions.camelCase(widget.userRecord!.lastName)}',
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
-                                                .subtitle1
+                                                .titleMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
@@ -223,7 +228,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                             widget.userRecord!.role!,
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Lexend Deca',
                                                   color: Colors.white,
@@ -242,7 +247,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          color: FlutterFlowTheme.of(context).secondary,
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Container(
@@ -287,7 +292,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                         Text(
                                           widget.userRecord!.email!,
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Lexend Deca',
                                                 color:
@@ -337,7 +342,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                         Text(
                                           widget.userRecord!.phoneNumber!,
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Lexend Deca',
                                                 color:
@@ -403,7 +408,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .bodyText1
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily: 'Lexend Deca',
                                                       color:
@@ -449,7 +454,7 @@ class _StaffUserCardWidgetState extends State<StaffUserCardWidget> {
                                                 ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .bodyText1
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily: 'Lexend Deca',
                                                       color:

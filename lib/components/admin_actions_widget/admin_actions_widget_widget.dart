@@ -58,8 +58,8 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                FlutterFlowTheme.of(context).tertiaryColor,
-                FlutterFlowTheme.of(context).primaryColor
+                FlutterFlowTheme.of(context).tertiary,
+                FlutterFlowTheme.of(context).primary
               ],
               stops: [0.0, 1.0],
               begin: AlignmentDirectional(0.0, -1.0),
@@ -79,6 +79,10 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                     child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         FFAppState().update(() {
                           FFAppState().userListQuery = '';
@@ -86,10 +90,12 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
+                          barrierColor: Color(0x00000000),
                           context: context,
-                          builder: (context) {
+                          builder: (bottomSheetContext) {
                             return Padding(
-                              padding: MediaQuery.of(context).viewInsets,
+                              padding:
+                                  MediaQuery.of(bottomSheetContext).viewInsets,
                               child: UserList2Widget(),
                             );
                           },
@@ -104,7 +110,7 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.2,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            color: FlutterFlowTheme.of(context).secondary,
                             borderRadius: BorderRadius.circular(20.0),
                             shape: BoxShape.rectangle,
                           ),
@@ -126,7 +132,7 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                                   'Users',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Roboto',
                                         color: FlutterFlowTheme.of(context)
@@ -147,6 +153,10 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                     child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         context.pushNamed('BookingsSchedule');
                       },
@@ -181,7 +191,7 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                                   'Bookings',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Roboto',
                                         fontSize: 14.0,
@@ -200,6 +210,10 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                     child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         context.pushNamed('PaymentsList');
                       },
@@ -230,7 +244,7 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                               Text(
                                 'Payments',
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Roboto',
                                       color: Colors.white,
@@ -248,6 +262,10 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                     child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         FFAppState().update(() {
                           FFAppState().allCategories = true;
@@ -256,10 +274,12 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
+                          barrierColor: Colors.white,
                           context: context,
-                          builder: (context) {
+                          builder: (bottomSheetContext) {
                             return Padding(
-                              padding: MediaQuery.of(context).viewInsets,
+                              padding:
+                                  MediaQuery.of(bottomSheetContext).viewInsets,
                               child: TestListCatalogWidget(),
                             );
                           },
@@ -287,7 +307,7 @@ class _AdminActionsWidgetWidgetState extends State<AdminActionsWidgetWidget> {
                               'Catalog',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Roboto',
                                     color: FlutterFlowTheme.of(context)

@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/all_chats_popup/all_chats_popup_widget.dart';
 import '/components/notifications_widget/notifications_widget_widget.dart';

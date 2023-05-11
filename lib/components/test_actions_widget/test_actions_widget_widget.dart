@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -46,8 +46,8 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -59,8 +59,8 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -114,7 +114,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                     width: 50.0,
                     height: 50.0,
                     child: SpinKitRipple(
-                      color: FlutterFlowTheme.of(context).primaryColor,
+                      color: FlutterFlowTheme.of(context).primary,
                       size: 50.0,
                     ),
                   ),
@@ -152,8 +152,7 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                                 width: 50.0,
                                 height: 50.0,
                                 child: SpinKitRipple(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: FlutterFlowTheme.of(context).primary,
                                   size: 50.0,
                                 ),
                               ),
@@ -194,13 +193,14 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                                   0.0, 0.0, 0.0, 0.0),
                               color: Color(0x00B3B2B2),
                               textStyle: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Roboto',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
                                     fontWeight: FontWeight.w500,
                                   ),
+                              elevation: 2.0,
                               borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 0.0,
@@ -267,12 +267,13 @@ class _TestActionsWidgetWidgetState extends State<TestActionsWidgetWidget>
                               0.0, 0.0, 0.0, 0.0),
                           color: Color(0x00B3B2B2),
                           textStyle:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Roboto',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
                                     fontWeight: FontWeight.w500,
                                   ),
+                          elevation: 2.0,
                           borderSide: BorderSide(
                             color: Colors.transparent,
                           ),

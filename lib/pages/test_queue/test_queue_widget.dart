@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/top_actions/top_actions_widget.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
@@ -48,10 +48,10 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
 
     return Title(
         title: 'TestQueue',
-        color: FlutterFlowTheme.of(context).primaryColor,
+        color: FlutterFlowTheme.of(context).primary,
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+          backgroundColor: FlutterFlowTheme.of(context).tertiary,
           body: SafeArea(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -74,7 +74,9 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                         child: Text(
                           'TEST QUEUE',
                           textAlign: TextAlign.start,
-                          style: FlutterFlowTheme.of(context).title1.override(
+                          style: FlutterFlowTheme.of(context)
+                              .displaySmall
+                              .override(
                                 fontFamily: 'Open Sans',
                                 color: Color(0xFF586B06),
                               ),
@@ -97,7 +99,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                           width: 50.0,
                           height: 50.0,
                           child: SpinKitRipple(
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                            color: FlutterFlowTheme.of(context).primary,
                             size: 50.0,
                           ),
                         ),
@@ -128,10 +130,9 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: FlutterFlowCalendar(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: FlutterFlowTheme.of(context).primary,
                                   iconColor:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                      FlutterFlowTheme.of(context).primary,
                                   weekFormat: true,
                                   weekStartsMonday: false,
                                   onChange: (DateTimeRange? newSelectedDate) {
@@ -143,8 +144,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                     fontWeight: FontWeight.w500,
                                   ),
                                   dayOfWeekStyle: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                    color: FlutterFlowTheme.of(context).primary,
                                     fontWeight: FontWeight.w500,
                                   ),
                                   dateStyle: TextStyle(
@@ -153,8 +153,8 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                   ),
                                   selectedDateStyle: TextStyle(),
                                   inactiveDateStyle: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
                                   ),
                                   locale:
                                       FFLocalizations.of(context).languageCode,
@@ -178,13 +178,17 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                       Text(
                                         'Today',
                                         style: FlutterFlowTheme.of(context)
-                                            .subtitle2
+                                            .titleSmall
                                             .override(
                                               fontFamily: 'Open Sans',
                                               color: Color(0xFF586B06),
                                             ),
                                       ),
                                       InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
                                         onTap: () async {
                                           context.pushNamed('BookingsSchedule');
                                         },
@@ -199,7 +203,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryColor,
+                                                      .secondary,
                                               borderRadius:
                                                   BorderRadius.circular(12.0),
                                             ),
@@ -211,13 +215,13 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                 'Group by Patient',
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .subtitle2
+                                                    .titleSmall
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .tertiaryColor,
+                                                              .tertiary,
                                                       fontSize: 14.0,
                                                       fontWeight:
                                                           FontWeight.normal,
@@ -251,7 +255,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                         height: 50.0,
                                         child: SpinKitRipple(
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                              .primary,
                                           size: 50.0,
                                         ),
                                       ),
@@ -315,7 +319,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                   SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryColor,
+                                                                    .primary,
                                                                 size: 50.0,
                                                               ),
                                                             ),
@@ -331,6 +335,14 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                     .first
                                                                 : null;
                                                         return InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
                                                           onTap: () async {
                                                             var _shouldSetState =
                                                                 false;
@@ -438,7 +450,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                         child:
                                                                             SpinKitRipple(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).primaryColor,
+                                                                              FlutterFlowTheme.of(context).primary,
                                                                           size:
                                                                               50.0,
                                                                         ),
@@ -472,7 +484,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                   width: 50.0,
                                                                                   height: 50.0,
                                                                                   child: SpinKitRipple(
-                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                    color: FlutterFlowTheme.of(context).primary,
                                                                                     size: 50.0,
                                                                                   ),
                                                                                 ),
@@ -490,7 +502,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                   children: [
                                                                                     Text(
                                                                                       containerTestsRecord.name!,
-                                                                                      style: FlutterFlowTheme.of(context).subtitle1,
+                                                                                      style: FlutterFlowTheme.of(context).titleMedium,
                                                                                     ),
                                                                                   ],
                                                                                 ),
@@ -541,9 +553,9 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                                   child: Text(
                                                                                                     'REF',
-                                                                                                    style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                           fontFamily: 'Lexend Deca',
-                                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                          color: FlutterFlowTheme.of(context).secondary,
                                                                                                           fontSize: 14.0,
                                                                                                           fontWeight: FontWeight.w500,
                                                                                                         ),
@@ -560,7 +572,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                                   child: Text(
                                                                                                     columnBookingsRecord.labRefNum!,
-                                                                                                    style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                           fontFamily: 'Lexend Deca',
                                                                                                           color: Color(0xFF586B06),
                                                                                                           fontSize: 14.0,
@@ -593,7 +605,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                                     text: 'Sample',
                                                                                                     icon: FaIcon(
                                                                                                       FontAwesomeIcons.handHoldingMedical,
-                                                                                                      color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                      color: FlutterFlowTheme.of(context).secondary,
                                                                                                       size: 18.0,
                                                                                                     ),
                                                                                                     options: FFButtonOptions(
@@ -602,14 +614,15 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                                       iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                                       color: Color(0x0088993A),
-                                                                                                      textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                                      textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                             fontFamily: 'Open Sans',
-                                                                                                            color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                            color: FlutterFlowTheme.of(context).secondary,
                                                                                                             fontSize: 15.0,
                                                                                                             fontWeight: FontWeight.normal,
                                                                                                           ),
+                                                                                                      elevation: 2.0,
                                                                                                       borderSide: BorderSide(
-                                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                        color: FlutterFlowTheme.of(context).secondary,
                                                                                                         width: 1.0,
                                                                                                       ),
                                                                                                       borderRadius: BorderRadius.circular(12.0),
@@ -630,13 +643,14 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                                       height: 40.0,
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                                       iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                                      color: FlutterFlowTheme.of(context).primaryColor,
-                                                                                                      textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                                      color: FlutterFlowTheme.of(context).primary,
+                                                                                                      textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                             fontFamily: 'Open Sans',
                                                                                                             color: Colors.white,
                                                                                                             fontSize: 15.0,
                                                                                                             fontWeight: FontWeight.normal,
                                                                                                           ),
+                                                                                                      elevation: 2.0,
                                                                                                       borderSide: BorderSide(
                                                                                                         color: Colors.transparent,
                                                                                                         width: 1.0,
@@ -660,13 +674,14 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                                 height: 40.0,
                                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                                                                                                 iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
-                                                                                                textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                                color: FlutterFlowTheme.of(context).secondary,
+                                                                                                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                       fontFamily: 'Open Sans',
-                                                                                                      color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                                      color: FlutterFlowTheme.of(context).tertiary,
                                                                                                       fontSize: 15.0,
                                                                                                       fontWeight: FontWeight.normal,
                                                                                                     ),
+                                                                                                elevation: 2.0,
                                                                                                 borderSide: BorderSide(
                                                                                                   color: Colors.transparent,
                                                                                                   width: 1.0,
@@ -693,7 +708,7 @@ class _TestQueueWidgetState extends State<TestQueueWidget> {
                                                                                   children: [
                                                                                     Icon(
                                                                                       Icons.chevron_right_rounded,
-                                                                                      color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                      color: FlutterFlowTheme.of(context).primary,
                                                                                       size: 24.0,
                                                                                     ),
                                                                                   ],

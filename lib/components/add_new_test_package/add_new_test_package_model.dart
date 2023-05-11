@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/package_test_list/package_test_list_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
@@ -43,6 +44,7 @@ class AddNewTestPackageModel extends FlutterFlowModel {
   PageController? pageViewController;
   // State field(s) for packageCategoryDropDown widget.
   String? packageCategoryDropDownValue;
+  FormFieldController<String>? packageCategoryDropDownValueController;
   // State field(s) for package_description widget.
   TextEditingController? packageDescriptionController;
   String? Function(BuildContext, String?)?

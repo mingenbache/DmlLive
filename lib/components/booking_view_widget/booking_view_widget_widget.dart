@@ -92,14 +92,19 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: InkWell(
+        splashColor: Colors.transparent,
+        focusColor: Colors.transparent,
+        hoverColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         onTap: () async {
           await showModalBottomSheet(
             isScrollControlled: true,
             backgroundColor: Colors.transparent,
+            barrierColor: Color(0x00000000),
             context: context,
-            builder: (context) {
+            builder: (bottomSheetContext) {
               return Padding(
-                padding: MediaQuery.of(context).viewInsets,
+                padding: MediaQuery.of(bottomSheetContext).viewInsets,
                 child: BookingUpdateWidget(
                   bookingRef: widget.bookingRef,
                 ),
@@ -117,7 +122,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
             width: MediaQuery.of(context).size.width * 0.8,
             height: 205.0,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).secondaryColor,
+              color: FlutterFlowTheme.of(context).secondary,
               boxShadow: [
                 BoxShadow(
                   blurRadius: 4.0,
@@ -476,7 +481,7 @@ class _BookingViewWidgetWidgetState extends State<BookingViewWidgetWidget>
                                         child: Text(
                                           'Complete',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Lexend Deca',
                                                 color: Colors.white,

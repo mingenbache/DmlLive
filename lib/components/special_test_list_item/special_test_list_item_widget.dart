@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -82,7 +82,7 @@ class _SpecialTestListItemWidgetState extends State<SpecialTestListItemWidget> {
                   child: Text(
                     widget.specialTestDataType!.name!,
                     maxLines: 1,
-                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Open Sans',
                           color: FlutterFlowTheme.of(context).primaryText,
                           fontWeight: FontWeight.w500,
@@ -90,6 +90,10 @@ class _SpecialTestListItemWidgetState extends State<SpecialTestListItemWidget> {
                   ),
                 ),
                 InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
                   onTap: () async {
                     final bookingsUpdateData = {
                       'specialTests': FieldValue.arrayRemove([

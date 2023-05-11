@@ -49,14 +49,19 @@ class _ChatActionsWidgetWidgetState extends State<ChatActionsWidgetWidget> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         InkWell(
+          splashColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           onTap: () async {
             await showModalBottomSheet(
               isScrollControlled: true,
               backgroundColor: Colors.transparent,
+              barrierColor: Color(0x00000000),
               context: context,
-              builder: (context) {
+              builder: (bottomSheetContext) {
                 return Padding(
-                  padding: MediaQuery.of(context).viewInsets,
+                  padding: MediaQuery.of(bottomSheetContext).viewInsets,
                   child: UserListChatWidget(),
                 );
               },
@@ -80,16 +85,16 @@ class _ChatActionsWidgetWidgetState extends State<ChatActionsWidgetWidget> {
                 children: [
                   Icon(
                     Icons.message_sharp,
-                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                    color: FlutterFlowTheme.of(context).tertiary,
                     size: 24.0,
                   ),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                     child: Text(
                       'New Message',
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Open Sans',
-                            color: FlutterFlowTheme.of(context).tertiaryColor,
+                            color: FlutterFlowTheme.of(context).tertiary,
                             fontSize: 16.0,
                             fontWeight: FontWeight.w500,
                           ),

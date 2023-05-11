@@ -59,7 +59,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
               width: 50.0,
               height: 50.0,
               child: SpinKitRipple(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 size: 50.0,
               ),
             ),
@@ -68,10 +68,10 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
         final invoiceInvoicesRecord = snapshot.data!;
         return Title(
             title: 'Invoice',
-            color: FlutterFlowTheme.of(context).primaryColor,
+            color: FlutterFlowTheme.of(context).primary,
             child: Scaffold(
               key: scaffoldKey,
-              backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+              backgroundColor: FlutterFlowTheme.of(context).tertiary,
               body: SafeArea(
                 child: SingleChildScrollView(
                   child: Column(
@@ -91,8 +91,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                   width: 50.0,
                                   height: 50.0,
                                   child: SpinKitRipple(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                    color: FlutterFlowTheme.of(context).primary,
                                     size: 50.0,
                                   ),
                                 ),
@@ -128,7 +127,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                       'INVOICE',
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
-                                          .title1
+                                          .displaySmall
                                           .override(
                                             fontFamily: 'Open Sans',
                                             color: Color(0xFF586B06),
@@ -161,7 +160,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                 'Invoice  Due Date',
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .bodyText1
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color: Color(0xFF586B06),
@@ -215,13 +214,13 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                   textAlign: TextAlign.end,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
+                                                                .secondary,
                                                         fontSize: 16.0,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -267,7 +266,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                   'Invoice Status',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
@@ -347,7 +346,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                 'Not Paid',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Lexend Deca',
@@ -379,7 +378,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryColor,
+                                                                .primary,
                                                         boxShadow: [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
@@ -427,7 +426,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                 'Paid',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Lexend Deca',
@@ -484,7 +483,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                 'Lab Reference',
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .bodyText1
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color: Color(0xFF586B06),
@@ -522,13 +521,13 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                 textAlign: TextAlign.end,
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .bodyText1
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .secondaryColor,
+                                                              .secondary,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                     ),
@@ -554,7 +553,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                           0.95,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
+                                            .primary,
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                       ),
@@ -581,7 +580,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                           Icons.person_sharp,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .tertiaryColor,
+                                                              .tertiary,
                                                           size: 24.0,
                                                         ),
                                                         Container(
@@ -598,7 +597,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                 TextAlign.start,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .subtitle2
+                                                                .titleSmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -660,7 +659,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                 'Name',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Open Sans',
@@ -705,13 +704,13 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                 '${columnBookingsRecord.firstname}    ${columnBookingsRecord.lastname}',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Open Sans',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryColor,
+                                                                          .secondary,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w500,
@@ -788,7 +787,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                       'Name',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
@@ -831,12 +830,12 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                       '${columnBookingsRecord.firstname}     ${columnBookingsRecord.lastname}',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).secondary,
                                                                             fontWeight:
                                                                                 FontWeight.w500,
                                                                           ),
@@ -900,7 +899,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                       'Email',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
@@ -944,12 +943,12 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                           .emailaddress!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).secondary,
                                                                             fontWeight:
                                                                                 FontWeight.w500,
                                                                           ),
@@ -1013,7 +1012,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                       'Phone',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
@@ -1057,12 +1056,12 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                           .phonenumber!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).secondary,
                                                                             fontWeight:
                                                                                 FontWeight.w500,
                                                                           ),
@@ -1131,7 +1130,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                         children: [
                                                                           Text(
                                                                             'Date of\nBirth',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: Colors.white,
                                                                                   fontWeight: FontWeight.w500,
@@ -1185,9 +1184,9 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                                 columnBookingsRecord.dOB!,
                                                                                 locale: FFLocalizations.of(context).languageCode,
                                                                               ),
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Open Sans',
-                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    color: FlutterFlowTheme.of(context).secondary,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -1224,7 +1223,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                           child:
                                                                               Text(
                                                                             'Sex',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: Colors.white,
                                                                                   fontWeight: FontWeight.w500,
@@ -1276,9 +1275,9 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                             child:
                                                                                 Text(
                                                                               columnBookingsRecord.sex!,
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Open Sans',
-                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    color: FlutterFlowTheme.of(context).secondary,
                                                                                     fontWeight: FontWeight.normal,
                                                                                   ),
                                                                             ),
@@ -1310,7 +1309,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                     iconColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .secondaryColor,
+                                                            .secondary,
                                                   ),
                                                 ),
                                               ),
@@ -1336,7 +1335,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                         Text(
                                           'Tests',
                                           style: FlutterFlowTheme.of(context)
-                                              .subtitle2
+                                              .titleSmall
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color: Color(0xFF586B06),
@@ -1354,7 +1353,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .tertiaryColor,
+                                                      .tertiary,
                                               borderRadius:
                                                   BorderRadius.circular(20.0),
                                             ),
@@ -1403,7 +1402,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                       SpinKitRipple(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primaryColor,
+                                                                        .primary,
                                                                     size: 50.0,
                                                                   ),
                                                                 ),
@@ -1456,10 +1455,10 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                         containerTestsRecord
                                                                             .name!,
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
+                                                                            .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Open Sans',
-                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                              color: FlutterFlowTheme.of(context).secondary,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
@@ -1476,9 +1475,9 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                             child:
                                                                                 Text(
                                                                               'Ksh',
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Open Sans',
-                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    color: FlutterFlowTheme.of(context).secondary,
                                                                                     fontWeight: FontWeight.w600,
                                                                                   ),
                                                                             ),
@@ -1489,9 +1488,9 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                               formatType: FormatType.decimal,
                                                                               decimalType: DecimalType.periodDecimal,
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
-                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                  color: FlutterFlowTheme.of(context).secondary,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -1520,8 +1519,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                   thickness: 1.0,
                                   indent: 35.0,
                                   endIndent: 35.0,
-                                  color: FlutterFlowTheme.of(context)
-                                      .tertiaryColor,
+                                  color: FlutterFlowTheme.of(context).tertiary,
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -1533,7 +1531,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                         0.04,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondary,
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Padding(
@@ -1555,7 +1553,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                   'Invoice Amount',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1,
+                                                      .bodyMedium,
                                                 ),
                                               ),
                                             ],
@@ -1588,7 +1586,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyText1,
+                                                                .bodyMedium,
                                                       ),
                                                     ],
                                                   ),
@@ -1619,7 +1617,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                           Text(
                                             'Payments',
                                             style: FlutterFlowTheme.of(context)
-                                                .subtitle2
+                                                .titleSmall
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: Color(0xFF586B06),
@@ -1688,7 +1686,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                         SpinKitRipple(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryColor,
+                                                                          .primary,
                                                                       size:
                                                                           50.0,
                                                                     ),
@@ -1763,7 +1761,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                             ),
                                                                             textAlign:
                                                                                 TextAlign.start,
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: Color(0xFF586B06),
                                                                                   fontWeight: FontWeight.w500,
@@ -1788,9 +1786,9 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                           child:
                                                                               Text(
                                                                             containerPaymentsRecord.transactionCode!,
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
-                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                  color: FlutterFlowTheme.of(context).secondary,
                                                                                   fontWeight: FontWeight.normal,
                                                                                 ),
                                                                           ),
@@ -1802,7 +1800,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).primaryColor,
+                                                                              FlutterFlowTheme.of(context).primary,
                                                                           borderRadius:
                                                                               BorderRadius.circular(0.0),
                                                                         ),
@@ -1816,7 +1814,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                           child:
                                                                               Text(
                                                                             containerPaymentsRecord.type!,
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: Colors.white,
                                                                                   fontWeight: FontWeight.w500,
@@ -1848,7 +1846,7 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                                                             ),
                                                                             textAlign:
                                                                                 TextAlign.start,
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: Color(0xFF586B06),
                                                                                   fontWeight: FontWeight.w500,
@@ -1890,10 +1888,12 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                               await showModalBottomSheet(
                                 isScrollControlled: true,
                                 backgroundColor: Color(0x00FFFFFF),
+                                barrierColor: Color(0x00000000),
                                 context: context,
-                                builder: (context) {
+                                builder: (bottomSheetContext) {
                                   return Padding(
-                                    padding: MediaQuery.of(context).viewInsets,
+                                    padding: MediaQuery.of(bottomSheetContext)
+                                        .viewInsets,
                                     child: AddPaymentWIdgetWidget(
                                       invoiceRef: widget.invoiceRef,
                                     ),
@@ -1909,14 +1909,13 @@ class _InvoiceWidgetState extends State<InvoiceWidget> {
                                   0.0, 0.0, 0.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color:
-                                  FlutterFlowTheme.of(context).secondaryColor,
+                              color: FlutterFlowTheme.of(context).secondary,
                               textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
+                                  .titleSmall
                                   .override(
                                     fontFamily: 'Roboto',
-                                    color: FlutterFlowTheme.of(context)
-                                        .tertiaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).tertiary,
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.normal,
                                   ),

@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -71,7 +71,7 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                     width: 50.0,
                     height: 50.0,
                     child: SpinKitRipple(
-                      color: FlutterFlowTheme.of(context).primaryColor,
+                      color: FlutterFlowTheme.of(context).primary,
                       size: 50.0,
                     ),
                   ),
@@ -94,7 +94,7 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                   width: MediaQuery.of(context).size.width * 1.0,
                   height: MediaQuery.of(context).size.height * 0.4,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                    color: FlutterFlowTheme.of(context).tertiary,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(16.0),
                       bottomRight: Radius.circular(16.0),
@@ -114,22 +114,26 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                           children: [
                             Text(
                               'Error',
-                              style:
-                                  FlutterFlowTheme.of(context).title2.override(
-                                        fontFamily: 'Open Sans',
-                                        color: Color(0xFF586B06),
-                                        fontSize: 32.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineMedium
+                                  .override(
+                                    fontFamily: 'Open Sans',
+                                    color: Color(0xFF586B06),
+                                    fontSize: 32.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
                             InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pop();
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
+                                color: FlutterFlowTheme.of(context).secondary,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30.0),
                                 ),
@@ -139,8 +143,8 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                   buttonSize: 48.0,
                                   icon: Icon(
                                     Icons.close_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .tertiaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).tertiary,
                                     size: 30.0,
                                   ),
                                   onPressed: () async {
@@ -158,7 +162,7 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                           child: Text(
                             'The following Tests were already added to your Booking.\n',
                             style: FlutterFlowTheme.of(context)
-                                .bodyText1
+                                .bodyMedium
                                 .override(
                                   fontFamily: 'Open Sans',
                                   color: FlutterFlowTheme.of(context).alternate,
@@ -173,7 +177,7 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                           child: Text(
                             'Please remove them to proceed with adding this Test Package.',
                             style: FlutterFlowTheme.of(context)
-                                .bodyText1
+                                .bodyMedium
                                 .override(
                                   fontFamily: 'Open Sans',
                                   color: FlutterFlowTheme.of(context).alternate,
@@ -228,7 +232,7 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryColor,
+                                                        .primary,
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                               ),
@@ -260,7 +264,7 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                                                 .packageName!,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -279,6 +283,14 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                                           MainAxisSize.max,
                                                       children: [
                                                         InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
                                                           onTap: () async {
                                                             if (widget.booking!
                                                                 .testPackages!
@@ -415,7 +427,7 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                                                         SpinKitRipple(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryColor,
+                                                                          .primary,
                                                                       size:
                                                                           50.0,
                                                                     ),
@@ -465,10 +477,10 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                                                                           functions
                                                                               .camelCase(containerTestsRecord.name),
                                                                           style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
+                                                                              .bodyMedium
                                                                               .override(
                                                                                 fontFamily: 'Open Sans',
-                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                color: FlutterFlowTheme.of(context).secondary,
                                                                               ),
                                                                         ),
                                                                       ],
@@ -523,13 +535,12 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).secondaryColor,
-                        textStyle: FlutterFlowTheme.of(context)
-                            .subtitle2
-                            .override(
-                              fontFamily: 'Open Sans',
-                              color: FlutterFlowTheme.of(context).tertiaryColor,
-                            ),
+                        color: FlutterFlowTheme.of(context).secondary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Open Sans',
+                                  color: FlutterFlowTheme.of(context).tertiary,
+                                ),
                         elevation: 2.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
@@ -545,9 +556,9 @@ class _DuplicateTestsWidgetState extends State<DuplicateTestsWidget> {
           ),
           Text(
             'Tap above to complete request',
-            style: FlutterFlowTheme.of(context).bodyText1.override(
+            style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Roboto',
-                  color: FlutterFlowTheme.of(context).secondaryColor,
+                  color: FlutterFlowTheme.of(context).secondary,
                   fontSize: 15.0,
                   fontWeight: FontWeight.normal,
                 ),

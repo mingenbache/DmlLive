@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/invoice_sheet/invoice_sheet_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -81,7 +81,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                   child: Container(
                     width: MediaQuery.of(context).size.width * 1.0,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).tertiaryColor,
+                      color: FlutterFlowTheme.of(context).secondary,
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(16.0),
                         bottomRight: Radius.circular(16.0),
@@ -102,22 +102,26 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                               Text(
                                 'SELECT INVOICE',
                                 style: FlutterFlowTheme.of(context)
-                                    .title2
+                                    .headlineMedium
                                     .override(
                                       fontFamily: 'Open Sans',
-                                      color: Color(0xFF586B06),
+                                      color:
+                                          FlutterFlowTheme.of(context).accent4,
                                       fontSize: 32.0,
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),
                               InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   context.pop();
                                 },
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryColor,
+                                  color: FlutterFlowTheme.of(context).secondary,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -125,10 +129,12 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                     borderColor: Colors.transparent,
                                     borderRadius: 30.0,
                                     buttonSize: 48.0,
+                                    fillColor:
+                                        FlutterFlowTheme.of(context).primary,
                                     icon: Icon(
                                       Icons.close_rounded,
                                       color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                          .secondaryBackground,
                                       size: 30.0,
                                     ),
                                     onPressed: () async {
@@ -152,10 +158,11 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                   Text(
                                     'Unpaid Invoices',
                                     style: FlutterFlowTheme.of(context)
-                                        .subtitle2
+                                        .titleSmall
                                         .override(
                                           fontFamily: 'Open Sans',
-                                          color: Color(0xFF586B06),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                         ),
                                   ),
                                   Padding(
@@ -168,8 +175,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                           MediaQuery.of(context).size.height *
                                               0.28,
                                       decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                        color: Color(0x4BF1F4F8),
                                         borderRadius:
                                             BorderRadius.circular(20.0),
                                       ),
@@ -200,7 +206,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                   child: SpinKitRipple(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryColor,
+                                                        .primary,
                                                     size: 50.0,
                                                   ),
                                                 ),
@@ -226,19 +232,29 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                       .fromSTEB(
                                                           10.0, 5.0, 10.0, 5.0),
                                                   child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
                                                     onTap: () async {
                                                       await showModalBottomSheet(
                                                         isScrollControlled:
                                                             true,
                                                         backgroundColor:
                                                             Colors.transparent,
+                                                        barrierColor:
+                                                            Color(0x00000000),
                                                         context: context,
-                                                        builder: (context) {
+                                                        builder:
+                                                            (bottomSheetContext) {
                                                           return Padding(
-                                                            padding:
-                                                                MediaQuery.of(
-                                                                        context)
-                                                                    .viewInsets,
+                                                            padding: MediaQuery.of(
+                                                                    bottomSheetContext)
+                                                                .viewInsets,
                                                             child:
                                                                 InvoiceSheetWidget(
                                                               invoiceRef:
@@ -322,12 +338,12 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyText1
+                                                                        .bodyMedium
                                                                         .override(
                                                                           fontFamily:
                                                                               'Open Sans',
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).primaryText,
                                                                           fontWeight:
                                                                               FontWeight.w500,
                                                                         ),
@@ -417,7 +433,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                                           Icon(
                                                                             Icons.calendar_today_sharp,
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).primaryColor,
+                                                                                FlutterFlowTheme.of(context).primary,
                                                                             size:
                                                                                 21.0,
                                                                           ),
@@ -434,9 +450,9 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                                                 listViewInvoicesRecord.createdDate!,
                                                                                 locale: FFLocalizations.of(context).languageCode,
                                                                               ),
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Open Sans',
-                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
                                                                             ),
@@ -491,7 +507,7 @@ class _SelectInvoiceWidgetState extends State<SelectInvoiceWidget> {
                                                                               child: Container(
                                                                                 height: MediaQuery.of(context).size.height * 0.04,
                                                                                 decoration: BoxDecoration(
-                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                  color: FlutterFlowTheme.of(context).primary,
                                                                                   boxShadow: [
                                                                                     BoxShadow(
                                                                                       blurRadius: 1.0,

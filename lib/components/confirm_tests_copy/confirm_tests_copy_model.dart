@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/components/choose_technologist/choose_technologist_widget.dart';
@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -38,6 +39,7 @@ class ConfirmTestsCopyModel extends FlutterFlowModel {
   String? Function(BuildContext, String?)? labReferenceControllerValidator;
   // State field(s) for pathologist widget.
   String? pathologistValue;
+  FormFieldController<String>? pathologistValueController;
   // State field(s) for PageView widget.
   PageController? pageViewController;
   // Stores action output result for [Backend Call - Create Document] action in ConfirmTestCard widget.
@@ -50,6 +52,12 @@ class ConfirmTestsCopyModel extends FlutterFlowModel {
       .map((e) => e.key)
       .toList();
 
+  // Stores action output result for [Backend Call - Create Document] action in Checkbox widget.
+  BookedTestsRecord? newBookedTestRecord4;
+  // Stores action output result for [Backend Call - Create Document] action in Checkbox widget.
+  BookedTestsRecord? newBookedTestRecord3;
+  // Stores action output result for [Backend Call - Create Document] action in IconUnchecked widget.
+  BookedTestsRecord? newBookedTestRecord2;
   // Stores action output result for [Backend Call - Create Document] action in TestPackItem widget.
   BookedTestsRecord? newBookedTestRef;
   // Stores action output result for [Custom Action - getTestDocument] action in TestPackItem widget.
@@ -62,8 +70,14 @@ class ConfirmTestsCopyModel extends FlutterFlowModel {
       .map((e) => e.key)
       .toList();
 
-  // Stores action output result for [Backend Call - Create Document] action in Container widget.
-  BookedTestsRecord? newBookedTest;
+  // Stores action output result for [Backend Call - Create Document] action in Checkbox widget.
+  BookedTestsRecord? newBookedTestRefCopy;
+  // Stores action output result for [Custom Action - getTestDocument] action in Checkbox widget.
+  TestsRecord? testDocumentCopy;
+  // Stores action output result for [Backend Call - Create Document] action in Checkbox widget.
+  BookedTestsRecord? newBookedTestRefCopy2;
+  // Stores action output result for [Custom Action - getTestDocument] action in Checkbox widget.
+  TestsRecord? testDocumentCopy2;
   // Stores action output result for [Backend Call - Create Document] action in SpecialTestsCard widget.
   SpecialTestsRecord? newSpecialTest;
   // State field(s) for Checkbox widget.
@@ -74,6 +88,11 @@ class ConfirmTestsCopyModel extends FlutterFlowModel {
           .where((e) => e.value)
           .map((e) => e.key)
           .toList();
+
+  // Stores action output result for [Backend Call - Create Document] action in Checkbox widget.
+  SpecialTestsRecord? newSpecialTestCopy;
+  // Stores action output result for [Backend Call - Create Document] action in Checkbox widget.
+  SpecialTestsRecord? newSpecialTestCopy2;
 
   /// Initialization and disposal methods.
 

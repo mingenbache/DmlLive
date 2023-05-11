@@ -68,14 +68,19 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
                 onTap: () async {
                   await showModalBottomSheet(
                     isScrollControlled: true,
                     backgroundColor: Colors.transparent,
+                    barrierColor: Color(0x00000000),
                     context: context,
-                    builder: (context) {
+                    builder: (bottomSheetContext) {
                       return Padding(
-                        padding: MediaQuery.of(context).viewInsets,
+                        padding: MediaQuery.of(bottomSheetContext).viewInsets,
                         child: PackageDetailsPopupWidget(
                           package: widget.package,
                         ),
@@ -95,7 +100,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                           maxHeight: 130.0,
                         ),
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          color: FlutterFlowTheme.of(context).secondary,
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Padding(
@@ -119,7 +124,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                             .maybeHandleOverflow(maxChars: 2),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Open Sans',
                                               color:
@@ -266,7 +271,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                                   .category!,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyText1
+                                                                  .bodyMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         'Lexend Deca',
@@ -312,7 +317,7 @@ class _CatalogPackageItemWidgetState extends State<CatalogPackageItemWidget> {
                                                           '${widget.package!.durationResults?.toString()} Hrs',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText1
+                                                              .bodyMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Roboto Mono',

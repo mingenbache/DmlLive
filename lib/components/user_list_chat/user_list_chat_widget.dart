@@ -52,7 +52,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
 
     return Container(
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).primaryColor,
+        color: FlutterFlowTheme.of(context).primary,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -62,7 +62,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
             width: MediaQuery.of(context).size.width * 1.0,
             height: MediaQuery.of(context).size.height * 0.83,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primaryColor,
+              color: FlutterFlowTheme.of(context).primary,
             ),
             child: Stack(
               children: [
@@ -115,20 +115,23 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                               Text(
                                 'CHAT USERS',
                                 style: FlutterFlowTheme.of(context)
-                                    .title1
+                                    .displaySmall
                                     .override(
                                       fontFamily: 'Open Sans',
                                       color: Colors.white,
                                     ),
                               ),
                               InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   context.pop();
                                 },
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryColor,
+                                  color: FlutterFlowTheme.of(context).secondary,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -138,8 +141,8 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                     buttonSize: 48.0,
                                     icon: Icon(
                                       Icons.close_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
                                       size: 30.0,
                                     ),
                                     onPressed: () async {
@@ -198,7 +201,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                           labelText: 'Search user here...',
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyText1
+                                                  .bodyMedium
                                                   .override(
                                                     fontFamily: 'Roboto',
                                                     color: Color(0xFF586B06),
@@ -207,7 +210,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                   ),
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyText1
+                                                  .bodyMedium
                                                   .override(
                                                     fontFamily: 'Roboto',
                                                     color: Color(0xFF586B06),
@@ -271,14 +274,14 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                     Icons.clear,
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryColor,
+                                                        .primary,
                                                     size: 18.0,
                                                   ),
                                                 )
                                               : null,
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Roboto',
                                               color: Color(0xFF586B06),
@@ -304,7 +307,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                             gradient: LinearGradient(
                               colors: [
                                 Color(0x00FFFFFF),
-                                FlutterFlowTheme.of(context).tertiaryColor,
+                                FlutterFlowTheme.of(context).tertiary,
                                 FlutterFlowTheme.of(context).alternate
                               ],
                               stops: [0.0, 0.2, 1.0],
@@ -326,23 +329,26 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                     initialIndex: 0,
                                     child: Column(
                                       children: [
-                                        TabBar(
-                                          labelColor: Colors.white,
-                                          unselectedLabelColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .tertiaryColor,
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .subtitle2,
-                                          indicatorColor: Colors.white,
-                                          tabs: [
-                                            Tab(
-                                              text: 'Clients',
-                                            ),
-                                            Tab(
-                                              text: 'Staff',
-                                            ),
-                                          ],
+                                        Align(
+                                          alignment: Alignment(0.0, 0),
+                                          child: TabBar(
+                                            labelColor: Colors.white,
+                                            unselectedLabelColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .tertiary,
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall,
+                                            indicatorColor: Colors.white,
+                                            tabs: [
+                                              Tab(
+                                                text: 'Clients',
+                                              ),
+                                              Tab(
+                                                text: 'Staff',
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                         Expanded(
                                           child: TabBarView(
@@ -364,7 +370,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                           child: SpinKitRipple(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .primaryColor,
+                                                                .primary,
                                                             size: 50.0,
                                                           ),
                                                         ),
@@ -444,6 +450,18 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                                       BoxDecoration(),
                                                                   child:
                                                                       InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
                                                                     onTap:
                                                                         () async {
                                                                       context
@@ -500,7 +518,7 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                         child: SpinKitRipple(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryColor,
+                                                              .primary,
                                                           size: 50.0,
                                                         ),
                                                       ),
@@ -565,6 +583,18 @@ class _UserListChatWidgetState extends State<UserListChatWidget> {
                                                                       BoxDecoration(),
                                                                   child:
                                                                       InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
                                                                     onTap:
                                                                         () async {
                                                                       context

@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -66,8 +67,8 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -119,7 +120,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                   width: 50.0,
                   height: 50.0,
                   child: SpinKitRipple(
-                    color: FlutterFlowTheme.of(context).primaryColor,
+                    color: FlutterFlowTheme.of(context).primary,
                     size: 50.0,
                   ),
                 ),
@@ -151,7 +152,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                       width: MediaQuery.of(context).size.width * 1.0,
                       height: MediaQuery.of(context).size.height * 0.3,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryColor,
+                        color: FlutterFlowTheme.of(context).secondary,
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(16.0),
                           bottomRight: Radius.circular(16.0),
@@ -181,7 +182,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                       Text(
                                         'Assign Technologist',
                                         style: FlutterFlowTheme.of(context)
-                                            .title2
+                                            .headlineMedium
                                             .override(
                                               fontFamily: 'Open Sans',
                                               color:
@@ -195,6 +196,10 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                   ),
                                 ),
                                 InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pop();
                                   },
@@ -212,7 +217,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                       icon: Icon(
                                         Icons.close_rounded,
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
+                                            .primary,
                                         size: 30.0,
                                       ),
                                       onPressed: () async {
@@ -240,7 +245,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                       'Assign a technologist to the test from the options below',
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
@@ -278,7 +283,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                               child: SpinKitRipple(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryColor,
+                                                        .primary,
                                                 size: 50.0,
                                               ),
                                             ),
@@ -288,9 +293,12 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                             technologistStaffRecordList =
                                             snapshot.data!;
                                         return FlutterFlowDropDown<String>(
-                                          initialOption:
-                                              _model.technologistValue ??=
-                                                  'No Technologist Assigned',
+                                          controller: _model
+                                                  .technologistValueController ??=
+                                              FormFieldController<String>(
+                                            _model.technologistValue ??=
+                                                'No Technologist Assigned',
+                                          ),
                                           options: technologistStaffRecordList
                                               .map((e) => e.displayName)
                                               .withoutNulls
@@ -305,7 +313,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                           height: 60.0,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Lexend Deca',
                                                 color:
@@ -332,6 +340,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 20.0, 12.0, 20.0),
                                           hidesUnderline: true,
+                                          isSearchable: false,
                                         ).animateOnPageLoad(animationsMap[
                                             'dropDownOnPageLoadAnimation']!);
                                       },
@@ -366,8 +375,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                   width: 50.0,
                                   height: 50.0,
                                   child: SpinKitRipple(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                    color: FlutterFlowTheme.of(context).primary,
                                     size: 50.0,
                                   ),
                                 ),
@@ -402,7 +410,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                           height: 50.0,
                                           child: SpinKitRipple(
                                             color: FlutterFlowTheme.of(context)
-                                                .primaryColor,
+                                                .primary,
                                             size: 50.0,
                                           ),
                                         ),
@@ -478,9 +486,9 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                                             EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
+                                            .primary,
                                         textStyle: FlutterFlowTheme.of(context)
-                                            .subtitle2
+                                            .titleSmall
                                             .override(
                                               fontFamily: 'Open Sans',
                                               color:
@@ -507,7 +515,7 @@ class _ChooseTechnologistWidgetState extends State<ChooseTechnologistWidget>
                   ),
                   Text(
                     'Tap above to complete request',
-                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Roboto',
                           color: FlutterFlowTheme.of(context).primaryText,
                           fontSize: 15.0,

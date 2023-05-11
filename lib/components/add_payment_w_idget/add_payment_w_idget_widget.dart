@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
@@ -56,8 +57,8 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -82,8 +83,8 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
           curve: Curves.easeInOut,
           delay: 170.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -108,8 +109,8 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -134,8 +135,8 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
           curve: Curves.easeInOut,
           delay: 230.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -191,7 +192,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                 width: 50.0,
                 height: 50.0,
                 child: SpinKitRipple(
-                  color: FlutterFlowTheme.of(context).primaryColor,
+                  color: FlutterFlowTheme.of(context).primary,
                   size: 50.0,
                 ),
               ),
@@ -216,7 +217,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                         maxHeight: 600.0,
                       ),
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryColor,
+                        color: FlutterFlowTheme.of(context).secondary,
                         borderRadius: BorderRadius.circular(49.0),
                       ),
                       child: ClipRect(
@@ -254,8 +255,8 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                         gradient: LinearGradient(
                           colors: [
                             Color(0x456CD7B7),
-                            FlutterFlowTheme.of(context).secondaryColor,
-                            FlutterFlowTheme.of(context).secondaryColor
+                            FlutterFlowTheme.of(context).secondary,
+                            FlutterFlowTheme.of(context).secondary
                           ],
                           stops: [0.0, 0.4, 0.6],
                           begin: AlignmentDirectional(0.0, -1.0),
@@ -276,7 +277,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                 Text(
                                   'ADD PAYMENT',
                                   style: FlutterFlowTheme.of(context)
-                                      .title2
+                                      .headlineMedium
                                       .override(
                                         fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
@@ -286,13 +287,17 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                       ),
                                 ),
                                 InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pop();
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
@@ -303,7 +308,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                       icon: Icon(
                                         Icons.close_rounded,
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .tertiary,
                                         size: 30.0,
                                       ),
                                       onPressed: () async {
@@ -324,7 +329,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelStyle: FlutterFlowTheme.of(context)
-                                      .title1
+                                      .displaySmall
                                       .override(
                                         fontFamily: 'Lexend Deca',
                                         color: FlutterFlowTheme.of(context)
@@ -410,7 +415,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                   decoration: InputDecoration(
                                     labelText: 'Transaction Reference',
                                     labelStyle: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.of(context)
@@ -479,6 +484,9 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 16.0, 0.0, 0.0),
                               child: FlutterFlowDropDown<String>(
+                                controller:
+                                    _model.paymentMethodValueController ??=
+                                        FormFieldController<String>(null),
                                 options: [
                                   'MPESA',
                                   'Bank Transfer',
@@ -489,7 +497,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                 width: MediaQuery.of(context).size.width * 0.9,
                                 height: 60.0,
                                 textStyle: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Lexend Deca',
                                       color: FlutterFlowTheme.of(context)
@@ -514,6 +522,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                 margin: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 20.0, 12.0, 20.0),
                                 hidesUnderline: true,
+                                isSearchable: false,
                               ).animateOnPageLoad(animationsMap[
                                   'dropDownOnPageLoadAnimation']!),
                             ),
@@ -538,7 +547,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                       child: Text(
                                         'Transaction Date',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Open Sans',
                                               color:
@@ -592,7 +601,8 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                               .secondaryText,
                                           textStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyText1,
+                                                  .bodyMedium,
+                                          elevation: 2.0,
                                           borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
@@ -624,7 +634,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                           labelText: 'First Name',
                                           labelStyle: FlutterFlowTheme.of(
                                                   context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Roboto',
                                                 color:
@@ -636,7 +646,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                           hintText: 'Enter your name here...',
                                           hintStyle: FlutterFlowTheme.of(
                                                   context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Roboto',
                                                 color:
@@ -689,7 +699,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                                   16.0, 24.0, 0.0, 24.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Roboto',
                                               color:
@@ -716,7 +726,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                           labelText: 'Last Name',
                                           labelStyle: FlutterFlowTheme.of(
                                                   context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Roboto',
                                                 color:
@@ -728,7 +738,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                           hintText: 'Enter your name here...',
                                           hintStyle: FlutterFlowTheme.of(
                                                   context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Roboto',
                                                 color:
@@ -781,7 +791,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                                   16.0, 24.0, 0.0, 24.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Roboto',
                                               color:
@@ -811,7 +821,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelStyle: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.of(context)
@@ -821,7 +831,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                         ),
                                     hintText: 'Note',
                                     hintStyle: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.of(context)
@@ -866,7 +876,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                                             20.0, 40.0, 24.0, 0.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Roboto',
                                         color: FlutterFlowTheme.of(context)
@@ -960,7 +970,7 @@ class _AddPaymentWIdgetWidgetState extends State<AddPaymentWIdgetWidget>
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).secondaryText,
                         textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
+                            FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Open Sans',
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,

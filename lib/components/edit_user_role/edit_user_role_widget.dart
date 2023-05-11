@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -54,8 +55,8 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -107,7 +108,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                   width: 50.0,
                   height: 50.0,
                   child: SpinKitRipple(
-                    color: FlutterFlowTheme.of(context).primaryColor,
+                    color: FlutterFlowTheme.of(context).primary,
                     size: 50.0,
                   ),
                 ),
@@ -119,7 +120,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                 maxHeight: MediaQuery.of(context).size.height * 0.63,
               ),
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(0.0),
                   bottomRight: Radius.circular(0.0),
@@ -143,7 +144,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                         width: MediaQuery.of(context).size.width * 1.0,
                         height: MediaQuery.of(context).size.height * 0.5,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).tertiaryColor,
+                          color: FlutterFlowTheme.of(context).tertiary,
                           borderRadius: BorderRadius.circular(16.0),
                         ),
                         child: Padding(
@@ -160,7 +161,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                   Text(
                                     'Edit User Role',
                                     style: FlutterFlowTheme.of(context)
-                                        .title2
+                                        .headlineMedium
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
@@ -169,13 +170,17 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                         ),
                                   ),
                                   InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.pop();
                                     },
                                     child: Card(
                                       clipBehavior: Clip.antiAliasWithSaveLayer,
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondary,
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(30.0),
@@ -187,7 +192,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                         icon: Icon(
                                           Icons.close_rounded,
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
+                                              .tertiary,
                                           size: 30.0,
                                         ),
                                         onPressed: () async {
@@ -229,7 +234,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                           child: Text(
                                             'Name:',
                                             style: FlutterFlowTheme.of(context)
-                                                .subtitle2
+                                                .titleSmall
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: Color(0xFF586B06),
@@ -264,7 +269,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                               style: TextStyle(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
+                                                        .secondary,
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 15.0,
                                               ),
@@ -294,7 +299,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                           Text(
                                             'Current Role',
                                             style: FlutterFlowTheme.of(context)
-                                                .subtitle2
+                                                .titleSmall
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: Color(0xFF586B06),
@@ -326,13 +331,13 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                                     submitRoleUsersRecord.role!,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .secondary,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -374,7 +379,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                           title: Text(
                                             'Is Staff?',
                                             style: FlutterFlowTheme.of(context)
-                                                .subtitle1
+                                                .titleMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: Color(0xFF586B06),
@@ -383,25 +388,25 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                           subtitle: Text(
                                             'switch to change status',
                                             style: FlutterFlowTheme.of(context)
-                                                .subtitle2
+                                                .titleSmall
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryColor,
+                                                      .secondary,
                                                   fontSize: 16.0,
                                                   fontWeight: FontWeight.normal,
                                                 ),
                                           ),
                                           tileColor:
                                               FlutterFlowTheme.of(context)
-                                                  .primaryColor,
+                                                  .primary,
                                           activeColor:
                                               FlutterFlowTheme.of(context)
-                                                  .secondaryColor,
+                                                  .secondary,
                                           activeTrackColor:
                                               FlutterFlowTheme.of(context)
-                                                  .primaryColor,
+                                                  .primary,
                                           dense: false,
                                           controlAffinity:
                                               ListTileControlAffinity.trailing,
@@ -420,8 +425,12 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 16.0, 0.0, 0.0),
                                     child: FlutterFlowDropDown<String>(
-                                      initialOption: _model.userRolesValue ??=
-                                          submitRoleUsersRecord.role,
+                                      controller:
+                                          _model.userRolesValueController ??=
+                                              FormFieldController<String>(
+                                        _model.userRolesValue ??=
+                                            submitRoleUsersRecord.role,
+                                      ),
                                       options: [
                                         'client',
                                         'front',
@@ -435,22 +444,22 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                           0.9,
                                       height: 60.0,
                                       textStyle: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Lexend Deca',
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .tertiary,
                                             fontSize: 14.0,
                                             fontWeight: FontWeight.normal,
                                           ),
                                       icon: Icon(
                                         Icons.keyboard_arrow_down_rounded,
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .tertiary,
                                         size: 15.0,
                                       ),
                                       fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondary,
                                       elevation: 2.0,
                                       borderColor: Color(0x00FFFFFF),
                                       borderWidth: 2.0,
@@ -458,6 +467,7 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                       margin: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 20.0, 12.0, 20.0),
                                       hidesUnderline: true,
+                                      isSearchable: false,
                                     ).animateOnPageLoad(animationsMap[
                                         'dropDownOnPageLoadAnimation']!),
                                   ),
@@ -510,14 +520,13 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                                       0.0, 0.0, 0.0, 0.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryColor,
+                                  color: FlutterFlowTheme.of(context).secondary,
                                   textStyle: FlutterFlowTheme.of(context)
-                                      .subtitle2
+                                      .titleSmall
                                       .override(
                                         fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .tertiary,
                                       ),
                                   elevation: 2.0,
                                   borderSide: BorderSide(
@@ -534,9 +543,9 @@ class _EditUserRoleWidgetState extends State<EditUserRoleWidget>
                     ),
                     Text(
                       'Tap above to complete request',
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Roboto',
-                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            color: FlutterFlowTheme.of(context).secondary,
                             fontSize: 15.0,
                             fontWeight: FontWeight.normal,
                           ),

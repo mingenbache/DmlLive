@@ -81,7 +81,7 @@ class _TechnologistTestNotificationWidgetState
               Text(
                 'Burger Plate for two',
                 textAlign: TextAlign.start,
-                style: FlutterFlowTheme.of(context).title3.override(
+                style: FlutterFlowTheme.of(context).headlineSmall.override(
                       fontFamily: 'Lexend Deca',
                       color: Colors.white,
                       fontSize: 20.0,
@@ -93,7 +93,7 @@ class _TechnologistTestNotificationWidgetState
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                   child: AutoSizeText(
                     'A delicious and filling combo with two burger plates for an amazing price.',
-                    style: FlutterFlowTheme.of(context).bodyText2.override(
+                    style: FlutterFlowTheme.of(context).bodySmall.override(
                           fontFamily: 'Lexend Deca',
                           color: Color(0xB4FFFFFF),
                           fontSize: 14.0,
@@ -122,12 +122,13 @@ class _TechnologistTestNotificationWidgetState
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: Color(0xFF4B39EF),
                         textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
+                            FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Lexend Deca',
                                   color: Colors.white,
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.normal,
                                 ),
+                        elevation: 2.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
@@ -143,7 +144,7 @@ class _TechnologistTestNotificationWidgetState
                         Text(
                           '\$20.00',
                           style:
-                              FlutterFlowTheme.of(context).subtitle1.override(
+                              FlutterFlowTheme.of(context).titleMedium.override(
                                     fontFamily: 'Lexend Deca',
                                     color: Colors.white,
                                     fontSize: 20.0,
@@ -153,7 +154,7 @@ class _TechnologistTestNotificationWidgetState
                         Text(
                           '+ taxes & fees',
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Lexend Deca',
                                     color: Color(0xB3FFFFFF),
                                     fontSize: 14.0,

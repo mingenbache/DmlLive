@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/admin_test_actions/admin_test_actions_widget.dart';
 import '/components/test_actions_widget/test_actions_widget_widget.dart';
@@ -62,6 +62,10 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Container(
+          height: MediaQuery.of(context).size.height * 1.0,
+          constraints: BoxConstraints(
+            maxWidth: 440.0,
+          ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -131,8 +135,8 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                         gradient: LinearGradient(
                           colors: [
                             Color(0x00FFFFFF),
-                            FlutterFlowTheme.of(context).secondaryColor,
-                            FlutterFlowTheme.of(context).secondaryColor
+                            FlutterFlowTheme.of(context).secondary,
+                            FlutterFlowTheme.of(context).secondary
                           ],
                           stops: [0.0, 0.3, 0.4],
                           begin: AlignmentDirectional(0.0, -1.0),
@@ -156,13 +160,17 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pop();
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
@@ -173,7 +181,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                       icon: Icon(
                                         Icons.close_rounded,
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .tertiary,
                                         size: 30.0,
                                       ),
                                       onPressed: () async {
@@ -196,7 +204,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                       height: 50.0,
                                       child: SpinKitRipple(
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
+                                            .primary,
                                         size: 50.0,
                                       ),
                                     ),
@@ -225,7 +233,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                 textAlign: TextAlign.start,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .title1
+                                                        .displaySmall
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
@@ -245,6 +253,11 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 5.0),
                                             child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
                                               onTap: () async {
                                                 var confirmDialogResponse =
                                                     await showDialog<bool>(
@@ -361,7 +374,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                           'Suspended',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText1
+                                                              .bodyMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Lexend Deca',
@@ -402,36 +415,40 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                           initialIndex: 0,
                                           child: Column(
                                             children: [
-                                              TabBar(
-                                                isScrollable: true,
-                                                labelColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                unselectedLabelColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1
-                                                        .override(
-                                                          fontFamily:
-                                                              'Open Sans',
-                                                          fontSize: 16.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                indicatorColor: Colors.white,
-                                                tabs: [
-                                                  Tab(
-                                                    text: 'Details',
-                                                  ),
-                                                  Tab(
-                                                    text: 'Procedure',
-                                                  ),
-                                                  Tab(
-                                                    text: 'FAQs',
-                                                  ),
-                                                ],
+                                              Align(
+                                                alignment: Alignment(0.0, 0),
+                                                child: TabBar(
+                                                  isScrollable: true,
+                                                  labelColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  unselectedLabelColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        fontSize: 16.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                  indicatorColor: Colors.white,
+                                                  tabs: [
+                                                    Tab(
+                                                      text: 'Details',
+                                                    ),
+                                                    Tab(
+                                                      text: 'Procedure',
+                                                    ),
+                                                    Tab(
+                                                      text: 'FAQs',
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                               Expanded(
                                                 child: TabBarView(
@@ -489,7 +506,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                           .start,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
+                                                                      .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Roboto',
@@ -638,7 +655,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
                                                                                 child: Text(
                                                                                   'Make a Test Booking on the App.',
-                                                                                  style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                  style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                         fontFamily: 'Lexend Deca',
                                                                                         color: Colors.white,
                                                                                         fontSize: 16.0,
@@ -782,7 +799,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
                                                                                 child: Text(
                                                                                   'Your Booking is confirmed.',
-                                                                                  style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                  style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                         fontFamily: 'Lexend Deca',
                                                                                         color: Colors.white,
                                                                                         fontSize: 16.0,
@@ -945,7 +962,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
                                                                                 child: Text(
                                                                                   'Present yourself at the Clinic, or arrange sample collection.',
-                                                                                  style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                  style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                         fontFamily: 'Lexend Deca',
                                                                                         color: Colors.white,
                                                                                         fontSize: 16.0,
@@ -1135,7 +1152,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
                                                                                 child: Text(
                                                                                   'The assigned Technician submits your sample to our testing process',
-                                                                                  style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                  style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                         fontFamily: 'Lexend Deca',
                                                                                         color: Colors.white,
                                                                                         fontSize: 16.0,
@@ -1298,7 +1315,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
                                                                                 child: Text(
                                                                                   'The Test goes through Verification ',
-                                                                                  style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                  style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                         fontFamily: 'Lexend Deca',
                                                                                         color: Colors.white,
                                                                                         fontSize: 16.0,
@@ -1454,7 +1471,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
                                                                                 child: Text(
                                                                                   'Your Results are processed and delivered to you. You can ask for your Sample Slide for further consultation.',
-                                                                                  style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                  style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                         fontFamily: 'Lexend Deca',
                                                                                         color: Colors.white,
                                                                                         fontSize: 16.0,
@@ -1533,7 +1550,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                               TextAlign.center,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText1
+                                                              .bodyMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Open Sans',
@@ -1562,7 +1579,7 @@ class _TestDetailsPopupWidgetState extends State<TestDetailsPopupWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .subtitle2
+                                                              .titleSmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Open Sans',

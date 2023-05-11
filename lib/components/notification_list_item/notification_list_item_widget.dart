@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/package_details_popup/package_details_popup_widget.dart';
 import '/components/test_details_popup/test_details_popup_widget.dart';
@@ -69,7 +69,7 @@ class _NotificationListItemWidgetState
                 width: 50.0,
                 height: 50.0,
                 child: SpinKitRipple(
-                  color: FlutterFlowTheme.of(context).primaryColor,
+                  color: FlutterFlowTheme.of(context).primary,
                   size: 50.0,
                 ),
               ),
@@ -83,6 +83,10 @@ class _NotificationListItemWidgetState
               children: [
                 if (stackNotificationsRecord.type == 'newbooking')
                   InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
                     onTap: () async {
                       context.pushNamed(
                         'BookingConfirmation',
@@ -133,7 +137,7 @@ class _NotificationListItemWidgetState
                                             widget.notificationRef!.message!,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
@@ -188,6 +192,10 @@ class _NotificationListItemWidgetState
                   ),
                 if (stackNotificationsRecord.type == 'confirmedbooking')
                   InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
                     onTap: () async {
                       context.pushNamed(
                         'BookingUpdates',
@@ -239,7 +247,7 @@ class _NotificationListItemWidgetState
                                             widget.notificationRef!.message!,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
@@ -294,14 +302,20 @@ class _NotificationListItemWidgetState
                   ),
                 if (stackNotificationsRecord.type == 'newuser')
                   InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
                     onTap: () async {
                       await showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,
+                        barrierColor: Color(0x00000000),
                         context: context,
-                        builder: (context) {
+                        builder: (bottomSheetContext) {
                           return Padding(
-                            padding: MediaQuery.of(context).viewInsets,
+                            padding:
+                                MediaQuery.of(bottomSheetContext).viewInsets,
                             child: UserActivityWidget(
                               userRef: stackNotificationsRecord.userRef,
                             ),
@@ -349,7 +363,7 @@ class _NotificationListItemWidgetState
                                             widget.notificationRef!.message!,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
@@ -414,7 +428,7 @@ class _NotificationListItemWidgetState
                             width: 50.0,
                             height: 50.0,
                             child: SpinKitRipple(
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                              color: FlutterFlowTheme.of(context).primary,
                               size: 50.0,
                             ),
                           ),
@@ -422,14 +436,20 @@ class _NotificationListItemWidgetState
                       }
                       final containernewTestTestsRecord = snapshot.data!;
                       return InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
+                            barrierColor: Color(0x00000000),
                             context: context,
-                            builder: (context) {
+                            builder: (bottomSheetContext) {
                               return Padding(
-                                padding: MediaQuery.of(context).viewInsets,
+                                padding: MediaQuery.of(bottomSheetContext)
+                                    .viewInsets,
                                 child: TestDetailsPopupWidget(
                                   test: containernewTestTestsRecord,
                                 ),
@@ -478,7 +498,7 @@ class _NotificationListItemWidgetState
                                                 maxLines: 1,
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .bodyText1
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color:
@@ -550,7 +570,7 @@ class _NotificationListItemWidgetState
                             width: 50.0,
                             height: 50.0,
                             child: SpinKitRipple(
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                              color: FlutterFlowTheme.of(context).primary,
                               size: 50.0,
                             ),
                           ),
@@ -559,14 +579,20 @@ class _NotificationListItemWidgetState
                       final containernewTestPackageTestPackagesRecord =
                           snapshot.data!;
                       return InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
+                            barrierColor: Color(0x00000000),
                             context: context,
-                            builder: (context) {
+                            builder: (bottomSheetContext) {
                               return Padding(
-                                padding: MediaQuery.of(context).viewInsets,
+                                padding: MediaQuery.of(bottomSheetContext)
+                                    .viewInsets,
                                 child: PackageDetailsPopupWidget(
                                   package:
                                       containernewTestPackageTestPackagesRecord,
@@ -616,7 +642,7 @@ class _NotificationListItemWidgetState
                                                 maxLines: 1,
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .bodyText1
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color:
@@ -678,6 +704,10 @@ class _NotificationListItemWidgetState
                   ),
                 if (stackNotificationsRecord.type == 'samplecollected')
                   InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
                     onTap: () async {
                       context.pushNamed(
                         'TestDeck',
@@ -729,7 +759,7 @@ class _NotificationListItemWidgetState
                                             widget.notificationRef!.message!,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
@@ -784,6 +814,10 @@ class _NotificationListItemWidgetState
                   ),
                 if (stackNotificationsRecord.type == 'resultsubmitted')
                   InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
                     onTap: () async {
                       context.pushNamed(
                         'TestDeck',
@@ -835,7 +869,7 @@ class _NotificationListItemWidgetState
                                             widget.notificationRef!.message!,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
@@ -890,6 +924,10 @@ class _NotificationListItemWidgetState
                   ),
                 if (stackNotificationsRecord.type == 'testflagged')
                   InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
                     onTap: () async {
                       context.pushNamed(
                         'TestDeck',
@@ -941,7 +979,7 @@ class _NotificationListItemWidgetState
                                             widget.notificationRef!.message!,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
@@ -996,6 +1034,10 @@ class _NotificationListItemWidgetState
                   ),
                 if (stackNotificationsRecord.type == 'testverified')
                   InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
                     onTap: () async {
                       context.pushNamed(
                         'TestDeck',
@@ -1047,7 +1089,7 @@ class _NotificationListItemWidgetState
                                             widget.notificationRef!.message!,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
@@ -1102,6 +1144,10 @@ class _NotificationListItemWidgetState
                   ),
                 if (stackNotificationsRecord.type == 'newreport')
                   InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
                     onTap: () async {
                       context.pushNamed(
                         'BookingReport',
@@ -1153,7 +1199,7 @@ class _NotificationListItemWidgetState
                                             widget.notificationRef!.message!,
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Lato',
                                                   color: FlutterFlowTheme.of(

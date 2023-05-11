@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -63,7 +63,7 @@ class _PaymentActionsWidgetWidgetState
               width: 50.0,
               height: 50.0,
               child: SpinKitRipple(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 size: 50.0,
               ),
             ),
@@ -86,7 +86,7 @@ class _PaymentActionsWidgetWidgetState
               boxShadow: [
                 BoxShadow(
                   blurRadius: 1.0,
-                  color: FlutterFlowTheme.of(context).secondaryColor,
+                  color: FlutterFlowTheme.of(context).secondary,
                   spreadRadius: 1.0,
                 )
               ],
@@ -105,7 +105,7 @@ class _PaymentActionsWidgetWidgetState
                         width: 50.0,
                         height: 50.0,
                         child: SpinKitRipple(
-                          color: FlutterFlowTheme.of(context).primaryColor,
+                          color: FlutterFlowTheme.of(context).primary,
                           size: 50.0,
                         ),
                       ),
@@ -150,7 +150,7 @@ class _PaymentActionsWidgetWidgetState
                                             'Receipt',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
@@ -183,7 +183,7 @@ class _PaymentActionsWidgetWidgetState
                                       height: 50.0,
                                       child: SpinKitRipple(
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
+                                            .primary,
                                         size: 50.0,
                                       ),
                                     ),
@@ -192,6 +192,10 @@ class _PaymentActionsWidgetWidgetState
                                 final verifyButtonInvoicesRecord =
                                     snapshot.data!;
                                 return InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     final paymentsUpdateData =
                                         createPaymentsRecordData(
@@ -265,7 +269,7 @@ class _PaymentActionsWidgetWidgetState
                                           Icon(
                                             Icons.verified_sharp,
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .tertiary,
                                             size: 20.0,
                                           ),
                                           Row(
@@ -281,13 +285,13 @@ class _PaymentActionsWidgetWidgetState
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .tertiaryColor,
+                                                                .tertiary,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
@@ -334,7 +338,7 @@ class _PaymentActionsWidgetWidgetState
                                             'Verify',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(

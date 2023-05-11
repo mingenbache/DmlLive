@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/test_procedure_item/test_procedure_item_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:auto_size_text/auto_size_text.dart';
@@ -31,6 +32,7 @@ class EditTestCopyModel extends FlutterFlowModel {
   String? Function(BuildContext, String?)? textController1Validator;
   // State field(s) for DropDown widget.
   String? dropDownValue;
+  FormFieldController<String>? dropDownValueController;
   // State field(s) for at_home_toggle widget.
   bool? atHomeToggleValue;
   // State field(s) for test_duration_slider widget.

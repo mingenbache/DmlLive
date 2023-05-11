@@ -83,7 +83,7 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
             width: 50.0,
             height: 50.0,
             child: SpinKitRipple(
-              color: FlutterFlowTheme.of(context).primaryColor,
+              color: FlutterFlowTheme.of(context).primary,
               size: 50.0,
             ),
           ),
@@ -125,7 +125,6 @@ final parametersBuilderMap =
           'userNameQUery': getParameter<String>(data, 'userNameQUery'),
         },
       ),
-  'AllTests': ParameterData.none(),
   'ModifyTest': (data) async => ParameterData(
         allParams: {
           'testId': getParameter<DocumentReference>(data, 'testId'),

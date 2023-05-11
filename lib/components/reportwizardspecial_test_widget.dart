@@ -66,7 +66,7 @@ class _ReportwizardspecialTestWidgetState
               width: 50.0,
               height: 50.0,
               child: SpinKitRipple(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 size: 50.0,
               ),
             ),
@@ -199,7 +199,7 @@ class _ReportwizardspecialTestWidgetState
                           Text(
                             widget.specialTest!.name!,
                             style: FlutterFlowTheme.of(context)
-                                .bodyText1
+                                .bodyMedium
                                 .override(
                                   fontFamily: 'Open Sans',
                                   color:
@@ -219,8 +219,7 @@ class _ReportwizardspecialTestWidgetState
                                 child: Container(
                                   height: 35.0,
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                    color: FlutterFlowTheme.of(context).primary,
                                     boxShadow: [
                                       BoxShadow(
                                         blurRadius: 1.0,
@@ -260,7 +259,7 @@ class _ReportwizardspecialTestWidgetState
                                                               true
                                                           ? FlutterFlowTheme.of(
                                                                   context)
-                                                              .secondaryColor
+                                                              .secondary
                                                           : FlutterFlowTheme.of(
                                                                   context)
                                                               .primaryBackground,

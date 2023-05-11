@@ -54,7 +54,7 @@ class _NotificationsWidgeDarkWidgetState
               padding: EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 0.0, 0.0),
               child: Text(
                 'Notifications',
-                style: FlutterFlowTheme.of(context).subtitle1.override(
+                style: FlutterFlowTheme.of(context).titleMedium.override(
                       fontFamily: 'Open Sans',
                       color: Color(0xFFFEFEFE),
                       fontWeight: FontWeight.w500,
@@ -66,7 +66,7 @@ class _NotificationsWidgeDarkWidgetState
         Container(
           width: MediaQuery.of(context).size.width * 0.9,
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).tertiaryColor,
+            color: FlutterFlowTheme.of(context).tertiary,
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: SingleChildScrollView(
@@ -98,11 +98,11 @@ class _NotificationsWidgeDarkWidgetState
                             child: Text(
                               'You have received a New Message',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Open Sans',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -145,11 +145,11 @@ class _NotificationsWidgeDarkWidgetState
                             child: Text(
                               'You have received a New Report',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Open Sans',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -192,11 +192,11 @@ class _NotificationsWidgeDarkWidgetState
                             child: Text(
                               'Your Booking has been Confirmed',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Open Sans',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -239,11 +239,11 @@ class _NotificationsWidgeDarkWidgetState
                             child: Text(
                               'You have received a New Message',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Open Sans',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),

@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/client_user_card/client_user_card_widget.dart';
 import '/components/staff_user_card/staff_user_card_widget.dart';

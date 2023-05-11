@@ -41,15 +41,18 @@ class _EditUserWidgetState extends State<EditUserWidget> {
 
     return Title(
         title: 'editUser',
-        color: FlutterFlowTheme.of(context).primaryColor,
+        color: FlutterFlowTheme.of(context).primary,
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
           body: SafeArea(
-            child: wrapWithModel(
-              model: _model.editUserDetailsModel,
-              updateCallback: () => setState(() {}),
-              child: EditUserDetailsWidget(),
+            child: Align(
+              alignment: AlignmentDirectional(0.0, 0.0),
+              child: wrapWithModel(
+                model: _model.editUserDetailsModel,
+                updateCallback: () => setState(() {}),
+                updateOnChange: true,
+                child: EditUserDetailsWidget(),
+              ),
             ),
           ),
         ));

@@ -935,44 +935,61 @@ class _$BookingsRecord extends BookingsRecord {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(
-                                                                $jc(
-                                                                    $jc(
-                                                                        $jc(
-                                                                            $jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc($jc(0, labRefNum.hashCode), createdDate.hashCode), scheduledDate.hashCode), completed.hashCode), testVerified.hashCode), testNotes.hashCode), technologist.hashCode), user.hashCode), diagnosis.hashCode), totalPrice.hashCode), bookingConfirmed.hashCode), firstname.hashCode), lastname.hashCode), phonenumber.hashCode), sex.hashCode), emailaddress.hashCode), bookingstatus.hashCode), docNameAddress.hashCode), testsIncluded.hashCode), isInvoiced.hashCode), isSubmitted.hashCode), totalTests.hashCode), pathologist.hashCode), userPatient.hashCode), dOB.hashCode), invoiceRefs.hashCode), updatedDate.hashCode), paidFull.hashCode), updateRole.hashCode), resultPublished.hashCode), paymentBalance.hashCode), updateStaff.hashCode), confirmationBegan.hashCode),
-                                                                                bookedTests.hashCode),
-                                                                            payments.hashCode),
-                                                                        reportSent.hashCode),
-                                                                    docNames.hashCode),
-                                                                doctorPhoneNumber.hashCode),
-                                                            doctorEmail.hashCode),
-                                                        docRef.hashCode),
-                                                    verifiedTests.hashCode),
-                                                hasTestPackages.hashCode),
-                                            testPackages.hashCode),
-                                        testPackTests.hashCode),
-                                    reportRef.hashCode),
-                                flaggedTests.hashCode),
-                            frozenTests.hashCode),
-                        formImages.hashCode),
-                    bookedSpecialTests.hashCode),
-                bookedTestRefs.hashCode),
-            specialTests.hashCode),
-        ffRef.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, labRefNum.hashCode);
+    _$hash = $jc(_$hash, createdDate.hashCode);
+    _$hash = $jc(_$hash, scheduledDate.hashCode);
+    _$hash = $jc(_$hash, completed.hashCode);
+    _$hash = $jc(_$hash, testVerified.hashCode);
+    _$hash = $jc(_$hash, testNotes.hashCode);
+    _$hash = $jc(_$hash, technologist.hashCode);
+    _$hash = $jc(_$hash, user.hashCode);
+    _$hash = $jc(_$hash, diagnosis.hashCode);
+    _$hash = $jc(_$hash, totalPrice.hashCode);
+    _$hash = $jc(_$hash, bookingConfirmed.hashCode);
+    _$hash = $jc(_$hash, firstname.hashCode);
+    _$hash = $jc(_$hash, lastname.hashCode);
+    _$hash = $jc(_$hash, phonenumber.hashCode);
+    _$hash = $jc(_$hash, sex.hashCode);
+    _$hash = $jc(_$hash, emailaddress.hashCode);
+    _$hash = $jc(_$hash, bookingstatus.hashCode);
+    _$hash = $jc(_$hash, docNameAddress.hashCode);
+    _$hash = $jc(_$hash, testsIncluded.hashCode);
+    _$hash = $jc(_$hash, isInvoiced.hashCode);
+    _$hash = $jc(_$hash, isSubmitted.hashCode);
+    _$hash = $jc(_$hash, totalTests.hashCode);
+    _$hash = $jc(_$hash, pathologist.hashCode);
+    _$hash = $jc(_$hash, userPatient.hashCode);
+    _$hash = $jc(_$hash, dOB.hashCode);
+    _$hash = $jc(_$hash, invoiceRefs.hashCode);
+    _$hash = $jc(_$hash, updatedDate.hashCode);
+    _$hash = $jc(_$hash, paidFull.hashCode);
+    _$hash = $jc(_$hash, updateRole.hashCode);
+    _$hash = $jc(_$hash, resultPublished.hashCode);
+    _$hash = $jc(_$hash, paymentBalance.hashCode);
+    _$hash = $jc(_$hash, updateStaff.hashCode);
+    _$hash = $jc(_$hash, confirmationBegan.hashCode);
+    _$hash = $jc(_$hash, bookedTests.hashCode);
+    _$hash = $jc(_$hash, payments.hashCode);
+    _$hash = $jc(_$hash, reportSent.hashCode);
+    _$hash = $jc(_$hash, docNames.hashCode);
+    _$hash = $jc(_$hash, doctorPhoneNumber.hashCode);
+    _$hash = $jc(_$hash, doctorEmail.hashCode);
+    _$hash = $jc(_$hash, docRef.hashCode);
+    _$hash = $jc(_$hash, verifiedTests.hashCode);
+    _$hash = $jc(_$hash, hasTestPackages.hashCode);
+    _$hash = $jc(_$hash, testPackages.hashCode);
+    _$hash = $jc(_$hash, testPackTests.hashCode);
+    _$hash = $jc(_$hash, reportRef.hashCode);
+    _$hash = $jc(_$hash, flaggedTests.hashCode);
+    _$hash = $jc(_$hash, frozenTests.hashCode);
+    _$hash = $jc(_$hash, formImages.hashCode);
+    _$hash = $jc(_$hash, bookedSpecialTests.hashCode);
+    _$hash = $jc(_$hash, bookedTestRefs.hashCode);
+    _$hash = $jc(_$hash, specialTests.hashCode);
+    _$hash = $jc(_$hash, ffRef.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -1466,4 +1483,4 @@ class BookingsRecordBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

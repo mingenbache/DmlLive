@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'backend/backend.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
-import 'flutter_flow/lat_lng.dart';
 
 class FFAppState extends ChangeNotifier {
   static final FFAppState _instance = FFAppState._internal();
@@ -11,9 +10,7 @@ class FFAppState extends ChangeNotifier {
     return _instance;
   }
 
-  FFAppState._internal() {
-    initializePersistedState();
-  }
+  FFAppState._internal();
 
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();

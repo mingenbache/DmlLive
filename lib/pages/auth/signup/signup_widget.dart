@@ -1,10 +1,11 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/date_of_birth/date_of_birth_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/foundation.dart';
@@ -55,10 +56,9 @@ class _SignupWidgetState extends State<SignupWidget> {
 
     return Title(
         title: 'Signup',
-        color: FlutterFlowTheme.of(context).primaryColor,
+        color: FlutterFlowTheme.of(context).primary,
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
           body: Form(
             key: _model.formKey,
             autovalidateMode: AutovalidateMode.always,
@@ -88,13 +88,15 @@ class _SignupWidgetState extends State<SignupWidget> {
                 Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Container(
-                    width: MediaQuery.of(context).size.width * 1.0,
                     height: MediaQuery.of(context).size.height * 1.0,
+                    constraints: BoxConstraints(
+                      maxWidth: 440.0,
+                    ),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
                           Color(0x806CD7B7),
-                          FlutterFlowTheme.of(context).secondaryColor,
+                          FlutterFlowTheme.of(context).secondary,
                           FlutterFlowTheme.of(context).primaryBackground
                         ],
                         stops: [0.0, 0.5, 0.75],
@@ -156,7 +158,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                     'Enter your first name here...',
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
@@ -218,7 +220,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         color:
@@ -251,7 +253,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                     'Enter your last name',
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
@@ -313,7 +315,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         color:
@@ -352,7 +354,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                   'Enter your email here...',
                                               hintStyle: FlutterFlowTheme.of(
                                                       context)
-                                                  .bodyText1
+                                                  .bodyMedium
                                                   .override(
                                                     fontFamily: 'Lexend Deca',
                                                     color: FlutterFlowTheme.of(
@@ -413,7 +415,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               ),
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
@@ -449,7 +451,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                   'Enter your phone number here...',
                                               hintStyle: FlutterFlowTheme.of(
                                                       context)
-                                                  .bodyText1
+                                                  .bodyMedium
                                                   .override(
                                                     fontFamily: 'Lexend Deca',
                                                     color: FlutterFlowTheme.of(
@@ -510,7 +512,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               ),
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
@@ -545,6 +547,11 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 5.0, 0.0),
                                               child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
                                                 onTap: () async {
                                                   final _datePickedDate =
                                                       await showDatePicker(
@@ -612,7 +619,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText1
+                                                              .bodyMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Open Sans',
@@ -628,7 +635,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           ),
                                           Expanded(
                                             child: FlutterFlowChoiceChips(
-                                              initiallySelected: ['Female'],
                                               options: [
                                                 ChipData('Female',
                                                     FontAwesomeIcons.female),
@@ -644,7 +650,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                         .primaryText,
                                                 textStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
@@ -669,7 +675,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                     Colors.transparent,
                                                 textStyle: FlutterFlowTheme.of(
                                                         context)
-                                                    .bodyText2
+                                                    .bodySmall
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color:
@@ -695,6 +701,12 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                   _model.sexChoiceChipsValue !=
                                                       null,
                                               alignment: WrapAlignment.start,
+                                              controller: _model
+                                                      .sexChoiceChipsValueController ??=
+                                                  FormFieldController<
+                                                      List<String>>(
+                                                ['Female'],
+                                              ),
                                             ),
                                           ),
                                         ],
@@ -719,7 +731,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               labelText: 'Password',
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         color:
@@ -734,7 +746,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                   'Enter your password here...',
                                               hintStyle: FlutterFlowTheme.of(
                                                       context)
-                                                  .bodyText1
+                                                  .bodyMedium
                                                   .override(
                                                     fontFamily: 'Lexend Deca',
                                                     color: FlutterFlowTheme.of(
@@ -810,7 +822,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               ),
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
@@ -847,7 +859,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                   'Enter your password here...',
                                               hintStyle: FlutterFlowTheme.of(
                                                       context)
-                                                  .bodyText1
+                                                  .bodyMedium
                                                   .override(
                                                     fontFamily: 'Lexend Deca',
                                                     color: FlutterFlowTheme.of(
@@ -923,7 +935,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               ),
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
@@ -969,8 +981,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 return;
                                               }
 
-                                              final user =
-                                                  await createAccountWithEmail(
+                                              final user = await authManager
+                                                  .createAccountWithEmail(
                                                 context,
                                                 _model.emailAddressController
                                                     .text,
@@ -1030,12 +1042,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 isScrollControlled: true,
                                                 backgroundColor:
                                                     Colors.transparent,
+                                                barrierColor: Color(0x00000000),
                                                 context: context,
-                                                builder: (context) {
+                                                builder: (bottomSheetContext) {
                                                   return Padding(
-                                                    padding:
-                                                        MediaQuery.of(context)
-                                                            .viewInsets,
+                                                    padding: MediaQuery.of(
+                                                            bottomSheetContext)
+                                                        .viewInsets,
                                                     child: DateOfBirthWidget(),
                                                   );
                                                 },
@@ -1060,7 +1073,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 .secondaryText,
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .subtitle2,
+                                                    .titleSmall,
                                             elevation: 3.0,
                                             borderSide: BorderSide(
                                               color: Colors.transparent,
@@ -1087,7 +1100,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     'Or use a social account to create account',
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText2
+                                        .bodySmall
                                         .override(
                                           fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.of(context)
@@ -1110,10 +1123,14 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 8.0, 0.0),
                                     child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
                                       onTap: () async {
                                         GoRouter.of(context).prepareAuthEvent();
-                                        final user =
-                                            await signInWithGoogle(context);
+                                        final user = await authManager
+                                            .signInWithGoogle(context);
                                         if (user == null) {
                                           return;
                                         }
@@ -1134,12 +1151,15 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   15.0, 11.0, 15.0, 11.0),
                                           child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               GoRouter.of(context)
                                                   .prepareAuthEvent();
-                                              final user =
-                                                  await signInWithGoogle(
-                                                      context);
+                                              final user = await authManager
+                                                  .signInWithGoogle(context);
                                               if (user == null) {
                                                 return;
                                               }
@@ -1160,10 +1180,14 @@ class _SignupWidgetState extends State<SignupWidget> {
                                     ),
                                   ),
                                   InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       GoRouter.of(context).prepareAuthEvent();
-                                      final user =
-                                          await signInWithApple(context);
+                                      final user = await authManager
+                                          .signInWithApple(context);
                                       if (user == null) {
                                         return;
                                       }
@@ -1186,12 +1210,15 @@ class _SignupWidgetState extends State<SignupWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   18.0, 11.0, 18.0, 11.0),
                                           child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               GoRouter.of(context)
                                                   .prepareAuthEvent();
-                                              final user =
-                                                  await signInWithApple(
-                                                      context);
+                                              final user = await authManager
+                                                  .signInWithApple(context);
                                               if (user == null) {
                                                 return;
                                               }
@@ -1224,7 +1251,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                   Text(
                                     'Already have an account?',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Lexend Deca',
                                           color: FlutterFlowTheme.of(context)
@@ -1252,7 +1279,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         textStyle: FlutterFlowTheme.of(context)
-                                            .subtitle2
+                                            .titleSmall
                                             .override(
                                               fontFamily: 'Open Sans',
                                               color:

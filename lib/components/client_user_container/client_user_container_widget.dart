@@ -54,7 +54,7 @@ class _ClientUserContainerWidgetState extends State<ClientUserContainerWidget> {
               width: 50.0,
               height: 50.0,
               child: SpinKitRipple(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 size: 50.0,
               ),
             ),
@@ -192,7 +192,7 @@ class _ClientUserContainerWidgetState extends State<ClientUserContainerWidget> {
                                     Text(
                                       'Alex Edwards',
                                       style: FlutterFlowTheme.of(context)
-                                          .subtitle1
+                                          .titleMedium
                                           .override(
                                             fontFamily: 'Lexend Deca',
                                             color: Color(0xFF586B06),
@@ -216,12 +216,12 @@ class _ClientUserContainerWidgetState extends State<ClientUserContainerWidget> {
                                           child: Text(
                                             '[User Email]',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText2
+                                                .bodySmall
                                                 .override(
                                                   fontFamily: 'Lexend Deca',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryColor,
+                                                      .secondary,
                                                   fontSize: 14.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
@@ -238,7 +238,7 @@ class _ClientUserContainerWidgetState extends State<ClientUserContainerWidget> {
                                       width: 90.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
+                                            .primary,
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                       ),
@@ -249,7 +249,7 @@ class _ClientUserContainerWidgetState extends State<ClientUserContainerWidget> {
                                           'Viral',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color: Colors.white,
@@ -270,12 +270,12 @@ class _ClientUserContainerWidgetState extends State<ClientUserContainerWidget> {
                                           'Created Date',
                                           textAlign: TextAlign.end,
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
+                                                        .secondary,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                         ),
@@ -295,8 +295,7 @@ class _ClientUserContainerWidgetState extends State<ClientUserContainerWidget> {
                               children: [
                                 Icon(
                                   Icons.chevron_right_rounded,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: FlutterFlowTheme.of(context).primary,
                                   size: 24.0,
                                 ),
                               ],

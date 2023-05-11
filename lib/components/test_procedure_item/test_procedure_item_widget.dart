@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -64,7 +64,7 @@ class _TestProcedureItemWidgetState extends State<TestProcedureItemWidget> {
         height: 35.0,
         decoration: BoxDecoration(
           border: Border.all(
-            color: FlutterFlowTheme.of(context).secondaryColor,
+            color: FlutterFlowTheme.of(context).secondary,
           ),
         ),
         child: Row(
@@ -146,7 +146,7 @@ class _TestProcedureItemWidgetState extends State<TestProcedureItemWidget> {
                         )
                       : null,
                 ),
-                style: FlutterFlowTheme.of(context).bodyText1.override(
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Open Sans',
                       color: FlutterFlowTheme.of(context).primaryText,
                       fontSize: 16.0,
@@ -155,6 +155,10 @@ class _TestProcedureItemWidgetState extends State<TestProcedureItemWidget> {
               ),
             ),
             InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
               onTap: () async {
                 final testsUpdateData = {
                   'procedure': FieldValue.arrayRemove([widget.procedureString]),
