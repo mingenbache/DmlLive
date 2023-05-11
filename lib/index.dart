@@ -46,7 +46,5 @@ export '/pages/staff/booking_confirmation/booking_confirmation_widget.dart'
     show BookingConfirmationWidget;
 export '/pages/staff/messages/messages_widget.dart' show MessagesWidget;
 export '/pages/home_copy/home_copy_widget.dart' show HomeCopyWidget;
-export '/pages/staff/home_admin_copy/home_admin_copy_widget.dart'
-    show HomeAdminCopyWidget;
 export '/pages/staff/booking_invoicing/booking_invoicing_widget.dart'
     show BookingInvoicingWidget;

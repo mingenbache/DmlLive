@@ -1386,6 +1386,19 @@ List<DocumentReference> returnDuplicateTestsinBooking(
   return duplicateTests;
 }
 
+List<DateTime> returnTestsDates(
+  List<TestedTestsRecord>? testedtests,
+  DateTime? date,
+) {
+  // return list of TestedTest  documents where date_conducted is within the past seven days
+  List<TestedTestsRecord>? tests = [];
+
+  final List<DateTime> dates = List.generate(
+      7, (index) => date!.subtract(Duration(days: index)).toUtc());
+
+  return dates.reversed.toList();
+}
+
 List<TestPackagesRecord> returnPackagesinBooking(
   List<TestPackagesRecord>? packagesCollection,
   List<DocumentReference>? bookingPackagesList,
@@ -1618,4 +1631,24 @@ List<DocumentReference> removeTestsfromList(
     }
   }
   return newList;
+}
+
+List<int> returnTestsQuantity(
+  List<TestedTestsRecord>? testedtests,
+  DateTime? date,
+) {
+  // return list of TestedTest  documents where date_conducted is within the past seven days
+  List<TestedTestsRecord>? tests = [];
+
+  final dates = List.generate(
+      7, (index) => date!.subtract(Duration(days: index)).toUtc().day);
+
+  final counts = List.generate(7, (index) {
+    final dateToCompare = dates[index];
+    return tests
+        .where((test) => test.dateConducted?.toUtc()?.day == dateToCompare)
+        .length;
+  });
+
+  return counts.reversed.toList();
 }

@@ -311,11 +311,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => HomeCopyWidget(),
             ),
             FFRoute(
-              name: 'HomeAdminCopy',
-              path: 'homeAdminCopy',
-              builder: (context, params) => HomeAdminCopyWidget(),
-            ),
-            FFRoute(
               name: 'BookingInvoicing',
               path: 'bookingInvoicing',
               builder: (context, params) => BookingInvoicingWidget(
