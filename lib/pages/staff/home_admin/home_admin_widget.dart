@@ -2,11 +2,11 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/all_chats_popup/all_chats_popup_widget.dart';
 import '/components/notifications_widget/notifications_widget_widget.dart';
+import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -530,36 +530,121 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                         MainAxisAlignment
                                                             .center,
                                                     children: [
-                                                      Expanded(
-                                                        child: Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
-                                                          child: Container(
-                                                            width: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width *
-                                                                0.9,
-                                                            height: 150.0,
-                                                            child:
-                                                                custom_widgets
-                                                                    .ChartTests(
-                                                              width: MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .width *
-                                                                  0.9,
-                                                              height: 150.0,
-                                                              testData: functions
-                                                                  .returnStats(
-                                                                      homeAdminTestedTestsRecordList
+                                                      Container(
+                                                        width: 300.0,
+                                                        height: 300.0,
+                                                        child: Stack(
+                                                          children: [
+                                                            FlutterFlowLineChart(
+                                                              data: [
+                                                                FFLineChartData(
+                                                                  xData: functions.returnTestsDates(
+                                                                      containerTestedTestsRecordList
                                                                           .toList(),
-                                                                      functions
-                                                                          .getDayToday())
-                                                                  .toList(),
+                                                                      getCurrentTimestamp),
+                                                                  yData: functions.returnTestsQuantity(
+                                                                      containerTestedTestsRecordList
+                                                                          .toList(),
+                                                                      getCurrentTimestamp),
+                                                                  settings:
+                                                                      LineChartBarData(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                    barWidth:
+                                                                        6.0,
+                                                                    isCurved:
+                                                                        true,
+                                                                    belowBarData:
+                                                                        BarAreaData(
+                                                                      show:
+                                                                          true,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondary,
+                                                                    ),
+                                                                  ),
+                                                                )
+                                                              ],
+                                                              chartStylingInfo:
+                                                                  ChartStylingInfo(
+                                                                enableTooltip:
+                                                                    true,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .white,
+                                                                showGrid: true,
+                                                                showBorder:
+                                                                    false,
+                                                              ),
+                                                              axisBounds:
+                                                                  AxisBounds(),
+                                                              xAxisLabelInfo:
+                                                                  AxisLabelInfo(),
+                                                              yAxisLabelInfo:
+                                                                  AxisLabelInfo(
+                                                                showLabels:
+                                                                    true,
+                                                                labelTextStyle:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Open Sans',
+                                                                          fontSize:
+                                                                              12.0,
+                                                                        ),
+                                                                labelInterval:
+                                                                    20.0,
+                                                              ),
                                                             ),
-                                                          ),
+                                                            Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      1.0, 1.0),
+                                                              child:
+                                                                  FlutterFlowChartLegendWidget(
+                                                                entries: [
+                                                                  LegendEntry(
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                      'Total Tests'),
+                                                                ],
+                                                                width: 100.0,
+                                                                height: 50.0,
+                                                                textStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Open Sans',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                    ),
+                                                                textPadding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            5.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            5.0,
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0),
+                                                                borderWidth:
+                                                                    0.0,
+                                                                indicatorSize:
+                                                                    10.0,
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
                                                       ),
                                                     ],

@@ -205,7 +205,6 @@ final parametersBuilderMap =
       ),
   'Messages': ParameterData.none(),
   'HomeCopy': ParameterData.none(),
-  'HomeAdminCopy': ParameterData.none(),
   'BookingInvoicing': (data) async => ParameterData(
         allParams: {
           'bookingRef': getParameter<DocumentReference>(data, 'bookingRef'),
