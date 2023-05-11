@@ -43,10 +43,10 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
 
     return Title(
         title: 'TestConsole',
-        color: FlutterFlowTheme.of(context).primaryColor,
+        color: FlutterFlowTheme.of(context).primary,
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+          backgroundColor: FlutterFlowTheme.of(context).tertiary,
           body: SafeArea(
             child: Stack(
               children: [
@@ -98,7 +98,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                 'TEST DASHBOARD',
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
-                                    .title1
+                                    .displaySmall
                                     .override(
                                       fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
@@ -120,31 +120,35 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                             initialIndex: 0,
                             child: Column(
                               children: [
-                                TabBar(
-                                  isScrollable: true,
-                                  labelColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  unselectedLabelColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  labelStyle:
-                                      FlutterFlowTheme.of(context).subtitle2,
-                                  indicatorColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  indicatorWeight: 3.0,
-                                  tabs: [
-                                    Tab(
-                                      text: 'Unverified',
-                                    ),
-                                    Tab(
-                                      text: 'Incomplete',
-                                    ),
-                                    Tab(
-                                      text: 'Flagged',
-                                    ),
-                                    Tab(
-                                      text: 'Frozen Tests',
-                                    ),
-                                  ],
+                                Align(
+                                  alignment: Alignment(0.0, 0),
+                                  child: TabBar(
+                                    isScrollable: true,
+                                    labelColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    unselectedLabelColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                    labelStyle:
+                                        FlutterFlowTheme.of(context).titleSmall,
+                                    indicatorColor: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    indicatorWeight: 3.0,
+                                    tabs: [
+                                      Tab(
+                                        text: 'Unverified',
+                                      ),
+                                      Tab(
+                                        text: 'Incomplete',
+                                      ),
+                                      Tab(
+                                        text: 'Flagged',
+                                      ),
+                                      Tab(
+                                        text: 'Frozen Tests',
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 Expanded(
                                   child: TabBarView(
@@ -193,7 +197,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                 SpinKitRipple(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primaryColor,
+                                                                  .primary,
                                                               size: 50.0,
                                                             ),
                                                           ),
@@ -237,7 +241,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                         SpinKitRipple(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryColor,
+                                                                          .primary,
                                                                       size:
                                                                           50.0,
                                                                     ),
@@ -314,7 +318,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                           child: SpinKitRipple(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .primaryColor,
+                                                                .primary,
                                                             size: 50.0,
                                                           ),
                                                         ),
@@ -361,7 +365,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                         SpinKitRipple(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryColor,
+                                                                          .primary,
                                                                       size:
                                                                           50.0,
                                                                     ),
@@ -430,7 +434,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                         child: SpinKitRipple(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryColor,
+                                                              .primary,
                                                           size: 50.0,
                                                         ),
                                                       ),
@@ -471,7 +475,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                     SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryColor,
+                                                                      .primary,
                                                                   size: 50.0,
                                                                 ),
                                                               ),
@@ -483,6 +487,15 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                             decoration:
                                                                 BoxDecoration(),
                                                             child: InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
                                                               onTap: () async {
                                                                 context
                                                                     .pushNamed(
@@ -605,7 +618,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                         Text(
                                                                           'Test Name',
                                                                           style:
-                                                                              FlutterFlowTheme.of(context).subtitle1,
+                                                                              FlutterFlowTheme.of(context).titleMedium,
                                                                         ),
                                                                       ],
                                                                     ),
@@ -665,9 +678,9 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                         decoration: BoxDecoration(),
                                                                                         child: Text(
                                                                                           'OCT',
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
-                                                                                                color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).primary,
                                                                                                 fontSize: 12.0,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -677,9 +690,9 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                         decoration: BoxDecoration(),
                                                                                         child: Text(
                                                                                           '21',
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).secondary,
                                                                                                 fontSize: 24.0,
                                                                                                 fontWeight: FontWeight.w600,
                                                                                               ),
@@ -689,9 +702,9 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                         decoration: BoxDecoration(),
                                                                                         child: Text(
                                                                                           '2021',
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).secondary,
                                                                                                 fontSize: 12.0,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -743,9 +756,9 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                         child: Text(
                                                                                           'REF',
-                                                                                          style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                 fontFamily: 'Lexend Deca',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).secondary,
                                                                                                 fontSize: 14.0,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -762,7 +775,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                         child: Text(
                                                                                           'REF',
-                                                                                          style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                 fontFamily: 'Lexend Deca',
                                                                                                 color: Color(0xFF586B06),
                                                                                                 fontSize: 14.0,
@@ -800,9 +813,9 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(7.0, 9.0, 0.0, 5.0),
                                                                                             child: Text(
                                                                                               'Note',
-                                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                     fontFamily: 'Open Sans',
-                                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                    color: FlutterFlowTheme.of(context).secondary,
                                                                                                     fontWeight: FontWeight.normal,
                                                                                                   ),
                                                                                             ),
@@ -817,7 +830,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                             children: [
                                                                                               Text(
                                                                                                 'Freeze reason',
-                                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                       fontFamily: 'Open Sans',
                                                                                                       color: Color(0xFF586B06),
                                                                                                       fontWeight: FontWeight.w500,
@@ -854,9 +867,9 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                               padding: EdgeInsetsDirectional.fromSTEB(3.0, 9.0, 0.0, 5.0),
                                                                                               child: Text(
                                                                                                 'Submitted by',
-                                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                       fontFamily: 'Open Sans',
-                                                                                                      color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                      color: FlutterFlowTheme.of(context).secondary,
                                                                                                       fontWeight: FontWeight.normal,
                                                                                                     ),
                                                                                               ),
@@ -872,7 +885,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                                             children: [
                                                                                               Text(
                                                                                                 'Staff Name',
-                                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                       fontFamily: 'Open Sans',
                                                                                                       color: Color(0xFF586B06),
                                                                                                       fontWeight: FontWeight.w500,
@@ -914,7 +927,7 @@ class _TestConsoleWidgetState extends State<TestConsoleWidget> {
                                                                           children: [
                                                                             Icon(
                                                                               Icons.chevron_right_rounded,
-                                                                              color: FlutterFlowTheme.of(context).primaryColor,
+                                                                              color: FlutterFlowTheme.of(context).primary,
                                                                               size: 24.0,
                                                                             ),
                                                                           ],

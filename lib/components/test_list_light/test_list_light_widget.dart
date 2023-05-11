@@ -53,7 +53,7 @@ class _TestListLightWidgetState extends State<TestListLightWidget> {
               width: 50.0,
               height: 50.0,
               child: SpinKitRipple(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 size: 50.0,
               ),
             ),
@@ -64,7 +64,7 @@ class _TestListLightWidgetState extends State<TestListLightWidget> {
           width: MediaQuery.of(context).size.width * 1.0,
           height: MediaQuery.of(context).size.height * 1.0,
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).tertiaryColor,
+            color: FlutterFlowTheme.of(context).tertiary,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
@@ -85,6 +85,10 @@ class _TestListLightWidgetState extends State<TestListLightWidget> {
                   return Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
                     child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         context.pushNamed('Details');
                       },
@@ -112,8 +116,8 @@ class _TestListLightWidgetState extends State<TestListLightWidget> {
                                         MediaQuery.of(context).size.width * 1.0,
                                     height: 100.0,
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
                                       borderRadius: BorderRadius.circular(28.0),
                                     ),
                                     alignment: AlignmentDirectional(0.0, 0.0),

@@ -96,7 +96,7 @@ class _UserWidgetWidgetState extends State<UserWidgetWidget> {
                             Text(
                               'Alex Edwards',
                               style: FlutterFlowTheme.of(context)
-                                  .subtitle1
+                                  .titleMedium
                                   .override(
                                     fontFamily: 'Lexend Deca',
                                     color: Color(0xFF586B06),
@@ -107,7 +107,7 @@ class _UserWidgetWidgetState extends State<UserWidgetWidget> {
                             Text(
                               'Alex Edwards',
                               style: FlutterFlowTheme.of(context)
-                                  .subtitle1
+                                  .titleMedium
                                   .override(
                                     fontFamily: 'Lexend Deca',
                                     color: Color(0xFF586B06),
@@ -127,11 +127,11 @@ class _UserWidgetWidgetState extends State<UserWidgetWidget> {
                                 child: Text(
                                   '[User Email]',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText2
+                                      .bodySmall
                                       .override(
                                         fontFamily: 'Lexend Deca',
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryColor,
+                                            .secondary,
                                         fontSize: 12.0,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -155,11 +155,11 @@ class _UserWidgetWidgetState extends State<UserWidgetWidget> {
                                   'Viral',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryColor,
+                                            .secondary,
                                       ),
                                 ),
                               ),
@@ -177,7 +177,7 @@ class _UserWidgetWidgetState extends State<UserWidgetWidget> {
                       children: [
                         Icon(
                           Icons.chevron_right_rounded,
-                          color: FlutterFlowTheme.of(context).primaryColor,
+                          color: FlutterFlowTheme.of(context).primary,
                           size: 24.0,
                         ),
                       ],

@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -77,7 +77,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                 width: 50.0,
                 height: 50.0,
                 child: SpinKitRipple(
-                  color: FlutterFlowTheme.of(context).primaryColor,
+                  color: FlutterFlowTheme.of(context).primary,
                   size: 50.0,
                 ),
               ),
@@ -105,7 +105,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                       maxHeight: 829.0,
                     ),
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).tertiaryColor,
+                      color: FlutterFlowTheme.of(context).tertiary,
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     child: Stack(
@@ -142,7 +142,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                             gradient: LinearGradient(
                               colors: [
                                 Color(0x7F6CD7B7),
-                                FlutterFlowTheme.of(context).secondaryColor
+                                FlutterFlowTheme.of(context).secondary
                               ],
                               stops: [0.0, 0.45],
                               begin: AlignmentDirectional(0.0, -1.0),
@@ -165,13 +165,17 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                       Text(
                                         'ADD NEW TEST',
                                         style: FlutterFlowTheme.of(context)
-                                            .title1
+                                            .displaySmall
                                             .override(
                                               fontFamily: 'Open Sans',
                                               color: Colors.white,
                                             ),
                                       ),
                                       InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
                                         onTap: () async {
                                           context.pop();
                                         },
@@ -179,7 +183,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                           clipBehavior:
                                               Clip.antiAliasWithSaveLayer,
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryColor,
+                                              .secondary,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(30.0),
@@ -195,7 +199,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                               Icons.close_rounded,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .tertiaryColor,
+                                                      .tertiary,
                                               size: 30.0,
                                             ),
                                             onPressed: () async {
@@ -234,7 +238,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                 labelText: 'Test Name',
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
@@ -245,7 +249,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                 hintText: 'Enter Test Name',
                                                 hintStyle: FlutterFlowTheme.of(
                                                         context)
-                                                    .bodyText1
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color:
@@ -321,7 +325,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
-                                                  .bodyText1
+                                                  .bodyMedium
                                                   .override(
                                                     fontFamily: 'Open Sans',
                                                     color: FlutterFlowTheme.of(
@@ -364,7 +368,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                               'Test Category',
                                               style: FlutterFlowTheme.of(
                                                       context)
-                                                  .bodyText1
+                                                  .bodyMedium
                                                   .override(
                                                     fontFamily: 'Open Sans',
                                                     color: FlutterFlowTheme.of(
@@ -398,7 +402,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryColor,
+                                                                .primary,
                                                         size: 50.0,
                                                       ),
                                                     ),
@@ -416,7 +420,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                 return FlutterFlowDropDown<
                                                     String>(
                                                   controller: _model
-                                                          .testCategoryController ??=
+                                                          .testCategoryValueController ??=
                                                       FormFieldController<
                                                           String>(null),
                                                   options:
@@ -435,7 +439,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                   height: 40.0,
                                                   textStyle: FlutterFlowTheme
                                                           .of(context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
@@ -499,7 +503,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                 'Test @ Home ',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
@@ -510,7 +514,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                 'Can the test be done at home?',
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .subtitle2
+                                                        .titleSmall
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
@@ -519,10 +523,10 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                               ),
                                               activeColor:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryColor,
+                                                      .primary,
                                               activeTrackColor:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryColor,
+                                                      .secondary,
                                               dense: false,
                                               controlAffinity:
                                                   ListTileControlAffinity
@@ -653,7 +657,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                   'Test Duration:',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
@@ -704,13 +708,13 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                               'in minutes',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
+                                                                .secondary,
                                                         fontSize: 14.0,
                                                       ),
                                             ),
@@ -755,7 +759,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                     maxLines: 1,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
@@ -811,7 +815,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                 'Results Duration:',
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .bodyText1
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color:
@@ -838,7 +842,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                         .primaryText,
                                                 inactiveColor:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryColor,
+                                                        .primary,
                                                 min: 1.0,
                                                 max: 180.0,
                                                 value: _model
@@ -859,12 +863,12 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                           Text(
                                             'in Hours',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryColor,
+                                                      .secondary,
                                                   fontSize: 14.0,
                                                 ),
                                           ),
@@ -907,7 +911,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                   maxLines: 1,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
@@ -968,7 +972,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                   'Price',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color: FlutterFlowTheme
@@ -1018,7 +1022,7 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .secondary,
                                                           width: 1.0,
                                                         ),
                                                         borderRadius:
@@ -1184,14 +1188,15 @@ class _AddNewTestWidgetState extends State<AddNewTestWidget> {
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).secondaryText,
-                            textStyle:
-                                FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
                             elevation: 2.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,

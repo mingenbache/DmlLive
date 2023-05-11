@@ -470,44 +470,34 @@ class _$TestedTestsRecord extends TestedTestsRecord {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc(
-                                                $jc(
-                                                    $jc(
-                                                        $jc(
-                                                            $jc(
-                                                                $jc(
-                                                                    $jc(
-                                                                        $jc(
-                                                                            $jc($jc($jc($jc($jc($jc($jc(0, testRef.hashCode), bookingRef.hashCode), isVerified.hashCode), isFlagged.hashCode), pathologistRef.hashCode), dateConducted.hashCode),
-                                                                                resultsPositive.hashCode),
-                                                                            resultsAttachment.hashCode),
-                                                                        sampleReleased.hashCode),
-                                                                    bookedTestRef.hashCode),
-                                                                machineUsed.hashCode),
-                                                            flaggedDate.hashCode),
-                                                        dateSampleCollected.hashCode),
-                                                    labRefNum.hashCode),
-                                                testNote.hashCode),
-                                            pathologistNote.hashCode),
-                                        testResult.hashCode),
-                                    flagNotes.hashCode),
-                                resultPosted.hashCode),
-                            staffReference.hashCode),
-                        verifiedDate.hashCode),
-                    batchNum.hashCode),
-                hasTestPack.hashCode),
-            testPackRef.hashCode),
-        ffRef.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, testRef.hashCode);
+    _$hash = $jc(_$hash, bookingRef.hashCode);
+    _$hash = $jc(_$hash, isVerified.hashCode);
+    _$hash = $jc(_$hash, isFlagged.hashCode);
+    _$hash = $jc(_$hash, pathologistRef.hashCode);
+    _$hash = $jc(_$hash, dateConducted.hashCode);
+    _$hash = $jc(_$hash, resultsPositive.hashCode);
+    _$hash = $jc(_$hash, resultsAttachment.hashCode);
+    _$hash = $jc(_$hash, sampleReleased.hashCode);
+    _$hash = $jc(_$hash, bookedTestRef.hashCode);
+    _$hash = $jc(_$hash, machineUsed.hashCode);
+    _$hash = $jc(_$hash, flaggedDate.hashCode);
+    _$hash = $jc(_$hash, dateSampleCollected.hashCode);
+    _$hash = $jc(_$hash, labRefNum.hashCode);
+    _$hash = $jc(_$hash, testNote.hashCode);
+    _$hash = $jc(_$hash, pathologistNote.hashCode);
+    _$hash = $jc(_$hash, testResult.hashCode);
+    _$hash = $jc(_$hash, flagNotes.hashCode);
+    _$hash = $jc(_$hash, resultPosted.hashCode);
+    _$hash = $jc(_$hash, staffReference.hashCode);
+    _$hash = $jc(_$hash, verifiedDate.hashCode);
+    _$hash = $jc(_$hash, batchNum.hashCode);
+    _$hash = $jc(_$hash, hasTestPack.hashCode);
+    _$hash = $jc(_$hash, testPackRef.hashCode);
+    _$hash = $jc(_$hash, ffRef.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
@@ -757,4 +747,4 @@ class TestedTestsRecordBuilder
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

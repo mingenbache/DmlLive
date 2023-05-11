@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/duplicate_tests/duplicate_tests_widget.dart';
 import '/components/test_details_popup/test_details_popup_widget.dart';

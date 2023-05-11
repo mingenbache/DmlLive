@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/chat_actions_widget/chat_actions_widget_widget.dart';
 import '/components/user_activity/user_activity_widget.dart';
@@ -125,7 +125,7 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                           colors: [
                             Color(0x00FFFFFF),
                             Color(0x92BACA68),
-                            FlutterFlowTheme.of(context).tertiaryColor
+                            FlutterFlowTheme.of(context).tertiary
                           ],
                           stops: [0.0, 0.3, 0.4],
                           begin: AlignmentDirectional(0.0, -1.0),
@@ -149,13 +149,17 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pop();
                                   },
                                   child: Card(
                                     clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
@@ -166,7 +170,7 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                       icon: Icon(
                                         Icons.close_rounded,
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .tertiary,
                                         size: 30.0,
                                       ),
                                       onPressed: () async {
@@ -197,7 +201,7 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                             'CHATS',
                                             textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
-                                                .title1
+                                                .displaySmall
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: Colors.white,
@@ -251,13 +255,13 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                         ''),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Lexend Deca',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .secondary,
                                                           fontSize: 14.0,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -277,8 +281,8 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                     height: MediaQuery.of(context).size.height *
                                         0.47,
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
@@ -323,7 +327,7 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .primaryColor,
+                                                              .primary,
                                                       size: 50.0,
                                                     ),
                                                   ),
@@ -349,6 +353,14 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 10.0),
                                                     child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
                                                       onLongPress: () async {
                                                         await showModalBottomSheet(
                                                           isScrollControlled:
@@ -359,10 +371,11 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                           barrierColor:
                                                               Color(0x00000000),
                                                           context: context,
-                                                          builder: (context) {
+                                                          builder:
+                                                              (bottomSheetContext) {
                                                             return Padding(
-                                                              padding: MediaQuery
-                                                                      .of(context)
+                                                              padding: MediaQuery.of(
+                                                                      bottomSheetContext)
                                                                   .viewInsets,
                                                               child:
                                                                   UserActivityWidget(
@@ -497,7 +510,7 @@ class _AllChatsPopupWidgetState extends State<AllChatsPopupWidget> {
                                                                   'DM Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryColor,
+                                                                      .secondary,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,

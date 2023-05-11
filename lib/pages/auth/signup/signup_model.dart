@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/date_of_birth/date_of_birth_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
@@ -70,7 +70,7 @@ class SignupModel extends FlutterFlowModel {
   DateTime? datePicked;
   // State field(s) for sex_choice_Chips widget.
   String? sexChoiceChipsValue;
-  FormFieldController<List<String>>? sexChoiceChipsController;
+  FormFieldController<List<String>>? sexChoiceChipsValueController;
   // State field(s) for password widget.
   TextEditingController? passwordController;
   late bool passwordVisibility;

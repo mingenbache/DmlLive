@@ -66,7 +66,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                   child: Text(
                     widget.test!.name!,
                     textAlign: TextAlign.start,
-                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Roboto',
                           fontSize: 22.0,
                         ),
@@ -84,23 +84,26 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                   initialIndex: 0,
                   child: Column(
                     children: [
-                      TabBar(
-                        isScrollable: true,
-                        labelColor: Colors.white,
-                        unselectedLabelColor: Color(0x59FFFFFF),
-                        labelStyle: FlutterFlowTheme.of(context).bodyText1,
-                        indicatorColor: Colors.white,
-                        tabs: [
-                          Tab(
-                            text: 'Details',
-                          ),
-                          Tab(
-                            text: 'Procedure',
-                          ),
-                          Tab(
-                            text: 'FAQs',
-                          ),
-                        ],
+                      Align(
+                        alignment: Alignment(0.0, 0),
+                        child: TabBar(
+                          isScrollable: true,
+                          labelColor: Colors.white,
+                          unselectedLabelColor: Color(0x59FFFFFF),
+                          labelStyle: FlutterFlowTheme.of(context).bodyMedium,
+                          indicatorColor: Colors.white,
+                          tabs: [
+                            Tab(
+                              text: 'Details',
+                            ),
+                            Tab(
+                              text: 'Procedure',
+                            ),
+                            Tab(
+                              text: 'FAQs',
+                            ),
+                          ],
+                        ),
                       ),
                       Expanded(
                         child: TabBarView(
@@ -112,7 +115,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                                 widget.test!.description!,
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Roboto',
                                       fontSize: 14.0,
@@ -190,7 +193,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                                                     '14, Sept. 2021',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Lexend Deca',
@@ -215,7 +218,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                                                     'Created New User',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .subtitle2
+                                                        .titleSmall
                                                         .override(
                                                           fontFamily:
                                                               'Lexend Deca',
@@ -235,7 +238,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                                                       'Andrew Daniels',
                                                       style: FlutterFlowTheme
                                                               .of(context)
-                                                          .subtitle1
+                                                          .titleMedium
                                                           .override(
                                                             fontFamily:
                                                                 'Lexend Deca',
@@ -283,7 +286,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                                                         'Andrew F.',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
-                                                            .bodyText1
+                                                            .bodyMedium
                                                             .override(
                                                               fontFamily:
                                                                   'Lexend Deca',
@@ -377,7 +380,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                                                     '14, Sept. 2021',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Lexend Deca',
@@ -402,7 +405,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                                                     'Created a Group',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .subtitle2
+                                                        .titleSmall
                                                         .override(
                                                           fontFamily:
                                                               'Lexend Deca',
@@ -422,7 +425,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                                                       'Design Team',
                                                       style: FlutterFlowTheme
                                                               .of(context)
-                                                          .subtitle1
+                                                          .titleMedium
                                                           .override(
                                                             fontFamily:
                                                                 'Lexend Deca',
@@ -470,7 +473,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                                                         'Andrew F.',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
-                                                            .bodyText1
+                                                            .bodyMedium
                                                             .override(
                                                               fontFamily:
                                                                   'Lexend Deca',
@@ -498,7 +501,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                             Text(
                               'Tab View 3',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Open Sans',
                                     fontSize: 32.0,
@@ -540,7 +543,7 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                               decimalType: DecimalType.periodDecimal,
                               currency: 'Kshs. ',
                             ),
-                            style: FlutterFlowTheme.of(context).bodyText1,
+                            style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ],
                       ),
@@ -558,11 +561,11 @@ class _DetailsTabbedBodyWidgetState extends State<DetailsTabbedBodyWidget> {
                                 widget.test!.category!,
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondary,
                                     ),
                               ),
                             ),

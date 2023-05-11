@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -24,7 +24,7 @@ class AddNewTestModel extends FlutterFlowModel {
   String? Function(BuildContext, String?)? textController1Validator;
   // State field(s) for testCategory widget.
   String? testCategoryValue;
-  FormFieldController<String>? testCategoryController;
+  FormFieldController<String>? testCategoryValueController;
   // State field(s) for at_home_toggle widget.
   bool? atHomeToggleValue;
   // State field(s) for test_description widget.

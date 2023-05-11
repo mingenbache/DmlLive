@@ -70,7 +70,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
             maxWidth: 500.0,
           ),
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryColor,
+            color: FlutterFlowTheme.of(context).secondary,
             borderRadius: BorderRadius.circular(16.0),
           ),
           child: Padding(
@@ -88,7 +88,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                           width: 50.0,
                           height: 50.0,
                           child: SpinKitRipple(
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                            color: FlutterFlowTheme.of(context).primary,
                             size: 50.0,
                           ),
                         ),
@@ -133,7 +133,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                       textAlign: TextAlign.center,
                                       maxLines: 1,
                                       style: FlutterFlowTheme.of(context)
-                                          .subtitle1
+                                          .titleMedium
                                           .override(
                                             fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
@@ -230,7 +230,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                               'REF',
                                               style: FlutterFlowTheme.of(
                                                       context)
-                                                  .bodyText2
+                                                  .bodySmall
                                                   .override(
                                                     fontFamily: 'Lexend Deca',
                                                     color: FlutterFlowTheme.of(
@@ -255,7 +255,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                             ).maybeHandleOverflow(maxChars: 10),
                                             maxLines: 1,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText2
+                                                .bodySmall
                                                 .override(
                                                   fontFamily: 'Lexend Deca',
                                                   color: FlutterFlowTheme.of(
@@ -300,7 +300,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                                 maxLines: 1,
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .bodyText2
+                                                    .bodySmall
                                                     .override(
                                                       fontFamily: 'Lexend Deca',
                                                       color:
@@ -332,7 +332,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryColor,
+                                                                .primary,
                                                         size: 50.0,
                                                       ),
                                                     ),
@@ -355,7 +355,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                                     maxLines: 1,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText2
+                                                        .bodySmall
                                                         .override(
                                                           fontFamily:
                                                               'Lexend Deca',
@@ -399,7 +399,7 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                           width: 50.0,
                           height: 50.0,
                           child: SpinKitRipple(
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                            color: FlutterFlowTheme.of(context).primary,
                             size: 50.0,
                           ),
                         ),
@@ -412,173 +412,92 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                             ? containerTestedTestsRecordList.first
                             : null;
                     return Container(
-                      width: MediaQuery.of(context).size.width * 0.82,
                       decoration: BoxDecoration(),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                         child: Row(
-                          mainAxisSize: MainAxisSize.max,
+                          mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.35,
-                              decoration: BoxDecoration(),
-                              child: Stack(
-                                children: [
-                                  if (widget.bookedTest!.sampleCollected ??
-                                      true)
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.5,
-                                      height: 40.0,
-                                      constraints: BoxConstraints(
-                                        maxWidth: 110.0,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          FaIcon(
-                                            FontAwesomeIcons.handHoldingMedical,
-                                            color: Color(0x86F1F4F8),
-                                            size: 15.0,
-                                          ),
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(0.05, 0.0),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5.0, 0.0, 5.0, 0.0),
-                                              child: Text(
-                                                'Sample',
-                                                textAlign: TextAlign.center,
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyText1
-                                                    .override(
-                                                      fontFamily: 'Open Sans',
-                                                      color: Color(0x88F1F4F8),
-                                                    ),
-                                              ),
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                decoration: BoxDecoration(),
+                                child: Stack(
+                                  children: [
+                                    if (widget.bookedTest!.sampleCollected ??
+                                        true)
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.5,
+                                        height: 40.0,
+                                        constraints: BoxConstraints(
+                                          maxWidth: 110.0,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            FaIcon(
+                                              FontAwesomeIcons
+                                                  .handHoldingMedical,
+                                              color: Color(0x86F1F4F8),
+                                              size: 15.0,
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  InkWell(
-                                    onTap: () async {
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Color(0x1AFFFFFF),
-                                        barrierColor: Color(0x00000000),
-                                        context: context,
-                                        builder: (context) {
-                                          return Padding(
-                                            padding: MediaQuery.of(context)
-                                                .viewInsets,
-                                            child: BeginTestWidget(
-                                              bookedTestRef:
-                                                  widget.bookedTest!.reference,
-                                            ),
-                                          );
-                                        },
-                                      ).then((value) => setState(() {}));
-                                    },
-                                    child: Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.5,
-                                      height: 40.0,
-                                      constraints: BoxConstraints(
-                                        maxWidth: 110.0,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          FaIcon(
-                                            FontAwesomeIcons.handHoldingMedical,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 15.0,
-                                          ),
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(0.05, 0.0),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5.0, 0.0, 5.0, 0.0),
-                                              child: Text(
-                                                'Sample',
-                                                textAlign: TextAlign.center,
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyText1
-                                                    .override(
-                                                      fontFamily: 'Open Sans',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                    ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 29.0,
-                              child: VerticalDivider(
-                                thickness: 2.0,
-                                endIndent: 1.0,
-                                color: Color(0xFFCCCCCC),
-                              ),
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.35,
-                              decoration: BoxDecoration(),
-                              child: Stack(
-                                children: [
-                                  if (widget.bookedTest!.hasResult ?? true)
-                                    InkWell(
-                                      onTap: () async {
-                                        if (containerTestedTestsRecord !=
-                                            null) {
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor: Colors.transparent,
-                                            barrierColor: Color(0x00000000),
-                                            context: context,
-                                            builder: (context) {
-                                              return Padding(
-                                                padding: MediaQuery.of(context)
-                                                    .viewInsets,
-                                                child: ViewTestResultWidget(
-                                                  testedTestRef:
-                                                      containerTestedTestsRecord!
-                                                          .reference,
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.05, 0.0),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 5.0, 0.0),
+                                                child: Text(
+                                                  'Sample',
+                                                  textAlign: TextAlign.center,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Open Sans',
+                                                        color:
+                                                            Color(0x88F1F4F8),
+                                                      ),
                                                 ),
-                                              );
-                                            },
-                                          ).then((value) => setState(() {}));
-                                        } else {
-                                          return;
-                                        }
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Color(0x1AFFFFFF),
+                                          barrierColor: Color(0x00000000),
+                                          context: context,
+                                          builder: (bottomSheetContext) {
+                                            return Padding(
+                                              padding: MediaQuery.of(
+                                                      bottomSheetContext)
+                                                  .viewInsets,
+                                              child: BeginTestWidget(
+                                                bookedTestRef: widget
+                                                    .bookedTest!.reference,
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => setState(() {}));
                                       },
                                       child: Container(
                                         width:
@@ -598,7 +517,8 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                               MainAxisAlignment.center,
                                           children: [
                                             FaIcon(
-                                              FontAwesomeIcons.flask,
+                                              FontAwesomeIcons
+                                                  .handHoldingMedical,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
@@ -612,11 +532,11 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                                     .fromSTEB(
                                                         5.0, 0.0, 5.0, 0.0),
                                                 child: Text(
-                                                  'Results',
+                                                  'Sample',
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
@@ -631,51 +551,153 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                         ),
                                       ),
                                     ),
-                                  Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.5,
-                                    height: 40.0,
-                                    constraints: BoxConstraints(
-                                      maxWidth: 110.0,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        FaIcon(
-                                          FontAwesomeIcons.flask,
-                                          color: Color(0x883D806B),
-                                          size: 15.0,
-                                        ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.05, 0.0),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 5.0, 0.0),
-                                            child: Text(
-                                              'Results',
-                                              textAlign: TextAlign.center,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily: 'Open Sans',
-                                                        color:
-                                                            Color(0x873D806B),
-                                                      ),
-                                            ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 29.0,
+                              child: VerticalDivider(
+                                thickness: 2.0,
+                                endIndent: 1.0,
+                                color: Color(0xFFCCCCCC),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                decoration: BoxDecoration(),
+                                child: Stack(
+                                  children: [
+                                    if (widget.bookedTest!.hasResult ?? true)
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          if (containerTestedTestsRecord !=
+                                              null) {
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              barrierColor: Color(0x00000000),
+                                              context: context,
+                                              builder: (bottomSheetContext) {
+                                                return Padding(
+                                                  padding: MediaQuery.of(
+                                                          bottomSheetContext)
+                                                      .viewInsets,
+                                                  child: ViewTestResultWidget(
+                                                    testedTestRef:
+                                                        containerTestedTestsRecord!
+                                                            .reference,
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+                                          } else {
+                                            return;
+                                          }
+                                        },
+                                        child: Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.5,
+                                          height: 40.0,
+                                          constraints: BoxConstraints(
+                                            maxWidth: 110.0,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              FaIcon(
+                                                FontAwesomeIcons.flask,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 15.0,
+                                              ),
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.05, 0.0),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 5.0, 0.0),
+                                                  child: Text(
+                                                    'Results',
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Open Sans',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                      ],
+                                      ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.5,
+                                      height: 40.0,
+                                      constraints: BoxConstraints(
+                                        maxWidth: 110.0,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          FaIcon(
+                                            FontAwesomeIcons.flask,
+                                            color: Color(0x883D806B),
+                                            size: 15.0,
+                                          ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.05, 0.0),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 5.0, 0.0),
+                                              child: Text(
+                                                'Results',
+                                                textAlign: TextAlign.center,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Open Sans',
+                                                      color: Color(0x873D806B),
+                                                    ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ],

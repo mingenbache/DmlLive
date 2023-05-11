@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/packageadd_test_item/packageadd_test_item_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -45,8 +45,8 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -109,7 +109,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                   gradient: LinearGradient(
                     colors: [
                       Color(0x552F2F2F),
-                      FlutterFlowTheme.of(context).tertiaryColor
+                      FlutterFlowTheme.of(context).tertiary
                     ],
                     stops: [0.0, 0.4],
                     begin: AlignmentDirectional(0.0, -1.0),
@@ -139,20 +139,24 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                           children: [
                             Text(
                               'ADD TESTS',
-                              style:
-                                  FlutterFlowTheme.of(context).title1.override(
-                                        fontFamily: 'Open Sans',
-                                        color: Colors.white,
-                                      ),
+                              style: FlutterFlowTheme.of(context)
+                                  .displaySmall
+                                  .override(
+                                    fontFamily: 'Open Sans',
+                                    color: Colors.white,
+                                  ),
                             ),
                             InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pop();
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
+                                color: FlutterFlowTheme.of(context).secondary,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30.0),
                                 ),
@@ -162,8 +166,8 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                   buttonSize: 48.0,
                                   icon: Icon(
                                     Icons.close_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .tertiaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).tertiary,
                                     size: 30.0,
                                   ),
                                   onPressed: () async {
@@ -201,8 +205,8 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                       4.0, 0.0, 4.0, 0.0),
                                   child: Icon(
                                     Icons.search_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
                                     size: 24.0,
                                   ),
                                 ),
@@ -222,17 +226,17 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                       decoration: InputDecoration(
                                         labelText: 'Search tests here...',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Roboto',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryColor,
+                                                      .secondary,
                                               fontSize: 16.0,
                                               fontWeight: FontWeight.w500,
                                             ),
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Roboto',
                                               color: Color(0xFF586B06),
@@ -297,7 +301,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                             : null,
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Roboto',
                                             color: Colors.white,
@@ -329,6 +333,10 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                   if (!functions.isCategorySelected(
                                       FFAppState().categorypicked))
                                     InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
                                       onTap: () async {
                                         FFAppState().update(() {
                                           FFAppState().categorypicked = 'All';
@@ -352,12 +360,12 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                           child: Text(
                                             'All',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryColor,
+                                                      .secondary,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -389,12 +397,12 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                           child: Text(
                                             'All',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryColor,
+                                                      .secondary,
                                                   fontWeight: FontWeight.w500,
                                                 ),
                                           ),
@@ -434,7 +442,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                             child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryColor,
+                                                      .primary,
                                               size: 50.0,
                                             ),
                                           ),
@@ -506,13 +514,13 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                             packageCategoriesItem,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryColor,
+                                                                      .secondary,
                                                                   fontSize:
                                                                       16.0,
                                                                 ),
@@ -526,6 +534,14 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                             .fromSTEB(10.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
                                                       onTap: () async {
                                                         FFAppState().update(() {
                                                           FFAppState()
@@ -569,13 +585,13 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                                               packageCategoriesItem,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyText1
+                                                                  .bodyMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         'Open Sans',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .secondaryColor,
+                                                                        .secondary,
                                                                     fontSize:
                                                                         16.0,
                                                                   ),
@@ -612,8 +628,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                 width: 50.0,
                                 height: 50.0,
                                 child: SpinKitRipple(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: FlutterFlowTheme.of(context).primary,
                                   size: 50.0,
                                 ),
                               ),
@@ -651,7 +666,7 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                                             child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryColor,
+                                                      .primary,
                                               size: 50.0,
                                             ),
                                           ),
@@ -755,13 +770,12 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).secondaryColor,
-                        textStyle: FlutterFlowTheme.of(context)
-                            .subtitle2
-                            .override(
-                              fontFamily: 'Open Sans',
-                              color: FlutterFlowTheme.of(context).tertiaryColor,
-                            ),
+                        color: FlutterFlowTheme.of(context).secondary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Open Sans',
+                                  color: FlutterFlowTheme.of(context).tertiary,
+                                ),
                         elevation: 2.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
@@ -779,9 +793,9 @@ class _PackageTestListWidgetState extends State<PackageTestListWidget>
           ),
           Text(
             'Tap above to complete request',
-            style: FlutterFlowTheme.of(context).bodyText1.override(
+            style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Roboto',
-                  color: FlutterFlowTheme.of(context).secondaryColor,
+                  color: FlutterFlowTheme.of(context).secondary,
                   fontSize: 15.0,
                   fontWeight: FontWeight.normal,
                 ),

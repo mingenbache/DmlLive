@@ -58,7 +58,7 @@ class _UploadedImageViewWidgetState extends State<UploadedImageViewWidget> {
         width: MediaQuery.of(context).size.width * 0.9,
         height: MediaQuery.of(context).size.height * 0.9,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).tertiaryColor,
+          color: FlutterFlowTheme.of(context).tertiary,
           boxShadow: [
             BoxShadow(
               blurRadius: 4.0,
@@ -78,6 +78,10 @@ class _UploadedImageViewWidgetState extends State<UploadedImageViewWidget> {
                 child: Stack(
                   children: [
                     InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         await Navigator.push(
                           context,
@@ -117,12 +121,16 @@ class _UploadedImageViewWidgetState extends State<UploadedImageViewWidget> {
                     Align(
                       alignment: AlignmentDirectional(0.9, 0.0),
                       child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onTap: () async {
                           Navigator.pop(context);
                         },
                         child: Card(
                           clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          color: FlutterFlowTheme.of(context).secondary,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
                           ),
@@ -132,7 +140,7 @@ class _UploadedImageViewWidgetState extends State<UploadedImageViewWidget> {
                             buttonSize: 48.0,
                             icon: Icon(
                               Icons.close_rounded,
-                              color: FlutterFlowTheme.of(context).tertiaryColor,
+                              color: FlutterFlowTheme.of(context).tertiary,
                               size: 30.0,
                             ),
                             onPressed: () async {

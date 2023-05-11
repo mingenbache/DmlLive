@@ -73,9 +73,9 @@ class _DateWidgetSmallCopyWidgetState extends State<DateWidgetSmallCopyWidget> {
                   decoration: BoxDecoration(),
                   child: Text(
                     '29',
-                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Open Sans',
-                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          color: FlutterFlowTheme.of(context).secondary,
                           fontSize: 20.0,
                           fontWeight: FontWeight.w600,
                         ),
@@ -96,15 +96,13 @@ class _DateWidgetSmallCopyWidgetState extends State<DateWidgetSmallCopyWidget> {
                             EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 2.0, 0.0),
                         child: Text(
                           'MCT',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: 'Open Sans',
-                                color:
-                                    FlutterFlowTheme.of(context).primaryColor,
-                                fontSize: 12.0,
-                                fontWeight: FontWeight.w500,
-                              ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Open Sans',
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                         ),
                       ),
                     ),
@@ -120,11 +118,10 @@ class _DateWidgetSmallCopyWidgetState extends State<DateWidgetSmallCopyWidget> {
                           '2028',
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context)
-                              .bodyText1
+                              .bodyMedium
                               .override(
                                 fontFamily: 'Open Sans',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
+                                color: FlutterFlowTheme.of(context).secondary,
                                 fontSize: 11.0,
                                 fontWeight: FontWeight.w500,
                               ),

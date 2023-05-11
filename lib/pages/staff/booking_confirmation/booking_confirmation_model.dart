@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/add_doctor_form/add_doctor_form_widget.dart';
 import '/components/add_special_test_booking/add_special_test_booking_widget.dart';
@@ -52,7 +52,7 @@ class BookingConfirmationModel extends FlutterFlowModel {
   DateTime? datePicked;
   // State field(s) for refDoctor widget.
   String? refDoctorValue;
-  FormFieldController<String>? refDoctorController;
+  FormFieldController<String>? refDoctorValueController;
 
   /// Initialization and disposal methods.
 

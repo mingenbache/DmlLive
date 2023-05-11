@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/package_test_list/package_test_list_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -44,7 +44,7 @@ class AddNewTestPackageModel extends FlutterFlowModel {
   PageController? pageViewController;
   // State field(s) for packageCategoryDropDown widget.
   String? packageCategoryDropDownValue;
-  FormFieldController<String>? packageCategoryDropDownController;
+  FormFieldController<String>? packageCategoryDropDownValueController;
   // State field(s) for package_description widget.
   TextEditingController? packageDescriptionController;
   String? Function(BuildContext, String?)?

@@ -66,7 +66,7 @@ class _NoTestsAddedWidgetState extends State<NoTestsAddedWidget> {
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
                   widget.testString,
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Open Sans',
                         color: FlutterFlowTheme.of(context).primaryText,
                         fontWeight: FontWeight.w500,

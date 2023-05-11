@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/add_payment_w_idget/add_payment_w_idget_widget.dart';
 import '/components/empty_list/empty_list_widget.dart';
@@ -52,6 +52,10 @@ class _PaymentSelectInvoicePopupWidgetState
     context.watch<FFAppState>();
 
     return InkWell(
+      splashColor: Colors.transparent,
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       onTap: () async {
         FFAppState().update(() {
           FFAppState().lastBookingPage = false;
@@ -76,7 +80,7 @@ class _PaymentSelectInvoicePopupWidgetState
                   maxHeight: MediaQuery.of(context).size.height * 0.85,
                 ),
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryColor,
+                  color: FlutterFlowTheme.of(context).secondary,
                   borderRadius: BorderRadius.circular(30.0),
                 ),
                 child: Padding(
@@ -96,7 +100,7 @@ class _PaymentSelectInvoicePopupWidgetState
                               Text(
                                 'YOUR INVOICES',
                                 style: FlutterFlowTheme.of(context)
-                                    .title2
+                                    .headlineMedium
                                     .override(
                                       fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
@@ -106,6 +110,10 @@ class _PaymentSelectInvoicePopupWidgetState
                                     ),
                               ),
                               InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   context.pop();
                                 },
@@ -160,7 +168,7 @@ class _PaymentSelectInvoicePopupWidgetState
                                       child: Text(
                                         'Please select an invoice below',
                                         style: FlutterFlowTheme.of(context)
-                                            .subtitle2
+                                            .titleSmall
                                             .override(
                                               fontFamily: 'Open Sans',
                                               color:
@@ -187,7 +195,7 @@ class _PaymentSelectInvoicePopupWidgetState
                                       Text(
                                         'Unpaid Invoices',
                                         style: FlutterFlowTheme.of(context)
-                                            .subtitle2
+                                            .titleSmall
                                             .override(
                                               fontFamily: 'Open Sans',
                                               color:
@@ -351,7 +359,7 @@ class _PaymentSelectInvoicePopupWidgetState
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .primaryColor,
+                                                              .primary,
                                                       size: 50.0,
                                                     ),
                                                   ),
@@ -365,6 +373,14 @@ class _PaymentSelectInvoicePopupWidgetState
                                                               .itemList![
                                                           listViewIndex];
                                                   return InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
                                                     onTap: () async {
                                                       await showModalBottomSheet(
                                                         isScrollControlled:
@@ -374,12 +390,12 @@ class _PaymentSelectInvoicePopupWidgetState
                                                         barrierColor:
                                                             Color(0x00000000),
                                                         context: context,
-                                                        builder: (context) {
+                                                        builder:
+                                                            (bottomSheetContext) {
                                                           return Padding(
-                                                            padding:
-                                                                MediaQuery.of(
-                                                                        context)
-                                                                    .viewInsets,
+                                                            padding: MediaQuery.of(
+                                                                    bottomSheetContext)
+                                                                .viewInsets,
                                                             child:
                                                                 AddPaymentWIdgetWidget(
                                                               invoiceRef:

@@ -94,7 +94,7 @@ class _PaymentsContainerCopyWidgetState
                           'Date',
                           textAlign: TextAlign.start,
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Open Sans',
                                     color: Color(0xFF586B06),
                                     fontWeight: FontWeight.w500,
@@ -115,11 +115,10 @@ class _PaymentsContainerCopyWidgetState
                         child: Text(
                           'Transaction',
                           style: FlutterFlowTheme.of(context)
-                              .bodyText1
+                              .bodyMedium
                               .override(
                                 fontFamily: 'Open Sans',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
+                                color: FlutterFlowTheme.of(context).secondary,
                                 fontWeight: FontWeight.normal,
                               ),
                         ),
@@ -132,7 +131,7 @@ class _PaymentsContainerCopyWidgetState
                         maxWidth: 60.0,
                       ),
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).primaryColor,
+                        color: FlutterFlowTheme.of(context).primary,
                         borderRadius: BorderRadius.circular(0.0),
                       ),
                       child: Padding(
@@ -141,7 +140,7 @@ class _PaymentsContainerCopyWidgetState
                         child: Text(
                           'BANK',
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Open Sans',
                                     color: Colors.white,
                                     fontWeight: FontWeight.w500,
@@ -163,7 +162,7 @@ class _PaymentsContainerCopyWidgetState
                           'Date',
                           textAlign: TextAlign.start,
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Open Sans',
                                     color: Color(0xFF586B06),
                                     fontWeight: FontWeight.w500,
@@ -206,11 +205,10 @@ class _PaymentsContainerCopyWidgetState
                         child: Text(
                           'Transaction',
                           style: FlutterFlowTheme.of(context)
-                              .bodyText1
+                              .bodyMedium
                               .override(
                                 fontFamily: 'Open Sans',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
+                                color: FlutterFlowTheme.of(context).secondary,
                                 fontWeight: FontWeight.normal,
                               ),
                         ),
@@ -227,7 +225,7 @@ class _PaymentsContainerCopyWidgetState
                           'Date',
                           textAlign: TextAlign.start,
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Open Sans',
                                     color: Color(0xFF586B06),
                                     fontWeight: FontWeight.w500,
@@ -251,11 +249,10 @@ class _PaymentsContainerCopyWidgetState
                         child: Text(
                           'MPESA',
                           style: FlutterFlowTheme.of(context)
-                              .bodyText1
+                              .bodyMedium
                               .override(
                                 fontFamily: 'Open Sans',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
+                                color: FlutterFlowTheme.of(context).secondary,
                                 fontWeight: FontWeight.w500,
                               ),
                         ),

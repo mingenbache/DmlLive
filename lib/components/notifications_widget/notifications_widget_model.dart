@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/admin_actions_widget/admin_actions_widget_widget.dart';
 import '/components/empty_list/empty_list_widget.dart';

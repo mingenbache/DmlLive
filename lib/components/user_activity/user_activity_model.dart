@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/booking_view_widget/booking_view_widget_widget.dart';
 import '/components/edit_user_role/edit_user_role_widget.dart';

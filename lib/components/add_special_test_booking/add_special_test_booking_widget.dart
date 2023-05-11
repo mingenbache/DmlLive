@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -82,7 +82,7 @@ class _AddSpecialTestBookingWidgetState
                   maxHeight: 370.0,
                 ),
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).tertiaryColor,
+                  color: FlutterFlowTheme.of(context).tertiary,
                   borderRadius: BorderRadius.circular(30.0),
                 ),
                 child: Stack(
@@ -124,7 +124,7 @@ class _AddSpecialTestBookingWidgetState
                         gradient: LinearGradient(
                           colors: [
                             Color(0x7F6CD7B7),
-                            FlutterFlowTheme.of(context).secondaryColor
+                            FlutterFlowTheme.of(context).secondary
                           ],
                           stops: [0.0, 0.45],
                           begin: AlignmentDirectional(0.0, -1.0),
@@ -147,20 +147,24 @@ class _AddSpecialTestBookingWidgetState
                                   Text(
                                     'ADD SPECIAL\nTEST',
                                     style: FlutterFlowTheme.of(context)
-                                        .title1
+                                        .displaySmall
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: Colors.white,
                                         ),
                                   ),
                                   InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.pop();
                                     },
                                     child: Card(
                                       clipBehavior: Clip.antiAliasWithSaveLayer,
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondary,
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(30.0),
@@ -174,7 +178,7 @@ class _AddSpecialTestBookingWidgetState
                                         icon: Icon(
                                           Icons.close_rounded,
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
+                                              .tertiary,
                                           size: 30.0,
                                         ),
                                         onPressed: () async {
@@ -204,7 +208,7 @@ class _AddSpecialTestBookingWidgetState
                                             labelText: 'Test Name',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText1
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color:
@@ -215,7 +219,7 @@ class _AddSpecialTestBookingWidgetState
                                             hintText: 'Enter Test Name',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText1
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color:
@@ -267,7 +271,7 @@ class _AddSpecialTestBookingWidgetState
                                                     15.0, 15.0, 15.0, 15.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color:
@@ -313,7 +317,7 @@ class _AddSpecialTestBookingWidgetState
                                             labelText: 'Test Description',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText1
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color:
@@ -324,7 +328,7 @@ class _AddSpecialTestBookingWidgetState
                                             hintText: 'Describe Test',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyText1
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color:
@@ -391,7 +395,7 @@ class _AddSpecialTestBookingWidgetState
                                                 : null,
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color:
@@ -462,7 +466,7 @@ class _AddSpecialTestBookingWidgetState
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).secondaryText,
                           textStyle:
-                              FlutterFlowTheme.of(context).subtitle2.override(
+                              FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Lexend Deca',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,

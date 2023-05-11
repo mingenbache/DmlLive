@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/top_actions/top_actions_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -61,7 +61,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
               width: 50.0,
               height: 50.0,
               child: SpinKitRipple(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 size: 50.0,
               ),
             ),
@@ -70,10 +70,10 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
         final modifyTestTestsRecord = snapshot.data!;
         return Title(
             title: 'ModifyTest',
-            color: FlutterFlowTheme.of(context).primaryColor,
+            color: FlutterFlowTheme.of(context).primary,
             child: Scaffold(
               key: scaffoldKey,
-              backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+              backgroundColor: FlutterFlowTheme.of(context).tertiary,
               body: SafeArea(
                 child: Form(
                   key: _model.formKey,
@@ -106,11 +106,12 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                             child: Text(
                               'EDIT TEST DETAILS',
                               textAlign: TextAlign.start,
-                              style:
-                                  FlutterFlowTheme.of(context).title1.override(
-                                        fontFamily: 'Open Sans',
-                                        color: Color(0xFF586B06),
-                                      ),
+                              style: FlutterFlowTheme.of(context)
+                                  .displaySmall
+                                  .override(
+                                    fontFamily: 'Open Sans',
+                                    color: Color(0xFF586B06),
+                                  ),
                             ),
                           ),
                         ),
@@ -121,8 +122,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                             width: MediaQuery.of(context).size.width * 0.9,
                             height: MediaQuery.of(context).size.height * 0.1,
                             decoration: BoxDecoration(
-                              color:
-                                  FlutterFlowTheme.of(context).secondaryColor,
+                              color: FlutterFlowTheme.of(context).secondary,
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -139,28 +139,27 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                     title: Text(
                                       'Active',
                                       style: FlutterFlowTheme.of(context)
-                                          .title3
+                                          .headlineSmall
                                           .override(
                                             fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .tertiary,
                                             fontWeight: FontWeight.w500,
                                           ),
                                     ),
                                     subtitle: Text(
                                       'Can the test be booked?',
                                       style: FlutterFlowTheme.of(context)
-                                          .subtitle2
+                                          .titleSmall
                                           .override(
                                             fontFamily: 'Open Sans',
                                             fontSize: 16.0,
                                           ),
                                     ),
-                                    activeColor: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                    activeColor:
+                                        FlutterFlowTheme.of(context).primary,
                                     activeTrackColor:
-                                        FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                        FlutterFlowTheme.of(context).tertiary,
                                     dense: false,
                                     controlAffinity:
                                         ListTileControlAffinity.trailing,
@@ -194,7 +193,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                       decoration: InputDecoration(
                                         labelText: 'Test Name',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Roboto',
                                               color: Color(0xFF586B06),
@@ -203,7 +202,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                             ),
                                         hintText: 'Enter test name here...',
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Roboto',
                                               color: Color(0xFF586B06),
@@ -249,11 +248,11 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                                 8.0, 8.0, 0.0, 15.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Roboto',
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondary,
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.normal,
                                           ),
@@ -293,8 +292,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius lorem non eros sodales porta. Maecenas quis nulla lacinia, sollicitudin augue eget, iaculis tortor. Donec vehicula felis eu erat congue molestie. Pellentesque finibus arcu sed felis maximus, nec sollicitudin nunc sollicitudin. Cras varius tellus id enim maximus auctor. Curabitur placerat libero eleifend ultrices pretium. Pellentesque vitae velit lorem. Duis porta nibh ut orci placerat, at convallis diam pellentesque. Maecenas bibendum ultricies dolor, a ultrices libero. Aenean tincidunt purus at ipsum consequat, non sodales neque condimentum. Duis aliquet tellus a maximus congue. Nam sollicitudin sit amet erat nec lacinia. Aliquam lobortis sem in ornare laoreet. Pellentesque in pretium purus. Fusce mi urna, facilisis nec elit vulputate, efficitur semper nisl. Vivamus a congue risus, a volutpat velit.\n\n',
                                 hintStyle: GoogleFonts.getFont(
                                   'Roboto',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryColor,
+                                  color: FlutterFlowTheme.of(context).secondary,
                                   fontWeight: FontWeight.normal,
                                 ),
                                 enabledBorder: OutlineInputBorder(
@@ -347,8 +345,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                               ),
                               style: GoogleFonts.getFont(
                                 'Roboto',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
+                                color: FlutterFlowTheme.of(context).secondary,
                                 fontWeight: FontWeight.normal,
                               ),
                               textAlign: TextAlign.start,
@@ -370,7 +367,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 Text(
                                   'Test Category',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Open Sans',
                                         color: Color(0xFF586B06),
@@ -397,7 +394,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                           height: 50.0,
                                           child: SpinKitRipple(
                                             color: FlutterFlowTheme.of(context)
-                                                .primaryColor,
+                                                .primary,
                                             size: 50.0,
                                           ),
                                         ),
@@ -411,8 +408,9 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                             ? dropDownCategoriesRecordList.first
                                             : null;
                                     return FlutterFlowDropDown<String>(
-                                      controller: _model.dropDownController ??=
-                                          FormFieldController<String>(
+                                      controller:
+                                          _model.dropDownValueController ??=
+                                              FormFieldController<String>(
                                         _model.dropDownValue ??=
                                             modifyTestTestsRecord.category,
                                       ),
@@ -426,11 +424,11 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                           0.4,
                                       height: 40.0,
                                       textStyle: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondary,
                                           ),
                                       fillColor: Colors.white,
                                       elevation: 2.0,
@@ -464,22 +462,22 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   title: Text(
                                     'Test @ Home ',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryColor,
+                                              .secondary,
                                         ),
                                   ),
                                   subtitle: Text(
                                     'Can the test be done at home?',
                                     style:
-                                        FlutterFlowTheme.of(context).subtitle2,
+                                        FlutterFlowTheme.of(context).titleSmall,
                                   ),
                                   tileColor:
-                                      FlutterFlowTheme.of(context).primaryColor,
-                                  activeColor: FlutterFlowTheme.of(context)
-                                      .secondaryColor,
+                                      FlutterFlowTheme.of(context).primary,
+                                  activeColor:
+                                      FlutterFlowTheme.of(context).secondary,
                                   activeTrackColor: Color(0x68BACA68),
                                   dense: false,
                                   controlAffinity:
@@ -495,7 +493,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                         Divider(
                           indent: 35.0,
                           endIndent: 35.0,
-                          color: FlutterFlowTheme.of(context).primaryColor,
+                          color: FlutterFlowTheme.of(context).primary,
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -512,7 +510,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   Text(
                                     'Test Duration:',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
@@ -522,11 +520,11 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   Text(
                                     'in minutes',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
+                                              .tertiary,
                                           fontSize: 12.0,
                                         ),
                                   ),
@@ -616,12 +614,12 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                                     0.0, 0.0, 0.0, 15.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
+                                                        .secondary,
                                                 fontSize: 18.0,
                                               ),
                                           keyboardType: TextInputType.number,
@@ -636,10 +634,9 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                     width: 150.0,
                                     child: Slider(
                                       activeColor: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondary,
                                       inactiveColor:
-                                          FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                          FlutterFlowTheme.of(context).primary,
                                       min: 5.0,
                                       max: 180.0,
                                       value: _model.testDurationSliderValue ??=
@@ -674,7 +671,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   Text(
                                     'Results Duration:',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
@@ -684,11 +681,11 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                   Text(
                                     'in hours',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
+                                              .tertiary,
                                           fontSize: 12.0,
                                         ),
                                   ),
@@ -778,12 +775,12 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                                     0.0, 0.0, 0.0, 15.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
+                                                        .secondary,
                                                 fontSize: 18.0,
                                               ),
                                           keyboardType: TextInputType.number,
@@ -798,10 +795,9 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                     width: 150.0,
                                     child: Slider(
                                       activeColor: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondary,
                                       inactiveColor:
-                                          FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                          FlutterFlowTheme.of(context).primary,
                                       min: 1.0,
                                       max: 120.0,
                                       value:
@@ -826,7 +822,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                           thickness: 1.0,
                           indent: 35.0,
                           endIndent: 35.0,
-                          color: FlutterFlowTheme.of(context).tertiaryColor,
+                          color: FlutterFlowTheme.of(context).tertiary,
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
@@ -838,7 +834,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                 Text(
                                   'Test Price',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Open Sans',
                                         color: Color(0xFF586B06),
@@ -885,7 +881,7 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                       style: GoogleFonts.getFont(
                                         'Roboto',
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryColor,
+                                            .secondary,
                                         fontWeight: FontWeight.normal,
                                       ),
                                       textAlign: TextAlign.end,
@@ -950,14 +946,13 @@ class _ModifyTestWidgetState extends State<ModifyTestWidget> {
                                     0.0, 0.0, 0.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
+                                color: FlutterFlowTheme.of(context).secondary,
                                 textStyle: FlutterFlowTheme.of(context)
-                                    .subtitle2
+                                    .titleSmall
                                     .override(
                                       fontFamily: 'Lexend Deca',
-                                      color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.normal,
                                     ),

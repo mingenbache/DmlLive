@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -23,7 +23,7 @@ class SubmitTestResultsModel extends FlutterFlowModel {
   final formKey = GlobalKey<FormState>();
   // State field(s) for testMachine widget.
   String? testMachineValue;
-  FormFieldController<String>? testMachineController;
+  FormFieldController<String>? testMachineValueController;
   // State field(s) for CheckboxListTile widget.
   bool? checkboxListTileValue;
   // State field(s) for TestResult widget.

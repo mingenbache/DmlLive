@@ -39,8 +39,8 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
           curve: Curves.bounceOut,
           delay: 10.ms,
           duration: 1990.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -106,7 +106,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                   width: MediaQuery.of(context).size.width * 1.0,
                   height: MediaQuery.of(context).size.height * 0.4,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryColor,
+                    color: FlutterFlowTheme.of(context).secondary,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(16.0),
                       bottomRight: Radius.circular(16.0),
@@ -126,23 +126,27 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                           children: [
                             Text(
                               'Date of Birth',
-                              style:
-                                  FlutterFlowTheme.of(context).title2.override(
-                                        fontFamily: 'Open Sans',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        fontSize: 32.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineMedium
+                                  .override(
+                                    fontFamily: 'Open Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 32.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
                             InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pop();
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
+                                color: FlutterFlowTheme.of(context).secondary,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30.0),
                                 ),
@@ -154,8 +158,8 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                       .secondaryBackground,
                                   icon: Icon(
                                     Icons.close_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .tertiaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).tertiary,
                                     size: 30.0,
                                   ),
                                   onPressed: () async {
@@ -175,7 +179,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                             Text(
                               'Enter your Date of Birth by clicking the button',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Open Sans',
                                     color: FlutterFlowTheme.of(context)
@@ -192,6 +196,10 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   final _datePickedDate = await showDatePicker(
                                     context: context,
@@ -255,7 +263,7 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                                                       .languageCode,
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1,
+                                                .bodyMedium,
                                           ),
                                         ],
                                       ),
@@ -296,12 +304,13 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).secondaryText,
-                            textStyle:
-                                FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Open Sans',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
                             elevation: 2.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
@@ -317,9 +326,9 @@ class _DateOfBirthWidgetState extends State<DateOfBirthWidget>
               ),
               Text(
                 'Tap above to complete request',
-                style: FlutterFlowTheme.of(context).bodyText1.override(
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Roboto',
-                      color: FlutterFlowTheme.of(context).secondaryColor,
+                      color: FlutterFlowTheme.of(context).secondary,
                       fontSize: 15.0,
                       fontWeight: FontWeight.normal,
                     ),

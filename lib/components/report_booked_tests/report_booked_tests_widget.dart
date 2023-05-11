@@ -184,7 +184,7 @@ class _ReportBookedTestsWidgetState extends State<ReportBookedTestsWidget> {
                             Text(
                               'Test Name',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Open Sans',
                                     color: FlutterFlowTheme.of(context)
@@ -204,8 +204,8 @@ class _ReportBookedTestsWidgetState extends State<ReportBookedTestsWidget> {
                                   child: Container(
                                     height: 35.0,
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       boxShadow: [
                                         BoxShadow(
                                           blurRadius: 1.0,

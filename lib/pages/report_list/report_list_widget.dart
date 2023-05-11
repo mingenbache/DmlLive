@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/top_actions/top_actions_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -55,7 +55,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
               width: 50.0,
               height: 50.0,
               child: SpinKitRipple(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 size: 50.0,
               ),
             ),
@@ -64,10 +64,10 @@ class _ReportListWidgetState extends State<ReportListWidget> {
         List<BookingsRecord> reportListBookingsRecordList = snapshot.data!;
         return Title(
             title: 'ReportList',
-            color: FlutterFlowTheme.of(context).primaryColor,
+            color: FlutterFlowTheme.of(context).primary,
             child: Scaffold(
               key: scaffoldKey,
-              backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+              backgroundColor: FlutterFlowTheme.of(context).tertiary,
               body: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -112,7 +112,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                   'REPORTS',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .title1
+                                                      .displaySmall
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
@@ -140,12 +140,12 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                         child: Text(
                                           'All Reports',
                                           style: FlutterFlowTheme.of(context)
-                                              .subtitle1
+                                              .titleMedium
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryColor,
+                                                        .primary,
                                               ),
                                         ),
                                       ),
@@ -156,7 +156,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                         icon: Icon(
                                           Icons.sort_outlined,
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                              .primary,
                                           size: 30.0,
                                         ),
                                         onPressed: () {
@@ -197,6 +197,10 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
                                         onTap: () async {
                                           if (bookingsItem.completed!) {
                                             context.pushNamed(
@@ -306,7 +310,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                       ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .subtitle2
+                                                                          .titleSmall
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
@@ -341,7 +345,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                       BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .secondaryColor,
+                                                                        .secondary,
                                                                     borderRadius:
                                                                         BorderRadius.circular(
                                                                             10.0),
@@ -359,7 +363,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                           .bookingstatus!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText2
+                                                                          .bodySmall
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Roboto',
@@ -390,12 +394,12 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                     'Tests Done',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .subtitle2
+                                                                        .titleSmall
                                                                         .override(
                                                                           fontFamily:
                                                                               'Open Sans',
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).secondary,
                                                                         ),
                                                                   ),
                                                                 ],
@@ -428,7 +432,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                               width: 50.0,
                                                                               height: 50.0,
                                                                               child: SpinKitRipple(
-                                                                                color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                color: FlutterFlowTheme.of(context).primary,
                                                                                 size: 50.0,
                                                                               ),
                                                                             ),
@@ -467,7 +471,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                                               width: 50.0,
                                                                                               height: 50.0,
                                                                                               child: SpinKitRipple(
-                                                                                                color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).primary,
                                                                                                 size: 50.0,
                                                                                               ),
                                                                                             ),
@@ -488,6 +492,10 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                                               borderRadius: BorderRadius.circular(8.0),
                                                                                             ),
                                                                                             child: InkWell(
+                                                                                              splashColor: Colors.transparent,
+                                                                                              focusColor: Colors.transparent,
+                                                                                              hoverColor: Colors.transparent,
+                                                                                              highlightColor: Colors.transparent,
                                                                                               onTap: () async {
                                                                                                 context.pushNamed(
                                                                                                   'TestDeck',
@@ -512,9 +520,9 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(10.0, 7.0, 5.0, 5.0),
                                                                                                       child: Text(
                                                                                                         containerTestsRecord.name!,
-                                                                                                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                               fontFamily: 'Open Sans',
-                                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                              color: FlutterFlowTheme.of(context).secondary,
                                                                                                               fontWeight: FontWeight.normal,
                                                                                                             ),
                                                                                                       ),
@@ -531,7 +539,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                                                         child: Text(
                                                                                                           'Complete',
                                                                                                           textAlign: TextAlign.end,
-                                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                                 fontFamily: 'Open Sans',
                                                                                                                 color: Color(0xFF586B06),
                                                                                                                 fontWeight: FontWeight.w500,
@@ -591,7 +599,7 @@ class _ReportListWidgetState extends State<ReportListWidget> {
                                                                 .chevron_right_rounded,
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .primaryColor,
+                                                                .primary,
                                                             size: 24.0,
                                                           ),
                                                         ],

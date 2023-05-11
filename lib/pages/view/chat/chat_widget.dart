@@ -72,7 +72,7 @@ class _ChatWidgetState extends State<ChatWidget> {
 
     return Title(
         title: 'Chat',
-        color: FlutterFlowTheme.of(context).primaryColor,
+        color: FlutterFlowTheme.of(context).primary,
         child: Scaffold(
           key: scaffoldKey,
           appBar: AppBar(
@@ -96,7 +96,7 @@ class _ChatWidgetState extends State<ChatWidget> {
               children: [
                 Text(
                   'CHAT',
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Roboto',
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         fontSize: 28.0,
@@ -111,6 +111,10 @@ class _ChatWidgetState extends State<ChatWidget> {
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                   child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
                     onTap: () async {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
@@ -145,8 +149,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                   ? FFChatPage(
                       chatInfo: snapshot.data!,
                       allowImages: true,
-                      backgroundColor:
-                          FlutterFlowTheme.of(context).secondaryColor,
+                      backgroundColor: FlutterFlowTheme.of(context).secondary,
                       timeDisplaySetting: TimeDisplaySetting.visibleOnTap,
                       currentUserBoxDecoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).primaryText,
@@ -197,7 +200,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                         width: 50.0,
                         height: 50.0,
                         child: SpinKitRipple(
-                          color: FlutterFlowTheme.of(context).primaryColor,
+                          color: FlutterFlowTheme.of(context).primary,
                           size: 50.0,
                         ),
                       ),

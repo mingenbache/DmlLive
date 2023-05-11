@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/booked_tests/booked_tests_widget.dart';
 import '/components/booking_actions/booking_actions_widget.dart';

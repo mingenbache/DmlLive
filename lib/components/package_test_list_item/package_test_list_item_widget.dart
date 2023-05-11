@@ -66,7 +66,7 @@ class _PackageTestListItemWidgetState extends State<PackageTestListItemWidget> {
                 width: 50.0,
                 height: 50.0,
                 child: SpinKitRipple(
-                  color: FlutterFlowTheme.of(context).primaryColor,
+                  color: FlutterFlowTheme.of(context).primary,
                   size: 50.0,
                 ),
               ),
@@ -74,15 +74,19 @@ class _PackageTestListItemWidgetState extends State<PackageTestListItemWidget> {
           }
           final containerTestsRecord = snapshot.data!;
           return InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onTap: () async {
               await showModalBottomSheet(
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,
                 barrierColor: Color(0x00000000),
                 context: context,
-                builder: (context) {
+                builder: (bottomSheetContext) {
                   return Padding(
-                    padding: MediaQuery.of(context).viewInsets,
+                    padding: MediaQuery.of(bottomSheetContext).viewInsets,
                     child: TestDetailsPopupWidget(
                       test: containerTestsRecord,
                     ),
@@ -120,7 +124,7 @@ class _PackageTestListItemWidgetState extends State<PackageTestListItemWidget> {
                           width: 30.0,
                           height: 30.0,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                            color: FlutterFlowTheme.of(context).primary,
                             boxShadow: [
                               BoxShadow(
                                 blurRadius: 1.0,
@@ -136,7 +140,7 @@ class _PackageTestListItemWidgetState extends State<PackageTestListItemWidget> {
                             children: [
                               Text(
                                 '',
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                             ],
                           ),
@@ -149,7 +153,7 @@ class _PackageTestListItemWidgetState extends State<PackageTestListItemWidget> {
                         EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                     child: Text(
                       functions.upperCase(containerTestsRecord.name),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Open Sans',
                             color: FlutterFlowTheme.of(context).primaryText,
                             fontWeight: FontWeight.w500,

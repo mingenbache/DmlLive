@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/all_chats_popup/all_chats_popup_widget.dart';
 import '/components/notifications_widget/notifications_widget_widget.dart';
@@ -67,7 +67,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                   width: 50.0,
                   height: 50.0,
                   child: SpinKitRipple(
-                    color: FlutterFlowTheme.of(context).primaryColor,
+                    color: FlutterFlowTheme.of(context).primary,
                     size: 50.0,
                   ),
                 ),
@@ -77,7 +77,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                 snapshot.data!;
             return Title(
                 title: 'HomeAdminCopy',
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 child: Scaffold(
                   key: scaffoldKey,
                   body: Container(
@@ -86,8 +86,8 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          FlutterFlowTheme.of(context).tertiaryColor,
-                          FlutterFlowTheme.of(context).primaryColor
+                          FlutterFlowTheme.of(context).tertiary,
+                          FlutterFlowTheme.of(context).primary
                         ],
                         stops: [0.2, 0.6],
                         begin: AlignmentDirectional(0.0, -1.0),
@@ -183,7 +183,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                     Icons.local_police_sharp,
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryColor,
+                                                        .primary,
                                                     size: 24.0,
                                                   ),
                                                 ],
@@ -208,7 +208,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryColor,
+                                                      .primary,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           15.0),
@@ -239,6 +239,14 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                                     0.0,
                                                                     0.0),
                                                         child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
                                                           onTap: () async {
                                                             context.pushNamed(
                                                                 'myAccount');
@@ -252,6 +260,14 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                         ),
                                                       ),
                                                       InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
                                                         onTap: () async {
                                                           await showModalBottomSheet(
                                                             isScrollControlled:
@@ -262,10 +278,11 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                             barrierColor: Color(
                                                                 0x00000000),
                                                             context: context,
-                                                            builder: (context) {
+                                                            builder:
+                                                                (bottomSheetContext) {
                                                               return Padding(
                                                                 padding: MediaQuery.of(
-                                                                        context)
+                                                                        bottomSheetContext)
                                                                     .viewInsets,
                                                                 child:
                                                                     AllChatsPopupWidget(),
@@ -328,13 +345,13 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .title2
+                                                                .headlineMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryColor,
+                                                                      .primary,
                                                                 ),
                                                       ),
                                                     ),
@@ -353,7 +370,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                           currentUserDisplayName,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .title2
+                                                              .headlineMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Montserrat',
@@ -386,7 +403,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                             thickness: 1.0,
                             indent: 30.0,
                             endIndent: 30.0,
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                            color: FlutterFlowTheme.of(context).primary,
                           ),
                           Column(
                             mainAxisSize: MainAxisSize.max,
@@ -400,8 +417,8 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                         24.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       'Booking Statistics',
-                                      style:
-                                          FlutterFlowTheme.of(context).title3,
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineSmall,
                                     ),
                                   ),
                                 ],
@@ -426,7 +443,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                               child: SpinKitRipple(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryColor,
+                                                        .primary,
                                                 size: 50.0,
                                               ),
                                             ),
@@ -495,8 +512,8 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                         24.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       'Today\'s Activities',
-                                      style:
-                                          FlutterFlowTheme.of(context).title3,
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineSmall,
                                     ),
                                   ),
                                 ],
@@ -510,6 +527,10 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
                                       onTap: () async {
                                         context.pushNamed('ScheduledTests');
                                       },
@@ -536,9 +557,9 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                             gradient: LinearGradient(
                                               colors: [
                                                 FlutterFlowTheme.of(context)
-                                                    .primaryColor,
+                                                    .primary,
                                                 FlutterFlowTheme.of(context)
-                                                    .secondaryColor
+                                                    .secondary
                                               ],
                                               stops: [1.0, 1.0],
                                               begin: AlignmentDirectional(
@@ -592,7 +613,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                           child: SpinKitRipple(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .primaryColor,
+                                                                .primary,
                                                             size: 50.0,
                                                           ),
                                                         ),
@@ -612,7 +633,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                       ),
                                                       style: FlutterFlowTheme
                                                               .of(context)
-                                                          .bodyText1
+                                                          .bodyMedium
                                                           .override(
                                                             fontFamily:
                                                                 'Open Sans',
@@ -638,7 +659,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                     'Tests Scheduled For Today',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
@@ -670,7 +691,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                         height: 100.0,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                              .primary,
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                         ),
@@ -690,13 +711,13 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                     '20',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .secondary,
                                                           fontSize: 40.0,
                                                           fontWeight:
                                                               FontWeight.w600,
@@ -713,7 +734,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                 textAlign: TextAlign.end,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
@@ -739,6 +760,10 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
                                       onTap: () async {
                                         context.pushNamed('TestedTests');
                                       },
@@ -796,7 +821,7 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                                     SpinKitRipple(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryColor,
+                                                                      .primary,
                                                                   size: 50.0,
                                                                 ),
                                                               ),
@@ -809,13 +834,13 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                             '0',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiaryColor,
+                                                                      .tertiary,
                                                                   fontSize:
                                                                       40.0,
                                                                   fontWeight:
@@ -842,13 +867,13 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText1
+                                                              .bodyMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .tertiaryColor,
+                                                                    .tertiary,
                                                                 fontSize: 15.0,
                                                                 fontWeight:
                                                                     FontWeight
@@ -864,6 +889,10 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                       ),
                                     ),
                                     InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
                                       onTap: () async {
                                         context.pushNamed('PaymentsList');
                                       },
@@ -904,13 +933,13 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                     textAlign: TextAlign.end,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryColor,
+                                                              .primary,
                                                           fontSize: 19.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -941,13 +970,13 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                                   '11',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryColor,
+                                                                .primary,
                                                         fontSize: 84.0,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -991,15 +1020,15 @@ class _HomeAdminCopyWidgetState extends State<HomeAdminCopyWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 5.0, 0.0, 5.0),
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryColor,
+                                              .secondary,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
+                                                        .tertiary,
                                               ),
                                           elevation: 2.0,
                                           borderSide: BorderSide(

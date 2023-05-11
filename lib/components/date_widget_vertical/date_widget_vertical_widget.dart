@@ -73,7 +73,7 @@ class _DateWidgetVerticalWidgetState extends State<DateWidgetVerticalWidget> {
                   decoration: BoxDecoration(),
                   child: Text(
                     functions.upperCase(functions.dateMonth(widget.date)),
-                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Open Sans',
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
@@ -88,9 +88,9 @@ class _DateWidgetVerticalWidgetState extends State<DateWidgetVerticalWidget> {
                 decoration: BoxDecoration(),
                 child: Text(
                   functions.dateDay(widget.date),
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Open Sans',
-                        color: FlutterFlowTheme.of(context).secondaryColor,
+                        color: FlutterFlowTheme.of(context).secondary,
                         fontSize: 24.0,
                         fontWeight: FontWeight.w600,
                         lineHeight: 1.0,
@@ -104,9 +104,9 @@ class _DateWidgetVerticalWidgetState extends State<DateWidgetVerticalWidget> {
                   child: Text(
                     functions.dateYear(widget.date),
                     maxLines: 1,
-                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Open Sans',
-                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          color: FlutterFlowTheme.of(context).secondary,
                           fontSize: 12.0,
                           fontWeight: FontWeight.w500,
                         ),

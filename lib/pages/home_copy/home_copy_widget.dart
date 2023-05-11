@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/client_notifications_widget/client_notifications_widget_widget.dart';
 import '/components/new_booking_sheet/new_booking_sheet_widget.dart';
@@ -48,8 +48,8 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
           curve: Curves.bounceOut,
           delay: 0.ms,
           duration: 1730.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -107,7 +107,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                   width: 50.0,
                   height: 50.0,
                   child: SpinKitRipple(
-                    color: FlutterFlowTheme.of(context).primaryColor,
+                    color: FlutterFlowTheme.of(context).primary,
                     size: 50.0,
                   ),
                 ),
@@ -116,7 +116,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
             final homeCopyUsersRecord = snapshot.data!;
             return Title(
                 title: 'HomeCopy',
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 child: Scaffold(
                   key: scaffoldKey,
                   floatingActionButton: Visibility(
@@ -142,25 +142,25 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                             backgroundColor: Color(0x00F9F9F9),
                             barrierColor: Color(0x00000000),
                             context: context,
-                            builder: (context) {
+                            builder: (bottomSheetContext) {
                               return Padding(
-                                padding: MediaQuery.of(context).viewInsets,
+                                padding: MediaQuery.of(bottomSheetContext)
+                                    .viewInsets,
                                 child: NewBookingSheetWidget(),
                               );
                             },
                           ).then((value) => setState(() {}));
                         }
                       },
-                      backgroundColor:
-                          FlutterFlowTheme.of(context).secondaryColor,
+                      backgroundColor: FlutterFlowTheme.of(context).secondary,
                       icon: Icon(
                         Icons.add_sharp,
-                        color: FlutterFlowTheme.of(context).tertiaryColor,
+                        color: FlutterFlowTheme.of(context).tertiary,
                       ),
                       elevation: 8.0,
                       label: Text(
                         'Request a Test',
-                        style: FlutterFlowTheme.of(context).bodyText1,
+                        style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
                     ).animateOnPageLoad(animationsMap[
                         'floatingActionButtonOnPageLoadAnimation']!),
@@ -173,8 +173,8 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          FlutterFlowTheme.of(context).tertiaryColor,
-                          FlutterFlowTheme.of(context).primaryColor
+                          FlutterFlowTheme.of(context).tertiary,
+                          FlutterFlowTheme.of(context).primary
                         ],
                         stops: [0.0, 0.8],
                         begin: AlignmentDirectional(0.0, -1.0),
@@ -328,7 +328,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                           child:
                                                                               SpinKitRipple(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).primaryColor,
+                                                                                FlutterFlowTheme.of(context).primary,
                                                                             size:
                                                                                 50.0,
                                                                           ),
@@ -348,7 +348,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                             .length
                                                                             .toString(),
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
+                                                                            .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Open Sans',
                                                                               color: Colors.white,
@@ -362,7 +362,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                           .circle,
                                                                       badgeColor:
                                                                           FlutterFlowTheme.of(context)
-                                                                              .primaryColor,
+                                                                              .primary,
                                                                       elevation:
                                                                           4.0,
                                                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -393,7 +393,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                           FontAwesomeIcons
                                                                               .shoppingBasket,
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).primaryColor,
+                                                                              FlutterFlowTheme.of(context).primary,
                                                                           size:
                                                                               23.0,
                                                                         ),
@@ -429,7 +429,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                       .person_sharp,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryColor,
+                                                                      .primary,
                                                                   size: 25.0,
                                                                 ),
                                                                 onPressed:
@@ -461,7 +461,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                           .local_police,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryColor,
+                                                                          .primary,
                                                                       size:
                                                                           25.0,
                                                                     ),
@@ -506,7 +506,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                           child:
                                                                               SpinKitRipple(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).primaryColor,
+                                                                                FlutterFlowTheme.of(context).primary,
                                                                             size:
                                                                                 50.0,
                                                                           ),
@@ -528,7 +528,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                           Text(
                                                                         '1',
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
+                                                                            .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Open Sans',
                                                                               color: Colors.white,
@@ -542,7 +542,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                           .circle,
                                                                       badgeColor:
                                                                           FlutterFlowTheme.of(context)
-                                                                              .primaryColor,
+                                                                              .primary,
                                                                       elevation:
                                                                           4.0,
                                                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -580,7 +580,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                                 width: 50.0,
                                                                                 height: 50.0,
                                                                                 child: SpinKitRipple(
-                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                  color: FlutterFlowTheme.of(context).primary,
                                                                                   size: 50.0,
                                                                                 ),
                                                                               ),
@@ -612,7 +612,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                             icon:
                                                                                 Icon(
                                                                               Icons.message_rounded,
-                                                                              color: FlutterFlowTheme.of(context).primaryColor,
+                                                                              color: FlutterFlowTheme.of(context).primary,
                                                                               size: 25.0,
                                                                             ),
                                                                             onPressed:
@@ -688,12 +688,12 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                   'Welcome,',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .title1
+                                                                      .displaySmall
                                                                       .override(
                                                                         fontFamily:
                                                                             'Open Sans',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primaryColor,
+                                                                            .primary,
                                                                       ),
                                                                 ),
                                                               ),
@@ -714,7 +714,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                               13),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .title2
+                                                                      .headlineMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Montserrat',
@@ -756,7 +756,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                         indent: 30.0,
                                         endIndent: 30.0,
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
+                                            .primary,
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -771,7 +771,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                               'Dashboard',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .title3,
+                                                      .headlineSmall,
                                             ),
                                           ),
                                         ],
@@ -792,6 +792,11 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
                                                 onTap: () async {
                                                   context.pushNamed(
                                                       'myReportList');
@@ -863,7 +868,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                 'Test Reports',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .title2
+                                                                    .headlineMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Open Sans',
@@ -889,7 +894,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                 '1',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Open Sans',
@@ -939,6 +944,11 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                             scrollDirection: Axis.vertical,
                                             children: [
                                               InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
                                                 onTap: () async {
                                                   FFAppState().update(() {
                                                     FFAppState().testsVar =
@@ -979,7 +989,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .secondaryColor,
+                                                              .secondary,
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               12.0),
@@ -1023,7 +1033,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                     'Tests Today',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .title2
+                                                                        .headlineMedium
                                                                         .override(
                                                                           fontFamily:
                                                                               'Open Sans',
@@ -1087,7 +1097,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                               width: 50.0,
                                                                               height: 50.0,
                                                                               child: SpinKitRipple(
-                                                                                color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                color: FlutterFlowTheme.of(context).primary,
                                                                                 size: 50.0,
                                                                               ),
                                                                             ),
@@ -1101,10 +1111,10 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                               .checkNewTests(textBookedTestsRecordList.toList())
                                                                               .toString(),
                                                                           style: FlutterFlowTheme.of(context)
-                                                                              .bodyText1
+                                                                              .bodyMedium
                                                                               .override(
                                                                                 fontFamily: 'Open Sans',
-                                                                                color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                color: FlutterFlowTheme.of(context).primary,
                                                                                 fontSize: 70.0,
                                                                               ),
                                                                         );
@@ -1122,6 +1132,11 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                 ),
                                               ),
                                               InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
                                                 onTap: () async {
                                                   FFAppState().update(() {
                                                     FFAppState().paymentsvar =
@@ -1175,7 +1190,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                 'Outstanding Invoices',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .title2
+                                                                    .headlineMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Open Sans',
@@ -1242,7 +1257,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                                 50.0,
                                                                             child:
                                                                                 SpinKitRipple(
-                                                                              color: FlutterFlowTheme.of(context).primaryColor,
+                                                                              color: FlutterFlowTheme.of(context).primary,
                                                                               size: 50.0,
                                                                             ),
                                                                           ),
@@ -1257,7 +1272,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget>
                                                                             .returnInvoiceListSize(textInvoicesRecordList.map((e) => e.reference).toList())
                                                                             .toString(),
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
+                                                                            .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Open Sans',
                                                                               fontSize: 54.0,

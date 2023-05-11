@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -21,7 +21,7 @@ class LabReportModel extends FlutterFlowModel {
 
   // State field(s) for ChoiceChips widget.
   String? choiceChipsValue;
-  FormFieldController<List<String>>? choiceChipsController;
+  FormFieldController<List<String>>? choiceChipsValueController;
   // State field(s) for PageView widget.
   PageController? pageViewController;
 

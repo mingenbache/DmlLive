@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/dashboard_menu_widget_light/dashboard_menu_widget_light_widget.dart';
 import '/components/empty_list/empty_list_widget.dart';
@@ -81,7 +81,7 @@ class _ClientNotificationsWidgetWidgetState
                         width: 50.0,
                         height: 50.0,
                         child: SpinKitRipple(
-                          color: FlutterFlowTheme.of(context).primaryColor,
+                          color: FlutterFlowTheme.of(context).primary,
                           size: 50.0,
                         ),
                       ),
@@ -150,10 +150,12 @@ class _ClientNotificationsWidgetWidgetState
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  wrapWithModel(
-                    model: _model.dashboardMenuWidgetLightModel,
-                    updateCallback: () => setState(() {}),
-                    child: DashboardMenuWidgetLightWidget(),
+                  Expanded(
+                    child: wrapWithModel(
+                      model: _model.dashboardMenuWidgetLightModel,
+                      updateCallback: () => setState(() {}),
+                      child: DashboardMenuWidgetLightWidget(),
+                    ),
                   ),
                 ],
               ),

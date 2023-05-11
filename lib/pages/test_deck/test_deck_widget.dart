@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/tested_test_actions/tested_test_actions_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
@@ -54,7 +54,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
 
     return Title(
         title: 'TestDeck',
-        color: FlutterFlowTheme.of(context).primaryColor,
+        color: FlutterFlowTheme.of(context).primary,
         child: Scaffold(
           key: scaffoldKey,
           body: StreamBuilder<TestedTestsRecord>(
@@ -67,7 +67,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                     width: 50.0,
                     height: 50.0,
                     child: SpinKitRipple(
-                      color: FlutterFlowTheme.of(context).primaryColor,
+                      color: FlutterFlowTheme.of(context).primary,
                       size: 50.0,
                     ),
                   ),
@@ -75,6 +75,10 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
               }
               final viewResultsTestedTestsRecord = snapshot.data!;
               return Container(
+                height: MediaQuery.of(context).size.height * 1.0,
+                constraints: BoxConstraints(
+                  maxWidth: 440.0,
+                ),
                 decoration: BoxDecoration(),
                 child: SingleChildScrollView(
                   child: Column(
@@ -91,8 +95,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                 width: 50.0,
                                 height: 50.0,
                                 child: SpinKitRipple(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: FlutterFlowTheme.of(context).primary,
                                   size: 50.0,
                                 ),
                               ),
@@ -111,8 +114,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                 maxHeight: 710.0,
                               ),
                               decoration: BoxDecoration(
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
+                                color: FlutterFlowTheme.of(context).secondary,
                                 borderRadius: BorderRadius.circular(32.0),
                               ),
                               child: Padding(
@@ -129,7 +131,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                         Text(
                                           'TEST DECK',
                                           style: FlutterFlowTheme.of(context)
-                                              .title1
+                                              .displaySmall
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color:
@@ -138,6 +140,10 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                               ),
                                         ),
                                         InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
                                           onTap: () async {
                                             context.pop();
                                           },
@@ -145,7 +151,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                             clipBehavior:
                                                 Clip.antiAliasWithSaveLayer,
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondary,
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(30.0),
@@ -205,7 +211,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .subtitle1
+                                                      .titleMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         fontSize: 17.0,
@@ -271,7 +277,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                           'Not Submitted',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText1
+                                                              .bodyMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Lexend Deca',
@@ -353,7 +359,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                 'Not Verified',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Lexend Deca',
@@ -384,7 +390,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryColor,
+                                                                .primary,
                                                         boxShadow: [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
@@ -432,7 +438,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                 'Verified',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Lexend Deca',
@@ -459,6 +465,10 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                 .isFlagged ??
                                             true)
                                           InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               var confirmDialogResponse =
                                                   await showDialog<bool>(
@@ -550,7 +560,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                         'Flagged',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
-                                                            .bodyText1
+                                                            .bodyMedium
                                                             .override(
                                                               fontFamily:
                                                                   'Lexend Deca',
@@ -585,7 +595,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                 child: SpinKitRipple(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryColor,
+                                                      .primary,
                                                   size: 50.0,
                                                 ),
                                               ),
@@ -598,46 +608,52 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                             initialIndex: 0,
                                             child: Column(
                                               children: [
-                                                TabBar(
-                                                  isScrollable: true,
-                                                  labelColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText,
-                                                  unselectedLabelColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
-                                                  labelStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .subtitle2,
-                                                  indicatorColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryColor,
-                                                  indicatorWeight: 2.0,
-                                                  tabs: [
-                                                    Tab(
-                                                      text: 'Test Info',
-                                                    ),
-                                                    Tab(
-                                                      text: 'Results',
-                                                    ),
-                                                    Tab(
-                                                      text: 'Reference',
-                                                    ),
-                                                    Row(
-                                                      children: [
-                                                        Icon(
-                                                          Icons.attach_file,
-                                                        ),
-                                                        Tab(
-                                                          text: 'Attachments',
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
+                                                Align(
+                                                  alignment: Alignment(0.0, 0),
+                                                  child: TabBar(
+                                                    isScrollable: true,
+                                                    labelColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                    unselectedLabelColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryBackground,
+                                                    labelStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall,
+                                                    indicatorColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondary,
+                                                    indicatorWeight: 2.0,
+                                                    tabs: [
+                                                      Tab(
+                                                        text: 'Test Info',
+                                                      ),
+                                                      Tab(
+                                                        text: 'Results',
+                                                      ),
+                                                      Tab(
+                                                        text: 'Reference',
+                                                      ),
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Icon(
+                                                            Icons.attach_file,
+                                                          ),
+                                                          Tab(
+                                                            text: 'Attachments',
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                                 Expanded(
                                                   child: TabBarView(
@@ -703,7 +719,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             child:
                                                                                 Text(
                                                                               'LabRef\nNumber',
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontWeight: FontWeight.w500,
@@ -746,7 +762,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 children: [
                                                                                   Text(
                                                                                     tabBarBookingsRecord.labRefNum!,
-                                                                                    style: FlutterFlowTheme.of(context).subtitle1,
+                                                                                    style: FlutterFlowTheme.of(context).titleMedium,
                                                                                   ),
                                                                                 ],
                                                                               ),
@@ -804,7 +820,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                                                                                 child: Text(
                                                                                   'Patient',
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                         fontWeight: FontWeight.w500,
@@ -843,7 +859,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                     children: [
                                                                                       Text(
                                                                                         '${tabBarBookingsRecord.firstname} ${tabBarBookingsRecord.lastname}',
-                                                                                        style: FlutterFlowTheme.of(context).subtitle1,
+                                                                                        style: FlutterFlowTheme.of(context).titleMedium,
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -901,7 +917,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             child:
                                                                                 Text(
                                                                               'Sample\ncollected',
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontWeight: FontWeight.w500,
@@ -948,7 +964,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                       viewResultsTestedTestsRecord.dateSampleCollected!,
                                                                                       locale: FFLocalizations.of(context).languageCode,
                                                                                     ),
-                                                                                    style: FlutterFlowTheme.of(context).subtitle1,
+                                                                                    style: FlutterFlowTheme.of(context).titleMedium,
                                                                                   ),
                                                                                 ],
                                                                               ),
@@ -1005,7 +1021,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             child:
                                                                                 Text(
                                                                               'Test\nDate',
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).primaryText,
                                                                                     fontWeight: FontWeight.w500,
@@ -1052,7 +1068,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                       viewResultsTestedTestsRecord.dateConducted!,
                                                                                       locale: FFLocalizations.of(context).languageCode,
                                                                                     ),
-                                                                                    style: FlutterFlowTheme.of(context).subtitle1,
+                                                                                    style: FlutterFlowTheme.of(context).titleMedium,
                                                                                   ),
                                                                                 ],
                                                                               ),
@@ -1095,7 +1111,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         children: [
                                                                           Text(
                                                                             'Pathologist',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
@@ -1137,7 +1153,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 children: [
                                                                                   Text(
                                                                                     'Hello World',
-                                                                                    style: FlutterFlowTheme.of(context).subtitle1,
+                                                                                    style: FlutterFlowTheme.of(context).titleMedium,
                                                                                   ),
                                                                                 ],
                                                                               ),
@@ -1188,7 +1204,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             children: [
                                                                               Text(
                                                                                 'Technologist',
-                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontWeight: FontWeight.w500,
@@ -1226,7 +1242,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                     children: [
                                                                                       Text(
                                                                                         functions.returnRef(widget.testedTestRef),
-                                                                                        style: FlutterFlowTheme.of(context).subtitle1,
+                                                                                        style: FlutterFlowTheme.of(context).titleMedium,
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -1322,7 +1338,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 0.0, 0.0),
                                                                               child: Text(
                                                                                 'Test Diagnosis',
-                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontSize: 15.0,
@@ -1371,7 +1387,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                       padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                                       child: Text(
                                                                                         'Positive',
-                                                                                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: 'Lexend Deca',
                                                                                               color: Colors.white,
                                                                                               fontSize: 14.0,
@@ -1413,16 +1429,16 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                   children: [
                                                                                     Icon(
                                                                                       Icons.highlight_off_outlined,
-                                                                                      color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                      color: FlutterFlowTheme.of(context).secondary,
                                                                                       size: 20.0,
                                                                                     ),
                                                                                     Padding(
                                                                                       padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                                                                                       child: Text(
                                                                                         'Negative',
-                                                                                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: 'Lexend Deca',
-                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                              color: FlutterFlowTheme.of(context).secondary,
                                                                                               fontSize: 14.0,
                                                                                               fontWeight: FontWeight.normal,
                                                                                             ),
@@ -1478,7 +1494,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                           child:
                                                                               Text(
                                                                             'Results Description',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
@@ -1514,7 +1530,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               padding: EdgeInsetsDirectional.fromSTEB(7.0, 7.0, 7.0, 4.0),
                                                                               child: Text(
                                                                                 viewResultsTestedTestsRecord.testResult!,
-                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: 'Open Sans',
                                                                                       color: FlutterFlowTheme.of(context).primaryText,
                                                                                       fontWeight: FontWeight.w500,
@@ -1567,7 +1583,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                           child:
                                                                               Text(
                                                                             'Technical notes',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
@@ -1610,7 +1626,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(7.0, 7.0, 7.0, 4.0),
                                                                                 child: Text(
                                                                                   viewResultsTestedTestsRecord.testNote!,
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                         fontWeight: FontWeight.w500,
@@ -1658,7 +1674,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                       Text(
                                                                         'Reference Results',
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .subtitle2
+                                                                            .titleSmall
                                                                             .override(
                                                                               fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).primaryText,
@@ -1711,7 +1727,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               children: [
                                                                                 Text(
                                                                                   'Male',
-                                                                                  style: FlutterFlowTheme.of(context).subtitle1,
+                                                                                  style: FlutterFlowTheme.of(context).titleMedium,
                                                                                 ),
                                                                               ],
                                                                             ),
@@ -1734,7 +1750,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     '12.0 - 18.0',
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         ),
@@ -1765,7 +1781,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                                                                                   child: Text(
                                                                                     'gm/dl',
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         ),
@@ -1818,7 +1834,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             children: [
                                                                               Text(
                                                                                 'Female',
-                                                                                style: FlutterFlowTheme.of(context).subtitle1,
+                                                                                style: FlutterFlowTheme.of(context).titleMedium,
                                                                               ),
                                                                             ],
                                                                           ),
@@ -1844,7 +1860,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                                 child: Text(
                                                                                   '11.5 - 16.5',
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                       ),
@@ -1879,7 +1895,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                                                                                 child: Text(
                                                                                   'gm/dl',
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                       ),
@@ -1931,7 +1947,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                         Text(
                                                                           'Equipment Information',
                                                                           style: FlutterFlowTheme.of(context)
-                                                                              .subtitle2
+                                                                              .titleSmall
                                                                               .override(
                                                                                 fontFamily: 'Open Sans',
                                                                                 color: FlutterFlowTheme.of(context).primaryText,
@@ -1987,7 +2003,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                               children: [
                                                                                 Text(
                                                                                   'Maecenas orci turpis, pharetra quis mi ac, condimentum sodales libero. Maecenas eget dui et risus ullamcorper interdum eu non libero. Etiam eu ipsum at enim imperdiet bibendum non non magna. Aliquam eleifend dolor non lorem dignissim scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dictum nibh et massa pulvinar facilisis. Phasellus elit elit, fermentum vitae imperdiet sit amet, elementum id erat. Vivamus pellentesque facilisis erat non dictum. Nulla justo urna, luctus eget justo quis, venenatis mattis metus. Morbi velit ex, vestibulum eget dignissim a, porta eget orci. Aenean ac risus et lorem porttitor porttitor in non nunc. Ut bibendum dui ac nulla accumsan maximus. Etiam scelerisque odio nec lacus cursus porttitor.',
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                         fontWeight: FontWeight.w500,
@@ -2047,6 +2063,14 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                                                             10.0),
                                                                         child:
                                                                             InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
                                                                           onTap:
                                                                               () async {
                                                                             await Navigator.push(
@@ -2123,7 +2147,7 @@ class _TestDeckWidgetState extends State<TestDeckWidget> {
                                       height: 50.0,
                                       child: SpinKitRipple(
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
+                                            .primary,
                                         size: 50.0,
                                       ),
                                     ),

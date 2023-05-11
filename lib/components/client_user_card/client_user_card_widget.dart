@@ -60,15 +60,19 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
         Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
           child: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onTap: () async {
               await showModalBottomSheet(
                 isScrollControlled: true,
                 backgroundColor: Color(0x51BACA68),
                 barrierColor: Color(0x00000000),
                 context: context,
-                builder: (context) {
+                builder: (bottomSheetContext) {
                   return Padding(
-                    padding: MediaQuery.of(context).viewInsets,
+                    padding: MediaQuery.of(bottomSheetContext).viewInsets,
                     child: UserActivityWidget(
                       userRef: widget.userRecord!.reference,
                     ),
@@ -88,7 +92,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                   maxWidth: 330.0,
                 ),
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryColor,
+                  color: FlutterFlowTheme.of(context).secondary,
                   borderRadius: BorderRadius.circular(12.0),
                 ),
                 child: Padding(
@@ -124,7 +128,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                     child: Text(
                                       widget.index!.toString(),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
@@ -148,7 +152,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                     child: Text(
                                       '${functions.camelCase(widget.userRecord!.firstName)} ${functions.camelCase(widget.userRecord!.lastName)}',
                                       style: FlutterFlowTheme.of(context)
-                                          .subtitle1
+                                          .titleMedium
                                           .override(
                                             fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
@@ -166,7 +170,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          color: FlutterFlowTheme.of(context).secondary,
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Container(
@@ -212,7 +216,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                           Text(
                                             widget.userRecord!.email!,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily: 'Lexend Deca',
                                                   color: FlutterFlowTheme.of(
@@ -263,7 +267,7 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                         Text(
                                           widget.userRecord!.phoneNumber!,
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Lexend Deca',
                                                 color:
@@ -290,132 +294,137 @@ class _ClientUserCardWidgetState extends State<ClientUserCardWidget> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.35,
-                                        decoration: BoxDecoration(
-                                          color: Color(0x86FFFFFF),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
+                                      Expanded(
+                                        flex: 1,
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  7.0, 3.0, 0.0, 3.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Container(
-                                                width: 30.0,
-                                                decoration: BoxDecoration(),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    FaIcon(
-                                                      FontAwesomeIcons.userPlus,
-                                                      color:
+                                                  0.0, 0.0, 12.0, 0.0),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Color(0x86FFFFFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(7.0, 3.0, 0.0, 3.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Container(
+                                                    width: 30.0,
+                                                    decoration: BoxDecoration(),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        FaIcon(
+                                                          FontAwesomeIcons
+                                                              .userPlus,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          size: 16.0,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    width: 80.0,
+                                                    decoration: BoxDecoration(),
+                                                    child: Text(
+                                                      dateTimeFormat(
+                                                        'd/M/y',
+                                                        widget.userRecord!
+                                                            .createdTime!,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      ),
+                                                      style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .primaryText,
-                                                      size: 16.0,
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Lexend Deca',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                fontSize: 14.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
                                                     ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Container(
-                                                width: 80.0,
-                                                decoration: BoxDecoration(),
-                                                child: Text(
-                                                  dateTimeFormat(
-                                                    'd/M/y',
-                                                    widget.userRecord!
-                                                        .createdTime!,
-                                                    locale: FFLocalizations.of(
-                                                            context)
-                                                        .languageCode,
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily:
-                                                            'Lexend Deca',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                                ),
+                                                ],
                                               ),
-                                            ],
+                                            ),
                                           ),
                                         ),
                                       ),
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.35,
-                                        decoration: BoxDecoration(
-                                          color: Color(0x87FFFFFF),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  7.0, 3.0, 0.0, 3.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Container(
-                                                width: 30.0,
-                                                decoration: BoxDecoration(),
-                                                child: FaIcon(
-                                                  FontAwesomeIcons.userClock,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  size: 16.0,
-                                                ),
-                                              ),
-                                              Container(
-                                                width: 75.0,
-                                                decoration: BoxDecoration(),
-                                                child: Text(
-                                                  valueOrDefault<String>(
-                                                    dateTimeFormat(
-                                                      'd/M/y',
-                                                      widget.userRecord!
-                                                          .lastLogin,
-                                                      locale:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .languageCode,
-                                                    ),
-                                                    'n/a',
+                                      Expanded(
+                                        flex: 1,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Color(0x87FFFFFF),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    7.0, 3.0, 0.0, 3.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Container(
+                                                  width: 30.0,
+                                                  decoration: BoxDecoration(),
+                                                  child: FaIcon(
+                                                    FontAwesomeIcons.userClock,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    size: 16.0,
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1
-                                                      .override(
-                                                        fontFamily:
-                                                            'Lexend Deca',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
                                                 ),
-                                              ),
-                                            ],
+                                                Container(
+                                                  width: 75.0,
+                                                  decoration: BoxDecoration(),
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      dateTimeFormat(
+                                                        'd/M/y',
+                                                        widget.userRecord!
+                                                            .lastLogin,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      ),
+                                                      'n/a',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Lexend Deca',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: 14.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),

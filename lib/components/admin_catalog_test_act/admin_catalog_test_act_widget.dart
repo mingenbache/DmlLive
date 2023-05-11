@@ -73,15 +73,20 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
               children: [
                 Expanded(
                   child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
                     onTap: () async {
                       await showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,
                         barrierColor: Color(0x00000000),
                         context: context,
-                        builder: (context) {
+                        builder: (bottomSheetContext) {
                           return Padding(
-                            padding: MediaQuery.of(context).viewInsets,
+                            padding:
+                                MediaQuery.of(bottomSheetContext).viewInsets,
                             child: AddNewTestWidget(),
                           );
                         },
@@ -116,7 +121,7 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                                     'Add Test',
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
@@ -135,6 +140,10 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                 ),
                 Expanded(
                   child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
                     onTap: () async {
                       FFAppState().update(() {
                         FFAppState().testPackSubmit = false;
@@ -144,9 +153,10 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                         backgroundColor: Colors.transparent,
                         barrierColor: Color(0x00000000),
                         context: context,
-                        builder: (context) {
+                        builder: (bottomSheetContext) {
                           return Padding(
-                            padding: MediaQuery.of(context).viewInsets,
+                            padding:
+                                MediaQuery.of(bottomSheetContext).viewInsets,
                             child: AddNewTestPackageWidget(),
                           );
                         },
@@ -181,7 +191,7 @@ class _AdminCatalogTestActWidgetState extends State<AdminCatalogTestActWidget> {
                                   'Add Test\nPackage',
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)

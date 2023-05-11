@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/top_actions/top_actions_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -68,7 +68,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
               width: 50.0,
               height: 50.0,
               child: SpinKitRipple(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 size: 50.0,
               ),
             ),
@@ -77,10 +77,10 @@ class _NewTestWidgetState extends State<NewTestWidget> {
         final newTestUsersRecord = snapshot.data!;
         return Title(
             title: 'NewTest',
-            color: FlutterFlowTheme.of(context).primaryColor,
+            color: FlutterFlowTheme.of(context).primary,
             child: Scaffold(
               key: scaffoldKey,
-              backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+              backgroundColor: FlutterFlowTheme.of(context).tertiary,
               body: SafeArea(
                 child: Form(
                   key: _model.formKey,
@@ -113,12 +113,13 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                             child: Text(
                               'NEW TEST',
                               textAlign: TextAlign.start,
-                              style:
-                                  FlutterFlowTheme.of(context).title2.override(
-                                        fontFamily: 'Montserrat',
-                                        color: Color(0xFF586B06),
-                                        fontWeight: FontWeight.w500,
-                                      ),
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineMedium
+                                  .override(
+                                    fontFamily: 'Montserrat',
+                                    color: Color(0xFF586B06),
+                                    fontWeight: FontWeight.w500,
+                                  ),
                             ),
                           ),
                         ),
@@ -143,7 +144,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                       decoration: InputDecoration(
                                         labelText: 'Test Name',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Roboto',
                                               color: Color(0xFF586B06),
@@ -154,7 +155,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .primaryColor,
+                                                .primary,
                                             width: 2.0,
                                           ),
                                           borderRadius:
@@ -191,7 +192,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                                 8.0, 8.0, 0.0, 15.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Roboto',
                                             color: Color(0xFF586B06),
@@ -235,8 +236,8 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius lorem non eros sodales porta. Maecenas quis nulla lacinia, sollicitudin augue eget, iaculis tortor. Donec vehicula felis eu erat congue molestie. Pellentesque finibus arcu sed felis maximus, nec sollicitudin nunc sollicitudin. Cras varius tellus id enim maximus auctor. Curabitur placerat libero eleifend ultrices pretium. Pellentesque vitae velit lorem. Duis porta nibh ut orci placerat, at convallis diam pellentesque. Maecenas bibendum ultricies dolor, a ultrices libero. Aenean tincidunt purus at ipsum consequat, non sodales neque condimentum. Duis aliquet tellus a maximus congue. Nam sollicitudin sit amet erat nec lacinia. Aliquam lobortis sem in ornare laoreet. Pellentesque in pretium purus. Fusce mi urna, facilisis nec elit vulputate, efficitur semper nisl. Vivamus a congue risus, a volutpat velit.\n\n',
                                   hintStyle: GoogleFonts.getFont(
                                     'Roboto',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
                                     fontWeight: FontWeight.normal,
                                   ),
                                   enabledBorder: InputBorder.none,
@@ -264,8 +265,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                 ),
                                 style: GoogleFonts.getFont(
                                   'Roboto',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryColor,
+                                  color: FlutterFlowTheme.of(context).secondary,
                                   fontWeight: FontWeight.normal,
                                 ),
                                 textAlign: TextAlign.start,
@@ -288,7 +288,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                 Text(
                                   'Test Category',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Open Sans',
                                         color: Color(0xFF586B06),
@@ -315,7 +315,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                           height: 50.0,
                                           child: SpinKitRipple(
                                             color: FlutterFlowTheme.of(context)
-                                                .primaryColor,
+                                                .primary,
                                             size: 50.0,
                                           ),
                                         ),
@@ -329,8 +329,9 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                             ? dropDownCategoriesRecordList.first
                                             : null;
                                     return FlutterFlowDropDown<String>(
-                                      controller: _model.dropDownController ??=
-                                          FormFieldController<String>(null),
+                                      controller:
+                                          _model.dropDownValueController ??=
+                                              FormFieldController<String>(null),
                                       options: dropDownCategoriesRecord!
                                           .categories!
                                           .toList()
@@ -341,16 +342,16 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                           0.4,
                                       height: 40.0,
                                       textStyle: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondary,
                                           ),
                                       fillColor: Color(0x5CFFFFFF),
                                       elevation: 2.0,
-                                      borderColor: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                      borderColor:
+                                          FlutterFlowTheme.of(context).primary,
                                       borderWidth: 2.0,
                                       borderRadius: 10.0,
                                       margin: EdgeInsetsDirectional.fromSTEB(
@@ -374,8 +375,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                 width: MediaQuery.of(context).size.width * 0.9,
                                 height: 100.0,
                                 decoration: BoxDecoration(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: FlutterFlowTheme.of(context).primary,
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Padding(
@@ -390,23 +390,22 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                     title: Text(
                                       'Test @ Home ',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
-                                                .tertiaryColor,
+                                                .tertiary,
                                           ),
                                     ),
                                     subtitle: Text(
                                       'Can the test be done at home?',
                                       style: FlutterFlowTheme.of(context)
-                                          .subtitle2,
+                                          .titleSmall,
                                     ),
-                                    activeColor: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                                    activeColor:
+                                        FlutterFlowTheme.of(context).primary,
                                     activeTrackColor:
-                                        FlutterFlowTheme.of(context)
-                                            .secondaryColor,
+                                        FlutterFlowTheme.of(context).secondary,
                                     dense: false,
                                     controlAffinity:
                                         ListTileControlAffinity.trailing,
@@ -422,7 +421,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                         Divider(
                           indent: 35.0,
                           endIndent: 35.0,
-                          color: FlutterFlowTheme.of(context).tertiaryColor,
+                          color: FlutterFlowTheme.of(context).tertiary,
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -439,7 +438,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                   Text(
                                     'Test Duration:',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
@@ -449,11 +448,11 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                   Text(
                                     'in minutes',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryColor,
+                                              .secondary,
                                           fontSize: 12.0,
                                         ),
                                   ),
@@ -538,7 +537,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                                     0.0, 0.0, 0.0, 15.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color: Color(0xFF586B06),
@@ -556,10 +555,9 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                     width: 150.0,
                                     child: Slider(
                                       activeColor: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondary,
                                       inactiveColor:
-                                          FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                          FlutterFlowTheme.of(context).primary,
                                       min: 60.0,
                                       max: 180.0,
                                       value: _model.testDurationSliderValue ??=
@@ -592,7 +590,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                   Text(
                                     'Results Duration:',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
@@ -602,11 +600,11 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                   Text(
                                     'in hours',
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryColor,
+                                              .secondary,
                                           fontSize: 12.0,
                                         ),
                                   ),
@@ -691,7 +689,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                                     0.0, 0.0, 0.0, 15.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color: Color(0xFF586B06),
@@ -709,10 +707,9 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                     width: 150.0,
                                     child: Slider(
                                       activeColor: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondary,
                                       inactiveColor:
-                                          FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                          FlutterFlowTheme.of(context).primary,
                                       min: 1.0,
                                       max: 120.0,
                                       value:
@@ -737,7 +734,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                           thickness: 1.0,
                           indent: 35.0,
                           endIndent: 35.0,
-                          color: FlutterFlowTheme.of(context).tertiaryColor,
+                          color: FlutterFlowTheme.of(context).tertiary,
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
@@ -749,7 +746,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                 Text(
                                   'Test Price',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Open Sans',
                                         color: Color(0xFF586B06),
@@ -769,8 +766,8 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                     color: Color(0x5DEEEEEE),
                                     borderRadius: BorderRadius.circular(12.0),
                                     border: Border.all(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       width: 2.0,
                                     ),
                                   ),
@@ -785,7 +782,7 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondary,
                                             width: 1.0,
                                           ),
                                           borderRadius: const BorderRadius.only(
@@ -900,14 +897,13 @@ class _NewTestWidgetState extends State<NewTestWidget> {
                                     0.0, 0.0, 0.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
+                                color: FlutterFlowTheme.of(context).secondary,
                                 textStyle: FlutterFlowTheme.of(context)
-                                    .subtitle2
+                                    .titleSmall
                                     .override(
                                       fontFamily: 'Lexend Deca',
-                                      color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.normal,
                                     ),

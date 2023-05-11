@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/components/choose_technologist/choose_technologist_widget.dart';
@@ -61,8 +61,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
           curve: Curves.easeInOut,
           delay: 170.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -87,8 +87,8 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -138,7 +138,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
               width: 50.0,
               height: 50.0,
               child: SpinKitRipple(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 size: 50.0,
               ),
             ),
@@ -164,7 +164,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                         width: 50.0,
                         height: 50.0,
                         child: SpinKitRipple(
-                          color: FlutterFlowTheme.of(context).primaryColor,
+                          color: FlutterFlowTheme.of(context).primary,
                           size: 50.0,
                         ),
                       ),
@@ -195,7 +195,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                       width: MediaQuery.of(context).size.width * 1.0,
                       height: MediaQuery.of(context).size.height * 0.9,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryColor,
+                        color: FlutterFlowTheme.of(context).secondary,
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(16.0),
                           bottomRight: Radius.circular(16.0),
@@ -216,7 +216,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                 Text(
                                   'CONFIRM TESTS',
                                   style: FlutterFlowTheme.of(context)
-                                      .title1
+                                      .displaySmall
                                       .override(
                                         fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
@@ -224,6 +224,10 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                       ),
                                 ),
                                 InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pop();
                                   },
@@ -267,7 +271,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                   decoration: InputDecoration(
                                     labelText: 'Lab Reference Number',
                                     labelStyle: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Lexend Deca',
                                           color: FlutterFlowTheme.of(context)
@@ -342,7 +346,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                   Text(
                                     'Assign Pathologist',
                                     style: FlutterFlowTheme.of(context)
-                                        .subtitle2
+                                        .titleSmall
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
@@ -369,7 +373,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                         height: 50.0,
                                         child: SpinKitRipple(
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                              .primary,
                                           size: 50.0,
                                         ),
                                       ),
@@ -378,8 +382,9 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                   List<StaffRecord> pathologistStaffRecordList =
                                       snapshot.data!;
                                   return FlutterFlowDropDown<String>(
-                                    controller: _model.pathologistController ??=
-                                        FormFieldController<String>(null),
+                                    controller:
+                                        _model.pathologistValueController ??=
+                                            FormFieldController<String>(null),
                                     options: pathologistStaffRecordList
                                         .map((e) => e.displayName)
                                         .withoutNulls
@@ -391,7 +396,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                         MediaQuery.of(context).size.width * 0.9,
                                     height: 60.0,
                                     textStyle: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Lexend Deca',
                                           color: FlutterFlowTheme.of(context)
@@ -437,7 +442,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                   Text(
                                     'Tap Each To Confirm',
                                     style: FlutterFlowTheme.of(context)
-                                        .subtitle2
+                                        .titleSmall
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
@@ -499,7 +504,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryColor,
+                                                                .primary,
                                                         size: 50.0,
                                                       ),
                                                     ),
@@ -562,7 +567,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                           .packageName!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .subtitle2
+                                                                          .titleSmall
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
@@ -580,7 +585,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                               .end,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .subtitle2
+                                                                          .titleSmall
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
@@ -610,7 +615,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                         Icons
                                                                             .check_box_outline_blank_sharp,
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .tertiaryColor,
+                                                                            .tertiary,
                                                                         size:
                                                                             30.0,
                                                                       ),
@@ -688,7 +693,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                 50.0,
                                                                             child:
                                                                                 SpinKitRipple(
-                                                                              color: FlutterFlowTheme.of(context).primaryColor,
+                                                                              color: FlutterFlowTheme.of(context).primary,
                                                                               size: 50.0,
                                                                             ),
                                                                           ),
@@ -698,6 +703,14 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                           snapshot
                                                                               .data!;
                                                                       return InkWell(
+                                                                        splashColor:
+                                                                            Colors.transparent,
+                                                                        focusColor:
+                                                                            Colors.transparent,
+                                                                        hoverColor:
+                                                                            Colors.transparent,
+                                                                        highlightColor:
+                                                                            Colors.transparent,
                                                                         onTap:
                                                                             () async {
                                                                           var _shouldSetState =
@@ -749,9 +762,9 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                             context:
                                                                                 context,
                                                                             builder:
-                                                                                (context) {
+                                                                                (bottomSheetContext) {
                                                                               return Padding(
-                                                                                padding: MediaQuery.of(context).viewInsets,
+                                                                                padding: MediaQuery.of(bottomSheetContext).viewInsets,
                                                                                 child: ChooseTechnologistWidget(
                                                                                   testRef: testPackTestsItem,
                                                                                   bookingRef: widget.booking,
@@ -806,7 +819,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                       children: [
                                                                                         Text(
                                                                                           containerTestsRecord.name!,
-                                                                                          style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                          style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                 fontFamily: 'Roboto',
                                                                                                 color: FlutterFlowTheme.of(context).primaryText,
                                                                                               ),
@@ -827,7 +840,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                           children: [
                                                                                             Icon(
                                                                                               Icons.check_box_outline_blank_sharp,
-                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                              color: FlutterFlowTheme.of(context).secondary,
                                                                                               size: 30.0,
                                                                                             ),
                                                                                             if (confirmTestsSheetBookingsRecord.bookedTests!.toList().contains(testPackTestsItem))
@@ -844,7 +857,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                                         width: 50.0,
                                                                                                         height: 50.0,
                                                                                                         child: SpinKitRipple(
-                                                                                                          color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                          color: FlutterFlowTheme.of(context).primary,
                                                                                                           size: 50.0,
                                                                                                         ),
                                                                                                       ),
@@ -929,7 +942,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .primaryColor,
+                                                              .primary,
                                                       size: 50.0,
                                                     ),
                                                   ),
@@ -938,6 +951,11 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                               final containerTestsRecord =
                                                   snapshot.data!;
                                               return InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
                                                 onTap: () async {
                                                   var _shouldSetState = false;
                                                   if (confirmTestsSheetBookingsRecord
@@ -987,10 +1005,11 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                     barrierColor:
                                                         Color(0x00000000),
                                                     context: context,
-                                                    builder: (context) {
+                                                    builder:
+                                                        (bottomSheetContext) {
                                                       return Padding(
                                                         padding: MediaQuery.of(
-                                                                context)
+                                                                bottomSheetContext)
                                                             .viewInsets,
                                                         child:
                                                             ChooseTechnologistWidget(
@@ -1051,7 +1070,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                     .name!,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .subtitle2
+                                                                    .titleSmall
                                                                     .override(
                                                                       fontFamily:
                                                                           'Roboto',
@@ -1082,7 +1101,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                         .check_box_outline_blank_sharp,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .secondaryColor,
+                                                                        .secondary,
                                                                     size: 30.0,
                                                                   ),
                                                                   StreamBuilder<
@@ -1116,7 +1135,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                                 50.0,
                                                                             child:
                                                                                 SpinKitRipple(
-                                                                              color: FlutterFlowTheme.of(context).primaryColor,
+                                                                              color: FlutterFlowTheme.of(context).primary,
                                                                               size: 50.0,
                                                                             ),
                                                                           ),
@@ -1193,6 +1212,10 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 4.0),
                                           child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               final specialTestsCreateData =
                                                   createSpecialTestsRecordData(
@@ -1263,7 +1286,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                 .name!,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Roboto',
@@ -1299,7 +1322,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                     .check_box_outline_blank_sharp,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryColor,
+                                                                    .secondary,
                                                                 size: 30.0,
                                                               ),
                                                               StreamBuilder<
@@ -1335,7 +1358,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                                                         child:
                                                                             SpinKitRipple(
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).primaryColor,
+                                                                              FlutterFlowTheme.of(context).primary,
                                                                           size:
                                                                               50.0,
                                                                         ),
@@ -1407,8 +1430,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                               width: 50.0,
                               height: 50.0,
                               child: SpinKitRipple(
-                                color:
-                                    FlutterFlowTheme.of(context).primaryColor,
+                                color: FlutterFlowTheme.of(context).primary,
                                 size: 50.0,
                               ),
                             ),
@@ -1437,7 +1459,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                         height: 50.0,
                                         child: SpinKitRipple(
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                              .primary,
                                           size: 50.0,
                                         ),
                                       ),
@@ -1564,7 +1586,7 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
                                       textStyle: FlutterFlowTheme.of(context)
-                                          .subtitle2
+                                          .titleSmall
                                           .override(
                                             fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
@@ -1590,9 +1612,9 @@ class _ConfirmTestsWidgetState extends State<ConfirmTestsWidget>
               ),
               Text(
                 'Tap above to complete request',
-                style: FlutterFlowTheme.of(context).bodyText1.override(
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Roboto',
-                      color: FlutterFlowTheme.of(context).secondaryColor,
+                      color: FlutterFlowTheme.of(context).secondary,
                       fontSize: 15.0,
                       fontWeight: FontWeight.normal,
                     ),

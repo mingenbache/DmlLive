@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/new_booking_sheet/new_booking_sheet_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';

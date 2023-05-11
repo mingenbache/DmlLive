@@ -37,6 +37,11 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
     with TickerProviderStateMixin {
   late OnboardingModel _model;
 
+  int get pageViewCurrentIndex => _model.pageViewController != null &&
+          _model.pageViewController!.hasClients &&
+          _model.pageViewController!.page != null
+      ? _model.pageViewController!.page!.round()
+      : 0;
   var hasButtonTriggered = false;
   final animationsMap = {
     'buttonOnActionTriggerAnimation': AnimationInfo(
@@ -47,8 +52,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -157,7 +162,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                             colors: [
                               Color(0x00FFFFFF),
                               Color(0x92BACA68),
-                              FlutterFlowTheme.of(context).tertiaryColor
+                              FlutterFlowTheme.of(context).tertiary
                             ],
                             stops: [0.0, 0.3, 0.4],
                             begin: AlignmentDirectional(0.0, -1.0),
@@ -181,13 +186,17 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.pop();
                                     },
                                     child: Card(
                                       clipBehavior: Clip.antiAliasWithSaveLayer,
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondary,
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(30.0),
@@ -199,7 +208,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                         icon: Icon(
                                           Icons.close_rounded,
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
+                                              .tertiary,
                                           size: 30.0,
                                         ),
                                         onPressed: () async {
@@ -232,7 +241,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .title1
+                                                      .displaySmall
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color: Colors.white,
@@ -321,7 +330,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .subtitle1
+                                                                .titleMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -357,7 +366,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                                 BoxDecoration(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primaryColor,
+                                                                  .primary,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
@@ -366,7 +375,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                                   Border.all(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryColor,
+                                                                    .primary,
                                                                 width: 1.0,
                                                               ),
                                                             ),
@@ -449,9 +458,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                                             'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto',
                                                                             textAlign:
                                                                                 TextAlign.center,
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
-                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                  color: FlutterFlowTheme.of(context).secondary,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -480,10 +489,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                                             Text(
                                                                           'Payments',
                                                                           style: FlutterFlowTheme.of(context)
-                                                                              .subtitle2
+                                                                              .titleSmall
                                                                               .override(
                                                                                 fontFamily: 'Open Sans',
-                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                color: FlutterFlowTheme.of(context).secondary,
                                                                                 fontSize: 14.0,
                                                                               ),
                                                                         ),
@@ -551,8 +560,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                             count: 3,
                                                             axisDirection:
                                                                 Axis.horizontal,
-                                                            onDotClicked: (i) {
-                                                              _model
+                                                            onDotClicked:
+                                                                (i) async {
+                                                              await _model
                                                                   .pageViewController!
                                                                   .animateToPage(
                                                                 i,
@@ -576,7 +586,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                               activeDotColor:
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryColor,
+                                                                      .secondary,
                                                               paintStyle:
                                                                   PaintingStyle
                                                                       .fill,
@@ -599,6 +609,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 5.0),
                                         child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
                                           onTap: () async {
                                             context.goNamed('checkup');
                                           },
@@ -611,7 +625,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryColor,
+                                                      .secondary,
                                               boxShadow: [
                                                 BoxShadow(
                                                   blurRadius: 4.0,
@@ -634,7 +648,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                     Icons.skip_next,
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .tertiaryColor,
+                                                        .tertiary,
                                                     size: 20.0,
                                                   ),
                                                   Padding(
@@ -647,13 +661,13 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText1
+                                                              .bodyMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Lexend Deca',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .tertiaryColor,
+                                                                    .tertiary,
                                                                 fontSize: 14.0,
                                                                 fontWeight:
                                                                     FontWeight
@@ -687,6 +701,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                       Stack(
                         children: [
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               await _model.pageViewController?.nextPage(
                                 duration: Duration(milliseconds: 300),
@@ -726,13 +744,14 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: Color(0x00B3B2B2),
                                         textStyle: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Roboto',
                                               color: Color(0xFFBACA68),
                                               fontSize: 17.0,
                                               fontWeight: FontWeight.w500,
                                             ),
+                                        elevation: 2.0,
                                         borderSide: BorderSide(
                                           color: Colors.transparent,
                                         ),

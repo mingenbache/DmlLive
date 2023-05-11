@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -34,7 +34,7 @@ class EditTestModel extends FlutterFlowModel {
 
   // State field(s) for DropDown widget.
   String? dropDownValue;
-  FormFieldController<String>? dropDownController;
+  FormFieldController<String>? dropDownValueController;
   // State field(s) for test_description widget.
   TextEditingController? testDescriptionController;
   String? Function(BuildContext, String?)? testDescriptionControllerValidator;

@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
@@ -99,7 +99,7 @@ class NewBookingModel extends FlutterFlowModel {
 
   // State field(s) for ChoiceChips widget.
   String? choiceChipsValue;
-  FormFieldController<List<String>>? choiceChipsController;
+  FormFieldController<List<String>>? choiceChipsValueController;
   DateTime? datePicked2;
   bool isDataUploading = false;
   List<FFUploadedFile> uploadedLocalFiles = [];

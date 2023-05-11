@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/add_payment_w_idget/add_payment_w_idget_widget.dart';
 import '/components/invoice_payment/invoice_payment_widget.dart';

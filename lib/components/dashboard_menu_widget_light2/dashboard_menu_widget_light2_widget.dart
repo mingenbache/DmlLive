@@ -59,7 +59,7 @@ class _DashboardMenuWidgetLight2WidgetState
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  FlutterFlowTheme.of(context).primaryColor,
+                  FlutterFlowTheme.of(context).primary,
                   Color(0x00FFFFFF)
                 ],
                 stops: [0.1, 0.6],
@@ -91,6 +91,10 @@ class _DashboardMenuWidgetLight2WidgetState
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
                     child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         context.pushNamed('MyBookings');
                       },
@@ -114,12 +118,10 @@ class _DashboardMenuWidgetLight2WidgetState
                               borderRadius: 12.0,
                               borderWidth: 1.0,
                               buttonSize: 70.0,
-                              fillColor:
-                                  FlutterFlowTheme.of(context).secondaryColor,
+                              fillColor: FlutterFlowTheme.of(context).secondary,
                               icon: Icon(
                                 Icons.fast_rewind,
-                                color:
-                                    FlutterFlowTheme.of(context).tertiaryColor,
+                                color: FlutterFlowTheme.of(context).tertiary,
                                 size: 40.0,
                               ),
                               onPressed: () {
@@ -133,7 +135,7 @@ class _DashboardMenuWidgetLight2WidgetState
                                 'PREVIOUS\nTESTS',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Roboto',
                                       color: Colors.white,
@@ -150,6 +152,10 @@ class _DashboardMenuWidgetLight2WidgetState
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                     child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         context.pushNamed('MyBookings');
                       },
@@ -189,7 +195,7 @@ class _DashboardMenuWidgetLight2WidgetState
                                 'UPCOMING\nTESTS',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Roboto',
                                       color: Colors.white,
@@ -206,6 +212,10 @@ class _DashboardMenuWidgetLight2WidgetState
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                     child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         context.pushNamed('myInvoiceList');
                       },
@@ -248,7 +258,7 @@ class _DashboardMenuWidgetLight2WidgetState
                                 child: AutoSizeText(
                                   'INVOICES',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Roboto',
                                         color: Colors.white,
@@ -287,7 +297,7 @@ class _DashboardMenuWidgetLight2WidgetState
                             fillColor: Colors.white,
                             icon: Icon(
                               Icons.help_outline_sharp,
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                              color: FlutterFlowTheme.of(context).primary,
                               size: 30.0,
                             ),
                             onPressed: () {
@@ -304,7 +314,7 @@ class _DashboardMenuWidgetLight2WidgetState
                                 'HELP',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Roboto',
                                       color: Colors.white,

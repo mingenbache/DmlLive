@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -27,6 +27,12 @@ class InvoiceViewContainerWidget extends StatefulWidget {
 class _InvoiceViewContainerWidgetState
     extends State<InvoiceViewContainerWidget> {
   late InvoiceViewContainerModel _model;
+
+  int get pageViewCurrentIndex => _model.pageViewController != null &&
+          _model.pageViewController!.hasClients &&
+          _model.pageViewController!.page != null
+      ? _model.pageViewController!.page!.round()
+      : 0;
 
   @override
   void setState(VoidCallback callback) {
@@ -65,7 +71,7 @@ class _InvoiceViewContainerWidgetState
                 width: 50.0,
                 height: 50.0,
                 child: SpinKitRipple(
-                  color: FlutterFlowTheme.of(context).primaryColor,
+                  color: FlutterFlowTheme.of(context).primary,
                   size: 50.0,
                 ),
               ),
@@ -79,7 +85,7 @@ class _InvoiceViewContainerWidgetState
               maxWidth: 350.0,
             ),
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primaryColor,
+              color: FlutterFlowTheme.of(context).primary,
               borderRadius: BorderRadius.circular(12.0),
             ),
             child: Column(
@@ -107,7 +113,7 @@ class _InvoiceViewContainerWidgetState
                             child: Text(
                               widget.invoice!.amountDue!.toString(),
                               style: FlutterFlowTheme.of(context)
-                                  .subtitle1
+                                  .titleMedium
                                   .override(
                                     fontFamily: 'Open Sans',
                                     color: Colors.white,
@@ -124,11 +130,10 @@ class _InvoiceViewContainerWidgetState
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).primaryColor,
+                              color: FlutterFlowTheme.of(context).primary,
                               borderRadius: BorderRadius.circular(10.0),
                               border: Border.all(
-                                color:
-                                    FlutterFlowTheme.of(context).primaryColor,
+                                color: FlutterFlowTheme.of(context).primary,
                                 width: 1.0,
                               ),
                             ),
@@ -140,7 +145,7 @@ class _InvoiceViewContainerWidgetState
                                 child: Text(
                                   'Not',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText2
+                                      .bodySmall
                                       .override(
                                         fontFamily: 'Lexend Deca',
                                         color: Colors.white,
@@ -156,12 +161,10 @@ class _InvoiceViewContainerWidgetState
                                 0.0, 0.0, 8.0, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
-                                color:
-                                    FlutterFlowTheme.of(context).primaryColor,
+                                color: FlutterFlowTheme.of(context).primary,
                                 borderRadius: BorderRadius.circular(10.0),
                                 border: Border.all(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: FlutterFlowTheme.of(context).primary,
                                   width: 1.0,
                                 ),
                               ),
@@ -171,7 +174,7 @@ class _InvoiceViewContainerWidgetState
                                 child: Text(
                                   'Paid',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText2
+                                      .bodySmall
                                       .override(
                                         fontFamily: 'Lexend Deca',
                                         color: Colors.white,
@@ -233,7 +236,7 @@ class _InvoiceViewContainerWidgetState
                                                   'Test Date',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
@@ -302,7 +305,7 @@ class _InvoiceViewContainerWidgetState
                                                                 TextAlign.end,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -345,7 +348,7 @@ class _InvoiceViewContainerWidgetState
                                                   'Due Date',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
@@ -409,7 +412,7 @@ class _InvoiceViewContainerWidgetState
                                                                 TextAlign.end,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -455,7 +458,7 @@ class _InvoiceViewContainerWidgetState
                                                   'Lab Reference',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
@@ -495,7 +498,7 @@ class _InvoiceViewContainerWidgetState
                                                     textAlign: TextAlign.end,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
@@ -528,7 +531,7 @@ class _InvoiceViewContainerWidgetState
                                         child: Text(
                                           'Payments',
                                           style: FlutterFlowTheme.of(context)
-                                              .subtitle2
+                                              .titleSmall
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color:
@@ -574,7 +577,7 @@ class _InvoiceViewContainerWidgetState
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .primaryColor,
+                                                              .primary,
                                                       size: 50.0,
                                                     ),
                                                   ),
@@ -663,7 +666,7 @@ class _InvoiceViewContainerWidgetState
                                                                           1,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
@@ -705,7 +708,7 @@ class _InvoiceViewContainerWidgetState
                                                                           1,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
@@ -730,7 +733,7 @@ class _InvoiceViewContainerWidgetState
                                                                 BoxDecoration(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primaryColor,
+                                                                  .primary,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
@@ -753,7 +756,7 @@ class _InvoiceViewContainerWidgetState
                                                                         .type!,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyText1
+                                                                        .bodyMedium
                                                                         .override(
                                                                           fontFamily:
                                                                               'Open Sans',
@@ -812,7 +815,7 @@ class _InvoiceViewContainerWidgetState
                                                                         maxLines:
                                                                             1,
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
+                                                                            .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).secondaryText,
@@ -853,7 +856,7 @@ class _InvoiceViewContainerWidgetState
                                           height: 50.0,
                                           child: SpinKitRipple(
                                             color: FlutterFlowTheme.of(context)
-                                                .primaryColor,
+                                                .primary,
                                             size: 50.0,
                                           ),
                                         ),
@@ -892,7 +895,7 @@ class _InvoiceViewContainerWidgetState
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .subtitle2
+                                                              .titleSmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Open Sans',
@@ -953,7 +956,7 @@ class _InvoiceViewContainerWidgetState
                                                             'Name',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -998,7 +1001,7 @@ class _InvoiceViewContainerWidgetState
                                                             '${containerBookingsRecord.firstname}    ${containerBookingsRecord.lastname}',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -1056,7 +1059,7 @@ class _InvoiceViewContainerWidgetState
                                                             'Email',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -1101,7 +1104,7 @@ class _InvoiceViewContainerWidgetState
                                                                 .emailaddress!,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -1160,7 +1163,7 @@ class _InvoiceViewContainerWidgetState
                                                             'Phone',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -1205,7 +1208,7 @@ class _InvoiceViewContainerWidgetState
                                                                 .phonenumber!,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -1269,7 +1272,7 @@ class _InvoiceViewContainerWidgetState
                                                                 'D.o.b',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Open Sans',
@@ -1335,7 +1338,7 @@ class _InvoiceViewContainerWidgetState
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Open Sans',
@@ -1373,7 +1376,7 @@ class _InvoiceViewContainerWidgetState
                                                             'Sex',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -1440,7 +1443,7 @@ class _InvoiceViewContainerWidgetState
                                                                       .sex!,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
+                                                                      .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Open Sans',
@@ -1477,8 +1480,8 @@ class _InvoiceViewContainerWidgetState
                                 PageController(initialPage: 0),
                             count: 3,
                             axisDirection: Axis.horizontal,
-                            onDotClicked: (i) {
-                              _model.pageViewController!.animateToPage(
+                            onDotClicked: (i) async {
+                              await _model.pageViewController!.animateToPage(
                                 i,
                                 duration: Duration(milliseconds: 500),
                                 curve: Curves.ease,
@@ -1490,10 +1493,9 @@ class _InvoiceViewContainerWidgetState
                               radius: 16.0,
                               dotWidth: 16.0,
                               dotHeight: 16.0,
-                              dotColor:
-                                  FlutterFlowTheme.of(context).secondaryColor,
+                              dotColor: FlutterFlowTheme.of(context).secondary,
                               activeDotColor:
-                                  FlutterFlowTheme.of(context).primaryColor,
+                                  FlutterFlowTheme.of(context).primary,
                               paintStyle: PaintingStyle.fill,
                             ),
                           ),

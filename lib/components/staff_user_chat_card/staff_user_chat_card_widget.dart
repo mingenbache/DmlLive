@@ -132,7 +132,7 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                     Text(
                                       '${functions.camelCase(widget.userRecord!.firstName)} ${functions.camelCase(widget.userRecord!.lastName)}',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyText1
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Open Sans',
                                             color: FlutterFlowTheme.of(context)
@@ -174,7 +174,7 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                                 Icons.email_outlined,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryColor,
+                                                        .primary,
                                                 size: 20.0,
                                               ),
                                             ],
@@ -183,12 +183,12 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                         Text(
                                           widget.userRecord!.email!,
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyMedium
                                               .override(
                                                 fontFamily: 'Roboto',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
+                                                        .secondary,
                                                 fontSize: 14.0,
                                                 fontWeight: FontWeight.normal,
                                               ),
@@ -251,12 +251,12 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                                     textAlign: TextAlign.center,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .secondary,
                                                           fontSize: 14.0,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -287,14 +287,15 @@ class _StaffUserChatCardWidgetState extends State<StaffUserChatCardWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                              .primary,
                                           textStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .subtitle2
+                                                  .titleSmall
                                                   .override(
                                                     fontFamily: 'Open Sans',
                                                     fontSize: 14.0,
                                                   ),
+                                          elevation: 2.0,
                                           borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,

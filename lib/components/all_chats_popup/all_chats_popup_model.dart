@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/chat_actions_widget/chat_actions_widget_widget.dart';
 import '/components/user_activity/user_activity_widget.dart';

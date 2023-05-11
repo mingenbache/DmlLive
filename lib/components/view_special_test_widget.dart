@@ -85,7 +85,7 @@ class _ViewSpecialTestWidgetState extends State<ViewSpecialTestWidget> {
                     ],
                     gradient: LinearGradient(
                       colors: [
-                        FlutterFlowTheme.of(context).secondaryColor,
+                        FlutterFlowTheme.of(context).secondary,
                         FlutterFlowTheme.of(context).primaryBackground
                       ],
                       stops: [0.0, 0.4],
@@ -115,8 +115,8 @@ class _ViewSpecialTestWidgetState extends State<ViewSpecialTestWidget> {
                                   children: [
                                     Text(
                                       'Special Test',
-                                      style:
-                                          FlutterFlowTheme.of(context).title2,
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineMedium,
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -124,7 +124,7 @@ class _ViewSpecialTestWidgetState extends State<ViewSpecialTestWidget> {
                                       child: Text(
                                         widget.specialTest!.name!,
                                         style: FlutterFlowTheme.of(context)
-                                            .subtitle1
+                                            .titleMedium
                                             .override(
                                               fontFamily: 'Open Sans',
                                               color:
@@ -160,7 +160,7 @@ class _ViewSpecialTestWidgetState extends State<ViewSpecialTestWidget> {
                           child: Text(
                             widget.specialTest!.description!,
                             style: FlutterFlowTheme.of(context)
-                                .subtitle2
+                                .titleSmall
                                 .override(
                                   fontFamily: 'Open Sans',
                                   color:
@@ -185,10 +185,9 @@ class _ViewSpecialTestWidgetState extends State<ViewSpecialTestWidget> {
                                       24.0, 24.0, 24.0, 24.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
-                                      .subtitle2
+                                      .titleSmall
                                       .override(
                                         fontFamily: 'Open Sans',
                                         color: Colors.white,

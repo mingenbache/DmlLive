@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/test_procedure_item/test_procedure_item_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -40,6 +40,13 @@ class EditTestCopyWidget extends StatefulWidget {
 class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
     with TickerProviderStateMixin {
   late EditTestCopyModel _model;
+
+  int get testFormPageViewCurrentIndex =>
+      _model.testFormPageViewController != null &&
+              _model.testFormPageViewController!.hasClients &&
+              _model.testFormPageViewController!.page != null
+          ? _model.testFormPageViewController!.page!.round()
+          : 0;
 
   final animationsMap = {
     'pageViewOnPageLoadAnimation': AnimationInfo(
@@ -108,7 +115,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                 width: 50.0,
                 height: 50.0,
                 child: SpinKitRipple(
-                  color: FlutterFlowTheme.of(context).primaryColor,
+                  color: FlutterFlowTheme.of(context).primary,
                   size: 50.0,
                 ),
               ),
@@ -132,7 +139,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                     maxHeight: 829.0,
                   ),
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryColor,
+                    color: FlutterFlowTheme.of(context).secondary,
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                   child: Padding(
@@ -154,7 +161,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                               Text(
                                 'EDIT TEST',
                                 style: FlutterFlowTheme.of(context)
-                                    .title1
+                                    .displaySmall
                                     .override(
                                       fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
@@ -162,13 +169,16 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                     ),
                               ),
                               InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   context.pop();
                                 },
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryColor,
+                                  color: FlutterFlowTheme.of(context).secondary,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
@@ -180,8 +190,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                         .secondaryBackground,
                                     icon: Icon(
                                       Icons.close_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
                                       size: 30.0,
                                     ),
                                     onPressed: () async {
@@ -272,7 +282,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                               labelStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
+                                                                      .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Open Sans',
@@ -284,7 +294,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                               hintStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
+                                                                      .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Open Sans',
@@ -381,7 +391,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -437,7 +447,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                             'Test Category',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -482,7 +492,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         SpinKitRipple(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryColor,
+                                                                          .primary,
                                                                       size:
                                                                           50.0,
                                                                     ),
@@ -502,7 +512,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                               return FlutterFlowDropDown<
                                                                   String>(
                                                                 controller: _model
-                                                                        .dropDownController ??=
+                                                                        .dropDownValueController ??=
                                                                     FormFieldController<
                                                                         String>(
                                                                   _model.dropDownValue ??=
@@ -525,13 +535,13 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 height: 40.0,
                                                                 textStyle: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Open Sans',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryColor,
+                                                                          .secondary,
                                                                       fontSize:
                                                                           18.0,
                                                                     ),
@@ -617,25 +627,25 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                               'Test @ Home ',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyText1
+                                                                  .bodyMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         'Open Sans',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .secondaryColor,
+                                                                        .secondary,
                                                                   ),
                                                             ),
                                                             subtitle: Text(
                                                               'Can the test be done at home?',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .subtitle2,
+                                                                  .titleSmall,
                                                             ),
                                                             activeColor:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryColor,
+                                                                    .secondary,
                                                             activeTrackColor:
                                                                 Colors.white,
                                                             dense: false,
@@ -706,7 +716,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                 'Test Duration:',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Open Sans',
@@ -763,13 +773,13 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                             'in minutes',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .secondaryColor,
+                                                                      .secondary,
                                                                   fontSize:
                                                                       14.0,
                                                                 ),
@@ -832,7 +842,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                     maxLines: 1,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyText1
+                                                                        .bodyMedium
                                                                         .override(
                                                                           fontFamily:
                                                                               'Open Sans',
@@ -896,7 +906,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                               'Results Duration:',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyText1
+                                                                  .bodyMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         'Open Sans',
@@ -953,13 +963,13 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                           'in hours',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText1
+                                                              .bodyMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Open Sans',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryColor,
+                                                                    .secondary,
                                                                 fontSize: 14.0,
                                                               ),
                                                         ),
@@ -1022,7 +1032,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                   maxLines: 1,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
+                                                                      .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Open Sans',
@@ -1111,7 +1121,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                   'Price',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
+                                                                      .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Open Sans',
@@ -1326,7 +1336,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                           textStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodyText1
+                                                                  .bodyMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         'Lexend Deca',
@@ -1391,7 +1401,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                   'Description',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
@@ -1512,13 +1522,13 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
+                                                                .secondary,
                                                       ),
                                                   maxLines: 300,
                                                   keyboardType:
@@ -1554,7 +1564,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .subtitle2
+                                                                .titleSmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -1699,7 +1709,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         labelText:
                                                                             'variance',
                                                                         labelStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
+                                                                            .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -1708,7 +1718,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         hintText:
                                                                             '12.5-18.5',
                                                                         hintStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
+                                                                            .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).alternate,
@@ -1783,7 +1793,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                       ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
@@ -1868,7 +1878,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         labelText:
                                                                             'units',
                                                                         labelStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
+                                                                            .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -1876,7 +1886,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                         hintText:
                                                                             'gm/dl',
                                                                         hintStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyText1
+                                                                            .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).primaryText,
@@ -1936,7 +1946,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                       ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
@@ -2085,7 +2095,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           'variance',
                                                                       labelStyle: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
@@ -2098,12 +2108,12 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           '12.5-18.5',
                                                                       hintStyle: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).secondaryColor,
+                                                                                FlutterFlowTheme.of(context).secondary,
                                                                           ),
                                                                       enabledBorder:
                                                                           OutlineInputBorder(
@@ -2177,7 +2187,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyText1
+                                                                        .bodyMedium
                                                                         .override(
                                                                           fontFamily:
                                                                               'Open Sans',
@@ -2263,7 +2273,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           'units',
                                                                       labelStyle: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
@@ -2276,12 +2286,12 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           'gm/dl',
                                                                       hintStyle: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Open Sans',
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                FlutterFlowTheme.of(context).tertiary,
                                                                           ),
                                                                       enabledBorder:
                                                                           OutlineInputBorder(
@@ -2339,7 +2349,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                     ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyText1
+                                                                        .bodyMedium
                                                                         .override(
                                                                           fontFamily:
                                                                               'Open Sans',
@@ -2392,7 +2402,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                           'Equipment Information',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .subtitle2
+                                                              .titleSmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Open Sans',
@@ -2460,27 +2470,27 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                   false,
                                                               decoration:
                                                                   InputDecoration(
-                                                                labelStyle:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Open Sans',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
-                                                                        ),
-                                                                hintText:
-                                                                    'Information about the data the equipment gives',
-                                                                hintStyle: FlutterFlowTheme.of(
+                                                                labelStyle: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Open Sans',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondaryColor,
+                                                                          .secondary,
+                                                                    ),
+                                                                hintText:
+                                                                    'Information about the data the equipment gives',
+                                                                hintStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Open Sans',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondary,
                                                                     ),
                                                                 enabledBorder:
                                                                     OutlineInputBorder(
@@ -2556,7 +2566,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                                           Icons
                                                                               .clear,
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).secondary,
                                                                           size:
                                                                               22.0,
                                                                         ),
@@ -2565,7 +2575,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyText1
+                                                                  .bodyMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         'Open Sans',
@@ -2622,7 +2632,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                   'Procedure',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
@@ -2750,13 +2760,14 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                                               textStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
+                                                                      .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Open Sans',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryBackground,
                                                                       ),
+                                                              elevation: 2.0,
                                                               borderSide:
                                                                   BorderSide(
                                                                 color: Colors
@@ -2790,8 +2801,8 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                             PageController(initialPage: 0),
                                     count: 4,
                                     axisDirection: Axis.horizontal,
-                                    onDotClicked: (i) {
-                                      _model.testFormPageViewController!
+                                    onDotClicked: (i) async {
+                                      await _model.testFormPageViewController!
                                           .animateToPage(
                                         i,
                                         duration: Duration(milliseconds: 500),
@@ -2879,7 +2890,7 @@ class _EditTestCopyWidgetState extends State<EditTestCopyWidget>
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).secondaryText,
                               textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
+                                  .titleSmall
                                   .override(
                                     fontFamily: 'Lexend Deca',
                                     color: FlutterFlowTheme.of(context)

@@ -80,7 +80,7 @@ class _DasboardOffersWidgetWidgetState
                                 0.0, 0.0, 0.0, 1.0),
                             child: Card(
                               clipBehavior: Clip.antiAliasWithSaveLayer,
-                              color: FlutterFlowTheme.of(context).tertiaryColor,
+                              color: FlutterFlowTheme.of(context).tertiary,
                               elevation: 7.0,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(28.0),
@@ -114,7 +114,7 @@ class _DasboardOffersWidgetWidgetState
                                           child: Text(
                                             'Hello World',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyText1,
+                                                .bodyMedium,
                                           ),
                                         ),
                                       ),
@@ -149,7 +149,7 @@ class _DasboardOffersWidgetWidgetState
                                         child: Text(
                                           'Hello World',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1,
+                                              .bodyMedium,
                                         ),
                                       ),
                                     ),
@@ -183,7 +183,7 @@ class _DasboardOffersWidgetWidgetState
                                         child: Text(
                                           'Hello World',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1,
+                                              .bodyMedium,
                                         ),
                                       ),
                                     ),

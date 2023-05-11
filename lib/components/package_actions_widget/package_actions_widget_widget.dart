@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/duplicate_tests/duplicate_tests_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -47,8 +47,8 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -60,8 +60,8 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -115,7 +115,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                     width: 50.0,
                     height: 50.0,
                     child: SpinKitRipple(
-                      color: FlutterFlowTheme.of(context).primaryColor,
+                      color: FlutterFlowTheme.of(context).primary,
                       size: 50.0,
                     ),
                   ),
@@ -129,7 +129,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                   maxHeight: 80.0,
                 ),
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).primaryColor,
+                  color: FlutterFlowTheme.of(context).primary,
                   borderRadius: BorderRadius.circular(30.0),
                 ),
                 child: Padding(
@@ -153,8 +153,7 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                                 width: 50.0,
                                 height: 50.0,
                                 child: SpinKitRipple(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: FlutterFlowTheme.of(context).primary,
                                   size: 50.0,
                                 ),
                               ),
@@ -195,11 +194,12 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                                   0.0, 0.0, 0.0, 0.0),
                               color: Color(0x00B3B2B2),
                               textStyle: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Roboto',
                                     fontWeight: FontWeight.w300,
                                   ),
+                              elevation: 2.0,
                               borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 0.0,
@@ -242,9 +242,10 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                               backgroundColor: Colors.transparent,
                               barrierColor: Color(0x00000000),
                               context: context,
-                              builder: (context) {
+                              builder: (bottomSheetContext) {
                                 return Padding(
-                                  padding: MediaQuery.of(context).viewInsets,
+                                  padding: MediaQuery.of(bottomSheetContext)
+                                      .viewInsets,
                                   child: DuplicateTestsWidget(
                                     booking: containerBookingsRecord,
                                   ),
@@ -293,12 +294,13 @@ class _PackageActionsWidgetWidgetState extends State<PackageActionsWidgetWidget>
                               0.0, 0.0, 0.0, 0.0),
                           color: Color(0x00B3B2B2),
                           textStyle:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Roboto',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
                                     fontWeight: FontWeight.w300,
                                   ),
+                          elevation: 2.0,
                           borderSide: BorderSide(
                             color: Colors.transparent,
                           ),

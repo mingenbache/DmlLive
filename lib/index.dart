@@ -3,7 +3,6 @@ export '/pages/home/home_widget.dart' show HomeWidget;
 export '/pages/details/details_widget.dart' show DetailsWidget;
 export '/pages/new_test/new_test_widget.dart' show NewTestWidget;
 export '/pages/user_list/user_list_widget.dart' show UserListWidget;
-export '/pages/all_tests/all_tests_widget.dart' show AllTestsWidget;
 export '/pages/modify_test/modify_test_widget.dart' show ModifyTestWidget;
 export '/pages/booking_updates/booking_updates_widget.dart'
     show BookingUpdatesWidget;

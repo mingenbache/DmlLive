@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -30,6 +30,12 @@ class BeginTestWidget extends StatefulWidget {
 
 class _BeginTestWidgetState extends State<BeginTestWidget> {
   late BeginTestModel _model;
+
+  int get pageViewCurrentIndex => _model.pageViewController != null &&
+          _model.pageViewController!.hasClients &&
+          _model.pageViewController!.page != null
+      ? _model.pageViewController!.page!.round()
+      : 0;
 
   @override
   void setState(VoidCallback callback) {
@@ -76,7 +82,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                 width: MediaQuery.of(context).size.width * 1.0,
                 height: MediaQuery.of(context).size.height * 0.4,
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryColor,
+                  color: FlutterFlowTheme.of(context).secondary,
                   borderRadius: BorderRadius.circular(30.0),
                 ),
                 child: Padding(
@@ -92,7 +98,9 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                         children: [
                           Text(
                             'BEGIN TEST?',
-                            style: FlutterFlowTheme.of(context).title2.override(
+                            style: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .override(
                                   fontFamily: 'Open Sans',
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
@@ -101,13 +109,16 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                 ),
                           ),
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               context.pop();
                             },
                             child: Card(
                               clipBehavior: Clip.antiAliasWithSaveLayer,
-                              color:
-                                  FlutterFlowTheme.of(context).secondaryColor,
+                              color: FlutterFlowTheme.of(context).secondary,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30.0),
                               ),
@@ -119,8 +130,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                     .secondaryBackground,
                                 icon: Icon(
                                   Icons.close_rounded,
-                                  color: FlutterFlowTheme.of(context)
-                                      .tertiaryColor,
+                                  color: FlutterFlowTheme.of(context).tertiary,
                                   size: 30.0,
                                 ),
                                 onPressed: () async {
@@ -170,7 +180,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                   'The sample has not been collected.\nTo begin the process, click yes....',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .subtitle2
+                                                      .titleSmall
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
@@ -213,7 +223,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                         .secondaryText,
                                                 textStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .subtitle2
+                                                        .titleSmall
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
@@ -254,7 +264,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                               child: SpinKitRipple(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryColor,
+                                                        .primary,
                                                 size: 50.0,
                                               ),
                                             ),
@@ -325,7 +335,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                 'Sample\nBatch Number',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyText1
+                                                                    .bodyMedium
                                                                     .override(
                                                                       fontFamily:
                                                                           'Open Sans',
@@ -474,7 +484,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
+                                                                      .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Open Sans',
@@ -518,7 +528,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                           child: SpinKitRipple(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .primaryColor,
+                                                                .primary,
                                                             size: 50.0,
                                                           ),
                                                         ),
@@ -641,7 +651,7 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .subtitle2
+                                                                .titleSmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -685,8 +695,9 @@ class _BeginTestWidgetState extends State<BeginTestWidget> {
                                         PageController(initialPage: 0),
                                     count: 2,
                                     axisDirection: Axis.horizontal,
-                                    onDotClicked: (i) {
-                                      _model.pageViewController!.animateToPage(
+                                    onDotClicked: (i) async {
+                                      await _model.pageViewController!
+                                          .animateToPage(
                                         i,
                                         duration: Duration(milliseconds: 500),
                                         curve: Curves.ease,

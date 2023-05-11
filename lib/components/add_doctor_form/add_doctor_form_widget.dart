@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -57,8 +57,8 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
           curve: Curves.easeInOut,
           delay: 230.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -123,7 +123,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
               width: MediaQuery.of(context).size.width * 1.0,
               height: MediaQuery.of(context).size.height * 0.45,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).tertiaryColor,
+                color: FlutterFlowTheme.of(context).tertiary,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(16.0),
                   bottomRight: Radius.circular(16.0),
@@ -142,7 +142,9 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                       children: [
                         Text(
                           'ADD DOCTOR',
-                          style: FlutterFlowTheme.of(context).title2.override(
+                          style: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .override(
                                 fontFamily: 'Open Sans',
                                 color: Color(0xFF586B06),
                                 fontSize: 32.0,
@@ -150,12 +152,16 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                               ),
                         ),
                         InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () async {
                             context.pop();
                           },
                           child: Card(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
-                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            color: FlutterFlowTheme.of(context).secondary,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
                             ),
@@ -165,8 +171,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                               buttonSize: 48.0,
                               icon: Icon(
                                 Icons.close_rounded,
-                                color:
-                                    FlutterFlowTheme.of(context).tertiaryColor,
+                                color: FlutterFlowTheme.of(context).tertiary,
                                 size: 30.0,
                               ),
                               onPressed: () async {
@@ -190,21 +195,23 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: 'Names',
-                            labelStyle:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Color(0xFF586B06),
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Color(0xFF586B06),
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
                             hintText: 'Names',
-                            hintStyle:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Color(0xFF586B06),
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Color(0xFF586B06),
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0xFF586B06),
@@ -240,7 +247,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                             ),
                           ),
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Lexend Deca',
                                     color: Color(0xFF586B06),
                                     fontSize: 14.0,
@@ -268,7 +275,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                                 labelText: 'Email Address',
                                 hintText: 'Enter the doctor\'s email here...',
                                 hintStyle: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Lexend Deca',
                                       color: Colors.white,
@@ -313,7 +320,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                                 ),
                               ),
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Roboto',
                                     color: Color(0xFF586B06),
@@ -342,7 +349,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                                 labelText: 'Phone Number',
                                 hintText: 'Enter your phone number here...',
                                 hintStyle: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Lexend Deca',
                                       color: Colors.white,
@@ -386,7 +393,7 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                                 ),
                               ),
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Roboto',
                                     color: Color(0xFF586B06),
@@ -429,10 +436,10 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     iconPadding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).secondaryColor,
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                    color: FlutterFlowTheme.of(context).secondary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Open Sans',
-                          color: FlutterFlowTheme.of(context).tertiaryColor,
+                          color: FlutterFlowTheme.of(context).tertiary,
                         ),
                     elevation: 2.0,
                     borderSide: BorderSide(
@@ -447,9 +454,9 @@ class _AddDoctorFormWidgetState extends State<AddDoctorFormWidget>
           ),
           Text(
             'Tap above to complete request',
-            style: FlutterFlowTheme.of(context).bodyText1.override(
+            style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Roboto',
-                  color: FlutterFlowTheme.of(context).secondaryColor,
+                  color: FlutterFlowTheme.of(context).secondary,
                   fontSize: 15.0,
                   fontWeight: FontWeight.normal,
                 ),

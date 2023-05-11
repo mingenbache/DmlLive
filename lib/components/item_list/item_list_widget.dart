@@ -67,7 +67,7 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                           width: 50.0,
                           height: 50.0,
                           child: SpinKitRipple(
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                            color: FlutterFlowTheme.of(context).primary,
                             size: 50.0,
                           ),
                         ),
@@ -75,6 +75,10 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                     }
                     final duplicateTestItemTestsRecord = snapshot.data!;
                     return InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                       onTap: () async {
                         context.pushNamed(
                           'Details',
@@ -115,12 +119,12 @@ class _ItemListWidgetState extends State<ItemListWidget> {
                                       Text(
                                         duplicateTestItemTestsRecord.name!,
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Open Sans',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryColor,
+                                                      .secondary,
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),

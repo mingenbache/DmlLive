@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -53,8 +53,8 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
           curve: Curves.easeInOut,
           delay: 230.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -105,7 +105,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                 width: 50.0,
                 height: 50.0,
                 child: SpinKitRipple(
-                  color: FlutterFlowTheme.of(context).primaryColor,
+                  color: FlutterFlowTheme.of(context).primary,
                   size: 50.0,
                 ),
               ),
@@ -131,7 +131,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                   width: MediaQuery.of(context).size.width * 1.0,
                   height: MediaQuery.of(context).size.height * 0.4,
                   decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryColor,
+                    color: FlutterFlowTheme.of(context).secondary,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(16.0),
                       bottomRight: Radius.circular(16.0),
@@ -151,23 +151,27 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                           children: [
                             Text(
                               'VERIFY TEST',
-                              style:
-                                  FlutterFlowTheme.of(context).title2.override(
-                                        fontFamily: 'Open Sans',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        fontSize: 32.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineMedium
+                                  .override(
+                                    fontFamily: 'Open Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 32.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
                             InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.pop();
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
+                                color: FlutterFlowTheme.of(context).secondary,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30.0),
                                 ),
@@ -204,7 +208,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelStyle: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Lexend Deca',
                                       color: FlutterFlowTheme.of(context)
@@ -214,7 +218,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                     ),
                                 hintText: 'Pathologist Notes',
                                 hintStyle: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Lexend Deca',
                                       color: FlutterFlowTheme.of(context)
@@ -258,7 +262,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                     20.0, 40.0, 24.0, 0.0),
                               ),
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Lexend Deca',
                                     color: FlutterFlowTheme.of(context)
@@ -301,8 +305,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                               width: 50.0,
                               height: 50.0,
                               child: SpinKitRipple(
-                                color:
-                                    FlutterFlowTheme.of(context).primaryColor,
+                                color: FlutterFlowTheme.of(context).primary,
                                 size: 50.0,
                               ),
                             ),
@@ -323,8 +326,8 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                     width: 50.0,
                                     height: 50.0,
                                     child: SpinKitRipple(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       size: 50.0,
                                     ),
                                   ),
@@ -354,7 +357,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                             child: SpinKitRipple(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryColor,
+                                                      .primary,
                                               size: 50.0,
                                             ),
                                           ),
@@ -426,7 +429,7 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
                                               .secondaryText,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
-                                              .subtitle2
+                                              .titleSmall
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color:
@@ -456,9 +459,9 @@ class _VerifyTestResultWidgetState extends State<VerifyTestResultWidget>
               ),
               Text(
                 'Tap above to complete request',
-                style: FlutterFlowTheme.of(context).bodyText1.override(
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Roboto',
-                      color: FlutterFlowTheme.of(context).secondaryColor,
+                      color: FlutterFlowTheme.of(context).secondary,
                       fontSize: 15.0,
                       fontWeight: FontWeight.normal,
                     ),

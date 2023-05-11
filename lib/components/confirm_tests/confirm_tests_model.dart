@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/push_notifications/push_notifications_util.dart';
 import '/components/choose_technologist/choose_technologist_widget.dart';
@@ -27,7 +27,7 @@ class ConfirmTestsModel extends FlutterFlowModel {
   String? Function(BuildContext, String?)? labReferenceControllerValidator;
   // State field(s) for pathologist widget.
   String? pathologistValue;
-  FormFieldController<String>? pathologistController;
+  FormFieldController<String>? pathologistValueController;
   // Stores action output result for [Backend Call - Create Document] action in Container widget.
   BookedTestsRecord? newBookedTest;
   // Stores action output result for [Backend Call - Create Document] action in Container widget.

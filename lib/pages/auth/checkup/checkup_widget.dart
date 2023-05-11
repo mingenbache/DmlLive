@@ -1,5 +1,5 @@
-import '/auth/auth_util.dart';
-import '/auth/firebase_user_provider.dart';
+import '/auth/base_auth_user_provider.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/components/onboarding/onboarding_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -39,10 +39,13 @@ class _CheckupWidgetState extends State<CheckupWidget> {
             backgroundColor: Colors.transparent,
             barrierColor: Color(0x00000000),
             context: context,
-            builder: (context) {
-              return Padding(
-                padding: MediaQuery.of(context).viewInsets,
-                child: OnboardingWidget(),
+            builder: (bottomSheetContext) {
+              return GestureDetector(
+                onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+                child: Padding(
+                  padding: MediaQuery.of(bottomSheetContext).viewInsets,
+                  child: OnboardingWidget(),
+                ),
               );
             },
           ).then((value) => setState(() {}));
@@ -84,28 +87,28 @@ class _CheckupWidgetState extends State<CheckupWidget> {
 
     return Title(
         title: 'checkup',
-        color: FlutterFlowTheme.of(context).primaryColor,
-        child: Scaffold(
-          key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          appBar: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-            automaticallyImplyLeading: false,
-            title: Text(
-              'DML Live',
-              style: FlutterFlowTheme.of(context).title2.override(
-                    fontFamily: 'Open Sans',
-                    color: Colors.white,
-                    fontSize: 22.0,
-                  ),
+        color: FlutterFlowTheme.of(context).primary,
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            appBar: AppBar(
+              backgroundColor: FlutterFlowTheme.of(context).primary,
+              automaticallyImplyLeading: false,
+              title: Text(
+                'DML Live',
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Open Sans',
+                      color: Colors.white,
+                      fontSize: 22.0,
+                    ),
+              ),
+              actions: [],
+              centerTitle: false,
+              elevation: 2.0,
             ),
-            actions: [],
-            centerTitle: false,
-            elevation: 2.0,
-          ),
-          body: SafeArea(
-            child: GestureDetector(
-              onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+            body: SafeArea(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -115,8 +118,8 @@ class _CheckupWidgetState extends State<CheckupWidget> {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          FlutterFlowTheme.of(context).primaryColor,
-                          FlutterFlowTheme.of(context).tertiaryColor,
+                          FlutterFlowTheme.of(context).primary,
+                          FlutterFlowTheme.of(context).tertiary,
                           FlutterFlowTheme.of(context).alternate
                         ],
                         stops: [0.0, 0.8, 1.0],
@@ -139,12 +142,14 @@ class _CheckupWidgetState extends State<CheckupWidget> {
                                 0.0, 0.0, 0.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primaryColor,
-                            textStyle:
-                                FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Open Sans',
-                                      color: Colors.white,
-                                    ),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  color: Colors.white,
+                                ),
+                            elevation: 2.0,
                             borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,

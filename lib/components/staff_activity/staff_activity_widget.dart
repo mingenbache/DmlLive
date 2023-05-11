@@ -65,7 +65,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
               width: 50.0,
               height: 50.0,
               child: SpinKitRipple(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 size: 50.0,
               ),
             ),
@@ -173,13 +173,17 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                           Text(
                                             'STAFF ACTIVITY',
                                             style: FlutterFlowTheme.of(context)
-                                                .title1
+                                                .displaySmall
                                                 .override(
                                                   fontFamily: 'Open Sans',
                                                   color: Colors.white,
                                                 ),
                                           ),
                                           InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
                                             onTap: () async {
                                               context.pop();
                                             },
@@ -188,7 +192,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                   Clip.antiAliasWithSaveLayer,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryColor,
+                                                      .secondary,
                                               shape: RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(30.0),
@@ -201,7 +205,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                   Icons.close_rounded,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .tertiaryColor,
+                                                      .tertiary,
                                                   size: 30.0,
                                                 ),
                                                 onPressed: () async {
@@ -242,7 +246,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                   Icons.person,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryColor,
+                                                      .primary,
                                                   size: 18.0,
                                                 ),
                                                 Padding(
@@ -254,7 +258,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .subtitle1
+                                                        .titleMedium
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
@@ -332,7 +336,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                 .role!,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyText1
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Lexend Deca',
@@ -371,30 +375,35 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                           initialIndex: 0,
                                           child: Column(
                                             children: [
-                                              TabBar(
-                                                isScrollable: true,
-                                                labelColor: Color(0xFF586B06),
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .subtitle2,
-                                                indicatorColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                indicatorWeight: 2.0,
-                                                tabs: [
-                                                  Tab(
-                                                    text: 'User Info',
-                                                  ),
-                                                  Tab(
-                                                    text: 'Tests',
-                                                  ),
-                                                  Tab(
-                                                    text: 'Payments',
-                                                  ),
-                                                  Tab(
-                                                    text: 'Messages',
-                                                  ),
-                                                ],
+                                              Align(
+                                                alignment: Alignment(0.0, 0),
+                                                child: TabBar(
+                                                  isScrollable: true,
+                                                  labelColor: Color(0xFF586B06),
+                                                  labelStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall,
+                                                  indicatorColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondary,
+                                                  indicatorWeight: 2.0,
+                                                  tabs: [
+                                                    Tab(
+                                                      text: 'User Info',
+                                                    ),
+                                                    Tab(
+                                                      text: 'Tests',
+                                                    ),
+                                                    Tab(
+                                                      text: 'Payments',
+                                                    ),
+                                                    Tab(
+                                                      text: 'Messages',
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                               Expanded(
                                                 child: TabBarView(
@@ -489,7 +498,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                 maxWidth: 90.0,
                                                                               ),
                                                                               decoration: BoxDecoration(
-                                                                                color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                color: FlutterFlowTheme.of(context).primary,
                                                                                 borderRadius: BorderRadius.only(
                                                                                   bottomLeft: Radius.circular(15.0),
                                                                                   bottomRight: Radius.circular(0.0),
@@ -511,7 +520,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 3.0, 0.0),
                                                                                         child: Text(
                                                                                           'Total Tests',
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1,
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                         ),
                                                                                       ),
                                                                                     ),
@@ -548,7 +557,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                               width: 50.0,
                                                                                               height: 50.0,
                                                                                               child: SpinKitRipple(
-                                                                                                color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).primary,
                                                                                                 size: 50.0,
                                                                                               ),
                                                                                             ),
@@ -557,9 +566,9 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         List<BookedTestsRecord> textBookedTestsRecordList = snapshot.data!;
                                                                                         return Text(
                                                                                           textBookedTestsRecordList.length.toString(),
-                                                                                          style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                          style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                 fontFamily: 'Open Sans',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).secondary,
                                                                                               ),
                                                                                         );
                                                                                       },
@@ -610,7 +619,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                 maxWidth: 90.0,
                                                                               ),
                                                                               decoration: BoxDecoration(
-                                                                                color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                color: FlutterFlowTheme.of(context).primary,
                                                                                 borderRadius: BorderRadius.only(
                                                                                   bottomLeft: Radius.circular(15.0),
                                                                                   bottomRight: Radius.circular(0.0),
@@ -634,7 +643,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 2.0, 0.0),
                                                                                         child: Text(
                                                                                           'Incomplete Tests',
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1,
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                         ),
                                                                                       ),
                                                                                     ),
@@ -672,7 +681,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                               width: 50.0,
                                                                                               height: 50.0,
                                                                                               child: SpinKitRipple(
-                                                                                                color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).primary,
                                                                                                 size: 50.0,
                                                                                               ),
                                                                                             ),
@@ -681,9 +690,9 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         List<TestedTestsRecord> textTestedTestsRecordList = snapshot.data!;
                                                                                         return Text(
                                                                                           textTestedTestsRecordList.length.toString(),
-                                                                                          style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                          style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                 fontFamily: 'Open Sans',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).secondary,
                                                                                               ),
                                                                                         );
                                                                                       },
@@ -748,7 +757,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                           Icons
                                                                               .calendar_today,
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).secondary,
                                                                           size:
                                                                               24.0,
                                                                         ),
@@ -761,7 +770,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                           child:
                                                                               Text(
                                                                             'Date\nRegistered',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: Color(0xFF586B06),
                                                                                   fontWeight: FontWeight.w500,
@@ -823,7 +832,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                     columnUsersRecord.createdTime!,
                                                                                     locale: FFLocalizations.of(context).languageCode,
                                                                                   ),
-                                                                                  style: FlutterFlowTheme.of(context).subtitle1,
+                                                                                  style: FlutterFlowTheme.of(context).titleMedium,
                                                                                 ),
                                                                               ],
                                                                             ),
@@ -883,7 +892,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                           Icons
                                                                               .calendar_today,
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).secondary,
                                                                           size:
                                                                               24.0,
                                                                         ),
@@ -896,7 +905,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                           child:
                                                                               Text(
                                                                             'Last\nSigned-in',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: Color(0xFF586B06),
                                                                                   fontWeight: FontWeight.w500,
@@ -958,7 +967,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                     columnUsersRecord.lastLogin!,
                                                                                     locale: FFLocalizations.of(context).languageCode,
                                                                                   ),
-                                                                                  style: FlutterFlowTheme.of(context).subtitle1,
+                                                                                  style: FlutterFlowTheme.of(context).titleMedium,
                                                                                 ),
                                                                               ],
                                                                             ),
@@ -1018,7 +1027,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                           Icons
                                                                               .calendar_today,
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).secondaryColor,
+                                                                              FlutterFlowTheme.of(context).secondary,
                                                                           size:
                                                                               24.0,
                                                                         ),
@@ -1031,7 +1040,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                           child:
                                                                               Text(
                                                                             'Last\nTest',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: Color(0xFF586B06),
                                                                                   fontWeight: FontWeight.w500,
@@ -1089,7 +1098,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                               children: [
                                                                                 Text(
                                                                                   'Hello World',
-                                                                                  style: FlutterFlowTheme.of(context).subtitle1,
+                                                                                  style: FlutterFlowTheme.of(context).titleMedium,
                                                                                 ),
                                                                               ],
                                                                             ),
@@ -1133,7 +1142,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                         LinearGradient(
                                                                       colors: [
                                                                         FlutterFlowTheme.of(context)
-                                                                            .primaryColor,
+                                                                            .primary,
                                                                         Color(
                                                                             0xFF77A54A)
                                                                       ],
@@ -1170,7 +1179,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                           children: [
                                                                             Icon(
                                                                               Icons.person_sharp,
-                                                                              color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                              color: FlutterFlowTheme.of(context).tertiary,
                                                                               size: 24.0,
                                                                             ),
                                                                             Container(
@@ -1179,7 +1188,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                               child: Text(
                                                                                 'User Details',
                                                                                 textAlign: TextAlign.start,
-                                                                                style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                       fontFamily: 'Open Sans',
                                                                                       color: Colors.white,
                                                                                     ),
@@ -1217,7 +1226,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 3.0, 3.0),
                                                                                   child: Text(
                                                                                     'Display\nName',
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: Colors.white,
                                                                                           fontWeight: FontWeight.w500,
@@ -1236,9 +1245,9 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 3.0, 3.0),
                                                                                   child: Text(
                                                                                     columnUsersRecord.displayName!,
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
-                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                          color: FlutterFlowTheme.of(context).secondary,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -1276,7 +1285,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 3.0, 3.0),
                                                                                   child: Text(
                                                                                     'Email',
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: Colors.white,
                                                                                           fontWeight: FontWeight.w500,
@@ -1295,9 +1304,9 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 3.0, 3.0),
                                                                                   child: Text(
                                                                                     columnUsersRecord.email!,
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
-                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                          color: FlutterFlowTheme.of(context).secondary,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -1341,7 +1350,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 3.0, 3.0),
                                                                                   child: Text(
                                                                                     'Phone',
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: Colors.white,
                                                                                           fontWeight: FontWeight.w500,
@@ -1360,9 +1369,9 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 3.0, 3.0),
                                                                                   child: Text(
                                                                                     columnUsersRecord.phoneNumber!,
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
-                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                          color: FlutterFlowTheme.of(context).secondary,
                                                                                         ),
                                                                                   ),
                                                                                 ),
@@ -1406,7 +1415,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                       children: [
                                                                                         Text(
                                                                                           'Date of\nBirth',
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
                                                                                                 color: Colors.white,
                                                                                                 fontWeight: FontWeight.w500,
@@ -1437,9 +1446,9 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                               columnUsersRecord.dOB!,
                                                                                               locale: FFLocalizations.of(context).languageCode,
                                                                                             ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Open Sans',
-                                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                  color: FlutterFlowTheme.of(context).secondary,
                                                                                                 ),
                                                                                           ),
                                                                                         ),
@@ -1459,7 +1468,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                         child: Text(
                                                                                           'Sex',
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
                                                                                                 color: Colors.white,
                                                                                                 fontWeight: FontWeight.w500,
@@ -1487,9 +1496,9 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                           child: Text(
                                                                                             columnUsersRecord.sex!,
-                                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Open Sans',
-                                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                  color: FlutterFlowTheme.of(context).secondary,
                                                                                                   fontWeight: FontWeight.normal,
                                                                                                 ),
                                                                                           ),
@@ -1539,7 +1548,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                   SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryColor,
+                                                                    .primary,
                                                                 size: 50.0,
                                                               ),
                                                             ),
@@ -1628,7 +1637,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                   SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryColor,
+                                                                    .primary,
                                                                 size: 50.0,
                                                               ),
                                                             ),
@@ -1705,7 +1714,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                 width: 50.0,
                                                                                 height: 50.0,
                                                                                 child: SpinKitRipple(
-                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                  color: FlutterFlowTheme.of(context).primary,
                                                                                   size: 50.0,
                                                                                 ),
                                                                               ),
@@ -1714,6 +1723,14 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                           final containerPaymentsRecord =
                                                                               snapshot.data!;
                                                                           return InkWell(
+                                                                            splashColor:
+                                                                                Colors.transparent,
+                                                                            focusColor:
+                                                                                Colors.transparent,
+                                                                            hoverColor:
+                                                                                Colors.transparent,
+                                                                            highlightColor:
+                                                                                Colors.transparent,
                                                                             onTap:
                                                                                 () async {
                                                                               await showModalBottomSheet(
@@ -1721,9 +1738,9 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                 backgroundColor: Colors.transparent,
                                                                                 barrierColor: Color(0x00000000),
                                                                                 context: context,
-                                                                                builder: (context) {
+                                                                                builder: (bottomSheetContext) {
                                                                                   return Padding(
-                                                                                    padding: MediaQuery.of(context).viewInsets,
+                                                                                    padding: MediaQuery.of(bottomSheetContext).viewInsets,
                                                                                     child: PaymentWidget(
                                                                                       paymentRef: paymentsItem,
                                                                                     ),
@@ -1769,7 +1786,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                             locale: FFLocalizations.of(context).languageCode,
                                                                                           ),
                                                                                           textAlign: TextAlign.start,
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
                                                                                                 color: Color(0xFF586B06),
                                                                                                 fontWeight: FontWeight.w500,
@@ -1788,9 +1805,9 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(7.0, 9.0, 5.0, 5.0),
                                                                                         child: Text(
                                                                                           containerPaymentsRecord.transactionCode!.maybeHandleOverflow(maxChars: 8),
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).secondary,
                                                                                                 fontWeight: FontWeight.normal,
                                                                                               ),
                                                                                         ),
@@ -1803,14 +1820,14 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                         maxWidth: 70.0,
                                                                                       ),
                                                                                       decoration: BoxDecoration(
-                                                                                        color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                        color: FlutterFlowTheme.of(context).primary,
                                                                                         borderRadius: BorderRadius.circular(0.0),
                                                                                       ),
                                                                                       child: Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(9.0, 9.0, 5.0, 5.0),
                                                                                         child: Text(
                                                                                           containerPaymentsRecord.type!,
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
                                                                                                 color: Colors.white,
                                                                                                 fontWeight: FontWeight.w500,
@@ -1835,7 +1852,7 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                                                                                             currency: 'Ksh ',
                                                                                           ),
                                                                                           textAlign: TextAlign.start,
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
                                                                                                 color: Color(0xFF586B06),
                                                                                                 fontWeight: FontWeight.w500,
@@ -1906,9 +1923,10 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                             backgroundColor: Color(0x00FFFFFF),
                             barrierColor: Color(0x00000000),
                             context: context,
-                            builder: (context) {
+                            builder: (bottomSheetContext) {
                               return Padding(
-                                padding: MediaQuery.of(context).viewInsets,
+                                padding: MediaQuery.of(bottomSheetContext)
+                                    .viewInsets,
                                 child: EditUserRoleWidget(
                                   userRef: widget.userRef,
                                 ),
@@ -1924,13 +1942,12 @@ class _StaffActivityWidgetState extends State<StaffActivityWidget> {
                               0.0, 0.0, 0.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          color: FlutterFlowTheme.of(context).secondary,
                           textStyle: FlutterFlowTheme.of(context)
-                              .subtitle2
+                              .titleSmall
                               .override(
                                 fontFamily: 'Open Sans',
-                                color:
-                                    FlutterFlowTheme.of(context).tertiaryColor,
+                                color: FlutterFlowTheme.of(context).tertiary,
                               ),
                           elevation: 2.0,
                           borderSide: BorderSide(

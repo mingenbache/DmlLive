@@ -49,7 +49,7 @@ class _EmptyListWidgetState extends State<EmptyListWidget> {
       children: [
         FaIcon(
           FontAwesomeIcons.ban,
-          color: FlutterFlowTheme.of(context).secondaryColor,
+          color: FlutterFlowTheme.of(context).secondary,
           size: 90.0,
         ),
         Padding(
@@ -61,7 +61,7 @@ class _EmptyListWidgetState extends State<EmptyListWidget> {
               Text(
                 'No Items Added',
                 textAlign: TextAlign.center,
-                style: FlutterFlowTheme.of(context).title3.override(
+                style: FlutterFlowTheme.of(context).headlineSmall.override(
                       fontFamily: 'Open Sans',
                       color: FlutterFlowTheme.of(context).primaryText,
                     ),

@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/test_details_popup/test_details_popup_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -132,7 +132,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                 width: 50.0,
                 height: 50.0,
                 child: SpinKitRipple(
-                  color: FlutterFlowTheme.of(context).primaryColor,
+                  color: FlutterFlowTheme.of(context).primary,
                   size: 50.0,
                 ),
               ),
@@ -158,6 +158,10 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                 .toList()
                                 .contains(widget.test))
                               InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   if (widget.booking!.testsIncluded!
                                       .toList()
@@ -221,7 +225,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                           Icon(
                                             Icons.highlight_off_sharp,
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondary,
                                             size: 24.0,
                                           ),
                                         ],
@@ -237,6 +241,10 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                 .toList()
                                 .contains(widget.test))
                               InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   if (!widget.booking!.testsIncluded!
                                       .toList()
@@ -281,8 +289,8 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                         MediaQuery.of(context).size.width * 0.4,
                                     height: 100.0,
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(16.0),
@@ -348,15 +356,20 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               await showModalBottomSheet(
                                 isScrollControlled: true,
                                 backgroundColor: Colors.transparent,
                                 barrierColor: Color(0x00000000),
                                 context: context,
-                                builder: (context) {
+                                builder: (bottomSheetContext) {
                                   return Padding(
-                                    padding: MediaQuery.of(context).viewInsets,
+                                    padding: MediaQuery.of(bottomSheetContext)
+                                        .viewInsets,
                                     child: TestDetailsPopupWidget(
                                       test: stackTestsRecord,
                                     ),
@@ -406,7 +419,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                 FlutterFlowTheme.of(context)
                                                     .alternate,
                                                 FlutterFlowTheme.of(context)
-                                                    .primaryColor
+                                                    .primary
                                               ],
                                               stops: [0.0, 1.0],
                                               begin: AlignmentDirectional(
@@ -460,7 +473,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryColor,
+                                                      .primary,
                                             ),
                                           ),
                                         ),
@@ -509,7 +522,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                               BoxDecoration(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .tertiaryColor,
+                                                                .tertiary,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .only(
@@ -541,13 +554,13 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                                   .category!,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyText1
+                                                                  .bodyMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         'Lexend Deca',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .secondaryColor,
+                                                                        .secondary,
                                                                     fontSize:
                                                                         12.0,
                                                                     fontWeight:
@@ -580,20 +593,20 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                           Icons.timer,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryColor,
+                                                              .primary,
                                                           size: 20.0,
                                                         ),
                                                         Text(
                                                           '${stackTestsRecord.durationResults?.toString()} Hrs',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .bodyText1
+                                                              .bodyMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Roboto Mono',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryColor,
+                                                                    .secondary,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -660,7 +673,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                                 .delivery_dining,
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .primaryColor,
+                                                                .primary,
                                                             size: 20.0,
                                                           ),
                                                           Padding(
@@ -689,7 +702,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                                         Icons
                                                                             .check_circle_outline,
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .secondary,
                                                                         size:
                                                                             16.0,
                                                                       ),
@@ -707,7 +720,7 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                                                         Icons
                                                                             .not_interested,
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondaryColor,
+                                                                            .secondary,
                                                                         size:
                                                                             16.0,
                                                                       ),
@@ -843,11 +856,11 @@ class _TestItem4WidgetState extends State<TestItem4Widget>
                                         .maybeHandleOverflow(maxChars: 2),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
-                                        .bodyText1
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryColor,
+                                              .secondary,
                                           fontSize: 16.0,
                                         ),
                                   ),

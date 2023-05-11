@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -73,7 +73,7 @@ class _EditUserDetailsPopupWidgetState
                   width: 50.0,
                   height: 50.0,
                   child: SpinKitRipple(
-                    color: FlutterFlowTheme.of(context).primaryColor,
+                    color: FlutterFlowTheme.of(context).primary,
                     size: 50.0,
                   ),
                 ),
@@ -103,6 +103,9 @@ class _EditUserDetailsPopupWidgetState
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width * 1.0,
+                          constraints: BoxConstraints(
+                            maxWidth: 500.0,
+                          ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(30.0),
@@ -149,7 +152,7 @@ class _EditUserDetailsPopupWidgetState
                               gradient: LinearGradient(
                                 colors: [
                                   Color(0x656CD7B7),
-                                  FlutterFlowTheme.of(context).secondaryColor
+                                  FlutterFlowTheme.of(context).secondary
                                 ],
                                 stops: [0.0, 1.0],
                                 begin: AlignmentDirectional(0.0, -1.0),
@@ -178,7 +181,7 @@ class _EditUserDetailsPopupWidgetState
                                         Text(
                                           'EDIT USER',
                                           style: FlutterFlowTheme.of(context)
-                                              .title2
+                                              .headlineMedium
                                               .override(
                                                 fontFamily: 'Open Sans',
                                                 color:
@@ -189,6 +192,10 @@ class _EditUserDetailsPopupWidgetState
                                               ),
                                         ),
                                         InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
                                           onTap: () async {
                                             context.pop();
                                           },
@@ -196,7 +203,7 @@ class _EditUserDetailsPopupWidgetState
                                             clipBehavior:
                                                 Clip.antiAliasWithSaveLayer,
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondary,
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(30.0),
@@ -209,7 +216,7 @@ class _EditUserDetailsPopupWidgetState
                                                 Icons.close_rounded,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
+                                                        .tertiary,
                                                 size: 30.0,
                                               ),
                                               onPressed: () async {
@@ -320,7 +327,7 @@ class _EditUserDetailsPopupWidgetState
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
@@ -414,7 +421,7 @@ class _EditUserDetailsPopupWidgetState
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
@@ -456,7 +463,7 @@ class _EditUserDetailsPopupWidgetState
                                                     labelText: 'Email Address',
                                                     labelStyle: FlutterFlowTheme
                                                             .of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
@@ -470,7 +477,7 @@ class _EditUserDetailsPopupWidgetState
                                                         'Enter your email here...',
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Lexend Deca',
@@ -539,7 +546,7 @@ class _EditUserDetailsPopupWidgetState
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         color: FlutterFlowTheme
@@ -582,7 +589,7 @@ class _EditUserDetailsPopupWidgetState
                                                         'Enter your name here...',
                                                     hintStyle: FlutterFlowTheme
                                                             .of(context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Lexend Deca',
@@ -650,7 +657,7 @@ class _EditUserDetailsPopupWidgetState
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         color: FlutterFlowTheme
@@ -727,7 +734,7 @@ class _EditUserDetailsPopupWidgetState
                                                       textStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText1
+                                                              .bodyMedium
                                                               .override(
                                                                 fontFamily:
                                                                     'Open Sans',
@@ -761,7 +768,7 @@ class _EditUserDetailsPopupWidgetState
                                                       textStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText2
+                                                              .bodySmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Open Sans',
@@ -793,7 +800,7 @@ class _EditUserDetailsPopupWidgetState
                                                     alignment:
                                                         WrapAlignment.start,
                                                     controller: _model
-                                                            .sexChoiceChipsController ??=
+                                                            .sexChoiceChipsValueController ??=
                                                         FormFieldController<
                                                             List<String>>(
                                                       [
@@ -908,7 +915,8 @@ class _EditUserDetailsPopupWidgetState
                                                   textStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyText1,
+                                                          .bodyMedium,
+                                                  elevation: 2.0,
                                                   borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1.0,
@@ -983,7 +991,7 @@ class _EditUserDetailsPopupWidgetState
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   textStyle: FlutterFlowTheme.of(context)
-                                      .subtitle1
+                                      .titleMedium
                                       .override(
                                         fontFamily: 'Roboto',
                                         color: FlutterFlowTheme.of(context)

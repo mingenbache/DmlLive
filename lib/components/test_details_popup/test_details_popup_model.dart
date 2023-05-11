@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/admin_test_actions/admin_test_actions_widget.dart';
 import '/components/test_actions_widget/test_actions_widget_widget.dart';

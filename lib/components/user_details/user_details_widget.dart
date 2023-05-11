@@ -92,7 +92,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                   width: 50.0,
                   height: 50.0,
                   child: SpinKitRipple(
-                    color: FlutterFlowTheme.of(context).primaryColor,
+                    color: FlutterFlowTheme.of(context).primary,
                     size: 50.0,
                   ),
                 ),
@@ -102,7 +102,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
             return Container(
               height: MediaQuery.of(context).size.height * 0.66,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(0.0),
                   bottomRight: Radius.circular(0.0),
@@ -126,7 +126,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                         width: MediaQuery.of(context).size.width * 1.0,
                         height: MediaQuery.of(context).size.height * 0.55,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).tertiaryColor,
+                          color: FlutterFlowTheme.of(context).tertiary,
                           borderRadius: BorderRadius.circular(46.0),
                         ),
                         child: Column(
@@ -143,7 +143,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                   Text(
                                     'USER DETAILS',
                                     style: FlutterFlowTheme.of(context)
-                                        .title2
+                                        .headlineMedium
                                         .override(
                                           fontFamily: 'Open Sans',
                                           color: Color(0xFF586B06),
@@ -152,13 +152,17 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                         ),
                                   ),
                                   InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.pop();
                                     },
                                     child: Card(
                                       clipBehavior: Clip.antiAliasWithSaveLayer,
                                       color: FlutterFlowTheme.of(context)
-                                          .secondaryColor,
+                                          .secondary,
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(30.0),
@@ -170,7 +174,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                         icon: Icon(
                                           Icons.close_rounded,
                                           color: FlutterFlowTheme.of(context)
-                                              .tertiaryColor,
+                                              .tertiary,
                                           size: 30.0,
                                         ),
                                         onPressed: () async {
@@ -226,7 +230,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                 'Name:',
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .subtitle2
+                                                    .titleSmall
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color: Color(0xFF586B06),
@@ -260,7 +264,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                   style: TextStyle(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondaryColor,
+                                                        .secondary,
                                                     fontWeight: FontWeight.w500,
                                                     fontSize: 15.0,
                                                   ),
@@ -292,7 +296,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                 'Phone:',
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .subtitle2
+                                                    .titleSmall
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color: Color(0xFF586B06),
@@ -326,7 +330,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .secondaryColor,
+                                                              .secondary,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       fontSize: 15.0,
@@ -360,7 +364,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                 'Email:',
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .subtitle2
+                                                    .titleSmall
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color: Color(0xFF586B06),
@@ -388,7 +392,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                   style: TextStyle(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondaryColor,
+                                                        .secondary,
                                                     fontWeight: FontWeight.w500,
                                                     fontSize: 15.0,
                                                   ),
@@ -423,7 +427,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                 'D.O.B:',
                                                 style: FlutterFlowTheme.of(
                                                         context)
-                                                    .subtitle2
+                                                    .titleSmall
                                                     .override(
                                                       fontFamily: 'Open Sans',
                                                       color: Color(0xFF586B06),
@@ -469,13 +473,13 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryColor,
+                                                              .secondary,
                                                           fontSize: 15.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -523,7 +527,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                     'Sex:',
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .subtitle2
+                                                        .titleSmall
                                                         .override(
                                                           fontFamily:
                                                               'Open Sans',
@@ -559,13 +563,13 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryColor,
+                                                                .secondary,
                                                         fontSize: 15.0,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -603,7 +607,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                   textAlign: TextAlign.end,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .subtitle2
+                                                      .titleSmall
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
@@ -636,7 +640,7 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                                   style: TextStyle(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondaryColor,
+                                                        .secondary,
                                                     fontWeight: FontWeight.w500,
                                                     fontSize: 15.0,
                                                   ),
@@ -673,10 +677,11 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                     backgroundColor: Color(0x00FFFFFF),
                                     barrierColor: Color(0x00000000),
                                     context: context,
-                                    builder: (context) {
+                                    builder: (bottomSheetContext) {
                                       return Padding(
                                         padding:
-                                            MediaQuery.of(context).viewInsets,
+                                            MediaQuery.of(bottomSheetContext)
+                                                .viewInsets,
                                         child: EditUserRoleWidget(
                                           userRef: widget.userRef,
                                         ),
@@ -692,14 +697,13 @@ class _UserDetailsWidgetState extends State<UserDetailsWidget>
                                       0.0, 0.0, 0.0, 0.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryColor,
+                                  color: FlutterFlowTheme.of(context).secondary,
                                   textStyle: FlutterFlowTheme.of(context)
-                                      .subtitle2
+                                      .titleSmall
                                       .override(
                                         fontFamily: 'Open Sans',
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .tertiary,
                                       ),
                                   elevation: 2.0,
                                   borderSide: BorderSide(

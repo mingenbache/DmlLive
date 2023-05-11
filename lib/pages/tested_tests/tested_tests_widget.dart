@@ -43,10 +43,10 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
 
     return Title(
         title: 'TestedTests',
-        color: FlutterFlowTheme.of(context).primaryColor,
+        color: FlutterFlowTheme.of(context).primary,
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
+          backgroundColor: FlutterFlowTheme.of(context).tertiary,
           body: SafeArea(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -68,7 +68,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                         child: Text(
                           'TEST DASHBOARD',
                           textAlign: TextAlign.start,
-                          style: FlutterFlowTheme.of(context).title1.override(
+                          style: FlutterFlowTheme.of(context)
+                              .displaySmall
+                              .override(
                                 fontFamily: 'Open Sans',
                                 color: Color(0xFF586B06),
                               ),
@@ -88,28 +90,32 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                       initialIndex: 0,
                       child: Column(
                         children: [
-                          TabBar(
-                            isScrollable: true,
-                            labelColor: Color(0xFF586B06),
-                            unselectedLabelColor:
-                                FlutterFlowTheme.of(context).primaryColor,
-                            labelStyle: FlutterFlowTheme.of(context).subtitle2,
-                            indicatorColor: Color(0xFF586B06),
-                            indicatorWeight: 3.0,
-                            tabs: [
-                              Tab(
-                                text: 'Unverified',
-                              ),
-                              Tab(
-                                text: 'Incomplete',
-                              ),
-                              Tab(
-                                text: 'Flagged',
-                              ),
-                              Tab(
-                                text: 'Frozen Tests',
-                              ),
-                            ],
+                          Align(
+                            alignment: Alignment(0.0, 0),
+                            child: TabBar(
+                              isScrollable: true,
+                              labelColor: Color(0xFF586B06),
+                              unselectedLabelColor:
+                                  FlutterFlowTheme.of(context).primary,
+                              labelStyle:
+                                  FlutterFlowTheme.of(context).titleSmall,
+                              indicatorColor: Color(0xFF586B06),
+                              indicatorWeight: 3.0,
+                              tabs: [
+                                Tab(
+                                  text: 'Unverified',
+                                ),
+                                Tab(
+                                  text: 'Incomplete',
+                                ),
+                                Tab(
+                                  text: 'Flagged',
+                                ),
+                                Tab(
+                                  text: 'Frozen Tests',
+                                ),
+                              ],
+                            ),
                           ),
                           Expanded(
                             child: TabBarView(
@@ -153,7 +159,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .primaryColor,
+                                                              .primary,
                                                       size: 50.0,
                                                     ),
                                                   ),
@@ -197,7 +203,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                   SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryColor,
+                                                                    .primary,
                                                                 size: 50.0,
                                                               ),
                                                             ),
@@ -231,7 +237,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                 BoxDecoration(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primaryColor,
+                                                                  .primary,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
@@ -248,7 +254,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                       BoxDecoration(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primaryColor,
+                                                                        .primary,
                                                                     borderRadius:
                                                                         BorderRadius
                                                                             .only(
@@ -284,10 +290,10 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                               .add1(listViewIndex)!
                                                                               .toString(),
                                                                           style: FlutterFlowTheme.of(context)
-                                                                              .subtitle1
+                                                                              .titleMedium
                                                                               .override(
                                                                                 fontFamily: 'Open Sans',
-                                                                                color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                color: FlutterFlowTheme.of(context).tertiary,
                                                                                 fontWeight: FontWeight.w500,
                                                                               ),
                                                                         ),
@@ -310,7 +316,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     width: 50.0,
                                                                                     height: 50.0,
                                                                                     child: SpinKitRipple(
-                                                                                      color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                      color: FlutterFlowTheme.of(context).primary,
                                                                                       size: 50.0,
                                                                                     ),
                                                                                   ),
@@ -403,9 +409,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                         decoration: BoxDecoration(),
                                                                                         child: Text(
                                                                                           functions.dateMonth(listViewTestedTestsRecord.dateConducted),
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
-                                                                                                color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).primary,
                                                                                                 fontSize: 12.0,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -415,9 +421,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                         decoration: BoxDecoration(),
                                                                                         child: Text(
                                                                                           functions.dateDay(listViewTestedTestsRecord.dateConducted),
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).secondary,
                                                                                                 fontSize: 24.0,
                                                                                                 fontWeight: FontWeight.w600,
                                                                                               ),
@@ -427,9 +433,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                         decoration: BoxDecoration(),
                                                                                         child: Text(
                                                                                           functions.dateYear(listViewTestedTestsRecord.dateConducted),
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).secondary,
                                                                                                 fontSize: 12.0,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -485,9 +491,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                             child: Text(
                                                                                               'REF',
-                                                                                              style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: 'Lexend Deca',
-                                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                    color: FlutterFlowTheme.of(context).secondary,
                                                                                                     fontSize: 14.0,
                                                                                                     fontWeight: FontWeight.w500,
                                                                                                   ),
@@ -504,7 +510,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                             child: Text(
                                                                                               listViewTestedTestsRecord.labRefNum!,
-                                                                                              style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: 'Lexend Deca',
                                                                                                     color: Color(0xFF586B06),
                                                                                                     fontSize: 14.0,
@@ -535,9 +541,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                             child: Text(
                                                                                               'NAME',
-                                                                                              style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: 'Lexend Deca',
-                                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                    color: FlutterFlowTheme.of(context).secondary,
                                                                                                     fontSize: 14.0,
                                                                                                     fontWeight: FontWeight.w500,
                                                                                                   ),
@@ -557,7 +563,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                                 maxChars: 20,
                                                                                                 replacement: '…',
                                                                                               ),
-                                                                                              style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: 'Lexend Deca',
                                                                                                     color: Color(0xFF586B06),
                                                                                                     fontSize: 14.0,
@@ -588,9 +594,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                             child: Text(
                                                                                               'STAFF',
-                                                                                              style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: 'Lexend Deca',
-                                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                    color: FlutterFlowTheme.of(context).secondary,
                                                                                                     fontSize: 14.0,
                                                                                                     fontWeight: FontWeight.w500,
                                                                                                   ),
@@ -607,7 +613,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                             child: Text(
                                                                                               'REF',
-                                                                                              style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: 'Lexend Deca',
                                                                                                     color: Color(0xFF586B06),
                                                                                                     fontSize: 14.0,
@@ -684,7 +690,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                       child: Text(
                                                                                         'Verify',
                                                                                         textAlign: TextAlign.center,
-                                                                                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: 'Open Sans',
                                                                                               color: Colors.white,
                                                                                             ),
@@ -703,6 +709,10 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                               Stack(
                                                                             children: [
                                                                               InkWell(
+                                                                                splashColor: Colors.transparent,
+                                                                                focusColor: Colors.transparent,
+                                                                                hoverColor: Colors.transparent,
+                                                                                highlightColor: Colors.transparent,
                                                                                 onTap: () async {
                                                                                   context.pushNamed(
                                                                                     'TestDeck',
@@ -739,7 +749,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                           child: Text(
                                                                                             'Freeze',
                                                                                             textAlign: TextAlign.center,
-                                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Open Sans',
                                                                                                   color: Colors.white,
                                                                                                 ),
@@ -808,7 +818,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .primaryColor,
+                                                              .primary,
                                                       size: 50.0,
                                                     ),
                                                   ),
@@ -852,7 +862,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                   SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryColor,
+                                                                    .primary,
                                                                 size: 50.0,
                                                               ),
                                                             ),
@@ -886,7 +896,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                 BoxDecoration(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primaryColor,
+                                                                  .primary,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
@@ -918,7 +928,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                           child:
                                                                               SpinKitRipple(
                                                                             color:
-                                                                                FlutterFlowTheme.of(context).primaryColor,
+                                                                                FlutterFlowTheme.of(context).primary,
                                                                             size:
                                                                                 50.0,
                                                                           ),
@@ -934,7 +944,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primaryColor,
+                                                                            .primary,
                                                                         borderRadius:
                                                                             BorderRadius.only(
                                                                           bottomLeft:
@@ -961,9 +971,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                           children: [
                                                                             Text(
                                                                               functions.add1(listViewIndex)!.toString(),
-                                                                              style: FlutterFlowTheme.of(context).subtitle1.override(
+                                                                              style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                     fontFamily: 'Open Sans',
-                                                                                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                    color: FlutterFlowTheme.of(context).tertiary,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
                                                                             ),
@@ -1055,9 +1065,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                         decoration: BoxDecoration(),
                                                                                         child: Text(
                                                                                           functions.dateMonth(listViewTestedTestsRecord.dateSampleCollected),
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
-                                                                                                color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).primary,
                                                                                                 fontSize: 12.0,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -1067,9 +1077,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                         decoration: BoxDecoration(),
                                                                                         child: Text(
                                                                                           functions.dateDay(listViewTestedTestsRecord.dateSampleCollected),
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).secondary,
                                                                                                 fontSize: 24.0,
                                                                                                 fontWeight: FontWeight.w600,
                                                                                               ),
@@ -1079,9 +1089,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                         decoration: BoxDecoration(),
                                                                                         child: Text(
                                                                                           functions.dateYear(listViewTestedTestsRecord.dateSampleCollected),
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).secondary,
                                                                                                 fontSize: 12.0,
                                                                                                 fontWeight: FontWeight.w500,
                                                                                               ),
@@ -1137,9 +1147,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                             child: Text(
                                                                                               'REF',
-                                                                                              style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: 'Lexend Deca',
-                                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                    color: FlutterFlowTheme.of(context).secondary,
                                                                                                     fontSize: 14.0,
                                                                                                     fontWeight: FontWeight.w500,
                                                                                                   ),
@@ -1156,7 +1166,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                             child: Text(
                                                                                               listViewTestedTestsRecord.labRefNum!,
-                                                                                              style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: 'Lexend Deca',
                                                                                                     color: Color(0xFF586B06),
                                                                                                     fontSize: 14.0,
@@ -1187,9 +1197,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                             child: Text(
                                                                                               'NAME',
-                                                                                              style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: 'Lexend Deca',
-                                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                    color: FlutterFlowTheme.of(context).secondary,
                                                                                                     fontSize: 14.0,
                                                                                                     fontWeight: FontWeight.w500,
                                                                                                   ),
@@ -1209,7 +1219,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                                 maxChars: 20,
                                                                                                 replacement: '…',
                                                                                               ),
-                                                                                              style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: 'Lexend Deca',
                                                                                                     color: Color(0xFF586B06),
                                                                                                     fontSize: 14.0,
@@ -1240,9 +1250,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                             child: Text(
                                                                                               'STAFF',
-                                                                                              style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: 'Lexend Deca',
-                                                                                                    color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                    color: FlutterFlowTheme.of(context).secondary,
                                                                                                     fontSize: 14.0,
                                                                                                     fontWeight: FontWeight.w500,
                                                                                                   ),
@@ -1259,7 +1269,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                             padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                             child: Text(
                                                                                               'REF',
-                                                                                              style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                              style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                                     fontFamily: 'Lexend Deca',
                                                                                                     color: Color(0xFF586B06),
                                                                                                     fontSize: 14.0,
@@ -1338,7 +1348,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                   child: Text(
                                                                                     'Sample Collected',
                                                                                     textAlign: TextAlign.center,
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: Colors.white,
                                                                                         ),
@@ -1411,7 +1421,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                   child: SpinKitRipple(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryColor,
+                                                        .primary,
                                                     size: 50.0,
                                                   ),
                                                 ),
@@ -1487,7 +1497,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                       child:
                                                                           SpinKitRipple(
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primaryColor,
+                                                                            .primary,
                                                                         size:
                                                                             50.0,
                                                                       ),
@@ -1518,7 +1528,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                           containerTestsRecord
                                                                               .name!,
                                                                           style:
-                                                                              FlutterFlowTheme.of(context).subtitle1,
+                                                                              FlutterFlowTheme.of(context).titleMedium,
                                                                         ),
                                                                       ],
                                                                     ),
@@ -1591,9 +1601,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     decoration: BoxDecoration(),
                                                                                     child: Text(
                                                                                       'OCT',
-                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Open Sans',
-                                                                                            color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                            color: FlutterFlowTheme.of(context).primary,
                                                                                             fontSize: 12.0,
                                                                                             fontWeight: FontWeight.w500,
                                                                                           ),
@@ -1603,9 +1613,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     decoration: BoxDecoration(),
                                                                                     child: Text(
                                                                                       '21',
-                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Open Sans',
-                                                                                            color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                            color: FlutterFlowTheme.of(context).secondary,
                                                                                             fontSize: 24.0,
                                                                                             fontWeight: FontWeight.w600,
                                                                                           ),
@@ -1615,9 +1625,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     decoration: BoxDecoration(),
                                                                                     child: Text(
                                                                                       '2021',
-                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Open Sans',
-                                                                                            color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                            color: FlutterFlowTheme.of(context).secondary,
                                                                                             fontSize: 12.0,
                                                                                             fontWeight: FontWeight.w500,
                                                                                           ),
@@ -1679,9 +1689,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                     child: Text(
                                                                                       'REF',
-                                                                                      style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                      style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                             fontFamily: 'Lexend Deca',
-                                                                                            color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                            color: FlutterFlowTheme.of(context).secondary,
                                                                                             fontSize: 14.0,
                                                                                             fontWeight: FontWeight.w500,
                                                                                           ),
@@ -1698,7 +1708,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                     padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                     child: Text(
                                                                                       listViewTestedTestsRecord.labRefNum!,
-                                                                                      style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                      style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                             fontFamily: 'Lexend Deca',
                                                                                             color: Color(0xFF586B06),
                                                                                             fontSize: 14.0,
@@ -1737,9 +1747,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(7.0, 9.0, 0.0, 5.0),
                                                                                         child: Text(
                                                                                           'Test Done on',
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).secondary,
                                                                                                 fontWeight: FontWeight.normal,
                                                                                               ),
                                                                                         ),
@@ -1758,7 +1768,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                               listViewTestedTestsRecord.dateConducted!,
                                                                                               locale: FFLocalizations.of(context).languageCode,
                                                                                             ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Open Sans',
                                                                                                   color: Color(0xFF586B06),
                                                                                                   fontWeight: FontWeight.w500,
@@ -1795,9 +1805,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                           padding: EdgeInsetsDirectional.fromSTEB(3.0, 9.0, 0.0, 5.0),
                                                                                           child: Text(
                                                                                             'Submitted by',
-                                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Open Sans',
-                                                                                                  color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                  color: FlutterFlowTheme.of(context).secondary,
                                                                                                   fontWeight: FontWeight.normal,
                                                                                                 ),
                                                                                           ),
@@ -1813,7 +1823,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                         children: [
                                                                                           Text(
                                                                                             'Staff Name',
-                                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Open Sans',
                                                                                                   color: Color(0xFF586B06),
                                                                                                   fontWeight: FontWeight.w500,
@@ -1861,7 +1871,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                           Icons
                                                                               .chevron_right_rounded,
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).primaryColor,
+                                                                              FlutterFlowTheme.of(context).primary,
                                                                           size:
                                                                               24.0,
                                                                         ),
@@ -1958,7 +1968,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                     'Test Name',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .subtitle1,
+                                                                        .titleMedium,
                                                                   ),
                                                                 ],
                                                               ),
@@ -2034,9 +2044,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                   decoration: BoxDecoration(),
                                                                                   child: Text(
                                                                                     'OCT',
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
-                                                                                          color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                          color: FlutterFlowTheme.of(context).primary,
                                                                                           fontSize: 12.0,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -2046,9 +2056,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                   decoration: BoxDecoration(),
                                                                                   child: Text(
                                                                                     '21',
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
-                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                          color: FlutterFlowTheme.of(context).secondary,
                                                                                           fontSize: 24.0,
                                                                                           fontWeight: FontWeight.w600,
                                                                                         ),
@@ -2058,9 +2068,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                   decoration: BoxDecoration(),
                                                                                   child: Text(
                                                                                     '2021',
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
-                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                          color: FlutterFlowTheme.of(context).secondary,
                                                                                           fontSize: 12.0,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -2122,9 +2132,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                   child: Text(
                                                                                     'REF',
-                                                                                    style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                           fontFamily: 'Lexend Deca',
-                                                                                          color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                          color: FlutterFlowTheme.of(context).secondary,
                                                                                           fontSize: 14.0,
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -2141,7 +2151,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(7.0, 3.0, 8.0, 3.0),
                                                                                   child: Text(
                                                                                     'REF',
-                                                                                    style: FlutterFlowTheme.of(context).bodyText2.override(
+                                                                                    style: FlutterFlowTheme.of(context).bodySmall.override(
                                                                                           fontFamily: 'Lexend Deca',
                                                                                           color: Color(0xFF586B06),
                                                                                           fontSize: 14.0,
@@ -2185,9 +2195,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                       padding: EdgeInsetsDirectional.fromSTEB(7.0, 9.0, 0.0, 5.0),
                                                                                       child: Text(
                                                                                         'Note',
-                                                                                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               fontFamily: 'Open Sans',
-                                                                                              color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                              color: FlutterFlowTheme.of(context).secondary,
                                                                                               fontWeight: FontWeight.normal,
                                                                                             ),
                                                                                       ),
@@ -2202,7 +2212,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                       children: [
                                                                                         Text(
                                                                                           'Freeze reason',
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
                                                                                                 color: Color(0xFF586B06),
                                                                                                 fontWeight: FontWeight.w500,
@@ -2244,9 +2254,9 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(3.0, 9.0, 0.0, 5.0),
                                                                                         child: Text(
                                                                                           'Submitted by',
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
-                                                                                                color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                color: FlutterFlowTheme.of(context).secondary,
                                                                                                 fontWeight: FontWeight.normal,
                                                                                               ),
                                                                                         ),
@@ -2262,7 +2272,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                                       children: [
                                                                                         Text(
                                                                                           'Staff Name',
-                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Open Sans',
                                                                                                 color: Color(0xFF586B06),
                                                                                                 fontWeight: FontWeight.w500,
@@ -2308,7 +2318,7 @@ class _TestedTestsWidgetState extends State<TestedTestsWidget> {
                                                                         Icons
                                                                             .chevron_right_rounded,
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .primaryColor,
+                                                                            .primary,
                                                                         size:
                                                                             24.0,
                                                                       ),

@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/payment_actions_widget/payment_actions_widget_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';

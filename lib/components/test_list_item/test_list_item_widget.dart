@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/duplicate_tests/duplicate_tests_widget.dart';
 import '/components/test_details_popup/test_details_popup_widget.dart';
@@ -184,6 +184,10 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                               .toList()
                               .contains(widget.test!.reference))
                             InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 if (widget.booking!.testsIncluded!
                                     .toList()
@@ -251,7 +255,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                           child: Icon(
                                             Icons.highlight_off_sharp,
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondary,
                                             size: 24.0,
                                           ),
                                         ),
@@ -268,6 +272,10 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                               .toList()
                               .contains(widget.test!.reference))
                             InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               onTap: () async {
                                 if (!widget.booking!.testsIncluded!
                                     .toList()
@@ -303,10 +311,11 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                       backgroundColor: Colors.transparent,
                                       barrierColor: Color(0x00000000),
                                       context: context,
-                                      builder: (context) {
+                                      builder: (bottomSheetContext) {
                                         return Padding(
                                           padding:
-                                              MediaQuery.of(context).viewInsets,
+                                              MediaQuery.of(bottomSheetContext)
+                                                  .viewInsets,
                                           child: DuplicateTestsWidget(
                                             booking: widget.booking,
                                           ),
@@ -336,8 +345,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                       MediaQuery.of(context).size.width * 0.15,
                                   height: 100.0,
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
                                     borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(0.0),
                                       bottomRight: Radius.circular(16.0),
@@ -395,16 +404,21 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                           child: Stack(
                             children: [
                               InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
                                 onTap: () async {
                                   await showModalBottomSheet(
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
                                     barrierColor: Color(0x00000000),
                                     context: context,
-                                    builder: (context) {
+                                    builder: (bottomSheetContext) {
                                       return Padding(
                                         padding:
-                                            MediaQuery.of(context).viewInsets,
+                                            MediaQuery.of(bottomSheetContext)
+                                                .viewInsets,
                                         child: TestDetailsPopupWidget(
                                           test: widget.test,
                                           booking: widget.booking!.reference,
@@ -422,8 +436,8 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                     maxHeight: 130.0,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Padding(
@@ -450,7 +464,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyText1
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Open Sans',
                                                         color:
@@ -622,7 +636,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                           .category!,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1
+                                                                          .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Lexend Deca',
@@ -675,7 +689,7 @@ class _TestListItemWidgetState extends State<TestListItemWidget>
                                                                   '${widget.test!.durationResults?.toString()} Hrs',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyText1
+                                                                      .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Roboto Mono',

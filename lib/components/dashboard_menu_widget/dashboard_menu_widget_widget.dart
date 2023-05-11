@@ -83,12 +83,13 @@ class _DashboardMenuWidgetWidgetState extends State<DashboardMenuWidgetWidget> {
                           child: Text(
                             'Previous Tests',
                             textAlign: TextAlign.center,
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Open Sans',
-                                      color: Color(0xFFBACA68),
-                                      fontSize: 12.0,
-                                    ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  color: Color(0xFFBACA68),
+                                  fontSize: 12.0,
+                                ),
                           ),
                         ),
                       ),
@@ -136,12 +137,13 @@ class _DashboardMenuWidgetWidgetState extends State<DashboardMenuWidgetWidget> {
                           child: Text(
                             'Upcoming Tests',
                             textAlign: TextAlign.center,
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Open Sans',
-                                      color: Color(0xFFBACA68),
-                                      fontSize: 12.0,
-                                    ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  color: Color(0xFFBACA68),
+                                  fontSize: 12.0,
+                                ),
                           ),
                         ),
                       ),
@@ -189,12 +191,13 @@ class _DashboardMenuWidgetWidgetState extends State<DashboardMenuWidgetWidget> {
                           child: Text(
                             'Payments',
                             textAlign: TextAlign.center,
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Open Sans',
-                                      color: Color(0xFFBACA68),
-                                      fontSize: 12.0,
-                                    ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  color: Color(0xFFBACA68),
+                                  fontSize: 12.0,
+                                ),
                           ),
                         ),
                       ),
@@ -241,12 +244,13 @@ class _DashboardMenuWidgetWidgetState extends State<DashboardMenuWidgetWidget> {
                           child: Text(
                             'Help Center',
                             textAlign: TextAlign.center,
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Open Sans',
-                                      color: Color(0xFFBACA68),
-                                      fontSize: 12.0,
-                                    ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  color: Color(0xFFBACA68),
+                                  fontSize: 12.0,
+                                ),
                           ),
                         ),
                       ),

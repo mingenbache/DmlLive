@@ -53,8 +53,8 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              FlutterFlowTheme.of(context).tertiaryColor,
-              FlutterFlowTheme.of(context).primaryColor
+              FlutterFlowTheme.of(context).tertiary,
+              FlutterFlowTheme.of(context).primary
             ],
             stops: [0.0, 1.0],
             begin: AlignmentDirectional(0.0, -1.0),
@@ -72,6 +72,10 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                 child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
                   onTap: () async {
                     FFAppState().update(() {
                       FFAppState().userListQuery = '';
@@ -88,7 +92,7 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.2,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryColor,
+                        color: FlutterFlowTheme.of(context).secondary,
                         borderRadius: BorderRadius.circular(20.0),
                         shape: BoxShape.rectangle,
                       ),
@@ -99,19 +103,19 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
                         children: [
                           Icon(
                             Icons.people,
-                            color: FlutterFlowTheme.of(context).tertiaryColor,
+                            color: FlutterFlowTheme.of(context).tertiary,
                             size: 40.0,
                           ),
                           Text(
                             'Users',
                             textAlign: TextAlign.center,
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Roboto',
-                                      color: FlutterFlowTheme.of(context)
-                                          .tertiaryColor,
-                                      fontSize: 14.0,
-                                    ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Roboto',
+                                  color: FlutterFlowTheme.of(context).tertiary,
+                                  fontSize: 14.0,
+                                ),
                           ),
                         ],
                       ),
@@ -122,6 +126,10 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                 child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
                   onTap: () async {
                     context.pushNamed('BookingsSchedule');
                   },
@@ -155,7 +163,7 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
                               'Bookings',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
-                                  .bodyText1
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Roboto',
                                     fontSize: 14.0,
@@ -171,6 +179,10 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                 child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
                   onTap: () async {
                     context.pushNamed('PaymentsList');
                   },
@@ -199,11 +211,12 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
                           ),
                           Text(
                             'Payments',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Roboto',
-                                      color: Colors.white,
-                                    ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Roboto',
+                                  color: Colors.white,
+                                ),
                           ),
                         ],
                       ),
@@ -214,6 +227,10 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(3.0, 3.0, 3.0, 3.0),
                 child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
                   onTap: () async {
                     FFAppState().update(() {
                       FFAppState().allCategories = true;
@@ -223,9 +240,9 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
                       backgroundColor: Colors.transparent,
                       barrierColor: Color(0x00000000),
                       context: context,
-                      builder: (context) {
+                      builder: (bottomSheetContext) {
                         return Padding(
-                          padding: MediaQuery.of(context).viewInsets,
+                          padding: MediaQuery.of(bottomSheetContext).viewInsets,
                           child: TestListCatalogWidget(),
                         );
                       },
@@ -245,14 +262,14 @@ class _ClientActionsWidgetWidgetState extends State<ClientActionsWidgetWidget> {
                       children: [
                         FaIcon(
                           FontAwesomeIcons.flask,
-                          color: FlutterFlowTheme.of(context).primaryColor,
+                          color: FlutterFlowTheme.of(context).primary,
                           size: 40.0,
                         ),
                         Text(
                           'Catalog',
                           textAlign: TextAlign.center,
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Roboto',
                                     color: Color(0xFF586B06),
                                   ),

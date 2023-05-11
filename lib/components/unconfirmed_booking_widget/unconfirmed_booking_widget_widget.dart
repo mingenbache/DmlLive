@@ -91,6 +91,10 @@ class _UnconfirmedBookingWidgetWidgetState
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: InkWell(
+        splashColor: Colors.transparent,
+        focusColor: Colors.transparent,
+        hoverColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         onTap: () async {
           context.pushNamed(
             'BookingConfirmation',
@@ -112,7 +116,7 @@ class _UnconfirmedBookingWidgetWidgetState
             width: MediaQuery.of(context).size.width * 0.8,
             height: 180.0,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).secondaryColor,
+              color: FlutterFlowTheme.of(context).secondary,
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: Padding(
@@ -274,7 +278,7 @@ class _UnconfirmedBookingWidgetWidgetState
                                           height: 50.0,
                                           child: SpinKitRipple(
                                             color: FlutterFlowTheme.of(context)
-                                                .primaryColor,
+                                                .primary,
                                             size: 50.0,
                                           ),
                                         ),
@@ -300,7 +304,7 @@ class _UnconfirmedBookingWidgetWidgetState
                                               textAlign: TextAlign.center,
                                               style: FlutterFlowTheme.of(
                                                       context)
-                                                  .bodyText1
+                                                  .bodyMedium
                                                   .override(
                                                     fontFamily: 'Open Sans',
                                                     color: FlutterFlowTheme.of(

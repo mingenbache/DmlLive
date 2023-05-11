@@ -34,6 +34,12 @@ class InvoicePaymentWidget extends StatefulWidget {
 class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
   late InvoicePaymentModel _model;
 
+  int get pageViewCurrentIndex => _model.pageViewController != null &&
+          _model.pageViewController!.hasClients &&
+          _model.pageViewController!.page != null
+      ? _model.pageViewController!.page!.round()
+      : 0;
+
   @override
   void setState(VoidCallback callback) {
     super.setState(callback);
@@ -71,7 +77,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                 width: 50.0,
                 height: 50.0,
                 child: SpinKitRipple(
-                  color: FlutterFlowTheme.of(context).primaryColor,
+                  color: FlutterFlowTheme.of(context).primary,
                   size: 50.0,
                 ),
               ),
@@ -79,15 +85,19 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
           }
           final containerInvoicesRecord = snapshot.data!;
           return InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onTap: () async {
               await showModalBottomSheet(
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,
                 barrierColor: Color(0x00000000),
                 context: context,
-                builder: (context) {
+                builder: (bottomSheetContext) {
                   return Padding(
-                    padding: MediaQuery.of(context).viewInsets,
+                    padding: MediaQuery.of(bottomSheetContext).viewInsets,
                     child: InvoiceSheetWidget(
                       booking: widget.booking!.reference,
                       invoiceRef: widget.invoice,
@@ -100,10 +110,10 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
               width: MediaQuery.of(context).size.width * 0.8,
               height: 240.0,
               constraints: BoxConstraints(
-                maxWidth: 380.0,
+                maxWidth: 350.0,
               ),
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryColor,
+                color: FlutterFlowTheme.of(context).secondary,
                 borderRadius: BorderRadius.circular(16.0),
               ),
               child: Padding(
@@ -129,7 +139,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                 textAlign: TextAlign.center,
                                 maxLines: 1,
                                 style: FlutterFlowTheme.of(context)
-                                    .bodyText1
+                                    .bodyMedium
                                     .override(
                                       fontFamily: 'Open Sans',
                                       color: FlutterFlowTheme.of(context)
@@ -163,7 +173,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                         functions.returnInvoiceStatus(
                                             containerInvoicesRecord),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText1
+                                            .bodyMedium
                                             .override(
                                               fontFamily: 'Lexend Deca',
                                               color:
@@ -272,7 +282,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyText2
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Lexend Deca',
@@ -311,7 +321,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyText2
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Lexend Deca',
@@ -389,7 +399,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyText2
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Lexend Deca',
@@ -429,7 +439,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyText2
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Lexend Deca',
@@ -498,7 +508,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyText2
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Lexend Deca',
@@ -544,7 +554,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyText2
+                                                                .bodySmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Lexend Deca',
@@ -599,8 +609,9 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                         PageController(initialPage: 0),
                                     count: 2,
                                     axisDirection: Axis.horizontal,
-                                    onDotClicked: (i) {
-                                      _model.pageViewController!.animateToPage(
+                                    onDotClicked: (i) async {
+                                      await _model.pageViewController!
+                                          .animateToPage(
                                         i,
                                         duration: Duration(milliseconds: 500),
                                         curve: Curves.ease,
@@ -717,7 +728,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                         'BALANCE',
                                         maxLines: 1,
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText2
+                                            .bodySmall
                                             .override(
                                               fontFamily: 'Lexend Deca',
                                               color:
@@ -748,7 +759,7 @@ class _InvoicePaymentWidgetState extends State<InvoicePaymentWidget> {
                                           replacement: '…',
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyText2
+                                            .bodySmall
                                             .override(
                                               fontFamily: 'Lexend Deca',
                                               color:

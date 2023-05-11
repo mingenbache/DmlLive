@@ -51,8 +51,8 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
           curve: Curves.easeInOut,
           delay: 230.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 1.0,
+          begin: Offset(1.0, 1.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -114,7 +114,7 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
               width: MediaQuery.of(context).size.width * 1.0,
               height: MediaQuery.of(context).size.height * 0.2,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).tertiaryColor,
+                color: FlutterFlowTheme.of(context).tertiary,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(16.0),
                   bottomRight: Radius.circular(16.0),
@@ -133,7 +133,9 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
                       children: [
                         Text(
                           'TESTS INFO',
-                          style: FlutterFlowTheme.of(context).title2.override(
+                          style: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .override(
                                 fontFamily: 'Open Sans',
                                 color: Color(0xFF586B06),
                                 fontSize: 32.0,
@@ -141,12 +143,16 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
                               ),
                         ),
                         InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () async {
                             context.pop();
                           },
                           child: Card(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
-                            color: FlutterFlowTheme.of(context).secondaryColor,
+                            color: FlutterFlowTheme.of(context).secondary,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
                             ),
@@ -156,8 +162,7 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
                               buttonSize: 48.0,
                               icon: Icon(
                                 Icons.close_rounded,
-                                color:
-                                    FlutterFlowTheme.of(context).tertiaryColor,
+                                color: FlutterFlowTheme.of(context).tertiary,
                                 size: 30.0,
                               ),
                               onPressed: () async {
@@ -180,21 +185,23 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
                           controller: _model.localStateDataController,
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelStyle:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Color(0xFF586B06),
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Color(0xFF586B06),
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
                             hintText: 'Flag Comments',
-                            hintStyle:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Color(0xFF586B06),
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: Color(0xFF586B06),
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0xFF586B06),
@@ -227,7 +234,7 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
                                 20.0, 10.0, 24.0, 0.0),
                           ),
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Lexend Deca',
                                     color: Color(0xFF586B06),
                                     fontSize: 14.0,
@@ -247,9 +254,9 @@ class _LocalVariablesscreenWidgetState extends State<LocalVariablesscreenWidget>
           ),
           Text(
             'Tap above to complete request',
-            style: FlutterFlowTheme.of(context).bodyText1.override(
+            style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Roboto',
-                  color: FlutterFlowTheme.of(context).secondaryColor,
+                  color: FlutterFlowTheme.of(context).secondary,
                   fontSize: 15.0,
                   fontWeight: FontWeight.normal,
                 ),

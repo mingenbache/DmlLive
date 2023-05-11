@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/booked_tests/booked_tests_widget.dart';
 import '/components/booking_actions/booking_actions_widget.dart';
@@ -32,6 +32,12 @@ class BookingUpdateWidget extends StatefulWidget {
 
 class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
   late BookingUpdateModel _model;
+
+  int get pageViewCurrentIndex => _model.pageViewController != null &&
+          _model.pageViewController!.hasClients &&
+          _model.pageViewController!.page != null
+      ? _model.pageViewController!.page!.round()
+      : 0;
 
   @override
   void setState(VoidCallback callback) {
@@ -70,7 +76,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                 width: 50.0,
                 height: 50.0,
                 child: SpinKitRipple(
-                  color: FlutterFlowTheme.of(context).primaryColor,
+                  color: FlutterFlowTheme.of(context).primary,
                   size: 50.0,
                 ),
               ),
@@ -78,7 +84,6 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
           }
           final bookingUpdatesContainerBookingsRecord = snapshot.data!;
           return Container(
-            width: MediaQuery.of(context).size.width * 1.0,
             height: MediaQuery.of(context).size.height * 0.8,
             constraints: BoxConstraints(
               maxWidth: 390.0,
@@ -128,7 +133,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                             gradient: LinearGradient(
                               colors: [
                                 Color(0x656CD7B7),
-                                FlutterFlowTheme.of(context).secondaryColor
+                                FlutterFlowTheme.of(context).secondary
                               ],
                               stops: [0.0, 0.5],
                               begin: AlignmentDirectional(0.0, -1.0),
@@ -150,7 +155,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                     Text(
                                       'BOOKING\nDETAILS',
                                       style: FlutterFlowTheme.of(context)
-                                          .title2
+                                          .headlineMedium
                                           .override(
                                             fontFamily: 'Open Sans',
                                             color: Colors.white,
@@ -159,6 +164,10 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                           ),
                                     ),
                                     InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
                                       onTap: () async {
                                         context.pop();
                                       },
@@ -322,7 +331,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                           child:
                                                                               Text(
                                                                             bookingUpdatesContainerBookingsRecord.bookingstatus!,
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Lexend Deca',
                                                                                   color: Colors.white,
                                                                                   fontSize: 14.0,
@@ -365,7 +374,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                       SpinKitRipple(
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primaryColor,
+                                                                        .primary,
                                                                     size: 50.0,
                                                                   ),
                                                                 ),
@@ -408,7 +417,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                 Text(
                                                                               'Booking Details',
                                                                               textAlign: TextAlign.start,
-                                                                              style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                              style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                     fontFamily: 'Open Sans',
                                                                                     color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   ),
@@ -487,7 +496,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                 Text(
                                                                                                   functions.upperCase(functions.dateMonth(bookingUpdatesContainerBookingsRecord.scheduledDate)),
                                                                                                   textAlign: TextAlign.center,
-                                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                         fontFamily: 'Open Sans',
                                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                         fontSize: 12.0,
@@ -499,9 +508,9 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                   functions.dateDay(bookingUpdatesContainerBookingsRecord.scheduledDate),
                                                                                                   textAlign: TextAlign.center,
                                                                                                   maxLines: 1,
-                                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                         fontFamily: 'Open Sans',
-                                                                                                        color: FlutterFlowTheme.of(context).secondaryColor,
+                                                                                                        color: FlutterFlowTheme.of(context).secondary,
                                                                                                         fontSize: 18.0,
                                                                                                         fontWeight: FontWeight.w600,
                                                                                                         lineHeight: 0.9,
@@ -510,7 +519,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                 Text(
                                                                                                   functions.dateYear(bookingUpdatesContainerBookingsRecord.scheduledDate),
                                                                                                   textAlign: TextAlign.center,
-                                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                         fontFamily: 'Open Sans',
                                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                                         fontSize: 10.0,
@@ -572,7 +581,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                       padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 3.0, 0.0),
                                                                                                       child: Text(
                                                                                                         'Total\nTests',
-                                                                                                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                               fontFamily: 'Open Sans',
                                                                                                               fontWeight: FontWeight.w500,
                                                                                                               lineHeight: 0.9,
@@ -617,7 +626,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                         .toString(),
                                                                                                     textAlign: TextAlign.center,
                                                                                                     maxLines: 1,
-                                                                                                    style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                                    style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                           fontFamily: 'Open Sans',
                                                                                                           color: FlutterFlowTheme.of(context).primaryText,
                                                                                                         ),
@@ -665,7 +674,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                 'Complete\nTests',
                                                                                                 textAlign: TextAlign.end,
                                                                                                 maxLines: 2,
-                                                                                                style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                       fontFamily: 'Open Sans',
                                                                                                       fontWeight: FontWeight.w500,
                                                                                                       lineHeight: 0.9,
@@ -703,7 +712,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                           width: 50.0,
                                                                                                           height: 50.0,
                                                                                                           child: SpinKitRipple(
-                                                                                                            color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                            color: FlutterFlowTheme.of(context).primary,
                                                                                                             size: 50.0,
                                                                                                           ),
                                                                                                         ),
@@ -714,7 +723,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                       bookingUpdatesContainerBookingsRecord.verifiedTests!.toList().length.toString(),
                                                                                                       textAlign: TextAlign.center,
                                                                                                       maxLines: 1,
-                                                                                                      style: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                                      style: FlutterFlowTheme.of(context).titleSmall.override(
                                                                                                             fontFamily: 'Open Sans',
                                                                                                             color: FlutterFlowTheme.of(context).primaryText,
                                                                                                           ),
@@ -763,7 +772,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               children: [
                                                                                 Text(
                                                                                   'Total Invoiceable Amount',
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontWeight: FontWeight.w500,
@@ -793,7 +802,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                         decimalType: DecimalType.periodDecimal,
                                                                                         currency: 'Ksh ',
                                                                                       ),
-                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).primaryText,
                                                                                             fontWeight: FontWeight.w500,
@@ -835,7 +844,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                               children: [
                                                                                 Text(
                                                                                   'Total Amount Due',
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontWeight: FontWeight.w500,
@@ -865,7 +874,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                         decimalType: DecimalType.periodDecimal,
                                                                                         currency: 'Ksh ',
                                                                                       ),
-                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Open Sans',
                                                                                             color: FlutterFlowTheme.of(context).primaryText,
                                                                                             fontWeight: FontWeight.w500,
@@ -915,7 +924,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                   SpinKitRipple(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryColor,
+                                                                    .primary,
                                                                 size: 50.0,
                                                               ),
                                                             ),
@@ -962,7 +971,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                         textAlign:
                                                                             TextAlign.start,
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .subtitle2
+                                                                            .titleSmall
                                                                             .override(
                                                                               fontFamily: 'Open Sans',
                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -1017,7 +1026,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                           child:
                                                                               Text(
                                                                             'Name',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   fontWeight: FontWeight.w500,
@@ -1047,7 +1056,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                           child:
                                                                               Text(
                                                                             '${bookingUpdatesContainerBookingsRecord.firstname} ${bookingUpdatesContainerBookingsRecord.lastname}',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
@@ -1104,7 +1113,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                           child:
                                                                               Text(
                                                                             'Email',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   fontWeight: FontWeight.w500,
@@ -1134,7 +1143,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                           child:
                                                                               Text(
                                                                             bookingUpdatesContainerBookingsRecord.emailaddress!,
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
@@ -1200,7 +1209,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                           child:
                                                                               Text(
                                                                             'Phone',
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                   fontWeight: FontWeight.w500,
@@ -1230,7 +1239,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                           child:
                                                                               Text(
                                                                             bookingUpdatesContainerBookingsRecord.phonenumber!,
-                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Open Sans',
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                   fontWeight: FontWeight.w500,
@@ -1290,7 +1299,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                 child: Text(
                                                                                   'Date of Birth',
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontWeight: FontWeight.w500,
@@ -1335,7 +1344,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                     bookingUpdatesContainerBookingsRecord.dOB!,
                                                                                     locale: FFLocalizations.of(context).languageCode,
                                                                                   ),
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
                                                                                         fontWeight: FontWeight.w500,
@@ -1371,7 +1380,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                 child: Text(
                                                                                   'Sex',
-                                                                                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Open Sans',
                                                                                         color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                         fontWeight: FontWeight.w500,
@@ -1418,7 +1427,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                                                                                   child: Text(
                                                                                     bookingUpdatesContainerBookingsRecord.sex!,
-                                                                                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                           fontFamily: 'Open Sans',
                                                                                           color: FlutterFlowTheme.of(context).primaryText,
                                                                                           fontWeight: FontWeight.w500,
@@ -1464,7 +1473,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .subtitle2
+                                                                .titleSmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -1511,7 +1520,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .subtitle2
+                                                                .titleSmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -1603,7 +1612,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                 width: 50.0,
                                                                                 height: 50.0,
                                                                                 child: SpinKitRipple(
-                                                                                  color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                  color: FlutterFlowTheme.of(context).primary,
                                                                                   size: 50.0,
                                                                                 ),
                                                                               ),
@@ -1612,6 +1621,14 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                           final containerInvoicesRecord =
                                                                               snapshot.data!;
                                                                           return InkWell(
+                                                                            splashColor:
+                                                                                Colors.transparent,
+                                                                            focusColor:
+                                                                                Colors.transparent,
+                                                                            hoverColor:
+                                                                                Colors.transparent,
+                                                                            highlightColor:
+                                                                                Colors.transparent,
                                                                             onTap:
                                                                                 () async {
                                                                               await showModalBottomSheet(
@@ -1619,9 +1636,9 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                 backgroundColor: Colors.transparent,
                                                                                 barrierColor: Color(0x00000000),
                                                                                 context: context,
-                                                                                builder: (context) {
+                                                                                builder: (bottomSheetContext) {
                                                                                   return Padding(
-                                                                                    padding: MediaQuery.of(context).viewInsets,
+                                                                                    padding: MediaQuery.of(bottomSheetContext).viewInsets,
                                                                                     child: InvoiceSheetWidget(
                                                                                       invoiceRef: invoicesItem,
                                                                                       booking: widget.bookingRef!.reference,
@@ -1669,7 +1686,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                               decimalType: DecimalType.periodDecimal,
                                                                                               currency: 'Ksh ',
                                                                                             ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Open Sans',
                                                                                                   color: FlutterFlowTheme.of(context).primaryText,
                                                                                                   fontWeight: FontWeight.w500,
@@ -1722,7 +1739,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                 children: [
                                                                                                   Icon(
                                                                                                     Icons.calendar_today_sharp,
-                                                                                                    color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                    color: FlutterFlowTheme.of(context).primary,
                                                                                                     size: 21.0,
                                                                                                   ),
                                                                                                   Padding(
@@ -1733,7 +1750,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                         containerInvoicesRecord.dueDate!,
                                                                                                         locale: FFLocalizations.of(context).languageCode,
                                                                                                       ),
-                                                                                                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                             fontFamily: 'Open Sans',
                                                                                                             color: FlutterFlowTheme.of(context).primaryText,
                                                                                                             fontWeight: FontWeight.w500,
@@ -1774,7 +1791,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                                                                       child: Container(
                                                                                                         height: MediaQuery.of(context).size.height * 0.04,
                                                                                                         decoration: BoxDecoration(
-                                                                                                          color: FlutterFlowTheme.of(context).primaryColor,
+                                                                                                          color: FlutterFlowTheme.of(context).primary,
                                                                                                           boxShadow: [
                                                                                                             BoxShadow(
                                                                                                               blurRadius: 1.0,
@@ -1911,7 +1928,7 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .subtitle2
+                                                                .titleSmall
                                                                 .override(
                                                                   fontFamily:
                                                                       'Open Sans',
@@ -1990,8 +2007,8 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                                                           initialPage: 0),
                                               count: 5,
                                               axisDirection: Axis.horizontal,
-                                              onDotClicked: (i) {
-                                                _model.pageViewController!
+                                              onDotClicked: (i) async {
+                                                await _model.pageViewController!
                                                     .animateToPage(
                                                   i,
                                                   duration: Duration(
@@ -2056,9 +2073,9 @@ class _BookingUpdateWidgetState extends State<BookingUpdateWidget> {
                 ),
                 Text(
                   'Tap above to complete request',
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Roboto',
-                        color: FlutterFlowTheme.of(context).secondaryColor,
+                        color: FlutterFlowTheme.of(context).secondary,
                         fontSize: 15.0,
                         fontWeight: FontWeight.normal,
                       ),

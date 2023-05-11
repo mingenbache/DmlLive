@@ -1,4 +1,4 @@
-import '/auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/new_booking_sheet/new_booking_sheet_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -56,7 +56,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
               width: 50.0,
               height: 50.0,
               child: SpinKitRipple(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.of(context).primary,
                 size: 50.0,
               ),
             ),
@@ -64,7 +64,9 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
         }
         final containerUsersRecord = snapshot.data!;
         return Container(
-          width: MediaQuery.of(context).size.width * 0.95,
+          constraints: BoxConstraints(
+            maxWidth: 420.0,
+          ),
           decoration: BoxDecoration(),
           child: Align(
             alignment: AlignmentDirectional(0.0, 0.0),
@@ -85,7 +87,7 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                         width: 50.0,
                         height: 50.0,
                         child: SpinKitRipple(
-                          color: FlutterFlowTheme.of(context).primaryColor,
+                          color: FlutterFlowTheme.of(context).primary,
                           size: 50.0,
                         ),
                       ),
@@ -102,50 +104,49 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: InkWell(
-                          onTap: () async {
-                            Navigator.pop(context);
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          Navigator.pop(context);
 
-                            context.goNamed('checkup');
-                          },
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            decoration: BoxDecoration(),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 0.0, 0.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Icon(
-                                    Icons.arrow_back,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 24.0,
-                                  ),
-                                  Text(
-                                    'BACK',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Open Sans',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 20.0,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
-                                ],
-                              ),
+                          context.goNamed('checkup');
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                20.0, 0.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.arrow_back,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
+                                Text(
+                                  'BACK',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Open Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.3,
                         constraints: BoxConstraints(
                           maxHeight: 40.0,
                         ),
@@ -162,8 +163,12 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    5.0, 0.0, 0.0, 0.0),
+                                    5.0, 0.0, 12.0, 0.0),
                                 child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     if (!containerUsersRecord
                                         .hasCurrentBooking!) {
@@ -172,9 +177,10 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                         backgroundColor: Colors.transparent,
                                         barrierColor: Color(0x00000000),
                                         context: context,
-                                        builder: (context) {
+                                        builder: (bottomSheetContext) {
                                           return Padding(
-                                            padding: MediaQuery.of(context)
+                                            padding: MediaQuery.of(
+                                                    bottomSheetContext)
                                                 .viewInsets,
                                             child: NewBookingSheetWidget(),
                                           );
@@ -220,6 +226,10 @@ class _TopActionsWidgetState extends State<TopActionsWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     5.0, 0.0, 1.0, 0.0),
                                 child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed('myAccount');
                                   },
