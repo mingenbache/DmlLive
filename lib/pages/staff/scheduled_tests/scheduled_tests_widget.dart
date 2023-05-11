@@ -409,12 +409,25 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
                                                     final bookedTestsItem =
                                                         bookedTests[
                                                             bookedTestsIndex];
-                                                    return TestItemWidgetWidget(
-                                                      key: Key(
-                                                          'Keyjr0_${bookedTestsIndex}_of_${bookedTests.length}'),
-                                                      index: bookedTestsIndex,
-                                                      bookedTest:
-                                                          bookedTestsItem,
+                                                    return wrapWithModel(
+                                                      model: _model
+                                                          .testItemWidgetModels
+                                                          .getModel(
+                                                        bookedTestsItem
+                                                            .reference.id,
+                                                        bookedTestsIndex,
+                                                      ),
+                                                      updateCallback: () =>
+                                                          setState(() {}),
+                                                      child:
+                                                          TestItemWidgetWidget(
+                                                        key: Key(
+                                                          'Keyjr0_${bookedTestsItem.reference.id}',
+                                                        ),
+                                                        index: bookedTestsIndex,
+                                                        bookedTest:
+                                                            bookedTestsItem,
+                                                      ),
                                                     );
                                                   },
                                                 );

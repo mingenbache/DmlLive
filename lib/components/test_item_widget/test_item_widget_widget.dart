@@ -208,150 +208,63 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                       color: Color(0x86FFFFFF),
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.18,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    7.0, 3.0, 8.0, 3.0),
-                                            child: Text(
-                                              'REF',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodySmall
-                                                  .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    fontSize: 14.0,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 145.0,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          child: Text(
-                                            valueOrDefault<String>(
-                                              widget.bookedTest!.labRefNum,
-                                              '__',
-                                            ).maybeHandleOverflow(maxChars: 10),
-                                            maxLines: 1,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall
-                                                .override(
-                                                  fontFamily: 'Lexend Deca',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 6.0, 0.0, 0.0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0x86FFFFFF),
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                      ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          4.0, 0.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.18,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                            ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(7.0, 3.0, 8.0, 3.0),
-                                              child: Text(
-                                                'NAME',
-                                                maxLines: 1,
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodySmall
-                                                    .override(
-                                                      fontFamily: 'Lexend Deca',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      fontSize: 14.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
+                                          Expanded(
+                                            flex: 1,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10.0),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        7.0, 3.0, 8.0, 3.0),
+                                                child: Text(
+                                                  'REF',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Lexend Deca',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        fontSize: 14.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                ),
                                               ),
                                             ),
                                           ),
                                           Expanded(
-                                            child:
-                                                StreamBuilder<BookingsRecord>(
-                                              stream:
-                                                  BookingsRecord.getDocument(
+                                            flex: 3,
+                                            child: Container(
+                                              width: 145.0,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    valueOrDefault<String>(
                                                       widget.bookedTest!
-                                                          .bookingRef!),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 50.0,
-                                                      height: 50.0,
-                                                      child: SpinKitRipple(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        size: 50.0,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                final containerBookingsRecord =
-                                                    snapshot.data!;
-                                                return Container(
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  child: Text(
-                                                    '${functions.camelCase(containerBookingsRecord.firstname)} ${functions.camelCase(containerBookingsRecord.lastname)}'
-                                                        .maybeHandleOverflow(
-                                                      maxChars: 20,
-                                                      replacement: '…',
-                                                    ),
+                                                          .labRefNum,
+                                                      '__',
+                                                    ).maybeHandleOverflow(
+                                                        maxChars: 10),
                                                     maxLines: 1,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -367,11 +280,135 @@ class _TestItemWidgetWidgetState extends State<TestItemWidgetWidget> {
                                                               FontWeight.w500,
                                                         ),
                                                   ),
-                                                );
-                                              },
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ],
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 6.0, 0.0, 0.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Color(0x86FFFFFF),
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8.0, 0.0, 0.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Expanded(
+                                              flex: 1,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          2.0, 3.0, 2.0, 3.0),
+                                                  child: Text(
+                                                    'NAME',
+                                                    maxLines: 1,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Lexend Deca',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: 14.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              flex: 3,
+                                              child:
+                                                  StreamBuilder<BookingsRecord>(
+                                                stream:
+                                                    BookingsRecord.getDocument(
+                                                        widget.bookedTest!
+                                                            .bookingRef!),
+                                                builder: (context, snapshot) {
+                                                  // Customize what your widget looks like when it's loading.
+                                                  if (!snapshot.hasData) {
+                                                    return Center(
+                                                      child: SizedBox(
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        child: SpinKitRipple(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          size: 50.0,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                  final containerBookingsRecord =
+                                                      snapshot.data!;
+                                                  return Container(
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    child:
+                                                        SingleChildScrollView(
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Text(
+                                                            '${functions.camelCase(containerBookingsRecord.firstname)} ${functions.camelCase(containerBookingsRecord.lastname)}'
+                                                                .maybeHandleOverflow(
+                                                              maxChars: 20,
+                                                              replacement: '…',
+                                                            ),
+                                                            maxLines: 1,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodySmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Lexend Deca',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  fontSize:
+                                                                      14.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),

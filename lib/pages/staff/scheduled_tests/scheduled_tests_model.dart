@@ -17,6 +17,8 @@ class ScheduledTestsModel extends FlutterFlowModel {
   late TopActionsModel topActionsModel;
   // State field(s) for UICalendar widget.
   DateTimeRange? uICalendarSelectedDay;
+  // Models for TestItemWidget dynamic component.
+  late FlutterFlowDynamicModels<TestItemWidgetModel> testItemWidgetModels;
 
   /// Initialization and disposal methods.
 
@@ -26,10 +28,13 @@ class ScheduledTestsModel extends FlutterFlowModel {
       start: DateTime.now().startOfDay,
       end: DateTime.now().endOfDay,
     );
+    testItemWidgetModels =
+        FlutterFlowDynamicModels(() => TestItemWidgetModel());
   }
 
   void dispose() {
     topActionsModel.dispose();
+    testItemWidgetModels.dispose();
   }
 
   /// Additional helper methods are added here.
