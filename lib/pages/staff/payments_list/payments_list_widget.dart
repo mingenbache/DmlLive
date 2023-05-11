@@ -799,8 +799,8 @@ class _PaymentsListWidgetState extends State<PaymentsListWidget> {
                                                                         Color(
                                                                             0x00FFFFFF),
                                                                     barrierColor:
-                                                                        Color(
-                                                                            0x00000000),
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
                                                                     context:
                                                                         context,
                                                                     builder:

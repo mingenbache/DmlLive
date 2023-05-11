@@ -74,6 +74,10 @@ class _InvoiceSheetWidgetState extends State<InvoiceSheetWidget> {
         }
         final invoiceContainerBookingsRecord = snapshot.data!;
         return Container(
+          height: MediaQuery.of(context).size.height * 1.0,
+          constraints: BoxConstraints(
+            maxWidth: 440.0,
+          ),
           decoration: BoxDecoration(),
           child: StreamBuilder<InvoicesRecord>(
             stream: InvoicesRecord.getDocument(widget.invoiceRef!),
