@@ -512,7 +512,7 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                         .size
                                                         .width *
                                                     1.0,
-                                                height: 150.0,
+                                                height: 170.0,
                                                 constraints: BoxConstraints(
                                                   maxWidth: 400.0,
                                                 ),
@@ -530,121 +530,140 @@ class _HomeAdminWidgetState extends State<HomeAdminWidget> {
                                                         MainAxisAlignment
                                                             .center,
                                                     children: [
-                                                      Container(
-                                                        width: 300.0,
-                                                        height: 300.0,
-                                                        child: Stack(
-                                                          children: [
-                                                            FlutterFlowLineChart(
-                                                              data: [
-                                                                FFLineChartData(
-                                                                  xData: functions.returnTestsDates(
-                                                                      containerTestedTestsRecordList
-                                                                          .toList(),
-                                                                      getCurrentTimestamp),
-                                                                  yData: functions.returnTestsQuantity(
-                                                                      containerTestedTestsRecordList
-                                                                          .toList(),
-                                                                      getCurrentTimestamp),
-                                                                  settings:
-                                                                      LineChartBarData(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                    barWidth:
-                                                                        6.0,
-                                                                    isCurved:
-                                                                        true,
-                                                                    belowBarData:
-                                                                        BarAreaData(
-                                                                      show:
+                                                      Expanded(
+                                                        child: Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0,
+                                                                        10.0),
+                                                            child: Container(
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.8,
+                                                              height: 300.0,
+                                                              child: Stack(
+                                                                children: [
+                                                                  FlutterFlowLineChart(
+                                                                    data: [
+                                                                      FFLineChartData(
+                                                                        xData: functions.returnTestsDates(
+                                                                            containerTestedTestsRecordList.toList(),
+                                                                            getCurrentTimestamp),
+                                                                        yData: functions.returnTestsQuantity(
+                                                                            containerTestedTestsRecordList.toList(),
+                                                                            getCurrentTimestamp),
+                                                                        settings:
+                                                                            LineChartBarData(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryText,
+                                                                          barWidth:
+                                                                              6.0,
+                                                                          isCurved:
+                                                                              true,
+                                                                          belowBarData:
+                                                                              BarAreaData(
+                                                                            show:
+                                                                                true,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondary,
+                                                                          ),
+                                                                        ),
+                                                                      )
+                                                                    ],
+                                                                    chartStylingInfo:
+                                                                        ChartStylingInfo(
+                                                                      enableTooltip:
                                                                           true,
-                                                                      color: FlutterFlowTheme.of(
+                                                                      backgroundColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .secondaryBackground,
+                                                                      showGrid:
+                                                                          true,
+                                                                      showBorder:
+                                                                          false,
+                                                                    ),
+                                                                    axisBounds:
+                                                                        AxisBounds(),
+                                                                    xAxisLabelInfo:
+                                                                        AxisLabelInfo(),
+                                                                    yAxisLabelInfo:
+                                                                        AxisLabelInfo(
+                                                                      showLabels:
+                                                                          true,
+                                                                      labelTextStyle: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondary,
+                                                                          .titleMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Open Sans',
+                                                                            fontSize:
+                                                                                12.0,
+                                                                          ),
+                                                                      labelInterval:
+                                                                          20.0,
                                                                     ),
                                                                   ),
-                                                                )
-                                                              ],
-                                                              chartStylingInfo:
-                                                                  ChartStylingInfo(
-                                                                enableTooltip:
-                                                                    true,
-                                                                backgroundColor:
-                                                                    Colors
-                                                                        .white,
-                                                                showGrid: true,
-                                                                showBorder:
-                                                                    false,
-                                                              ),
-                                                              axisBounds:
-                                                                  AxisBounds(),
-                                                              xAxisLabelInfo:
-                                                                  AxisLabelInfo(),
-                                                              yAxisLabelInfo:
-                                                                  AxisLabelInfo(
-                                                                showLabels:
-                                                                    true,
-                                                                labelTextStyle:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Open Sans',
-                                                                          fontSize:
-                                                                              12.0,
-                                                                        ),
-                                                                labelInterval:
-                                                                    20.0,
-                                                              ),
-                                                            ),
-                                                            Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      1.0, 1.0),
-                                                              child:
-                                                                  FlutterFlowChartLegendWidget(
-                                                                entries: [
-                                                                  LegendEntry(
-                                                                      FlutterFlowTheme.of(
+                                                                  Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            1.0,
+                                                                            1.0),
+                                                                    child:
+                                                                        FlutterFlowChartLegendWidget(
+                                                                      entries: [
+                                                                        LegendEntry(
+                                                                            FlutterFlowTheme.of(context).primaryText,
+                                                                            'Total Tests'),
+                                                                      ],
+                                                                      width:
+                                                                          100.0,
+                                                                      height:
+                                                                          50.0,
+                                                                      textStyle: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primaryText,
-                                                                      'Total Tests'),
-                                                                ],
-                                                                width: 100.0,
-                                                                height: 50.0,
-                                                                textStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Open Sans',
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Open Sans',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryBackground,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                          ),
+                                                                      textPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                                      backgroundColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .secondary,
+                                                                      indicatorSize:
+                                                                          10.0,
                                                                     ),
-                                                                textPadding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            5.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            5.0,
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0),
-                                                                borderWidth:
-                                                                    0.0,
-                                                                indicatorSize:
-                                                                    10.0,
+                                                                  ),
+                                                                ],
                                                               ),
                                                             ),
-                                                          ],
+                                                          ),
                                                         ),
                                                       ),
                                                     ],

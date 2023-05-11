@@ -70,10 +70,12 @@ class _ScheduledTestsWidgetState extends State<ScheduledTestsWidget> {
             child: Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Container(
+                height: MediaQuery.of(context).size.height * 1.0,
                 constraints: BoxConstraints(
                   maxWidth: 440.0,
                 ),
                 decoration: BoxDecoration(),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Stack(
                   children: [
                     Container(

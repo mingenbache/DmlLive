@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:from_css_color/from_css_color.dart';
-
 import 'index.dart';
 import 'serializers.dart';
 import 'package:built_value/built_value.dart';
@@ -82,47 +80,6 @@ abstract class TestsRecord implements Built<TestsRecord, TestsRecordBuilder> {
   static Future<TestsRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
       .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
-
-  static TestsRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) => TestsRecord(
-        (c) => c
-          ..price = snapshot.data['price']?.round()
-          ..name = snapshot.data['name']
-          ..homeTest = snapshot.data['home_test']
-          ..description = snapshot.data['description']
-          ..duration = snapshot.data['duration']?.toDouble()
-          ..durationResults = snapshot.data['duration_results']?.toDouble()
-          ..category = snapshot.data['category']
-          ..isAvailable = snapshot.data['is_available']
-          ..keywords = safeGet(() => ListBuilder(snapshot.data['Keywords']))
-          ..updateDate = safeGet(() =>
-              DateTime.fromMillisecondsSinceEpoch(snapshot.data['update_date']))
-          ..updateRole = snapshot.data['updateRole']
-          ..varianceMale = snapshot.data['varianceMale']
-          ..varianceFemale = snapshot.data['varianceFemale']
-          ..varianceUnitsMale = snapshot.data['varianceUnitsMale']
-          ..varianceUnitsFemale = snapshot.data['varianceUnitsFemale']
-          ..equipmentInfo = snapshot.data['equipmentInfo']
-          ..procedure = safeGet(() => ListBuilder(snapshot.data['procedure']))
-          ..ffRef = TestsRecord.collection.doc(snapshot.objectID),
-      );
-
-  static Future<List<TestsRecord>> search({
-    String? term,
-    FutureOr<LatLng>? location,
-    int? maxResults,
-    double? searchRadiusMeters,
-    bool useCache = false,
-  }) =>
-      FFAlgoliaManager.instance
-          .algoliaQuery(
-            index: 'tests',
-            term: term,
-            maxResults: maxResults,
-            location: location,
-            searchRadiusMeters: searchRadiusMeters,
-            useCache: useCache,
-          )
-          .then((r) => r.map(fromAlgolia).toList());
 
   TestsRecord._();
   factory TestsRecord([void Function(TestsRecordBuilder) updates]) =
